@@ -1,0 +1,413 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_meta.php3,NONE,1.1 suivi_revisions.php3,NONE,1.1 .cvsignore,NONE,1.1 index.php3,NONE,1.1 delete_all.php3,NONE,1.1 puce_rtl.gif,NONE,1.1 inc_objet_base.php3,NONE,1.1 inc_mail.php3,NONE,1.1 controle_petition.php3,NONE,1.1 inc_filtres.php3,NONE,1.1 calendrier_semaine.php3,NONE,1.1 breves_voir.php3,NONE,1.1 calendrier_jour.php3,NONE,1.1 unpack.php3,NONE,1.1 lab_revisions.php,NONE,1.1 inc_base.php3,NONE,1.1 naviguer.php3,NONE,1.1 rubriques_edit.php3,NONE,1.1 inc_auth_spip.php3,NONE,1.1 brouteur.php3,NONE,1.1 gnu_lgpl_fr.txt,NONE,1.1 inc_auth_ldap.php3,NONE,1.1 install.php3,NONE,1.1 inc_lab.php,NONE,1.1 auteur_messagerie.php3,NONE,1.1 spip_style_print.css,NONE,1.1 admin_tech.php3,NONE,1.1 gpl_fr.txt,NONE,1.1 import_all.php3,NONE,1.1 forum.php3,NONE,1.1 inc_auth.php3,NONE,1.1 puce.gif,NONE,1.1 inc_db_mysql.php3,NONE,1.1 admin_effacer.php3,NONE,1.1 inc_auxbase.php3,NONE,1.1 js_detectplugins.js,NONE,1.1 inc_index.php3,NONE,1.1 breves.php3,NONE,1.1 inc_su! ivi_revisions.php,NONE,1.1 inc_calendrier.php,NONE,1.1 message.php3,NONE,1.1 cartes.php3,NONE,1.1 inc_surligne.php3,NONE,1.1 statistiques_visites.php3,NONE,1.1 http.class.php,NONE,1.1 mes_options.php3,NONE,1.1 inc_layer.php3,NONE,1.1 articles.php3,NONE,1.1 licence_fr.html,NONE,1.1 inc_lang.php3,NONE,1.1 admin_vider.php3,NONE,1.1 lang_raccourcis.php3,NONE,1.1 articles_versions.php3,NONE,1.1 auteurs_edit.php3,NONE,1.1 inc_charsets.php3,NONE,1.1 inc_math.php3,NONE,1.1 inc_cron.php3,NONE,1.1 inc_majbase.php3,NONE,1.1 calendrier.php3,NONE,1.1 articles_edit.php3,NONE,1.1 carte_edit.php3,NONE,1.1 inc_config.php3,NONE,1.1 inc_tidy.php,NONE,1.1 inc_logos.php3,NONE,1.1 config-contenu.php3,NONE,1.1 statistiques.php3,NONE,1.1 inc_abstract_sql.php3,NONE,1.1 articles_forum.php3,NONE,1.1 spip_style.php3,NONE,1.1 inc_rubriques.php3,NONE,1.1 accents.php3,NONE,1.1 info.php3,NONE,1.1 brouteur_frame.php3,NONE,1.1 md5.js,NONE,1.1 sites_edit.php3,NONE,1.1 inc_presentation.php3,NONE,1.1 sites.php! 3,NONE,1.1 license.txt,NONE,1.1 win_png.htc,NONE,1.1 layer.js,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_meta.php3%2CNONE%2C1.1%20suivi_revisions.php3%2CNONE%2C1.1%20.cvsignore%2CNONE%2C1.1%20index.php3%2CNONE%2C1.1%20delete_all.php3%2CNONE%2C1.1%20puce_rtl.gif%2CNONE%2C1.1%20inc_objet_base.php3%2CNONE%2C1.1%20inc_mail.php3%2CNONE%2C1.1%20controle_petition.php3%2CNONE%2C1.1%20inc_filtres.php3%2CNONE%2C1.1%20calendrier_semaine.php3%2CNONE%2C1.1%20breves_voir.php3%2CNONE%2C1.1%20calendrier_jour.php3%2CNONE%2C1.1%20unpack.php3%2CNONE%2C1.1%20lab_revisions.php%2CNONE%2C1.1%20inc_base.php3%2CNONE%2C1.1%20naviguer.php3%2CNONE%2C1.1%20rubriques_edit.php3%2CNONE%2C1.1%20inc_auth_spip.php3%2CNONE%2C1.1%20brouteur.php3%2CNONE%2C1.1%20gnu_lgpl_fr.txt%2CNONE%2C1.1%20inc_auth_ldap.php3%2CNONE%2C1.1%20install.php3%2CNONE%2C1.1%20inc_lab.php%2CNONE%2C1.1%20auteur_messagerie.php3%2CNONE%2C1.1%20spip_style_print.css%2CNONE%2C1.1%20admin_tech.php3%2CNONE%2C1.1%20gpl_fr.txt%2CNONE%2C1.1%20import_all.php3%2CNONE%2C1.1%20forum.php3%2CNONE%2C1.1%20inc_auth.php3%2CNONE%2C1.1%20puce.gif%2CNONE%2C1.1%20inc_db_mysql.php3%2CNONE%2C1.1%20admin_effacer.php3%2CNONE%2C1.1%20inc_auxbase.php3%2CNONE%2C1.1%20js_detectplugins.js%2CNONE%2C1.1%20inc_index.php3%2CNONE%2C1.1%20breves.php3%2CNONE%2C1.1%20inc_su%21%0A%20ivi_revisions.php%2CNONE%2C1.1%20inc_calendrier.php%2CNONE%2C1.1%20message.php3%2CNONE%2C1.1%20cartes.php3%2CNONE%2C1.1%20inc_surligne.php3%2CNONE%2C1.1%20statistiques_visites.php3%2CNONE%2C1.1%20http.class.php%2CNONE%2C1.1%20mes_options.php3%2CNONE%2C1.1%20inc_layer.php3%2CNONE%2C1.1%20articles.php3%2CNONE%2C1.1%20licence_fr.html%2CNONE%2C1.1%20inc_lang.php3%2CNONE%2C1.1%20admin_vider.php3%2CNONE%2C1.1%20lang_raccourcis.php3%2CNONE%2C1.1%20articles_versions.php3%2CNONE%2C1.1%20auteurs_edit.php3%2CNONE%2C1.1%20inc_charsets.php3%2CNONE%2C1.1%20inc_math.php3%2CNONE%2C1.1%20inc_cron.php3%2CNONE%2C1.1%20inc_majbase.php3%2CNONE%2C1.1%20calendrier.php3%2CNONE%2C1.1%20articles_edit.php3%2CNONE%2C1.1%20carte_edit.php3%2CNONE%2C1.1%20inc_config.php3%2CNONE%2C1.1%20inc_tidy.php%2CNONE%2C1.1%20inc_logos.php3%2CNONE%2C1.1%20config-contenu.php3%2CNONE%2C1.1%20statistiques.php3%2CNONE%2C1.1%20inc_abstract_sql.php3%2CNONE%2C1.1%20articles_forum.php3%2CNONE%2C1.1%20spip_style.php3%2CNONE%2C1.1%20inc_rubriques.php3%2CNONE%2C1.1%20accents.php3%2CNONE%2C1.1%20info.php3%2CNONE%2C1.1%20brouteur_frame.php3%2CNONE%2C1.1%20md5.js%2CNONE%2C1.1%20sites_edit.php3%2CNONE%2C1.1%20inc_presentation.php3%2CNONE%2C1.1%20sites.php%21%0A%203%2CNONE%2C1.1%20license.txt%2CNONE%2C1.1%20win_png.htc%2CNONE%2C1.1%20layer.js%2CNONE%2C1.1&In-Reply-To=%3C200501131537.j0DFbINM020129%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000007.html">
+   <LINK REL="Next"  HREF="000005.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_meta.php3,NONE,1.1 suivi_revisions.php3,NONE,1.1 .cvsignore,NONE,1.1 index.php3,NONE,1.1 delete_all.php3,NONE,1.1 puce_rtl.gif,NONE,1.1 inc_objet_base.php3,NONE,1.1 inc_mail.php3,NONE,1.1 controle_petition.php3,NONE,1.1 inc_filtres.php3,NONE,1.1 calendrier_semaine.php3,NONE,1.1 breves_voir.php3,NONE,1.1 calendrier_jour.php3,NONE,1.1 unpack.php3,NONE,1.1 lab_revisions.php,NONE,1.1 inc_base.php3,NONE,1.1 naviguer.php3,NONE,1.1 rubriques_edit.php3,NONE,1.1 inc_auth_spip.php3,NONE,1.1 brouteur.php3,NONE,1.1 gnu_lgpl_fr.txt,NONE,1.1 inc_auth_ldap.php3,NONE,1.1 install.php3,NONE,1.1 inc_lab.php,NONE,1.1 auteur_messagerie.php3,NONE,1.1 spip_style_print.css,NONE,1.1 admin_tech.php3,NONE,1.1 gpl_fr.txt,NONE,1.1 import_all.php3,NONE,1.1 forum.php3,NONE,1.1 inc_auth.php3,NONE,1.1 puce.gif,NONE,1.1 inc_db_mysql.php3,NONE,1.1 admin_effacer.php3,NONE,1.1 inc_auxbase.php3,NONE,1.1 js_detectplugins.js,NONE,1.1 inc_index.php3,NONE,1.1 breves.php3,NONE,1.1 inc_su! ivi_revisions.php,NONE,1.1 inc_calendrier.php,NONE,1.1 message.php3,NONE,1.1 cartes.php3,NONE,1.1 inc_surligne.php3,NONE,1.1 statistiques_visites.php3,NONE,1.1 http.class.php,NONE,1.1 mes_options.php3,NONE,1.1 inc_layer.php3,NONE,1.1 articles.php3,NONE,1.1 licence_fr.html,NONE,1.1 inc_lang.php3,NONE,1.1 admin_vider.php3,NONE,1.1 lang_raccourcis.php3,NONE,1.1 articles_versions.php3,NONE,1.1 auteurs_edit.php3,NONE,1.1 inc_charsets.php3,NONE,1.1 inc_math.php3,NONE,1.1 inc_cron.php3,NONE,1.1 inc_majbase.php3,NONE,1.1 calendrier.php3,NONE,1.1 articles_edit.php3,NONE,1.1 carte_edit.php3,NONE,1.1 inc_config.php3,NONE,1.1 inc_tidy.php,NONE,1.1 inc_logos.php3,NONE,1.1 config-contenu.php3,NONE,1.1 statistiques.php3,NONE,1.1 inc_abstract_sql.php3,NONE,1.1 articles_forum.php3,NONE,1.1 spip_style.php3,NONE,1.1 inc_rubriques.php3,NONE,1.1 accents.php3,NONE,1.1 info.php3,NONE,1.1 brouteur_frame.php3,NONE,1.1 md5.js,NONE,1.1 sites_edit.php3,NONE,1.1 inc_presentation.php3,NONE,1.1 sites.php! 3,NONE,1.1 license.txt,NONE,1.1 win_png.htc,NONE,1.1 layer.js,NONE,1.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_meta.php3%2CNONE%2C1.1%20suivi_revisions.php3%2CNONE%2C1.1%20.cvsignore%2CNONE%2C1.1%20index.php3%2CNONE%2C1.1%20delete_all.php3%2CNONE%2C1.1%20puce_rtl.gif%2CNONE%2C1.1%20inc_objet_base.php3%2CNONE%2C1.1%20inc_mail.php3%2CNONE%2C1.1%20controle_petition.php3%2CNONE%2C1.1%20inc_filtres.php3%2CNONE%2C1.1%20calendrier_semaine.php3%2CNONE%2C1.1%20breves_voir.php3%2CNONE%2C1.1%20calendrier_jour.php3%2CNONE%2C1.1%20unpack.php3%2CNONE%2C1.1%20lab_revisions.php%2CNONE%2C1.1%20inc_base.php3%2CNONE%2C1.1%20naviguer.php3%2CNONE%2C1.1%20rubriques_edit.php3%2CNONE%2C1.1%20inc_auth_spip.php3%2CNONE%2C1.1%20brouteur.php3%2CNONE%2C1.1%20gnu_lgpl_fr.txt%2CNONE%2C1.1%20inc_auth_ldap.php3%2CNONE%2C1.1%20install.php3%2CNONE%2C1.1%20inc_lab.php%2CNONE%2C1.1%20auteur_messagerie.php3%2CNONE%2C1.1%20spip_style_print.css%2CNONE%2C1.1%20admin_tech.php3%2CNONE%2C1.1%20gpl_fr.txt%2CNONE%2C1.1%20import_all.php3%2CNONE%2C1.1%20forum.php3%2CNONE%2C1.1%20inc_auth.php3%2CNONE%2C1.1%20puce.gif%2CNONE%2C1.1%20inc_db_mysql.php3%2CNONE%2C1.1%20admin_effacer.php3%2CNONE%2C1.1%20inc_auxbase.php3%2CNONE%2C1.1%20js_detectplugins.js%2CNONE%2C1.1%20inc_index.php3%2CNONE%2C1.1%20breves.php3%2CNONE%2C1.1%20inc_su%21%0A%20ivi_revisions.php%2CNONE%2C1.1%20inc_calendrier.php%2CNONE%2C1.1%20message.php3%2CNONE%2C1.1%20cartes.php3%2CNONE%2C1.1%20inc_surligne.php3%2CNONE%2C1.1%20statistiques_visites.php3%2CNONE%2C1.1%20http.class.php%2CNONE%2C1.1%20mes_options.php3%2CNONE%2C1.1%20inc_layer.php3%2CNONE%2C1.1%20articles.php3%2CNONE%2C1.1%20licence_fr.html%2CNONE%2C1.1%20inc_lang.php3%2CNONE%2C1.1%20admin_vider.php3%2CNONE%2C1.1%20lang_raccourcis.php3%2CNONE%2C1.1%20articles_versions.php3%2CNONE%2C1.1%20auteurs_edit.php3%2CNONE%2C1.1%20inc_charsets.php3%2CNONE%2C1.1%20inc_math.php3%2CNONE%2C1.1%20inc_cron.php3%2CNONE%2C1.1%20inc_majbase.php3%2CNONE%2C1.1%20calendrier.php3%2CNONE%2C1.1%20articles_edit.php3%2CNONE%2C1.1%20carte_edit.php3%2CNONE%2C1.1%20inc_config.php3%2CNONE%2C1.1%20inc_tidy.php%2CNONE%2C1.1%20inc_logos.php3%2CNONE%2C1.1%20config-contenu.php3%2CNONE%2C1.1%20statistiques.php3%2CNONE%2C1.1%20inc_abstract_sql.php3%2CNONE%2C1.1%20articles_forum.php3%2CNONE%2C1.1%20spip_style.php3%2CNONE%2C1.1%20inc_rubriques.php3%2CNONE%2C1.1%20accents.php3%2CNONE%2C1.1%20info.php3%2CNONE%2C1.1%20brouteur_frame.php3%2CNONE%2C1.1%20md5.js%2CNONE%2C1.1%20sites_edit.php3%2CNONE%2C1.1%20inc_presentation.php3%2CNONE%2C1.1%20sites.php%21%0A%203%2CNONE%2C1.1%20license.txt%2CNONE%2C1.1%20win_png.htc%2CNONE%2C1.1%20layer.js%2CNONE%2C1.1&In-Reply-To=%3C200501131537.j0DFbINM020129%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_meta.php3,NONE,1.1 suivi_revisions.php3,NONE,1.1 .cvsignore,NONE,1.1 index.php3,NONE,1.1 delete_all.php3,NONE,1.1 puce_rtl.gif,NONE,1.1 inc_objet_base.php3,NONE,1.1 inc_mail.php3,NONE,1.1 controle_petition.php3,NONE,1.1 inc_filtres.php3,NONE,1.1 calendrier_semaine.php3,NONE,1.1 breves_voir.php3,NONE,1.1 calendrier_jour.php3,NONE,1.1 unpack.php3,NONE,1.1 lab_revisions.php,NONE,1.1 inc_base.php3,NONE,1.1 naviguer.php3,NONE,1.1 rubriques_edit.php3,NONE,1.1 inc_auth_spip.php3,NONE,1.1 brouteur.php3,NONE,1.1 gnu_lgpl_fr.txt,NONE,1.1 inc_auth_ldap.php3,NONE,1.1 install.php3,NONE,1.1 inc_lab.php,NONE,1.1 auteur_messagerie.php3,NONE,1.1 spip_style_print.css,NONE,1.1 admin_tech.php3,NONE,1.1 gpl_fr.txt,NONE,1.1 import_all.php3,NONE,1.1 forum.php3,NONE,1.1 inc_auth.php3,NONE,1.1 puce.gif,NONE,1.1 inc_db_mysql.php3,NONE,1.1 admin_effacer.php3,NONE,1.1 inc_auxbase.php3,NONE,1.1 js_detectplugins.js,NONE,1.1 inc_index.php3,NONE,1.1 breves.php3,NONE,1.1 inc_su! ivi_revisions.php,NONE,1.1 inc_calendrier.php,NONE,1.1 message.php3,NONE,1.1 cartes.php3,NONE,1.1 inc_surligne.php3,NONE,1.1 statistiques_visites.php3,NONE,1.1 http.class.php,NONE,1.1 mes_options.php3,NONE,1.1 inc_layer.php3,NONE,1.1 articles.php3,NONE,1.1 licence_fr.html,NONE,1.1 inc_lang.php3,NONE,1.1 admin_vider.php3,NONE,1.1 lang_raccourcis.php3,NONE,1.1 articles_versions.php3,NONE,1.1 auteurs_edit.php3,NONE,1.1 inc_charsets.php3,NONE,1.1 inc_math.php3,NONE,1.1 inc_cron.php3,NONE,1.1 inc_majbase.php3,NONE,1.1 calendrier.php3,NONE,1.1 articles_edit.php3,NONE,1.1 carte_edit.php3,NONE,1.1 inc_config.php3,NONE,1.1 inc_tidy.php,NONE,1.1 inc_logos.php3,NONE,1.1 config-contenu.php3,NONE,1.1 statistiques.php3,NONE,1.1 inc_abstract_sql.php3,NONE,1.1 articles_forum.php3,NONE,1.1 spip_style.php3,NONE,1.1 inc_rubriques.php3,NONE,1.1 accents.php3,NONE,1.1 info.php3,NONE,1.1 brouteur_frame.php3,NONE,1.1 md5.js,NONE,1.1 sites_edit.php3,NONE,1.1 inc_presentation.php3,NONE,1.1 sites.php! 3,NONE,1.1 license.txt,NONE,1.1 win_png.htc,NONE,1.1 layer.js,NONE,1.1">stef at berlios.de
+       </A><BR>
+    <I>Thu Jan 13 16:37:18 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000007.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_en.php3,NONE,1.1 public_oc_auv.php3,NONE,1.1 public_es.php3,NONE,1.1 spip_bg.php3,NONE,1.1 public_fa.php3,NONE,1.1 spip_es.php3,NONE,1.1 spip_oc_auv.php3,NONE,1.1 spip_oc_lms.php3,NONE,1.1 spip_fr.php3,NONE,1.1 spip_oc_prv.php3,NONE,1.1 spip_ca.php3,NONE,1.1 public_fon.php3,NONE,1.1 spip_lb.php3,NONE,1.1 spip_gl.php3,NONE,1.1 spip_oc_gsc.php3,NONE,1.1 public_eo.php3,NONE,1.1 spip_fa.php3,NONE,1.1 public_cpf.php3,NONE,1.1 spip_zh.php3,NONE,1.1 public_fr.php3,NONE,1.1 spip_eo.php3,NONE,1.1 public_ar.php3,NONE,1.1 public_pl.php3,NONE,1.1 spip_oc_lnc.php3,NONE,1.1 public_vi.php3,NONE,1.1 spip_ar.php3,NONE,1.1 spip_hu.php3,NONE,1.1 spip_de.php3,NONE,1.1 public_bg.php3,NONE,1.1 spip_pl.php3,NONE,1.1 spip_cpf.php3,NONE,1.1 spip_oc_va.php3,NONE,1.1 spip_da.php3,NONE,1.1 public_it.php3,NONE,1.1 spip_nl.php3,NONE,1.1 public_lb.php3,NONE,1.1 public_hu.php3,NONE,1.1 public_oc_ni.php3,NONE,1.1 spip_oc_ni.php3,NONE,1.1 public_oc_lnc.php3,NONE,1.1 public! _de.php3,NONE,1.1 public_zh.php3,NONE,1.1 public_nl.php3,NONE,1.1 public_en.php3,NONE,1.1 public_da.php3,NONE,1.1 spip_fon.php3,NONE,1.1 spip_pt.php3,NONE,1.1 public_oc_prv.php3,NONE,1.1 spip_it.php3,NONE,1.1 public_gl.php3,NONE,1.1 spip_vi.php3,NONE,1.1 public_ca.php3,NONE,1.1 public_pt.php3,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000005.html">[Spip-carto-cvs] spipcarto/IMG/icones bz2-dist.png,NONE,1.1 defaut-dist.png,NONE,1.1 wav-dist.png,NONE,1.1 eps-dist.png,NONE,1.1 sit-dist.png,NONE,1.1 sdd-dist.png,NONE,1.1 qt-dist.png,NONE,1.1 rm-dist.png,NONE,1.1 mpg-dist.png,NONE,1.1 xls-dist.png,NONE,1.1 jpg-dist.png,NONE,1.1 asf-dist.png,NONE,1.1 png-dist.png,NONE,1.1 html-dist.png,NONE,1.1 ra-dist.png,NONE,1.1 aiff-dist.png,NONE,1.1 ppt-dist.png,NONE,1.1 xcf-dist.png,NONE,1.1 ogg-dist.png,NONE,1.1 psd-dist.png,NONE,1.1 zip-dist.png,NONE,1.1 sxc-dist.png,NONE,1.1 rtf-dist.png,NONE,1.1 pdf-dist.png,NONE,1.1 gif-dist.png,NONE,1.1 mov-dist.png,NONE,1.1 mid-dist.png,NONE,1.1 deb-dist.png,NONE,1.1 ps-dist.png,NONE,1.1 ram-dist.png,NONE,1.1 sxw-dist.png,NONE,1.1 gz-dist.png,NONE,1.1 txt-dist.png,NONE,1.1 bmp-dist.png,NONE,1.1 sxi-dist.png,NONE,1.1 tex-dist.png,NONE,1.1 avi-dist.png,NONE,1.1 tgz-dist.png,NONE,1.1 mp3-dist.png,NONE,1.1 sdw-dist.png,NONE,1.1 rpm-dist.png,NONE,1.1 ai-dist.png,NONE,1.1 tif-dist.png,NONE,1.1 xml-dist.png,N! ONE,1.1 dvi-dist.png,NONE,1.1 doc-dist.png,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv19649/ecrire
+
+Added Files:
+	inc_meta.php3 suivi_revisions.php3 .cvsignore index.php3 
+	delete_all.php3 puce_rtl.gif inc_objet_base.php3 inc_mail.php3 
+	controle_petition.php3 inc_filtres.php3 
+	calendrier_semaine.php3 breves_voir.php3 calendrier_jour.php3 
+	unpack.php3 lab_revisions.php inc_base.php3 naviguer.php3 
+	rubriques_edit.php3 inc_auth_spip.php3 brouteur.php3 
+	gnu_lgpl_fr.txt inc_auth_ldap.php3 install.php3 inc_lab.php 
+	auteur_messagerie.php3 spip_style_print.css admin_tech.php3 
+	gpl_fr.txt import_all.php3 forum.php3 inc_auth.php3 puce.gif 
+	inc_db_mysql.php3 admin_effacer.php3 inc_auxbase.php3 
+	js_detectplugins.js inc_index.php3 breves.php3 
+	inc_suivi_revisions.php inc_calendrier.php message.php3 
+	cartes.php3 inc_surligne.php3 statistiques_visites.php3 
+	http.class.php mes_options.php3 inc_layer.php3 articles.php3 
+	licence_fr.html inc_lang.php3 admin_vider.php3 
+	lang_raccourcis.php3 articles_versions.php3 auteurs_edit.php3 
+	inc_charsets.php3 inc_math.php3 inc_cron.php3 inc_majbase.php3 
+	calendrier.php3 articles_edit.php3 carte_edit.php3 
+	inc_config.php3 inc_tidy.php inc_logos.php3 
+	config-contenu.php3 statistiques.php3 inc_abstract_sql.php3 
+	articles_forum.php3 spip_style.php3 inc_rubriques.php3 
+	accents.php3 info.php3 brouteur_frame.php3 md5.js 
+	sites_edit.php3 inc_presentation.php3 sites.php3 license.txt 
+	win_png.htc layer.js optimiser.php3 copyright_fr.html 
+	mots_type.php3 iframe_action.php3 inc_debug_sql.php3 
+	inc_documents.php3 auteur_infos.php3 inc.php3 auteurs.php3 
+	inc_acces.php3 statistiques_lang.php3 dhtml_tools.css 
+	mots_edit.php3 engines-list.txt synchro.php3 breves_edit.php3 
+	export_all.php3 inc_version.php3 inc_statistiques.php3 
+	controle_forum.php3 inc_barre.php3 inc_texte.php3 
+	lab_ortho.php inc_visites.php3 inc_getdocument.php3 
+	win_width.htc mots_tous.php3 inc_carto.php3 pclzip.lib.php 
+	message_edit.php3 forum_admin.php3 inc_import.php3 
+	inc_config_plug.php3 inc_invalideur.php3 inc_popularites.php3 
+	upgrade.php3 articles_ortho.php config-fonctions.php3 
+	documents_liste.php3 inc_mots.php3 inc_serialbase.php3 
+	config-lang.php3 forum_envoi.php3 inc_urls.php3 
+	aide_index.php3 inc_export.php3 inc_forum.php3 inc_extra.php3 
+	spip_style_invisible.css statistiques_referers.php3 
+	inc_objet.php3 js_menu_rubriques.php inc_sites.php3 index.php 
+	articles_page.php3 export.php3 sites_tous.php3 recherche.php3 
+	admin_index.php3 inc_session.php3 admin_repair.php3 
+	articles_tous.php3 inc_flock.php3 messagerie.php3 lab_diff.php 
+	config-multilang.php3 inc_admin.php3 configuration.php3 
+	spip_style_visible.css statistiques_svg.php3 
+Log Message:
+premier proto
+
+--- NEW FILE: inc_meta.php3 ---
+
+--- NEW FILE: suivi_revisions.php3 ---
+
+--- NEW FILE: .cvsignore ---
+
+--- NEW FILE: index.php3 ---
+
+--- NEW FILE: delete_all.php3 ---
+
+--- NEW FILE: puce_rtl.gif ---
+
+--- NEW FILE: inc_objet_base.php3 ---
+
+--- NEW FILE: inc_mail.php3 ---
+
+--- NEW FILE: controle_petition.php3 ---
+
+--- NEW FILE: inc_filtres.php3 ---
+
+--- NEW FILE: calendrier_semaine.php3 ---
+
+--- NEW FILE: breves_voir.php3 ---
+
+--- NEW FILE: calendrier_jour.php3 ---
+
+--- NEW FILE: unpack.php3 ---
+
+--- NEW FILE: lab_revisions.php ---
+
+--- NEW FILE: inc_base.php3 ---
+
+--- NEW FILE: naviguer.php3 ---
+
+--- NEW FILE: rubriques_edit.php3 ---
+
+--- NEW FILE: inc_auth_spip.php3 ---
+
+--- NEW FILE: brouteur.php3 ---
+
+--- NEW FILE: gnu_lgpl_fr.txt ---
+
+--- NEW FILE: inc_auth_ldap.php3 ---
+
+--- NEW FILE: install.php3 ---
+
+--- NEW FILE: inc_lab.php ---
+
+--- NEW FILE: auteur_messagerie.php3 ---
+
+--- NEW FILE: spip_style_print.css ---
+
+--- NEW FILE: admin_tech.php3 ---
+
+--- NEW FILE: gpl_fr.txt ---
+
+--- NEW FILE: import_all.php3 ---
+
+--- NEW FILE: forum.php3 ---
+
+--- NEW FILE: inc_auth.php3 ---
+
+--- NEW FILE: puce.gif ---
+
+--- NEW FILE: inc_db_mysql.php3 ---
+
+--- NEW FILE: admin_effacer.php3 ---
+
+--- NEW FILE: inc_auxbase.php3 ---
+
+--- NEW FILE: js_detectplugins.js ---
+
+--- NEW FILE: inc_index.php3 ---
+
+--- NEW FILE: breves.php3 ---
+
+--- NEW FILE: inc_suivi_revisions.php ---
+
+--- NEW FILE: inc_calendrier.php ---
+
+--- NEW FILE: message.php3 ---
+
+--- NEW FILE: cartes.php3 ---
+
+--- NEW FILE: inc_surligne.php3 ---
+
+--- NEW FILE: statistiques_visites.php3 ---
+
+--- NEW FILE: http.class.php ---
+
+--- NEW FILE: mes_options.php3 ---
+
+--- NEW FILE: inc_layer.php3 ---
+
+--- NEW FILE: articles.php3 ---
+
+--- NEW FILE: licence_fr.html ---
+
+--- NEW FILE: inc_lang.php3 ---
+
+--- NEW FILE: admin_vider.php3 ---
+
+--- NEW FILE: lang_raccourcis.php3 ---
+
+--- NEW FILE: articles_versions.php3 ---
+
+--- NEW FILE: auteurs_edit.php3 ---
+
+--- NEW FILE: inc_charsets.php3 ---
+
+--- NEW FILE: inc_math.php3 ---
+
+--- NEW FILE: inc_cron.php3 ---
+
+--- NEW FILE: inc_majbase.php3 ---
+
+--- NEW FILE: calendrier.php3 ---
+
+--- NEW FILE: articles_edit.php3 ---
+
+--- NEW FILE: carte_edit.php3 ---
+
+--- NEW FILE: inc_config.php3 ---
+
+--- NEW FILE: inc_tidy.php ---
+
+--- NEW FILE: inc_logos.php3 ---
+
+--- NEW FILE: config-contenu.php3 ---
+
+--- NEW FILE: statistiques.php3 ---
+
+--- NEW FILE: inc_abstract_sql.php3 ---
+
+--- NEW FILE: articles_forum.php3 ---
+
+--- NEW FILE: spip_style.php3 ---
+
+--- NEW FILE: inc_rubriques.php3 ---
+
+--- NEW FILE: accents.php3 ---
+
+--- NEW FILE: info.php3 ---
+
+--- NEW FILE: brouteur_frame.php3 ---
+
+--- NEW FILE: md5.js ---
+
+--- NEW FILE: sites_edit.php3 ---
+
+--- NEW FILE: inc_presentation.php3 ---
+
+--- NEW FILE: sites.php3 ---
+
+--- NEW FILE: license.txt ---
+
+--- NEW FILE: win_png.htc ---
+
+--- NEW FILE: layer.js ---
+
+--- NEW FILE: optimiser.php3 ---
+
+--- NEW FILE: copyright_fr.html ---
+
+--- NEW FILE: mots_type.php3 ---
+
+--- NEW FILE: iframe_action.php3 ---
+
+--- NEW FILE: inc_debug_sql.php3 ---
+
+--- NEW FILE: inc_documents.php3 ---
+
+--- NEW FILE: auteur_infos.php3 ---
+
+--- NEW FILE: inc.php3 ---
+
+--- NEW FILE: auteurs.php3 ---
+
+--- NEW FILE: inc_acces.php3 ---
+
+--- NEW FILE: statistiques_lang.php3 ---
+
+--- NEW FILE: dhtml_tools.css ---
+
+--- NEW FILE: mots_edit.php3 ---
+
+--- NEW FILE: engines-list.txt ---
+
+--- NEW FILE: synchro.php3 ---
+
+--- NEW FILE: breves_edit.php3 ---
+
+--- NEW FILE: export_all.php3 ---
+
+--- NEW FILE: inc_version.php3 ---
+
+--- NEW FILE: inc_statistiques.php3 ---
+
+--- NEW FILE: controle_forum.php3 ---
+
+--- NEW FILE: inc_barre.php3 ---
+
+--- NEW FILE: inc_texte.php3 ---
+
+--- NEW FILE: lab_ortho.php ---
+
+--- NEW FILE: inc_visites.php3 ---
+
+--- NEW FILE: inc_getdocument.php3 ---
+
+--- NEW FILE: win_width.htc ---
+
+--- NEW FILE: mots_tous.php3 ---
+
+--- NEW FILE: inc_carto.php3 ---
+
+--- NEW FILE: pclzip.lib.php ---
+
+--- NEW FILE: message_edit.php3 ---
+
+--- NEW FILE: forum_admin.php3 ---
+
+--- NEW FILE: inc_import.php3 ---
+
+--- NEW FILE: inc_config_plug.php3 ---
+
+--- NEW FILE: inc_invalideur.php3 ---
+
+--- NEW FILE: inc_popularites.php3 ---
+
+--- NEW FILE: upgrade.php3 ---
+
+--- NEW FILE: articles_ortho.php ---
+
+--- NEW FILE: config-fonctions.php3 ---
+
+--- NEW FILE: documents_liste.php3 ---
+
+--- NEW FILE: inc_mots.php3 ---
+
+--- NEW FILE: inc_serialbase.php3 ---
+
+--- NEW FILE: config-lang.php3 ---
+
+--- NEW FILE: forum_envoi.php3 ---
+
+--- NEW FILE: inc_urls.php3 ---
+
+--- NEW FILE: aide_index.php3 ---
+
+--- NEW FILE: inc_export.php3 ---
+
+--- NEW FILE: inc_forum.php3 ---
+
+--- NEW FILE: inc_extra.php3 ---
+
+--- NEW FILE: spip_style_invisible.css ---
+
+--- NEW FILE: statistiques_referers.php3 ---
+
+--- NEW FILE: inc_objet.php3 ---
+
+--- NEW FILE: js_menu_rubriques.php ---
+
+--- NEW FILE: inc_sites.php3 ---
+
+--- NEW FILE: index.php ---
+
+--- NEW FILE: articles_page.php3 ---
+
+--- NEW FILE: export.php3 ---
+
+--- NEW FILE: sites_tous.php3 ---
+
+--- NEW FILE: recherche.php3 ---
+
+--- NEW FILE: admin_index.php3 ---
+
+--- NEW FILE: inc_session.php3 ---
+
+--- NEW FILE: admin_repair.php3 ---
+
+--- NEW FILE: articles_tous.php3 ---
+
+--- NEW FILE: inc_flock.php3 ---
+
+--- NEW FILE: messagerie.php3 ---
+
+--- NEW FILE: lab_diff.php ---
+
+--- NEW FILE: config-multilang.php3 ---
+
+--- NEW FILE: inc_admin.php3 ---
+
+--- NEW FILE: configuration.php3 ---
+
+--- NEW FILE: spip_style_visible.css ---
+
+--- NEW FILE: statistiques_svg.php3 ---
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000007.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_en.php3,NONE,1.1 public_oc_auv.php3,NONE,1.1 public_es.php3,NONE,1.1 spip_bg.php3,NONE,1.1 public_fa.php3,NONE,1.1 spip_es.php3,NONE,1.1 spip_oc_auv.php3,NONE,1.1 spip_oc_lms.php3,NONE,1.1 spip_fr.php3,NONE,1.1 spip_oc_prv.php3,NONE,1.1 spip_ca.php3,NONE,1.1 public_fon.php3,NONE,1.1 spip_lb.php3,NONE,1.1 spip_gl.php3,NONE,1.1 spip_oc_gsc.php3,NONE,1.1 public_eo.php3,NONE,1.1 spip_fa.php3,NONE,1.1 public_cpf.php3,NONE,1.1 spip_zh.php3,NONE,1.1 public_fr.php3,NONE,1.1 spip_eo.php3,NONE,1.1 public_ar.php3,NONE,1.1 public_pl.php3,NONE,1.1 spip_oc_lnc.php3,NONE,1.1 public_vi.php3,NONE,1.1 spip_ar.php3,NONE,1.1 spip_hu.php3,NONE,1.1 spip_de.php3,NONE,1.1 public_bg.php3,NONE,1.1 spip_pl.php3,NONE,1.1 spip_cpf.php3,NONE,1.1 spip_oc_va.php3,NONE,1.1 spip_da.php3,NONE,1.1 public_it.php3,NONE,1.1 spip_nl.php3,NONE,1.1 public_lb.php3,NONE,1.1 public_hu.php3,NONE,1.1 public_oc_ni.php3,NONE,1.1 spip_oc_ni.php3,NONE,1.1 public_oc_lnc.php3,NONE,1.1 public! _de.php3,NONE,1.1 public_zh.php3,NONE,1.1 public_nl.php3,NONE,1.1 public_en.php3,NONE,1.1 public_da.php3,NONE,1.1 spip_fon.php3,NONE,1.1 spip_pt.php3,NONE,1.1 public_oc_prv.php3,NONE,1.1 spip_it.php3,NONE,1.1 public_gl.php3,NONE,1.1 spip_vi.php3,NONE,1.1 public_ca.php3,NONE,1.1 public_pt.php3,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000005.html">[Spip-carto-cvs] spipcarto/IMG/icones bz2-dist.png,NONE,1.1 defaut-dist.png,NONE,1.1 wav-dist.png,NONE,1.1 eps-dist.png,NONE,1.1 sit-dist.png,NONE,1.1 sdd-dist.png,NONE,1.1 qt-dist.png,NONE,1.1 rm-dist.png,NONE,1.1 mpg-dist.png,NONE,1.1 xls-dist.png,NONE,1.1 jpg-dist.png,NONE,1.1 asf-dist.png,NONE,1.1 png-dist.png,NONE,1.1 html-dist.png,NONE,1.1 ra-dist.png,NONE,1.1 aiff-dist.png,NONE,1.1 ppt-dist.png,NONE,1.1 xcf-dist.png,NONE,1.1 ogg-dist.png,NONE,1.1 psd-dist.png,NONE,1.1 zip-dist.png,NONE,1.1 sxc-dist.png,NONE,1.1 rtf-dist.png,NONE,1.1 pdf-dist.png,NONE,1.1 gif-dist.png,NONE,1.1 mov-dist.png,NONE,1.1 mid-dist.png,NONE,1.1 deb-dist.png,NONE,1.1 ps-dist.png,NONE,1.1 ram-dist.png,NONE,1.1 sxw-dist.png,NONE,1.1 gz-dist.png,NONE,1.1 txt-dist.png,NONE,1.1 bmp-dist.png,NONE,1.1 sxi-dist.png,NONE,1.1 tex-dist.png,NONE,1.1 avi-dist.png,NONE,1.1 tgz-dist.png,NONE,1.1 mp3-dist.png,NONE,1.1 sdw-dist.png,NONE,1.1 rpm-dist.png,NONE,1.1 ai-dist.png,NONE,1.1 tif-dist.png,NONE,1.1 xml-dist.png,N! ONE,1.1 dvi-dist.png,NONE,1.1 doc-dist.png,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

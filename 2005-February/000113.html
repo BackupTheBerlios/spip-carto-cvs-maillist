@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto mes_fonctions.php3,1.5,1.6
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20mes_fonctions.php3%2C1.5%2C1.6&In-Reply-To=%3C200502261045.j1QAjNNx002338%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000112.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto mes_fonctions.php3,1.5,1.6</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20mes_fonctions.php3%2C1.5%2C1.6&In-Reply-To=%3C200502261045.j1QAjNNx002338%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto mes_fonctions.php3,1.5,1.6">fxp at berlios.de
+       </A><BR>
+    <I>Sat Feb 26 11:45:23 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000112.html">[Spip-carto-cvs] spipcarto/squelettes carto_svgfile.html,1.1,1.2
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#113">[ date ]</a>
+              <a href="thread.html#113">[ thread ]</a>
+              <a href="subject.html#113">[ subject ]</a>
+              <a href="author.html#113">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv2332
+
+Modified Files:
+	mes_fonctions.php3 
+Log Message:
+Inclusion des fonctions pour support SVG
+
+Index: mes_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/mes_fonctions.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- mes_fonctions.php3	25 Feb 2005 23:46:18 -0000	1.5
++++ mes_fonctions.php3	26 Feb 2005 10:45:20 -0000	1.6
+@@ -4,30 +4,31 @@
+ //FILTRES
+ //////////////////////////////////////////////////
+ //////////////////////////////////////////////////
+-function worldfile2width($callage){	
++
++
++ function worldfileWidth($callage){	
+ 	$tabcallage=worldfile2array($callage);
+ 	return intval($tabcallage['bottom_right']['x']-$tabcallage['top_left']['x']);
+ }
+-function worldfile2height($callage){	
++function worldfileHeight($callage){	
+ 	$tabcallage=worldfile2array($callage);
+ 	return intval($tabcallage['bottom_right']['y']-$tabcallage['top_left']['y']);
+ }
+-
+-function wkt2svgform($geometrie){
+-	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
+-
+-	if (strcasecmp($wktGeomType ,&quot;POLYGON&quot;)==0)
+-		return &quot;polygon&quot;; 
+-	if (strcasecmp($$wktGeomType ,&quot;POINT&quot;)==0)
+-		return &quot;circle&quot;; 
+-	if (strcasecmp($wktGeomType ,&quot;LINE&quot;)==0)
+-		return &quot;polyline&quot;; 
+-				
++function worldfileULX($callage){
++	$tabcallage=worldfile2array($callage);
++	return $tabcallage['top_left']['x'];
+ }
+-function wkt2svgcoords($geometrie){
+-	
+-	return substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1);
++function worldfileULY($callage){
++	$tabcallage=worldfile2array($callage);
++	return $tabcallage['top_left']['y']*-1;
+ }
++function getPropMapHeight($callage, $width){
++	$tabcallage=worldfile2array($callage);
++	// Calcul d'une hauteur relative &#224; un callage (proportion)
++	return $width*($tabcallage['bottom_right']['y']-$tabcallage['top_left']['y'])/($tabcallage['bottom_right']['x']-$tabcallage['top_left']['x']);
++}
++
++
+ /* +---------------------------------------------+
+  *    Nom    du    Filtre : WKT to STYLE
+  * +---------------------------------------------+    
+@@ -48,7 +49,6 @@
+ function wkt2style($geometrie){
+ 	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
+ 	
+-	
+ 	if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+ 	{	$coordpair = explode(',',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));
+ 		$coord = explode (' ', $coordpair[0]);	// TODO : Le centre de gravit&#233; du polygone serait pr&#233;f&#233;rable
+@@ -81,7 +81,7 @@
+  */
+ function wkt2coords($geometrie, $format = &quot;HTML&quot;){
+ 	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
+-	$radius		 = 5;
++	$radius		 = 5;	// TODO : Param&#232;tre (ou fonction du callage ?) pr&#233;f&#233;rable car fonction des projections 5 peut &#234;tre bcp trop petit
+ 	switch ($format){
+ 		case &quot;HTML&quot;:
+ 			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+@@ -91,6 +91,22 @@
+ 		break;
+ 		case &quot;SVG&quot;:
+ 			// Pour obtenir des objets SVG ...
++			// Faut-il inverser les y ? Voir fonction des notions de projections
++			
++			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
++			{  	$coord = str_replace(' ','|',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));	// Inversion des y pour coordonn&#233;es r&#233;elles
++				$coord = str_replace(',',' ',$coord);	// Inversion des y pour coordonn&#233;es r&#233;elles
++				return &quot;points=\&quot;&quot;.str_replace('|',',',$coord).&quot;\&quot;&quot;;
++		
++			}elseif (strcasecmp($wktGeomType,&quot;LINE&quot;)==0)
++			{  	$coord = str_replace(' ','|',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));	// Inversion des y pour coordonn&#233;es r&#233;elles
++				$coord = str_replace(',',' ',$coord);	// Inversion des y pour coordonn&#233;es r&#233;elles
++				return &quot;points=\&quot;&quot;.str_replace('|',',',$coord).&quot;\&quot;&quot;;
++			
++			}elseif (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
++			{	$coordTab = explode (&quot; &quot;, substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));
++				return &quot;cx=\&quot;&quot;.$coordTab[0].&quot;\&quot; cy=\&quot;&quot;.$coordTab[1].&quot;\&quot; r=\&quot;&quot;.$radius.&quot;\&quot;&quot;;
++			}
+ 		break;
+ 	}
+ }
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000112.html">[Spip-carto-cvs] spipcarto/squelettes carto_svgfile.html,1.1,1.2
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#113">[ date ]</a>
+              <a href="thread.html#113">[ thread ]</a>
+              <a href="subject.html#113">[ subject ]</a>
+              <a href="author.html#113">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

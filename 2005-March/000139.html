@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_version.php3,1.3,1.4 inc_surligne.php3,1.3,1.4 inc_invalideur.php3,1.3,1.4 inc_rubriques.php3,1.2,1.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_version.php3%2C1.3%2C1.4%20inc_surligne.php3%2C1.3%2C1.4%20inc_invalideur.php3%2C1.3%2C1.4%20inc_rubriques.php3%2C1.2%2C1.3&In-Reply-To=%3C200503041045.j24Aj3Nx013330%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000137.html">
+   <LINK REL="Next"  HREF="000138.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_version.php3,1.3,1.4 inc_surligne.php3,1.3,1.4 inc_invalideur.php3,1.3,1.4 inc_rubriques.php3,1.2,1.3</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_version.php3%2C1.3%2C1.4%20inc_surligne.php3%2C1.3%2C1.4%20inc_invalideur.php3%2C1.3%2C1.4%20inc_rubriques.php3%2C1.2%2C1.3&In-Reply-To=%3C200503041045.j24Aj3Nx013330%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_version.php3,1.3,1.4 inc_surligne.php3,1.3,1.4 inc_invalideur.php3,1.3,1.4 inc_rubriques.php3,1.2,1.3">stef at berlios.de
+       </A><BR>
+    <I>Fri Mar  4 11:45:03 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000137.html">[Spip-carto-cvs] spipcarto/dist nouveautes.html,1.3,1.4
+</A></li>
+        <LI>Next message: <A HREF="000138.html">[Spip-carto-cvs] spipcarto/ecrire inc_presentation.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#139">[ date ]</a>
+              <a href="thread.html#139">[ thread ]</a>
+              <a href="subject.html#139">[ subject ]</a>
+              <a href="author.html#139">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv13273/spipcarto/ecrire
+
+Modified Files:
+	inc_version.php3 inc_surligne.php3 inc_invalideur.php3 
+	inc_rubriques.php3 
+Log Message:
+1.8PR1 CVS 20050304
+
+Index: inc_version.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_version.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_version.php3	3 Mar 2005 14:54:56 -0000	1.3
++++ inc_version.php3	4 Mar 2005 10:45:01 -0000	1.4
+@@ -445,11 +445,6 @@
+ $flag_gd = $flag_ImageGif || $flag_ImageJpeg || $flag_ImagePng;
+ $flag_revisions = ($flag_pcre AND function_exists(&quot;gzcompress&quot;));
+ 
+-// deux constantes pour le surlignage (cf inc_surligne et inc-balise)
+-
+-define(&quot;MARQUEUR_SURLIGNE&quot;,  'span class=&quot;spip_surligneconditionnel&quot;&gt;');
+-define(&quot;MARQUEUR_FSURLIGNE&quot;, '/span                                 &gt;'); 
+-
+ //
+ // Appliquer le prefixe cookie
+ //
+
+Index: inc_surligne.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_surligne.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_surligne.php3	3 Mar 2005 14:54:56 -0000	1.3
++++ inc_surligne.php3	4 Mar 2005 10:45:01 -0000	1.4
+@@ -16,6 +16,9 @@
+ if (defined(&quot;_ECRIRE_INC_SURLIGNE&quot;)) return;
+ define(&quot;_ECRIRE_INC_SURLIGNE&quot;, &quot;1&quot;);
+ 
++define(&quot;MARQUEUR_SURLIGNE&quot;,  'span class=&quot;spip_surligneconditionnel&quot;&gt;');
++define(&quot;MARQUEUR_FSURLIGNE&quot;, '/span                                 &gt;');    
++
+ // Balises qui ne font rien en mode normal
+ // mais  vont etre substitue'es en mode recherche
+ // voir les champs SURLIGNE dans inc-index-squel
+
+Index: inc_invalideur.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_invalideur.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_invalideur.php3	25 Feb 2005 16:35:57 -0000	1.3
++++ inc_invalideur.php3	4 Mar 2005 10:45:01 -0000	1.4
+@@ -101,12 +101,16 @@
+ 		spip_query(&quot;UPDATE spip_caches SET type='x'&quot;
+ 		. ' WHERE ' . calcul_mysql_in('fichier', $tous));
+ 
+-		// Si on est dans ecrire, demander a inc-public.php3
+-		// de retirer les caches invalide's ; sinon le faire soi-meme
+-		// ce qui evite des chevauchements dans la validation des forums
+-		// [ A valide un forum, B obtient de purger les invalides, et A
+-		//   trouve son cache avant que B n'ait eu le temps de le purger ]
+-		ecrire_meta('invalider', 'oui');
++		// Demander a inc-public.php3 de retirer les caches
++		// invalides ;
++		// - le signal (meta='invalider') indique
++		// qu'il faut faire attention ;
++		// - le signal (meta='invalider_caches') indique qu'on
++		// peut effacer 100 caches invalides
++		// (Signaux differents pour eviter de la concurrence entre
++		// les processus d'invalidation)
++		ecrire_meta('invalider', 'oui'); // se verifier soi-meme
++		ecrire_meta('invalider_caches', 'oui'); // supprimer les autres
+ 		ecrire_metas();
+ 		if (_DIR_RESTREINT) {
+ 			include_local('inc-cache.php3');
+
+Index: inc_rubriques.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_rubriques.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_rubriques.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_rubriques.php3	4 Mar 2005 10:45:01 -0000	1.3
+@@ -44,7 +44,7 @@
+ 	$r = spip_query(&quot;SELECT rub.id_rubrique AS id, max(fille.date) AS date_h
+ 	FROM spip_rubriques AS rub, spip_articles AS fille
+ 	WHERE rub.id_rubrique = fille.id_rubrique AND fille.statut='publie'
+-	$postdates GROUP BY fille.id_rubrique&quot;);
++	$postdates GROUP BY rub.id_rubrique&quot;);
+ 	while ($row = spip_fetch_array($r))
+ 		spip_query(&quot;UPDATE spip_rubriques
+ 		SET statut_tmp='publie', date_tmp='&quot;.$row['date_h'].&quot;'
+@@ -56,7 +56,7 @@
+ 	FROM spip_rubriques AS rub, spip_breves AS fille
+ 	WHERE rub.id_rubrique = fille.id_rubrique
+ 	AND rub.date_tmp &lt;= fille.date_heure AND fille.statut='publie'
+-	GROUP BY fille.id_rubrique&quot;);
++	GROUP BY rub.id_rubrique&quot;);
+ 	while ($row = spip_fetch_array($r))
+ 		spip_query(&quot;UPDATE spip_rubriques
+ 		SET statut_tmp='publie', date_tmp='&quot;.$row['date'].&quot;'
+@@ -66,7 +66,8 @@
+ 	$r = spip_query(&quot;SELECT rub.id_rubrique AS id, max(fille.date) AS date_h
+ 	FROM spip_rubriques AS rub, spip_syndic AS fille
+ 	WHERE rub.id_rubrique = fille.id_rubrique AND rub.date_tmp &lt;= fille.date
+-	AND fille.statut='publie' GROUP BY fille.id_rubrique&quot;);
++	AND fille.statut='publie'
++	GROUP BY rub.id_rubrique&quot;);
+ 	while ($row = spip_fetch_array($r))
+ 		spip_query(&quot;UPDATE spip_rubriques
+ 		SET statut_tmp='publie', date_tmp='&quot;.$row['date_h'].&quot;'
+@@ -78,7 +79,7 @@
+ 	spip_documents_rubriques AS lien
+ 	WHERE rub.id_rubrique = lien.id_rubrique
+ 	AND lien.id_document=fille.id_document AND rub.date_tmp &lt;= fille.date
+-	GROUP BY lien.id_rubrique&quot;);
++	GROUP BY rub.id_rubrique&quot;);
+ 	while ($row = spip_fetch_array($r))
+ 		spip_query(&quot;UPDATE spip_rubriques
+ 		SET statut_tmp='publie', date_tmp='&quot;.$row['date_h'].&quot;'
+@@ -95,7 +96,7 @@
+ 		WHERE rub.id_rubrique = fille.id_parent
+ 		AND (rub.date_tmp &lt; fille.date_tmp OR rub.statut_tmp&lt;&gt;'publie')
+ 		AND fille.statut_tmp='publie'
+-		GROUP BY fille.id_parent&quot;);
++		GROUP BY rub.id_rubrique&quot;);
+ 		while ($row = spip_fetch_array($r)) {
+ 			spip_query(&quot;UPDATE spip_rubriques
+ 			SET statut_tmp='publie', date_tmp='&quot;.$row['date_h'].&quot;'
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000137.html">[Spip-carto-cvs] spipcarto/dist nouveautes.html,1.3,1.4
+</A></li>
+	<LI>Next message: <A HREF="000138.html">[Spip-carto-cvs] spipcarto/ecrire inc_presentation.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#139">[ date ]</a>
+              <a href="thread.html#139">[ thread ]</a>
+              <a href="subject.html#139">[ subject ]</a>
+              <a href="author.html#139">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

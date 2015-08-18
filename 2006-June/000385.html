@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.7,1.1.2.8 spip_style.php3,1.10.2.1,1.10.2.2 mes_options.php3,1.8.2.8,1.8.2.9 mots_partout.php,1.6.2.5,1.6.2.6 carte_edit.php3,1.18.2.9,1.18.2.10 inc_carto.php3,1.21.2.4,1.21.2.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_fonctions.php3%2C1.1.2.7%2C1.1.2.8%20spip_style.php3%2C1.10.2.1%2C1.10.2.2%20mes_options.php3%2C1.8.2.8%2C1.8.2.9%20mots_partout.php%2C1.6.2.5%2C1.6.2.6%20carte_edit.php3%2C1.18.2.9%2C1.18.2.10%20inc_carto.php3%2C1.21.2.4%2C1.21.2.5&In-Reply-To=%3C200605312342.k4VNg6QW028824%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000387.html">
+   <LINK REL="Next"  HREF="000386.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.7,1.1.2.8 spip_style.php3,1.10.2.1,1.10.2.2 mes_options.php3,1.8.2.8,1.8.2.9 mots_partout.php,1.6.2.5,1.6.2.6 carte_edit.php3,1.18.2.9,1.18.2.10 inc_carto.php3,1.21.2.4,1.21.2.5</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_fonctions.php3%2C1.1.2.7%2C1.1.2.8%20spip_style.php3%2C1.10.2.1%2C1.10.2.2%20mes_options.php3%2C1.8.2.8%2C1.8.2.9%20mots_partout.php%2C1.6.2.5%2C1.6.2.6%20carte_edit.php3%2C1.18.2.9%2C1.18.2.10%20inc_carto.php3%2C1.21.2.4%2C1.21.2.5&In-Reply-To=%3C200605312342.k4VNg6QW028824%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.7,1.1.2.8 spip_style.php3,1.10.2.1,1.10.2.2 mes_options.php3,1.8.2.8,1.8.2.9 mots_partout.php,1.6.2.5,1.6.2.6 carte_edit.php3,1.18.2.9,1.18.2.10 inc_carto.php3,1.21.2.4,1.21.2.5">stef at berlios.de
+       </A><BR>
+    <I>Thu Jun  1 01:42:06 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000387.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_svgx.html,1.3.2.1,1.3.2.2 carto_lien.html,1.2.2.3,1.2.2.4 carto_map.html,1.2.2.2,1.2.2.3 carto.html,1.2.2.1,1.2.2.2 carto_geosvgwmsfile.html,1.5.2.3,1.5.2.4 carto_logo.html,1.2.2.3,1.2.2.4 carto_svgfile.html,1.4.2.1,1.4.2.2 carto_svgfilex.html,1.6.2.2,1.6.2.3
+</A></li>
+        <LI>Next message: <A HREF="000386.html">[Spip-carto-cvs] spipcarto spip_carto.php,1.3.2.1,1.3.2.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#385">[ date ]</a>
+              <a href="thread.html#385">[ thread ]</a>
+              <a href="subject.html#385">[ subject ]</a>
+              <a href="author.html#385">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv28688/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc_carto_fonctions.php3 spip_style.php3 mes_options.php3 
+	mots_partout.php carte_edit.php3 inc_carto.php3 
+Log Message:
+encodage base64 des url_carte
+petits bugs dans les squelettes SVG
+inclusion du css (bug import ?)
+
+Index: inc_carto_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto_fonctions.php3,v
+retrieving revision 1.1.2.7
+retrieving revision 1.1.2.8
+diff -u -d -r1.1.2.7 -r1.1.2.8
+--- inc_carto_fonctions.php3	16 Feb 2006 23:06:12 -0000	1.1.2.7
++++ inc_carto_fonctions.php3	31 May 2006 23:42:03 -0000	1.1.2.8
+@@ -97,13 +97,23 @@
+ 
+ function getImgWidth ($url_carte)
+ {
+-	$image = spip_fetch_array(spip_query(&quot;SELECT largeur FROM spip_documents WHERE id_document = $url_carte&quot;));
+-	return $image['largeur'];
++	if(intval($url_carte)&gt;0){
++		$image = spip_fetch_array(spip_query(&quot;SELECT largeur FROM spip_documents WHERE id_document = $url_carte&quot;));
++		return $image['largeur'];
++	} else {
++		$image=getimagesize($url_carte);
++		return $image[0];
++	}
+ }
+ function getImgHeight ($url_carte)
+ {
+-	$image = spip_fetch_array(spip_query(&quot;SELECT hauteur FROM spip_documents WHERE id_document = $url_carte&quot;));
+-	return $image['hauteur'];
++	if(intval($url_carte)&gt;0){
++		$image = spip_fetch_array(spip_query(&quot;SELECT hauteur FROM spip_documents WHERE id_document = $url_carte&quot;));
++		return $image['hauteur'];
++	} else {
++		$image=getimagesize($url_carte);
++		return $image[1];
++	}
+ }
+ 
+ 
+
+Index: spip_style.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/spip_style.php3,v
+retrieving revision 1.10.2.1
+retrieving revision 1.10.2.2
+diff -u -d -r1.10.2.1 -r1.10.2.2
+--- spip_style.php3	14 Feb 2006 01:11:05 -0000	1.10.2.1
++++ spip_style.php3	31 May 2006 23:42:03 -0000	1.10.2.2
+@@ -45,12 +45,13 @@
+ 		$couleur_foncee = &quot;#3874B0&quot;;
+ 
+ 	function http_img_pack($f) { return _DIR_IMG_PACK . $f; }
++
++/////////////////////////////////////
++// MODIFICATION SPIPCARTO
++/////////////////////////////////////
++include(&quot;dhtml_tools.css&quot;); 
++/////////////////////////////////////
+ ?&gt;
+-/* ************************************* */
+-/* *******MODIFICATION SPIPCARTO******* */
+-/* ************************************* */
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">- at import</A> &quot;dhtml_tools.css&quot;; 
+-/* ************************************* */
+ 
+ /*
+  * Police par defaut (bof...)
+
+Index: mes_options.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mes_options.php3,v
+retrieving revision 1.8.2.8
+retrieving revision 1.8.2.9
+diff -u -d -r1.8.2.8 -r1.8.2.9
+--- mes_options.php3	17 Feb 2006 00:45:46 -0000	1.8.2.8
++++ mes_options.php3	31 May 2006 23:42:03 -0000	1.8.2.9
+@@ -7,6 +7,6 @@
+ $GLOBALS['sq_cartes']=array('map','logo','lien','svg','svgx','geosvgwms');
+ include(&quot;carto_mes_options.php3&quot;);
+ include_ecrire(&quot;inc_carto_fonctions.php3&quot;);
+-include_ecrire(&quot;carto_mots_possibles.php3&quot;);
+-include_ecrire(&quot;mots_possibles.php3&quot;);
++include(&quot;carto_mots_possibles.php3&quot;);
++include(&quot;mots_possibles.php3&quot;);
+ ?&gt;
+
+Index: mots_partout.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mots_partout.php,v
+retrieving revision 1.6.2.5
+retrieving revision 1.6.2.6
+diff -u -d -r1.6.2.5 -r1.6.2.6
+--- mots_partout.php	14 Feb 2006 01:34:46 -0000	1.6.2.5
++++ mots_partout.php	31 May 2006 23:42:03 -0000	1.6.2.6
+@@ -25,11 +25,13 @@
+ } else if(@file_exists('inc.php3')){
+   include('inc.php3');
+ }
++/*
+ if(@file_exists('inc_version.php')){
+   include('inc_version.php');
+ } else if(@file_exists('inc_version.php3')){
+   include('inc_version.php3');
+ }
++*/
+ include_ecrire(&quot;inc_documents&quot;._EXTENSION_PHP);
+ include_ecrire(&quot;inc_abstract_sql&quot;._EXTENSION_PHP);
+ include_ecrire(&quot;inc_objet&quot;._EXTENSION_PHP);
+
+Index: carte_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/carte_edit.php3,v
+retrieving revision 1.18.2.9
+retrieving revision 1.18.2.10
+diff -u -d -r1.18.2.9 -r1.18.2.10
+--- carte_edit.php3	14 Feb 2006 01:06:18 -0000	1.18.2.9
++++ carte_edit.php3	31 May 2006 23:42:03 -0000	1.18.2.10
+@@ -290,7 +290,7 @@
+ 		//TODO : gerer zoom et position
+ 		//if (intval($url_carte)&gt;0) $leurl_carte=&quot;../spip_carto.php?fond_carte=&quot;.intval($url_carte);
+ 		//else $leurl_carte=$url_carte;
+-		$lurl_carte=&quot;../spip_carto.php?fond_carte=&quot;.urlencode($url_carte);
++		$lurl_carte=&quot;../spip_carto.php?fond_carte=&quot;.base64_encode($url_carte);
+ 		$tabcallage=worldfile2array($callage);
+    	
+    		echo afficher_carte_interface($id_carte,$retour,$lurl_carte,$tabcallage, $url_carte);
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.21.2.4
+retrieving revision 1.21.2.5
+diff -u -d -r1.21.2.4 -r1.21.2.5
+--- inc_carto.php3	14 Nov 2005 09:57:23 -0000	1.21.2.4
++++ inc_carto.php3	31 May 2006 23:42:03 -0000	1.21.2.5
+@@ -54,12 +54,23 @@
+ 	$GeoWidth 	= ($callageGeo['bottom_right']['x']-$callageGeo['top_left']['x']);
+ 	$GeoHeight 	= ($callageGeo['bottom_right']['y']-$callageGeo['top_left']['y']);
+ 	
++	$ImgWidth=400;
++	$ImgHeight=300;
+ 	// R&#233;cup&#233;rer largeur/hauteur de la carte associ&#233;e :
+-	$image = spip_fetch_array(spip_query(&quot;SELECT * FROM spip_documents WHERE id_document = $url_carte&quot;));
+-	$ImgWidth=$image['largeur'];
+-	$ImgHeight=$image['hauteur'];
+-
+-	//echo &quot;info : $ImgWidth, $ImgHeight // $GeoWidth, $GeoHeight&quot;;
++	if (intval($url_carte)&gt;0){
++		$image = spip_fetch_array(spip_query(&quot;SELECT * FROM spip_documents WHERE id_document = $url_carte&quot;));
++		if ($image) {
++			$ImgWidth=$image['largeur'];
++			$ImgHeight=$image['hauteur'];
++		}
++	}
++	else {
++		$image=getimagesize($url_carte);
++		if (is_array($image)){
++			$ImgWidth=$image[0];
++			$ImgHeight=$image[1];
++		}
++	}
+ 
+ 	$coordpair = explode (';',$selection_coords);
+ 	
+@@ -83,7 +94,7 @@
+ 	return $lURL;
+ }
+ function embed_fond_carte_url($fond_carte) {
+-	$lURL = &quot;../spip_carto.php?fond_carte=&quot;.$fond_carte.&quot;&amp;scale=&quot;.$_GET['scale'].&quot;&amp;x=&quot;.$_GET['x'].&quot;&amp;y=&quot;.$_GET['y'];
++	$lURL = &quot;../spip_carto.php?fond_carte=&quot;.base64_encode($fond_carte).&quot;&amp;scale=&quot;.$_GET['scale'].&quot;&amp;x=&quot;.$_GET['x'].&quot;&amp;y=&quot;.$_GET['y'];
+ 	return $lURL;
+ }
+ 
+@@ -159,15 +170,24 @@
+ 	// - vue zoomable largeur fixe, hauteur variable , ...
+ 	
+ 	// R&#233;cup&#233;rer largeur/hauteur de la carte associ&#233;e :
+-	$image = spip_fetch_array(spip_query(&quot;SELECT * FROM spip_documents WHERE id_document = $id_img&quot;));
+-	
+-	if ($image) {
+-		$width=$image['largeur'];
+-		$height=$image['hauteur'];
+-	}else{
+-		$width=400;
+-		$height=300;
+-	};
++	if (intval($id_img)&gt;0){
++		$image = spip_fetch_array(spip_query(&quot;SELECT * FROM spip_documents WHERE id_document = $id_img&quot;));
++		
++		if ($image) {
++			$width=$image['largeur'];
++			$height=$image['hauteur'];
++		}else{
++			$width=400;
++			$height=300;
++		}
++	}
++	else {
++		$image=getimagesize($id_img);
++		if (is_array($image)){
++			$width=$image[0];
++			$height=$image[1];
++		}
++	}
+ 	
+ 	$returned=' &lt;table border=&quot;0&quot;&gt;
+   &lt;tr&gt; 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000387.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_svgx.html,1.3.2.1,1.3.2.2 carto_lien.html,1.2.2.3,1.2.2.4 carto_map.html,1.2.2.2,1.2.2.3 carto.html,1.2.2.1,1.2.2.2 carto_geosvgwmsfile.html,1.5.2.3,1.5.2.4 carto_logo.html,1.2.2.3,1.2.2.4 carto_svgfile.html,1.4.2.1,1.4.2.2 carto_svgfilex.html,1.6.2.2,1.6.2.3
+</A></li>
+	<LI>Next message: <A HREF="000386.html">[Spip-carto-cvs] spipcarto spip_carto.php,1.3.2.1,1.3.2.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#385">[ date ]</a>
+              <a href="thread.html#385">[ thread ]</a>
+              <a href="subject.html#385">[ subject ]</a>
+              <a href="author.html#385">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

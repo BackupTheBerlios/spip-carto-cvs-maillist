@@ -1,0 +1,1400 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire auteur_messagerie.php3,1.2,1.3 index.php3,1.2,1.3 config-contenu.php3,1.2,1.3 inc_sites.php3,1.2,1.3 inc_filtres.php3,1.2,1.3 inc_suivi_revisions.php,1.2,1.3 mots_edit.php3,1.2,1.3 config-lang.php3,1.2,1.3 inc_auth_spip.php3,1.2,1.3 inc_version.php3,1.2,1.3 message.php3,1.2,1.3 inc_lang.php3,1.2,1.3 configuration.php3,1.2,1.3 inc_documents.php3,1.2,1.3 config-multilang.php3,1.2,1.3 inc_texte.php3,1.2,1.3 articles.php3,1.2,1.3 inc_surligne.php3,1.2,1.3 sites_edit.php3,1.2,1.3 inc_auth.php3,1.2,1.3 articles_edit.php3,1.2,1.3 rubriques_edit.php3,1.2,1.3 spip_style.php3,1.2,1.3 admin_vider.php3,1.2,1.3 inc_getdocument.php3,1.2,1.3 inc_logos.php3,1.3,1.4 inc_acces.php3,1.2,1.3 auteurs_edit.php3,1.2,1.3 auteur_infos.php3,1.2,1.3 breves_edit.php3,1.2,1.3 inc_calendrier.php,1.3,1.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20auteur_messagerie.php3%2C1.2%2C1.3%20index.php3%2C1.2%2C1.3%20config-contenu.php3%2C1.2%2C1.3%20inc_sites.php3%2C1.2%2C1.3%20inc_filtres.php3%2C1.2%2C1.3%20inc_suivi_revisions.php%2C1.2%2C1.3%20mots_edit.php3%2C1.2%2C1.3%20config-lang.php3%2C1.2%2C1.3%20inc_auth_spip.php3%2C1.2%2C1.3%20inc_version.php3%2C1.2%2C1.3%20message.php3%2C1.2%2C1.3%20inc_lang.php3%2C1.2%2C1.3%20configuration.php3%2C1.2%2C1.3%20inc_documents.php3%2C1.2%2C1.3%20config-multilang.php3%2C1.2%2C1.3%20inc_texte.php3%2C1.2%2C1.3%20articles.php3%2C1.2%2C1.3%20inc_surligne.php3%2C1.2%2C1.3%20sites_edit.php3%2C1.2%2C1.3%20inc_auth.php3%2C1.2%2C1.3%20articles_edit.php3%2C1.2%2C1.3%20rubriques_edit.php3%2C1.2%2C1.3%20spip_style.php3%2C1.2%2C1.3%20admin_vider.php3%2C1.2%2C1.3%20inc_getdocument.php3%2C1.2%2C1.3%20inc_logos.php3%2C1.3%2C1.4%20inc_acces.php3%2C1.2%2C1.3%20auteurs_edit.php3%2C1.2%2C1.3%20auteur_infos.php3%2C1.2%2C1.3%20breves_edit.php3%2C1.2%2C1.3%20inc_calendrier.php%2C1.3%2C1.4&In-Reply-To=%3C200503031454.j23EsxNx006566%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000130.html">
+   <LINK REL="Next"  HREF="000132.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire auteur_messagerie.php3,1.2,1.3 index.php3,1.2,1.3 config-contenu.php3,1.2,1.3 inc_sites.php3,1.2,1.3 inc_filtres.php3,1.2,1.3 inc_suivi_revisions.php,1.2,1.3 mots_edit.php3,1.2,1.3 config-lang.php3,1.2,1.3 inc_auth_spip.php3,1.2,1.3 inc_version.php3,1.2,1.3 message.php3,1.2,1.3 inc_lang.php3,1.2,1.3 configuration.php3,1.2,1.3 inc_documents.php3,1.2,1.3 config-multilang.php3,1.2,1.3 inc_texte.php3,1.2,1.3 articles.php3,1.2,1.3 inc_surligne.php3,1.2,1.3 sites_edit.php3,1.2,1.3 inc_auth.php3,1.2,1.3 articles_edit.php3,1.2,1.3 rubriques_edit.php3,1.2,1.3 spip_style.php3,1.2,1.3 admin_vider.php3,1.2,1.3 inc_getdocument.php3,1.2,1.3 inc_logos.php3,1.3,1.4 inc_acces.php3,1.2,1.3 auteurs_edit.php3,1.2,1.3 auteur_infos.php3,1.2,1.3 breves_edit.php3,1.2,1.3 inc_calendrier.php,1.3,1.4</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20auteur_messagerie.php3%2C1.2%2C1.3%20index.php3%2C1.2%2C1.3%20config-contenu.php3%2C1.2%2C1.3%20inc_sites.php3%2C1.2%2C1.3%20inc_filtres.php3%2C1.2%2C1.3%20inc_suivi_revisions.php%2C1.2%2C1.3%20mots_edit.php3%2C1.2%2C1.3%20config-lang.php3%2C1.2%2C1.3%20inc_auth_spip.php3%2C1.2%2C1.3%20inc_version.php3%2C1.2%2C1.3%20message.php3%2C1.2%2C1.3%20inc_lang.php3%2C1.2%2C1.3%20configuration.php3%2C1.2%2C1.3%20inc_documents.php3%2C1.2%2C1.3%20config-multilang.php3%2C1.2%2C1.3%20inc_texte.php3%2C1.2%2C1.3%20articles.php3%2C1.2%2C1.3%20inc_surligne.php3%2C1.2%2C1.3%20sites_edit.php3%2C1.2%2C1.3%20inc_auth.php3%2C1.2%2C1.3%20articles_edit.php3%2C1.2%2C1.3%20rubriques_edit.php3%2C1.2%2C1.3%20spip_style.php3%2C1.2%2C1.3%20admin_vider.php3%2C1.2%2C1.3%20inc_getdocument.php3%2C1.2%2C1.3%20inc_logos.php3%2C1.3%2C1.4%20inc_acces.php3%2C1.2%2C1.3%20auteurs_edit.php3%2C1.2%2C1.3%20auteur_infos.php3%2C1.2%2C1.3%20breves_edit.php3%2C1.2%2C1.3%20inc_calendrier.php%2C1.3%2C1.4&In-Reply-To=%3C200503031454.j23EsxNx006566%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire auteur_messagerie.php3,1.2,1.3 index.php3,1.2,1.3 config-contenu.php3,1.2,1.3 inc_sites.php3,1.2,1.3 inc_filtres.php3,1.2,1.3 inc_suivi_revisions.php,1.2,1.3 mots_edit.php3,1.2,1.3 config-lang.php3,1.2,1.3 inc_auth_spip.php3,1.2,1.3 inc_version.php3,1.2,1.3 message.php3,1.2,1.3 inc_lang.php3,1.2,1.3 configuration.php3,1.2,1.3 inc_documents.php3,1.2,1.3 config-multilang.php3,1.2,1.3 inc_texte.php3,1.2,1.3 articles.php3,1.2,1.3 inc_surligne.php3,1.2,1.3 sites_edit.php3,1.2,1.3 inc_auth.php3,1.2,1.3 articles_edit.php3,1.2,1.3 rubriques_edit.php3,1.2,1.3 spip_style.php3,1.2,1.3 admin_vider.php3,1.2,1.3 inc_getdocument.php3,1.2,1.3 inc_logos.php3,1.3,1.4 inc_acces.php3,1.2,1.3 auteurs_edit.php3,1.2,1.3 auteur_infos.php3,1.2,1.3 breves_edit.php3,1.2,1.3 inc_calendrier.php,1.3,1.4">stef at berlios.de
+       </A><BR>
+    <I>Thu Mar  3 15:54:59 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000130.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_en.php3,1.2,1.3 spip_ca.php3,1.2,1.3 spip_ar.php3,1.2,1.3 spip_fr.php3,1.2,1.3
+</A></li>
+        <LI>Next message: <A HREF="000132.html">[Spip-carto-cvs] spipcarto/dist nouveautes.html,1.2,1.3 auteur.html,1.2,1.3 plan.html,1.2,1.3 login.html,1.2,1.3 recherche.html,1.2,1.3 mot.html,1.2,1.3 site.html,1.2,1.3 sommaire_texte.html,1.2,1.3 404.html,1.2,1.3 rubrique.html,1.2,1.3 sommaire.html,1.2,1.3 article.html,1.2,1.3 forum.html,1.2,1.3 resume.html,1.2,1.3 breve.html,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#131">[ date ]</a>
+              <a href="thread.html#131">[ thread ]</a>
+              <a href="subject.html#131">[ subject ]</a>
+              <a href="author.html#131">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv6449/spipcarto/ecrire
+
+Modified Files:
+	auteur_messagerie.php3 index.php3 config-contenu.php3 
+	inc_sites.php3 inc_filtres.php3 inc_suivi_revisions.php 
+	mots_edit.php3 config-lang.php3 inc_auth_spip.php3 
+	inc_version.php3 message.php3 inc_lang.php3 configuration.php3 
+	inc_documents.php3 config-multilang.php3 inc_texte.php3 
+	articles.php3 inc_surligne.php3 sites_edit.php3 inc_auth.php3 
+	articles_edit.php3 rubriques_edit.php3 spip_style.php3 
+	admin_vider.php3 inc_getdocument.php3 inc_logos.php3 
+	inc_acces.php3 auteurs_edit.php3 auteur_infos.php3 
+	breves_edit.php3 inc_calendrier.php 
+Log Message:
+1.8pr1 cvs 20050303
+
+Index: auteur_messagerie.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/auteur_messagerie.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- auteur_messagerie.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ auteur_messagerie.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -103,15 +103,6 @@
+ 
+ debut_droite();
+ 
+-function mySel($varaut,$variable) {
+-	$retour = &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-	return $retour;
+-}
+-
+-
+ 	//
+ 	// Editer les donnees de l'auteur
+ 	//
+
+Index: index.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/index.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- index.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ index.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -169,7 +169,7 @@
+ 		// rendez-vous personnels dans le mois
+ 		if (spip_num_rows(spip_query(&quot;SELECT messages.id_message FROM spip_messages AS messages, spip_auteurs_messages AS lien WHERE ((lien.id_auteur='$connect_id_auteur' AND lien.id_message=messages.id_message) OR messages.type='affich') AND messages.rv='oui' AND messages.date_heure &gt;='$annee-$mois-1' AND date_heure &lt; DATE_ADD('$annee-$mois-1', INTERVAL 1 MONTH) AND messages.statut='publie' LIMIT 0,1&quot;))) {
+ 			echo &quot;&lt;p /&gt;&quot;;
+-			echo http_calendrier_agenda ($mois_today, $annee_today, $jour_today, $mois_today, $annee_today);
++			echo http_calendrier_agenda ($mois_today, $annee_today, $jour_today, $mois_today, $annee_today, false, 'calendrier.php3');
+ 		}
+ 		// rendez-vous personnels dans le mois
+ 		if (spip_num_rows(spip_query(&quot;SELECT messages.id_message FROM spip_messages AS messages, spip_auteurs_messages AS lien &quot;.
+
+Index: config-contenu.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/config-contenu.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- config-contenu.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ config-contenu.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -28,17 +28,6 @@
+ 
+ lire_metas();
+ 
+-function mySel($varaut,$variable){
+-		$retour= &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-
+-	return $retour;
+-}
+-
+-
+ debut_page(_T('titre_page_config_contenu'), &quot;administration&quot;, &quot;configuration&quot;);
+ 
+ echo &quot;&lt;br&gt;&lt;br&gt;&lt;br&gt;&quot;;
+
+Index: inc_sites.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_sites.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_sites.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_sites.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -74,8 +74,9 @@
+ 			}
+ 			if ($status &gt;= 300 AND $status &lt; 400 AND $location) $url = $location;
+ 			else if ($status != 200) return;
+-			else break;
++			else break; # ici on est content
+ 			fclose($f);
++			$f = false;
+ 		}
+ 		else {
+ 			if (!$GLOBALS['tester_proxy'])
+
+Index: inc_filtres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_filtres.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_filtres.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_filtres.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -236,10 +236,19 @@
+ function url_var_recherche($url) {
+ 	if (_request('recherche')
+ 	AND !ereg(&quot;var_recherche&quot;, $url)) {
+-		$url .= strpos($url, '?') ? '&amp;' : '?';
+-		$url .= &quot;var_recherche=&quot;.urlencode(_request('recherche'));
++		$x = &quot;var_recherche=&quot;.urlencode(_request('recherche'));
++		if (!strpos($url, '?'))
++		  return &quot;$url?$x&quot;;
++		else
++		  {
++		    $p = strpos($url, '#');
++		    if (!$p)
++		      return &quot;$url&amp;$x&quot;;
++		    else
++		      return substr($url,0,$p) . &quot;&amp;$x&quot; . substr($url,$p+1);
++		  }
+ 	}
+-	return $url;
++	else return $url;
+ }
+ 
+ 
+
+Index: inc_suivi_revisions.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_suivi_revisions.php,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_suivi_revisions.php	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_suivi_revisions.php	3 Mar 2005 14:54:56 -0000	1.3
+@@ -109,7 +109,7 @@
+ 			echo &quot;&lt;img src='&quot; . _DIR_IMG_PACK . &quot;$logo_statut' border='0'&gt;&nbsp;&quot;;
+ 			echo &quot;&lt;a class='$statut' style='font-weight: bold;' href='articles_versions.php3?id_article=$id_article'&gt;$titre&lt;/a&gt;&quot;;
+ 			echo &quot;&lt;/span&gt;&quot;;
+-			echo &quot;&lt;span class='arial1'&gt;&quot;;
++			echo &quot;&lt;span class='arial1'$dir_lang&gt;&quot;;
+ 			echo &quot; $date $nom&quot;;
+ 			echo &quot;&lt;/span&gt;&quot;;
+ 		
+
+Index: mots_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mots_edit.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- mots_edit.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ mots_edit.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -16,15 +16,6 @@
+ include_ecrire (&quot;inc_sites.php3&quot;);
+ include_ecrire (&quot;inc_abstract_sql.php3&quot;);
+ 
+-function mySel($varaut, $variable) {
+-	$retour = &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-	return $retour;
+-}
+-
+ 
+ //
+ // modifications mot
+
+Index: config-lang.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/config-lang.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- config-lang.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ config-lang.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -15,17 +15,6 @@
+ 
+ include_ecrire (&quot;inc_config.php3&quot;);
+ 
+-function mySel($varaut,$variable){
+-		$retour= &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-
+-	return $retour;
+-}
+-
+-
+ debut_page(_T('titre_page_config_contenu'), &quot;administration&quot;, &quot;langues&quot;);
+ 
+ echo &quot;&lt;br&gt;&lt;br&gt;&lt;br&gt;&quot;;
+
+Index: inc_auth_spip.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_auth_spip.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_auth_spip.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_auth_spip.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -64,7 +64,11 @@
+ 
+ 	function activer() {
+ 		if ($this-&gt;statut == 'nouveau') { // nouvel inscrit
+-			spip_query(&quot;UPDATE spip_auteurs SET statut='1comite' WHERE login='&quot;.addslashes($this-&gt;login).&quot;'&quot;);
++			$connect_statut =
++			(lire_meta('accepter_inscriptions') == 'oui') ?
++				'1comite' : '6forum';
++			spip_query(&quot;UPDATE spip_auteurs SET statut='$connect_statut'
++				WHERE login='&quot;.addslashes($this-&gt;login).&quot;'&quot;);
+ 		}
+ 		if ($this-&gt;md5next) {
+ 			include_ecrire(&quot;inc_session.php3&quot;);
+
+Index: inc_version.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_version.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_version.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_version.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -233,10 +233,6 @@
+ // navigateur l'accepte (valable pour apache &gt;= 1.3 seulement) ?
+ $auto_compress = true;
+ 
+-// compresser les fichiers du repertoire CACHE/ avec gzip ?
+-// attention : apres toute modification de ce reglage il faut vider le cache
+-$compresser_cache = true;
+-
+ // Type d'URLs
+ // 'standard': article.php3?id_article=123
+ // 'html': article123.html
+@@ -449,6 +445,10 @@
+ $flag_gd = $flag_ImageGif || $flag_ImageJpeg || $flag_ImagePng;
+ $flag_revisions = ($flag_pcre AND function_exists(&quot;gzcompress&quot;));
+ 
++// deux constantes pour le surlignage (cf inc_surligne et inc-balise)
++
++define(&quot;MARQUEUR_SURLIGNE&quot;,  'span class=&quot;spip_surligneconditionnel&quot;&gt;');
++define(&quot;MARQUEUR_FSURLIGNE&quot;, '/span                                 &gt;'); 
+ 
+ //
+ // Appliquer le prefixe cookie
+
+Index: message.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/message.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- message.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ message.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -270,7 +270,7 @@
+ 	debut_gauche();
+ 	
+ 	if ($rv != 'non')
+-	  echo http_calendrier_agenda ($lemois, $lannee, $lejour, $lemois, $lannee);
++	  echo http_calendrier_agenda ($lemois, $lannee, $lejour, $lemois, $lannee,false, 'calendrier.php3');
+ 	
+ 	echo &quot;&lt;br /&gt;&quot;;
+ 	
+
+Index: inc_lang.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_lang.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_lang.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_lang.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -42,7 +42,7 @@
+ 			include_lang($fichier_lang);
+ 			$GLOBALS['i18n_'.$module.'_'.$lang]
+ 				= &amp;$GLOBALS['i18n_'.$module.'_'.$l];
+-			spip_log(&quot;module de langue : ${module}_$l.php3&quot;);
++			#spip_log(&quot;module de langue : ${module}_$l.php3&quot;);
+ 		}
+ 	}
+ 
+
+Index: configuration.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/configuration.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- configuration.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ configuration.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -40,17 +40,6 @@
+ lire_metas();
+ 
+ 
+-function mySel($varaut,$variable){
+-		$retour= &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-
+-	return $retour;
+-}
+-
+-
+ debut_page(_T('titre_page_configuration'), &quot;administration&quot;, &quot;configuration&quot;);
+ 
+ echo &quot;&lt;br&gt;&lt;br&gt;&lt;br&gt;&quot;;
+
+Index: inc_documents.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_documents.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_documents.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_documents.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -56,7 +56,7 @@
+ 	eregi('\.([a-z0-9]+)$', $document, $regs);
+ 	list($fichier, $largeur, $hauteur) =
+ 		vignette_par_defaut($regs[1]);
+-	$doc = &quot;&lt;a href='$url'&gt;&lt;img src='$fichier' border='0' /&gt;&lt;/a&gt;&quot;;
++	$doc = &quot;&lt;a href='$url'&gt;&lt;img src='$fichier' style='border-width: 0px' /&gt;&lt;/a&gt;&quot;;
+ 	return $doc;
+ }
+ 
+@@ -150,7 +150,7 @@
+ 			$largeur_vignette = $largeur;
+ 			$hauteur_vignette = $hauteur;
+ 			if ($fichier_vignette) {
+-				$vignette = &quot;&lt;img src='$fichier_vignette' border='0'&quot;;
++				$vignette = &quot;&lt;img src='$fichier_vignette' style='border-width: 0px'&quot;;
+ 				if ($largeur_vignette &amp;&amp; $hauteur_vignette)
+ 					$vignette .= &quot; width='$largeur_vignette' height='$hauteur_vignette'&quot;;
+ 				if ($titre) {
+@@ -168,7 +168,7 @@
+ 			if ($largeur_vignette &lt; 120) $largeur_vignette = 120;
+ 			$forcer_largeur = &quot; width = '$largeur_vignette'&quot;;
+ 
+-			$retour = &quot;&lt;table cellpadding='0' cellspacing='0' border='0' align='$align'&gt;\n&quot;;
++			$retour = &quot;&lt;table cellpadding='0' cellspacing='0' style='border-width: 0px' align='$align'&gt;\n&quot;;
+ 			$retour .= &quot;&lt;tr&gt;&quot;;
+ 			if ($align == &quot;right&quot;) $retour .= &quot;&lt;td width='10'&gt; &nbsp; &lt;/td&gt;&quot;;
+ 			$retour .= &quot;&lt;td align='center'$forcer_largeur&gt;\n&lt;div class='spip_documents'&gt;\n&quot;;
+@@ -254,7 +254,7 @@
+ 			= vignette_par_defaut($extension);
+ 
+ 		if ($url_fichier_vignette) {
+-			$vignette = &quot;&lt;img src='$url_fichier_vignette' border='0'&quot;;
++			$vignette = &quot;&lt;img src='$url_fichier_vignette' style='border-width: 0px'&quot;;
+ 			if ($largeur_vignette &amp;&amp; $hauteur_vignette)
+ 				$vignette .= &quot; width='$largeur_vignette' height='$hauteur_vignette'&quot;;
+ 			if ($titre) {
+@@ -325,11 +325,13 @@
+ 	$d = opendir($dir);
+ 
+ 	while ($f = readdir($d)) {
+-		if (is_file(&quot;$dir/$f&quot;) AND $f != 'remove.txt') {
++		if (is_file(&quot;$dir/$f&quot;) AND is_readable(&quot;$dir/$f&quot;)
++		AND $f != 'remove.txt') {
+ 			$fichiers[] = &quot;$dir/$f&quot;;
+ 		}
+ 		else
+-		if (is_dir(&quot;$dir/$f&quot;) AND $f != '.' AND $f != '..') {
++		if (is_dir(&quot;$dir/$f&quot;) AND is_readable(&quot;$dir/$f&quot;)
++		AND $f != '.' AND $f != '..') {
+ 			$fichiers_dir = fichiers_upload(&quot;$dir/$f&quot;);
+ 			while (list(,$f2) = each ($fichiers_dir))
+ 				$fichiers[] = $f2;
+@@ -554,7 +556,7 @@
+ 					$link_rot-&gt;addVar('redirect',
+ 						$redirect_url.'&amp;show_docs='.$id_document);
+ 					$link_rot-&gt;addVar('ancre', $album);
+-					echo http_href_img($link_rot-&gt;getUrl(), 'tourner-gauche.gif', &quot;border='0'&quot;, _T('image_tourner_gauche'), '', 'bouton_rotation');
++					echo http_href_img($link_rot-&gt;getUrl(), 'tourner-gauche.gif', &quot;style='border-width: 0px'&quot;, _T('image_tourner_gauche'), '', 'bouton_rotation');
+ 					echo &quot;&lt;br /&gt;&quot;;
+ 
+ 					// tourner a droite
+@@ -567,7 +569,7 @@
+ 						$redirect_url.'&amp;show_docs='.$id_document);
+ 					$link_rot-&gt;addVar('ancre', $album);
+ 					echo http_href_img($link_rot-&gt;getUrl(),
+-						'tourner-droite.gif', &quot;border='0'&quot;,
++						'tourner-droite.gif', &quot;style='border-width: 0px'&quot;,
+ 						_T('image_tourner_droite'), '', 'bouton_rotation');
+ 					echo &quot;&lt;br /&gt;&quot;;
+ 
+@@ -581,7 +583,7 @@
+ 						$redirect_url.'&amp;show_docs='.$id_document);
+ 					$link_rot-&gt;addVar('ancre', $album);
+ 					echo http_href_img($link_rot-&gt;getUrl(),
+-						'tourner-180.gif', &quot;border='0'&quot;,
++						'tourner-180.gif', &quot;style='border-width: 0px'&quot;,
+ 						_T('image_tourner_180'), '', 'bouton_rotation');
+ 				}
+ 				echo &quot;&lt;/div&gt;\n&quot;;
+@@ -1080,7 +1082,7 @@
+ 			list($icone, $largeur_icone, $hauteur_icone) =
+ 				vignette_par_defaut($type_extension);
+ 			if ($icone) {
+-				echo &quot;&lt;a href='$url'&gt;&lt;img src='$icone' border='0' width='$largeur_icone' align='top' height='$hauteur_icone' alt='' /&gt;&lt;/a&gt;\n&quot;;
++				echo &quot;&lt;a href='$url'&gt;&lt;img src='$icone' style='border-width: 0px' width='$largeur_icone' align='top' height='$hauteur_icone' alt='' /&gt;&lt;/a&gt;\n&quot;;
+ 			}
+ 			echo &quot;&lt;/div&gt;\n&quot;;
+ 		}
+
+Index: config-multilang.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/config-multilang.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- config-multilang.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ config-multilang.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -15,16 +15,6 @@
+ 
+ include_ecrire (&quot;inc_config.php3&quot;);
+ 
+-function mySel($varaut,$variable){
+-		$retour= &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-
+-	return $retour;
+-}
+-
+ lire_metas();
+ 
+ debut_page(_T('titre_page_config_contenu'), &quot;administration&quot;, &quot;langues&quot;);
+
+Index: inc_texte.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_texte.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_texte.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_texte.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -48,8 +48,8 @@
+ // On ne prend la $puce_rtl par defaut que si $puce n'a pas ete redefinie
+ 
+ //if (!tester_variable('puce', &quot;&lt;li class='spip_puce' style='list-style-image: url(puce.gif)'&gt;&quot;)) {
+-if (!tester_variable('puce', &quot;&lt;img class='spip_puce' src='puce.gif' alt='-' border='0'&gt;&nbsp;&quot;)) {
+-	tester_variable('puce_rtl', &quot;&lt;img class='spip_puce' src='puce_rtl.gif' alt='-' border='0'&gt;&nbsp;&quot;);
++if (!tester_variable('puce', &quot;&lt;img class='spip_puce' src='puce.gif' alt='-'&gt;&nbsp;&quot;)) {
++	tester_variable('puce_rtl', &quot;&lt;img class='spip_puce' src='puce_rtl.gif' alt='-'&gt;&nbsp;&quot;);
+ }
+ 
+ 
+
+Index: articles.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/articles.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- articles.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ articles.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -685,60 +685,41 @@
+ changer_typo('','article'.$id_article);
+ 
+ 
+-// qu'est-ce que c'est que ces choses ??
+-
+-function mySel($varaut,$variable){
+-	$retour= &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-	return $retour;
+-}
+-
+-
+-function my_sel($num,$tex,$comp){
+-	if ($num==$comp){
+-		echo &quot;&lt;OPTION VALUE='$num' SELECTED&gt;$tex\n&quot;;
+-	}else{
+-		echo &quot;&lt;OPTION VALUE='$num'&gt;$tex\n&quot;;
+-	}
+-
+-}
+-
+ function afficher_mois($mois){
+-	my_sel(&quot;00&quot;,_T('mois_non_connu'),$mois);
+-	my_sel(&quot;01&quot;,_T('date_mois_1'),$mois);
+-	my_sel(&quot;02&quot;,_T('date_mois_2'),$mois);
+-	my_sel(&quot;03&quot;,_T('date_mois_3'),$mois);
+-	my_sel(&quot;04&quot;,_T('date_mois_4'),$mois);
+-	my_sel(&quot;05&quot;,_T('date_mois_5'),$mois);
+-	my_sel(&quot;06&quot;,_T('date_mois_6'),$mois);
+-	my_sel(&quot;07&quot;,_T('date_mois_7'),$mois);
+-	my_sel(&quot;08&quot;,_T('date_mois_8'),$mois);
+-	my_sel(&quot;09&quot;,_T('date_mois_9'),$mois);
+-	my_sel(&quot;10&quot;,_T('date_mois_10'),$mois);
+-	my_sel(&quot;11&quot;,_T('date_mois_11'),$mois);
+-	my_sel(&quot;12&quot;,_T('date_mois_12'),$mois);
++	echo mySel(&quot;00&quot;,$mois,_T('mois_non_connu'));
++	echo mySel(&quot;01&quot;,$mois,_T('date_mois_1'));
++	echo mySel(&quot;02&quot;,$mois,_T('date_mois_2'));
++	echo mySel(&quot;03&quot;,$mois,_T('date_mois_3'));
++	echo mySel(&quot;04&quot;,$mois,_T('date_mois_4'));
++	echo mySel(&quot;05&quot;,$mois,_T('date_mois_5'));
++	echo mySel(&quot;06&quot;,$mois,_T('date_mois_6'));
++	echo mySel(&quot;07&quot;,$mois,_T('date_mois_7'));
++	echo mySel(&quot;08&quot;,$mois,_T('date_mois_8'));
++	echo mySel(&quot;09&quot;,$mois,_T('date_mois_9'));
++	echo mySel(&quot;10&quot;,$mois,_T('date_mois_10'));
++	echo mySel(&quot;11&quot;,$mois,_T('date_mois_11'));
++	echo mySel(&quot;12&quot;,$mois,_T('date_mois_12'));
+ }
+ 
+ function afficher_annee($annee){
+ 	// Cette ligne permettrait de faire des articles sans date de publication
+-	// my_sel(&quot;0000&quot;,&quot;n.c.&quot;,$annee);
++	// echo mySel(&quot;0000&quot;,$annee,&quot;n.c.&quot;);
+ 
+ 	if($annee&lt;1996 AND $annee &lt;&gt; 0){
+-		echo &quot;&lt;OPTION VALUE='$annee' SELECTED&gt;$annee\n&quot;;
++		echo mySel($annee,$annee,$annee);
+ 	}
+ 	for($i=1996;$i&lt;date(Y)+2;$i++){
+-		my_sel($i,$i,$annee);
++		echo mySel($i,$annee,$i);
+ 	}
+ }
+ 
+ function afficher_jour($jour){
+-	my_sel(&quot;00&quot;,_T('jour_non_connu_nc'),$jour);
++	echo mySel(&quot;00&quot;,$jour,_T('jour_non_connu_nc'));
+ 	for($i=1;$i&lt;32;$i++){
+-		if ($i&lt;10){$aff=&quot;&nbsp;&quot;.$i;}else{$aff=$i;}
+-		my_sel($i,$aff,$jour);
++		$aff = _T('date_jnum'.$i);
++		if ($i&lt;10)
++			$aff=&quot;&nbsp;&quot;.$aff;
++		echo mySel($i,$jour,$aff);
+ 	}
+ }
+ 
+
+Index: inc_surligne.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_surligne.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_surligne.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_surligne.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -16,13 +16,9 @@
+ if (defined(&quot;_ECRIRE_INC_SURLIGNE&quot;)) return;
+ define(&quot;_ECRIRE_INC_SURLIGNE&quot;, &quot;1&quot;);
+ 
+-
+ // Balises qui ne font rien en mode normal
+ // mais  vont etre substitue'es en mode recherche
+ // voir les champs SURLIGNE dans inc-index-squel
+-
+-define(&quot;MARQUEUR_SURLIGNE&quot;, 'span class=&quot;spip_surligneconditionnel&quot;&gt;');
+-define(&quot;MARQUEUR_FSURLIGNE&quot;, '/' . MARQUEUR_SURLIGNE);
+ 
+ function surligner_sans_accents ($mot) {
+ 	$accents =
+
+Index: sites_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/sites_edit.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- sites_edit.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ sites_edit.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -17,16 +17,6 @@
+ 
+ $proposer_sites = lire_meta(&quot;proposer_sites&quot;);
+ 
+-function mySel($varaut,$variable) {
+-	$retour= &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-
+-	return $retour;
+-}
+-
+ function premiere_rubrique(){
+  	$query=&quot;SELECT * FROM spip_rubriques WHERE id_parent='0' ORDER BY titre LIMIT 0,1&quot;;
+  	$result=spip_query($query);
+
+Index: inc_auth.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_auth.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_auth.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_auth.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -221,16 +221,18 @@
+ 	}
+ 
+ 	if (!$auth_pass_ok) {
+-		redirige_par_entete(&quot;../spip_login.php3?var_erreur=pass&amp;inscription=&quot; .
+-			     ((lire_meta(&quot;accepter_inscriptions&quot;) == &quot;oui&quot;)?
+-			      ('spip_inscription.php3') : ''));
++		redirige_par_entete(&quot;../spip_login.php3?var_erreur=pass&quot;);
+ 	}
+ 
++	// Si c'est un nouvel inscrit, le passer de 'nouveau' a '1comite'
++	// (code presque mort, utilise peut-etre encore sous .htpasswd ?)
+ 	if ($connect_statut == 'nouveau') {
+-		$query = &quot;UPDATE spip_auteurs SET statut='1comite' WHERE id_auteur=$connect_id_auteur&quot;;
+-		$result = spip_query($query);
+-		$connect_statut = '1comite';
++		$connect_statut =
++		(lire_meta('accepter_inscriptions') == 'oui') ? '1comite' : '6forum';
++		spip_query(&quot;UPDATE spip_auteurs SET statut='$connect_statut'
++			WHERE id_auteur=$connect_id_auteur&quot;);
+ 	}
++
+ 	return true;
+ }
+ 
+
+Index: articles_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/articles_edit.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- articles_edit.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ articles_edit.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -212,50 +212,6 @@
+ debut_cadre_formulaire();
+ 
+ 
+-function mySel($varaut,$variable) {
+-	$retour= &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut) {
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-
+-	return $retour;
+-}
+-
+-
+-
+-function my_sel($num,$tex,$comp){
+-	if ($num==$comp){
+-		echo &quot;&lt;option value='$num' selected&gt;$tex\n&quot;;
+-	}else{
+-		echo &quot;&lt;option value='$num'&gt;$tex\n&quot;;
+-	}
+-
+-}
+-
+-function afficher_mois($mois){
+-	my_sel(&quot;01&quot;,_T('date_mois_1'),$mois);
+-	my_sel(&quot;02&quot;,_T('date_mois_2'),$mois);
+-	my_sel(&quot;03&quot;,_T('date_mois_3'),$mois);
+-	my_sel(&quot;04&quot;,_T('date_mois_4'),$mois);
+-	my_sel(&quot;05&quot;,_T('date_mois_5'),$mois);
+-	my_sel(&quot;06&quot;,_T('date_mois_6'),$mois);
+-	my_sel(&quot;07&quot;,_T('date_mois_7'),$mois);
+-	my_sel(&quot;08&quot;,_T('date_mois_8'),$mois);
+-	my_sel(&quot;09&quot;,_T('date_mois_9'),$mois);
+-	my_sel(&quot;10&quot;,_T('date_mois_10'),$mois);
+-	my_sel(&quot;11&quot;,_T('date_mois_11'),$mois);
+-	my_sel(&quot;12&quot;,_T('date_mois_12'),$mois);
+-}
+-
+-function afficher_jour($jour){
+-	for($i=1;$i&lt;32;$i++){
+-		if ($i&lt;10){$aff=&quot;&nbsp;&quot;.$i;}else{$aff=$i;}
+-		my_sel($i,$aff,$jour);
+-	}
+-}
+-
+-
+ function enfant($leparent){
+ 	global $id_parent;
+ 	global $id_rubrique;
+
+Index: rubriques_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/rubriques_edit.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- rubriques_edit.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ rubriques_edit.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -14,16 +14,6 @@
+ include (&quot;inc.php3&quot;);
+ 
+ 
+-function mySel($varaut,$variable){
+-	$retour= &quot; value=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut){
+-		$retour.= &quot; selected&quot;;
+-	}
+-
+-	return $retour;
+-}
+-
+ function enfant($leparent){
+ 	global $id_parent;
+ 	global $id_rubrique;
+
+Index: spip_style.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/spip_style.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- spip_style.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ spip_style.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -873,6 +873,7 @@
+ 	font-family: verdana, arial, helvetica, sans;
+ 	font-size: 12px;
+ 	padding: 6px;
++	position: relative;
+ }
+ 
+ .cadre-titre {
+
+Index: admin_vider.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/admin_vider.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- admin_vider.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ admin_vider.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -106,7 +106,7 @@
+ }
+ 
+ 	echo &quot;\n&quot;;
+-	echo $compresser_cache? _T('cache_mode_compresse') :
++	echo $flag_gz ? _T('cache_mode_compresse') :
+ 		_T('cache_mode_non_compresse');
+ 	echo ' ('._T('cache_modifiable_webmestre').')&lt;/p&gt;';
+ 
+
+Index: inc_getdocument.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_getdocument.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_getdocument.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_getdocument.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -229,8 +229,10 @@
+ 
+ 	// Recopier le fichier a son emplacement definitif
+ 	$definitif = copier_document($ext, $nom_envoye, $source);
+-	if (!$definitif)
++	if (!$definitif) {
++		spip_log(&quot;Impossible de copier_document($ext, $nom_envoye, $source)&quot;);
+ 		return;
++	}
+ 
+ 	// Quelques infos sur le fichier
+ 	if (!@file_exists($definitif)
+
+Index: inc_logos.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_logos.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_logos.php3	25 Feb 2005 16:35:57 -0000	1.3
++++ inc_logos.php3	3 Mar 2005 14:54:56 -0000	1.4
+@@ -60,7 +60,7 @@
+ 			     calculer_action_auteur (&quot;reduire $w $h&quot;) .
+ 			     &quot;&amp;hash_id_auteur=$connect_id_auteur&quot; .
+ 			     (!$contre ? '' : (&quot;&amp;&quot;.md5($contre))) .
+-			     &quot;'$taille border='0' alt='' /&gt;&quot;,
++			     &quot;'$taille style='border-width: 0px' alt='$racine' /&gt;&quot;,
+ 			     $x, $y);
+ 	}
+ 	return '';
+@@ -448,16 +448,25 @@
+ 
+ 	// recuperer le nom du fichier
+ 	if (eregi(&quot;src='([^']+)'&quot;, $img, $regs)) $logo = $regs[1];
+-	if (eregi(&quot;align='([^']+)'&quot;, $img, $regs)) $align = $regs[1];
++	if (!$logo) $logo = $img;
++
++	$attributs = '';
++
++	// encore utilise ?
+ 	if (eregi(&quot;name='([^']+)'&quot;, $img, $regs)) $name = $regs[1];
++	if ($name) $attributs .= &quot; name='$name'&quot;; 
++
++	// attributs deprecies. Transformer en CSS
+ 	if (eregi(&quot;hspace='([^']+)'&quot;, $img, $regs)) $espace = $regs[1];
+-	if (!$logo) $logo = $img;
+-	
+-	// Ne pas creer de valeurs vides
+-	if ($align) $align = &quot; align='$align'&quot;;
+-	if ($name) $name = &quot; name='$name'&quot;;
+-	if ($espace) $espace = &quot; hspace='$espace' vspace='$espace'&quot;;
++	if ($espace) 
++	  $attributs .= &quot; style='margin: $espace&quot; . &quot;px; border-width: 0px'&quot;;
++	else 
++	  $attributs .=  &quot; class='spip_logos'&quot;;
++	// attribut deprecie mais equivalent CSS pas clair
++	if (eregi(&quot;align='([^']+)'&quot;, $img, $regs)) $align = $regs[1];
++	if ($align)  $attributs .= &quot; align='$align'&quot;;
+ 
++	$attributs .= &quot; alt='$name'&quot;;
+ 	if (eregi(&quot;(.*)\.(jpg|gif|png)$&quot;, $logo, $regs)) {
+ 		if ($i = cherche_image_nommee($regs[1], array($regs[2]))) {
+ 			list(,$nom,$format) = $i;
+@@ -467,11 +476,11 @@
+ 				$vignette = $preview['fichier'];
+ 				$width = $preview['width'];
+ 				$height = $preview['height'];
+-				return &quot;&lt;img src='$vignette'$name border='0'$name alt=''$espace width='$width' height='$height' class='spip_logos' /&gt;&quot;;
++				return &quot;&lt;img src='$vignette' width='$width' height='$height'$attributs /&gt;&quot;;
+ 			}
+ 			else if ($taille_origine = @getimagesize($logo)) {
+ 				list ($destWidth,$destHeight) = image_ratio($taille_origine[0], $taille_origine[1], $taille, $taille_y);
+-				return &quot;&lt;img src='$logo'$name width='$destWidth' height='$destHeight' border='0'$align alt=''$espace class='spip_logos' /&gt;&quot;;
++				return &quot;&lt;img src='$logo' width='$destWidth' height='$destHeight'$attributs /&gt;&quot;;
+ 			}
+ 		}
+ 	}
+
+Index: inc_acces.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_acces.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_acces.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_acces.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -79,6 +79,144 @@
+ }
+ 
+ 
++// Une fonction service qui affiche le statut de l'auteur dans l'espace prive
++function afficher_formulaire_statut_auteur ($id_auteur, $post='') {
++	global $connect_statut, $connect_toutes_rubriques, $connect_id_auteur;
++	global $spip_lang_right;
++
++	$s = spip_query(&quot;SELECT * FROM spip_auteurs WHERE id_auteur = $id_auteur&quot;);
++	$auteur = spip_fetch_array($s);
++	$statut = $auteur['statut'];
++
++	if ($post) {
++		$url_self = $post;
++		echo &quot;&lt;p /&gt;&quot;;
++		echo &quot;&lt;form action='$post' method='post'&gt;\n&quot;;
++	} else
++		$url_self = &quot;auteur_infos.php3?id_auteur=$id_auteur&quot;;
++
++
++	// S'agit-il d'un admin restreint ?
++	if ($statut == '0minirezo') {
++		$query_admin = &quot;SELECT lien.id_rubrique, titre FROM spip_auteurs_rubriques AS lien, spip_rubriques AS rubriques WHERE lien.id_auteur=$id_auteur AND lien.id_rubrique=rubriques.id_rubrique GROUP BY lien.id_rubrique&quot;;
++		$result_admin = spip_query($query_admin);
++		$admin_restreint = (spip_num_rows($result_admin) &gt; 0);
++	}
++
++	// Seuls les admins voient le menu 'statut' ; les admins restreints
++	// ne peuvent l'utiliser que pour mettre un auteur a la poubelle
++	if ($connect_statut == &quot;0minirezo&quot;
++	AND ($connect_toutes_rubriques OR $statut != &quot;0minirezo&quot;)
++	AND $connect_id_auteur != $id_auteur) {
++		debut_cadre_relief();
++
++		if ($statut == '0minirezo') {
++			if ($admin_restreint)
++				echo bouton_block_visible(&quot;statut$id_auteur&quot;);
++			else
++				echo bouton_block_invisible(&quot;statut$id_auteur&quot;);
++		}
++
++		echo &quot;&lt;b&gt;&quot;._T('info_statut_auteur').&quot; &lt;/b&gt; &quot;;
++		echo &quot;&lt;select name='statut' size=1 class='fondl'&gt;&quot;;
++
++		if ($connect_statut == &quot;0minirezo&quot; AND $connect_toutes_rubriques)
++			echo &quot;&lt;OPTION&quot;.mySel(&quot;0minirezo&quot;,$statut).&quot;&gt;&quot;._T('item_administrateur_2');
++
++		echo &quot;&lt;OPTION&quot;.mySel(&quot;1comite&quot;,$statut).&quot;&gt;&quot;._T('intem_redacteur');
++
++		if (($statut == '6forum') OR (lire_meta('accepter_visiteurs') == 'oui') OR (lire_meta('forums_publics') == 'abo'))
++			echo &quot;&lt;OPTION&quot;.mySel(&quot;6forum&quot;,$statut).&quot;&gt;&quot;._T('item_visiteur');
++		echo &quot;&lt;OPTION&quot;.mySel(&quot;5poubelle&quot;,$statut).
++		  &quot; style='background:url(&quot; . _DIR_IMG_PACK . &quot;rayures-sup.gif)'&gt;&gt; &quot;._T('texte_statut_poubelle');
++
++		echo &quot;&lt;/select&gt;\n&quot;;
++
++		//
++		// Gestion restreinte des rubriques
++		//
++		if ($statut == '0minirezo') {
++			if (!$admin_restreint) {
++				echo debut_block_invisible(&quot;statut$id_auteur&quot;);
++				echo &quot;&lt;p /&gt;&lt;div style='arial2'&gt;\n&quot;;
++				echo _T('info_admin_gere_toutes_rubriques');
++			} else {
++				echo debut_block_visible(&quot;statut$id_auteur&quot;);
++				echo &quot;&lt;p /&gt;&lt;div style='arial2'&gt;\n&quot;;
++				echo _T('info_admin_gere_rubriques').&quot;\n&quot;;
++				echo &quot;&lt;ul style='list-style-image: url(&quot; . _DIR_IMG_PACK . &quot;rubrique-12.gif)'&gt;&quot;;
++				while ($row_admin = spip_fetch_array($result_admin)) {
++					$id_rubrique = $row_admin[&quot;id_rubrique&quot;];
++					$titre = typo($row_admin[&quot;titre&quot;]);
++					echo &quot;&lt;li&gt;$titre&quot;;
++					if ($connect_toutes_rubriques
++					AND $connect_id_auteur != $id_auteur) {
++						echo &quot; &lt;font size=1&gt;&quot;
++						. &quot;[&lt;a href='$url_self&amp;supp_rub=$id_rubrique'&gt;&quot;
++						._T('lien_supprimer_rubrique')
++						.&quot;&lt;/a&gt;]&lt;/font&gt;&quot;;
++					}
++					$toutes_rubriques .= &quot;$id_rubrique,&quot;;
++				}
++				echo &quot;&lt;/ul&gt;&quot;;
++				$toutes_rubriques = &quot;,$toutes_rubriques&quot;;
++			}
++	
++			if ($connect_toutes_rubriques
++			AND $connect_id_auteur != $id_auteur) {
++				echo &quot;&lt;/div&gt;&lt;br /&gt;&lt;div class='arial1'&gt;&quot;;
++				if (spip_num_rows($result_admin) == 0) {
++					echo &quot;&lt;b&gt;&quot;._T('info_restreindre_rubrique').&quot;&lt;/b&gt;&lt;br /&gt;&quot;;
++				} else {
++					echo &quot;&lt;b&gt;&quot;._T('info_ajouter_rubrique').&quot;&lt;/b&gt;&lt;br /&gt;&quot;;
++				}
++				echo &quot;&lt;INPUT NAME='id_auteur' VALUE='$id_auteur' TYPE='hidden'&gt;&quot;;
++				echo &quot;&lt;SELECT NAME='add_rub' SIZE=1 CLASS='formo'&gt;&quot;;
++				echo &quot;&lt;OPTION VALUE='0'&gt;\n&quot;;
++				afficher_auteur_rubriques(&quot;0&quot;);
++				echo &quot;&lt;/SELECT&gt;&quot;;
++			}
++
++			echo &quot;&lt;/div&gt;\n&quot;;
++			echo fin_block();
++		}
++
++
++		if ($post) {
++			echo &quot;&lt;div align='$spip_lang_right'&gt;&lt;input type='submit'
++			class='fondo' name='Valider'
++			value=\&quot;&quot;._T('bouton_valider').&quot;\&quot; /&gt;&lt;/div&gt;&quot;; 
++			echo &quot;&lt;/form&gt;\n&quot;;
++		}
++
++		fin_cadre_relief();
++	}
++}
++
++function modifier_statut_auteur (&amp;$auteur) {
++	global $connect_statut, $connect_toutes_rubriques, $_GET, $_POST;
++	// changer le statut ?
++	if ($connect_statut == '0minirezo' AND $_POST['statut']) {
++		if (ereg(&quot;^(0minirezo|1comite|5poubelle|6forum)$&quot;,$_POST['statut'])) {
++			$auteur['statut'] = $_POST['statut'];
++			spip_query(&quot;UPDATE spip_auteurs SET statut='&quot;.$_POST['statut'].&quot;'
++			WHERE id_auteur=&quot;.$auteur['id_auteur']);
++		}
++	}
++	// modif auteur restreint, seulement pour les admins
++	if ($connect_toutes_rubriques) {
++		if ($add_rub=intval($_POST['add_rub']))
++			spip_query(&quot;INSERT INTO spip_auteurs_rubriques
++			(id_auteur,id_rubrique)
++			VALUES(&quot;.$auteur['id_auteur'].&quot;, $add_rub)&quot;);
++
++		if ($supp_rub=intval($_GET['supp_rub']))
++			spip_query(&quot;DELETE FROM spip_auteurs_rubriques
++			WHERE id_auteur=&quot;.$auteur['id_auteur'].&quot;
++			AND id_rubrique=$supp_rub&quot;);
++	}
++}
++
+ 
+ function initialiser_sel() {
+ 	global $htsalt;
+@@ -109,6 +247,8 @@
+ 		return;
+ 	}
+ 
++	# remarque : ici on laisse passer les &quot;nouveau&quot; de maniere a leur permettre
++	# de devenir &quot;1comite&quot; le cas echeant (auth http)... a nettoyer
+ 	$query = &quot;SELECT login, htpass FROM spip_auteurs WHERE statut != '5poubelle' AND statut!='6forum'&quot;;
+ 	$result = spip_query_db($query);	// attention, il faut au prealable se connecter a la base (necessaire car utilise par install.php3)
+ 	$logins = array();
+
+Index: auteurs_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/auteurs_edit.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- auteurs_edit.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ auteurs_edit.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -51,7 +51,11 @@
+ }
+ 
+ 
+-$query = &quot;SELECT * FROM spip_auteurs WHERE id_auteur='$id_auteur'&quot;;
++if (!$id_auteur = intval($id_auteur)) {
++	die ('erreur');
++}
++
++$query = &quot;SELECT * FROM spip_auteurs WHERE id_auteur=$id_auteur&quot;;
+ $result = spip_query($query);
+ 
+ 
+@@ -72,6 +76,10 @@
+ 	$low_sec = $row[&quot;low_sec&quot;];
+ 
+ 
++// Appliquer des modifications de statut
++modifier_statut_auteur($row);
++
++
+ if ($connect_id_auteur == $id_auteur) debut_page($nom, &quot;auteurs&quot;, &quot;perso&quot;);
+ else debut_page($nom,&quot;auteurs&quot;,&quot;redacteurs&quot;);
+ 
+@@ -108,14 +116,6 @@
+ 
+ debut_droite();
+ 
+-function mySel($varaut,$variable) {
+-	$retour = &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-	return $retour;
+-}
+-
+ 	debut_cadre_relief(&quot;redacteurs-24.gif&quot;);
+ 	
+ 	
+@@ -151,6 +151,10 @@
+ 		extra_affichage($extra, &quot;auteurs&quot;);
+ 	}
+ 
++	// Afficher le formulaire de changement de statut (cf. inc_acces.php3)
++	if ($options == 'avancees')
++		afficher_formulaire_statut_auteur ($id_auteur,
++			&quot;auteurs_edit.php3?id_auteur=$id_auteur&quot;);
+ 
+ 	fin_cadre_relief();
+ 
+@@ -167,7 +171,9 @@
+ }
+ 
+ 
+-if ($id_auteur != $connect_id_auteur) {
++if ($id_auteur != $connect_id_auteur
++AND ($statut == '0minirezo' OR $statut == '1comite')
++) {
+ 	echo &quot;&lt;div&gt;&nbsp;&lt;/div&gt;&quot;;
+ 	debut_cadre_couleur();
+ 	
+@@ -179,7 +185,8 @@
+ 		&quot;WHERE lien.id_auteur=$connect_id_auteur AND lien2.id_auteur = $id_auteur AND statut='publie' AND type='normal' AND rv='oui' AND date_fin &gt; NOW() AND lien.id_message=messages.id_message AND lien2.id_message=messages.id_message&quot;;
+ 	afficher_messages(_T('info_vos_rendez_vous'), $query_message, false, false);
+ 	
+-	icone_horizontale(_T('info_envoyer_message_prive'),&quot;message_edit.php3?new=oui&amp;type=normal&amp;dest=$id_auteur&quot;, &quot;message.gif&quot;);
++	icone_horizontale(_T('info_envoyer_message_prive'),
++		&quot;message_edit.php3?new=oui&amp;type=normal&amp;dest=$id_auteur&quot;, &quot;message.gif&quot;);
+ 	fin_cadre_couleur();
+ }
+ 
+
+Index: auteur_infos.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/auteur_infos.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- auteur_infos.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ auteur_infos.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -21,14 +21,6 @@
+ // securite
+ $id_auteur = floor($id_auteur);
+ 
+-// menu statuts
+-function mySel($varaut,$variable) {
+-	$retour = &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-	return $retour;
+-}
+ 
+ //
+ // Auteurs a acces restreint
+@@ -59,16 +51,6 @@
+ 	$i=$i-1;
+ }
+ 
+-// modif auteur restreint
+-if ($connect_toutes_rubriques AND $add_rub=floor($add_rub)){
+-	$query = &quot;INSERT INTO spip_auteurs_rubriques (id_auteur,id_rubrique) VALUES($id_auteur,$add_rub)&quot;;
+-	$result = spip_query($query);
+-}
+-if ($connect_toutes_rubriques AND $supp_rub=floor($supp_rub)){
+-	$query = &quot;DELETE FROM spip_auteurs_rubriques WHERE id_auteur=$id_auteur AND id_rubrique=$supp_rub&quot;;
+-	$result = spip_query($query);
+-}
+-
+ // securite
+ if ($connect_statut != &quot;0minirezo&quot; AND $connect_id_auteur != $id_auteur) {
+ 	gros_titre(_T('info_acces_interdit'));
+@@ -96,12 +78,8 @@
+ //
+ // Modification (et creation si besoin)
+ //
+-if ($statut) { // si on poste un statut, c'est qu'on modifie une fiche auteur
+-	if ($connect_statut == '0minirezo' AND ereg(&quot;^(0minirezo|1comite|5poubelle|6forum)$&quot;,$statut))	// changer le statut
+-		$auteur['statut'] = $statut;
+-
+-	if ($nom)	// pas de nom vide
+-		$auteur['nom'] = corriger_caracteres($nom);
++if ($nom) { // si on poste un nom, c'est qu'on modifie une fiche auteur
++	$auteur['nom'] = corriger_caracteres($nom);
+ 
+ 	// login et mot de passe
+ 	unset ($modif_login);
+@@ -164,8 +142,6 @@
+ 		}
+ 	}
+ 
+-
+-
+ 	// variables sans probleme
+ 	$auteur['bio'] = corriger_caracteres($bio);
+ 	$auteur['pgp'] = corriger_caracteres($pgp);
+@@ -198,7 +174,7 @@
+ 
+ 			$id_auteur = $auteur['id_auteur'];
+ 
+-			if (settype($ajouter_id_article,'integer') AND ($ajouter_id_article&gt;0))
++			if ($ajouter_id_article = intval($ajouter_id_article))
+ 				spip_query(&quot;INSERT INTO spip_auteurs_articles (id_auteur, id_article) VALUES ($id_auteur, $ajouter_id_article)&quot;);
+ 		}
+ 
+@@ -209,19 +185,24 @@
+ 			email='&quot;.addslashes($auteur['email']).&quot;',
+ 			nom_site='&quot;.addslashes($auteur['nom_site']).&quot;',
+ 			url_site='&quot;.addslashes($auteur['url_site']).&quot;',
+-			pgp='&quot;.addslashes($auteur['pgp']).&quot;',
+-			statut='&quot;.addslashes($auteur['statut']).&quot;'
++			pgp='&quot;.addslashes($auteur['pgp']).&quot;'
+ 			$add_extra
+ 			WHERE id_auteur=&quot;.$auteur['id_auteur'];
+ 		spip_query($query) OR die($query);
+ 	}
++}
++
++// Appliquer des modifications de statut
++modifier_statut_auteur($auteur);
++
+ 
++// Si on modifie la fiche auteur, reindexer et modifier htpasswd
++if ($nom OR $statut) {
+ 	if (lire_meta('activer_moteur') == 'oui') {
+ 		include_ecrire (&quot;inc_index.php3&quot;);
+ 		indexer_auteur($id_auteur);
+ 	}
+ 
+-
+ 	// Mettre a jour les fichiers .htpasswd et .htpasswd-admin
+ 	ecrire_acces();
+ }
+@@ -390,7 +371,7 @@
+ 	echo &quot;&lt;INPUT TYPE='password' NAME='new_pass2' CLASS='formo' VALUE=\&quot;\&quot; SIZE='40'&gt;&lt;P&gt;\n&quot;;
+ }
+ fin_cadre_relief();
+-echo &quot;&lt;p&gt;&quot;;
++echo &quot;&lt;p /&gt;&quot;;
+ 
+ 
+ //
+@@ -423,79 +404,9 @@
+ }
+ 
+ 
++// Afficher le formulaire de changement de statut (cf. inc_acces.php3)
++afficher_formulaire_statut_auteur ($id_auteur);
+ 
+-//
+-// Seuls les admins voient le menu 'statut', mais les admins restreints ne
+-// pourront l'utiliser que pour mettre un auteur a la poubelle
+-//
+-
+-$statut = $auteur['statut']; // pour aller plus vite
+-
+-if ($connect_statut == &quot;0minirezo&quot;
+-	AND ($connect_toutes_rubriques OR $statut != &quot;0minirezo&quot;)
+-	AND $connect_id_auteur != $id_auteur) {
+-	debut_cadre_relief();
+-	echo &quot;&lt;center&gt;&lt;B&gt;&quot;._T('info_statut_auteur').&quot; &lt;/B&gt; &quot;;
+-	echo &quot; &lt;SELECT NAME='statut' SIZE=1 CLASS='fondl'&gt;&quot;;
+-
+-	if ($connect_statut == &quot;0minirezo&quot; AND $connect_toutes_rubriques)
+-		echo &quot;&lt;OPTION&quot;.mySel(&quot;0minirezo&quot;,$statut).&quot;&gt;&quot;._T('item_administrateur_2');
+-
+-	echo &quot;&lt;OPTION&quot;.mySel(&quot;1comite&quot;,$statut).&quot;&gt;&quot;._T('intem_redacteur');
+-
+-	if (($statut == '6forum') OR (lire_meta('accepter_visiteurs') == 'oui') OR (lire_meta('forums_publics') == 'abo'))
+-		echo &quot;&lt;OPTION&quot;.mySel(&quot;6forum&quot;,$statut).&quot;&gt;&quot;._T('item_visiteur');
+-	echo &quot;&lt;OPTION&quot;.mySel(&quot;5poubelle&quot;,$statut).
+-	  &quot; style='background:url(&quot; . _DIR_IMG_PACK . &quot;rayures-sup.gif)'&gt;&gt; &quot;._T('texte_statut_poubelle');
+-
+-	echo &quot;&lt;/SELECT&gt;&lt;/center&gt;\n&quot;;
+-	fin_cadre_relief();
+-}
+-else {
+-	echo &quot;&lt;INPUT TYPE='Hidden' NAME='statut' VALUE=\&quot;$statut\&quot;&gt;&quot;;
+-}
+-
+-//
+-// Gestion restreinte des rubriques
+-//
+-if ($statut == '0minirezo') {
+-	debut_cadre_enfonce(&quot;secteur-24.gif&quot;);
+-
+-	$query_admin = &quot;SELECT lien.id_rubrique, titre FROM spip_auteurs_rubriques AS lien, spip_rubriques AS rubriques WHERE lien.id_auteur=$id_auteur AND lien.id_rubrique=rubriques.id_rubrique GROUP BY lien.id_rubrique&quot;;
+-	$result_admin = spip_query($query_admin);
+-
+-	if (spip_num_rows($result_admin) == 0) {
+-		echo _T('info_admin_gere_toutes_rubriques');
+-	} else {
+-		echo _T('info_admin_gere_rubriques').&quot;\n&quot;;
+-		echo &quot;&lt;ul style='list-style-image: url(&quot; . _DIR_IMG_PACK . &quot;rubrique-12.gif)'&gt;&quot;;
+-		while ($row_admin = spip_fetch_array($result_admin)) {
+-			$id_rubrique = $row_admin[&quot;id_rubrique&quot;];
+-			$titre = typo($row_admin[&quot;titre&quot;]);
+-			echo &quot;&lt;li&gt;$titre&quot;;
+-			if ($connect_toutes_rubriques AND $connect_id_auteur != $id_auteur) {
+-				echo &quot; &lt;font size=1&gt;[&lt;a href='auteur_infos.php3?id_auteur=$id_auteur&amp;supp_rub=$id_rubrique'&gt;&quot;._T('lien_supprimer_rubrique').&quot;&lt;/a&gt;]&lt;/font&gt;&quot;;
+-			}
+-			$toutes_rubriques .= &quot;$id_rubrique,&quot;;
+-		}
+-		echo &quot;&lt;/ul&gt;&quot;;
+-		$toutes_rubriques = &quot;,$toutes_rubriques&quot;;
+-	}
+-
+-	if ($connect_toutes_rubriques AND $connect_id_auteur != $id_auteur) {
+-		if (spip_num_rows($result_admin) == 0) {
+-			echo &quot;&lt;p&gt;&lt;B&gt;&quot;._T('info_restreindre_rubrique').&quot;&lt;/b&gt;&lt;BR&gt;&quot;;
+-		} else {
+-			echo &quot;&lt;p&gt;&lt;B&gt;&quot;._T('info_ajouter_rubrique').&quot;&lt;/b&gt;&lt;BR&gt;&quot;;
+-		}
+-		echo &quot;&lt;INPUT NAME='id_auteur' VALUE='$id_auteur' TYPE='hidden'&gt;&quot;;
+-		echo &quot;&lt;SELECT NAME='add_rub' SIZE=1 CLASS='formo'&gt;&quot;;
+-		echo &quot;&lt;OPTION VALUE='0'&gt;   \n&quot;;
+-		afficher_auteur_rubriques(&quot;0&quot;);
+-		echo &quot;&lt;/SELECT&gt;&quot;;
+-	}
+-	fin_cadre_enfonce();
+-}
+ 
+ echo &quot;&lt;INPUT NAME='ajouter_id_article' VALUE='$ajouter_id_article' TYPE='hidden'&gt;\n&quot;;
+ echo &quot;&lt;INPUT NAME='redirect' VALUE='$redirect' TYPE='hidden'&gt;\n&quot;;
+
+Index: breves_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/breves_edit.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- breves_edit.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ breves_edit.php3	3 Mar 2005 14:54:56 -0000	1.3
+@@ -15,16 +15,6 @@
+ include_ecrire (&quot;inc_documents.php3&quot;);
+ include_ecrire (&quot;inc_barre.php3&quot;);
+ 
+-function mySel($varaut,$variable){
+-		$retour= &quot; VALUE=\&quot;$varaut\&quot;&quot;;
+-
+-	if ($variable==$varaut){
+-		$retour.= &quot; SELECTED&quot;;
+-	}
+-
+-	return $retour;
+-}
+-
+ function enfant($leparent) {
+ 	global $id_parent;
+ 	global $id_rubrique;
+
+Index: inc_calendrier.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_calendrier.php,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_calendrier.php	25 Feb 2005 16:35:57 -0000	1.3
++++ inc_calendrier.php	3 Mar 2005 14:54:56 -0000	1.4
+@@ -608,7 +608,7 @@
+ {
+   global $bleu, $jaune, $vert;
+   $href = &quot;message_edit.php3?rv=$annee-$mois-$jour&amp;new=oui&quot;;
+-  $script = 'calendrier.php3' ; // ok pour espace de redac, pas pour public
++  $script =  $GLOBALS['PHP_SELF'] ;
+   return &quot;\n&quot; .
+     http_href(&quot;$script?type=jour&amp;jour=$jour&amp;mois=$mois&amp;annee=$annee&quot;, $clic) .
+     &quot;\n&quot; .
+@@ -735,7 +735,8 @@
+ 
+ function http_calendrier_agenda ($mois, $annee, $jour_ved, $mois_ved, $annee_ved, $semaine = false,  $script='', $ancre='') {
+ 
+-  if (!$script) $script =  'calendrier.php3?' ;
++  if (!$script) $script =  $GLOBALS['PHP_SELF'] ;
++  if (!strpos($script, '?')) $script .= '?';
+   if (!$mois) {$mois = 12; $annee--;}
+   elseif ($mois==13) {$mois = 1; $annee++;}
+   return 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000130.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_en.php3,1.2,1.3 spip_ca.php3,1.2,1.3 spip_ar.php3,1.2,1.3 spip_fr.php3,1.2,1.3
+</A></li>
+	<LI>Next message: <A HREF="000132.html">[Spip-carto-cvs] spipcarto/dist nouveautes.html,1.2,1.3 auteur.html,1.2,1.3 plan.html,1.2,1.3 login.html,1.2,1.3 recherche.html,1.2,1.3 mot.html,1.2,1.3 site.html,1.2,1.3 sommaire_texte.html,1.2,1.3 404.html,1.2,1.3 rubrique.html,1.2,1.3 sommaire.html,1.2,1.3 article.html,1.2,1.3 forum.html,1.2,1.3 resume.html,1.2,1.3 breve.html,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#131">[ date ]</a>
+              <a href="thread.html#131">[ thread ]</a>
+              <a href="subject.html#131">[ subject ]</a>
+              <a href="author.html#131">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,1.1,1.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_import.php3%2C1.1%2C1.2&In-Reply-To=%3C200509260553.j8Q5rEmq010212%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000260.html">
+   <LINK REL="Next"  HREF="000262.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,1.1,1.2</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_import.php3%2C1.1%2C1.2&In-Reply-To=%3C200509260553.j8Q5rEmq010212%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,1.1,1.2">fxp at berlios.de
+       </A><BR>
+    <I>Mon Sep 26 07:53:14 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000260.html">[Spip-carto-cvs] spipcarto/ecrire cartes.php3,1.3,1.4 carte_import.php3,1.2,1.3
+</A></li>
+        <LI>Next message: <A HREF="000262.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.18,1.19
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#261">[ date ]</a>
+              <a href="thread.html#261">[ thread ]</a>
+              <a href="subject.html#261">[ subject ]</a>
+              <a href="author.html#261">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv10204/ecrire
+
+Modified Files:
+	inc_carto_import.php3 
+Log Message:
+i18n / fr, en
+
+Index: inc_carto_import.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto_import.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc_carto_import.php3	11 May 2005 10:08:39 -0000	1.1
++++ inc_carto_import.php3	26 Sep 2005 05:53:11 -0000	1.2
+@@ -1,6 +1,4 @@
+ &lt;?php
+-	
+-//
+ // Ce fichier ne sera execute qu'une fois
+ if (defined(&quot;_ECRIRE_INC_CARTE_IMPORT&quot;)) return;
+ define(&quot;_ECRIRE_INC_CARTE_IMPORT&quot;, &quot;1&quot;);
+@@ -11,7 +9,7 @@
+ 
+ 	echo &quot;&lt;div class='verdana2' align='justify'&gt;&quot;.
+ 			&quot;&lt;img src='&quot; . _DIR_IMG_PACK . &quot;warning.gif' alt='' width='48' height='48' /&gt;&quot;.
+-			&quot;&lt;p align='center'&gt;&lt;B&gt;&quot;._L('Attention, les objets que vous allez associer &#224; la carte doivent &#234;tre dans la m&#234;me projection !').&quot;&lt;/B&gt;&lt;/p&gt;&quot;;
++			&quot;&lt;p align='center'&gt;&lt;B&gt;&quot;._T('import_warning').&quot;&lt;/B&gt;&lt;/p&gt;&quot;;
+ 	echo &quot;&lt;/div&gt;&quot;;
+ 
+ 	fin_boite_info();
+@@ -22,7 +20,7 @@
+ 	
+ //
+ // Retourner le code HTML d'utilisation de fichiers uploades a la main
+-//	Repris de inc_document avec ajout d'un filtre sur les extensions 
++// Repris de inc_document avec ajout d'un filtre sur les extensions 
+ 
+ function texte_upload_file($dir, $inclus = '', $extw = '') {
+ 	$fichiers = fichiers_upload($dir);
+@@ -56,13 +54,10 @@
+ 			if ($exts[$ext] == 'oui') $texte_upload .= &quot;\n&lt;option value=\&quot;$f\&quot;&gt;&nbsp; &nbsp; &nbsp; &nbsp; $lefichier&lt;/option&gt;&quot;;
+ 		}
+ 	}
+-
+ 	return $texte_upload;
+ }	
+ 	
+-	
+-	
+-	
++		
+ class csvUtil {
+     /*
+      * Constructor
+@@ -128,10 +123,4 @@
+             return $retval;
+     }
+ }
+-
+-
+-
+-
+-
+-?&gt;
+-
++?&gt;
+\ No newline at end of file
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000260.html">[Spip-carto-cvs] spipcarto/ecrire cartes.php3,1.3,1.4 carte_import.php3,1.2,1.3
+</A></li>
+	<LI>Next message: <A HREF="000262.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.18,1.19
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#261">[ date ]</a>
+              <a href="thread.html#261">[ thread ]</a>
+              <a href="subject.html#261">[ subject ]</a>
+              <a href="author.html#261">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

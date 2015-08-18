@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto inc-balises.php3,1.12.2.3,1.12.2.4 inc-compilo-index.php3,1.6,1.6.2.1 inc-html-squel.php3,1.9,1.9.2.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-balises.php3%2C1.12.2.3%2C1.12.2.4%20inc-compilo-index.php3%2C1.6%2C1.6.2.1%20inc-html-squel.php3%2C1.9%2C1.9.2.1&In-Reply-To=%3C200603131334.k2DDXvbx032453%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000384.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto inc-balises.php3,1.12.2.3,1.12.2.4 inc-compilo-index.php3,1.6,1.6.2.1 inc-html-squel.php3,1.9,1.9.2.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-balises.php3%2C1.12.2.3%2C1.12.2.4%20inc-compilo-index.php3%2C1.6%2C1.6.2.1%20inc-html-squel.php3%2C1.9%2C1.9.2.1&In-Reply-To=%3C200603131334.k2DDXvbx032453%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto inc-balises.php3,1.12.2.3,1.12.2.4 inc-compilo-index.php3,1.6,1.6.2.1 inc-html-squel.php3,1.9,1.9.2.1">stef at berlios.de
+       </A><BR>
+    <I>Mon Mar 13 14:34:02 CET 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000384.html">[Spip-carto-cvs] spipcarto/ecrire inc_logos.php3,1.6.2.1,1.6.2.2 inc_version.php3,1.12.2.5,1.12.2.6 inc_layer.php3,1.3,1.3.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#382">[ date ]</a>
+              <a href="thread.html#382">[ thread ]</a>
+              <a href="subject.html#382">[ subject ]</a>
+              <a href="author.html#382">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv32397
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc-balises.php3 inc-compilo-index.php3 inc-html-squel.php3 
+Log Message:
+MAJ 1.8.3
+
+Index: inc-balises.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-balises.php3,v
+retrieving revision 1.12.2.3
+retrieving revision 1.12.2.4
+diff -u -d -r1.12.2.3 -r1.12.2.4
+--- inc-balises.php3	14 Feb 2006 01:11:09 -0000	1.12.2.3
++++ inc-balises.php3	13 Mar 2006 13:33:47 -0000	1.12.2.4
+@@ -811,9 +811,9 @@
+ // #ENV
+ // l'&quot;environnement&quot;, id est le $contexte (ou $contexte_inclus)
+ //
+-// en standard on applique |entites_html, mais attention si
+-// vous utilisez [(#ENV*{toto})] il *faut* vous assurer vous-memes
+-// de la securite anti-php et anti-javascript
++// en standard on applique |entites_html, mais si vous utilisez 
++// [(#ENV*{toto})] il *faut* vous assurer vous-memes de la securite 
++// anti-javascript (par exemple en filtrant avec |safehtml)
+ //
+ // La syntaxe #ENV{toto, rempl} renverra 'rempl' si $toto est vide
+ //
+@@ -833,7 +833,6 @@
+ 		// cas de #ENV sans argument : on retourne le serialize() du tableau
+ 		// une belle fonction [(#ENV|affiche_env)] serait pratique
+ 		$p-&gt;code = 'serialize($Pile[0])';
+-		$p-&gt;statut = 'html';
+ 	} else {
+ 		// admet deux arguments : nom de variable, valeur par defaut si vide
+ 		$p-&gt;code = '$Pile[0][&quot;' . addslashes($nom) . '&quot;]';
+@@ -842,9 +841,9 @@
+ 			  $p-&gt;code .
+ 			  compose_filtres_args($p, $sinon, ',') . 
+ 			  ')';
+-		$p-&gt;statut = 'php';
+ 	}
+-
++	$p-&gt;statut = 'html';
++	
+ 	return $p;
+ }
+ 
+
+Index: inc-compilo-index.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-compilo-index.php3,v
+retrieving revision 1.6
+retrieving revision 1.6.2.1
+diff -u -d -r1.6 -r1.6.2.1
+--- inc-compilo-index.php3	10 Aug 2005 12:00:39 -0000	1.6
++++ inc-compilo-index.php3	13 Mar 2006 13:33:47 -0000	1.6.2.1
+@@ -235,7 +235,8 @@
+ 	// Appliquer les filtres perso
+ 	if ($p-&gt;param) $code = compose_filtres($p, $code);
+ 	// post-traitement securite
+-	if ($p-&gt;statut == 'html') $code = &quot;interdire_scripts($code)&quot;;
++	if ($p-&gt;statut == 'html'
++	AND $p-&gt;etoile !='**') $code = &quot;interdire_scripts($code)&quot;;
+ 	return $code;
+ }
+ 
+
+Index: inc-html-squel.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-html-squel.php3,v
+retrieving revision 1.9
+retrieving revision 1.9.2.1
+diff -u -d -r1.9 -r1.9.2.1
+--- inc-html-squel.php3	7 Sep 2005 15:01:53 -0000	1.9
++++ inc-html-squel.php3	13 Mar 2006 13:33:47 -0000	1.9.2.1
+@@ -30,7 +30,7 @@
+ define('SPEC_BOUCLE','[[:space:]]*\(([^)]*)\)');
+ define('NOM_DE_BOUCLE', &quot;[0-9]+|[-_][-_.a-zA-Z0-9]*&quot;);
+ # ecriture alambiquee pour rester compatible avec les hexadecimaux des vieux squelettes
+-define('NOM_DE_CHAMP', &quot;#((&quot; . NOM_DE_BOUCLE . &quot;):)?(([A-F]*[G-Z_][A-Z_0-9]*)|[A-Z_]+)(\*?)&quot;);
++define('NOM_DE_CHAMP', &quot;#((&quot; . NOM_DE_BOUCLE . &quot;):)?(([A-F]*[G-Z_][A-Z_0-9]*)|[A-Z_]+)(\*?\*?)&quot;);
+ define('CHAMP_ETENDU', '\[([^]\[]*)\(' . NOM_DE_CHAMP . '([^[)]*\)[^]\[]*)\]');
+ 
+ define('BALISE_INCLURE','&lt;INCLU[DR]E[[:space:]]*\(([^)]*)\)');
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000384.html">[Spip-carto-cvs] spipcarto/ecrire inc_logos.php3,1.6.2.1,1.6.2.2 inc_version.php3,1.12.2.5,1.12.2.6 inc_layer.php3,1.3,1.3.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#382">[ date ]</a>
+              <a href="thread.html#382">[ thread ]</a>
+              <a href="subject.html#382">[ subject ]</a>
+              <a href="author.html#382">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

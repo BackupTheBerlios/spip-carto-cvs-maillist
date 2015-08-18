@@ -1,0 +1,517 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire carte_import.php3,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20carte_import.php3%2CNONE%2C1.1&In-Reply-To=%3C200505111008.j4BA8RDo020160%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000158.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire carte_import.php3,NONE,1.1</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20carte_import.php3%2CNONE%2C1.1&In-Reply-To=%3C200505111008.j4BA8RDo020160%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire carte_import.php3,NONE,1.1">fxp at berlios.de
+       </A><BR>
+    <I>Wed May 11 12:08:27 CEST 2005</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000158.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv20154/ecrire
+
+Added Files:
+	carte_import.php3 
+Log Message:
+Import de donn&#233;es / Format TXT
+
+--- NEW FILE: carte_import.php3 ---
+&lt;?php
+
+
+
+include (&quot;inc.php3&quot;);
+include_ecrire (&quot;inc_documents.php3&quot;);
+include_ecrire (&quot;inc_mots.php3&quot;);
+include_ecrire (&quot;inc_import.php3&quot;);
+include_ecrire (&quot;inc_documents.php3&quot;);
+include_ecrire (&quot;inc_carto.php3&quot;);
+include_ecrire (&quot;inc_carto_import.php3&quot;);
+
+
+// si XML disponible / Activation de l'import GPX
+if (extension_loaded (&quot;xml&quot;))
+	$xml = true;
+else
+	$xml = false;
+	
+//TODO : voir integration d'une option de configuration de Spip
+//bof, je prefere attendre d'avoir un systeme de gestion des modules
+//meme si il faut le faire ...
+//include_ecrire(&quot;inc_config.php3&quot;);
+
+$flag_editable=carte_editable($id_carte);
+$id_carte = intval($id_carte);
+$flag_mots = lire_meta(&quot;carto_mots&quot;);
+//$flag_mots = &quot;oui&quot;;
+$nouveau=false;
+$dir = 'upload';						// R&#233;pertoire o&#249; chercher les fichiers
+			
+
+
+if ($id_carte) {
+	//TODO : passer tout ca en spip_abstract ...
+	$query = &quot;SELECT * FROM spip_carto_cartes WHERE id_carto_carte=$id_carte&quot;;
+	$result = spip_query($query);
+	if ($row = spip_fetch_array($result)) {
+		$titre = entites_html($row['titre']);
+		$url_carte = $row['url_carte'];
+		$texte = entites_html($row['texte']);
+		$callage = entites_html($row['callage']);
+		$id_srs = intval($row['id_srs']);
+		$js_titre = &quot;&quot;;
+	}
+}
+
+		
+
+
+$carte_link = new Link(&quot;carte_edit.php3&quot;);
+$carte_link-&gt;addVar('id_carte', $id_carte);
+if ($retour) $carte_link-&gt;addVar('retour', $retour);
+
+$carte_supplink = new Link(&quot;carte_edit.php3&quot;);
+$carte_supplink-&gt;addVar('id_carte', $id_carte);
+$carte_supplink-&gt;addVar('supp_carte', $id_carte);
+if ($retour) $carte_supplink-&gt;addVar('retour', $retour);
+
+$carte_importlink = new Link(&quot;carte_import.php3&quot;);
+$carte_importlink-&gt;addVar('id_carte', $id_carte);
+if ($retour) $carte_importlink-&gt;addVar('retour', $retour);
+
+
+//
+// Modifications des objets de la carte
+//
+
+if ($id_carte &amp;&amp; $flag_editable) {
+
+	// Ajout d'un objet
+	if ($selection_type) {
+		$geometrie=coords2wkt($selection_type,$selection_coords, worldfile2array($row['callage'])); // Si pas de fonction de zoom le callage correspond bien &#224; la valeur. Sinon avec zoom, il faut passer les coordonn&#233;es g&#233;ographiques de la vue en cours ....
+		$objet_titre = _L(&quot;Nouvel objet&quot;);
+		$url_objet = &quot;#&quot;;
+		//TODO : passer tout ca en spip_abstract ...
+		spip_query(&quot;INSERT INTO spip_carto_objets (id_carto_carte,titre,geometrie,url_objet) VALUES (&quot;.$id_carte.&quot;,'&quot;.addslashes($objet_titre).&quot;','&quot;.$geometrie.&quot;','&quot;.$url_objet.&quot;')&quot;);
+		$id_objet = spip_insert_id();
+		$objet_visible=$id_objet;
+		$nouveau=true;
+	}
+	// Modif d'un objet
+	if ($modif_objet) {
+		//TODO : passer tout ca en spip_abstract ...
+		$query = &quot;UPDATE spip_carto_objets SET &quot;.
+			//&quot;id_carto_carte=&quot;.intval($id_carte).&quot;, &quot;.
+			&quot;titre='&quot;.addslashes($objet_titre).&quot;', &quot;.
+			&quot;texte='&quot;.addslashes($objet_texte).&quot;', &quot;.
+			&quot;url_objet='&quot;.$url_objet.&quot;', &quot;.
+			&quot;url_logo='&quot;.$url_logo.&quot;', &quot;.
+			&quot;geometrie='&quot;.addslashes($geometrie).&quot;' &quot;.
+			&quot;WHERE id_carto_objet=$modif_objet&quot;;
+			$result = spip_query($query);
+			$objet_visible=$modif_objet;
+	}
+	if ($id_objet) {
+			$objet_visible=$id_objet;
+	}
+	
+
+}
+
+
+//
+// Affichage de la page
+//
+
+debut_page(&quot;&laquo; $titre &raquo;&quot;, &quot;documents&quot;, &quot;cartes&quot;);
+
+debut_gauche();
+
+if ($new!=&quot;oui&quot;) {
+	# modifs de la description d'un des docs joints
+	maj_documents($id_carte, 'carto_carte');
+	
+	# affichage
+	afficher_documents_colonne($id_carte, 'carto_carte', true);
+}
+
+debut_droite();
+
+//
+// Importer des objets / Titre
+//
+if ($id_carte) {
+	gros_titre($titre);
+	
+	
+	avertissement_carto_import ();
+	
+	
+	
+	//
+	// Importer des objets / Formulaire
+	//	1.S&#233;lection d'un fichier du r&#233;pertoire upload
+	//	2.Analyse du fichier
+	// 	3.Importation
+	switch ($step)
+	{	case 2:
+			debut_cadre_relief(&quot;carte-24.gif&quot;);
+			
+			switch ($typeImport)
+			{	case &quot;TXT&quot;:
+					echo &quot;&lt;form&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='id_srs' id='srs_carte' &quot;.
+							&quot;value=\&quot;&quot;.$id_srs.&quot;\&quot; size='40'&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='id_carte' id='id_carte' &quot;.
+					&quot;value=\&quot;&quot;.$id_carte.&quot;\&quot; size='40'&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='typeImport' id='typeImport' &quot;.
+									&quot;value=\&quot;&quot;.$typeImport.&quot;\&quot; size='40'&gt;&quot;;
+							
+				
+					//	2.Analyse du fichier texte  
+					echo &quot;&lt;strong class='verdana2'&gt;&quot;._L(&quot;S&#233;lectionner les champs du fichier texte &#224; importer dans les objets de votre carte.&quot;) . &quot;&lt;/strong&gt;&lt;br/&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='step' value='3'&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='file' value='&quot;.$file.&quot;'&gt;&quot;;
+				
+					// TODO : Param&#232;trage du s&#233;parateur de champ
+					// TODO : Filtrer les champs de type num&#233;rique et les autres pour le choix des champs pour les coordonn&#233;es
+					
+					$rec = new csvUtil($dir.&quot;/&quot;.$file, &quot;;&quot;);		// Ouverture du fichier &amp; lecture
+					$i = 0;
+					$nbcol = $rec-&gt;numCols();
+					while ($i&lt;$nbcol) {								// Cr&#233;ation d'une liste des colonnes du fichiers
+							$collist .= &quot;&lt;option value='&quot;.$i.&quot;'&gt;&quot;.$rec-&gt;getField(0, $i).&quot;&lt;/option&gt;&quot;;
+							$i++;
+					}
+					echo &quot;&lt;ul&gt;&quot;;
+					// Cr&#233;ation du formulaire d'importation
+					echo &quot;&lt;li&gt;&quot;._L(&quot;Titre de l'objet :&quot;).&quot;&lt;select name='col'&gt;&quot; .
+							&quot;&lt;option value='null'&gt;Nouvel Objet&lt;/option&gt;\n&quot;.
+							$collist.
+							&quot;&lt;/select&gt;\n&quot;.
+							_L(&quot;('Nouvel Objet' par d&#233;faut)&quot;).&quot;&lt;/li&gt;&quot;;
+					
+					echo &quot;&lt;li&gt;&quot;._L(&quot;Texte :&quot;).&quot;&lt;select name='desc'&gt;&quot; .
+							&quot;&lt;option value='null'&gt;null&lt;/option&gt;\n&quot;.
+							$collist.
+							&quot;&lt;/select&gt;\n&quot;.
+							_L(&quot;(null par d&#233;faut)&quot;).&quot;&lt;/li&gt;&quot;;
+			
+					echo &quot;&lt;li&gt;&quot;._L(&quot;Lien de l'objet :&quot;).
+							&quot;&lt;br/&gt;&lt;input id='link_prefix' name='link_prefix' value='' size='6'/&gt;\n&quot; .
+							&quot;&lt;select name='link'&gt;&quot; .
+							&quot;&lt;option value='null'&gt;null&lt;/option&gt;\n&quot;.
+							$collist.
+							&quot;&lt;/select&gt;\n&quot;.
+							&quot;&lt;input id='link_sufixe' name='link_sufixe' value='' size='3'/&gt;\n&quot; .
+							_L(&quot;(null par d&#233;faut)&quot;).&quot;&lt;/li&gt;&quot;;
+			
+			
+					echo &quot;&lt;li&gt;&quot;._L(&quot;Coordonn&#233;es X :&quot;).&quot;&lt;select name='x'&gt;&quot; .
+							&quot;&lt;option value='0'&gt;0&lt;/option&gt;\n&quot;.
+							$collist.
+							&quot;&lt;/select&gt;\n&quot;.
+							_L(&quot;(0 par d&#233;faut)&quot;).&quot;&lt;/li&gt;&quot;;
+					
+					echo &quot;&lt;li&gt;&quot;._L(&quot;Coordonn&#233;es Y :&quot;).&quot;&lt;select name='y'&gt;&quot; .
+							&quot;&lt;option value='0'&gt;0&lt;/option&gt;\n&quot;.
+							$collist.
+							&quot;&lt;/select&gt;\n&quot;.
+							_L(&quot;(0 par d&#233;faut)&quot;).&quot;&lt;/li&gt;&quot;;
+					echo &quot;&lt;/ul&gt;&quot;;
+					
+					echo &quot;\n  &lt;div align='&quot;.$GLOBALS['spip_lang_right'].&quot;'&gt;&lt;input name='ok_ftp' type='Submit' value='&quot;._T('bouton_suivant').&quot;' class='fondo'&gt;&lt;/div&gt;&quot;;
+					echo &quot;&lt;/form&gt;&quot;;		
+			break;
+			case &quot;GPX&quot;:
+				if ($xml){
+					echo &quot;&lt;form&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='id_srs' id='srs_carte' &quot;.
+							&quot;value=\&quot;&quot;.$id_srs.&quot;\&quot; size='40'&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='id_carte' id='id_carte' &quot;.
+					&quot;value=\&quot;&quot;.$id_carte.&quot;\&quot; size='40'&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='typeImport' id='typeImport' &quot;.
+									&quot;value=\&quot;&quot;.$typeImport.&quot;\&quot; size='40'&gt;&quot;;
+							
+					//	2.Analyse du fichier GPX  
+					// TODO : Lecture du fichier GPX
+					// TODO : Parse le fichier 
+					// TODO : Choix des attributs (Mapping GPX -&gt; SPIP-CARTO-OBJET)
+							
+					echo &quot;&lt;strong class='verdana2'&gt;&quot;._L(&quot;S&#233;lectionner les champs du fichier GPX &#224; importer dans les objets de votre carte.&quot;) . &quot;&lt;/strong&gt;&lt;br/&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='step' value='3'&gt;&quot;;
+					echo &quot;&lt;input type='hidden' name='file' value='&quot;.$file.&quot;'&gt;&quot;;
+
+
+					/*
+					 * Structure d'un waypoint 
+						 &lt;time&gt;2003-07-02T10:29:58Z&lt;/time&gt;
+						 &lt;name&gt;0101&lt;/name&gt;
+						 &lt;cmt&gt;MONTGERON&lt;/cmt&gt;
+						 &lt;desc&gt;0101&lt;/desc&gt;
+						 &lt;sym&gt;Waypoint&lt;/sym&gt;
+						 &lt;type&gt;Gas Station&lt;/type&gt;
+						 
+						 -&gt; Importer les types via des mots cl&#233;s ?
+					 */
+					$collist = &quot;&lt;option value='name'&gt;name&lt;/option&gt;&quot;;
+					$collist .= &quot;&lt;option value='cmt'&gt;cmt&lt;/option&gt;&quot;;
+					$collist .= &quot;&lt;option value='desc'&gt;desc&lt;/option&gt;&quot;;
+					$collist .= &quot;&lt;option value='sym'&gt;sym&lt;/option&gt;&quot;;
+					$collist .= &quot;&lt;option value='time'&gt;time&lt;/option&gt;&quot;;
+					$collist .= &quot;&lt;option value='type'&gt;type&lt;/option&gt;&quot;;
+					
+					// Cr&#233;ation du formulaire d'importation
+					echo &quot;&lt;ul&gt;&quot;;
+					echo &quot;&lt;li&gt;&quot;._L(&quot;Titre de l'objet :&quot;).&quot;&lt;select name='col'&gt;&quot; .
+							&quot;&lt;option value='null'&gt;Nouvel Objet&lt;/option&gt;\n&quot;.
+							$collist.
+							&quot;&lt;/select&gt;\n&quot;.
+							_L(&quot;('Nouvel Objet' par d&#233;faut)&quot;).&quot;&lt;/li&gt;&quot;;
+					
+					echo &quot;&lt;li&gt;&quot;._L(&quot;Texte :&quot;).&quot;&lt;select name='desc'&gt;&quot; .
+							&quot;&lt;option value='null'&gt;null&lt;/option&gt;\n&quot;.
+							$collist.
+							&quot;&lt;/select&gt;\n&quot;.
+							_L(&quot;(null par d&#233;faut)&quot;).&quot;&lt;/li&gt;&quot;;
+			
+					echo &quot;&lt;li&gt;&quot;._L(&quot;Lien de l'objet :&quot;).
+							&quot;&lt;br/&gt;&lt;input id='link_prefix' name='link_prefix' value='' size='6'/&gt;\n&quot; .
+							&quot;&lt;select name='link'&gt;&quot; .
+							&quot;&lt;option value='null'&gt;null&lt;/option&gt;\n&quot;.
+							$collist.
+							&quot;&lt;/select&gt;\n&quot;.
+							&quot;&lt;input id='link_sufixe' name='link_sufixe' value='' size='3'/&gt;\n&quot; .
+							_L(&quot;(null par d&#233;faut)&quot;).&quot;&lt;/li&gt;&quot;;
+			
+
+					echo &quot;\n  &lt;div align='&quot;.$GLOBALS['spip_lang_right'].&quot;'&gt;&lt;input name='ok_ftp' type='Submit' value='&quot;._T('bouton_suivant').&quot;' class='fondo'&gt;&lt;/div&gt;&quot;;
+					echo &quot;&lt;/form&gt;&quot;;		
+				}
+				
+			break;
+			}
+
+			fin_cadre_relief();	
+		break;
+		case 3:
+			switch ($typeImport)
+			{	case &quot;TXT&quot;: 
+					// 	3.Importation du fichier texte en base
+					debut_cadre_relief(&quot;carte-24.gif&quot;);
+					echo &quot;&lt;strong class='verdana2'&gt;&quot;._L(&quot;Importation des objets.&quot;) . &quot;&lt;/strong&gt; &quot;;
+				
+					$rec = new csvUtil($dir.&quot;/&quot;.$file, &quot;;&quot;);		// Ouverture du fichier &amp; lecture
+					$i = 1;
+					$nbErr = 0;
+					$nb = $rec-&gt;numRows();
+					while ($i&lt;$nb) {
+							if (!is_null($rec-&gt;getField($i,$col)) &amp;&amp; 
+								is_numeric($rec-&gt;getField($i,$x)) &amp;&amp; 
+								is_numeric($rec-&gt;getField($i,$y)))		// Champ code non null et x et y num&#233;rique
+							{	$sql = sprintf (&quot;Insert into spip_carto_objets (id_carto_carte, titre, texte, url_objet, url_logo, geometrie) values 		(%d, '%s', '%s', '%s', '', 'point(%f %f)');\n&quot;,
+									($carte==&quot;null&quot;?&quot;0&quot;:$id_carte),
+									($col==&quot;null&quot;?&quot;Nouvel Objet&quot;:addslashes ($rec-&gt;getField($i,$col))),
+									($desc==&quot;null&quot;?&quot;&quot;:addslashes ($rec-&gt;getField($i,$desc))),
+									($link==&quot;null&quot;?&quot;&quot;:addslashes ($link_prefix.$rec-&gt;getField($i,$link).$link_sufixe)),
+									($x==&quot;0&quot;?0:$rec-&gt;getField($i, $x)),
+									($y==&quot;0&quot;?0:$rec-&gt;getField($i, $y))
+									);
+							}else
+								$nbErr++;
+							
+							$i++;
+
+							spip_query ($sql);
+							// TODO : Tous les cas d'erreur 
+					}		
+					echo &quot;&lt;br/&gt;&lt;strong class='verdana2'&gt;&quot;._L(&quot;Nombre d'objets ajout&#233;s &#224; votre carte : &quot;). ($i-$nbErr). &quot;&lt;/strong&gt; &quot;;
+					fin_cadre_relief();	
+							
+				break;
+				case &quot;GPX&quot;:
+				if ($xml){
+					// TODO : Lecture des WPT et conversion en objet ponctuel
+					// TODO : Insertion en base.
+					echo $dir.&quot;/&quot;.$file;
+							
+				}
+				break;	
+			}
+		break;
+		default: 
+			// ----------------------
+			// Import / Format CSV 
+			debut_cadre_relief(&quot;carte-24.gif&quot;);
+			echo &quot;&lt;form&gt;&quot;;
+			echo &quot;&lt;input type='hidden' name='typeImport' id='typeImport' &quot;.
+					&quot;value=\&quot;TXT\&quot; size='40'&gt;&quot;;
+			echo &quot;&lt;input type='hidden' name='id_srs' id='srs_carte' &quot;.
+					&quot;value=\&quot;&quot;.$id_srs.&quot;\&quot; size='40'&gt;&quot;;
+			echo &quot;&lt;input type='hidden' name='id_carte' id='id_carte' &quot;.
+					&quot;value=\&quot;&quot;.$id_carte.&quot;\&quot; size='40'&gt;&quot;;
+			echo &quot;&lt;div style='padding: 2px; background-color: $couleur_claire; color: black;'&gt;&nbsp;&quot;;
+			echo bouton_block_visible(&quot;IMPORT-TXT&quot;);
+			echo &quot;&lt;strong&gt;&quot;._L(&quot;Import fichier texte (CSV)&quot;).&quot;&lt;/strong&gt;&quot;;
+			echo &quot;&lt;br /&gt;&lt;/div&gt;&quot;;
+			echo debut_block_visible(&quot;IMPORT-TXT&quot;);			
+			
+			//	1.S&#233;lection d'un fichier du r&#233;pertoire upload
+			$texte_upload = texte_upload_file($dir, '', 'txt');
+			if ($texte_upload) {
+				echo &quot;&lt;p&gt;&lt;div style='color: #505050;'&gt;&quot;;
+				if ($forcer_document) echo '&lt;input type=&quot;hidden&quot; name=&quot;forcer_document&quot; value=&quot;oui&quot;&gt;';
+				echo &quot;\n&quot;._T('info_selectionner_fichier').&quot;&nbsp;:&lt;br /&gt;&quot;;
+				echo &quot;\n&lt;select name='file' size='1' class='fondl'&gt;&quot;;
+				echo $texte_upload;
+				echo &quot;\n&lt;/select&gt;&quot;;
+				echo &quot;&lt;input type='hidden' name='dir' id='dir' &quot;.
+					&quot;value=\&quot;&quot;.$dir.&quot;\&quot; size='40'&gt;&quot;;
+				echo &quot;\n  &lt;div align='&quot;.$GLOBALS['spip_lang_right'].&quot;'&gt;&lt;input name='ok_ftp' type='Submit' value='&quot;._T('bouton_suivant').&quot;' class='fondo'&gt;&lt;/div&gt;&quot;;
+			
+				echo &quot;&lt;/div&gt;\n&quot;;
+				echo &quot;&lt;input type='hidden' name='step' value='2'&quot;;
+			}else
+				echo &quot;&lt;strong class='verdana2'&gt;&quot;._L(&quot;Il n'y a pas de fichier dans le r&#233;pertoire upload (Utilisez le FTP).&quot;) . &quot;&lt;/strong&gt; &quot;;
+				
+			echo fin_block();
+			fin_cadre_relief();	
+			echo &quot;&lt;/form&gt;&quot;;		
+			
+			
+			// ----------------------
+			// Import / Format GPX - GPS
+			/*if ($xml){ 
+			debut_cadre_relief(&quot;carte-24.gif&quot;);
+			echo &quot;&lt;form&gt;&quot;;
+			echo &quot;&lt;input type='hidden' name='typeImport' id='typeImport' &quot;.
+					&quot;value=\&quot;GPX\&quot; size='40'&gt;&quot;;
+			echo &quot;&lt;input type='hidden' name='id_srs' id='srs_carte' &quot;.
+					&quot;value=\&quot;&quot;.$id_srs.&quot;\&quot; size='40'&gt;&quot;;
+			echo &quot;&lt;input type='hidden' name='id_carte' id='id_carte' &quot;.
+					&quot;value=\&quot;&quot;.$id_carte.&quot;\&quot; size='40'&gt;&quot;;
+			echo &quot;&lt;div style='padding: 2px; background-color: $couleur_claire; color: black;'&gt;&nbsp;&quot;;
+			echo bouton_block_invisible(&quot;IMPORT-GPS&quot;);
+			echo &quot;&lt;strong&gt;&quot;._L(&quot;Import fichier GPS (GPX)&quot;).&quot;&lt;/strong&gt;&quot;;
+			echo &quot;&lt;br /&gt;&lt;/div&gt;&quot;;
+			echo debut_block_invisible(&quot;IMPORT-GPS&quot;);
+			echo &quot;&lt;strong class='verdana2'&gt;&quot;._L(&quot;S&#233;lectionner un fichier&quot;) . &quot;&lt;/strong&gt; &quot;;
+			
+			$texte_upload = texte_upload_file($dir, '', 'gpx');
+			if ($texte_upload) {
+				echo &quot;&lt;p&gt;&lt;div style='color: #505050;'&gt;&quot;;
+				if ($forcer_document) echo '&lt;input type=&quot;hidden&quot; name=&quot;forcer_document&quot; value=&quot;oui&quot;&gt;';
+				echo &quot;\n&quot;._T('info_selectionner_fichier').&quot;&nbsp;:&lt;br /&gt;&quot;;
+				echo &quot;\n&lt;select name='file' size='1' class='fondl'&gt;&quot;;
+				echo $texte_upload;
+				echo &quot;\n&lt;/select&gt;&quot;;
+				echo &quot;&lt;input type='hidden' name='dir' id='dir' &quot;.
+					&quot;value=\&quot;&quot;.$dir.&quot;\&quot; size='40'&gt;&quot;;
+				echo &quot;\n  &lt;div align='&quot;.$GLOBALS['spip_lang_right'].&quot;'&gt;&lt;input name='ok_ftp' type='Submit' value='&quot;._T('bouton_suivant').&quot;' class='fondo'&gt;&lt;/div&gt;&quot;;
+			
+				echo &quot;&lt;/div&gt;\n&quot;;
+				echo &quot;&lt;input type='hidden' name='step' value='2'&quot;;
+			}else
+				echo &quot;&lt;strong class='verdana2'&gt;&quot;._L(&quot;Il n'y a pas de fichier dans le r&#233;pertoire upload (Utilisez le FTP).&quot;) . &quot;&lt;/strong&gt; &quot;;
+				
+			
+			echo fin_block();
+			fin_cadre_relief();	
+			echo &quot;&lt;/form&gt;&quot;;		
+			}*/
+			
+			
+			// ----------------------
+			// Import / Format Shapefile
+			/*
+			echo &quot;&lt;form&gt;&quot;;
+			echo &quot;&lt;input type='hidden' name='typeImport' id='typeImport' &quot;.
+					&quot;value=\&quot;SHP\&quot; size='40'&gt;&quot;;
+			echo &quot;&lt;input type='hidden' name='id_srs' id='srs_carte' &quot;.
+					&quot;value=\&quot;&quot;.$id_srs.&quot;\&quot; size='40'&gt;&quot;;
+			echo &quot;&lt;input type='hidden' name='id_carte' id='id_carte' &quot;.
+					&quot;value=\&quot;&quot;.$id_carte.&quot;\&quot; size='40'&gt;&quot;;
+			debut_cadre_relief(&quot;carte-24.gif&quot;);
+			echo &quot;&lt;div style='padding: 2px; background-color: $couleur_claire; color: black;'&gt;&nbsp;&quot;;
+			echo bouton_block_invisible(&quot;IMPORT-SHP&quot;);
+			echo &quot;&lt;strong&gt;&quot;._L(&quot;Import fichier ESRI (SHP)&quot;).&quot;&lt;/strong&gt;&quot;;
+			echo &quot;&lt;br /&gt;&lt;/div&gt;&quot;;
+			echo debut_block_invisible(&quot;IMPORT-SHP&quot;);
+			echo &quot;&lt;strong class='verdana2'&gt;&quot;._L(&quot;S&#233;lectionner un fichier.&quot;) . &quot;&lt;/strong&gt; &quot;;		
+			echo fin_block();
+			fin_cadre_relief();	
+			echo &quot;&lt;/form&gt;&quot;;		
+			*/			
+		break;
+		
+	}
+	
+	
+}
+
+
+		
+//
+if ($retour) {
+	echo &quot;&lt;br /&gt;\n&quot;;
+	echo &quot;&lt;div align='$spip_lang_right'&gt;&quot;;
+	icone(_T('icone_retour'), $retour, &quot;carte-24.gif&quot;, &quot;rien.gif&quot;);
+	echo &quot;&lt;/div&gt;\n&quot;;
+}
+
+
+
+
+fin_page();
+
+?&gt;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000158.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,872 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.6,1.6.2.1 inc_tag-machine.php,1.1.2.1,1.1.2.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20mots_partout.php%2C1.6%2C1.6.2.1%20inc_tag-machine.php%2C1.1.2.1%2C1.1.2.2&In-Reply-To=%3C200510040035.j940Zwmq017830%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000315.html">
+   <LINK REL="Next"  HREF="000317.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.6,1.6.2.1 inc_tag-machine.php,1.1.2.1,1.1.2.2</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20mots_partout.php%2C1.6%2C1.6.2.1%20inc_tag-machine.php%2C1.1.2.1%2C1.1.2.2&In-Reply-To=%3C200510040035.j940Zwmq017830%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.6,1.6.2.1 inc_tag-machine.php,1.1.2.1,1.1.2.2">stef at berlios.de
+       </A><BR>
+    <I>Tue Oct  4 02:35:58 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000315.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.4,1.18.2.5
+</A></li>
+        <LI>Next message: <A HREF="000317.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.5,1.18.2.6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#316">[ date ]</a>
+              <a href="thread.html#316">[ thread ]</a>
+              <a href="subject.html#316">[ subject ]</a>
+              <a href="author.html#316">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv17633/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	mots_partout.php inc_tag-machine.php 
+Log Message:
+correction bug (filtrage par mots)
+variable en _request =&gt; get ou post
+
+Index: mots_partout.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mots_partout.php,v
+retrieving revision 1.6
+retrieving revision 1.6.2.1
+diff -u -d -r1.6 -r1.6.2.1
+--- mots_partout.php	18 Aug 2005 23:53:13 -0000	1.6
++++ mots_partout.php	4 Oct 2005 00:35:53 -0000	1.6.2.1
+@@ -20,11 +20,19 @@
+ //    along with this program; if not, write to the Free Software
+ //    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+-include (&quot;inc.php3&quot;);
+-include_ecrire (&quot;inc_version.php3&quot;);
+-include_ecrire (&quot;inc_documents.php3&quot;);
+-include_ecrire (&quot;inc_abstract_sql.php3&quot;);
+-include_ecrire (&quot;inc_objet.php3&quot;);
++if(@file_exists('inc.php')){
++  include('inc.php');
++} else if(@file_exists('inc.php3')){
++  include('inc.php3');
++}
++if(@file_exists('inc_version.php')){
++  include('inc_version.php');
++} else if(@file_exists('inc_version.php3')){
++  include('inc_version.php3');
++}
++include_ecrire (&quot;inc_documents&quot;._EXTENSION_PHP);
++include_ecrire (&quot;inc_abstract_sql&quot;._EXTENSION_PHP);
++include_ecrire (&quot;inc_objet&quot;._EXTENSION_PHP);
+ include_ecrire('inc_tag-machine.php');
+ 
+ /***********************************************************************
+@@ -270,7 +278,7 @@
+   
+   $from =  array($table);
+   
+-  $where = array(&quot;id_auteur = $connect_id_auteur&quot;, &quot;$id_chose = $id&quot;);
++  $where = array(&quot;id_auteur = $connect_id_auteur&quot;, &quot;$id_objet = $id&quot;);
+   
+   $result = spip_abstract_select($select,$from,$where);
+   
+@@ -373,9 +381,7 @@
+ 	$select = array('*');
+ 	$from = array('spip_documents');
+ 	$where = array(&quot;id_document = $id_document&quot;);
+-	echo &quot;&lt;hr/&gt;&quot;;
+ 	$results = spip_abstract_select($select,$from,$where);
+-	echo &quot;&lt;hr/&gt;&quot;;
+ 
+ 	if($document = spip_abstract_fetch($results)) {
+ 	  $id_vignette = $document['id_vignette'];
+@@ -434,8 +440,7 @@
+ 	  
+ 	  // bloc titre et descriptif
+ 	  if (strlen($titre) &gt; 0) {
+-		echo &quot;&lt;div class='verdana2'&gt;&lt;b&gt;&quot;.typo($titre).&quot;&lt;/b&gt;&quot;;
+-		echo '&lt;/div&gt;';
++		echo '&lt;div class=\'verdana2\' style=\'text-align:center;\'&gt;&lt;b&gt;'.typo($titre).'&lt;/b&gt;&lt;/div&gt;';
+ 	  } else {
+ 		$nom_fichier = basename($fichier);
+ 		
+@@ -526,10 +531,10 @@
+ 	// Le titre (et la langue)
+ 	$s = &quot;&lt;div&gt;&quot;;
+ 	
+-	$s .= &quot;&lt;a href=\&quot;articles.php3?id_article=$id_article\&quot;$descriptif$dir_lang style=\&quot;display:block;\&quot;&gt;&quot;;
++	$s .= &quot;&lt;a href=\&quot;articles&quot;._EXTENSION_PHP.&quot;?id_article=$id_article\&quot;$descriptif$dir_lang style=\&quot;display:block;\&quot;&gt;&quot;;
+ 	
+ 	if ($spip_display != 1 AND $spip_display != 4 AND lire_meta('image_process') != &quot;non&quot;) {
+-	  include_ecrire(&quot;inc_logos.php3&quot;);
++	  include_ecrire(&quot;inc_logos&quot;._EXTENSION_PHP);
+ 	  $logo = decrire_logo(&quot;arton$id_article&quot;);
+ 	  if ($logo) {
+ 		$fichier = $logo[0];
+@@ -543,7 +548,7 @@
+ 		$hash = calculer_action_auteur (&quot;reduire $w $h&quot;);
+ 		
+ 		$s.= &quot;&lt;div style='float: $spip_lang_right; margin-top: -2px; margin-bottom: -2px;'&gt;
+-&lt;img src='../spip_image_reduite.php3?img=&quot;._DIR_IMG.&quot;$fichier&amp;taille_x=$w&amp;taille_y=$h&amp;hash=$hash&amp;hash_id_auteur=$connect_id_auteur' alt='$fichier' width='$w' height='$h' border='0'&gt;&lt;/div&gt;&quot;;
++&lt;img src='../spip_image_reduite&quot;._EXTENSION_PHP.&quot;?img=&quot;._DIR_IMG.&quot;$fichier&amp;taille_x=$w&amp;taille_y=$h&amp;hash=$hash&amp;hash_id_auteur=$connect_id_auteur' alt='$fichier' width='$w' height='$h' border='0'&gt;&lt;/div&gt;&quot;;
+ 		
+ 	  }
+ 	}
+@@ -738,7 +743,7 @@
+ 	// Le titre (et la langue)
+ 	$s = &quot;&lt;div&gt;&quot;;
+ 	
+-	$s .= &quot;&lt;a href=\&quot;bloogletter.php3?mode=courrier&amp;id_message=$id_message\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
++	$s .= &quot;&lt;a href=\&quot;bloogletter&quot;._EXTENSION_PHP.&quot;?mode=courrier&amp;id_message=$id_message\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
+ 	
+ 	$s .= typo($titre);
+ 	$s .= &quot;&lt;/a&gt;&quot;;
+@@ -819,7 +824,7 @@
+ 	
+ 	// Le titre (et la langue)
+ 	$s = &quot;&lt;div&gt;&quot;;
+-	$s .= &quot;&lt;a href=\&quot;auteur_edit.php3?id_auteur=$id_auteur\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
++	$s .= &quot;&lt;a href=\&quot;auteur_edit&quot;._EXTENSION_PHP.&quot;?id_auteur=$id_auteur\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
+ 	$s .= typo($login);
+ 	$s .= &quot;&lt;/a&gt;&quot;;
+ 	$s .= &quot;&lt;/div&gt;&quot;;
+@@ -876,7 +881,7 @@
+  * r&#233;cuperation de la chose sur laquelle on travaille
+  ***********************************************************************/
+ 
+-$nom_chose = $HTTP_POST_VARS['nom_chose'];
++$nom_chose = $_REQUEST['nom_chose'];
+ if(!isset($choses_possibles[$nom_chose])) {
+   list($nom_chose,) = each($choses_possibles);
+   reset($choses_possibles);
+@@ -889,21 +894,21 @@
+ /***********************************************************************
+  * action
+  ***********************************************************************/
+-$mots = $HTTP_POST_VARS['id_mots'];
+-$sans_mots = $HTTP_POST_VARS['sans_mots'];
+-$choses = $HTTP_POST_VARS['id_choses'];
+-$nom_tags = $HTTP_POST_VARS['nom_tags'];
+-$limit =  $HTTP_POST_VARS['limit'];
+-$id_limit =  $HTTP_POST_VARS['id_limit'];
++$mots = $_REQUEST['id_mots'];
++$sans_mots = $_REQUEST['sans_mots'];
++$choses = $_REQUEST['id_choses'];
++$nom_tags = $_REQUEST['nom_tags'];
++$limit =  $_REQUEST['limit'];
++$id_limit =  $_REQUEST['id_limit'];
+ //echo &quot;!!!&quot;.$nom_chose.&quot;!!!&quot;;
+-//echo &quot;action :&quot;.$HTTP_POST_VARS['switch'].&quot;&lt;br&gt;&quot;;
++//echo &quot;action :&quot;.$_REQUEST['switch'].&quot;&lt;br&gt;&quot;;
+ //echo &quot;choses :&quot;.serialize($choses).&quot;&lt;br&gt;&quot;;
+ //echo &quot;mots :&quot;.serialize($mots).&quot;&lt;br&gt;&quot;;
+ //echo &quot;sans_mots :&quot;.serialize($sans_mots).&quot;&lt;br&gt;&quot;;
+ //echo &quot;nom_tags :&quot;.serialize($nom_tags).&quot;&lt;br&gt;&quot;;
+ //echo &quot;limit :&quot;.serialize($limit).&quot;&lt;br&gt;&quot;;
+ 
+-if($HTTP_POST_VARS['switch'] == 'action' &amp;&amp; count($choses)) {
++if($_REQUEST['switch'] == 'action' &amp;&amp; count($choses)) {
+ 	if(count($mots)) {
+ 	  foreach($mots as $m) {	
+ 		$from = array('spip_mots');
+@@ -956,13 +961,13 @@
+ 		}
+ 	}
+ 	if ($nom_tags){
+-		$tags = parser_liste($nom_tags);
++		$tags = new ListeTags($nom_tags,'Tag');
+ //		echo &quot;!!!!!!!tag:&quot;.$nom_tags.&quot;/&quot;.serialize($tags).&quot;!!!!!!!!!&quot;;
+ 		foreach($choses as $d) {
+-			if($HTTP_POST_VARS['bouton'] == 'ajouter')
+-			  ajouter_liste_mots($tags,$d,'',$nom_chose,$id_chose);
+-			if($HTTP_POST_VARS['bouton'] == 'retirer')
+-			  retirer_liste_mots($tags,$d,'',$nom_chose,$id_chose);
++			if($_REQUEST['bouton'] == 'ajouter')
++			  $tags-&gt;ajouter($d,$nom_chose,$id_chose);
++			if($_REQUEST['bouton'] == 'retirer')
++			  $tags-&gt;retirer($d,$nom_chose,$id_chose);
+ 		}
+ 	}
+ }
+@@ -989,7 +994,7 @@
+ 	  $from[1] = &quot;spip_mots_$nom_chose as table_temp&quot;;
+ 	  $where[1] = &quot;table_temp.$id_chose = main.$id_chose&quot;;
+ 	  $where[] = &quot;table_temp.id_mot IN (&quot;.calcul_in($mots).')';
+-	  if($HTTP_POST_VARS['strict']) {
++	  if($_REQUEST['strict']) {
+ 		$select[] = 'count(id_mot) as tot';
+ 		$group = &quot;main.$id_chose&quot;;
+ 		$order = array('tot DESC');
+@@ -999,7 +1004,7 @@
+ 	  $from[1] = &quot;spip_mots_$nom_chose as table_temp&quot;;
+ 	  $where[1] = &quot;table_temp.$id_chose = main.$id_chose&quot;;
+ 	  $where[] = &quot;table_temp.id_mot not IN (&quot;.calcul_in($sans_mots).')';
+-	  if($HTTP_POST_VARS['strict']) {
++	  if($_REQUEST['strict']) {
+ 		$select[] = 'count(id_mot) as tot';
+ 		$group = &quot;main.$id_chose&quot;;
+ 		$order = array('tot DESC');
+@@ -1009,7 +1014,7 @@
+   	if(count($mots) &gt; 0) {
+ 	  $from[0] = &quot;spip_mots_$nom_chose as main&quot;;
+ 	  $where[] = &quot;main.id_mot IN (&quot;.calcul_in($mots).')';
+-	  if($HTTP_POST_VARS['strict']) {
++	  if($_REQUEST['strict']) {
+ 		$select[] = 'count(id_mot) as tot';
+ 		$group = &quot;main.$id_chose&quot;;
+ 		$order = array('tot DESC');
+@@ -1018,7 +1023,7 @@
+   	if(count($sans_mots) &gt; 0) {
+ 	  $from[0] = &quot;spip_mots_$nom_chose as main&quot;;
+ 	  $where[] = &quot;main.id_mot not IN (&quot;.calcul_in($sans_mots).')';
+-	  if($HTTP_POST_VARS['strict']) {
++	  if($_REQUEST['strict']) {
+ 		$select[] = 'count(id_mot) as tot';
+ 		$group = &quot;main.$id_chose&quot;;
+ 		$order = array('tot DESC');
+@@ -1054,7 +1059,7 @@
+ 		}
+ 		spip_abstract_free($test);
+ 	  }
+-	  if(count($mots) &gt; 0 &amp;&amp; $HTTP_POST_VARS['strict']) {
++	  if(count($mots) &gt; 0 &amp;&amp; $_REQUEST['strict']) {
+ 		if($row['tot'] &gt;= count($mots)) {
+ 		  $choses[] = $row[$id_chose];
+ 		} else {
+@@ -1162,7 +1167,7 @@
+ if(count($choses)) {
+ // 	echo '&lt;a name=&quot;action&quot;&gt;&lt;/a&gt;&lt;form action=&quot;mots_partout.php#voir&quot;&gt;';
+ 
+-  echo '&lt;input type=&quot;hidden&quot; name=&quot;nom_chose&quot; value=&quot;'.$HTTP_POST_VARS['nom_chose'].'&quot;&gt;';  
++  echo '&lt;input type=&quot;hidden&quot; name=&quot;nom_chose&quot; value=&quot;'.$_REQUEST['nom_chose'].'&quot;&gt;';  
+ //  echo &quot;&lt;input type='hidden' name='id_limit' value='$id_limit'&gt;&quot;;
+ //  echo &quot;&lt;input type='hidden' name='limit' value='$limit'&gt;&quot;;
+ //  for($i=0; $i &lt; count($choses); $i++) {
+@@ -1188,17 +1193,32 @@
+ &lt;/td&gt;
+ &lt;/tr&gt;
+ 	&lt;tr class='tr_liste'&gt;
+-	  &lt;td colspan=2&gt;&lt;textarea name=&quot;nom_tags&quot; rows='10' class='forml' cols='40'&gt;&lt;/textarea&gt;&lt;/td&gt;
+-	   &lt;/tr&gt;
+-	   &lt;tr class='tr_liste'&gt;
++	  &lt;td colspan=2&gt;
++		&lt;textarea name=&quot;nom_tags&quot; rows='10' class='forml' cols='40'&gt;&lt;/textarea&gt;&lt;/td&gt;
++&lt;?php 
++	/*&lt;div style=&quot;position:relative;overflow:visible; width: 10em;&quot;&gt;
++        &lt;input autocomplete=&quot;off&quot; type=&quot;texte&quot; id=&quot;tags&quot; name=&quot;nom_tags&quot; class='forml' cols='40' style=&quot;width: 100%;&quot;&gt;
++        &lt;div id=&quot;suggest&quot; class=&quot;suggest_list&quot; style=&quot;width: 100%;&quot;&gt;&lt;/div&gt;
++      &lt;/div&gt;*/ 
++?&gt;
++	  &lt;/td&gt;
++	 &lt;/tr&gt;
++	 &lt;tr class='tr_liste'&gt;
+ 	   &lt;td colspan=2&gt;&lt;button type='submit' name='switch' value='action'&gt;
+ 	   &lt;?php echo _T('bouton_valider'); ?&gt;
+ 	   &lt;/button&gt;&lt;/td&gt;
+ 		   &lt;/tr&gt;
+ 		   &lt;/table&gt;
+ 		   &lt;/div&gt;
+-		   
+-&lt;?php
++&lt;?php 
++/*&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;./ajaxTagMachine.css&quot;&gt;
++&lt;script  type='text/javascript' src=&quot;./ajaxTagMachine.js&quot;&gt;
++&lt;/script&gt;
++  &lt;script  type='text/javascript'&gt; &lt;!--
++	groupe = new AjaxSuggestMenu('ajax_mortimer.php', 'titre', 'tags','suggest');
++	groupe.addVar('nom_chose','&lt;?php echo $nom_chose; ?&gt;');
++	groupe.setNbrLineVisible(5);
++  	--&gt;&lt;/script&gt;*/ 
+ 		   
+   fin_cadre_enfonce();
+  creer_colonne_droite();
+
+Index: inc_tag-machine.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_tag-machine.php,v
+retrieving revision 1.1.2.1
+retrieving revision 1.1.2.2
+diff -u -d -r1.1.2.1 -r1.1.2.2
+--- inc_tag-machine.php	28 Sep 2005 15:24:49 -0000	1.1.2.1
++++ inc_tag-machine.php	4 Oct 2005 00:35:53 -0000	1.1.2.2
+@@ -25,18 +25,24 @@
+ if (defined(&quot;_LIB_INC_TAG_MACHINE&quot;)) return;
+ define(&quot;_LIB_INC_TAG_MACHINE&quot;, &quot;1&quot;);
+ 
+-if(@file_exists('ecrire/inc_version.php')){
+-include('ecrire/inc_version.php');
+-}elseif(@file_exists('ecrire/inc_version.php3')){
+-include('ecrire/inc_version.php3');
+-}elseif(@file_exists('inc_version.php')){
+-include('inc_version.php');
+-}elseif(@file_exists('inc_version.php3')){
+-include('inc_version.php3');
++if (!defined(&quot;_ECRIRE_INC_VERSION&quot;)) {
++   if(@file_exists('ecrire/inc_version.php')){
++   include('ecrire/inc_version.php');
++   }elseif(@file_exists('ecrire/inc_version.php3')){
++   include('ecrire/inc_version.php3');
++   }elseif(@file_exists('inc_version.php')){
++   include('inc_version.php');
++   }elseif(@file_exists('inc_version.php3')){
++   include('inc_version.php3');
++   }
+ }
+ $path_inc_abstract_sql=&quot;inc_abstract_sql&quot;. _EXTENSION_PHP ;
+ include_ecrire ($path_inc_abstract_sql);
+ 
++function entableau($tag) {
++  return array('groupe' =&gt; $tag-&gt;type, 'tag' =&gt; $tag-&gt;titre);
++}
++
+ /**
+    Ajoute les mots clefs dans la liste pass&#233;e en param&#232;tre au bon objet.
+    Si le mot clef n'existe pas, on le cr&#233;e,
+@@ -57,80 +63,8 @@
+ 							$nom_objet='documents',
+ 							$id_objet='id_document',
+ 							$clear = false) {
+-  if($id) {
+-	if ($clear) {
+-	  spip_query(&quot;DELETE FROM spip_mots_$nom_objet WHERE $id_objet=$id&quot;);
+-	}
+-	for($i=0;$i&lt;sizeof($tags);$i++) {
+-	  $tag=$tags[$i]['tag'];
+-	  $groupe = $tags[$i]['groupe'];
+-	  $groupe = $groupe?$groupe:$groupe_defaut;
+-	  
+-	  $select_groupe = spip_abstract_select(array('id_groupe','unseul'), 
+-											array('spip_groupes_mots'), 
+-											array(&quot;titre = '$groupe'&quot;));
+-	  $id_groupe = 0;
+-	  $add = true;
+-	  if($groupe_row = spip_abstract_fetch($select_groupe)) {
+-		$id_groupe = $groupe_row['id_groupe']; 
+-		$unseul = $groupe_row['unseul'];
+-		if ($unseul == 'oui') {
+-		  // on verifie qu'il y a pas d&#233;j&#224; un mot associ&#233;
+-		  $celcount = spip_abstract_select(array('count(id_mot) as tot'), 
+-										   array('spip_mots as mots',
+-												 &quot;spip_mots_$nom_objet as objets&quot;), 
+-										   array(&quot;mots.id_groupe = $id_groupe&quot;,
+-												 &quot;mots.id_mot = objets.id_mot&quot;),
+-											   'mots.id_groupe');
+-		  if($numrow = spip_abstract_fetch($celcount) &amp;&amp; $numrow['tot'] &gt; 0) {
+-			$add = false;
+-			$warnings[] = array(_T('motspartout:dejamotgroupe',array('groupe' =&gt; $titre_groupe, 'chose' =&gt; $d)));
+-		  }
+-		  spip_abstract_free($celcount);
+-		}
+-	  } else {
+-		$id_groupe = spip_abstract_insert(&quot;spip_groupes_mots&quot;,
+-										  &quot;(titre, $nom_objet, minirezo)&quot;,
+-										  &quot;('$groupe','oui','oui')&quot;);
+-		$warnings[] = array('creer groupe '.$titre_groupe);
+-	  }
+-	  spip_abstract_free($select_groupe);
+-	  
+-	  if($add) {
+-		$select = array('id_mot');
+-		$from = array('spip_mots');
+-		$where = array(&quot;titre = '$tag'&quot;,
+-					   &quot;type='$groupe'&quot;);
+-		$result = spip_abstract_select($select,$from,$where);
+-		
+-		if (spip_abstract_count($result) == 0){
+-		  $id_mot = spip_abstract_insert(&quot;spip_mots&quot;,
+-										 '(id_groupe, type, titre)', 
+-										 &quot;('$id_groupe','$groupe','$tag')&quot;);
+-		  $result2 = spip_abstract_insert(&quot;spip_mots_$nom_objet&quot;,
+-										  &quot;(id_mot,$id_objet)&quot;,
+-										   &quot;($id_mot,$id)&quot;);
+-		  $warnings[] = array('creer mot '.$tag);
+-		} else {
+-		  while ($row = spip_fetch_array($result)) {
+-			$id_mot = $row['id_mot'];
+-			$result3 = spip_abstract_select(array('id_mot'),
+-											array(&quot;spip_mots_$nom_objet&quot;),
+-											array(&quot;id_mot='$id_mot'&quot;,&quot;$id_objet = $id&quot;));
+-			if (spip_abstract_count($result3) == 0) {
+-			  spip_abstract_insert(&quot;spip_mots_$nom_objet&quot;,
+-								   &quot;(id_mot, $id_objet)&quot;,
+-								   &quot;('$id_mot','$id')&quot;);
+-			}
+-			spip_abstract_free($result3);	  
+-		  }
+-		}
+-		spip_abstract_free($result);	 
+-	  }
+-	}
+-	return $warnings;
+-  } else 
+-	return array();
++  $tags = new ListeTags($tags,$groupe_defaut);
++  $tags-&gt;ajouter($id, $nom_objet, $id_objet,$clear);
+ }
+ 
+ 
+@@ -140,8 +74,8 @@
+ 					  $nom_objet='documents',
+ 					  $id_objet='id_document',
+ 					  $clear = false) {
+-						return ajouter_liste_mots(parser_liste($liste_tags), $id, $groupe_defaut, $nom_objet, $id_objet,$clear);
+-  return array();
++  $tags = new ListeTags($liste_tags,$groupe_defaut);
++  $tags-&gt;ajouter($id, $nom_objet, $id_objet,$clear);
+ }
+ 
+ /**
+@@ -160,24 +94,8 @@
+ 							$groupe_defaut='',
+ 							$nom_objet='documents',
+ 							$id_objet='id_document') {
+-  if($id) {
+-	for($i=0;$i&lt;sizeof($tags);$i++) {
+-	  $tag=$tags[$i]['tag'];
+-	  $groupe = $tags[$i]['groupe'];
+-	  $groupe = $groupe?$groupe:$groupe_defaut;
+-	  
+-	  $select = array('id_mot');
+-	  $from = array('spip_mots');
+-	  $where = array(&quot;titre = '$tag'&quot;,
+-					 &quot;type='$groupe'&quot;);
+-	  
+-	  $result = spip_abstract_select($select,$from,$where);
+-	  if ($row = spip_abstract_fetch($result)){
+-		spip_query(&quot;DELETE FROM spip_mots_$nom_objet WHERE id_mot=&quot;.$row['id_mot'].&quot; AND $id_objet=$id&quot;);
+-	  }
+-	  spip_abstract_free($result);
+-	}
+-  }
++  $tags = new ListeTags($tags,$groupe_defaut);
++  $tags-&gt;retirer($id, $nom_objet, $id_objet);
+ }
+ 
+ function retirer_mots($liste_tags,
+@@ -185,61 +103,352 @@
+ 					  $groupe_defaut='',
+ 					  $nom_objet='documents',
+ 					  $id_objet='id_document') {
+-  if($liste_tags) retirer_liste_mots(parser_liste($liste_tags), $id, $groupe_defaut, $nom_objet, $id_objet);
++  $tags = new ListeTags($liste_tags,$groupe_defaut);
++  $tags-&gt;retirer($id, $nom_objet, $id_objet);
+ }
+ 
+-/*Retourn un tableau de tags qui sont associ&#233; &#224; l'objet, si necessaire entre guillemet*/
+-function get_tags($id,
+-				  $groupe_defaut='',
+-				  $nom_objet='documents',
+-				  $id_objet='id_document') {
+-  $result = spip_abstract_select(array('titre','type'),
+-								 array(&quot;spip_mots_$nom_objet&quot;,'spip_mots'),
+-								  array(&quot;spip_mots_$nom_objet.id_mot=spip_mots.id_mot&quot;,&quot;spip_mots_$nom_objet.$id_objet = $id&quot;));
++function parser_liste($liste_tags) {
++  $tags = new ListeTags($liste_tags,'');
++  return array_map('entableau',$tags-&gt;getTags());
++}
++
++?&gt;
++
++&lt;?php
++/*des objets*/
++
++class Tag {
++ var $titre;
++ var $type;
++ var $id_mot;
++ var $id_groupe;
++
++ function Tag($titre, $type='', $id_groupe='') {
++	$this-&gt;titre = $titre;
++	$this-&gt;id_groupe = $id_groupe;
++	$this-&gt;type = $type;
++  }
++
++  /*  function Tag($id_mot,$id_groupe) {
++	$this-&gt;id_mot = $id_mot;
++	$this-&gt;id_groupe = $id_groupe;
++  }*/
++
++ function getID() {
++	return $this-&gt;id_mot;
++  }
++
++  /*public*/ function getIDGroupe() {
++	return $this-&gt;id_groupe;
++  }
++
++  /*public*/ function getTitre() {
++	return $this-&gt;titre;
++  }
++
++  /*public*/ function getType() {
++	return $this-&gt;type;
++  }
++
++  /*public*/ function getTitreEchappe() {
++      return (strpos($this-&gt;titre,' ') || strpos($this-&gt;titre,':') || strpos($this-&gt;titre,','))?'&quot;'.$this-&gt;titre.'&quot;':$this-&gt;titre;
++  }
++
++  /*public*/ function getTypeEchappe() {
++      return (strpos($this-&gt;type,' ') || strpos($this-&gt;type,':') || strpos($this-&gt;type,','))?'&quot;'.$this-&gt;type.'&quot;':$this-&gt;type;
++  }
++
++
++ function echapper() {
++   $cgroupe = $this-&gt;type;
++   $ctag = $this-&gt;titre;
++   
++   $cgroupe = (strpos($cgroupe,' ') || strpos($cgroupe,':') || strpos($cgroupe,','))?'&quot;'.$cgroupe.'&quot;':$cgroupe;
++   $ctag = (strpos($ctag,' ') || strpos($ctag,':') || strpos($ctag,','))?'&quot;'.$ctag.'&quot;':$ctag;
++   
++   return (($cgroupe)? ($cgroupe.':'):'').$ctag;
++ }
+   
+-  $to_ret = array();
+-  while ($row = spip_abstract_fetch($result)) {
+-	$groupe = '';
+-	if($groupe == $groupe_defaut) {
+-	  $groupe = $groupe_defaut;
+-	  if(strpos($groupe,' ') || strpos($groupe,':')) {
+-		$groupe = &quot;\&quot;groupe\&quot;&quot;;
++  //----------------------------------------------------------------------
++
++  /*private*/ function verifier($nom_objet) {
++   list($id_groupe,$unseul,$titre) = $this-&gt;verifier_groupe();
++	if($id_groupe &gt; 0) {
++	  if ($unseul == 'oui') {
++		// on verifie qu'il y a pas d&#233;j&#224; un mot associ&#233;
++		$celcount = spip_abstract_select(array('count(id_mot) as tot'), 
++										 array('spip_mots as mots',
++											   &quot;spip_mots_$nom_objet as objets&quot;), 
++										 array(&quot;mots.id_groupe = $id_groupe&quot;,
++											   &quot;mots.id_mot = objets.id_mot&quot;),
++										 'mots.id_groupe');
++		if($numrow = spip_abstract_fetch($celcount) &amp;&amp; $numrow['tot'] &gt; 0) {
++		  return false;
++		}
++		spip_abstract_free($celcount);
+ 	  }
++	} else if($this-&gt;type) {
++	  spip_log(&quot;cr&#233;ation du groupe $this-&gt;type&quot;);
++	  $id_groupe = spip_abstract_insert(&quot;spip_groupes_mots&quot;,
++										&quot;(titre, $nom_objet, minirezo)&quot;,
++										&quot;('&quot;.addslashes($this-&gt;type).&quot;','oui','oui')&quot;);
++	}	
++	
++	return $id_groupe;
++  }
++  
++  /*private*/ function verifier_groupe() {
++	static $groupes_verifie;
++	static $groupes_verifie_id;
++	if($this-&gt;type) {
++	  if(!isset($groupes_verifie[$this-&gt;type])) {
++		$select_groupe = spip_abstract_select(array('id_groupe','unseul'), 
++											  array('spip_groupes_mots'), 
++											  array(&quot;titre = '&quot;.addslashes($this-&gt;type).&quot;'&quot;));
++		if($groupe_row = spip_abstract_fetch($select_groupe)) {
++		$id = $groupe_row['id_groupe']; 
++		$unseul = $groupe_row['unseul'];
++		$groupes_verifie[$this-&gt;type] = array($id,$unseul,$this-&gt;type);
++		}
++	   
++		spip_abstract_free($select_groupe);
++	  }
++	  return $groupes_verifie[$this-&gt;type];
++	} else 	if($this-&gt;id_groupe) {
++	  if(!isset($groupes_verifie_id[$this-&gt;id_groupe])) {
++		$select_groupe = spip_abstract_select(array('titre','unseul'), 
++											  array('spip_groupes_mots'), 
++											  array(&quot;id_groupe = $this-&gt;id_groupe&quot;));
++		if($groupe_row = spip_abstract_fetch($select_groupe)) {
++		$type = $groupe_row['titre']; 
++		$unseul = $groupe_row['unseul'];
++		$groupes_verifie_id[$this-&gt;id_groupe] = array($this-&gt;id_groupe,$unseul,$type);
++		}
++	   
++		spip_abstract_free($select_groupe);
++	  }
++	  return $groupes_verifie_id[$this-&gt;id_groupe];
+ 	}
+-	$mot = $row['titre'];
+-	if(strpos($mot,' ') || strpos($mot,':')) {
+-	  $groupe = &quot;\&quot;groupe\&quot;&quot;;
++	return array(0,'');
++  }
++
++  //----------------------------------------------------------------------
++
++  function creer($nom_objet) {
++	if(!$this-&gt;id_mot &amp;&amp; ($this-&gt;id_groupe = $this-&gt;verifier($nom_objet)) &gt; 0) {
++	  $select = array('id_mot');
++	  $from = array('spip_mots');
++	  $where = array(&quot;titre = '&quot;.$this-&gt;titre.&quot;'&quot;);
++	  if($this-&gt;type) {$where[] = &quot;type='&quot;.$this-&gt;type.&quot;'&quot;;}
++	  else if($this-&gt;id_groupe) {$where[] = &quot;id_groupe='&quot;.$this-&gt;id_groupe.&quot;'&quot;;}
++	  $result = spip_abstract_select($select,$from,$where);
++	  if ($row = spip_fetch_array($result)) {
++		$this-&gt;id_mot = $row['id_mot'];
++	  } else {
++		 if($this-&gt;id_groupe) {
++		   spip_log(&quot;Creer le mot $this-&gt;type:$this-&gt;titre ($this-&gt;id_mot)&quot;);
++		   $this-&gt;id_mot = spip_abstract_insert(&quot;spip_mots&quot;,
++												'(id_groupe, type, titre)', 
++												&quot;('&quot;.$this-&gt;id_groupe.&quot;','&quot;.addslashes($this-&gt;type).&quot;','&quot;.addslashes($this-&gt;titre).&quot;')&quot;);		   
++		 }
++	  }
++	  spip_abstract_free($result);	 
+ 	}
+-	$to_ret[] = $groupe.($groupe)? ':':''.$mot;
++	return $this-&gt;id_mot;
+   }
+-  spip_abstract_free($result);
+-  return $to_ret;
++
++  function ajouter($id, $nom_objet, $id_objet) {
++	if($id) {
++	  if(!$this-&gt;id_mot) {
++		$this-&gt;creer($nom_objet);
++	  }  
++	  $select = array('id_mot');
++	  $from = array(&quot;spip_mots_$nom_objet&quot;);
++	  $where = array(&quot;id_mot = '$this-&gt;id_mot'&quot;,
++					 &quot;$id_objet = '$id'&quot;);
++	  $result = spip_abstract_select($select,$from,$where);
++	  if (spip_abstract_count($result) == 0) {
++		spip_abstract_insert(&quot;spip_mots_$nom_objet&quot;,
++							 &quot;(id_mot,$id_objet)&quot;,
++							 '('.$this-&gt;id_mot.&quot;,$id)&quot;);
++	  }
++	  spip_abstract_free($result);	 
++	} else
++	  spip_log(&quot;id_objet non d&#233;fini&quot;);
++  }
++
++  function retirer($id, $nom_objet, $id_objet) {
++	if ($this-&gt;id_mot){
++	  spip_query(&quot;DELETE FROM spip_mots_$nom_objet WHERE id_mot=&quot;.$this-&gt;id_mot.&quot; AND $id_objet=$id&quot;);
++	}
++  }
++
+ }
+ 
+-function parser_liste($liste_tags) {
++class ListeTags {
++
++  //------------------------------- Variables -------------------------------------
++
++  /*private*/ var $tags = array();
++  var $groupe_defaut;
++  var $id_objet;
++
++  //------------------------------- Constructeurs ---------------------------------
++
++  /*public*/ function ListeTags($liste_tags,
++								$groupe_defaut='',
++								$id_groupe='') {
++	if(!$groupe_defaut &amp;&amp; !$id_groupe) {
++	  echo 'You must specify either an id_groupe or a groupe_defaut';
++	  exit;
++	}
++	$this-&gt;groupe_defaut = $groupe_defaut;
++	$this-&gt;id_groupe = $id_groupe;
++	  
++	if(!is_array($liste_tags)) {
++	  $this-&gt;tags = $this-&gt;parser_liste($liste_tags);
++	} else {
++	  $this-&gt;tags = $liste_tags;
++	}
++  }
++
++  /*public*/ /*function ListeTags($id,
++							$groupe_defaut='',
++							$nom_objet='documents',
++							$id_objet='id_document') {
++	$result = spip_abstract_select(array('titre','type'),
++								   array(&quot;spip_mots_$nom_objet&quot;,'spip_mots'),
++								   array(&quot;spip_mots_$nom_objet.id_mot=spip_mots.id_mot&quot;,
++										 &quot;spip_mots_$nom_objet.$id_objet = $id&quot;));
++	
++	while ($row = spip_abstract_fetch($result)) {
++	  $this-&gt;tags[] = new Tag($row['titre'],$row['type']);
++	}
++	spip_abstract_free($result);
++	$this-&gt;groupe_defaut = $groupe_defaut;
++  }
++*/
++
++  //------------------------------- Info -----------------------------------------
++
++  function getTags() {
++	return $this-&gt;tags;
++  }
++  
++  // prend une liste de tags et retourne les id_mot reconnus (sans en creer)
++  function getTagsIDs() {
++	//?? Aller chercher les tags dans la boite
++	//?? pour faire plus generique : se baser sur id_$objet et/ou url_propre
++	//?? car &quot; dans l'url arrive ici sous la forme &quot; (#ENV{tags} et non #ENV*{tags})
++	
++	$ids_mot = array();
++	foreach ($this-&gt;tags as $mot) {
++	  if (strlen($mot-&gt;titre)) {
++		$where = array(&quot; titre='&quot;.addslashes($mot-&gt;titre).&quot;'&quot;);
++		if(strlen($mot-&gt;type)) {
++		  $where[] = 'type=\''.addslashes($mot-&gt;type).'\'';
++		}
++		$results = spip_abstract_select(array('id_mot'),
++										array('spip_mots'),
++										$where
++										); //+ url_propre ? id_objet ?
++		list($id) = spip_abstract_fetch_array($results);
++		if ($id) 
++		  $ids_mot[] = $id;
++		spip_abstract_free($results);
++	  }
++	}
++	return $ids_mot;
++  }
++  
++  function toStringArray() {
++	$to_ret = array();
++	foreach($this-&gt;tags as $tag) {
++	  $to_ret[] = $tag-&gt;echapper();
++	}
++	return $to_ret;
++  }
+ 
++  //--------------------------------- Modif DB -----------------------------------
++  
++  function ajouter($id,
++				   $nom_objet='documents',
++				   $id_objet='id_document',
++				   $clear=false) {
++	if($id) {
++	  if ($clear) {
++		$result = spip_abstract_select(array('id_mot'),
++									   array('spip_mots'),
++									   array(&quot;spip_mots.type = '&quot;.addslashes($this-&gt;groupe_defaut).&quot;' OR spip_mots.id_groupe = '&quot;.addslashes($this-&gt;id_groupe).&quot;'&quot;)
++									   );
++		$motsaeffacer = array('0');
++		while ($row = spip_abstract_fetch($result)) {
++		  $motsaeffacer[] = $row['id_mot']; 
++		}
++		spip_abstract_free($result);
++		spip_log(&quot;Enleve les mots: &quot;.join(',',$motsaeffacer));
++		spip_query(&quot;DELETE FROM spip_mots_$nom_objet WHERE $id_objet=$id AND id_mot IN (&quot;.join(',',$motsaeffacer).&quot;)&quot;);
++	  }
++	  foreach($this-&gt;tags as $mot) {
++		$mot-&gt;ajouter($id,$nom_objet,$id_objet);
++	  }
++	}
++  }
++
++  function retirer($id,
++				   $nom_objet='documents',
++				   $id_objet='id_document') {
++	
++	if($id) {
++	  foreach($this-&gt;tags as $mot) {
++		$mot-&gt;retirer($id,$nom_objet,$id_objet);
++	  }
++	}
++  }
++
++
++  //-------------------------------- Statique ------------------------------------
++  
++  //-- priv&#233;
++  
++  /*private*/ /*static*/ function parser_liste($liste_tags) {
++	
++	$liste_tags = trim($liste_tags);
++	
+ 	// supprimer les tab (notre separateur final)
+ 	$liste_tags = strtr($liste_tags, &quot;\t&quot;, &quot; &quot;);
+-
++	
+ 	// doubler les caracteres qui peuvent faire office de separateur
+ 	$liste_tags = ' '.preg_replace('/[[:space:],]/', '\\0\\0', $liste_tags).' ';
+-
++	
+ 	// trouver les tags et les separer par \t
+ 	$liste_tags = preg_replace('/[[:space:],]+(&quot;?)(.*?)\\1[[:space:],]/', &quot;\t\\2&quot;, $liste_tags);
+-
++	
+ 	// remettre les caracteres doubles en simple
+ 	$liste_tags = preg_replace('/([[:space:],])\\1/', '\\1', $liste_tags);
+-
++	
+ 	// exploser selon les tab
+ 	$tags = split(&quot;\t&quot;, substr($liste_tags,1));
+-
++	
+ 	// recuperer les groupes sous la forme  &lt;groupe:mot&gt;
+ 	foreach ($tags as $i =&gt; $tag) {
+-		$tag = str_replace('&quot;', '', $tag);
+-		preg_match('/((.*):)?(.*)/', $tag, $regs);
+-		$tags[$i] = array('groupe' =&gt; $regs[2], 'tag' =&gt; $regs[3]);
++	  $tag = str_replace('&quot;', '', $tag);
++	  preg_match('/((.*):)?(.*)/', $tag, $regs);
++	  $groupe = $regs[2];
++	  if(!$groupe)
++		$groupe = $this-&gt;groupe_defaut;
++	  $tags[$i] = new Tag($regs[3], $groupe, $this-&gt;id_groupe);
+ 	}
+-
++	
+ 	return $tags;
++  }
++  
++  function containsSeparateur($char) {
++	return (strpos($char,' ') || strpos($char,':') || strpos($char,','));
++  }
++ 
+ }
++
+ ?&gt;
++
++
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000315.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.4,1.18.2.5
+</A></li>
+	<LI>Next message: <A HREF="000317.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.5,1.18.2.6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#316">[ date ]</a>
+              <a href="thread.html#316">[ thread ]</a>
+              <a href="subject.html#316">[ subject ]</a>
+              <a href="author.html#316">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

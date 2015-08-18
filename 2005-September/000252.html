@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire mes_options.php3,1.7,1.8
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20mes_options.php3%2C1.7%2C1.8&In-Reply-To=%3C200509240100.j8O10Omq018792%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000251.html">
+   <LINK REL="Next"  HREF="000253.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire mes_options.php3,1.7,1.8</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20mes_options.php3%2C1.7%2C1.8&In-Reply-To=%3C200509240100.j8O10Omq018792%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire mes_options.php3,1.7,1.8">stef at berlios.de
+       </A><BR>
+    <I>Sat Sep 24 03:00:24 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000251.html">[Spip-carto-cvs] spipcarto/ecrire inc_texte.php3,1.11,1.12
+</A></li>
+        <LI>Next message: <A HREF="000253.html">[Spip-carto-cvs] spipcarto/ecrire spip_style.php3,1.8,1.9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#252">[ date ]</a>
+              <a href="thread.html#252">[ thread ]</a>
+              <a href="subject.html#252">[ subject ]</a>
+              <a href="author.html#252">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv18764/ecrire
+
+Modified Files:
+	mes_options.php3 
+Log Message:
+plus clean deja ...
+Pas moyen de mettre les declarations dans un include (?)
+
+Index: mes_options.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mes_options.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- mes_options.php3	10 Aug 2005 12:06:33 -0000	1.7
++++ mes_options.php3	24 Sep 2005 01:00:22 -0000	1.8
+@@ -1,69 +1,9 @@
+-&lt;?
+-//$mysql_profile = true;
+-//////////////////////////////////////////////////
++&lt;?php
+ //////////////////////////////////////////////////
+ //////////////////////////////////////////////////
+ //          MODULE CARTO
+ //////////////////////////////////////////////////
+ //////////////////////////////////////////////////
+-//////////////////////////////////////////////////
+-//////////////////////////////////////////////////
+-//////////////////////////////////////////////////
+-//FILTRES
+-//////////////////////////////////////////////////
+-//////////////////////////////////////////////////
+-
+-function worldfile2google($callage){	
+-	$tabcallage=worldfile2array($callage);
+-	$x=intval($tabcallage['top_left']['x']-($tabcallage['bottom_right']['x']-$tabcallage['top_left']['x'])/2);
+-	$y=intval($tabcallage['top_left']['y']-($tabcallage['bottom_right']['y']-$tabcallage['top_left']['y'])/2);
+-	return &quot;GPoint(&quot;.$x.&quot;,&quot;.$y.&quot;)&quot;;
+-}
+-function worldfileWidth($callage){	
+-	$tabcallage=worldfile2array($callage);
+-	return intval($tabcallage['bottom_right']['x']-$tabcallage['top_left']['x']);
+-}
+-function worldfileHeight($callage){	
+-	$tabcallage=worldfile2array($callage);
+-	return intval($tabcallage['bottom_right']['y']-$tabcallage['top_left']['y']);
+-}
+-function worldfileULX($callage){
+-	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['bottom_right']['x'];
+-}
+-function worldfileULY($callage){
+-	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['bottom_right']['y']*-1;
+-}
+-function worldfileLRX($callage){
+-	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['top_left']['x'];
+-}
+-function worldfileLRY($callage){
+-	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['top_left']['y'];
+-}
+-function getPropMapHeight($callage, $width){
+-	$tabcallage=worldfile2array($callage);
+-	// Calcul d'une hauteur relative &#224; un callage (proportion)
+-	return $width*($tabcallage['bottom_right']['y']-$tabcallage['top_left']['y'])/($tabcallage['bottom_right']['x']-$tabcallage['top_left']['x']);
+-}
+-
+-
+-function worldfile2array($callage){	
+-	$tabcallage['shape']=substr($callage,0,strpos($callage,&quot;(&quot;));
+-	
+-	$coordpair = explode(',',substr($callage,strpos($callage,&quot;(&quot;)+1,-1));
+-	$UL = explode (' ', $coordpair[0]);
+-	$LR = explode (' ', $coordpair[1]);
+-	
+-	$tabcallage['top_left']['x']=$UL[0];
+-	$tabcallage['top_left']['y']=$UL[1];
+-	$tabcallage['bottom_right']['x']=$LR[0];
+-	$tabcallage['bottom_right']['y']=$LR[1];
+-	
+-	return $tabcallage;
+-}
+ 
+ //////////////////////////////////////////////////
+ //////////////////////////////////////////////////
+@@ -214,8 +154,13 @@
+ 	$boucle-&gt;from[] =  &quot;spip_carto_objets AS &quot; . $boucle-&gt;type_requete;
+ 	return calculer_boucle($id_boucle, $boucles); 
+ }
+-function avant_propre($texte) {
++
++include_ecrire(&quot;inc_carto_fonctions.php3&quot;);
++
++function apres_tout($texte) {
+ 	include_ecrire('plugins/plug_carto.php');
+-    return avant_typo_carto($texte);
++    return apres_tout_carto($texte);
+ }
++//////////////////////////////////////////////////
++//////////////////////////////////////////////////
+ ?&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000251.html">[Spip-carto-cvs] spipcarto/ecrire inc_texte.php3,1.11,1.12
+</A></li>
+	<LI>Next message: <A HREF="000253.html">[Spip-carto-cvs] spipcarto/ecrire spip_style.php3,1.8,1.9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#252">[ date ]</a>
+              <a href="thread.html#252">[ thread ]</a>
+              <a href="subject.html#252">[ subject ]</a>
+              <a href="author.html#252">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

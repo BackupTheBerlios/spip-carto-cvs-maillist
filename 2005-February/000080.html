@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire/plugins plug_carto_free.php,NONE,1.1 plug_carto_distant.php,NONE,1.1 plug_carto.php,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire/plugins%20plug_carto_free.php%2CNONE%2C1.1%20plug_carto_distant.php%2CNONE%2C1.1%20plug_carto.php%2CNONE%2C1.1&In-Reply-To=%3C200502202213.j1KMDY8Y027273%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000079.html">
+   <LINK REL="Next"  HREF="000081.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire/plugins plug_carto_free.php,NONE,1.1 plug_carto_distant.php,NONE,1.1 plug_carto.php,NONE,1.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire/plugins%20plug_carto_free.php%2CNONE%2C1.1%20plug_carto_distant.php%2CNONE%2C1.1%20plug_carto.php%2CNONE%2C1.1&In-Reply-To=%3C200502202213.j1KMDY8Y027273%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire/plugins plug_carto_free.php,NONE,1.1 plug_carto_distant.php,NONE,1.1 plug_carto.php,NONE,1.1">stef at berlios.de
+       </A><BR>
+    <I>Sun Feb 20 23:13:34 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000079.html">[Spip-carto-cvs] spipcarto/ecrire/oo index.php3,NONE,1.1 index.php,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000081.html">[Spip-carto-cvs] spipcarto/formulaires formulaire_login_forum.html,NONE,1.1 formulaire_forum_previsu.html,NONE,1.1 inc-formulaire_site.php3,1.1,1.2 formulaire_inscription.html,1.1,1.2 inc-formulaire_ecrire_auteur.php3,1.1,1.2 formulaire_oubli.html,1.1,1.2 inc-login_public.php3,1.1,1.2 formulaire_forum.html,1.1,1.2 inc-url_logout.php3,1.1,1.2 formulaire_site.html,1.1,1.2 formulaire_signature.html,1.1,1.2 inc-menu_lang_ecrire.php3,1.1,1.2 inc-formulaire_inscription.php3,1.1,1.2 formulaire_recherche.html,1.1,1.2 inc-formulaire_forum.php3,1.1,1.2 inc-menu_lang.php3,1.1,1.2 inc-formulaire_signature.php3,1.1,1.2 formulaire_ecrire_auteur.html,1.1,1.2 formulaire_login.html,1.1,1.2 inc-login_prive.php3,1.1,1.2 inc-formulaire_admin.php3,1.1,1.2 inc-formulaire_recherche.php3,1.1,1.2 formulaire_menu_lang.html,1.1,1.2 formulaire_admin.html,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire/plugins
+In directory sheep:/tmp/cvs-serv27267/ecrire/plugins
+
+Added Files:
+	plug_carto_free.php plug_carto_distant.php plug_carto.php 
+Log Message:
+1.8pr1
+
+--- NEW FILE: plug_carto_free.php ---
+&lt;?php
+// Ce plug-in ajoute le raccourci typographique &lt;mapXX|align&gt; 
+// XX est le numero de la carte
+// align fonctionne comme les images (left / center / right)
+
+//le include pour la version HTTP
+include_ecrire('http.class.php');
+
+//la rustine d'inclusion pour /ecrire ...
+//abandonn&#233; pour le moment, manque de visibilit&#233;
+function avant_typo_carto_free($texte) {
+	
+	if (preg_match_all(&quot;&lt;freecarto(\d+).(\w+)&gt;&quot;, $texte, $regs, PREG_SET_ORDER)) {
+		foreach ($regs as $r) {
+			$id_carte = $r[1];
+			//TODO : eviter cette rustine ...
+			//$cherche = &quot;&lt;&quot;.$r[0].&quot;&gt;&quot;;
+			//heu, en fait, c'est mon editeur WYSIWYG qui fait la transformation ...
+			//ca marche tr&#232;s bien comme ca :			
+			$cherche = &quot;&lt;&quot;.$r[0].&quot;&gt;&quot;;
+			
+			//TODO : traiter l'alignement avant replace
+			//Le mieux etant de les traiter ici, dans le plugin
+			//car le code doit rester identique &#224; celui de Spip
+			$align = $r[2];
+			
+			$http_client = new http( HTTP_V11, false);
+			$http_client-&gt;host = &quot;spipcarto.free.fr&quot;;
+			//$http_client-&gt;host = &quot;<A HREF="http://127.0.0.1">http://127.0.0.1</A>&quot;;
+			$carteurl=&quot;/carto.php3?id_carte=&quot;.$id_carte.&quot;&amp;scale=&quot;.$_GET['scale'].&quot;&amp;x=&quot;.$_GET['x'].&quot;&amp;y=&quot;.$_GET['y'];
+			$http_reponse=$http_client-&gt;get($carteurl);
+			$remplace=embed_carto_url($id_carte,$taburl).&quot;:&quot;.$http_reponse;
+			if ( $http_reponse== HTTP_STATUS_OK)
+				$remplace = $http_client-&gt;get_response_body();
+			else $replace= &quot;HTTP_STATUT Error&quot;;
+			unset( $http_client );
+			
+			//TODO : ajouter alignement ici
+			$texte = str_replace($cherche, $remplace, $texte);
+			
+		}
+	}
+	
+	return $texte;
+}
+
+completer_fonction(&quot;propre&quot;, &quot;avant_typo_carto_free&quot;, &quot;&quot;);
+
+?&gt;
+--- NEW FILE: plug_carto_distant.php ---
+&lt;?php
+// Ce plug-in ajoute le raccourci typographique &lt;mapXX|align&gt; 
+// XX est le numero de la carte
+// align fonctionne comme les images (left / center / right)
+
+//le include pour la version HTTP
+include_ecrire('http.class.php');
+include_ecrire('inc_carto.php3');
+
+//la rustine d'inclusion pour /ecrire ...
+//abandonn&#233; pour le moment, manque de visibilit&#233;
+function avant_typo_carto_distant($texte) {
+	
+	if (preg_match_all(&quot;,&lt;carto_http(\d+)([|])?([a-zA-Z.]+)?&gt;,&quot;, $texte, $regs, PREG_SET_ORDER)) {
+		foreach ($regs as $r) {
+			$id_carte = $r[1];
+			//TODO : eviter cette rustine ...
+			//$cherche = &quot;&lt;&quot;.$r[0].&quot;&gt;&quot;;
+			//heu, en fait, c'est mon editeur WYSIWYG qui fait la transformation ...
+			//ca marche tr&#232;s bien comme ca :			
+			$cherche = $r[0];
+			
+			//TODO : traiter l'alignement avant replace
+			//Le mieux etant de les traiter ici, dans le plugin
+			//car le code doit rester identique &#224; celui de Spip
+			//$align = $r[2];
+			
+			//TODO : voir si on ne peut pas faire un reglage plus fin ...
+			// voir aussi pour les variables pass&#233;es en POST (pa de cache ???)
+			// en attendant : 60s ca permet de tester facilement le cache et le recalcul
+			$ledelai=&quot;60&quot;;
+			//TODO : peut etre d'autres parametres ... ???
+			//forcer un type de carte ?
+			//la methode doit plutot etre fonction du serveur, 
+			//mais pourquoi pas un peu de finesse de parametrage ...
+			//$type_carte = $r[3];
+			
+			//l'url du site pars&#233;e, ca peut servir ...
+			//$taburl=parse_url(lire_meta('adresse_site'));
+			//$taburl=parse_url(&quot;<A HREF="http://">http://</A>&quot;.$r[2]);
+			$taburl['path']=&quot;&quot;;
+			//recuperation de la map en cache
+			//TODO : utiliser l'API du cache plutot que cette usine &#224; gaz !
+			$http_client = new http( HTTP_V11, false);
+			$http_client-&gt;host = $r[3];//$taburl['host'];
+			$http_reponse=$http_client-&gt;get(embed_carto_url($id_carte,$taburl)) ;
+			$remplace=$r[3].embed_carto_url($id_carte,$taburl).&quot;:&quot;.$http_reponse;
+			if ( $http_reponse== HTTP_STATUS_OK)
+				$remplace = $http_client-&gt;get_response_body();
+			else $replace= &quot;HTTP_STATUT Error&quot;;
+			unset( $http_client );
+			
+			//TODO : ajouter alignement ici
+			$texte = str_replace($cherche, $remplace, $texte);
+			
+		}
+	}
+	
+	return $texte;
+}
+
+completer_fonction(&quot;propre&quot;, &quot;avant_typo_carto_distant&quot;, &quot;&quot;);
+
+?&gt;
+--- NEW FILE: plug_carto.php ---
+&lt;?php
+// Ce plug-in ajoute le raccourci typographique &lt;mapXX|align&gt; 
+// XX est le numero de la carte
+// align fonctionne comme les images (left / center / right)
+
+function avant_typo_carto($texte) {
+	
+	if (is_int(strpos($texte, '&lt;map')) &amp;&amp;
+	 (preg_match_all(&quot;,&lt;map(\d+)([|])?([a-zA-Z.]+)?&gt;,&quot;, $texte, $regs, PREG_SET_ORDER))) {
+		global $flag_ecrire;
+		$id_article=$_POST['id_article'];
+		if ($flag_ecrire) {
+			$query = &quot;DELETE FROM spip_carto_carte_articles WHERE id_article=$id_article&quot;;
+			spip_query($query);
+		}
+		foreach ($regs as $r) {
+			$id_carte = $r[1];
+			$cartes[$id_carte] = $id_carte;
+			$cherche = $r[0];
+			
+			//TODO : traiter l'alignement avant replace
+			//Le mieux etant de les traiter ici, dans le plugin
+			//car le code doit rester identique &#224; celui de Spip
+			//$align = $r[3];
+			
+			//bof ...
+			if ($r[3]==&quot;&quot;)$carto_squelette =&quot;carto&quot;;
+			else $carto_squelette =&quot;carto_&quot;.$r[3];
+			
+			//TODO : voir si on ne peut pas faire un reglage plus fin ...
+			// voir aussi pour les variables pass&#233;es en POST (pa de cache ???)
+			// en attendant : 60s ca permet de tester facilement le cache et le recalcul
+			$ledelai=&quot;60&quot;;
+			//TODO : peut etre d'autres parametres ... ???
+			//forcer un type de carte ?
+			//la methode doit plutot etre fonction du serveur, 
+			//mais pourquoi pas un peu de finesse de parametrage ...
+			//$type_carte = $r[3];
+			
+			//l'url du site pars&#233;e, ca peut servir ...
+			//$taburl=parse_url(lire_meta('adresse_site'));
+			
+			
+			//mettre &#224; jour la table de liaison avec les articles
+			if ($flag_ecrire &amp;&amp; $cartes) {
+				global $couleur_claire;
+				$remplace=&quot;&lt;div&gt;&lt;table class='gauche'&gt;&lt;tr&gt;&quot; .
+						&quot;&lt;td class='cellule36' style='width: 100px;'&gt;&lt;a href='../$carto_squelette.php3?id_carto_carte=&quot;.$r[1].&quot;' class='selection' target='_blank'&gt;&lt;img src='img_pack/carte-24.png' alt=' '/&gt;&quot; .
+						&quot;&lt;span&gt;Carte &quot;.$r[1].&quot;&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&quot;;				
+			}
+			//recuperation de la map en cache
+			else {
+				$lecontexte['id_carto_carte']=$id_carte;
+				$lechemin=generer_nom_fichier_cache($lecontexte, $carto_squelette);
+				$usecache=determiner_cache($ledelai, $usecache, $lechemin);
+				$tab=obtenir_page ($lecontexte,$lechemin , $ledelai, $usecache, $carto_squelette);
+				$remplace=$tab['texte'];
+			}
+			//TODO : ajouter alignement ici
+			$texte = str_replace($cherche, $remplace, $texte);
+		}
+		//mettre &#224; jour la table de liaison avec les articles
+		if ($flag_ecrire) {
+			$query = &quot;INSERT INTO spip_carto_cartes_articles (id_article, id_carto_carte) &quot;.
+			&quot;VALUES ($id_article, &quot;.join(&quot;), ($id_article, &quot;, $cartes).&quot;)&quot;;
+			spip_query($query);
+		}
+	}
+	
+	return $texte;
+}
+
+completer_fonction(&quot;propre&quot;, &quot;avant_typo_carto&quot;, &quot;&quot;);
+
+?&gt;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000079.html">[Spip-carto-cvs] spipcarto/ecrire/oo index.php3,NONE,1.1 index.php,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000081.html">[Spip-carto-cvs] spipcarto/formulaires formulaire_login_forum.html,NONE,1.1 formulaire_forum_previsu.html,NONE,1.1 inc-formulaire_site.php3,1.1,1.2 formulaire_inscription.html,1.1,1.2 inc-formulaire_ecrire_auteur.php3,1.1,1.2 formulaire_oubli.html,1.1,1.2 inc-login_public.php3,1.1,1.2 formulaire_forum.html,1.1,1.2 inc-url_logout.php3,1.1,1.2 formulaire_site.html,1.1,1.2 formulaire_signature.html,1.1,1.2 inc-menu_lang_ecrire.php3,1.1,1.2 inc-formulaire_inscription.php3,1.1,1.2 formulaire_recherche.html,1.1,1.2 inc-formulaire_forum.php3,1.1,1.2 inc-menu_lang.php3,1.1,1.2 inc-formulaire_signature.php3,1.1,1.2 formulaire_ecrire_auteur.html,1.1,1.2 formulaire_login.html,1.1,1.2 inc-login_prive.php3,1.1,1.2 inc-formulaire_admin.php3,1.1,1.2 inc-formulaire_recherche.php3,1.1,1.2 formulaire_menu_lang.html,1.1,1.2 formulaire_admin.html,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

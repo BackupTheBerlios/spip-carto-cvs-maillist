@@ -1,0 +1,3019 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spip-carto spip_cal.php3,NONE,1.1 sommaire.php3,NONE,1.1 typographie.css,NONE,1.1 resume-dist.html,NONE,1.1 spip_pass.php3,NONE,1.1 spip_background.php3,NONE,1.1 spip_cache.php3,NONE,1.1 recherche-dist.html,NONE,1.1 sommaire-dist.html,NONE,1.1 puce_rtl.gif,NONE,1.1 resume.php3,NONE,1.1 spip_admin.css,NONE,1.1 spip_image.php3,NONE,1.1 site-dist.html,NONE,1.1 rubrique.php3,NONE,1.1 spip_redirect.php3,NONE,1.1 site.php3,NONE,1.1 recherche.php3,NONE,1.1 spip_acces_doc.php3,NONE,1.1 spip_style.css,NONE,1.1 sommaire_texte.php3,NONE,1.1 spip_barre.js,NONE,1.1 spip_inscription.php3,NONE,1.1 spip_login.php3,NONE,1.1 rubrique-dist.html,NONE,1.1 spip_carto.php,NONE,1.1 puce.gif,NONE,1.1 sommaire_texte-dist.html,NONE,1.1 spip_image_reduite.php3,NONE,1.1 spip_test_dirs.php3,NONE,1.1 spip_cookie.php3,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spip-carto%20spip_cal.php3%2CNONE%2C1.1%20sommaire.php3%2CNONE%2C1.1%20typographie.css%2CNONE%2C1.1%20resume-dist.html%2CNONE%2C1.1%20spip_pass.php3%2CNONE%2C1.1%20spip_background.php3%2CNONE%2C1.1%20spip_cache.php3%2CNONE%2C1.1%20recherche-dist.html%2CNONE%2C1.1%20sommaire-dist.html%2CNONE%2C1.1%20puce_rtl.gif%2CNONE%2C1.1%20resume.php3%2CNONE%2C1.1%20spip_admin.css%2CNONE%2C1.1%20spip_image.php3%2CNONE%2C1.1%20site-dist.html%2CNONE%2C1.1%20rubrique.php3%2CNONE%2C1.1%20spip_redirect.php3%2CNONE%2C1.1%20site.php3%2CNONE%2C1.1%20recherche.php3%2CNONE%2C1.1%20spip_acces_doc.php3%2CNONE%2C1.1%20spip_style.css%2CNONE%2C1.1%20sommaire_texte.php3%2CNONE%2C1.1%20spip_barre.js%2CNONE%2C1.1%20spip_inscription.php3%2CNONE%2C1.1%20spip_login.php3%2CNONE%2C1.1%20rubrique-dist.html%2CNONE%2C1.1%20spip_carto.php%2CNONE%2C1.1%20puce.gif%2CNONE%2C1.1%20sommaire_texte-dist.html%2CNONE%2C1.1%20spip_image_reduite.php3%2CNONE%2C1.1%20spip_test_dirs.php3%2CNONE%2C1.1%20spip_cookie.php3%2CNONE%2C1.1&In-Reply-To=%3C200501131557.j0DFveNM021786%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000030.html">
+   <LINK REL="Next"  HREF="000040.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spip-carto spip_cal.php3,NONE,1.1 sommaire.php3,NONE,1.1 typographie.css,NONE,1.1 resume-dist.html,NONE,1.1 spip_pass.php3,NONE,1.1 spip_background.php3,NONE,1.1 spip_cache.php3,NONE,1.1 recherche-dist.html,NONE,1.1 sommaire-dist.html,NONE,1.1 puce_rtl.gif,NONE,1.1 resume.php3,NONE,1.1 spip_admin.css,NONE,1.1 spip_image.php3,NONE,1.1 site-dist.html,NONE,1.1 rubrique.php3,NONE,1.1 spip_redirect.php3,NONE,1.1 site.php3,NONE,1.1 recherche.php3,NONE,1.1 spip_acces_doc.php3,NONE,1.1 spip_style.css,NONE,1.1 sommaire_texte.php3,NONE,1.1 spip_barre.js,NONE,1.1 spip_inscription.php3,NONE,1.1 spip_login.php3,NONE,1.1 rubrique-dist.html,NONE,1.1 spip_carto.php,NONE,1.1 puce.gif,NONE,1.1 sommaire_texte-dist.html,NONE,1.1 spip_image_reduite.php3,NONE,1.1 spip_test_dirs.php3,NONE,1.1 spip_cookie.php3,NONE,1.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spip-carto%20spip_cal.php3%2CNONE%2C1.1%20sommaire.php3%2CNONE%2C1.1%20typographie.css%2CNONE%2C1.1%20resume-dist.html%2CNONE%2C1.1%20spip_pass.php3%2CNONE%2C1.1%20spip_background.php3%2CNONE%2C1.1%20spip_cache.php3%2CNONE%2C1.1%20recherche-dist.html%2CNONE%2C1.1%20sommaire-dist.html%2CNONE%2C1.1%20puce_rtl.gif%2CNONE%2C1.1%20resume.php3%2CNONE%2C1.1%20spip_admin.css%2CNONE%2C1.1%20spip_image.php3%2CNONE%2C1.1%20site-dist.html%2CNONE%2C1.1%20rubrique.php3%2CNONE%2C1.1%20spip_redirect.php3%2CNONE%2C1.1%20site.php3%2CNONE%2C1.1%20recherche.php3%2CNONE%2C1.1%20spip_acces_doc.php3%2CNONE%2C1.1%20spip_style.css%2CNONE%2C1.1%20sommaire_texte.php3%2CNONE%2C1.1%20spip_barre.js%2CNONE%2C1.1%20spip_inscription.php3%2CNONE%2C1.1%20spip_login.php3%2CNONE%2C1.1%20rubrique-dist.html%2CNONE%2C1.1%20spip_carto.php%2CNONE%2C1.1%20puce.gif%2CNONE%2C1.1%20sommaire_texte-dist.html%2CNONE%2C1.1%20spip_image_reduite.php3%2CNONE%2C1.1%20spip_test_dirs.php3%2CNONE%2C1.1%20spip_cookie.php3%2CNONE%2C1.1&In-Reply-To=%3C200501131557.j0DFveNM021786%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spip-carto spip_cal.php3,NONE,1.1 sommaire.php3,NONE,1.1 typographie.css,NONE,1.1 resume-dist.html,NONE,1.1 spip_pass.php3,NONE,1.1 spip_background.php3,NONE,1.1 spip_cache.php3,NONE,1.1 recherche-dist.html,NONE,1.1 sommaire-dist.html,NONE,1.1 puce_rtl.gif,NONE,1.1 resume.php3,NONE,1.1 spip_admin.css,NONE,1.1 spip_image.php3,NONE,1.1 site-dist.html,NONE,1.1 rubrique.php3,NONE,1.1 spip_redirect.php3,NONE,1.1 site.php3,NONE,1.1 recherche.php3,NONE,1.1 spip_acces_doc.php3,NONE,1.1 spip_style.css,NONE,1.1 sommaire_texte.php3,NONE,1.1 spip_barre.js,NONE,1.1 spip_inscription.php3,NONE,1.1 spip_login.php3,NONE,1.1 rubrique-dist.html,NONE,1.1 spip_carto.php,NONE,1.1 puce.gif,NONE,1.1 sommaire_texte-dist.html,NONE,1.1 spip_image_reduite.php3,NONE,1.1 spip_test_dirs.php3,NONE,1.1 spip_cookie.php3,NONE,1.1">stef at berlios.de
+       </A><BR>
+    <I>Thu Jan 13 16:57:40 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000030.html">[Spip-carto-cvs] spip-carto/ecrire/plugins - New directory
+</A></li>
+        <LI>Next message: <A HREF="000040.html">[Spip-carto-cvs] CVSROOT modules,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spip-carto
+In directory sheep:/tmp/cvs-serv21755
+
+Added Files:
+	spip_cal.php3 sommaire.php3 typographie.css resume-dist.html 
+	spip_pass.php3 spip_background.php3 spip_cache.php3 
+	recherche-dist.html sommaire-dist.html puce_rtl.gif 
+	resume.php3 spip_admin.css spip_image.php3 site-dist.html 
+	rubrique.php3 spip_redirect.php3 site.php3 recherche.php3 
+	spip_acces_doc.php3 spip_style.css sommaire_texte.php3 
+	spip_barre.js spip_inscription.php3 spip_login.php3 
+	rubrique-dist.html spip_carto.php puce.gif 
+	sommaire_texte-dist.html spip_image_reduite.php3 
+	spip_test_dirs.php3 spip_cookie.php3 
+Log Message:
+proto
+
+--- NEW FILE: spip_cal.php3 ---
+&lt;?php
+
+include (&quot;ecrire/inc_version.php3&quot;);
+
+include_ecrire(&quot;inc_filtres.php3&quot;);
+include_ecrire(&quot;inc_lang.php3&quot;);
+include_ecrire(&quot;inc_texte.php3&quot;);
+include_ecrire(&quot;inc_charsets.php3&quot;);
+include_ecrire(&quot;inc_meta.php3&quot;);
+include_ecrire(&quot;inc_admin.php3&quot;);
+include_ecrire(&quot;inc_acces.php3&quot;);
+
+/*
+function ligne_x ($texte) {
+	if (ereg(&quot;^BEGIN&quot;, $texte)) echo &quot;&lt;br&gt;&quot;;
+	echo $texte.&quot;&lt;br&gt;&quot;;
+}
+*/
+function ligne ($texte) {
+	echo filtrer_ical($texte).&quot;\n&quot;;
+}
+
+$nom_site = lire_meta(&quot;nom_site&quot;);
+$adresse_site = lire_meta(&quot;adresse_site&quot;);
+
+// securite
+unset($id_utilisateur);
+$id_auteur = intval($id);
+
+// verifier la cle
+if (verifier_low_sec($id_auteur, $cle, 'ical')) {
+	$query = &quot;SELECT * FROM spip_auteurs WHERE id_auteur=$id_auteur&quot;;
+	$result = spip_query($query);
+
+	if ($row = spip_fetch_array($result)) {
+		$id_utilisateur=$row['id_auteur'];
+		$nom_utilisateur=$row['nom'];
+		$statut_utilisateur=$row['statut'];
+		$langue_utilisateur=$row['lang'];
+	}
+}
+if (!$id_utilisateur) {
+	echo _T('info_acces_interdit');
+	exit;
+}
+
+lang_select($langue_utilisateur);
+
+@header(&quot;content-type:text/calendar; charset=utf-8&quot;);
+
+ligne (&quot;BEGIN:VCALENDAR&quot;);
+ligne (&quot;CALSCALE:GREGORIAN&quot;);
+ligne (&quot;X-WR-CALNAME;VALUE=TEXT:$nom_site / $nom_utilisateur&quot;);
+ligne (&quot;X-WR-RELCALID:cal$id_utilisateur @ $adresse_site&quot;);
+
+
+// rendez-vous
+$result_messages=spip_query(&quot;SELECT messages.* FROM spip_messages AS messages, spip_auteurs_messages AS lien WHERE ((lien.id_auteur='$id_utilisateur' AND lien.id_message=messages.id_message) OR messages.type='affich') AND messages.rv='oui' AND messages.statut='publie' GROUP BY messages.id_message ORDER BY messages.date_heure&quot;);
+while($row=spip_fetch_array($result_messages)){
+	$id_message=$row['id_message'];
+	$date_heure=$row[&quot;date_heure&quot;];
+	$date_heure_fin=$row[&quot;date_fin&quot;];
+	//$titre=typo($row[&quot;titre&quot;]);
+	$titre = $row[&quot;titre&quot;];
+	$texte = $row[&quot;texte&quot;];
+	$type=$row[&quot;type&quot;];
+
+	if ($type == 'normal') {
+		$le_type = _T('info_message_2');
+		$result_auteurs=spip_query(&quot;SELECT auteurs.* FROM spip_auteurs AS auteurs, spip_auteurs_messages AS lien WHERE (lien.id_message='$id_message' AND lien.id_auteur=auteurs.id_auteur)&quot;);
+		while($row_auteur=spip_fetch_array($result_auteurs)){
+			$id_auteur=$row_auteur['id_auteur'];
+			$nom_auteur=$row_auteur['nom'];
+			$email = $row_auteur ['email'];
+
+			if ($id_auteur != $id_utilisateur) $titre = $titre.&quot; - &quot;.$nom_auteur;
+			
+			if ($id_auteur == $id_utilisateur) ligne (&quot;ORGANIZER:$nom_auteur &lt;$email&gt;&quot;);
+			else  ligne (&quot;ATTENDEE:$nom_auteur &lt;$email&gt;&quot;);
+		}
+	}
+	else if ($type == 'pb') {
+		$le_type = _T('info_pense_bete');
+	}
+	else if ($type == 'affich') {
+		$le_type = _T('info_annonce');
+		$titre = &quot;[$nom_site] $titre&quot;;
+	}
+
+	ligne (&quot;BEGIN:VEVENT&quot;);
+	ligne (&quot;SUMMARY:&quot;.$titre);
+	ligne (&quot;DESCRIPTION:$texte&quot;);
+	ligne (&quot;UID:mess$id_message @ $adresse_site&quot;);
+	ligne (&quot;DTSTAMP:&quot;.date_ical($date_heure));
+	ligne (&quot;DTSTART:&quot;.date_ical($date_heure));
+	if ($date_heure_fin &gt; $date_heure) ligne (&quot;DTEND:&quot;.date_ical($date_heure_fin));
+
+	ligne (&quot;CATEGORIES:$le_type&quot;);
+	ligne(&quot;URL:$adresse_site/ecrire/message.php3?id_message=$id_message&quot;);
+	
+	ligne (&quot;END:VEVENT&quot;);
+	
+}
+
+// todo
+$result_messages=spip_query(&quot;SELECT messages.* FROM spip_messages AS messages, spip_auteurs_messages AS lien WHERE lien.id_auteur='$id_utilisateur' AND lien.id_message=messages.id_message AND messages.type='pb' AND messages.rv!='oui' AND messages.statut='publie' GROUP BY messages.id_message ORDER BY messages.date_heure&quot;);
+while($row=spip_fetch_array($result_messages)){
+	$id_message=$row['id_message'];
+	$date_heure=$row[&quot;date_heure&quot;];
+	$titre = $row[&quot;titre&quot;];
+	$texte = $row[&quot;texte&quot;];
+	$type=$row[&quot;type&quot;];
+
+	if ($type == 'normal') {
+		$le_type = _T('info_message_2');
+		$result_auteurs=spip_query(&quot;SELECT auteurs.* FROM spip_auteurs AS auteurs, spip_auteurs_messages AS lien WHERE (lien.id_message='$id_message' AND lien.id_auteur=auteurs.id_auteur)&quot;);
+		while($row_auteur=spip_fetch_array($result_auteurs)){
+			$id_auteur=$row_auteur['id_auteur'];
+			$nom_auteur=$row_auteur['nom'];
+			$email = $row_auteur ['email'];
+
+			if ($id_auteur != $id_utilisateur) $titre = $titre.&quot; - &quot;.$nom_auteur;
+			
+			if ($id_auteur == $id_utilisateur) ligne (&quot;ORGANIZER:$nom_auteur &lt;$email&gt;&quot;);
+			else  ligne (&quot;ATTENDEE:$nom_auteur &lt;$email&gt;&quot;);
+		}
+	}
+	else if ($type == 'pb') {
+		$le_type = _T('info_pense_bete');
+	}
+	else if ($type == 'affich') {
+		$le_type = _T('info_annonce');
+		$titre = &quot;[$nom_site] $titre&quot;;
+	}
+	
+	ligne (&quot;BEGIN:VTODO&quot;);
+	ligne (&quot;SUMMARY:&quot;.$titre);
+	ligne (&quot;DESCRIPTION:$texte&quot;);
+	ligne (&quot;UID:mess$id_message @ $adresse_site&quot;);
+	ligne (&quot;DTSTAMP:&quot;.date_ical($date_heure));
+	ligne (&quot;DTSTART:&quot;.date_ical($date_heure));
+	ligne (&quot;CATEGORIES:$le_type&quot;);
+	ligne (&quot;URL:$adresse_site/ecrire/message.php3?id_message=$id_message&quot;);
+	ligne (&quot;END:VTODO&quot;);
+
+}
+
+// Articles et breves proposes
+$titres = Array();
+$result_articles = spip_query(&quot;SELECT id_article, titre, date FROM spip_articles WHERE statut = 'prop'&quot;);
+while($row=spip_fetch_array($result_articles)){
+	$id_article=$row['id_article'];
+	$titre = supprimer_numero($row['titre']);
+	$titres[] = $titre;
+	$date_heure = $row['date'];
+	$nb_articles ++;
+	ligne (&quot;BEGIN:VEVENT&quot;);
+	ligne (&quot;SUMMARY:[$nom_site] $titre (&quot;._T('info_article_propose').&quot;)&quot;);
+	ligne (&quot;UID:article$id_article @ $adresse_site&quot;);
+	ligne (&quot;DTSTAMP:&quot;.date (&quot;Ymd\THis&quot;, mktime (heures($date_heure),minutes($date_heure),0,mois($date_heure),jour($date_heure),annee($date_heure))));
+	ligne (&quot;DTSTART;VALUE=DATE:&quot;.date (&quot;Ymd&quot;, mktime (heures($date_heure),minutes($date_heure),0,mois($date_heure),jour($date_heure),annee($date_heure))));
+	ligne (&quot;CATEGORIES:&quot;._T('info_article_propose'));
+	ligne(&quot;URL:$adresse_site/ecrire/articles.php3?id_article=$id_article&quot;);
+	ligne (&quot;END:VEVENT&quot;);
+}
+
+$result_articles = spip_query(&quot;SELECT id_breve, titre, date_heure FROM spip_breves WHERE statut = 'prop'&quot;);
+while($row=spip_fetch_array($result_articles)){
+	$id_breve=$row['id_breve'];
+	$titre = supprimer_numero($row['titre']);
+	$titres[] = $titre;
+	$date_heure = $row['date_heure'];
+	$nb_breves++;
+	ligne (&quot;BEGIN:VEVENT&quot;);
+	ligne (&quot;SUMMARY:[$nom_site] $titre (&quot;._T('item_breve_proposee').&quot;)&quot;);
+	ligne (&quot;UID:breve$id_breve @ $adresse_site&quot;);
+	ligne (&quot;DTSTAMP:&quot;.date (&quot;Ymd\THis&quot;, mktime (heures($date_heure),minutes($date_heure),0,mois($date_heure),jour($date_heure),annee($date_heure))));
+	ligne (&quot;DTSTART;VALUE=DATE:&quot;.date (&quot;Ymd&quot;, mktime (heures($date_heure),minutes($date_heure),0,mois($date_heure),jour($date_heure),annee($date_heure))));
+	ligne (&quot;CATEGORIES:&quot;._T('item_breve_proposee'));
+	ligne (&quot;URL:$adresse_site/ecrire/breves_voir.php3?id_breve=$id_breve&quot;);
+	ligne (&quot;END:VEVENT&quot;);
+
+}
+
+if ($nb_articles + $nb_breves &gt; 0) {
+	if ($nb_articles &gt; 0) $titre_prop[] = _T('info_articles_proposes').&quot;: &quot;.$nb_articles;
+	if ($nb_breves &gt; 0) $titre_prop[] = _T('info_breves_valider').&quot;: &quot;.$nb_breves;
+	$titre = join($titre_prop,&quot; / &quot;);
+	ligne (&quot;BEGIN:VTODO&quot;);
+	ligne (&quot;SUMMARY:[$nom_site] $titre&quot;);
+	ligne (&quot;UID:prop @ $adresse_site&quot;);
+	$texte = join($titres,&quot; / &quot;);
+	ligne (&quot;DESCRIPTION:$texte&quot;);
+	
+	$today=getdate(time());
+	$jour = $today[&quot;mday&quot;];
+	$mois=$today[&quot;mon&quot;];
+	$annee=$today[&quot;year&quot;];
+	ligne (&quot;DTSTAMP:&quot;.date (&quot;Ymd\THis&quot;, mktime (12,0,0,$mois,$jour,$annee)));
+	ligne (&quot;DTSTART:&quot;.date (&quot;Ymd\THis&quot;, mktime (12,0,0,$mois,$jour,$annee)));
+	ligne (&quot;CATEGORIES:&quot;._T('icone_a_suivre'));
+	ligne (&quot;URL:$adresse_site/ecrire/&quot;);
+	ligne (&quot;END:VTODO&quot;);
+}
+
+
+// Nouveaux messages
+
+$result_messages = spip_query(&quot;SELECT * FROM spip_messages AS messages, spip_auteurs_messages AS lien WHERE lien.id_auteur=$id_utilisateur AND vu='non' AND statut='publie' AND type='normal' AND lien.id_message=messages.id_message&quot;);
+while($row=spip_fetch_array($result_messages)){
+	$id_message=$row['id_message'];
+	$date_heure=$row[&quot;date_heure&quot;];
+	$titre = $row[&quot;titre&quot;];
+	$texte = $row[&quot;texte&quot;];
+	$type=$row[&quot;type&quot;];
+
+	if ($type == 'normal') {
+		$le_type = _T('info_message_2');
+		$result_auteurs=spip_query(&quot;SELECT auteurs.* FROM spip_auteurs AS auteurs, spip_auteurs_messages AS lien WHERE (lien.id_message='$id_message' AND lien.id_auteur=auteurs.id_auteur)&quot;);
+		while($row_auteur=spip_fetch_array($result_auteurs)){
+			$id_auteur=$row_auteur['id_auteur'];
+			$nom_auteur = $row_auteur['nom'];
+			$email = $row_auteur ['email'];
+
+			if ($id_auteur != $id_utilisateur) $titre = $nom_auteur.&quot; - &quot;.$titre;
+			
+			if ($id_auteur == $id_utilisateur) ligne (&quot;ORGANIZER:$nom_auteur &lt;$email&gt;&quot;);
+			else  ligne (&quot;ATTENDEE:$nom_auteur &lt;$email&gt;&quot;);
+		}
+		$query_forum = &quot;SELECT * FROM spip_forum WHERE statut='perso' AND id_message='$id_message' ORDER BY date_heure DESC LIMIT 0,1&quot;;
+		$result_forum = spip_query($query_forum);
+		if ($row_forum = spip_fetch_array($result_forum)) {
+			$date_heure = $row_forum[&quot;date_heure&quot;];
+			$texte = $row_forum[&quot;texte&quot;];
+			$titre = $row_forum[&quot;titre&quot;];
+			$id_auteur = $row_forum[&quot;id_auteur&quot;];
+
+			$result_auteurs2 = spip_query(&quot;SELECT * FROM spip_auteurs WHERE id_auteur = $id_auteur&quot;);
+			if ($row_auteur2 = spip_fetch_array($result_auteurs2)){
+				$nom_auteur = $row_auteur2['nom'];
+				$email = $row_auteur2 ['email'];
+				
+				$titre = $nom_auteur.&quot; - &quot;.$titre;
+			}
+		}
+	}
+	else if ($type == 'pb') {
+		$le_type = _T('info_pense_bete');
+	}
+	else if ($type == 'affich') {
+		$le_type = _T('info_annonce');
+		$titre = &quot;[$nom_site] $titre&quot;;
+	}
+
+	
+	
+	ligne (&quot;BEGIN:VTODO&quot;);
+	ligne (&quot;SUMMARY:&quot;.$titre);
+	ligne (&quot;DESCRIPTION:$texte&quot;);
+	ligne (&quot;UID:nouv_mess$id_message @ $adresse_site&quot;);
+	ligne (&quot;DTSTAMP:&quot;.date (&quot;Ymd\THis&quot;, mktime (heures($date_heure),minutes($date_heure),0,mois($date_heure),jour($date_heure),annee($date_heure))));
+	ligne (&quot;DTSTART:&quot;.date (&quot;Ymd\THis&quot;, mktime (heures($date_heure),minutes($date_heure),0,mois($date_heure),jour($date_heure),annee($date_heure))));
+	ligne (&quot;CATEGORIES:$le_type&quot;);
+	ligne(&quot;URL:$adresse_site/ecrire/message.php3?id_message=$id_message&quot;);
+	ligne (&quot;END:VTODO&quot;);
+	
+}
+
+// Messages de forum a valider
+if ($statut_utilisateur == &quot;0minirezo&quot;) {
+
+	$query_forum = &quot;SELECT * FROM spip_forum WHERE statut = 'prop'&quot;;
+	$result_forum = spip_query($query_forum);
+
+	while($row=spip_fetch_array($result_forum)){
+		$nb_forum ++;
+	
+		$id_forum=$row['id_forum'];
+		$date_heure = $row['date_heure'];
+		$titre = $row['titre'];
+		$texte = $row['texte'];
+		$auteur = $row['auteur'];
+		$email_auteur = $row['email_auteur'];
+		if ($email_auteur) $email_auteur = &quot;&lt;$email_auteur&gt;&quot;;
+		
+		ligne (&quot;BEGIN:VEVENT&quot;);
+		ligne (&quot;SUMMARY:[$nom_site] $titre &quot;._T('icone_forum_suivi'));
+		ligne (&quot;DESCRIPTION:$texte\r$auteur $email_auteur&quot;);
+		ligne (&quot;UID:forum$id_forum @ $adresse_site&quot;);
+		ligne (&quot;DTSTAMP:&quot;.date (&quot;Ymd\THis&quot;, mktime (heures($date_heure),minutes($date_heure),0,mois($date_heure),jour($date_heure),annee($date_heure))));
+		ligne (&quot;DTSTART:&quot;.date (&quot;Ymd\THis&quot;, mktime (heures($date_heure),minutes($date_heure),0,mois($date_heure),jour($date_heure),annee($date_heure))));
+		ligne (&quot;DTEND:&quot;.date (&quot;Ymd\THis&quot;, mktime (heures($date_heure),minutes($date_heure)+60,0,mois($date_heure),jour($date_heure),annee($date_heure))));
+		ligne (&quot;CATEGORIES:&quot;._T('icone_forum_suivi'));
+		ligne(&quot;URL:$adresse_site/ecrire/controle_forum.php3&quot;);
+		ligne (&quot;END:VEVENT&quot;);
+
+
+		
+	}
+
+	if ($nb_forum &gt; 0) {
+		ligne (&quot;BEGIN:VTODO&quot;);
+		ligne (&quot;SUMMARY:[$nom_site] &quot;._T('icone_forum_suivi').&quot;: $nb_forum&quot;);
+		ligne (&quot;UID:forum @ $adresse_site&quot;);
+		
+		$today=getdate(time());
+		$jour = $today[&quot;mday&quot;];
+		$mois=$today[&quot;mon&quot;];
+		$annee=$today[&quot;year&quot;];
+		ligne (&quot;DTSTAMP:&quot;.date (&quot;Ymd\THis&quot;, mktime (12,0,0,$mois,$jour,$annee)));
+		ligne (&quot;DTSTART:&quot;.date (&quot;Ymd\THis&quot;, mktime (12,0,0,$mois,$jour,$annee)));
+		ligne (&quot;CATEGORIES:&quot;._T('icone_forum_suivi'));
+		ligne(&quot;URL:$adresse_site/ecrire/controle_forum.php3&quot;);
+		ligne (&quot;END:VTODO&quot;);
+	}
+}
+
+
+
+
+ligne (&quot;END:VCALENDAR&quot;);
+
+
+?&gt;
+--- NEW FILE: sommaire.php3 ---
+&lt;?php
+$fond = &quot;sommaire&quot;;
+$delais = 2 * 3600;
+
+include (&quot;inc-public.php3&quot;);
+
+?&gt;
+
+--- NEW FILE: typographie.css ---
+
+/*
+ * Correction des styles HTML par defaut
+ */
+
+.structure {
+	display: none;
+}
+h1,h2,h3,h4 {
+	margin-top: 0em;
+	margin-bottom: 0em;
+	font-size: 100%;
+	font-weight: normal;
+}
+
+/*
+ * Styles generaux
+ */
+
+/* bien regler la marge (bugs IE) */
+body { background: white; margin: 10px; }
+a { text-decoration: none; color: #505050; }
+a:hover { text-decoration: none; color: #303030; background: #e8e8e8; }
+a.spip_out { text-decoration: none; color: #a02020; }
+a.spip_in, a.spip_url { text-decoration: none; color: #2020a0; }
+a.spip_glossaire { text-decoration: none; color: #20a020; }
+
+.chapo {
+	font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-align: justify;
+	font-size: 105%;
+}
+.texte, .texte p.spip {
+	font-family: Georgia, Garamond, Times, serif;
+	text-align: justify;
+}
+.ps {
+	font-family: Georgia, Garamond, Times, serif;
+	text-align: justify;
+	font-size: 85%;
+}
+.notes {
+	font-family: Georgia, Garamond, Times, serif;
+	text-align: left;
+	font-size: 80%;
+}
+
+/*
+ * Ici les styles pour le contenu
+ */
+
+.contenu h1,h2 {
+	font-size: 120%;
+	font-weight: bold;
+}
+.contenu h1,h2.titre-extrait {
+	font-size: 160%;
+	font-weight: bold;
+}
+.contenu h1,h2.titre-texte {
+	font-size: 190%;
+	font-weight: bold;
+}
+.contenu .surtitre {
+	font-size: 110%;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+.contenu .detail {
+	font-size: 80%;
+	color: #303030;
+}
+.extrait {
+	border: groove 2px #a0a0a0;
+	padding: 1em;
+	font-size: 85%;
+}
+
+
+/*
+ * Disposition a l'ecran
+ */
+
+#principal {
+	font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, Helvetica, sans-serif;
+}
+
+#plan {
+	font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, Helvetica, sans-serif;
+}
+
+#navigation {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.encart {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+--- NEW FILE: resume-dist.html ---
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;<A HREF="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</A>&quot;&gt;
+&lt;html lang=&quot;#LANG&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;[#NOM_SITE_SPIP] &lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=#CHARSET&quot;&gt;
+
+&lt;!-- Ceci est la feuille de style par defaut pour les types internes a SPIP --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;spip_style.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- Les feuilles de style specifiques aux presents squelettes --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;typographie.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- media=&quot;...&quot; permet de ne pas utiliser ce style sous Netscape 4 (sinon plantage) --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;habillage.css&quot; type=&quot;text/css&quot; media=&quot;print, projection, screen, tv&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;white&quot; dir=&quot;#LANG_DIR&quot;&gt;
+
+&lt;div id=&quot;navigation&quot;&gt;
+
+&lt;h1 class=&quot;structure&quot;&gt;&lt;:navigation:&gt;&lt;/h1&gt;
+
+&lt;!-- Menu de navigation general --&gt;
+
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;general&quot;&gt;
+	&lt;li class=&quot;menu-titre&quot;&gt;
+	[&lt;a href=&quot;(#URL_SITE_SPIP)&quot; title=&quot;&lt;:accueil_site:&gt;&quot;&gt;&lt;b&gt;#NOM_SITE_SPIP&lt;/b&gt;&lt;/a&gt;]
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;plan.php3&quot;&gt;&lt;:plan_site:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;resume.php3&quot;&gt;&lt;:en_resume:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;ecrire/&quot;&gt;&lt;:espace_prive:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;!-- Formulaire de recherche --&gt;
+
+[(#FORMULAIRE_RECHERCHE)]
+
+&lt;!-- Liens des forums --&gt;
+&lt;B_forums_liens&gt;
+&lt;div class=&quot;menu&quot; title=&quot;&lt;:derniers_messages_forum:&gt;&quot;&gt;
+	&lt;h1 class=&quot;structure&quot;&gt;&lt;:messages_recents:&gt;&lt;/h1&gt;
+	&lt;div class=&quot;forums&quot;&gt;
+	&lt;div class=&quot;menu-titre&quot;&gt;
+	&lt;:derniers_commentaires:&gt;
+	&lt;/div&gt;
+	&lt;ul&gt;
+&lt;BOUCLE_forums_liens(FORUMS){plat}{par date}{inverse}{0,15}&gt;
+        &lt;li class=&quot;menu-item&quot;&gt;[&lt;i&gt;(#DATE|affdate_court)&lt;/i&gt;:]
+        &lt;a href=&quot;#URL_FORUM&quot;&gt;#TITRE&lt;/a&gt;
+        &lt;/li&gt;
+&lt;/BOUCLE_forums_liens&gt;
+	&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;/B_forums_liens&gt;
+
+
+&lt;/div&gt;
+
+&lt;!-- Une : articles les plus populaires --&gt;
+
+&lt;div id=&quot;principal&quot; class=&quot;contenu&quot;&gt;
+
+&lt;h1 class=&quot;structure&quot;&gt;&lt;:articles_populaires:&gt;&lt;/h1&gt;
+
+&lt;BOUCLE_article_un(ARTICLES) {par popularite} {inverse} {0,2}&gt;
+	[(#LOGO_ARTICLE_RUBRIQUE|right|#URL_ARTICLE)]
+	[&lt;div class=&quot;surtitre&quot;&gt;(#SURTITRE)&lt;/div&gt;]
+	&lt;h2 class=&quot;titre-extrait&quot;&gt;&lt;a href=&quot;#URL_ARTICLE&quot;&gt;#TITRE&lt;/a&gt;&lt;/h2&gt;
+	[&lt;div class=&quot;surtitre&quot;&gt;(#SOUSTITRE)&lt;/div&gt;]
+	&lt;div class=&quot;detail&quot;&gt;
+	[(#DATE|nom_jour)] [(#DATE|affdate)]
+	&lt;B_auteurs_un&gt;&lt;:par_auteur:&gt; &lt;BOUCLE_auteurs_un(AUTEURS) {id_article} {&quot;, &quot;}&gt;#NOM&lt;/BOUCLE_auteurs_un&gt;
+	[&lt;br&gt;&lt;:popularite:&gt;&nbsp;: &lt;span class=&quot;important&quot;&gt;(#POPULARITE)&lt;/span&gt; %]
+	&lt;/div&gt;
+	[&lt;div class=&quot;texte&quot;&gt;&lt;div class=&quot;extrait&quot;&gt;(#INTRODUCTION)&lt;/div&gt;&lt;/div&gt;]
+	&lt;br&gt;
+&lt;/BOUCLE_article_un&gt;
+
+
+	&lt;div class=&quot;encart&quot;&gt;
+
+	&lt;!-- &lt;:sur_web:&gt; --&gt;
+
+	&lt;h1 class=&quot;structure&quot;&gt;&lt;:nouveautes_web:&gt;&lt;/h1&gt;
+
+	&lt;B_syndic&gt;
+	&lt;div class=&quot;menu&quot;&gt;
+	&lt;div class=&quot;divers&quot;&gt;
+		&lt;div class=&quot;menu-titre&quot;&gt;
+		&lt;:sur_web:&gt;
+		&lt;/div&gt;
+		&lt;ul&gt;
+	&lt;BOUCLE_syndic(SYNDIC_ARTICLES) {par date} {inverse} {0,15}&gt;
+		&lt;li class=&quot;menu-item&quot;&gt;
+		[&lt;i&gt;(#DATE|affdate_court)&lt;/i&gt;:]
+		&lt;a href=&quot;#URL_ARTICLE&quot;&gt;[(#TITRE*)]&lt;/a&gt;
+		&lt;/li&gt;
+	&lt;/BOUCLE_syndic&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/B_syndic&gt;
+
+	&lt;/div&gt;
+
+
+&lt;h1 class=&quot;structure&quot;&gt;&lt;:articles_populaires:&gt; (&lt;:suite:&gt;)&lt;/h1&gt;
+
+&lt;!-- Articles les plus populaires (suite) --&gt;
+
+&lt;BOUCLE_articles_populaires(ARTICLES) {par popularite} {inverse} {2,8}&gt;
+	&lt;h2&gt;&lt;a href=&quot;#URL_ARTICLE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/h2&gt;
+	&lt;div class=&quot;detail&quot;&gt;
+	[(#DATE|nom_jour)] [(#DATE|affdate)]
+	&lt;B_auteurs_recents&gt;&lt;:par_auteur:&gt; &lt;BOUCLE_auteurs_recents(AUTEURS) {id_article} {&quot;, &quot;}&gt;#NOM&lt;/BOUCLE_auteurs_recents&gt;&lt;br&gt;
+	&lt;:popularite:&gt;&nbsp;: &lt;span class=&quot;important&quot;&gt;#POPULARITE&lt;/span&gt; %
+	&lt;/div&gt;
+	&lt;br&gt;
+&lt;/BOUCLE_articles_populaires&gt;
+
+
+&lt;/div&gt;
+#FORMULAIRE_ADMIN
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+--- NEW FILE: spip_pass.php3 ---
+&lt;?php
+
+include (&quot;ecrire/inc_version.php3&quot;);
+
+include_ecrire(&quot;inc_meta.php3&quot;);
+include_ecrire(&quot;inc_presentation.php3&quot;);
+include_ecrire(&quot;inc_session.php3&quot;);
+include_ecrire(&quot;inc_filtres.php3&quot;);
+include_ecrire(&quot;inc_texte.php3&quot;);
+include_ecrire(&quot;inc_meta.php3&quot;);
+include_ecrire(&quot;inc_mail.php3&quot;);
+include_ecrire(&quot;inc_acces.php3&quot;);
+include_local(&quot;inc-public-global.php3&quot;); 
+
+// Ce fichier est celui d'une balise dynamique qui s'ignore.
+
+function formulaire_oubli_dyn($p, $oubli)
+{
+
+$erreur = '';
+
+// au 3e appel la variable P est positionnee par le script lui-meme
+// et oubli = mot passe. Le choix du nom P est impose par pass_mail_passcookie
+if ($p = addslashes($p)) {
+	$res = spip_query (&quot;SELECT * FROM spip_auteurs WHERE cookie_oubli='$p' AND statut&lt;&gt;'5poubelle' AND pass&lt;&gt;''&quot;);
+	if (!$row = spip_fetch_array($res)) 
+		$erreur = _T('pass_erreur_code_inconnu');
+	else {
+		if ($oubli) {
+			$mdpass = md5($oubli);
+			$htpass = generer_htpass($oubli);
+			spip_query (&quot;UPDATE spip_auteurs SET htpass='$htpass', pass='$mdpass', alea_actuel='',
+				cookie_oubli='' WHERE cookie_oubli='$p'&quot;);
+
+			$login = $row['login'];
+			$erreur = &quot;&lt;b&gt;&quot;._T('pass_nouveau_enregistre').&quot;&lt;/b&gt;&quot;.
+			&quot;&lt;p&gt;&quot;._T('pass_rappel_login', array('login' =&gt; $login));
+		}
+	}
+ } else { 
+  // si p absent, oubli vaut alors le mail au 2e appel, vide au 1e
+  if ($oubli) {
+	if (email_valide($oubli)) {
+		$email = addslashes($oubli);
+		$res = spip_query(&quot;SELECT * FROM spip_auteurs WHERE email ='$email'&quot;);
+		if ($row = spip_fetch_array($res)) {
+			if ($row['statut'] == '5poubelle' OR $row['pass'] == '')
+				$erreur = _T('pass_erreur_acces_refuse');
+			else {
+				$cookie = creer_uniqid();
+				spip_query(&quot;UPDATE spip_auteurs SET cookie_oubli = '$cookie' WHERE email ='$email'&quot;);
+
+				if (envoyer_mail($email,
+						 &quot;[&quot; . lire_meta(&quot;nom_site&quot;) .'] ' ._T('pass_oubli_mot'),
+						 _T('pass_mail_passcookie',
+						    array('nom_site_spip' =&gt; lire_meta(&quot;nom_site&quot;),
+							  'adresse_site' =&gt; lire_meta(&quot;adresse_site&quot;), 
+							  'cookie' =&gt; $cookie))))
+					$erreur = _T('pass_recevoir_mail');
+				else
+					$erreur = _T('pass_erreur_probleme_technique');
+			}
+		}
+		else
+			$erreur = _T('pass_erreur_non_enregistre', array('email_oubli' =&gt; htmlspecialchars($oubli)));
+	} else {
+		$erreur = _T('pass_erreur_non_valide', array('email_oubli' =&gt; htmlspecialchars($oubli)));
+	}
+  }
+ }
+ return $erreur ? $erreur : array('formulaire_oubli', 0, array('p' =&gt; $p));
+}
+
+utiliser_langue_site();
+utiliser_langue_visiteur();
+install_debut_html(_T('pass_mot_oublie'));
+inclure_balise_dynamique(formulaire_oubli_dyn($p, $oubli));
+install_fin_html();
+?&gt;
+
+--- NEW FILE: spip_background.php3 ---
+&lt;?php
+
+// Du cote de la page HTML, utiliser un background-image en feuille de style
+// plutot qu'un &lt;img&gt;, c'est plus discret notamment sous navigateur texte
+$image = pack(&quot;H*&quot;, &quot;47494638396118001800800000ffffff00000021f90401000000002c0000000018001800000216848fa9cbed0fa39cb4da8bb3debcfb0f86e248965301003b&quot;);
+$size = strlen($image);
+
+Header(&quot;Content-Type: image/gif&quot;);
+Header(&quot;Content-Length: &quot;.$size);
+Header(&quot;Cache-Control: no-cache,no-store&quot;);
+Header(&quot;Pragma: no-cache&quot;);
+Header(&quot;Connection: close&quot;);
+
+echo $image;
+
+flush();
+
+include('ecrire/inc_version.php3');
+
+cron(1);	// toutes les 1 seconde (gourmand)
+
+
+?&gt;
+--- NEW FILE: spip_cache.php3 ---
+&lt;?php
+
+include (&quot;ecrire/inc_version.php3&quot;);
+
+include_ecrire(&quot;inc_meta.php3&quot;);
+include_ecrire(&quot;inc_admin.php3&quot;);
+include_local(&quot;inc-cache.php3&quot;);
+
+if ($purger_cache == &quot;oui&quot;) {
+	if (verifier_action_auteur(&quot;purger_cache&quot;, $hash, $id_auteur))
+		purger_cache();
+}
+
+if ($purger_squelettes == &quot;oui&quot;) {
+	if (verifier_action_auteur(&quot;purger_squelettes&quot;, $hash, $id_auteur))
+	  purger_squelettes();
+}
+redirige_par_entete($redirect);
+
+?&gt;
+
+--- NEW FILE: recherche-dist.html ---
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;<A HREF="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</A>&quot;&gt;
+
+&lt;html lang=&quot;#LANG&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;:resultats_recherche:&gt;&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=#CHARSET&quot;&gt;
+
+&lt;!-- Ceci est la feuille de style par defaut pour les types internes a SPIP --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;spip_style.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- Les feuilles de style specifiques aux presents squelettes --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;typographie.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- media=&quot;...&quot; permet de ne pas utiliser ce style sous Netscape 4 (sinon plantage) --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;habillage.css&quot; type=&quot;text/css&quot; media=&quot;projection, screen, tv&quot;&gt;
+&lt;!-- media=&quot;print&quot; permet d'utiliser cette feuille de style quand vous imprimez depuis votre navigateur --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;impression.css&quot; type=&quot;text/css&quot; media=&quot;print&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;white&quot; dir=&quot;#LANG_DIR&quot;&gt;
+
+&lt;div id=&quot;navigation&quot;&gt;
+
+&lt;!-- Menu de navigation general --&gt;
+
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;general&quot;&gt;
+	&lt;li class=&quot;menu-titre&quot;&gt;
+	[&lt;a href=&quot;(#URL_SITE_SPIP)&quot; title=&quot;&lt;:accueil_site:&gt;&quot;&gt;&lt;b&gt;#NOM_SITE_SPIP&lt;/b&gt;&lt;/a&gt;]
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;plan.php3&quot;&gt;&lt;:plan_site:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;resume.php3&quot; title=&quot;&lt;:articles_populaires:&gt;&quot;&gt;&lt;:en_resume:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;ecrire/&quot;&gt;&lt;:espace_prive:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;!-- Formulaire de recherche --&gt;
+
+[(#FORMULAIRE_RECHERCHE)]
+
+
+&lt;!-- Rubriques trouvees --&gt;
+
+&lt;B_rubriques&gt;
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;rubriques&quot; title=&quot;&lt;:rubriques:&gt;&quot;&gt;
+&lt;li class=&quot;menu-titre&quot;&gt;&lt;:rubriques:&gt;&lt;/li&gt;
+&lt;BOUCLE_rubriques(RUBRIQUES) {recherche} {par points} {inverse} {0,8}&gt;
+&lt;li class=&quot;menu-item&quot;&gt;&lt;a href=&quot;#URL_RUBRIQUE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/li&gt;
+&lt;/BOUCLE_rubriques&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/B_rubriques&gt;
+
+
+&lt;!-- Mots-cles trouves et articles associes--&gt;
+
+&lt;B_mots&gt;
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;divers&quot; title=&quot;&lt;:mots_clefs:&gt;&quot;&gt;
+&lt;BOUCLE_mots(MOTS) {recherche} {par points} {inverse} {0,5}&gt;
+&lt;li&gt;
+&lt;div class=&quot;menu-titre&quot;&gt;&lt;a href=&quot;#URL_MOT&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/div&gt;
+&lt;B_articles_mots&gt;
+	&lt;ul class=&quot;menu-liste&quot;&gt;
+&lt;BOUCLE_articles_mots(ARTICLES) {id_mot} {par hasard} {0,8}&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;&lt;a href=&quot;#URL_ARTICLE&quot; title=&quot;[(#DESCRIPTIF|textebrut|entites_html)]&quot;&gt;#TITRE&lt;/a&gt;&lt;/li&gt;
+&lt;/BOUCLE_articles_mots&gt;
+	&lt;/ul&gt;
+&lt;/B_articles_mots&gt;
+&lt;/li&gt;
+&lt;/BOUCLE_mots&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/B_mots&gt;
+
+&lt;/div&gt;
+
+&lt;!-- Une : articles trouves --&gt;
+
+&lt;div class=&quot;contenu&quot; id=&quot;principal&quot;&gt;
+
+&lt;div class=&quot;cartouche&quot;&gt;
+&lt;h1 class=&quot;surtitre&quot;&gt;&lt;:resultats_recherche:&gt;&lt;/h1&gt;
+[&lt;h2 class=&quot;titre-texte&quot;&gt;(#RECHERCHE)&lt;/h2&gt;]
+&lt;/div&gt;
+
+	&lt;div class=&quot;encart&quot;&gt;
+
+	&lt;!-- Breves trouvees --&gt;
+
+	&lt;B_breves&gt;
+
+	&lt;div class=&quot;menu&quot;&gt;
+	&lt;div class=&quot;breves&quot; title=&quot;Br&egrave;ves trouv&eacute;es&quot;&gt;
+		&lt;div class=&quot;menu-titre&quot;&gt;
+		&lt;:breves:&gt;
+		&lt;/div&gt;
+		&lt;ul&gt;
+	&lt;BOUCLE_breves(BREVES) {recherche} {par points} {inverse} {0,8}&gt;
+		&lt;li class=&quot;menu-item&quot;&gt;
+		&lt;i&gt;[(#DATE|affdate_court)]&lt;/i&gt;:
+		&lt;a href=&quot;#URL_BREVE&quot;&gt;#TITRE&lt;/a&gt;
+		&lt;/li&gt;
+	&lt;/BOUCLE_breves&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;/B_breves&gt;
+
+	&lt;!-- Sites Web trouves --&gt;
+
+	&lt;B_sites&gt;
+	&lt;div class=&quot;menu&quot;&gt;
+	&lt;div class=&quot;divers&quot; title=&quot;Sites Web trouv&eacute;s&quot;&gt;
+		&lt;div class=&quot;menu-titre&quot;&gt;
+		&lt;:sites_web:&gt;
+		&lt;/div&gt;
+		&lt;ul&gt;
+	&lt;BOUCLE_sites(SITES) {recherche} {par points} {inverse} {0,8}&gt;
+		&lt;li class=&quot;menu-item&quot;&gt;
+		&lt;a href=&quot;#URL_SITE&quot; title=&quot;[(#DESCRIPTIF|textebrut|entites_html)]&quot;&gt;#NOM_SITE&lt;/a&gt;
+		&lt;/li&gt;
+	&lt;/BOUCLE_sites&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/B_sites&gt;
+
+	&lt;!-- Messages trouves --&gt;
+
+	&lt;B_messages&gt;
+	&lt;div class=&quot;menu&quot;&gt;
+	&lt;div class=&quot;divers&quot; title=&quot;&lt;:messages_forum:&gt;&quot;&gt;
+		&lt;div class=&quot;menu-titre&quot;&gt;
+		&lt;:messages_forum:&gt;
+		&lt;/div&gt;
+		&lt;ul&gt;
+	&lt;BOUCLE_messages(FORUMS) {recherche} {par points} {inverse} {0,8}&gt;
+		&lt;li class=&quot;menu-item&quot;&gt;
+		&lt;a href=&quot;#URL_FORUM&quot;&gt;#TITRE&lt;/a&gt;
+		&lt;/li&gt;
+	&lt;/BOUCLE_messages&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/B_messages&gt;
+
+	&lt;/div&gt;
+
+
+&lt;div class=&quot;liste-articles&quot;&gt;
+
+&lt;BOUCLE_articles(ARTICLES) {recherche} {par points} {inverse} {0,10}&gt;
+	&lt;h2&gt;&lt;a href=&quot;#URL_ARTICLE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/h2&gt;
+	&lt;div class=&quot;detail&quot;&gt;
+	[(#DATE|nom_jour)] [(#DATE|affdate)]
+	&lt;B_auteurs_articles&gt;&lt;:par_auteur:&gt; &lt;BOUCLE_auteurs_articles(AUTEURS) {id_article} {&quot;, &quot;}&gt;#NOM&lt;/BOUCLE_auteurs_articles&gt;
+	&lt;/div&gt;
+	&lt;br&gt;
+&lt;/BOUCLE_articles&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+#FORMULAIRE_ADMIN
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+--- NEW FILE: sommaire-dist.html ---
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;<A HREF="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</A>&quot;&gt;
+&lt;html lang=&quot;#LANG&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;[#NOM_SITE_SPIP] &lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=#CHARSET&quot;&gt;
+
+&lt;!-- Ceci est la feuille de style par defaut pour les types internes a SPIP --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;spip_style.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- Les feuilles de style specifiques aux presents squelettes --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;typographie.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- media=&quot;...&quot; permet de ne pas utiliser ce style sous Netscape 4 (sinon plantage) --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;habillage.css&quot; type=&quot;text/css&quot; media=&quot;print, projection, screen, tv&quot;&gt;
+
+&lt;!-- Lien vers le backend pour navigateurs eclaires --&gt;
+&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; title=&quot;&lt;:syndiquer_site:&gt;&quot; href=&quot;backend.php3&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;white&quot; dir=&quot;#LANG_DIR&quot;&gt;
+
+
+&lt;div id=&quot;navigation&quot;&gt;
+
+&lt;h1 class=&quot;structure&quot;&gt;&lt;:navigation:&gt;&lt;/h1&gt;
+
+&lt;!-- Menu de navigation general --&gt;
+
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;general&quot;&gt;
+	&lt;li class=&quot;menu-titre&quot;&gt;
+	[&lt;a href=&quot;(#URL_SITE_SPIP)&quot; title=&quot;&lt;:accueil_site:&gt;&quot;&gt;&lt;b&gt;#NOM_SITE_SPIP&lt;/b&gt;&lt;/a&gt;]
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;plan.php3&quot;&gt;&lt;:plan_site:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;resume.php3&quot; title=&quot;&lt;:articles_populaires:&gt;&quot;&gt;&lt;:en_resume:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;ecrire/&quot;&gt;&lt;:espace_prive:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!-- Formulaire de recherche --&gt;
+
+[(#FORMULAIRE_RECHERCHE)]
+
+&lt;!-- Menu de navigation rubriques --&gt;
+
+&lt;B_rubriques&gt;
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;rubriques&quot;&gt;
+&lt;BOUCLE_rubriques(RUBRIQUES) {racine} {par titre}&gt;
+&lt;li&gt;
+&lt;div class=&quot;menu-titre&quot;&gt;&lt;a href=&quot;#URL_RUBRIQUE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/div&gt;
+&lt;B_sous_rubriques&gt;
+	&lt;ul class=&quot;menu-liste&quot;&gt;
+&lt;BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par titre}&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;&lt;a href=&quot;#URL_RUBRIQUE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/li&gt;
+&lt;/BOUCLE_sous_rubriques&gt;
+	&lt;/ul&gt;
+&lt;/B_sous_rubriques&gt;
+&lt;/li&gt;
+&lt;/BOUCLE_rubriques&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/B_rubriques&gt;
+
+&lt;!-- Logo SPIP --&gt;
+
+&lt;a href=&quot;<A HREF="http://www.spip.net">http://www.spip.net</A>&quot;&gt;&lt;img src=&quot;IMG/logo_spip.jpg&quot; width=&quot;105&quot; height=&quot;92&quot; border=&quot;0&quot; alt=&quot;&lt;:site_realise_avec_spip:&gt;&quot;&gt;&lt;/a&gt;
+
+&lt;/div&gt;
+
+
+&lt;div id=&quot;principal&quot; class=&quot;contenu&quot;&gt;
+
+	&lt;!-- Une : derniers articles publies --&gt;
+	
+	&lt;h1 class=&quot;structure&quot;&gt;&lt;:derniers_articles:&gt;&lt;/h1&gt;
+	
+	&lt;BOUCLE_article_un(ARTICLES) {par date} {inverse} {0,2}&gt;
+		[(#LOGO_ARTICLE_RUBRIQUE|right)]
+		[&lt;div class=&quot;surtitre&quot;&gt;(#SURTITRE)&lt;/div&gt;]
+		&lt;h2 class=&quot;titre-extrait&quot;&gt;&lt;a href=&quot;#URL_ARTICLE&quot;&gt;#TITRE&lt;/a&gt;&lt;/h2&gt;
+		[&lt;div class=&quot;surtitre&quot;&gt;(#SOUSTITRE)&lt;/div&gt;]
+		&lt;div class=&quot;detail&quot;&gt;
+		[(#DATE|nom_jour)] [(#DATE|affdate)]
+		&lt;B_auteurs_un&gt;&lt;:par_auteur:&gt; &lt;BOUCLE_auteurs_un(AUTEURS) {id_article} {&quot;, &quot;}&gt;#NOM&lt;/BOUCLE_auteurs_un&gt;
+		&lt;/div&gt;
+		[&lt;div class=&quot;texte&quot;&gt;&lt;div class=&quot;extrait&quot;&gt;(#INTRODUCTION)&lt;/div&gt;&lt;/div&gt;]
+		&lt;br&gt;
+	&lt;/BOUCLE_article_un&gt;
+
+
+	&lt;div class=&quot;encart&quot;&gt;
+
+	&lt;!-- Breves --&gt;
+
+	&lt;h1 class=&quot;structure&quot;&gt;&lt;:dernieres_breves:&gt;&lt;/h1&gt;
+
+	&lt;B_breves&gt;
+	&lt;div class=&quot;menu&quot;&gt;
+	&lt;div class=&quot;breves&quot;&gt;
+		&lt;div class=&quot;menu-titre&quot;&gt;
+		&lt;:breves:&gt;
+		&lt;/div&gt;
+		&lt;ul&gt;
+	&lt;BOUCLE_breves(BREVES) {par date} {inverse} {0,8}&gt;
+		&lt;li class=&quot;menu-item&quot;&gt;
+		&lt;i&gt;[(#DATE|affdate_court)]&lt;/i&gt;:
+		&lt;a href=&quot;#URL_BREVE&quot;&gt;#TITRE&lt;/a&gt;
+		&lt;/li&gt;
+	&lt;/BOUCLE_breves&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/B_breves&gt;
+
+	&lt;!-- Sur le Web --&gt;
+
+	&lt;h1 class=&quot;structure&quot;&gt;&lt;:nouveautes_web:&gt;&lt;/h1&gt;
+
+	&lt;B_syndic&gt;
+	&lt;div class=&quot;menu&quot;&gt;
+	&lt;div class=&quot;divers&quot;&gt;
+		&lt;div class=&quot;menu-titre&quot;&gt;
+		&lt;:sur_web:&gt;
+		&lt;/div&gt;
+		&lt;ul&gt;
+	&lt;BOUCLE_syndic(SYNDIC_ARTICLES) {par date} {inverse} {0,8}&gt;
+		&lt;li class=&quot;menu-item&quot;&gt;
+		&lt;a href=&quot;#URL_ARTICLE&quot;&gt;[(#TITRE*)]&lt;/a&gt;
+		&lt;/li&gt;
+	&lt;/BOUCLE_syndic&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/B_syndic&gt;
+
+	[&lt;!-- Inscription au site --&gt;
+
+		&lt;div class=&quot;formulaire&quot;&gt;&lt;:participer_site:&gt;
+			&lt;br /&gt;&lt;br /&gt;(#FORMULAIRE_INSCRIPTION)
+		&lt;/div&gt;]
+
+	&lt;/div&gt;
+
+
+&lt;h1 class=&quot;structure&quot;&gt;&lt;:articles_recents:&gt;&lt;/h1&gt;
+
+&lt;!-- Articles recents --&gt;
+
+&lt;BOUCLE_articles_recents(ARTICLES) {par date} {inverse} {2,8}&gt;
+	&lt;h2&gt;&lt;a href=&quot;#URL_ARTICLE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/h2&gt;
+	&lt;div class=&quot;detail&quot;&gt;
+	[(#DATE|nom_jour)] [(#DATE|affdate)]
+	&lt;B_auteurs_recents&gt;&lt;:par_auteur:&gt; &lt;BOUCLE_auteurs_recents(AUTEURS) {id_article} {&quot;, &quot;}&gt;#NOM&lt;/BOUCLE_auteurs_recents&gt;
+	&lt;/div&gt;
+	&lt;br&gt;
+&lt;/BOUCLE_articles_recents&gt;
+
+
+&lt;/div&gt;
+
+
+#FORMULAIRE_ADMIN
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+--- NEW FILE: puce_rtl.gif ---
+(This appears to be a binary file; contents omitted.)
+
+--- NEW FILE: resume.php3 ---
+&lt;?php
+$fond = &quot;resume&quot;;
+$delais = 2 * 3600;
+
+include (&quot;inc-public.php3&quot;);
+
+?&gt;
+
+--- NEW FILE: spip_admin.css ---
+/* Les boutons d'admin survolent la page (sauf #FORMULAIRE_ADMIN) */
+.spip-admin-float {
+	top: 0px;
+	right: 20px;
+	position: absolute;
+	z-index: 100;
+}
+
+
+/* Couleurs et design des boutons d'admin */
+.spip-admin-bloc {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	background-color: transparent;
+	font-size: 10px;
+}
+
+.spip-admin-bloc li {
+	padding: 0 2px;
+	display: inline;
+}
+
+.spip-admin-bloc ul {
+	display: inline;
+}
+
+a.spip-admin-boutons {
+	border-top: 1px solid #cecece;
+	border-bottom: 2px solid #4a4a4a;
+	border-left: 1px solid #cecece;
+	border-right: 1px solid #cecece;
+	text-decoration: none;
+	width: 3em;
+	text-align: center;
+	margin: 0;
+	padding: 1px .5em;
+	font-family: helvetica,arial,sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #fff;
+	color: #0c479d;
+}
+
+a:hover.spip-admin-boutons {
+	background-color: #fc3;
+	border-bottom: 2px solid #36f;
+}
+
+a:active.spip-admin-boutons {
+	background-color: #ccc;
+	border-bottom: 2px solid #f00;
+}
+
+
+/* Style pour le mode debug */
+#spip-debug {
+	background-color: #f0f0f0;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+#spip-debug ul table {
+	font-size: 80%;
+}
+
+#spip-debug fieldset {
+	background-color: #FFF;
+	font-family: &quot;Courier New&quot;, Courier, monospace;
+	font-size: 12;
+}
+
+#spip-debug legend {
+	background-color: #FFF;
+	border: solid 1px #F00;
+	padding: 1px 1em;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+#spip-debug ul table a {
+	text-decoration: none;
+}
+
+#spip-debug ul table a:hover {
+	text-decoration: underline;
+}
+
+--- NEW FILE: spip_image.php3 ---
+&lt;?php
+
+include (&quot;ecrire/inc_version.php3&quot;);
+include_ecrire(&quot;inc_charsets.php3&quot;);
+include_ecrire(&quot;inc_meta.php3&quot;);
+include_ecrire(&quot;inc_admin.php3&quot;);
+include_ecrire(&quot;inc_abstract_sql.php3&quot;);
+
+function effacer_image($nom) {
+	global $hash_id_auteur, $hash;
+
+	if ((!strstr($nom, &quot;..&quot;)) AND
+	    verifier_action_auteur(&quot;supp_image $nom&quot;, $hash, $hash_id_auteur))
+		@unlink(_DIR_IMG . $nom);
+}
+
+function tester_vignette ($test_vignette) {
+	global $djpeg_command, $cjpeg_command, $pnmscale_command;
+	// verifier les formats acceptes par GD
+	if ($test_vignette == &quot;gd1&quot;) {
+		$gd_formats = Array();
+		if (function_exists('ImageCreateFromJPEG')) {
+			$srcImage = @ImageCreateFromJPEG(_DIR_IMG . &quot;test.jpg&quot;);
+			if ($srcImage) {
+				$gd_formats[] = &quot;jpg&quot;;
+				ImageDestroy( $srcImage );
+			}
+		}
+		if (function_exists('ImageCreateFromGIF')) {
+			$srcImage = @ImageCreateFromGIF(_DIR_IMG . &quot;test.gif&quot;);
+			if ($srcImage) {
+				$gd_formats[] = &quot;gif&quot;;
+				ImageDestroy( $srcImage );
+			}
+		}
+		if (function_exists('ImageCreateFromPNG')) {
+			$srcImage = @ImageCreateFromPNG(_DIR_IMG . &quot;test.png&quot;);
+			if ($srcImage) {
+				$gd_formats[] = &quot;png&quot;;
+				ImageDestroy( $srcImage );
+			}
+		}
+
+		if ($gd_formats) $gd_formats = join(&quot;,&quot;, $gd_formats);
+		ecrire_meta(&quot;gd_formats&quot;, $gd_formats);
+		ecrire_metas();
+	}
+	// verifier les formats netpbm
+	else if ($test_vignette == &quot;netpbm&quot;) {
+		$netpbm_formats= Array();
+
+		$jpegtopnm_command = ereg_replace(&quot;pnmscale&quot;, &quot;jpegtopnm&quot;, $pnmscale_command);
+		$pnmtojpeg_command = ereg_replace(&quot;pnmscale&quot;, &quot;pnmtojpeg&quot;, $pnmscale_command);
+
+		$vignette = _DIR_IMG . &quot;test.jpg&quot;;
+		$dest = _DIR_IMG . &quot;test-jpg.jpg&quot;;
+		exec(&quot;$jpegtopnm_command $vignette | $pnmscale_command -width 10 | $pnmtojpeg_command &gt; $dest&quot;);
+		if ($taille = @getimagesize($dest)) {
+			if ($taille[1] == 10) $netpbm_formats[] = &quot;jpg&quot;;
+		}	
+		
+		$giftopnm_command = ereg_replace(&quot;pnmscale&quot;, &quot;giftopnm&quot;, $pnmscale_command);
+		$pnmtojpeg_command = ereg_replace(&quot;pnmscale&quot;, &quot;pnmtojpeg&quot;, $pnmscale_command);
+		$vignette = _DIR_IMG . &quot;test.gif&quot;;
+		$dest = _DIR_IMG . &quot;test-gif.jpg&quot;;
+		exec(&quot;$giftopnm_command $vignette | $pnmscale_command -width 10 | $pnmtojpeg_command &gt; $dest&quot;);
+		if ($taille = @getimagesize($dest)) {
+			if ($taille[1] == 10) $netpbm_formats[] = &quot;gif&quot;;
+		}
+
+		$pngtopnm_command = ereg_replace(&quot;pnmscale&quot;, &quot;pngtopnm&quot;, $pnmscale_command);
+		$vignette = _DIR_IMG . &quot;test.png&quot;;
+		$dest = _DIR_IMG . &quot;test-gif.jpg&quot;;
+		exec(&quot;$pngtopnm_command $vignette | $pnmscale_command -width 10 | $cjpeg_command -outfile $dest&quot;);
+		if ($taille = @getimagesize($dest)) {
+			if ($taille[1] == 10) $netpbm_formats[] = &quot;png&quot;;
+		}
+		
+
+		if ($netpbm_formats) $netpbm_formats = join(&quot;,&quot;, $netpbm_formats);
+		ecrire_meta(&quot;netpbm_formats&quot;, $netpbm_formats);
+		ecrire_metas();
+	}
+
+	// et maintenant envoyer la vignette de tests
+	if (ereg(&quot;^(gd1|gd2|imagick|convert|netpbm)$&quot;, $test_vignette)) {
+		include_ecrire('inc_logos.php3');
+		//$taille_preview = lire_meta(&quot;taille_preview&quot;);
+		if ($taille_preview &lt; 10) $taille_preview = 120;
+		if ($preview = creer_vignette(_DIR_IMG . 'test_image.jpg', $taille_preview, $taille_preview, 'jpg', '', &quot;test_$test_vignette&quot;, $test_vignette, true))
+
+			return ($preview['fichier']);
+	}
+	return '';
+}
+
+
+//
+// Deplacer un fichier
+//
+
+function deplacer_fichier_upload($source, $dest) {
+	// Securite
+	if (strstr($dest, &quot;..&quot;)) {
+		exit;
+	}
+
+	$ok = @copy($source, $dest);
+	if (!$ok) $ok = @move_uploaded_file($source, $dest);
+	if ($ok)
+		@chmod($dest, 0666);
+	else {
+		$f = @fopen($dest,'w');
+		if ($f)
+			fclose ($f);
+		else {
+			redirige_par_entete(&quot;spip_test_dirs.php3?test_dir=&quot;.
+					    dirname($dest));
+		}
+		@unlink($dest);
+
+		if (($GLOBALS['_FILES']['size'] == 0) AND !$GLOBALS['action_zip']) {
+			include_ecrire('inc_presentation.php3');
+			install_debut_html(_T('forum_titre_erreur'));
+			echo &quot;&lt;p&gt;&quot;._T('upload_limit',
+				array('max' =&gt; ini_get('upload_max_filesize')));
+			install_fin_html();
+			exit;
+		}
+	}
+
+	return $ok;
+}
+
+
+//
+// Convertit le type numerique retourne par getimagesize() en extension fichier
+//
+
+function decoder_type_image($type, $strict = false) {
+	switch ($type) {
+	case 1:
+		return &quot;gif&quot;;
+	case 2:
+		return &quot;jpg&quot;;
+	case 3:
+		return &quot;png&quot;;
+	case 4:
+		return $strict ? &quot;&quot; : &quot;swf&quot;;
+	case 5:
+		return &quot;psd&quot;;
+	case 6:
+		return &quot;bmp&quot;;
+	case 7:
+	case 8:
+		return &quot;tif&quot;;
+	default:
+		return &quot;&quot;;
+	}
+}
+
+
+//
+// Corrige l'extension du fichier dans quelques cas particuliers
+//
+
+function corriger_extension($ext) {
+	switch ($ext) {
+	case 'htm':
+		return 'html';
+	case 'jpeg':
+		return 'jpg';
+	case 'tiff':
+		return 'tif';
+	default:
+		return $ext;
+	}
+}
+
+
+//
+// Ajouter une image (logo)
+//
+
+function ajout_image($source, $dest) {
+	global $redirect_url, $hash_id_auteur, $hash, $num_img, $dossier_squelettes;
+
+	// Securite
+	if (!(verifier_action_auteur(&quot;ajout_image $dest&quot;, $hash, $hash_id_auteur)
+	      AND _DIR_DOC != $dossier_squelettes)) {
+	  spip_log(&quot;interdiction ajout_image($source, $dest)&quot;);
+	  return;
+	}
+
+	// analyse le type de l'image (on ne fait pas confiance au nom de
+	// fichier envoye par le browser : pour les Macs c'est plus sur)
+
+	$f =_DIR_DOC . $dest . '.tmp';
+	deplacer_fichier_upload($source, $f);
+	$size = @getimagesize($f);
+	$type = decoder_type_image($size[2], true);
+	if ($type)
+		@rename ($f, _DIR_DOC . $dest . &quot;.$type&quot;);
+	else
+		@unlink ($f);
+}
+
+//
+// Faire tourner une image
+//
+
+//$imagePath - path to your image; function will save rotated image overwriting the old one
+//$rtt - should be 90 or -90 - cw/ccw
+function gdRotate($imagePath,$rtt){
+	if(preg_match(&quot;/\.(png)/i&quot;, $imagePath)) $src_img=ImageCreateFromPNG($imagePath);
+	elseif(preg_match(&quot;/\.(jpg)/i&quot;, $imagePath)) $src_img=ImageCreateFromJPEG($imagePath);
+	elseif(preg_match(&quot;/\.(bmp)/i&quot;, $imagePath)) $src_img=ImageCreateFromWBMP($imagePath);
+	$size=@getimagesize($imagePath);
+	//note: to make it work on GD 2.xx properly change ImageCreate to ImageCreateTrueColor
+
+	$process = lire_meta('image_process');
+	if ($process == &quot;gd2&quot;) $dst_img=ImageCreateTrueColor($size[1],$size[0]);
+	else  $dst_img=ImageCreate($size[1],$size[0]);
+	if($rtt==90){
+		$t=0;
+		$b=$size[1]-1;
+		while($t&lt;=$b){
+			$l=0;
+			$r=$size[0]-1;
+			while($l&lt;=$r){
+				imagecopy($dst_img,$src_img,$t,$r,$r,$b,1,1);
+				imagecopy($dst_img,$src_img,$t,$l,$l,$b,1,1);
+				imagecopy($dst_img,$src_img,$b,$r,$r,$t,1,1);
+				imagecopy($dst_img,$src_img,$b,$l,$l,$t,1,1);
+				$l++;
+				$r--;
+			}
+			$t++;
+			$b--;
+		}
+	}
+	elseif($rtt==-90){
+		$t=0;
+		$b=$size[1]-1;
+		while($t&lt;=$b){
+			$l=0;
+			$r=$size[0]-1;
+			while($l&lt;=$r){
+				imagecopy($dst_img,$src_img,$t,$l,$r,$t,1,1);
+				imagecopy($dst_img,$src_img,$t,$r,$l,$t,1,1);
+				imagecopy($dst_img,$src_img,$b,$l,$r,$b,1,1);
+				imagecopy($dst_img,$src_img,$b,$r,$l,$b,1,1);
+				$l++;
+				$r--;
+			}
+			$t++;
+			$b--;
+		}
+	}
+	ImageDestroy($src_img);
+	ImageInterlace($dst_img,0);
+	ImageJPEG($dst_img,$imagePath);
+}
+
+//
+// Creation automatique de vignette new style
+// Normalement le test est v&#233;rifi&#233; donc on ne rend rien sinon
+
+function creer_fichier_vignette($vignette) {
+	if ($vignette &amp;&amp; lire_meta(&quot;creer_preview&quot;) == 'oui') {
+		eregi('\.([a-z0-9]+)$', $vignette, $regs);
+		$ext = $regs[1];
+		$taille_preview = lire_meta(&quot;taille_preview&quot;);
+		if ($taille_preview &lt; 10) $taille_preview = 120;
+		include_ecrire('inc_logos.php3');
+
+		if ($preview = creer_vignette($vignette, $taille_preview, $taille_preview, $ext, 'vignettes', basename($vignette).'-s'))
+		{
+			inserer_vignette_base($vignette, $preview['fichier']);
+			return $preview['fichier'];
+		}
+		include_ecrire('inc_documents.php3');
+		return vignette_par_defaut($ext ? $ext : 'txt', false);
+	}
+}
+
+function supprime_document_et_vignette($doc_supp) {
+	global $hash_id_auteur, $hash;
+	// Securite
+	if (verifier_action_auteur(&quot;supp_doc $doc_supp&quot;, $hash, $hash_id_auteur)) {
+		$query = &quot;SELECT id_vignette, fichier FROM spip_documents WHERE id_document=$doc_supp&quot;;
+		$result = spip_query($query);
+		if ($row = spip_fetch_array($result)) {
+			$fichier = $row['fichier'];
+			$id_vignette = $row['id_vignette'];
+			spip_query(&quot;DELETE FROM spip_documents WHERE id_document=$doc_supp&quot;);
+			spip_query(&quot;UPDATE spip_documents SET id_vignette=0 WHERE id_vignette=$doc_supp&quot;);
+			spip_query(&quot;DELETE FROM spip_documents_articles WHERE id_document=$doc_supp&quot;);
+			spip_query(&quot;DELETE FROM spip_documents_rubriques WHERE id_document=$doc_supp&quot;);
+			spip_query(&quot;DELETE FROM spip_documents_breves WHERE id_document=$doc_supp&quot;);
+			@unlink($fichier);
+			
+			if ($id_vignette &gt; 0) {
+			  $query = &quot;SELECT id_vignette, fichier FROM spip_documents WHERE id_document=$id_vignette&quot;;
+			  $result = spip_query($query);
+			  if ($row = spip_fetch_array($result)) {
+			    $fichier = $row['fichier'];
+			    @unlink($fichier);
+			  }
+			  spip_query(&quot;DELETE FROM spip_documents WHERE id_document=$id_vignette&quot;);
+			  spip_query(&quot;DELETE FROM spip_documents_articles WHERE id_document=$id_vignette&quot;);
+			  spip_query(&quot;DELETE FROM spip_documents_rubriques WHERE id_document=$id_vignette&quot;);
+			  spip_query(&quot;DELETE FROM spip_documents_breves WHERE id_document=$id_vignette&quot;);
+			}
+		}
+	}
+}
+
+function tourner_document($var_rot, $doc_rotate, $convert_command) {
+	global $hash_id_auteur, $hash;
+	// Securite
+	if (!verifier_action_auteur(&quot;rotate $doc_rotate&quot;, $hash, $hash_id_auteur)) {
+		return '';
+	}
+	
+	if (!$var_rot) $var_rot = 0;
+
+	$query = &quot;SELECT id_vignette, fichier FROM spip_documents WHERE id_document=$doc_rotate&quot;;
+	$result = spip_query($query);
+	if ($row = spip_fetch_array($result)) {
+		$id_vignette = $row['id_vignette'];
+		$image = $row['fichier'];
+
+		$process = lire_meta('image_process');
+
+		 // imagick (php4-imagemagick)
+		 if ($process == 'imagick') {
+			$handle = imagick_readimage($image);
+			imagick_rotate($handle, $var_rot);
+			imagick_write($handle, $image);
+			if (!@file_exists($image)) return;	// echec imagick
+		}
+		else if ($process == &quot;gd2&quot;) { // theoriquement compatible gd1, mais trop forte degradation d'image
+			if ($var_rot == 180) { // 180 = 90+90
+				gdRotate ($image, 90);
+				gdRotate ($image, 90);
+			} else {
+				gdRotate ($image, $var_rot);
+			}
+		}
+		else if ($process = &quot;convert&quot;) {
+			$commande = &quot;$convert_command -rotate $var_rot ./&quot;
+				. escapeshellcmd($image).' ./'.escapeshellcmd($image);
+#			spip_log($commande);
+			exec($commande);
+		}
+
+		$size_image = @getimagesize($image);
+		$largeur = $size_image[0];
+		$hauteur = $size_image[1];
+
+		if ($id_vignette &gt; 0) {
+			creer_fichier_vignette($image);
+/*			$query = &quot;SELECT id_vignette, fichier FROM spip_documents WHERE id_document=$id_vignette&quot;;
+			$result = spip_query($query);
+			if ($row = spip_fetch_array($result)) {
+				$fichier = $row['fichier'];
+				@unlink($fichier);
+			}
+			spip_query(&quot;DELETE FROM spip_documents WHERE id_document=$id_vignette&quot;);
+			spip_query(&quot;DELETE FROM spip_documents_articles WHERE id_document=$id_vignette&quot;);
+			spip_query(&quot;DELETE FROM spip_documents_rubriques WHERE id_document=$id_vignette&quot;);
+			spip_query(&quot;DELETE FROM spip_documents_breves WHERE id_document=$id_vignette&quot;);
+*/		}
+
+
+		spip_query(&quot;UPDATE spip_documents SET largeur=$largeur, hauteur=$hauteur WHERE id_document=$doc_rotate&quot;);
+
+	}
+}
+
+if ($test_vignette) // appel de config-fonction
+	$redirect = tester_vignette($test_vignette);
+elseif ($vignette) // appels de inc_logo
+	$redirect = creer_fichier_vignette($vignette);
+else {
+   $retour = $redirect;
+   $redirect = '';
+   if ($ajout_doc == 'oui') {
+	include_ecrire('inc_getdocument.php3');
+	if (!$image_name AND $image2) {
+		$image = _DIR_TRANSFERT . $image2;
+		$image_name = $image;
+	} 
+	if (!eregi(&quot;\.zip$&quot;,$image_name))
+	  ajout_doc_s($image, $image_name, $mode, $forcer_document, $id_document, $hash);
+	else {
+	  // bizarre: clean_link ne recupere pas les variables
+	  $link = new Link('spip_image.php3');
+	  $link-&gt;addVar(&quot;ajout_doc&quot;, &quot;oui&quot;);
+	  $link-&gt;addVar(&quot;redirect&quot;, $retour);
+	  $link-&gt;addVar('id_document', $id_document);
+	  $link-&gt;addVar('id_article', $id_article);
+	  $link-&gt;addVar('mode', $mode);
+	  $link-&gt;addVar('type', $type);
+	  $link-&gt;addVar('hash', $hash);
+	  $link-&gt;addVar('hash_id_auteur', $hash_id_auteur);
+	  ajout_doc_zip($image, $image_name, $mode, $forcer_document, $action_zip, $id_document, $hash, $link);
+	}
+   }
+   elseif ($ajout_logo == &quot;oui&quot;)
+	ajout_image($image, $logo);
+   elseif ($image_supp)
+	effacer_image($image_supp);
+   elseif ($doc_supp) // appels de inc_document
+	supprime_document_et_vignette($doc_supp);
+   elseif ($doc_rotate)
+	tourner_document($var_rot, $doc_rotate, $convert_command);
+ }
+
+if (!($redirect)) {
+	if ($HTTP_POST_VARS) $vars = $HTTP_POST_VARS;
+	else $vars = $HTTP_GET_VARS;
+	$redirect = $vars[&quot;redirect&quot;];
+	$link = new Link(_DIR_RESTREINT_ABS . $redirect);
+	reset($vars);
+	while (list ($key, $val) = each ($vars)) {
+	  if (!ereg(&quot;^(redirect|image.*|hash.*|ajout.*|doc.*|transformer.*|modifier_.*|ok|type|forcer_.*|var_rot|action_zip)$&quot;, $key)) {
+	    $link-&gt;addVar($key, $val);
+	  }
+	}
+	if ($id_document)
+	  $link-&gt;addVar('id_document',$id_document);
+	if ($type == 'rubrique')
+	  $link-&gt;delVar('id_article');
+	
+	$redirect = $link-&gt;getUrl();
+ }
+
+
+redirige_par_entete($redirect);
+
+?&gt;
+
+--- NEW FILE: site-dist.html ---
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;<A HREF="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</A>&quot;&gt;
+&lt;BOUCLE_site(SITES){id_syndic}&gt;
+
+&lt;html lang=&quot;#LANG&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;[(#NOM_SITE|textebrut)]&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=#CHARSET&quot;&gt;
+
+&lt;!-- Ceci est la feuille de style par defaut pour les types internes a SPIP --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;spip_style.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- Les feuilles de style specifiques aux presents squelettes --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;typographie.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- media=&quot;...&quot; permet de ne pas utiliser ce style sous Netscape 4 (sinon plantage) --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;habillage.css&quot; type=&quot;text/css&quot; media=&quot;projection, screen, tv&quot;&gt;
+&lt;!-- media=&quot;print&quot; permet d'utiliser cette feuille de style quand vous imprimez depuis votre navigateur --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;impression.css&quot; type=&quot;text/css&quot; media=&quot;print&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;white&quot;&gt;
+
+&lt;div id=&quot;navigation&quot;&gt;
+
+&lt;h1 class=&quot;structure&quot;&gt;&lt;:navigation:&gt;&lt;/h1&gt;
+
+&lt;!-- Menu de navigation general --&gt;
+
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;general&quot;&gt;
+	&lt;li class=&quot;menu-titre&quot;&gt;
+	[&lt;a href=&quot;(#URL_SITE_SPIP)&quot; title=&quot;&lt;:accueil_site:&gt;&quot;&gt;&lt;b&gt;#NOM_SITE_SPIP&lt;/b&gt;&lt;/a&gt;]
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;plan.php3&quot;&gt;&lt;:plan_site:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;resume.php3&quot; title=&quot;&lt;:articles_populaires:&gt;&quot;&gt;&lt;:en_resume:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;ecrire/&quot;&gt;&lt;:espace_prive:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;!-- Formulaire de recherche --&gt;
+
+[(#FORMULAIRE_RECHERCHE)]
+
+
+&lt;/div&gt;
+
+&lt;!-- Une : affichage du site --&gt;
+
+&lt;div class=&quot;contenu&quot; id=&quot;principal&quot;&gt;
+
+&lt;div class=&quot;cartouche&quot;&gt;
+[(#LOGO_SITE|left)]
+&lt;h1 class=&quot;titre-texte&quot;&gt;&lt;a href=&quot;#URL_SITE&quot;&gt;#NOM_SITE&lt;/a&gt;&lt;/h1&gt;
+
+[&lt;div class=&quot;chapo&quot;&gt;(#DESCRIPTIF)&lt;/div&gt;]
+[&lt;div class=&quot;notes&quot;&gt;(#NOTES)&lt;/div&gt;]
+&lt;/div&gt;
+
+
+&lt;!-- Articles du site --&gt;
+
+&lt;h1 class=&quot;structure&quot;&gt;&lt;:articles:&gt;&lt;/h1&gt;
+
+&lt;div class=&quot;liste-articles&quot;&gt;
+
+&lt;BOUCLE_articles(SYNDIC_ARTICLES) {id_syndic} {par date}{inverse}{0,10}&gt;
+	&lt;h2&gt;&lt;a href=&quot;#URL_ARTICLE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/h2&gt;
+	&lt;div class=&quot;detail&quot;&gt;
+	[(#DATE|nom_jour)] [(#DATE|affdate)]
+	&lt;/div&gt;
+	&lt;br&gt;
+&lt;/BOUCLE_articles&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+#FORMULAIRE_ADMIN
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;/BOUCLE_site&gt;
+&lt;:aucun_site:&gt;
+&lt;//B_site&gt;
+
+--- NEW FILE: rubrique.php3 ---
+&lt;?php
+$fond = &quot;rubrique&quot;;
+$delais = 2 * 3600;
+
+
+include (&quot;inc-public.php3&quot;);
+
+?&gt;
+
+--- NEW FILE: spip_redirect.php3 ---
+&lt;?php
+// redirige vers l'URL canonique de l'article,
+// en indiquant recalcul et previsu
+
+include (&quot;ecrire/inc_version.php3&quot;);
+
+// Gestionnaire d'URLs
+if (@file_exists(&quot;inc-urls.php3&quot;))
+	include_local(&quot;inc-urls.php3&quot;);
+else
+	include_local(&quot;inc-urls-&quot;.$GLOBALS['type_urls'].&quot;.php3&quot;);
+
+if ($id_article) {
+	$url = generer_url_article($id_article);
+}
+else if ($id_breve) {
+	$url = generer_url_breve($id_breve);
+}
+else if ($id_forum) {
+	$url = generer_url_forum($id_forum);
+}
+else if ($id_rubrique) {
+	$url = generer_url_rubrique($id_rubrique);
+}
+else if ($id_mot) {
+	$url = generer_url_mot($id_mot);
+}
+else if ($id_auteur) {
+	$url = generer_url_auteur($id_auteur);
+}
+else {
+	$url = _DIR_RESTREINT_ABS;
+}
+if (strpos($url,'?')) {
+	$super='&amp;';
+}
+else {
+	$super='?';
+}
+if ($recalcul) $url .= $super.&quot;var_mode=recalcul&quot;;
+else if ($preview) $url .= $super.&quot;var_preview=oui&quot;;
+@header(&quot;Location: $url&quot;);
+
+?&gt;
+--- NEW FILE: site.php3 ---
+&lt;?php
+$fond = &quot;site&quot;;
+$delais = 24 * 3600;
+
+
+include (&quot;inc-public.php3&quot;);
+
+
+?&gt;
+
+--- NEW FILE: recherche.php3 ---
+&lt;?php
+$fond = &quot;recherche&quot;;
+$delais = 0;
+
+include (&quot;inc-public.php3&quot;);
+
+
+?&gt;
+
+--- NEW FILE: spip_acces_doc.php3 ---
+&lt;?
+# script d'acces aux documents joints
+# doit etre appele avec un de ces 2 parametres de GET:
+# - id_document 
+# - file 
+# il verifie soit que le demandeur est authentifie
+# soit que le fichier est joint &#224; au moins 1 article, breve ou rubrique
+
+$id_document = ($_GET['id_document']);
+$file = urldecode($_GET['file']);
+if (strpos($file,'../') !== false)
+  $refus = 1;
+else
+  {
+    $refus = false;
+    include (&quot;ecrire/inc_version.php3&quot;);
+    include_local(_FILE_CONNECT);
+    include_ecrire(&quot;inc_meta.php3&quot;);
+    include_ecrire(&quot;inc_session.php3&quot;);
+
+    global $auteur_session;
+    if ($cookie_session = $HTTP_COOKIE_VARS['spip_session']) 
+      {
+	if (verifier_session($cookie_session)) 
+	  {
+	    if ($auteur_session['statut'] == '0minirezo' 
+		OR $auteur_session['statut'] == '1comite') 
+	      $auth_login = $auteur_session['login'];
+	  }
+      }
+
+    if (!$id_document) {
+      $id_document = @spip_fetch_array(spip_query(&quot;select id_document from spip_documents as documents where documents.fichier='&quot;.$file.&quot;'&quot;));
+      if (!$id_document) $refus = 2;
+      $id_document = $id_document['id_document'];
+    } else {
+      $file = @spip_fetch_array(spip_query(&quot;select fichier from spip_documents as documents where id_document='&quot;. $id_document .&quot;'&quot;));
+      if (!$file) $refus = 3;
+      $file = $file['fichier'];
+    }
+  }
+
+if (!$auth_login &amp;&amp; !$refus) { 
+    if (!spip_num_rows(spip_query(&quot;select articles.id_article
+from spip_documents_articles as rel_articles, spip_articles as articles 
+where rel_articles.id_article = articles.id_article AND
+articles.statut = 'publie' AND rel_articles.id_document ='&quot;.
+			       $id_document .
+				&quot;' LIMIT 1&quot;))) {
+      if (!spip_num_rows(spip_query(&quot;select rubriques.id_rubrique
+from spip_documents_rubriques as rel_rubriques, spip_rubriques as rubriques 
+where rel_rubriques.id_rubrique = rubriques.id_rubrique AND
+rubriques.statut = 'publie' AND rel_rubriques.id_document ='&quot;.
+			       $id_document .
+				  &quot;' LIMIT 1&quot;))) {
+	if (!spip_num_rows(spip_query(&quot;select breves.id_breve
+from spip_documents_breves as rel_breves, spip_breves as breves 
+where rel_breves.id_breve = breves.id_breve AND
+breves.statut = 'publie' AND rel_breves.id_document ='&quot;.
+			       $id_document .
+				  &quot;' LIMIT 1&quot;)))
+	  $refus = 4; } } }
+
+if (!$refus)
+  {
+     header(&quot;Content-Type: &quot;. mime_content_type($file));
+     header(&quot;Content-Length: &quot;. filesize($file));
+     header(&quot;Content-Disposition: attachment; filename=\&quot;&quot;. basename($file) .&quot;\&quot;;&quot;);
+     header(&quot;Content-Transfer-Encoding: binary&quot;);
+     readfile($file);
+   }
+ else
+   spip_log(&quot;Acces refuse ($refus) au document &quot; . ($_GET['id_document']) . ': ' .($_GET['file']));
+
+?&gt;
+--- NEW FILE: spip_style.css ---
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	color:#FF9900;
+	text-decoration: underline;
+}
+
+a.spip_url { }
+a.spip_in { }
+a.spip_out { }
+a.spip_glossaire { }
+
+.spip_code { }
+
+p.spip_note { }
+
+h3.spip {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-weight: bold;
+	font-size: 120%;
+	text-align: center;
+	margin-top : 40px;
+	margin-bottom : 40px;
+	padding: 0em;
+}
+
+.spip_puce {
+	list-style-position: inside;
+}
+
+.spip_documents{
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size : 70%;
+}
+
+
+table.spip {
+}
+
+table.spip tr.row_first {
+	background-color: #FCF4D0;
+}
+
+table.spip tr.row_odd {
+	background-color: #C0C0C0;
+}
+
+table.spip tr.row_even {
+	background-color: #F0F0F0;
+}
+
+table.spip td {
+	padding: 1px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+hr.spip { }
+b.spip { }
+i.spip { }
+blockquote.spip {
+	margin-left : 40px;
+	margin-top : 10px;
+	margin-bottom : 10px;
+	margin-right: 0px;
+	border : solid 1px #aaaaaa;
+	background-color: #ffffff;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.forml { width: 100% ; background-color: #FFDDAA;}
+
+.spip_encadrer {
+	font-family: helvetica, arial, sans-serif;
+	width : 95%;
+	background-color: #FFFFFF;
+	padding: 5px;
+	border: 1px #666666 solid;
+}
+
+.spip_cadre {
+	width : 95%;
+	background-color: #FFFFFF;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+div.spip_poesie {
+	margin-bottom: 5px;
+	margin-left: 10px;
+	padding-left: 10px;
+	border-left: 1px solid #999999;
+}
+div.spip_poesie div {
+	text-indent: -60px;
+	margin-left: 60px;
+}
+
+.spip_bouton { background-color: #FFCC00;}
+
+form.formrecherche { 
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+input.formrecherche {
+	width: 95%;
+	background-color: #FFDDAA;
+}
+
+.reponse_formulaire {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-weight: bold;
+	font-size: 110%;
+	color: red;
+}
+
+.spip_surligne { background-color: #FFFF66; }
+
+
+/*
+ * Barre de raccourcis
+ */
+
+a.spip_barre img {
+	border-left: 1px solid #ffffff;
+	border-top: 1px solid #ffffff;
+	border-right: 1px solid #aa9966;
+	border-bottom: 1px solid #aa9966;
+	padding: 3px;
+	background-color: #FFDDAA;
+}
+a.spip_barre:hover img {
+	border: 1px solid #808080;
+	padding: 3px;
+	background-color: #f8f8f4;
+}
+
+--- NEW FILE: sommaire_texte.php3 ---
+&lt;?php
+
+// ACCESSIBILITE
+// cette page offre une lecture en mode &quot;texte seul&quot;
+// des 3 articles les plus recents.
+
+$fond = &quot;sommaire_texte&quot;;
+$delais = 3600;
+
+include (&quot;inc-public.php3&quot;);
+
+?&gt;
+
+--- NEW FILE: spip_barre.js ---
+// Barre de raccourcis
+// derive du:
+// bbCode control by subBlue design : www.subBlue.com
+
+// Startup variables
+var theSelection = false;
+
+// Check for Browser &amp; Platform for PC &amp; IE specific bits
+// More details from: <A HREF="http://www.mozilla.org/docs/web-developer/sniffer/browser_type.html">http://www.mozilla.org/docs/web-developer/sniffer/browser_type.html</A>
+var clientPC = navigator.userAgent.toLowerCase(); // Get client info
+var clientVer = parseInt(navigator.appVersion); // Get browser version
+
+var is_ie = ((clientPC.indexOf(&quot;msie&quot;) != -1) &amp;&amp; (clientPC.indexOf(&quot;opera&quot;) == -1));
+var is_nav = ((clientPC.indexOf('mozilla')!=-1) &amp;&amp; (clientPC.indexOf('spoofer')==-1)
+                &amp;&amp; (clientPC.indexOf('compatible') == -1) &amp;&amp; (clientPC.indexOf('opera')==-1)
+                &amp;&amp; (clientPC.indexOf('webtv')==-1) &amp;&amp; (clientPC.indexOf('hotjava')==-1));
+var is_moz = 0;
+
+var is_win = ((clientPC.indexOf(&quot;win&quot;)!=-1) || (clientPC.indexOf(&quot;16bit&quot;) != -1));
+var is_mac = (clientPC.indexOf(&quot;mac&quot;)!=-1);
+
+
+function barre_raccourci(debut,fin,champ) {
+	var txtarea = champ;
+
+	txtarea.focus();
+	donotinsert = false;
+	theSelection = false;
+	bblast = 0;
+
+	if ((clientVer &gt;= 4) &amp;&amp; is_ie &amp;&amp; is_win)
+	{
+		theSelection = document.selection.createRange().text; // Get text selection
+		if (theSelection) {
+
+			while (theSelection.substring(theSelection.length-1, theSelection.length) == ' ')
+			{
+				theSelection = theSelection.substring(0, theSelection.length-1);
+				fin = fin + &quot; &quot;;
+			}
+			if (theSelection.substring(0,1) == '{' &amp;&amp; debut.substring(0,1) == '{')
+			{
+				debut = debut + &quot; &quot;;
+			}
+			if (theSelection.substring(theSelection.length-1, theSelection.length) == '}' &amp;&amp; fin.substring(0,1) == '}')
+			{
+				fin = &quot; &quot; + fin;
+			}
+
+			// Add tags around selection
+			document.selection.createRange().text = debut + theSelection + fin;
+			txtarea.focus();
+			theSelection = '';
+			return;
+		}
+	}
+	else if (txtarea.selectionEnd &amp;&amp; (txtarea.selectionEnd - txtarea.selectionStart &gt; 0))
+	{
+		mozWrap(txtarea, debut, fin);
+		return;
+	}
+}
+
+function barre_demande(debut,milieu,fin,affich,champ) {
+	var inserer = prompt(affich);
+
+	if (inserer != null) {
+		if (inserer == &quot;&quot;) {inserer = &quot;xxx&quot;; }
+
+		barre_raccourci(debut, milieu+inserer+fin, champ);
+	}
+}
+
+function barre_inserer(text,champ) {
+	var txtarea = champ;
+	
+	if (txtarea.createTextRange &amp;&amp; txtarea.caretPos) {
+		var caretPos = txtarea.caretPos;
+		caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? caretPos.text + text + ' ' : caretPos.text + text;
+		txtarea.focus();
+	} else {
+		//txtarea.value  += text;
+		//txtarea.focus();
+		mozWrap(txtarea, '', text);
+		return;
+	}
+}
+
+
+// D'apres Nicolas Hoizey 
+function barre_tableau(toolbarfield)
+{
+	var txtarea = toolbarfield;
+	txtarea.focus();
+	var cols = prompt(&quot;Nombre de colonnes du tableau :&quot;, &quot;&quot;);
+	var rows = prompt(&quot;Nombre de lignes du tableau :&quot;, &quot;&quot;);
+	if (cols != null &amp;&amp; rows != null) {
+		var tbl = '';
+		var ligne = '|';
+		var entete = '|';
+		for(i = 0; i &lt; cols; i++) {
+			ligne = ligne + ' valeur |';
+			entete = entete + ' {{entete}} |';
+		}
+		for (i = 0; i &lt; rows; i++) {
+			tbl = tbl + ligne + '\n';
+		}
+		if (confirm('Voulez vous ajouter une ligne d\'en-t&#234;te ?')) {
+			tbl = entete + '\n' + tbl;
+		}
+		if ((clientVer &gt;= 4) &amp;&amp; is_ie &amp;&amp; is_win) {
+			var str = document.selection.createRange().text;
+			var sel = document.selection.createRange();
+			sel.text = str + '\n\n' + tbl + '\n\n';
+		} else {
+			mozWrap(txtarea, '', &quot;\n\n&quot; + tbl + &quot;\n\n&quot;);
+		}
+	}
+	return;
+}
+
+
+
+// Shows the help messages in the helpline window
+function helpline(help, champ) {
+	champ.value = help;
+}
+
+
+function setCaretToEnd (input) {
+  setSelectionRange(input, input.value.length, input.value.length);
+}
+
+
+function setSelectionRange(input, selectionStart, selectionEnd) {
+  if (input.setSelectionRange) {
+    input.focus();
+    input.setSelectionRange(selectionStart, selectionEnd);
+  }
+  else if (input.createTextRange) {
+    var range = input.createTextRange();
+    range.collapse(true);
+    range.moveEnd('character', selectionEnd);
+    range.moveStart('character', selectionStart);
+    range.select();
+  }
+}
+
+// From <A HREF="http://www.massless.org/mozedit/">http://www.massless.org/mozedit/</A>
+function mozWrap(txtarea, open, close)
+{
+	var selLength = txtarea.textLength;
+	var selStart = txtarea.selectionStart;
+	var selEnd = txtarea.selectionEnd;
+	if (selEnd == 1 || selEnd == 2)
+		selEnd = selLength;
+	
+	// Raccourcir la selection par double-clic si dernier caractere est espace	
+	if (selEnd - selStart &gt; 0 &amp;&amp; (txtarea.value).substring(selEnd-1,selEnd) == ' ') selEnd = selEnd-1;
+	
+	var s1 = (txtarea.value).substring(0,selStart);
+	var s2 = (txtarea.value).substring(selStart, selEnd)
+	var s3 = (txtarea.value).substring(selEnd, selLength);
+
+	// Eviter melange bold-italic-intertitre
+	if ((txtarea.value).substring(selEnd,selEnd+1) == '}' &amp;&amp; close.substring(0,1) == &quot;}&quot;) close = close + &quot; &quot;;
+	if ((txtarea.value).substring(selEnd-1,selEnd) == '}' &amp;&amp; close.substring(0,1) == &quot;}&quot;) close = &quot; &quot; + close;
+	if ((txtarea.value).substring(selStart-1,selStart) == '{' &amp;&amp; open.substring(0,1) == &quot;{&quot;) open = &quot; &quot; + open;
+	if ((txtarea.value).substring(selStart,selStart+1) == '{' &amp;&amp; open.substring(0,1) == &quot;{&quot;) open = open + &quot; &quot;;
+
+	txtarea.value = s1 + open + s2 + close + s3;
+	selDeb = selStart + open.length;
+	selFin = selEnd + close.length;
+	window.setSelectionRange(txtarea, selDeb, selFin);
+	txtarea.focus();
+	
+	return;
+}
+
+// Insert at Claret position. Code from
+// <A HREF="http://www.faqts.com/knowledge_base/view.phtml/aid/1052/fid/130">http://www.faqts.com/knowledge_base/view.phtml/aid/1052/fid/130</A>
+     function storeCaret (textEl) {
+       if (textEl.createTextRange) 
+         textEl.caretPos = document.selection.createRange().duplicate();
+     }
+
+
+--- NEW FILE: spip_inscription.php3 ---
+&lt;?php
+include (&quot;ecrire/inc_version.php3&quot;);
+include_ecrire(&quot;inc_presentation.php3&quot;);
+include_local(&quot;inc-formulaire_inscription.php3&quot;);
+include_local(&quot;inc-public-global.php3&quot;); 
+include_ecrire(&quot;inc_lang.php3&quot;); 
+utiliser_langue_site();
+utiliser_langue_visiteur();
+install_debut_html(_T('pass_vousinscrire'));
+inclure_balise_dynamique(balise_formulaire_inscription_dyn($mode, $mail_inscription, $nom_inscription, $focus));
+install_fin_html();
+?&gt;
+
+--- NEW FILE: spip_login.php3 ---
+&lt;?php
+$fond = &quot;login&quot;;
+$delais = 3600;
+$flag_dynamique = true;
+$flag_preserver = true;
+$forcer_lang = true;
+
+include (&quot;inc-public.php3&quot;);
+
+?&gt;
+
+--- NEW FILE: rubrique-dist.html ---
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;<A HREF="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</A>&quot;&gt;
+&lt;BOUCLE_rubrique_principal(RUBRIQUES) {id_rubrique}&gt;
+
+&lt;html lang=&quot;#LANG&quot;&gt;
+&lt;head&gt;
+&lt;title&gt;[(#TITRE|textebrut)]&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=#CHARSET&quot;&gt;
+
+&lt;!-- Ceci est la feuille de style par defaut pour les types internes a SPIP --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;spip_style.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- Les feuilles de style specifiques aux presents squelettes --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;typographie.css&quot; type=&quot;text/css&quot;&gt;
+
+&lt;!-- media=&quot;...&quot; permet de ne pas utiliser ce style sous Netscape 4 (sinon plantage) --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;habillage.css&quot; type=&quot;text/css&quot; media=&quot;projection, screen, tv&quot;&gt;
+&lt;!-- media=&quot;print&quot; permet d'utiliser cette feuille de style quand vous imprimez depuis votre navigateur --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;impression.css&quot; type=&quot;text/css&quot; media=&quot;print&quot;&gt;
+
+&lt;!-- Lien vers le backend pour navigateurs eclaires --&gt;
+&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; title=&quot;&lt;:syndiquer_rubrique:&gt;&quot; href=&quot;backend.php3?id_rubrique=#ID_RUBRIQUE&quot;&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor=&quot;white&quot; dir=&quot;#LANG_DIR&quot;&gt;
+
+&lt;div id=&quot;navigation&quot;&gt;
+
+&lt;h1 class=&quot;structure&quot;&gt;&lt;:navigation:&gt;&lt;/h1&gt;
+
+&lt;!-- Menu de navigation general --&gt;
+
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;general&quot;&gt;
+	&lt;li class=&quot;menu-titre&quot;&gt;
+	[&lt;a href=&quot;(#URL_SITE_SPIP)&quot; title=&quot;&lt;:accueil_site:&gt;&quot;&gt;&lt;b&gt;#NOM_SITE_SPIP&lt;/b&gt;&lt;/a&gt;]
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;plan.php3&quot;&gt;&lt;:plan_site:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;resume.php3&quot; title=&quot;&lt;:articles_populaires:&gt;&quot;&gt;&lt;:en_resume:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;a href=&quot;ecrire/&quot;&gt;&lt;:espace_prive:&gt;&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+
+&lt;!-- Formulaire de recherche --&gt;
+
+[(#FORMULAIRE_RECHERCHE)]
+
+
+&lt;!-- Menu de navigation rubriques --&gt;
+
+&lt;div class=&quot;menu&quot;&gt;
+&lt;ol class=&quot;rubriques&quot; title=&quot;&lt;:hierarchie_site:&gt;&quot;&gt;
+&lt;BOUCLE_hierarchie(HIERARCHIE) {id_rubrique} {tout}&gt;
+&lt;li&gt;
+&lt;div class=&quot;menu-titre&quot;&gt;&lt;a href=&quot;#URL_RUBRIQUE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/div&gt;
+&lt;B_rubriques_soeurs&gt;
+	&lt;ul class=&quot;menu-liste&quot;&gt;
+&lt;BOUCLE_rubriques_soeurs(RUBRIQUES) {meme_parent} {exclus} {par titre}&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;&lt;a href=&quot;#URL_RUBRIQUE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/li&gt;
+&lt;/BOUCLE_rubriques_soeurs&gt;
+	&lt;/ul&gt;
+&lt;/B_rubriques_soeurs&gt;
+&lt;/li&gt;
+&lt;/BOUCLE_hierarchie&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+
+
+&lt;!-- Breves dans la rubrique --&gt;
+
+&lt;B_breves_rubrique&gt;
+
+&lt;div class=&quot;menu&quot;&gt;
+&lt;div class=&quot;breves&quot; title=&quot;&lt;:dernieres_breves:&gt;&quot;&gt;
+	&lt;div class=&quot;menu-titre&quot;&gt;
+	&lt;:breves:&gt;
+	&lt;/div&gt;
+	&lt;ul&gt;
+&lt;BOUCLE_breves_rubrique(BREVES) {id_secteur} {par date} {inverse} {0,5}&gt;
+	&lt;li class=&quot;menu-item&quot;&gt;
+	&lt;i&gt;[(#DATE|affdate_court)]&lt;/i&gt;:
+	&lt;a href=&quot;#URL_BREVE&quot;&gt;#TITRE&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/BOUCLE_breves_rubrique&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/B_breves_rubrique&gt;
+
+
+&lt;/div&gt;
+
+
+&lt;!-- Une : contenu de la rubrique --&gt;
+
+&lt;div class=&quot;contenu&quot; id=&quot;principal&quot;&gt;
+
+&lt;div class=&quot;cartouche&quot;&gt;
+[(#LOGO_RUBRIQUE|left)]
+&lt;h1 class=&quot;titre-texte&quot;&gt;#TITRE&lt;/h1&gt;
+[&lt;:dernier_ajout:&gt; : (#DATE|nom_jour)] [(#DATE|affdate).]
+&lt;/div&gt;
+
+	&lt;div class=&quot;encart&quot;&gt;
+
+	&lt;!-- Menu de navigation mots-cles --&gt;
+
+	&lt;B_mots&gt;
+	&lt;h2 class=&quot;structure&quot;&gt;&lt;:mots_clefs:&gt;&lt;/h2&gt;
+
+	&lt;div class=&quot;menu&quot;&gt;
+	&lt;ul class=&quot;divers&quot; title=&quot;&lt;:mots_clefs:&gt;&quot;&gt;
+	&lt;BOUCLE_mots(MOTS) {id_rubrique} {par titre}&gt;
+	&lt;li&gt;
+	&lt;div class=&quot;menu-titre&quot;&gt;&lt;a href=&quot;#URL_MOT&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/div&gt;
+	&lt;B_rubriques_mots&gt;
+		&lt;ul class=&quot;menu-liste&quot;&gt;
+	&lt;BOUCLE_rubriques_mots(RUBRIQUES) {id_mot} {par hasard} {0,4}&gt;
+		&lt;li class=&quot;menu-item&quot;&gt;&lt;a href=&quot;#URL_RUBRIQUE&quot; title=&quot;[(#DESCRIPTIF|textebrut|entites_html)]&quot;&gt;#TITRE&lt;/a&gt;&lt;/li&gt;
+	&lt;/BOUCLE_rubriques_mots&gt;
+		&lt;/ul&gt;
+	&lt;/B_rubriques_mots&gt;
+	&lt;/li&gt;
+	&lt;/BOUCLE_mots&gt;
+	&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;/B_mots&gt;
+
+	&lt;!-- Sous-rubriques --&gt;
+
+	&lt;B_sous_rubriques&gt;
+	&lt;h2 class=&quot;structure&quot;&gt;&lt;:sous_rubriques:&gt;&lt;/h2&gt;
+
+	&lt;div class=&quot;menu&quot;&gt;
+	&lt;ul class=&quot;rubriques&quot; title=&quot;&lt;:sous_rubriques:&gt;&quot;&gt;
+	&lt;BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par titre}&gt;
+	&lt;li&gt;
+	&lt;div class=&quot;menu-titre&quot;&gt;&lt;a href=&quot;#URL_RUBRIQUE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/div&gt;
+	&lt;B_sous_sous_rubriques&gt;
+		&lt;ul class=&quot;menu-liste&quot;&gt;
+	&lt;BOUCLE_sous_sous_rubriques(RUBRIQUES) {id_parent} {par titre}&gt;
+		&lt;li class=&quot;menu-item&quot;&gt;&lt;a href=&quot;#URL_RUBRIQUE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/li&gt;
+	&lt;/BOUCLE_sous_sous_rubriques&gt;
+		&lt;/ul&gt;
+	&lt;/B_sous_sous_rubriques&gt;
+	&lt;/li&gt;
+	&lt;/BOUCLE_sous_rubriques&gt;
+	&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;/B_sous_rubriques&gt;
+	
+	&lt;!-- Sites syndiques --&gt;
+	
+	&lt;B_sites&gt;
+	&lt;div class=&quot;menu&quot;&gt;
+	&lt;div class=&quot;divers&quot;&gt;
+		&lt;div class=&quot;menu-titre&quot;&gt;
+		&lt;:sur_web:&gt;
+		&lt;/div&gt;
+		&lt;ul&gt;
+	&lt;BOUCLE_sites(SITES) {id_rubrique} {par nom_site}&gt;
+		&lt;li class=&quot;menu-item&quot;&gt;
+		&lt;a href=&quot;#URL_SITE&quot;&gt;#NOM_SITE&lt;/a&gt;
+		&lt;B_syndic&gt;
+		&lt;ul class=&quot;menu-liste&quot;&gt;
+		&lt;BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {par date} {inverse} {0,3}&gt;
+			&lt;li class=&quot;menu-item&quot;&gt;&lt;small&gt;&lt;a href=&quot;#URL_ARTICLE&quot;&gt;#TITRE&lt;/a&gt;&lt;/small&gt;&lt;/li&gt;
+		&lt;/BOUCLE_syndic&gt;
+		&lt;/ul&gt;
+		&lt;/B_syndic&gt;
+		&lt;/li&gt;
+	&lt;/BOUCLE_sites&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;/B_sites&gt;
+	[
+&lt;div class=&quot;menu&quot;&gt;
+    &lt;div class=&quot;divers&quot;&gt;
+      &lt;div class=&quot;menu-titre&quot;&gt;&lt;:proposer_site:&gt;
+	&lt;div class='reponse_formulaire'&gt;(#FORMULAIRE_SITE)&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+]
+	&lt;/div&gt;
+
+[&lt;div class=&quot;chapo&quot;&gt;(#TEXTE)&lt;/div&gt;]
+[&lt;div class=&quot;notes&quot;&gt;(#NOTES)&lt;/div&gt;]
+
+&lt;BOUCLE_documents_joints(DOCUMENTS) {id_rubrique} {mode=document} {doublons} {&quot;&lt;br&gt;&quot;}&gt;
+[(#LOGO_DOCUMENT|#URL_DOCUMENT)][&lt;br&gt;(#TITRE)][ - (#DESCRIPTIF)]
+&lt;/BOUCLE_documents_joints&gt;
+&lt;br&gt;
+
+&lt;!-- Articles de la rubrique --&gt;
+
+&lt;h1 class=&quot;structure&quot;&gt;&lt;:articles_rubrique:&gt;&lt;/h1&gt;
+
+&lt;div class=&quot;liste-articles&quot;&gt;
+
+&lt;BOUCLE_articles_recents(ARTICLES) {id_rubrique} {par titre}&gt;
+	&lt;h2&gt;&lt;a href=&quot;#URL_ARTICLE&quot; [title=&quot;(#DESCRIPTIF|textebrut|entites_html)&quot;]&gt;#TITRE&lt;/a&gt;&lt;/h2&gt;
+	&lt;div class=&quot;detail&quot;&gt;
+	[(#DATE|nom_jour)] [(#DATE|affdate)]
+	&lt;B_auteurs_recents&gt;&lt;:par_auteur:&gt; &lt;BOUCLE_auteurs_recents(AUTEURS) {id_article} {&quot;, &quot;}&gt;#NOM&lt;/BOUCLE_auteurs_recents&gt;
+	&lt;/div&gt;
+	&lt;br&gt;
+&lt;/BOUCLE_articles_recents&gt;
+
+
+&lt;/div&gt;
+
+
+&lt;/div&gt;
+#FORMULAIRE_ADMIN
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;/BOUCLE_rubrique_principal&gt;
+&lt;:aucune_rubrique:&gt;
+&lt;//B_rubrique_principal&gt;
+
+--- NEW FILE: spip_carto.php ---
+&lt;?php
+include (&quot;ecrire/inc_version.php3&quot;);
+include (&quot;ecrire/inc_connect.php3&quot;);
+//include (&quot;ecrire/inc_meta.php3&quot;);
+//include (&quot;ecrire/inc_session.php3&quot;);
+
+include(&quot;downloadfile.class.php&quot;);
+
+if (isset($_GET[&quot;id_carte&quot;]) &amp;&amp; !empty($_GET[&quot;id_carte&quot;])) 
+{
+	$query=&quot;select fichier from spip_documents where id_document=&quot;.$_GET[&quot;id_carte&quot;];
+		
+	$result = @spip_query($query);
+	if ($result) 
+	{
+		$row = @spip_fetch_array($result); 
+		$downloadfile = new DOWNLOADFILE($row[0],&quot;inline&quot;);
+		//si c'est un probleme de document supprim&#233; : &quot;!!!&quot; ... bof !
+		if (!$downloadfile-&gt;df_download()) echo &quot;!!!&quot;;
+		//else exit();
+	}
+}
+?&gt;
+--- NEW FILE: puce.gif ---
+(This appears to be a binary file; contents omitted.)
+
+--- NEW FILE: sommaire_texte-dist.html ---
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;<A HREF="http://www.w3.org/TR/html4/loose.dtd">http://www.w3.org/TR/html4/loose.dtd</A>&quot;&gt;
+&lt;html lang=&quot;#LANG&quot;&gt;
+&lt;!--
+// ACCESSIBILITE
+// la page /oo offre une lecture en mode &quot;texte seul&quot;
+// des 3 articles les plus recents.
+--&gt;
+&lt;head&gt;
+	&lt;title&gt;
+		#NOM_SITE_SPIP
+	&lt;/title&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=#CHARSET&quot;&gt;
+	&lt;meta http-equiv=&quot;AUTHOR&quot; content=&quot;#NOM_SITE_SPIP&quot;&gt;
+	&lt;meta http-equiv=&quot;DESCRIPTION&quot; content=&quot;Edition en mode texte de #NOM_SITE_SPIP&quot;&gt;
+&lt;/head&gt;
+&lt;body dir=&quot;#LANG_DIR&quot;&gt;
+	&lt;hr /&gt;
+	&lt;:edition_mode_texte:&gt; &lt;a href=&quot;#URL_SITE_SPIP&quot;&gt;{#NOM_SITE_SPIP}&lt;/a&gt;
+	&lt;hr /&gt;
+	&lt;b&gt;&lt;u&gt;Sommaire de la page :&lt;/u&gt;&lt;/b&gt;
+
+	&lt;B_sarticles&gt;
+	&lt;h2&gt;Articles&lt;/h2&gt;
+	&lt;ul&gt;
+		&lt;BOUCLE_sarticles(ARTICLES){0,3}{par date}{inverse}&gt;
+			&lt;li&gt;&lt;a href=&quot;#ar#ID_ARTICLE&quot;&gt;#TITRE&lt;/a&gt;
+		&lt;/BOUCLE_sarticles&gt;
+	&lt;/ul&gt;
+	&lt;/B_sarticles&gt;
+
+	&lt;B_sbreves&gt;
+	&lt;h2&gt;Br&egrave;ves&lt;/h2&gt;
+	&lt;ul&gt;
+		&lt;BOUCLE_sbreves(BREVES){0,5}{par date}{inverse}&gt;
+			&lt;li&gt;&lt;a href=&quot;#br#ID_BREVE&quot;&gt;#TITRE&lt;/a&gt;
+		&lt;/BOUCLE_sbreves&gt;
+	&lt;/ul&gt;
+	&lt;/B_sbreves&gt;
+
+
+	&lt;B_articles&gt;
+	&lt;h1&gt;Articles r&eacute;cents&lt;/h1&gt;
+
+	&lt;BOUCLE_articles(ARTICLES){0,3}{par date}{inverse}&gt;
+		&lt;a name=&quot;ar#ID_ARTICLE&quot;&gt;&lt;/a&gt;
+		&lt;BOUCLE_RUB_AR(RUBRIQUES){ID_RUBRIQUE}&gt;
+			Rubrique : &lt;a href=&quot;#URL_RUBRIQUE&quot;&gt;{#TITRE}&lt;/a&gt;
+		&lt;/BOUCLE_RUB_AR&gt;
+
+		[&lt;h2&gt;(#SURTITRE|majuscules)&lt;/h2&gt;]
+		&lt;h2&gt;#TITRE&lt;/h2&gt;
+		&lt;h3&gt;#SOUSTITRE&lt;/h3&gt;
+		[Le (#DATE|nom_jour) ] [(#DATE|affdate)]
+		[par (#LESAUTEURS)]
+		&lt;p&gt;
+		[(#CHAPO)]
+		&lt;p&gt;
+		[(#TEXTE)]
+
+		
+		&lt;p&gt;&lt;a href=&quot;#URL_ARTICLE&quot;&gt;{Consulter}&lt;/a&gt; l'article avec son forum. 
+
+		
+		&lt;hr /&gt;
+	&lt;/BOUCLE_articles&gt;
+
+	&lt;B_breves&gt;
+	&lt;h1&gt;Derni&egrave;res br&egrave;ves&lt;/h1&gt;
+
+	&lt;BOUCLE_breves(BREVES){0,5}{par date}{inverse}&gt;
+		&lt;a name=&quot;br#ID_BREVE&quot;&gt;
+		&lt;BOUCLE_RUB_BR(RUBRIQUES){ID_RUBRIQUE}&gt;
+			Rubrique : &lt;a href=&quot;#URL_RUBRIQUE&quot;&gt;{#TITRE}&lt;/a&gt;
+		&lt;/BOUCLE_RUB_BR&gt;
+		&lt;h2&gt;#TITRE&lt;/h2&gt;
+		[Le (#DATE|nom_jour) ] [(#DATE|affdate)]
+		&lt;p&gt;
+		[(#TEXTE)]
+		[&lt;p&gt;Voir en ligne : &lt;a href=&quot;(#URL_SITE)&quot;&gt;#NOM_SITE&lt;/a&gt;]
+		&lt;p&gt;&lt;a href=&quot;#URL_BREVE&quot;&gt;{Consulter}&lt;/a&gt; la br&egrave;ve avec son forum. 
+	&lt;hr /&gt;
+	&lt;/BOUCLE_breves&gt;
+	[&lt;h1&gt;NOTES :&lt;/h1&gt;
+	&lt;p class=&quot;spip_note&quot;&gt;(#NOTES)]
+	
+	&lt;hr /&gt;
+	&lt;a name=&quot;about&quot;&gt;&lt;/a&gt;
+	
+	[&lt;p&gt;Rechercher sur ce site : (#FORMULAIRE_RECHERCHE|recherche.php3)&lt;/p&gt;]
+	&lt;table&gt;&lt;tr&gt;
+		&lt;td&gt;&lt;A href=&quot;<A HREF="http://www.uzine.net/spip">http://www.uzine.net/spip</A>&quot;&gt;{Site r&eacute;alis&eacute; avec le logiciel SPIP}&lt;/td&gt;
+		[&lt;td&gt;&lt;A href=&quot;#URL_SITE_SPIP&quot;&gt;{(#NOM_SITE_SPIP|majuscules)}&lt;/a&gt;&lt;/td&gt;]
+		&lt;td&gt;&lt;a href=&quot;#URL_SITE_SPIP/plan.php3&quot;&gt;{&lt;:plan_site:&gt;}&lt;/a&gt;&lt;/td&gt;
+	&lt;/tr&gt;&lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+--- NEW FILE: spip_image_reduite.php3 ---
+&lt;?php
+
+$img = $_GET['img'];
+$logo = $img;
+include (&quot;ecrire/inc_version.php3&quot;);
+include_ecrire(&quot;inc_admin.php3&quot;);
+include_ecrire(&quot;inc_logos.php3&quot;);
+
+if (!$taille_y)
+	$taille_y = $taille_x;
+	
+if (eregi(&quot;(.*)\.(jpg|gif|png)$&quot;, $logo, $regs)) {
+	if ($i = cherche_image_nommee($regs[1], array($regs[2]))
+	    AND verifier_action_auteur(&quot;reduire $taille_x $taille_y&quot;, $hash, $hash_id_auteur))
+	{
+		list($dir,$nom,$format) = $i;
+		$logo = $dir . $nom . '.' . $format;
+		
+		include_ecrire(&quot;inc_logos.php3&quot;);
+		$suffixe = '-'.$taille_x.'x'.$taille_y;
+		$preview = creer_vignette($logo, $taille_x, $taille_y, $format,('cache'.$suffixe), $nom.$suffixe);
+		if ($preview) {
+			$vignette = $preview['fichier'];
+			$width = $preview['width'];
+			$height = $preview['height'];
+			//echo &quot;&lt;img src='$vignette' name='$name' border='0' align='$align' alt='' hspace='$espace' vspace='$espace' width='$width' height='$height' class='spip_logos' /&gt;&quot;;
+			$retour = $vignette;
+		}
+		else if ($taille_origine = @getimagesize($logo)) {
+			//list ($destWidth,$destHeight) = image_ratio($taille_origine[0], $taille_origine[1], $taille_x, $taille_y);
+			$retour = $logo;
+		}	
+
+	// Afficher l'image resultante, meme grande...
+//	header(&quot;Content-type: image/$format&quot;);
+//	echo implode ('', file ($retour));
+
+	redirige_par_entete($retour);
+	}
+ }
+
+?&gt;
+--- NEW FILE: spip_test_dirs.php3 ---
+&lt;?php
+if (defined(&quot;_TEST_DIRS&quot;)) return;
+define(&quot;_TEST_DIRS&quot;, &quot;1&quot;);
+
+include(&quot;ecrire/inc_version.php3&quot;);
+
+include_ecrire(&quot;inc_presentation.php3&quot;);
+
+utiliser_langue_visiteur();
+
+
+//
+// Tente d'ecrire
+//
+function test_ecrire($my_dir) {
+	$ok = true;
+	$nom_fich = &quot;$my_dir/test.txt&quot;;
+	$f = @fopen($nom_fich, &quot;w&quot;);
+	if (!$f) $ok = false;
+	else if (!@fclose($f)) $ok = false;
+	else if (!@unlink($nom_fich)) $ok = false;
+	return $ok;
+}
+
+//
+// teste les droits sur les repertoires $test_dirs declares dans inc_version
+//
+
+// rajouter celui passer dans l'url ou celui du source (a l'installation)
+
+if ($test_dir) {
+  if (!ereg(&quot;/$&quot;, $test_dir)) $test_dir .= '/';
+  if (!in_array($test_dir, $test_dirs)) $test_dirs[] = $test_dir;
+ }
+else {
+	if (!_FILE_CONNECT)
+	  $test_dirs[] = dirname(_FILE_CONNECT_INS);
+}
+
+unset($bad_dirs);
+unset($absent_dirs);
+
+while (list(, $my_dir) = each($test_dirs)) {
+	if (!test_ecrire($my_dir)) {
+		@umask(0);
+		if (@file_exists($my_dir)) {
+			@chmod($my_dir, 0777);
+			// ???
+			if (!test_ecrire($my_dir))
+				@chmod($my_dir, 0775);
+			if (!test_ecrire($my_dir))
+				@chmod($my_dir, 0755);
+			if (!test_ecrire($my_dir))
+				$bad_dirs[] = &quot;&lt;LI&gt;&quot;.$my_dir;
+		} else
+			$absent_dirs[] = &quot;&lt;LI&gt;&quot;.$my_dir;
+	}
+}
+
+if ($bad_dirs OR $absent_dirs) {
+	install_debut_html();
+
+	if (!_FILE_CONNECT) {
+		$titre = _T('dirs_preliminaire');
+		$continuer = ' '._T('dirs_commencer');
+	} else
+		$titre = _T('dirs_probleme_droits');
+
+	$bad_url = &quot;spip_test_dirs.php3&quot;;
+	if ($test_dir) $bad_url .= '?test_dir='.$test_dir;
+
+	echo &quot;&lt;FONT FACE=\&quot;Verdana,Arial,Helvetica,sans-serif\&quot; SIZE=3&gt;$titre&lt;/FONT&gt;\n&lt;p&gt;&quot;;
+	echo &quot;&lt;div align='right'&gt;&quot;. menu_langues('var_lang_ecrire').&quot;&lt;/div&gt;\n&quot;;
+
+	if ($bad_dirs) {
+		echo &quot;&lt;p&gt;&quot;;
+		echo _T('dirs_repertoires_suivants',
+			array('bad_dirs' =&gt; join(&quot; &quot;, $bad_dirs)));
+		echo &quot;&lt;B&gt;&quot;. _T('login_recharger').&quot;&lt;/b&gt;&quot;;
+	}
+
+	if ($absent_dirs) {
+		echo &quot;&lt;p&gt;&quot;;
+		echo _T('dirs_repertoires_absents',
+			array('bad_dirs' =&gt; join(&quot; &quot;, $absent_dirs)));
+		echo &quot;&lt;B&gt;&quot;. _T('login_recharger').&quot;&lt;/b&gt;&quot;;
+	}
+
+	echo $continuer.'. ';
+	echo aide (&quot;install0&quot;);
+	echo &quot;&lt;p&gt;&quot;;
+
+	echo &quot;&lt;FORM ACTION='$bad_urls' METHOD='GET'&gt;\n&quot;;
+	echo &quot;&lt;DIV align='right'&gt;&lt;INPUT TYPE='submit' CLASS='fondl' VALUE='&quot;. _T('login_recharger').&quot;'&gt;&lt;/DIV&gt;&quot;;
+	echo &quot;&lt;/FORM&gt;&quot;;
+
+	install_fin_html();
+
+} else {
+	if (!_FILE_CONNECT)
+		header(&quot;Location: &quot; . _DIR_RESTREINT_ABS . &quot;install.php3?etape=1&quot;);
+	else
+		header(&quot;Location: &quot; . _DIR_RESTREINT_ABS);
+}
+
+?&gt;
+
+--- NEW FILE: spip_cookie.php3 ---
+&lt;?php
+
+include (&quot;ecrire/inc_version.php3&quot;);
+include_ecrire (&quot;inc_session.php3&quot;);
+
+// gerer l'auth http
+function auth_http($url, $essai_auth_http) {
+	if ($essai_auth_http == 'oui') {
+		if (!verifier_php_auth()) {
+		  $url = quote_amp(urlencode($url));
+		  ask_php_auth(_T('login_connexion_refusee'),_T('login_login_pass_incorrect'),_T('login_retour_site'), &quot;url=$url&quot;,_T('login_nouvelle_tentative'), (ereg(_DIR_RESTREINT_ABS, $url)));
+		  exit;
+		}
+		else
+			redirige_par_entete($url);
+	}
+	// si demande logout auth_http
+	else if ($essai_auth_http == 'logout') {
+		ask_php_auth(_T('login_deconnexion_ok'),_T('login_verifiez_navigateur'),_T('login_retour_public'),&quot;redirect=ecrire&quot;,_T('login_test_navigateur'), true);
+		exit;
+	}
+}
+
+// rejoue le cookie pour renouveler spip_session
+if ($change_session == 'oui') {
+	if (verifier_session($spip_session)) {
+		// Attention : seul celui qui a le bon IP a le droit de rejouer,
+		// ainsi un eventuel voleur de cookie ne pourrait pas deconnecter
+		// sa victime, mais se ferait deconnecter par elle.
+		if ($auteur_session['hash_env'] == hash_env()) {
+			$auteur_session['ip_change'] = false;
+			$cookie = creer_cookie_session($auteur_session);
+			supprimer_session($spip_session);
+			spip_setcookie('spip_session', $cookie);
+		}
+		@header('Content-Type: image/gif');
+		@header('Expires: 0');
+		@header(&quot;Cache-Control: no-store, no-cache, must-revalidate&quot;);
+		@header('Pragma: no-cache');
+		@header(&quot;Last-Modified: &quot; . gmdate(&quot;D, d M Y H:i:s&quot;) . &quot; GMT&quot;);
+		@readfile(_DIR_IMG_PACK . 'rien.gif');
+		exit;
+	}
+}
+#spip_log(&quot;cookie: $url&quot;);
+
+if ($url)  $url = urldecode($url);
+
+// tentative de connexion en auth_http
+if ($essai_auth_http AND !$ignore_auth_http) {
+	auth_http(($url ? $url : _DIR_RESTREINT_ABS), $essai_auth_http);
+	exit;
+}
+
+// cas particulier, logout dans l'espace public
+if ($logout_public) {
+	$logout = $logout_public;
+	if (!$url)
+		$url = 'index.php3';
+}
+// tentative de logout
+if ($logout) {
+	verifier_visiteur();
+	if ($auteur_session['login'] == $logout) {
+		spip_query(&quot;UPDATE spip_auteurs SET en_ligne = DATE_SUB(NOW(),INTERVAL 6 MINUTE) WHERE id_auteur = &quot;.$auteur_session['id_auteur']);
+		if ($spip_session) {
+			zap_sessions($auteur_session['id_auteur'], true);
+			spip_setcookie('spip_session', $spip_session, time() - 3600 * 24);
+		}
+		if ($PHP_AUTH_USER AND !$ignore_auth_http) {
+			auth_http(($url ? $url : _DIR_RESTREINT_ABS), 'logout');
+		}
+		unset ($auteur_session);
+	}
+
+	redirige_par_entete($url ? $url : &quot;spip_login.php3&quot;);
+}
+
+// en cas de login sur bonjour=oui, on tente de poser un cookie
+// puis de passer a spip_login qui diagnostiquera l'echec de cookie
+// le cas echeant.
+if ($test_echec_cookie == 'oui') {
+	spip_setcookie('spip_session', 'test_echec_cookie');
+	redirige_par_entete(&quot;spip_login.php3?var_echec_cookie=oui&amp;url=&quot; .
+			    ($url ? $url : _DIR_RESTREINT_ABS));
+}
+
+// Tentative de login
+unset ($cookie_session);
+$redirect = ($url ? $url : _DIR_RESTREINT_ABS);
+if ($essai_login == &quot;oui&quot;) {
+	// Recuperer le login en champ hidden
+	if ($session_login_hidden AND !$session_login)
+		$session_login = $session_login_hidden;
+
+	$login = $session_login;
+	$pass = $session_password;
+
+	// Essayer differentes methodes d'authentification
+	$auths = array('spip');
+	include_local(_FILE_CONNECT); // pour savoir si ldap est present 
+	if ($ldap_present) $auths[] = 'ldap';
+	$ok = false;
+	reset($auths);
+	while (list(, $nom_auth) = each($auths)) {
+		include_ecrire(&quot;inc_auth_&quot;.$nom_auth.&quot;.php3&quot;);
+		$classe_auth = &quot;Auth_&quot;.$nom_auth;
+		$auth = new $classe_auth;
+		if ($auth-&gt;init()) {
+			// Essayer les mots de passe md5
+			$ok = $auth-&gt;verifier_challenge_md5($login, $session_password_md5, $next_session_password_md5);
+			// Sinon essayer avec le mot de passe en clair
+			if (!$ok &amp;&amp; $session_password) $ok = $auth-&gt;verifier($login, $session_password);
+			if ($ok)  { $auth-&gt;lire(); break; }
+		}
+	}
+
+	if ($ok) {
+		$auth-&gt;activer();
+
+		if ($auth-&gt;login AND $auth-&gt;statut == '0minirezo') // force le cookie pour les admins
+			$cookie_admin = &quot;@&quot;.$auth-&gt;login;
+
+		$query = &quot;SELECT * FROM spip_auteurs WHERE login='&quot;.addslashes($auth-&gt;login).&quot;'&quot;;
+		$result = spip_query($query);
+		if ($row_auteur = spip_fetch_array($result))
+			$cookie_session = creer_cookie_session($row_auteur);
+
+		if (ereg(_DIR_RESTREINT_ABS, $redirect)) {
+		      $redirect .= (strpos($redirect, &quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;) . 'bonjour=oui';
+		}
+	}
+	else {
+		if (ereg(_DIR_RESTREINT_ABS, $redirect)) {
+			$redirect = &quot;spip_login.php3&quot;;
+		}
+		$redirect .= (strpos($redirect, &quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;) . &quot;var_login=$login&quot;;
+		if ($session_password || $session_password_md5)
+			$redirect .= '&amp;var_erreur=pass';
+		$redirect .= '&amp;url=' . urlencode($url);
+	}
+ }
+
+// cookie d'admin ?
+if ($cookie_admin == &quot;non&quot;) {
+	spip_setcookie('spip_admin', $spip_admin, time() - 3600 * 24);
+	$redirect = ereg_replace(&quot;[?&amp;]var_login=[^&amp;]*&quot;, '', $redirect);
+	$redirect .= (strpos($redirect, &quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;) . &quot;var_login=-1&quot;;
+}
+else if ($cookie_admin AND $spip_admin != $cookie_admin) {
+	spip_setcookie('spip_admin', $cookie_admin, time() + 3600 * 24 * 14);
+}
+
+// cookie de session ?
+if ($cookie_session) {
+	if ($session_remember == 'oui')
+		spip_setcookie('spip_session', $cookie_session, time() + 3600 * 24 * 14);
+	else
+		spip_setcookie('spip_session', $cookie_session);
+
+	$prefs = ($row_auteur['prefs']) ? unserialize($row_auteur['prefs']) : array();
+	$prefs['cnx'] = ($session_remember == 'oui') ? 'perma' : '';
+	spip_query (&quot;UPDATE spip_auteurs SET prefs = '&quot;.addslashes(serialize($prefs)).&quot;' WHERE id_auteur = &quot;.$row_auteur['id_auteur']);
+
+}
+
+// changement de langue espace public
+if ($var_lang) {
+	include_ecrire('inc_lang.php3');
+
+	if (changer_langue($var_lang)) {
+		spip_setcookie('spip_lang', $var_lang, time() + 365 * 24 * 3600);
+		$redirect = ereg_replace(&quot;[?&amp;]lang=[^&amp;]*&quot;, '', $redirect);
+		$redirect .= (strpos($redirect, &quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;) . &quot;lang=$var_lang&quot;;
+	}
+}
+
+// changer de langue espace prive (ou login)
+if ($var_lang_ecrire) {
+	include_ecrire('inc_lang.php3');
+	verifier_visiteur();
+
+	if (changer_langue($var_lang_ecrire)) {
+		spip_setcookie('spip_lang_ecrire', $var_lang_ecrire, time() + 365 * 24 * 3600);
+		spip_setcookie('spip_lang', $var_lang_ecrire, time() + 365 * 24 * 3600);
+
+		if (_FILE_CONNECT) {
+			include_ecrire('inc_admin.php3');
+			if (verifier_action_auteur('var_lang_ecrire', $valeur, $id_auteur)) {
+				spip_query (&quot;UPDATE spip_auteurs SET lang = '&quot;.addslashes($var_lang_ecrire).&quot;' WHERE id_auteur = &quot;.$id_auteur);
+				$auteur_session['lang'] = $var_lang_ecrire;
+				ajouter_session($auteur_session, $spip_session);	// enregistrer dans le fichier de session
+			}
+		}
+
+		$redirect = ereg_replace(&quot;[?&amp;]lang=[^&amp;]*&quot;, '', $redirect);
+		$redirect .= (strpos($redirect, &quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;) . &quot;lang=$var_lang_ecrire&quot;;
+	}
+}
+
+// Redirection
+// Sous Apache, les cookies avec une redirection fonctionnent
+// Sinon, on fait un refresh HTTP
+
+if (ereg(&quot;^Apache&quot;, $SERVER_SOFTWARE)) {
+	redirige_par_entete($redirect);
+}
+else {
+	@header(&quot;Refresh: 0; url=&quot; . $redirect);
+	echo &quot;&lt;html&gt;&lt;head&gt;&quot;;
+	echo &quot;&lt;meta http-equiv='Refresh' content='0; url=&quot;.$redirect.&quot;'&gt;&quot;;
+	echo &quot;&lt;/head&gt;\n&quot;;
+	echo &quot;&lt;body&gt;&lt;a href='&quot;.$redirect.&quot;'&gt;&quot;._T('navigateur_pas_redirige').&quot;&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;&quot;;
+}
+
+?&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000030.html">[Spip-carto-cvs] spip-carto/ecrire/plugins - New directory
+</A></li>
+	<LI>Next message: <A HREF="000040.html">[Spip-carto-cvs] CVSROOT modules,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

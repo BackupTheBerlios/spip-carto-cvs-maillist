@@ -1,0 +1,3371 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spip-carto inc-chercher-squelette.php3,NONE,1.1 inc-calcul.php3,1.1,1.2 forum.php3,1.1,1.2 inc-public.php3,1.1,1.2 inc-balises.php3,1.1,1.2 htaccess-propres.txt,1.1,1.2 spip_background.php3,1.1,1.2 inc-admin.php3,1.1,1.2 inc-compilo.php3,1.1,1.2 inc-html-squel.php3,1.1,1.2 spip_image.php3,1.1,1.2 spip_redirect.php3,1.1,1.2 inc-compilo-api.php3,1.1,1.2 inc-compilo-index.php3,1.1,1.2 htaccess-html.txt,1.1,1.2 spip_acces_doc.php3,1.1,1.2 inc-calcul-outils.php3,1.1,1.2 spip_inscription.php3,1.2,1.3 inc-messforum.php3,1.1,1.2 inc-cache.php3,1.1,1.2 inc-criteres.php3,1.1,1.2 spip_image_reduite.php3,1.1,1.2 inc-public-global.php3,1.1,1.2 inc-urls-propres.php3,1.1,1.2 spip_cookie.php3,1.1,1.2 inc-boucles.php3,1.1,1.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spip-carto%20inc-chercher-squelette.php3%2CNONE%2C1.1%20inc-calcul.php3%2C1.1%2C1.2%20forum.php3%2C1.1%2C1.2%20inc-public.php3%2C1.1%2C1.2%20inc-balises.php3%2C1.1%2C1.2%20htaccess-propres.txt%2C1.1%2C1.2%20spip_background.php3%2C1.1%2C1.2%20inc-admin.php3%2C1.1%2C1.2%20inc-compilo.php3%2C1.1%2C1.2%20inc-html-squel.php3%2C1.1%2C1.2%20spip_image.php3%2C1.1%2C1.2%20spip_redirect.php3%2C1.1%2C1.2%20inc-compilo-api.php3%2C1.1%2C1.2%20inc-compilo-index.php3%2C1.1%2C1.2%20htaccess-html.txt%2C1.1%2C1.2%20spip_acces_doc.php3%2C1.1%2C1.2%20inc-calcul-outils.php3%2C1.1%2C1.2%20spip_inscription.php3%2C1.2%2C1.3%20inc-messforum.php3%2C1.1%2C1.2%20inc-cache.php3%2C1.1%2C1.2%20inc-criteres.php3%2C1.1%2C1.2%20spip_image_reduite.php3%2C1.1%2C1.2%20inc-public-global.php3%2C1.1%2C1.2%20inc-urls-propres.php3%2C1.1%2C1.2%20spip_cookie.php3%2C1.1%2C1.2%20inc-boucles.php3%2C1.1%2C1.2&In-Reply-To=%3C200502061359.j16DxY8Y014269%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000061.html">
+   <LINK REL="Next"  HREF="000063.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spip-carto inc-chercher-squelette.php3,NONE,1.1 inc-calcul.php3,1.1,1.2 forum.php3,1.1,1.2 inc-public.php3,1.1,1.2 inc-balises.php3,1.1,1.2 htaccess-propres.txt,1.1,1.2 spip_background.php3,1.1,1.2 inc-admin.php3,1.1,1.2 inc-compilo.php3,1.1,1.2 inc-html-squel.php3,1.1,1.2 spip_image.php3,1.1,1.2 spip_redirect.php3,1.1,1.2 inc-compilo-api.php3,1.1,1.2 inc-compilo-index.php3,1.1,1.2 htaccess-html.txt,1.1,1.2 spip_acces_doc.php3,1.1,1.2 inc-calcul-outils.php3,1.1,1.2 spip_inscription.php3,1.2,1.3 inc-messforum.php3,1.1,1.2 inc-cache.php3,1.1,1.2 inc-criteres.php3,1.1,1.2 spip_image_reduite.php3,1.1,1.2 inc-public-global.php3,1.1,1.2 inc-urls-propres.php3,1.1,1.2 spip_cookie.php3,1.1,1.2 inc-boucles.php3,1.1,1.2</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spip-carto%20inc-chercher-squelette.php3%2CNONE%2C1.1%20inc-calcul.php3%2C1.1%2C1.2%20forum.php3%2C1.1%2C1.2%20inc-public.php3%2C1.1%2C1.2%20inc-balises.php3%2C1.1%2C1.2%20htaccess-propres.txt%2C1.1%2C1.2%20spip_background.php3%2C1.1%2C1.2%20inc-admin.php3%2C1.1%2C1.2%20inc-compilo.php3%2C1.1%2C1.2%20inc-html-squel.php3%2C1.1%2C1.2%20spip_image.php3%2C1.1%2C1.2%20spip_redirect.php3%2C1.1%2C1.2%20inc-compilo-api.php3%2C1.1%2C1.2%20inc-compilo-index.php3%2C1.1%2C1.2%20htaccess-html.txt%2C1.1%2C1.2%20spip_acces_doc.php3%2C1.1%2C1.2%20inc-calcul-outils.php3%2C1.1%2C1.2%20spip_inscription.php3%2C1.2%2C1.3%20inc-messforum.php3%2C1.1%2C1.2%20inc-cache.php3%2C1.1%2C1.2%20inc-criteres.php3%2C1.1%2C1.2%20spip_image_reduite.php3%2C1.1%2C1.2%20inc-public-global.php3%2C1.1%2C1.2%20inc-urls-propres.php3%2C1.1%2C1.2%20spip_cookie.php3%2C1.1%2C1.2%20inc-boucles.php3%2C1.1%2C1.2&In-Reply-To=%3C200502061359.j16DxY8Y014269%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spip-carto inc-chercher-squelette.php3,NONE,1.1 inc-calcul.php3,1.1,1.2 forum.php3,1.1,1.2 inc-public.php3,1.1,1.2 inc-balises.php3,1.1,1.2 htaccess-propres.txt,1.1,1.2 spip_background.php3,1.1,1.2 inc-admin.php3,1.1,1.2 inc-compilo.php3,1.1,1.2 inc-html-squel.php3,1.1,1.2 spip_image.php3,1.1,1.2 spip_redirect.php3,1.1,1.2 inc-compilo-api.php3,1.1,1.2 inc-compilo-index.php3,1.1,1.2 htaccess-html.txt,1.1,1.2 spip_acces_doc.php3,1.1,1.2 inc-calcul-outils.php3,1.1,1.2 spip_inscription.php3,1.2,1.3 inc-messforum.php3,1.1,1.2 inc-cache.php3,1.1,1.2 inc-criteres.php3,1.1,1.2 spip_image_reduite.php3,1.1,1.2 inc-public-global.php3,1.1,1.2 inc-urls-propres.php3,1.1,1.2 spip_cookie.php3,1.1,1.2 inc-boucles.php3,1.1,1.2">stef at berlios.de
+       </A><BR>
+    <I>Sun Feb  6 14:59:34 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000061.html">[Spip-carto-cvs] spip-carto/dist ical.html,NONE,1.1 resume.html,NONE,1.1 site.html,NONE,1.1 login.html,NONE,1.1 breve.html,NONE,1.1 sommaire.html,NONE,1.1 404.html,NONE,1.1 sommaire_texte.html,NONE,1.1 nouveautes.html,NONE,1.1 404.php3,NONE,1.1 rubrique.html,NONE,1.1 distrib.html,NONE,1.1 forum.html,NONE,1.1 recherche.html,NONE,1.1 auteur.html,NONE,1.1 article.html,NONE,1.1 mot.html,NONE,1.1 plan.html,NONE,1.1 backend-breves.html,NONE,1.1 backend.html,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000063.html">[Spip-carto-cvs] spip-carto carto_lien.php3,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#62">[ date ]</a>
+              <a href="thread.html#62">[ thread ]</a>
+              <a href="subject.html#62">[ subject ]</a>
+              <a href="author.html#62">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spip-carto
+In directory sheep:/tmp/cvs-serv14238
+
+Modified Files:
+	inc-calcul.php3 forum.php3 inc-public.php3 inc-balises.php3 
+	htaccess-propres.txt spip_background.php3 inc-admin.php3 
+	inc-compilo.php3 inc-html-squel.php3 spip_image.php3 
+	spip_redirect.php3 inc-compilo-api.php3 inc-compilo-index.php3 
+	htaccess-html.txt spip_acces_doc.php3 inc-calcul-outils.php3 
+	spip_inscription.php3 inc-messforum.php3 inc-cache.php3 
+	inc-criteres.php3 spip_image_reduite.php3 
+	inc-public-global.php3 inc-urls-propres.php3 spip_cookie.php3 
+	inc-boucles.php3 
+Added Files:
+	inc-chercher-squelette.php3 
+Log Message:
+spip1.8b6
+
+--- NEW FILE: inc-chercher-squelette.php3 ---
+&lt;?php
+
+// Ce fichier ne sera execute qu'une fois
+if (defined(&quot;_INC_CHERCHER&quot;)) return;
+define(&quot;_INC_CHERCHER&quot;, &quot;1&quot;);
+
+// Ce fichier doit imperativement contenir la fonction chercher-squelette
+// (cf commentaires dans inc-calcul)
+
+function chercher_squelette($fond, $id_rubrique, $lang) {
+	$ext = $GLOBALS['extension_squelette'];
+
+	// Accrocher un squelette de base dans le chemin
+	if (!$base = find_in_path(&quot;$fond.$ext&quot;)) {
+		// erreur webmaster : $fond ne correspond a rien
+		erreur_squelette(_T('zbug_info_erreur_squelette2',
+			 array('fichier'=&gt;$fond)),
+			 $dossier);
+		return '';
+	}
+
+	// supprimer le &quot;.html&quot; pour pouvoir affiner par id_rubrique ou par langue
+	$squelette = substr($base, 0, - strlen(&quot;.$ext&quot;));
+
+	// On selectionne, dans l'ordre :
+	// fond=10
+	$f = &quot;$squelette=$id_rubrique&quot;;
+	if (($id_rubrique &gt; 0) AND (@file_exists(&quot;$f.$ext&quot;)))
+		$squelette = $f;
+	else {
+		// fond-10 fond-&lt;rubriques parentes&gt;
+		while ($id_rubrique &gt; 0) {
+			$f = &quot;$squelette-$id_rubrique&quot;;
+			if (@file_exists(&quot;$f.$ext&quot;)) {
+				$squelette = $f;
+				break;
+			}
+			else
+				$id_rubrique = sql_parent($id_rubrique);
+		}
+	}
+
+	// Affiner par lang
+	if ($lang) {
+		lang_select($lang);
+		$f = &quot;$squelette.$lang&quot;;
+		if (@file_exists(&quot;$f.$ext&quot;))
+			$squelette = $f;
+	}
+
+	return $squelette;
+}
+
+?&gt;
+
+Index: inc-calcul.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-calcul.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-calcul.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-calcul.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -23,8 +23,8 @@
+ // Ce fichier peut contenir une affectation de $dossier_squelettes  indiquant
+ // le repertoire du source des squelettes (les pseudo-html avec BOUCLE...)
+ 
+-if (@file_exists(&quot;mes_fonctions.php3&quot;)) 
+-    include_local (&quot;mes_fonctions.php3&quot;);
++if ($f = find_in_path(&quot;mes_fonctions.php3&quot;))
++	include_local ($f);
+ 
+ 
+ // Gestionnaire d'URLs
+@@ -120,26 +120,26 @@
+ # (typiquement dans mes_fonctions.php3)
+ 
+ function cherche_page ($cache, $contexte, $fond)  {
+-	global $dossier_squelettes, $delais;
++	global $delais;
+ 
+ 	if (!function_exists('chercher_squelette'))
+-		include_local(&quot;inc-chercher.php3&quot;); # a renommer ?
++		include_local(&quot;inc-chercher-squelette.php3&quot;);
+ 
+ 	// Choisir entre $fond-dist.html, $fond=7.html, etc?
+ 	$id_rubrique_fond = 0;
+-	// Si inc-urls veut fixer la langue, on la recupere ici
+-	$lang = $contexte['lang'];
+ 	// Chercher le fond qui va servir de squelette
+-	if ($r = sql_rubrique_fond($contexte,
+-	$lang ? $lang : lire_meta('langue_site')))
++	if ($r = sql_rubrique_fond($contexte))
+ 		list($id_rubrique_fond, $lang) = $r;
++	if (!$lang)
++		$lang = lire_meta('langue_site');
++	// Si inc-urls ou un appel dynamique veut fixer la langue, la recuperer
++	$lang = $contexte['lang'];
+ 
+ 	if (!$GLOBALS['forcer_lang'])
+ 		lang_select($lang);
+ 
+ 	$skel = chercher_squelette($fond,
+ 			$id_rubrique_fond,
+-			$dossier_squelettes ? &quot;$dossier_squelettes/&quot; :'',
+ 			$GLOBALS['spip_lang']);
+ 
+ 	// Charger le squelette et recuperer sa fonction principale
+@@ -179,17 +179,17 @@
+ 
+ //
+ // Contexte : lors du calcul d'une page spip etablit le contexte a partir
+-// des variables $HTTP_GET_VARS et $HTTP_POST_VARS, et leur ajoute la date
++// des variables $_GET et $_POST, et leur ajoute la date
+ // Note : pour hacker le contexte depuis le fichier d'appel (article.php3),
+-// il est recommande de modifier $HTTP_GET_VARS['toto'] (meme si la page est
++// il est recommande de modifier $_GET['toto'] (meme si la page est
+ // appelee avec la methode POST).
+ //
+ function calculer_contexte() {
+-	foreach($GLOBALS['HTTP_GET_VARS'] as $var =&gt; $val) {
++	foreach($GLOBALS['_GET'] as $var =&gt; $val) {
+ 		if (strpos($var, 'var_') !== 0)
+ 			$contexte[$var] = $val;
+ 	}
+-	foreach($GLOBALS['HTTP_POST_VARS'] as $var =&gt; $val) {
++	foreach($GLOBALS['_POST'] as $var =&gt; $val) {
+ 		if (strpos($var, 'var_') !== 0)
+ 			$contexte[$var] = $val;
+ 	}
+@@ -235,7 +235,7 @@
+ }
+ 
+ 
+-// Cf ramener_page +cherche_page_incluante+ cherche_page_incluse chez ESJ
++
+ function calculer_page($chemin_cache, $elements, $delais, $inclusion=false) {
+ 
+ 	// Inclusion
+@@ -276,7 +276,7 @@
+ 
+ 	// Enregistrer le fichier cache
+ 	if ($delais &gt; 0 AND $GLOBALS['var_mode'] != 'debug'
+-	AND empty($GLOBALS['HTTP_POST_VARS']))
++	AND empty($GLOBALS['_POST']))
+ 		ecrire_fichier($chemin_cache, $signal.$page['texte']);
+ 
+ 	return $page;
+
+Index: forum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/forum.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- forum.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ forum.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -1,6 +1,19 @@
+ &lt;?php
++
+ $fond = &quot;forum&quot;;
+ $delais = 3600;
++
++// Exemples de personnalisation :
++// @ <A HREF="http://www.spip.net/fr_article1825.html">http://www.spip.net/fr_article1825.html</A>
++//
++// 1. seuls les mots-cles du groupe de mots numero 1 doivent s'afficher
++// $afficher_groupe = array(1);
++//
++// 2. faire des forums uniquement pour affecter des mots-cles
++// $afficher_texte = &quot;non&quot;;
++
++// En ca de forums sur abonnement, on a un panneau de login
++$flag_dynamique = true;
+ 
+ include (&quot;inc-public.php3&quot;);
+ 
+
+Index: inc-public.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-public.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-public.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-public.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -1,9 +1,8 @@
+ &lt;?php
+ 
+-// Page inclue ?
++// Distinguer une inclusion d'un appel initial
+ if (defined(&quot;_INC_PUBLIC&quot;)) {
+-	$page = inclure_page($fond, $delais, $contexte_inclus, $fichier_inclus);
+-
++	$page = inclure_page($fond, $delais, $contexte_inclus);
+ 	if ($page['process_ins'] == 'html')
+ 		echo $page['texte'];
+ 	else
+@@ -11,117 +10,49 @@
+ 
+ 	if ($page['lang_select'])
+ 		lang_dselect();
+-}
+-// Premier appel inc-public
+-else {
+-	define(&quot;_INC_PUBLIC&quot;, &quot;1&quot;);
+-	include (&quot;ecrire/inc_version.php3&quot;);
+ 
+-	//
+-	// Initialisations
+-	//
+-
+-	// Regler le $delais par defaut
+-	if ($INSECURE['fond'] || $INSECURE['delais'])
+-		exit;
+-	if (!isset($delais))
+-		$delais = 1 * 3600;
+-	if ($recherche)
+-		$delais = 0;
+-
+-	// authentification du visiteur
+-	if ($HTTP_COOKIE_VARS['spip_session'] OR
+-	($PHP_AUTH_USER AND !$ignore_auth_http)) {
+-		include_ecrire (&quot;inc_session.php3&quot;);
+-		verifier_visiteur();
+-	}
+-	// multilinguisme
+-	if ($forcer_lang AND ($forcer_lang!=='non') AND empty($HTTP_POST_VARS)) {
+-		include_ecrire('inc_lang.php3');
+-		verifier_lang_url();
+-	}
+-	if ($HTTP_GET_VARS['lang']) {
+-		include_ecrire('inc_lang.php3');
+-		lang_select($HTTP_GET_VARS['lang']);
+-	}
+-	// Ajout_forum (pour les forums) et $val_confirm signalent des modifications
+-	// a faire avant d'afficher la page
+-	if ($ajout_forum) {
+-		$redirect = '';
+-		include('inc-messforum.php3');
+-		if ($redirect) redirige_par_entete($redirect);
+-	}
+-	if ($val_confirm) {
+-		include_local('inc-formulaire_signature.php3');
+-		reponse_confirmation($id_article, $val_confirm);
+-	}
+-
+-	include_local ('inc-public-global.php3');
+-
+-	//  refus du debug si pas dans les options generales ni admin connecte
+-	if ($var_mode=='debug') {
+-		if (($code_activation_debug == 'oui')
+-		OR $auteur_session['statut'] == '0minirezo')
+-			spip_log('debug !');
+-		else
+-			$var_mode = false; 
+-	}
+-
+-	// est-on admin ?
+-	if ($affiche_boutons_admin = (!$flag_preserver
+-	AND ($HTTP_COOKIE_VARS['spip_admin']
+-	OR $HTTP_COOKIE_VARS['spip_debug'])))
+-		include_local('inc-formulaire_admin.php3');
+-
+-	$tableau_des_erreurs = array();
+-	$page = afficher_page_globale ($fond, $delais, $use_cache);
++} else {
++	define (&quot;_INC_PUBLIC&quot;, 1);
++	include (&quot;ecrire/inc_version.php3&quot;);
++	include_local('inc-public-global.php3');
+ 
+-	if (!$flag_preserver) {
+-	// Interdire au client de cacher un login, un admin ou un recalcul
+-		if ($flag_dynamique OR $var_mode
+-		OR $HTTP_COOKIE_VARS['spip_admin']) {
+-			@header(&quot;Cache-Control: no-cache,must-revalidate&quot;);
+-			@header(&quot;Pragma: no-cache&quot;);
+-	// Pour les autres donner l'heure de modif
+-		} else if ($lastmodified)
+-			@Header (&quot;Last-Modified: &quot;.http_gmoddate($lastmodified).&quot; GMT&quot;);
++	// Calculer la page sans evaluer le php qu'elle contient
++	$page = calcule_header_et_page ($fond, $delais);
+ 
+-	// si le squelette est nul se rabattre sur l'entete standard
+-		if ($page['texte']) 
+-			@header(&quot;Content-Type: text/html; charset=&quot;.lire_meta('charset'));
+-		else
+-			echo debut_entete($fond);
+-	}
+-	define('spip_active_ob', $flag_ob AND
+-		($var_mode == 'debug' OR $var_recherche OR $affiche_boutons_admin));
++	// Execution de la page calculee
+ 
+-	// Cas d'une page contenant uniquement du HTML :
++	// 1. Cas d'une page contenant uniquement du HTML :
+ 	if ($page['process_ins'] == 'html') {
+-		if (!spip_active_ob) {
+-			echo $page['texte'];
+-			$contenu = '';
+-		} else
+-			$contenu = $page['texte'];
++		$page = $page['texte'];
+ 	}
+ 
+-	// Cas d'une page contenant du PHP :
++	// 2. Cas d'une page contenant du PHP :
++	// Attention cette partie eval() doit imperativement
++	// etre declenchee dans l'espace des globales (donc pas
++	// dans une fonction).
+ 	else {
+-		// Evaluer la page
+-		if (!spip_active_ob) {
++	
++		// Une page &quot;normale&quot; va s'afficher ici
++		if (!($flag_ob AND ($var_mode == 'debug'
++		OR $var_recherche OR $affiche_boutons_admin))) {
+ 			eval('?' . '&gt;' . $page['texte']);
+-			$contenu = '';
+-		} else {
++			$page = '';
++		}
++
++		// Certains cas demandent un ob_start() de plus
++		else {
+ 			ob_start(); 
+ 			$res = eval('?' . '&gt;' . $page['texte']);
+-			$contenu = ob_get_contents(); 
++			$page = ob_get_contents(); 
+ 			ob_end_clean();
+ 
+-			// en cas d'erreur lors du eval, afficher un message
+-			// et forcer les boutons de debug
++			// en cas d'erreur lors du eval,
++			// la memoriser dans le tableau des erreurs
++			// On ne revient pas ici si le nb d'erreurs &gt; 4
+ 			if ($res === false AND $affiche_boutons_admin
+ 			AND $auteur_session['statut'] == '0minirezo') {
+ 				include_ecrire('inc_debug_sql.php3');
+-				erreur_squelette(_L('erreur d\'execution de la page'));
++				erreur_squelette(_T('zbug_erreur_execution_page'));
+ 			}
+ 		}
+ 	}
+@@ -130,33 +61,27 @@
+ 	if ($var_mode == 'debug') {
+ 		include_ecrire(&quot;inc_debug_sql.php3&quot;);
+ 		debug_dumpfile('',$var_mode_objet,$var_mode_affiche);
+-		exit;
+-	} else if (count($tableau_des_erreurs) &gt; 0
+-	AND $affiche_boutons_admin)
+-		affiche_erreurs_page ($tableau_des_erreurs);
++	} 
++	if (count($tableau_des_erreurs) &gt; 0 AND $affiche_boutons_admin)
++	  $page = affiche_erreurs_page($tableau_des_erreurs) . $page;
+ 
+ 	// Traiter var_recherche pour surligner les mots
+ 	if ($var_recherche) {
+ 		include_ecrire(&quot;inc_surligne.php3&quot;);
+-		$contenu = surligner_mots($contenu, $var_recherche);
++		$page = surligner_mots($page, $var_recherche);
+ 	}
+ 
+-	// Ajouter au besoin la CSS des boutons admins
++	// Inserer au besoin les boutons admins
+ 	if ($affiche_boutons_admin) {
+ 		include_local(&quot;inc-admin.php3&quot;);
+-		$contenu = perso_admin($contenu);
++		$page = affiche_boutons_admin($page);
+ 	}
+ 
+-	// Afficher le resultat final
+-	echo $contenu;
+-
+-	// Ajouter les boutons admins (les normaux) si absents
+-	// (ce sera apres la balise /html mais tant pis)
+-	if ($affiche_boutons_admin)
+-		inclure_balise_dynamique(balise_formulaire_admin_dyn($id_article, $id_breve, $id_rubrique, $id_mot, $id_auteur));
++	// Affichage final s'il en reste
++	echo $page;
+ 
+-	// Taches de fin
++	// Taches de fond ?
+ 	terminer_public_global();
+- }
++}
+ 
+ ?&gt;
+
+Index: inc-balises.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-balises.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-balises.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-balises.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -47,7 +47,7 @@
+ 		'URL_SITE_SPIP' =&gt; 'htmlspecialchars(vider_url(%s))',
+ 		'URL_SITE' =&gt; 'htmlspecialchars(vider_url(%s))',
+ 		'URL_SYNDIC' =&gt; 'htmlspecialchars(vider_url(%s))',
+-		'HTTP_VARS' =&gt; 'htmlspecialchars(%s)'
++		'ENV' =&gt; 'entites_html(%s)'
+ 	);
+ 	$ps = $traitements[$p-&gt;nom_champ];
+ 	if (!$ps) return $p-&gt;code;
+@@ -76,7 +76,7 @@
+ function balise_distante_interdite($p) {
+ 	$nom = $p-&gt;id_boucle;
+ 	if ($p-&gt;boucles[$nom]-&gt;sql_serveur) {
+-		erreur_squelette($p-&gt;nom_champ ._L(&quot; distant interdit&quot;), $nom);
++		erreur_squelette($p-&gt;nom_champ .' '._T('zbug_distant_interdit'), $nom);
+ 	}
+ }
+ 
+@@ -259,6 +259,13 @@
+ 	return $p;
+ }
+ 
++// Qu'afficher en cas d'erreur 404 ?
++function balise_ERREUR_AUCUN_dist($p) {
++	$p-&gt;code = '$Pile[0][&quot;erreur_aucun&quot;]';
++	$p-&gt;statut = 'php';
++	return $p;
++}
++
+ function balise_RECHERCHE_dist($p) {
+ 	$p-&gt;code = 'htmlspecialchars($GLOBALS[&quot;recherche&quot;])';
+ 	$p-&gt;statut = 'php';
+@@ -267,7 +274,10 @@
+ 
+ function balise_COMPTEUR_BOUCLE_dist($p) {
+ 	if ($p-&gt;id_mere === '') {
+-		erreur_squelette(_L(&quot;Champ #COMPTEUR_BOUCLE hors boucle&quot;), $p-&gt;id_boucle);
++		erreur_squelette(
++			_T('zbug_champ_hors_boucle',
++				array('champ' =&gt; '#COMPTEUR_BOUCLE')
++			), $p-&gt;id_boucle);
+ 		$p-&gt;code = &quot;''&quot;;
+ 	} else {
+ 		$p-&gt;code = '$compteur_boucle';
+@@ -279,7 +289,10 @@
+ function balise_TOTAL_BOUCLE_dist($p) {
+ 	$b = $p-&gt;nom_boucle ? $p-&gt;nom_boucle : $p-&gt;id_mere;
+ 	if ($b === '') {
+-		erreur_squelette(_L(&quot;Champ #TOTAL_BOUCLE hors boucle&quot;), $p-&gt;id_boucle);
++		erreur_squelette(
++			_T('zbug_champ_hors_boucle',
++				array('champ' =&gt; '#TOTAL_BOUCLE')
++			), $p-&gt;id_boucle);
+ 		$p-&gt;code = &quot;''&quot;;
+ 	} else {
+ 		$p-&gt;code = &quot;\$Numrows['$b']&quot;;
+@@ -318,7 +331,10 @@
+ 	$type_boucle = $p-&gt;type_requete;
+ 	$primary_key = $table_primary[$type_boucle];
+ 	if (!$primary_key) {
+-		erreur_squelette(_L(&quot;Champ #EXPOSER hors boucle&quot;), $p-&gt;id_boucle);
++		erreur_squelette(_T('zbug_champ_hors_boucle',
++				array('champ' =&gt; '#EXPOSER')
++			), $p-&gt;id_boucle);
++
+ 	}
+ 	$on = 'on';
+ 	$off= '';
+@@ -377,6 +393,21 @@
+ 	return $p;
+ }
+ 
++
++// #SPIP_CRON
++// a documenter
++// insere un &lt;div&gt; avec un lien background-image vers les taches de fond.
++// Si cette balise est presente sur la page de sommaire, le site ne devrait
++// quasiment jamais se trouver ralenti par des taches de fond un peu lentes
++function balise_SPIP_CRON_dist ($p) {
++	$p-&gt;code = &quot;'&lt;div style=\\'position: absolute; background-image: url(\&quot;spip_background.php3\&quot;); height: 1px; width: 1px;\\'&gt;&lt;/div&gt;'&quot;;
++	$p-&gt;statut='php';
++	return $p;
++}
++
++
++// #INTRODUCTION
++// <A HREF="http://www.spip.net/@introduction">http://www.spip.net/@introduction</A>
+ function balise_INTRODUCTION_dist ($p) {
+ 	$_type = $p-&gt;type_requete;
+ 	$_texte = champ_sql('texte', $p);
+@@ -604,14 +635,15 @@
+ //
+ 
+ function balise_PARAMETRES_FORUM_dist($p) {
+-	include_local('inc-formulaire_forum.php3');
+-	$_accepter_forum = champ_sql('accepter_forum', $p);
++	include_local(find_in_path('inc-formulaire_forum.php3'));
++	$_id_article = champ_sql('id_article', $p);
+ 	$p-&gt;code = '
+-	// refus des forums ?
+-	('.$_accepter_forum.'==&quot;non&quot; OR
+-	(lire_meta(&quot;forums_publics&quot;) == &quot;non&quot; AND !ereg(&quot;^(pos|pri|abo)&quot;, '.$_accepter_forum.')))
+-	? &quot;&quot; : // sinon:
+-	';
++		// refus des forums ?
++		(sql_accepter_forum('.$_id_article.')==&quot;non&quot; OR
++		(lire_meta(&quot;forums_publics&quot;) == &quot;non&quot;
++		AND sql_accepter_forum('.$_id_article.') == &quot;&quot;))
++		? &quot;&quot; : // sinon:
++		';
+ 
+ 	switch ($p-&gt;type_requete) {
+ 		case 'articles':
+@@ -638,7 +670,7 @@
+ 	}
+ 
+ 	$c .= '.
+-	&quot;&amp;retour=&quot;.rawurlencode($lien=$GLOBALS[&quot;HTTP_GET_VARS&quot;][&quot;retour&quot;] ? $lien : nettoyer_uri())';
++	&quot;&amp;retour=&quot;.rawurlencode($lien=$GLOBALS[&quot;_GET&quot;][&quot;retour&quot;] ? $lien : nettoyer_uri())';
+ 
+ 	$p-&gt;code .= code_invalideur_forums($p, &quot;(&quot;.$c.&quot;)&quot;);
+ 
+@@ -669,17 +701,32 @@
+ 	return $p;
+ }
+ 
+-// reference aux parametres GET &amp; POST
+ 
+-function balise_HTTP_VARS_dist($p) {
++//
++// #ENV
++// l'&quot;environnement&quot;, id est le $contexte (ou $contexte_inclus)
++//
++// en standard on applique |entites_html, mais attention si
++// vous utilisez [(#ENV*{toto})] il *faut* vous assurer vous-memes
++// de la securite anti-php et anti-javascript
++//
++// La syntaxe #ENV{toto, rempl} renverra 'rempl' si $toto est vide
++//
++function balise_ENV_dist($p) {
+ 	$nom = param_balise($p);
+-	if (!$nom)
+-		erreur_squelette(_L(&quot;Champ #HTTP_VARS argument manquant&quot;),
+-				$p-&gt;id_boucle);
+-	else {
+-		$p-&gt;code = '$Pile[0][&quot;' . addslashes($nom) . '&quot;]';
++	if (!$nom) {
++		// cas de #ENV sans argument : on retourne le serialize() du tableau
++		// une belle fonction [(#ENV|affiche_env)] serait pratique
++		$p-&gt;code = 'serialize($Pile[0])';
++		$p-&gt;statut = 'html';
++	} else {
++		// admet deux arguments : nom de variable, valeur par defaut si vide
++		$nom = split(',', $nom, 2);
++		$p-&gt;code = 'sinon($Pile[0][&quot;' . addslashes($nom[0]) . '&quot;],
++			\''. texte_script($nom[1]) .'\')';
+ 		$p-&gt;statut = 'php';
+ 	}
+ 	return $p;
+ }
++
+ ?&gt;
+
+Index: htaccess-propres.txt
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/htaccess-propres.txt,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- htaccess-propres.txt	20 Jan 2005 10:25:17 -0000	1.1
++++ htaccess-propres.txt	6 Feb 2005 13:59:32 -0000	1.2
+@@ -1,7 +1,7 @@
+ ###########################################################
+ # Fichier .htaccess pour les URLs propres ; a installer   #
+-# si vous reglez $type_urls='propre'                      #
+-# dans ecrire/mes_options.php3 ou dans mes_fonctions.php3 #
++# si vous reglez $type_urls='propres'                     #
++# dans ecrire/mes_options.php3                            #
+ # (fichier associe : inc-urls-propres.php3)               #
+ ###########################################################
+ 
+
+Index: spip_background.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/spip_background.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- spip_background.php3	13 Jan 2005 15:57:38 -0000	1.1
++++ spip_background.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -17,7 +17,6 @@
+ 
+ include('ecrire/inc_version.php3');
+ 
+-cron(1);	// toutes les 1 seconde (gourmand)
+-
++cron(1); // acces gourmand (on veut bosser, nous, pas comme inc-public.php3 !)
+ 
+ ?&gt;
+
+Index: inc-admin.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-admin.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-admin.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-admin.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -1,17 +1,50 @@
+ &lt;?php
+ 
+ // Inserer la feuille de style selon les normes, dans le &lt;head&gt;
++// puis les boutons
+ // Feuilles de style admin : d'abord la CSS officielle, puis la perso,
+-function perso_admin($texte) {
++
++function affiche_boutons_admin($contenu) {
+ 	$css = &quot;&lt;link rel='stylesheet' href='spip_admin.css' type='text/css' /&gt;\n&quot;;
+-	if (@file_exists('spip_admin_perso.css'))
+-		$css2 = &quot;&lt;link rel='stylesheet' href='spip_admin_perso.css' type='text/css' /&gt;\n&quot;;
++	if ($f = find_in_path('spip_admin_perso.css'))
++		$css2 = &quot;&lt;link rel='stylesheet' href='$f' type='text/css' /&gt;\n&quot;;
+ 
+-	if (eregi('&lt;(/head|body)', $texte, $regs)) {
+-		$texte = explode($regs[0], $texte, 2);
+-		return $texte[0] . $css. $css2 . $regs[0] . $texte[1];
++	if (preg_match('@&lt;(/head|body)@i', $contenu, $regs)) {
++		$contenu = explode($regs[0], $contenu, 2);
++		$contenu = $contenu[0] . $css. $css2 . $regs[0] . $contenu[1];
+ 	} else
+-		return $css . $css2 . $texte;
++		$contenu = $css . $css2 . $contenu;
++
++	if (preg_match('@&lt;(/body|/html)@i', $contenu, $regs)) {
++		$split = explode($regs[0], $contenu, 2);
++		$contenu = $split[0];
++		$suite = $regs[0].$split[1];
++	}
++
++	echo $contenu;
++
++	//
++	// Regler les boutons dans la langue de l'admin (sinon tant pis)
++	//
++	include_local(_FILE_CONNECT);
++	include_ecrire (&quot;inc_lang.php3&quot;);
++	$login = addslashes(ereg_replace('^@','',$GLOBALS['spip_admin']));
++	if ($row = spip_fetch_array(spip_query(&quot;SELECT lang FROM spip_auteurs WHERE login='$login'&quot;))) {
++		$lang = $row['lang'];
++	}
++	lang_select($lang);
++
++	// Afficher la balise #FORMULAIRE_ADMIN mais en float
++	inclure_balise_dynamique(
++		balise_formulaire_admin_dyn(
++		$GLOBALS['id_article'], $GLOBALS['id_breve'],
++		$GLOBALS['id_rubrique'], $GLOBALS['id_mot'],
++		$GLOBALS['id_auteur'], 'div'
++	));
++
++	lang_dselect();
++
++	return $suite;
+ }
+ 
+ ?&gt;
+
+Index: inc-compilo.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-compilo.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-compilo.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-compilo.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -51,7 +51,7 @@
+ 			}
+ 			else {
+ 			// Cas de la langue : passer $spip_lang
+-			  // et non table.lang (car depend de {lang_select})
++			// et non table.lang (car depend de {lang_select})
+ 				if ($var =='lang')
+ 					$l[] = &quot;\'lang\' =&gt; \''.\$GLOBALS[\&quot;spip_lang\&quot;].'\'&quot;;
+ 				else
+@@ -59,18 +59,21 @@
+ 				}
+ 			}
+ 	}
++
++	if ($path = find_in_path($fichier))
++		$path = &quot;\\'$path\\'&quot;;
++	else {
++		spip_log(&quot;ERREUR: &lt;INCLURE($fichier)&gt; impossible&quot;);
++		erreur_squelette(_T('zbug_info_erreur_squelette'),
++			&quot;&lt;INCLURE($fichier)&gt;&quot;);
++		return &quot;'&lt;INCLURE(&quot;.texte_script($fichier).&quot;)&gt;'&quot;;
++	}
++
+ 	return &quot;\n'&lt;&quot;.
+ 		&quot;?php\n\t\$contexte_inclus = array(&quot; .
+ 		join(&quot;, &quot;,$l) .
+-		&quot;);\n\t\$fichier_inclus = \'$fichier\';\n&quot; .
+-		(($dossier_squelettes) ?
+-		(&quot;
+-			if (@file_exists(\'$dossier_squelettes/$fichier\')){
+-				include(\'$dossier_squelettes/$fichier\');
+-			} else {
+-				include(\'$fichier\');
+-			} &quot; ) :
+-		(&quot;\tinclude(\'$fichier\');&quot;)) .
++		&quot;);&quot; .
++		&quot;\n\tinclude($path);&quot; .
+ 		&quot;\n?'.&quot; . &quot;'&gt;'&quot;;
+ }
+ 
+@@ -81,8 +84,21 @@
+ // en une EXPRESSION php (qui peut etre l'argument d'un Return ou la
+ // partie droite d'une affectation). Ici sont analyses les elements
+ // multilingues des squelettes : &lt;:xxx:&gt; et &lt;multi&gt;[fr]coucou&lt;/multi&gt;
++// ainsi que les liens vers des fichiers appelant un chemin (./fichier#)
+ //
+ function calculer_texte($texte, $id_boucle, &amp;$boucles, $id_mere) {
++	//
++	// Facile : les liens fichiers (./xxxxx.css# -&gt; chemin/xxxxx.css)
++	//
++	if (preg_match_all('@[.]/([^[[:space:]#&lt;&gt;&quot;$\']+)[#]@',
++	$texte, $matches, PREG_SET_ORDER))
++		foreach ($matches as $r)
++			if ($fichier = find_in_path($r[1]))
++				$texte = str_replace ($r[0], $fichier, $texte);
++
++	//
++	// Plus difficile : les elements multilingues
++	//
+ 	$code = &quot;'&quot;.ereg_replace(&quot;([\\\\'])&quot;, &quot;\\\\1&quot;, $texte).&quot;'&quot;;
+ 
+ 	// bloc multi
+@@ -269,14 +285,15 @@
+ 
+ 	// hack critere recherche : ignorer la requete en cas de hash vide
+ 	// Recherche : recuperer les hash a partir de la chaine de recherche
+-	if ($boucle-&gt;hash) {
++	if ($boucle-&gt;hash)
+ 		$init =  '
+ 	// RECHERCHE
+ 	list($rech_select, $rech_where) = prepare_recherche($GLOBALS[&quot;recherche&quot;], &quot;'.$boucle-&gt;primary.'&quot;, &quot;'.$boucle-&gt;id_table.'&quot;);
+ 	if ($rech_select) ';
+-	}
+ 
+-	else $init = '';
++	if (!$order = $boucle-&gt;order
++	AND !$order = $boucle-&gt;default_order)
++		$order = &quot;''&quot;;
+ 
+ 	$init .= &quot;\n\n	// REQUETE
+ 	\$result = spip_abstract_select(\n\t\tarray(\&quot;&quot;. 
+@@ -295,7 +312,7 @@
+ 		&quot;', $boucle-&gt;where) . '&quot;')) .
+ 		&quot;), # WHERE
+ 		'&quot;.addslashes($boucle-&gt;group).&quot;', # GROUP
+-		&quot; . ($boucle-&gt;order ? $boucle-&gt;order : &quot;''&quot;) .&quot;, # ORDER
++		&quot; . $order .&quot;, # ORDER
+ 		&quot; . (strpos($boucle-&gt;limit, 'intval') === false ?
+ 			&quot;'&quot;.$boucle-&gt;limit.&quot;'&quot; :
+ 			$boucle-&gt;limit). &quot;, # LIMIT
+@@ -479,7 +496,7 @@
+ 		    if (($res != $t) || ($altern != &quot;''&quot;))
+ 		      $code = &quot;(($t = $code) ?\n\t$tab($res) :\n\t$tab($altern))&quot;;
+ 		  }
+-		// if ($code) # c'est toujours etre ainsi
++
+ 		  $codes[]= (!$commentaire ? $code : 
+ 			     (&quot;/&quot;.&quot;* $commentaire *&quot;.&quot;/ &quot; . $code));
+ 	} // foreach
+@@ -536,9 +553,9 @@
+ 			if ($boucle-&gt;type_requete == 'boucle') {
+ 				$rec = &amp;$boucles[$boucle-&gt;param];
+ 				if (!$rec) {
+-					return array(_T('info_erreur_squelette'),
++					return array(_T('zbug_info_erreur_squelette'),
+ 						($boucle-&gt;param
+-						. _L(' boucle recursive non definie')));
++						. ' '. _T('zbug_boucle_recursive_undef')));
+ 				} else {
+ 					$rec-&gt;externe = $id;
+ 					$descr['id_mere'] = $id;
+@@ -676,7 +693,6 @@
+ 
+ 	if ($GLOBALS['var_mode'] == 'debug')
+ 		squelette_debug_compile($nom, $sourcefile, $squelette_compile);
+-
+ 	return $squelette_compile;
+ 
+ }
+
+Index: inc-html-squel.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-html-squel.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-html-squel.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-html-squel.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -52,7 +52,9 @@
+ 				$p = $m[5];
+ 			}
+ 			
+-			if ($p)	erreur_squelette(_L(&quot;Param&egrave;tres d'inclusion incorrects&quot;), $s);
++			if ($p)
++				erreur_squelette(_T('zbug_parametres_inclus_incorrects'),
++				$s);
+ 		}
+ 		$result[] = $champ;
+ 	}
+@@ -95,9 +97,9 @@
+ }
+ 
+ // Gestion des imbrications:
+-// on cherches les [..] les plus internes et on les remplace par une  chaine
+-// %###N@ o&#249; N indexe un tableau comportant le r&#233;sultat de leur phras&#233;
+-// on recommence tant qu'il y a des [...] en substituant &#224; l'appel suivant
++// on cherche les [..] les plus internes et on les remplace par une chaine
++// %###N@ ou N indexe un tableau comportant le resultat de leur phrase
++// on recommence tant qu'il y a des [...] en substituant a l'appel suivant
+ 
+ function parser_champs_etendus($texte, $result) {
+ 	if (!$texte) return $result;
+@@ -239,7 +241,7 @@
+ 		$milieu = substr($texte, $p);
+ 
+ 		if (!ereg(BALISE_DE_BOUCLE, $milieu, $match)) {
+-			erreur_squelette((_T('erreur_boucle_syntaxe')), $milieu);
++			erreur_squelette((_T('zbug_erreur_boucle_syntaxe')), $milieu);
+ 		}
+ 		$id_boucle = $match[1];
+ 
+@@ -278,9 +280,9 @@
+ 		}
+ 		$milieu = substr($milieu, strlen($match[0]));
+ 		if (strpos($milieu, $s)) {
+-			erreur_squelette(_T('erreur_boucle_syntaxe'),
++			erreur_squelette(_T('zbug_erreur_boucle_syntaxe'),
+ 				$id_boucle . 
+-				_L('&nbsp;: balise B en aval'));
++				_T('zbug_balise_b_aval'));
+ 		}
+ 
+ 		//
+@@ -289,8 +291,8 @@
+ 		$s = &quot;&lt;/BOUCLE$id_boucle&gt;&quot;;
+ 		$p = strpos($milieu, $s);
+ 		if ($p === false) {
+-			erreur_squelette(_T('erreur_boucle_syntaxe'),
+-					 _T('erreur_boucle_fermant',
++			erreur_squelette(_T('zbug_erreur_boucle_syntaxe'),
++					 _T('zbug_erreur_boucle_fermant',
+ 						array('id'=&gt;$id_boucle)));
+ 		}
+ 		$texte = substr($milieu, $p + strlen($s));
+@@ -324,8 +326,8 @@
+ 		$all_res = parser_champs_etendus($debut, $all_res);
+ 		$all_res[] = $result;
+ 		if ($boucles[$id_boucle]) {
+-			erreur_squelette(_T('erreur_boucle_syntaxe'),
+-					 _T('erreur_boucle_double',
++			erreur_squelette(_T('zbug_erreur_boucle_syntaxe'),
++					 _T('zbug_erreur_boucle_double',
+ 					 	array('id'=&gt;$id_boucle)));
+ 		} else
+ 			$boucles[$id_boucle] = $result;
+
+Index: spip_image.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/spip_image.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- spip_image.php3	13 Jan 2005 15:57:38 -0000	1.1
++++ spip_image.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -1,443 +1,247 @@
+ &lt;?php
+ 
++// Uploader un document, une image ou un logo,
++// supprimer cet element, creer les vignettes, etc.
++
+ include (&quot;ecrire/inc_version.php3&quot;);
+-include_ecrire(&quot;inc_charsets.php3&quot;);
+-include_ecrire(&quot;inc_meta.php3&quot;);
+-include_ecrire(&quot;inc_admin.php3&quot;);
+-include_ecrire(&quot;inc_abstract_sql.php3&quot;);
++include_ecrire('inc_presentation.php3');	# regler la langue en cas d'erreur
++include_ecrire('inc_getdocument.php3');		# diverses fonctions de ce fichier
++include_ecrire(&quot;inc_charsets.php3&quot;);		# pour le nom de fichier
++include_ecrire(&quot;inc_meta.php3&quot;);			# ne pas faire confiance au cache
++											# (alea_ephemere a peut-etre change)
++include_ecrire(&quot;inc_admin.php3&quot;);			# verifier_action_auteur
++include_ecrire(&quot;inc_abstract_sql.php3&quot;);	# spip_insert
++include_ecrire('inc_documents.php3');		# fichiers_upload()
+ 
+-function effacer_image($nom) {
+-	global $hash_id_auteur, $hash;
+ 
+-	if ((!strstr($nom, &quot;..&quot;)) AND
+-	    verifier_action_auteur(&quot;supp_image $nom&quot;, $hash, $hash_id_auteur))
+-		@unlink(_DIR_IMG . $nom);
++// Recuperer les variables d'upload
++if (!$_FILES)
++	$_FILES = &amp;$HTTP_POST_FILES;
++if (!is_array($_FILES))
++	$_FILES = array();
++foreach ($_FILES as $id =&gt; $file) {
++	if ($file['error'] == 4 /* UPLOAD_ERR_NO_FILE */)
++		unset ($_FILES[$id]);
+ }
+ 
+-function tester_vignette ($test_vignette) {
+-	global $djpeg_command, $cjpeg_command, $pnmscale_command;
+-	// verifier les formats acceptes par GD
+-	if ($test_vignette == &quot;gd1&quot;) {
+-		$gd_formats = Array();
+-		if (function_exists('ImageCreateFromJPEG')) {
+-			$srcImage = @ImageCreateFromJPEG(_DIR_IMG . &quot;test.jpg&quot;);
+-			if ($srcImage) {
+-				$gd_formats[] = &quot;jpg&quot;;
+-				ImageDestroy( $srcImage );
+-			}
+-		}
+-		if (function_exists('ImageCreateFromGIF')) {
+-			$srcImage = @ImageCreateFromGIF(_DIR_IMG . &quot;test.gif&quot;);
+-			if ($srcImage) {
+-				$gd_formats[] = &quot;gif&quot;;
+-				ImageDestroy( $srcImage );
+-			}
+-		}
+-		if (function_exists('ImageCreateFromPNG')) {
+-			$srcImage = @ImageCreateFromPNG(_DIR_IMG . &quot;test.png&quot;);
+-			if ($srcImage) {
+-				$gd_formats[] = &quot;png&quot;;
+-				ImageDestroy( $srcImage );
+-			}
+-		}
+-
+-		if ($gd_formats) $gd_formats = join(&quot;,&quot;, $gd_formats);
+-		ecrire_meta(&quot;gd_formats&quot;, $gd_formats);
+-		ecrire_metas();
+-	}
+-	// verifier les formats netpbm
+-	else if ($test_vignette == &quot;netpbm&quot;) {
+-		$netpbm_formats= Array();
+-
+-		$jpegtopnm_command = ereg_replace(&quot;pnmscale&quot;, &quot;jpegtopnm&quot;, $pnmscale_command);
+-		$pnmtojpeg_command = ereg_replace(&quot;pnmscale&quot;, &quot;pnmtojpeg&quot;, $pnmscale_command);
+-
+-		$vignette = _DIR_IMG . &quot;test.jpg&quot;;
+-		$dest = _DIR_IMG . &quot;test-jpg.jpg&quot;;
+-		exec(&quot;$jpegtopnm_command $vignette | $pnmscale_command -width 10 | $pnmtojpeg_command &gt; $dest&quot;);
+-		if ($taille = @getimagesize($dest)) {
+-			if ($taille[1] == 10) $netpbm_formats[] = &quot;jpg&quot;;
+-		}	
+-		
+-		$giftopnm_command = ereg_replace(&quot;pnmscale&quot;, &quot;giftopnm&quot;, $pnmscale_command);
+-		$pnmtojpeg_command = ereg_replace(&quot;pnmscale&quot;, &quot;pnmtojpeg&quot;, $pnmscale_command);
+-		$vignette = _DIR_IMG . &quot;test.gif&quot;;
+-		$dest = _DIR_IMG . &quot;test-gif.jpg&quot;;
+-		exec(&quot;$giftopnm_command $vignette | $pnmscale_command -width 10 | $pnmtojpeg_command &gt; $dest&quot;);
+-		if ($taille = @getimagesize($dest)) {
+-			if ($taille[1] == 10) $netpbm_formats[] = &quot;gif&quot;;
+-		}
+-
+-		$pngtopnm_command = ereg_replace(&quot;pnmscale&quot;, &quot;pngtopnm&quot;, $pnmscale_command);
+-		$vignette = _DIR_IMG . &quot;test.png&quot;;
+-		$dest = _DIR_IMG . &quot;test-gif.jpg&quot;;
+-		exec(&quot;$pngtopnm_command $vignette | $pnmscale_command -width 10 | $cjpeg_command -outfile $dest&quot;);
+-		if ($taille = @getimagesize($dest)) {
+-			if ($taille[1] == 10) $netpbm_formats[] = &quot;png&quot;;
+-		}
+-		
+-
+-		if ($netpbm_formats) $netpbm_formats = join(&quot;,&quot;, $netpbm_formats);
+-		ecrire_meta(&quot;netpbm_formats&quot;, $netpbm_formats);
+-		ecrire_metas();
+-	}
+-
+-	// et maintenant envoyer la vignette de tests
+-	if (ereg(&quot;^(gd1|gd2|imagick|convert|netpbm)$&quot;, $test_vignette)) {
+-		include_ecrire('inc_logos.php3');
+-		//$taille_preview = lire_meta(&quot;taille_preview&quot;);
+-		if ($taille_preview &lt; 10) $taille_preview = 120;
+-		if ($preview = creer_vignette(_DIR_IMG . 'test_image.jpg', $taille_preview, $taille_preview, 'jpg', '', &quot;test_$test_vignette&quot;, $test_vignette, true))
+ 
+-			return ($preview['fichier']);
+-	}
+-	return '';
+-}
++// Si on est en mode 'document', les images doivent etre installees
++// comme documents dans le portfolio
++if ($forcer_document) $mode = 'document';
+ 
+ 
+ //
+-// Deplacer un fichier
++// Le switch principal : quelle est l'action demandee
+ //
+ 
+-function deplacer_fichier_upload($source, $dest) {
+-	// Securite
+-	if (strstr($dest, &quot;..&quot;)) {
+-		exit;
+-	}
+-
+-	$ok = @copy($source, $dest);
+-	if (!$ok) $ok = @move_uploaded_file($source, $dest);
+-	if ($ok)
+-		@chmod($dest, 0666);
+-	else {
+-		$f = @fopen($dest,'w');
+-		if ($f)
+-			fclose ($f);
+-		else {
+-			redirige_par_entete(&quot;spip_test_dirs.php3?test_dir=&quot;.
+-					    dirname($dest));
+-		}
+-		@unlink($dest);
+ 
+-		if (($GLOBALS['_FILES']['size'] == 0) AND !$GLOBALS['action_zip']) {
+-			include_ecrire('inc_presentation.php3');
+-			install_debut_html(_T('forum_titre_erreur'));
+-			echo &quot;&lt;p&gt;&quot;._T('upload_limit',
+-				array('max' =&gt; ini_get('upload_max_filesize')));
+-			install_fin_html();
+-			exit;
+-		}
+-	}
++// appel de config-fonction
++if ($test_vignette)
++	$retour_image = tester_vignette($test_vignette);
+ 
+-	return $ok;
++// Creation de vignette depuis le portfolio (ou autre)
++else if ($vignette) {
++	if ($creer_vignette == 'oui' AND
++	verifier_action_auteur(&quot;vign $vignette&quot;,
++	$hash, $hash_id_auteur))
++		creer_fichier_vignette($vignette);
++	else
++		$retour_image = creer_fichier_vignette($vignette, true); # obsolete
+ }
+ 
+ 
+ //
+-// Convertit le type numerique retourne par getimagesize() en extension fichier
++// Ajout d'un document ou d'une image
+ //
++else if ($ajout_doc == 'oui') {
+ 
+-function decoder_type_image($type, $strict = false) {
+-	switch ($type) {
+-	case 1:
+-		return &quot;gif&quot;;
+-	case 2:
+-		return &quot;jpg&quot;;
+-	case 3:
+-		return &quot;png&quot;;
+-	case 4:
+-		return $strict ? &quot;&quot; : &quot;swf&quot;;
+-	case 5:
+-		return &quot;psd&quot;;
+-	case 6:
+-		return &quot;bmp&quot;;
+-	case 7:
+-	case 8:
+-		return &quot;tif&quot;;
+-	default:
+-		return &quot;&quot;;
+-	}
+-}
+-
++	// Autorisation ?
++	if (!verifier_action_auteur(&quot;ajout_doc&quot;, $hash, $hash_id_auteur))
++		die ('Interdit');
+ 
+-//
+-// Corrige l'extension du fichier dans quelques cas particuliers
+-//
++	//
++	// Cas d'un fichier ou d'un repertoire installe dans ecrire/upload/
++	//
++	if ($_POST['image2']
++	AND !strstr($_POST['image2'], '..')
++	AND $_POST['ok_ftp']
++	) {
++		$upload = _DIR_TRANSFERT.$_POST['image2'];
+ 
+-function corriger_extension($ext) {
+-	switch ($ext) {
+-	case 'htm':
+-		return 'html';
+-	case 'jpeg':
+-		return 'jpg';
+-	case 'tiff':
+-		return 'tif';
+-	default:
+-		return $ext;
+-	}
+-}
++		// lire le repertoire upload et remplir $_FILES
++		if (is_dir($upload)) {
++			$fichiers = fichiers_upload($upload);
+ 
++			$_FILES = array();
++			foreach ($fichiers as $fichier) {
++				$_FILES[] = array (
++					'name' =&gt; basename($fichier),
++					'tmp_name' =&gt; $fichier
++				);
++			}
++		}
+ 
+-//
+-// Ajouter une image (logo)
+-//
++		// seul un fichier est demande
++		else
++			$_FILES = array(
++				array ('name' =&gt; basename($upload),
++				'tmp_name' =&gt; $upload)
++			);
++	}
+ 
+-function ajout_image($source, $dest) {
+-	global $redirect_url, $hash_id_auteur, $hash, $num_img, $dossier_squelettes;
++	//
++	// Upload d'un ZIP
++	//
+ 
+-	// Securite
+-	if (!(verifier_action_auteur(&quot;ajout_image $dest&quot;, $hash, $hash_id_auteur)
+-	      AND _DIR_DOC != $dossier_squelettes)) {
+-	  spip_log(&quot;interdiction ajout_image($source, $dest)&quot;);
+-	  return;
++	// traiter la reponse de l'utilisateur
++	if (preg_match('@^IMG/zip/[^. ]+\.zip$@i', $_POST['source_zip'])) {
++		$_FILES = array(
++			array('name' =&gt; basename($_POST['source_zip']),
++				'tmp_name' =&gt; $_POST['source_zip'])
++		);
+ 	}
+ 
+-	// analyse le type de l'image (on ne fait pas confiance au nom de
+-	// fichier envoye par le browser : pour les Macs c'est plus sur)
++	// traiter le zip si c'en est un tout seul
++	if (count($_FILES) == 1
++	AND $action_zip!='telquel') {
++		$desc = array_pop($_FILES); # recuperer la description
++		$_FILES = array($desc);
+ 
+-	$f =_DIR_DOC . $dest . '.tmp';
+-	deplacer_fichier_upload($source, $f);
+-	$size = @getimagesize($f);
+-	$type = decoder_type_image($size[2], true);
+-	if ($type)
+-		@rename ($f, _DIR_DOC . $dest . &quot;.$type&quot;);
+-	else
+-		@unlink ($f);
+-}
++		if (preg_match('/\.zip$/i', $desc['name'])
++		OR ($desc['type'] == 'application/zip')) {
+ 
+-//
+-// Faire tourner une image
+-//
++			// on pose le fichier dans le repertoire zip et on met
++			// a jour $_FILES (nota : copier_document n'ecrase pas
++			// un fichier avec lui-meme : ca autorise a boucler)
++			$zip = copier_document(&quot;zip&quot;,
++				$desc['name'],
++				$desc['tmp_name']
++			);
++			if (!$zip) die ('Erreur upload zip'); # pathologique
++			$desc['tmp_name'] = $zip;	# nouvel emplacement du fichier
++			$_FILES = array($desc);
+ 
+-//$imagePath - path to your image; function will save rotated image overwriting the old one
+-//$rtt - should be 90 or -90 - cw/ccw
+-function gdRotate($imagePath,$rtt){
+-	if(preg_match(&quot;/\.(png)/i&quot;, $imagePath)) $src_img=ImageCreateFromPNG($imagePath);
+-	elseif(preg_match(&quot;/\.(jpg)/i&quot;, $imagePath)) $src_img=ImageCreateFromJPEG($imagePath);
+-	elseif(preg_match(&quot;/\.(bmp)/i&quot;, $imagePath)) $src_img=ImageCreateFromWBMP($imagePath);
+-	$size=@getimagesize($imagePath);
+-	//note: to make it work on GD 2.xx properly change ImageCreate to ImageCreateTrueColor
++			// Est-ce qu'on sait le lire ?
++			require_once(_DIR_RESTREINT . 'pclzip.lib.php');
++			$archive = new PclZip($zip);
++			$contenu = verifier_compactes($archive);
+ 
+-	$process = lire_meta('image_process');
+-	if ($process == &quot;gd2&quot;) $dst_img=ImageCreateTrueColor($size[1],$size[0]);
+-	else  $dst_img=ImageCreate($size[1],$size[0]);
+-	if($rtt==90){
+-		$t=0;
+-		$b=$size[1]-1;
+-		while($t&lt;=$b){
+-			$l=0;
+-			$r=$size[0]-1;
+-			while($l&lt;=$r){
+-				imagecopy($dst_img,$src_img,$t,$r,$r,$b,1,1);
+-				imagecopy($dst_img,$src_img,$t,$l,$l,$b,1,1);
+-				imagecopy($dst_img,$src_img,$b,$r,$r,$t,1,1);
+-				imagecopy($dst_img,$src_img,$b,$l,$l,$t,1,1);
+-				$l++;
+-				$r--;
+-			}
+-			$t++;
+-			$b--;
+-		}
+-	}
+-	elseif($rtt==-90){
+-		$t=0;
+-		$b=$size[1]-1;
+-		while($t&lt;=$b){
+-			$l=0;
+-			$r=$size[0]-1;
+-			while($l&lt;=$r){
+-				imagecopy($dst_img,$src_img,$t,$l,$r,$t,1,1);
+-				imagecopy($dst_img,$src_img,$t,$r,$l,$t,1,1);
+-				imagecopy($dst_img,$src_img,$b,$l,$r,$b,1,1);
+-				imagecopy($dst_img,$src_img,$b,$r,$l,$b,1,1);
+-				$l++;
+-				$r--;
++			// si non, on le force comme document
++			if (!$contenu) {
++				$forcer_document = 'oui';
+ 			}
+-			$t++;
+-			$b--;
+-		}
+-	}
+-	ImageDestroy($src_img);
+-	ImageInterlace($dst_img,0);
+-	ImageJPEG($dst_img,$imagePath);
+-}
+ 
+-//
+-// Creation automatique de vignette new style
+-// Normalement le test est v&#233;rifi&#233; donc on ne rend rien sinon
+-
+-function creer_fichier_vignette($vignette) {
+-	if ($vignette &amp;&amp; lire_meta(&quot;creer_preview&quot;) == 'oui') {
+-		eregi('\.([a-z0-9]+)$', $vignette, $regs);
+-		$ext = $regs[1];
+-		$taille_preview = lire_meta(&quot;taille_preview&quot;);
+-		if ($taille_preview &lt; 10) $taille_preview = 120;
+-		include_ecrire('inc_logos.php3');
++			// si le deballage est demande
++			else if ($action_zip == 'decompacter') {
++				// 1. on deballe
++				define('_tmp_dir', creer_repertoire_documents($hash));
++				$archive-&gt;extract(PCLZIP_OPT_PATH,
++					_tmp_dir,
++					PCLZIP_OPT_REMOVE_ALL_PATH);
++				// 2. on supprime le fichier temporaire
++				$contenu = verifier_compactes($archive);
++				@unlink($zip);
+ 
+-		if ($preview = creer_vignette($vignette, $taille_preview, $taille_preview, $ext, 'vignettes', basename($vignette).'-s'))
+-		{
+-			inserer_vignette_base($vignette, $preview['fichier']);
+-			return $preview['fichier'];
+-		}
+-		include_ecrire('inc_documents.php3');
+-		return vignette_par_defaut($ext ? $ext : 'txt', false);
+-	}
+-}
++				$_FILES = array();
++				foreach ($contenu as $fichier) {
++					$_FILES[] = array(
++						'name' =&gt; basename($fichier),
++						'tmp_name' =&gt; _tmp_dir.$fichier);
++				}
++			}
+ 
+-function supprime_document_et_vignette($doc_supp) {
+-	global $hash_id_auteur, $hash;
+-	// Securite
+-	if (verifier_action_auteur(&quot;supp_doc $doc_supp&quot;, $hash, $hash_id_auteur)) {
+-		$query = &quot;SELECT id_vignette, fichier FROM spip_documents WHERE id_document=$doc_supp&quot;;
+-		$result = spip_query($query);
+-		if ($row = spip_fetch_array($result)) {
+-			$fichier = $row['fichier'];
+-			$id_vignette = $row['id_vignette'];
+-			spip_query(&quot;DELETE FROM spip_documents WHERE id_document=$doc_supp&quot;);
+-			spip_query(&quot;UPDATE spip_documents SET id_vignette=0 WHERE id_vignette=$doc_supp&quot;);
+-			spip_query(&quot;DELETE FROM spip_documents_articles WHERE id_document=$doc_supp&quot;);
+-			spip_query(&quot;DELETE FROM spip_documents_rubriques WHERE id_document=$doc_supp&quot;);
+-			spip_query(&quot;DELETE FROM spip_documents_breves WHERE id_document=$doc_supp&quot;);
+-			@unlink($fichier);
+-			
+-			if ($id_vignette &gt; 0) {
+-			  $query = &quot;SELECT id_vignette, fichier FROM spip_documents WHERE id_document=$id_vignette&quot;;
+-			  $result = spip_query($query);
+-			  if ($row = spip_fetch_array($result)) {
+-			    $fichier = $row['fichier'];
+-			    @unlink($fichier);
+-			  }
+-			  spip_query(&quot;DELETE FROM spip_documents WHERE id_document=$id_vignette&quot;);
+-			  spip_query(&quot;DELETE FROM spip_documents_articles WHERE id_document=$id_vignette&quot;);
+-			  spip_query(&quot;DELETE FROM spip_documents_rubriques WHERE id_document=$id_vignette&quot;);
+-			  spip_query(&quot;DELETE FROM spip_documents_breves WHERE id_document=$id_vignette&quot;);
++			// sinon on demande une reponse
++			else {
++				$link = new Link('spip_image.php3');
++				$link-&gt;addVar('ajout_doc', 'oui');
++				$link-&gt;addVar('redirect', $redirect);
++				$link-&gt;addVar('id_article', $id_article);
++				$link-&gt;addVar('mode', $mode);
++				$link-&gt;addVar('type', $type);
++				$link-&gt;addVar('hash', $hash);
++				$link-&gt;addVar('hash_id_auteur', $hash_id_auteur);
++				$link-&gt;addVar('source_zip', $zip);
++				afficher_compactes($desc, $contenu, $link);
++				exit;
+ 			}
+ 		}
+ 	}
+-}
++	// Fin du bloc ZIP
+ 
+-function tourner_document($var_rot, $doc_rotate, $convert_command) {
+-	global $hash_id_auteur, $hash;
+-	// Securite
+-	if (!verifier_action_auteur(&quot;rotate $doc_rotate&quot;, $hash, $hash_id_auteur)) {
+-		return '';
+-	}
+-	
+-	if (!$var_rot) $var_rot = 0;
+ 
+-	$query = &quot;SELECT id_vignette, fichier FROM spip_documents WHERE id_document=$doc_rotate&quot;;
+-	$result = spip_query($query);
+-	if ($row = spip_fetch_array($result)) {
+-		$id_vignette = $row['id_vignette'];
+-		$image = $row['fichier'];
++	//
++	// Traiter la liste des fichiers
++	//
++	$documents_actifs = array();
+ 
+-		$process = lire_meta('image_process');
++	foreach ($_FILES as $file) {
+ 
+-		 // imagick (php4-imagemagick)
+-		 if ($process == 'imagick') {
+-			$handle = imagick_readimage($image);
+-			imagick_rotate($handle, $var_rot);
+-			imagick_write($handle, $image);
+-			if (!@file_exists($image)) return;	// echec imagick
+-		}
+-		else if ($process == &quot;gd2&quot;) { // theoriquement compatible gd1, mais trop forte degradation d'image
+-			if ($var_rot == 180) { // 180 = 90+90
+-				gdRotate ($image, 90);
+-				gdRotate ($image, 90);
+-			} else {
+-				gdRotate ($image, $var_rot);
+-			}
+-		}
+-		else if ($process = &quot;convert&quot;) {
+-			$commande = &quot;$convert_command -rotate $var_rot ./&quot;
+-				. escapeshellcmd($image).' ./'.escapeshellcmd($image);
+-#			spip_log($commande);
+-			exec($commande);
+-		}
++		// afficher l'erreur 'fichier trop gros' ou autre
++		check_upload_error($file['error']);
+ 
+-		$size_image = @getimagesize($image);
+-		$largeur = $size_image[0];
+-		$hauteur = $size_image[1];
++		spip_log (&quot;ajout du document &quot;.$file['name'].&quot;, $mode ($type $id_article)&quot;);
++		ajouter_un_document (
++			$file['tmp_name'],	# le fichier sur le serveur (/var/tmp/xyz34)
++			$file['name'],		# son nom chez le client (portequoi.pdf)
++			$type,				# lie a un article, une breve ou une rubrique ?
++			$id_article,		# identifiant de l'article (ou rubrique) lie
++			$mode,				# 'vignette' =&gt; vignette personnalisee
++			$id_document,		# pour une vignette, l'id_document de maman
++			$documents_actifs	# tableau des id_document &quot;actifs&quot; (par ref)
++		);
++	}	// foreach $_FILES
+ 
+-		if ($id_vignette &gt; 0) {
+-			creer_fichier_vignette($image);
+-/*			$query = &quot;SELECT id_vignette, fichier FROM spip_documents WHERE id_document=$id_vignette&quot;;
+-			$result = spip_query($query);
+-			if ($row = spip_fetch_array($result)) {
+-				$fichier = $row['fichier'];
+-				@unlink($fichier);
+-			}
+-			spip_query(&quot;DELETE FROM spip_documents WHERE id_document=$id_vignette&quot;);
+-			spip_query(&quot;DELETE FROM spip_documents_articles WHERE id_document=$id_vignette&quot;);
+-			spip_query(&quot;DELETE FROM spip_documents_rubriques WHERE id_document=$id_vignette&quot;);
+-			spip_query(&quot;DELETE FROM spip_documents_breves WHERE id_document=$id_vignette&quot;);
+-*/		}
++	// Nettoyer le repertoire temporaire d'extraction des fichiers
++	if (defined('_tmp_dir'))
++		effacer_repertoire_temporaire(_tmp_dir);
++}
+ 
++// Ajout d'un logo
++else if ($ajout_logo == &quot;oui&quot; and $logo) {
++	if ($desc = array_pop($_FILES)
++	AND verifier_action_auteur(&quot;ajout_logo $logo&quot;,
++	$hash, $hash_id_auteur))
++		ajout_logo($desc, $logo);
++}
+ 
+-		spip_query(&quot;UPDATE spip_documents SET largeur=$largeur, hauteur=$hauteur WHERE id_document=$doc_rotate&quot;);
++// Suppression d'un logo
++else if ($image_supp) {
++	if (verifier_action_auteur(&quot;supp_logo $image_supp&quot;,
++	$hash, $hash_id_auteur))
++		effacer_logo($image_supp);
++}
+ 
+-	}
++// Suppression d'un document et de sa vignette
++else if ($doc_supp) {
++	if (verifier_action_auteur(&quot;supp_doc $doc_supp&quot;,
++	$hash, $hash_id_auteur))
++		supprime_document_et_vignette($doc_supp);
+ }
+ 
+-if ($test_vignette) // appel de config-fonction
+-	$redirect = tester_vignette($test_vignette);
+-elseif ($vignette) // appels de inc_logo
+-	$redirect = creer_fichier_vignette($vignette);
+-else {
+-   $retour = $redirect;
+-   $redirect = '';
+-   if ($ajout_doc == 'oui') {
+-	include_ecrire('inc_getdocument.php3');
+-	if (!$image_name AND $image2) {
+-		$image = _DIR_TRANSFERT . $image2;
+-		$image_name = $image;
+-	} 
+-	if (!eregi(&quot;\.zip$&quot;,$image_name))
+-	  ajout_doc_s($image, $image_name, $mode, $forcer_document, $id_document, $hash);
+-	else {
+-	  // bizarre: clean_link ne recupere pas les variables
+-	  $link = new Link('spip_image.php3');
+-	  $link-&gt;addVar(&quot;ajout_doc&quot;, &quot;oui&quot;);
+-	  $link-&gt;addVar(&quot;redirect&quot;, $retour);
+-	  $link-&gt;addVar('id_document', $id_document);
+-	  $link-&gt;addVar('id_article', $id_article);
+-	  $link-&gt;addVar('mode', $mode);
+-	  $link-&gt;addVar('type', $type);
+-	  $link-&gt;addVar('hash', $hash);
+-	  $link-&gt;addVar('hash_id_auteur', $hash_id_auteur);
+-	  ajout_doc_zip($image, $image_name, $mode, $forcer_document, $action_zip, $id_document, $hash, $link);
+-	}
+-   }
+-   elseif ($ajout_logo == &quot;oui&quot;)
+-	ajout_image($image, $logo);
+-   elseif ($image_supp)
+-	effacer_image($image_supp);
+-   elseif ($doc_supp) // appels de inc_document
+-	supprime_document_et_vignette($doc_supp);
+-   elseif ($doc_rotate)
+-	tourner_document($var_rot, $doc_rotate, $convert_command);
+- }
++// Rotation d'une image
++else if ($doc_rotate) {
++	if (verifier_action_auteur(&quot;rotate $doc_rotate&quot;,
++	$hash, $hash_id_auteur))
++		tourner_document($var_rot, $doc_rotate, $convert_command);
++}
+ 
+-if (!($redirect)) {
+-	if ($HTTP_POST_VARS) $vars = $HTTP_POST_VARS;
+-	else $vars = $HTTP_GET_VARS;
+-	$redirect = $vars[&quot;redirect&quot;];
++
++//
++// Retour a l'envoyeur
++//
++
++// si nous sommes diriges vers une vignette
++if ($retour_image) {
++	redirige_par_entete($retour_image);
++
++} else {
+ 	$link = new Link(_DIR_RESTREINT_ABS . $redirect);
+-	reset($vars);
+-	while (list ($key, $val) = each ($vars)) {
+-	  if (!ereg(&quot;^(redirect|image.*|hash.*|ajout.*|doc.*|transformer.*|modifier_.*|ok|type|forcer_.*|var_rot|action_zip)$&quot;, $key)) {
+-	    $link-&gt;addVar($key, $val);
+-	  }
++	if ($documents_actifs) {
++		$show_docs = join('-',$documents_actifs);
++		$link-&gt;addVar('show_docs',$show_docs);
+ 	}
+-	if ($id_document)
+-	  $link-&gt;addVar('id_document',$id_document);
+-	if ($type == 'rubrique')
+-	  $link-&gt;delVar('id_article');
+-	
+-	$redirect = $link-&gt;getUrl();
+- }
+ 
+-
+-redirige_par_entete($redirect);
++	redirige_par_entete($link-&gt;getUrl($ancre));
++}
+ 
+ ?&gt;
+
+Index: spip_redirect.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/spip_redirect.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- spip_redirect.php3	13 Jan 2005 15:57:38 -0000	1.1
++++ spip_redirect.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -38,7 +38,7 @@
+ 	$super='?';
+ }
+ if ($recalcul) $url .= $super.&quot;var_mode=recalcul&quot;;
+-else if ($preview) $url .= $super.&quot;var_preview=oui&quot;;
++else if ($preview) $url .= $super.&quot;var_mode=preview&quot;;
+ @header(&quot;Location: $url&quot;);
+ 
+ ?&gt;
+
+Index: inc-compilo-api.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-compilo-api.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-compilo-api.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-compilo-api.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -43,6 +43,7 @@
+ 	var $limit;
+ 	var $group = '';
+ 	var $order = '';
++	var $default_order = '';
+ 	var $date = 'date' ;
+ 	var $hash = false ;
+ 	var $lien = false;
+@@ -101,6 +102,12 @@
+ 		'syndication' =&gt; &quot;id_syndic&quot;,
+ 		'syndic_articles' =&gt; &quot;id_syndic_article&quot;,
+ 		'types_documents' =&gt; &quot;id_type&quot;
++		////////////////////////////
++		//MODIFICATION
++		///////////////////////////
++		,'carto_objets' =&gt; &quot;id_carto_objet&quot;
++		,'carto_cartes' =&gt; &quot;id_carto_carte&quot;
++		///////////////////////////
+ 	);
+ 	
+ 	# cf. fonction table_objet dans inc_version
+@@ -118,6 +125,12 @@
+ 		'syndication' =&gt; 'syndic',
+ 		'syndic_articles' =&gt; 'syndic_articles',
+ 		'hierarchie' =&gt; 'rubriques'
++		////////////////////////////
++		//MODIFICATION
++		///////////////////////////
++		,'carto_objets' =&gt; &quot;carto_objets&quot;
++		,'carto_cartes' =&gt; &quot;carto_cartes&quot;
++		///////////////////////////
+ 	);
+ 	
+ 	$exceptions_des_tables = array(
+@@ -190,6 +203,11 @@
+ 		'id_article' =&gt; 'documents_articles',
+ 		'id_rubrique' =&gt; 'documents_rubriques',
+ 		'id_breve' =&gt; 'documents_breves'
++		////////////////////////////
++		//MODIFICATION
++		///////////////////////////
++		,'id_carto_carte' =&gt; 'documents_carto_cartes'
++		///////////////////////////
+ 		),
+ 
+ 	'forums' =&gt; array (
+@@ -202,6 +220,17 @@
+ 		'id_forum' =&gt; 'mots_forum',
+ 		'id_rubrique' =&gt; 'mots_rubriques',
+ 		'id_syndic' =&gt; 'mots_syndic'
++		////////////////////////////
++		//MODIFICATION
++		///////////////////////////
++		,'id_carto_objet' =&gt; 'mots_carto_objets'
++		),
++	'carto_objets' =&gt; array (
++		'id_mot' =&gt; 'mots_carto_objets',
++		),
++	'carto_cartes' =&gt; array (
++		'id_document' =&gt; 'mots_carto_cartes',
++		///////////////////////////
+ 		),
+ 
+ 	'groupes_mots' =&gt; array (
+
+Index: inc-compilo-index.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-compilo-index.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-compilo-index.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-compilo-index.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -41,12 +41,15 @@
+     // indirection (pour les rares cas ou le nom de la table!=type)
+ 		    $t = $table_des_tables[$r];
+ 		  }
+-		if (!$t) $t = $r; // pour les tables non Spip
+-		// $t est le nom PHP de cette table 
+-#		spip_log(&quot;Go: idb='$idb' r='$r' c='$c' nom='$nom_champ' s=$s&quot;);
+-		$desc = $tables_des_serveurs_sql[$s][$t];
++		// pour les tables non Spip
++		if (!$t) {$nom_table = $t = $r; }
++		else $nom_table = 'spip_' . $t;
++
++		#spip_log(&quot;Go: idb='$idb' r='$r' c='$c' nom='$nom_champ' s=$s t=$t&quot;);
++		$desc = $tables_des_serveurs_sql[$s][$nom_table];
+ 		if (!$desc) {
+-			erreur_squelette(_L(&quot;Table SQL \&quot;$r\&quot; inconnue&quot;), &quot;'$idb'&quot;);
++			erreur_squelette(_T('zbug_table_inconnue', array('table' =&gt; $r)),
++				&quot;'$idb'&quot;);
+ 			# continuer pour chercher l'erreur suivante
+ 			return  &quot;'#&quot; . $r . ':' . $nom_champ . &quot;'&quot;;
+ 		}
+@@ -135,7 +138,7 @@
+ 	// regarder s'il existe un fichier d'inclusion au nom de la balise
+ 	// et contenant un tableau balise_NOM_collecte
+ 	$file = 'inc-' . strtolower($nom) . _EXTENSION_PHP;
+-	if (@file_exists($file)) {
++	if ($file = find_in_path($file)) {
+ 		include_local($file);
+ 		$f = $GLOBALS['balise_' . $nom . '_collecte'];
+ 		if (is_array($f))
+@@ -171,7 +174,7 @@
+ // Ca donne les arguments a chercher dans la pile,on compile leur localisation
+ // Ensuite on delegue a une fonction generale definie dans inc-calcul-outils
+ // qui recevra a l'execution la valeurs des arguments, 
+-// ainsi que les filtres (qui ne sont donc pas traites &#224; la compil)
++// ainsi que les filtres (qui ne sont donc pas traites a la compil)
+ 
+ function calculer_balise_dynamique($p, $nom, $l) {
+ 	balise_distante_interdite($p);
+@@ -181,14 +184,18 @@
+ 	  . filtres_arglist($param, $p, ',')
+ 	  . &quot;),\n\tarray(&quot;
+ 	  . (!$p-&gt;fonctions ? '' : (&quot;'&quot; . join(&quot;','&quot;, $p-&gt;fonctions) . &quot;'&quot;))
+-	  . &quot;))&quot;;
++	  . &quot;), \$GLOBALS['spip_lang'])&quot;;
+ 	$p-&gt;statut = 'php';
+ 	$p-&gt;fonctions = '';
++
++	// Cas particulier de #FORMULAIRE_FORUM : inserer l'invalideur
++	if ($nom == 'FORMULAIRE_FORUM')
++		$p-&gt;code = code_invalideur_forums($p, $p-&gt;code);
++
+ 	return $p;
+ }
+ 
+-function param_balise(&amp;$p) 
+-{
++function param_balise(&amp;$p) {
+ 	$a = $p-&gt;fonctions;
+ 	if ($a) list(,$nom) = each($a) ; else $nom = '';
+ 	if (!ereg(' *\{ *([^}]+) *\} *',$nom, $m))
+@@ -211,6 +218,7 @@
+ 
+ // Genere l'application d'une liste de filtres
+ function applique_filtres($p) {
++
+ 	$statut = $p-&gt;statut;
+ 	$fonctions = $p-&gt;fonctions;
+ 	$p-&gt;fonctions = ''; # pour r&#233;utiliser la structure si r&#233;cursion
+@@ -234,9 +242,11 @@
+ 	if ($fonctions) {
+ 		foreach($fonctions as $fonc) {
+ 			if ($fonc) {
++
+ 				$arglist = '';
+-				if (ereg('([^\{\}]*)\{(.+)\}$', $fonc, $regs)) {
++				if (ereg('([^\{\}]+)\{(.+)\}$', $fonc, $regs)) {
+ 					$fonc = $regs[1];
++
+ 				        $arglist = filtres_arglist($regs[2],$p, ($fonc == '?' ? ':' : ','));
+ 				}
+ 				if (function_exists($fonc))
+@@ -248,7 +258,7 @@
+ 				else 
+ 				  $code = &quot;erreur_squelette('&quot;.
+ 					  texte_script(
+-						_T('erreur_filtre', array('filtre' =&gt; $fonc))
++						_T('zbug_erreur_filtre', array('filtre' =&gt; $fonc))
+ 					).&quot;','&quot; . $p-&gt;id_boucle . &quot;')&quot;;
+ 			}
+ 		}
+@@ -269,14 +279,17 @@
+ 	while (ereg('([^,]+),?(.*)$', $args, $regs)) {
+ 		$arg = trim($regs[1]);
+ 		if ($arg) {
+-			if (ereg(&quot;^&quot; . NOM_DE_CHAMP .&quot;(.*)$&quot;, $arg, $regs2)) {
+-				$p-&gt;nom_boucle = $regs2[2];
+-				$p-&gt;nom_champ = $regs2[3];
+-				# faudrait verifier !trim(regs2[5])
+-				$arg = calculer_champ($p);
+-				
+-			} else if ($arg[0] =='$')
++			if ($arg[0] =='$')
+ 				$arg = '$Pile[0][\'' . substr($arg,1) . &quot;']&quot;;
++			elseif ($arg[0] =='&lt;')
++			  $arg = calculer_texte($arg, $p-&gt;id_boucle, $p-&gt;boucles, $p-&gt;id_mere);
++			elseif (ereg(&quot;^&quot; . NOM_DE_CHAMP .&quot;(.*)$&quot;, $arg, $r2)) {
++				$p-&gt;nom_boucle = $r2[2];
++				$p-&gt;nom_champ = $r2[3];
++				# faudrait verifier !trim(r2[5])
++				$arg = calculer_champ($p);
++			} 
++
+ 			$arglist .= $sep . $arg;
+ 		}
+ 		$args=$regs[2];
+@@ -319,7 +332,10 @@
+ 	$b = $p-&gt;boucles[$b]-&gt;id_parent;
+ 	}
+ 	if (!$p-&gt;code) {
+-	  erreur_squelette(_L(&quot;Champ #&quot; . strtoupper($champ) . &quot; hors d'une boucle de motif $motif&quot;), $p-&gt;id_boucle);
++		erreur_squelette(_T('zbug_champ_hors_motif',
++			array('champ' =&gt; '#' . strtoupper($champ),
++				'motif' =&gt; $motif)
++		), $p-&gt;id_boucle);
+ 	}
+ 	$p-&gt;statut = 'php';
+ 	return $p;
+
+Index: htaccess-html.txt
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/htaccess-html.txt,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- htaccess-html.txt	20 Jan 2005 10:25:17 -0000	1.1
++++ htaccess-html.txt	6 Feb 2005 13:59:32 -0000	1.2
+@@ -1,7 +1,7 @@
+ ###########################################################
+ # Fichier .htaccess pour les URLs 'html' ; a installer    #
+ # si vous reglez $type_urls='html'                        #
+-# dans ecrire/mes_options.php3 ou dans mes_fonctions.php3 #
++# dans ecrire/mes_options.php3                            #
+ # (fichier associe : inc-urls-html.php3)                  #
+ ###########################################################
+ 
+
+Index: spip_acces_doc.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/spip_acces_doc.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- spip_acces_doc.php3	13 Jan 2005 15:57:38 -0000	1.1
++++ spip_acces_doc.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -19,7 +19,7 @@
+     include_ecrire(&quot;inc_session.php3&quot;);
+ 
+     global $auteur_session;
+-    if ($cookie_session = $HTTP_COOKIE_VARS['spip_session']) 
++    if ($cookie_session = $_COOKIE['spip_session']) 
+       {
+ 	if (verifier_session($cookie_session)) 
+ 	  {
+
+Index: inc-calcul-outils.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-calcul-outils.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-calcul-outils.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-calcul-outils.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -125,31 +125,15 @@
+ 	}
+ }
+ 
+-function executer_balise_dynamique($nom, $args, $filtres) {
+-	$file = 'inc-' . strtolower($nom) . _EXTENSION_PHP;
+-	include_local($file);
++function executer_balise_dynamique($nom, $args, $filtres, $lang) {
++	if ($file = find_in_path('inc-' . strtolower($nom) . _EXTENSION_PHP))
++		include_local($file);
++	else
++		die (&quot;pas de balise dynamique pour #&quot;. strtolower($nom).&quot; !&quot;);
+ 
+ 	$f = 'balise_' . $nom . '_stat';
+ 	$r = $f($args, $filtres);
+-	if (!is_array($r))
+-		return $r;
+-	else { 
+-		return
+-		('&lt;'.'?php 
+-include_ecrire(\'inc_lang.php3\');
+-lang_select($GLOBALS[&quot;spip_lang&quot;]);
+-include_local(&quot;'
+-		. $file
+-		. '&quot;);
+-inclure_balise_dynamique(balise_'
+-		. $nom
+-		. '_dyn(\''
+-		. join(&quot;', '&quot;, array_map(&quot;addslashes&quot;, $r))
+-		. '\'));
+-	lang_dselect();
+-?'
+-		.&quot;&gt;&quot;);
+-	}
++	return (!is_array($r)) ? $r : synthetiser_balise_dynamique($nom, $r, $file, $lang);
+ }
+ 
+ //
+@@ -205,7 +189,7 @@
+ function calcul_generation ($generation) {
+ 	$lesfils = array();
+ 	$result = spip_abstract_select(array('id_rubrique'),
+-				array('rubriques AS rubriques'),
++				array('spip_rubriques AS rubriques'),
+ 				array(calcul_mysql_in('id_parent', 
+ 					$generation,
+ 					'')),
+@@ -231,13 +215,13 @@
+ 	if (!$id_document) return '';
+ 	if ($doubdoc &amp;&amp; $id_document) $doublons[&quot;documents&quot;] .= ', ' . $id_document;
+ 
+-	if (!($row = spip_abstract_select(array('id_type', 'id_vignette', 'fichier', 'mode'), array('documents AS documents'), array(&quot;id_document = $id_document&quot;))))
++	if (!($row = spip_abstract_select(array('id_type', 'id_vignette', 'fichier', 'mode'), array('spip_documents AS documents'), array(&quot;id_document = $id_document&quot;))))
+ // pas de document. Ne devrait pas arriver
+ 		return ''; 
+ 
+ 	list($id_type, $id_vignette, $fichier, $mode) = spip_abstract_fetch($row);
+ 	if ($id_vignette) {
+-		if ($res = spip_abstract_select(array('fichier'), array('documents AS documents'), array(&quot;id_document = $id_vignette&quot;))) {
++		if ($res = spip_abstract_select(array('fichier'), array('spip_documents AS documents'), array(&quot;id_document = $id_vignette&quot;))) {
+ 			list($vignette) = spip_abstract_fetch($res);
+ 			if (@file_exists($vignette))
+ 				return generer_url_document($id_vignette);
+@@ -247,26 +231,17 @@
+ 		return generer_url_document($id_document);
+ 		# return $fichier; # en std g_u_d fait ca
+ 
+-// calcul de l'extension par tous les moyens
++	// calcul de l'extension par tous les moyens
+ 	if ($id_type) {
+-		list($ext) = spip_abstract_fetch(spip_abstract_select(array('extension'), array('types_documents AS documents'), array(&quot;id_type = &quot; . intval($id_type))));
++		list($ext) = spip_abstract_fetch(spip_abstract_select(array('extension'), array('spip_types_documents AS documents'), array(&quot;id_type = &quot; . intval($id_type))));
+ 	} else {
+ 		eregi('\.([a-z0-9]+)$', $fichier, $regs);
+ 		$ext = $regs[1];
+ 	}
+-// Pas de vignette mais une extension:
+-// prendre la vignette de celle-ci dans IMG/icones sauf si on peut faire mieux
+-	$formats = ','.lire_meta('formats_graphiques').',';
+-	if ((strpos($formats, &quot;,$ext,&quot;) === false) OR
+-	!$fichier OR (lire_meta(&quot;creer_preview&quot;) != 'oui')) {
+-		return vignette_par_defaut($ext ? $ext : 'txt', false);
+-	}
+-// on peut faire mieux dans le cas des images: une previsualisation
+-// on devrait verifier que le fichier existe dans IMG/vignette
+-// et sinon lancer creer_vignette (qui fera un UPDATE sur spip_documents)
+-// mais on risque de d&#233;passer le temps alloue au processus
+-	return 'spip_image.php3?vignette='.rawurlencode(
+-		str_replace('../', '', $fichier));
++
++	// Pas de vignette mais une extension :
++	// envoyer une vignette par defaut
++	return vignette_par_defaut($ext ? $ext : 'txt', false);
+ }
+ 
+ 
+@@ -299,14 +274,14 @@
+ 
+ function sql_parent($id_rubrique) {
+ 	$row = spip_abstract_fetsel(array(id_parent), 
+-			array('rubriques'), 
++			array('spip_rubriques'), 
+ 			array(&quot;id_rubrique=&quot; . intval($id_rubrique)));
+ 	return $row['id_parent'];
+ }
+ 
+ function sql_rubrique($id_article) {
+ 	$row = spip_abstract_fetsel(array('id_rubrique'),
+-			array('articles'),
++			array('spip_articles'),
+ 			array(&quot;id_article=&quot; . intval($id_article)));
+ 	return $row['id_rubrique'];
+ }
+@@ -315,8 +290,8 @@
+ 	$auteurs = &quot;&quot;;
+ 	if ($id_article) {
+ 		$result_auteurs = spip_abstract_select(array('auteurs.nom', 'auteurs.email'),
+-			array('auteurs AS auteurs',
+-				'auteurs_articles AS lien'), 
++			array('spip_auteurs AS auteurs',
++				'spip_auteurs_articles AS lien'), 
+ 			array(&quot;lien.id_article=$id_article&quot;,
+ 				&quot;auteurs.id_auteur=lien.id_auteur&quot;),
+ 			'','','','',1, 
+@@ -338,7 +313,7 @@
+ function sql_petitions($id_article, $table, $id_boucle, $serveur, &amp;$Cache) {
+ 	$retour = spip_abstract_fetsel(
+ 			array('texte'),
+-			array('petitions'),
++			array('spip_petitions'),
+ 			array(&quot;id_article=&quot;.intval($id_article)),
+ 			'','','','',1, 
+ 			$table, $id_boucle, $serveur);
+@@ -353,20 +328,38 @@
+ # retourne le chapeau d'un article, et seulement s'il est publie
+ 
+ function sql_chapo($id_article) {
++	if ($id_article)
+ 	return spip_abstract_fetsel(array('chapo'),
+-		array('articles'),
++		array('spip_articles'),
+ 		array(&quot;id_article=&quot;.intval($id_article),
+ 		&quot;statut='publie'&quot;));
+ }
+ 
++# retourne le champ 'accepter_forum' d'un article
++function sql_accepter_forum($id_article) {
++	static $cache = array();
++
++	if (!$id_article) return;
++
++	if (!isset($cache[$id_article])) {
++		$row = spip_abstract_fetsel(array('accepter_forum'),
++			array('spip_articles'),
++			array(&quot;id_article=&quot;.intval($id_article)));
++		$cache[$id_article] = $row['accepter_forum'];
++	}
++
++	return $cache[$id_article];
++}
++
++
+ // Calcul de la rubrique associee a la requete
+ // (selection de squelette specifique par id_rubrique &amp; lang)
+ 
+-function sql_rubrique_fond($contexte, $lang) {
++function sql_rubrique_fond($contexte) {
+ 
+ 	if ($id = intval($contexte['id_rubrique'])) {
+ 		$row = spip_abstract_fetsel(array('lang'),
+-					    array('rubriques'),
++					    array('spip_rubriques'),
+ 					    array(&quot;id_rubrique=$id&quot;));
+ 		if ($row['lang'])
+ 			$lang = $row['lang'];
+@@ -375,7 +368,7 @@
+ 
+ 	if ($id  = intval($contexte['id_breve'])) {
+ 		$row = spip_abstract_fetsel(array('id_rubrique', 'lang'),
+-			array('breves'), 
++			array('spip_breves'), 
+ 			array(&quot;id_breve=$id&quot;));
+ 		$id_rubrique_fond = $row['id_rubrique'];
+ 		if ($row['lang'])
+@@ -385,11 +378,11 @@
+ 
+ 	if ($id = intval($contexte['id_syndic'])) {
+ 		$row = spip_abstract_fetsel(array('id_rubrique'),
+-			array('syndic'),
++			array('spip_syndic'),
+ 			array(&quot;id_syndic=$id&quot;));
+ 		$id_rubrique_fond = $row['id_rubrique'];
+ 		$row = spip_abstract_fetsel(array('lang'),
+-			array('rubriques'),
++			array('spip_rubriques'),
+ 			array(&quot;id_rubrique='$id_rubrique_fond'&quot;));
+ 		if ($row['lang'])
+ 			$lang = $row['lang'];
+@@ -398,7 +391,7 @@
+ 
+ 	if ($id = intval($contexte['id_article'])) {
+ 		$row = spip_abstract_fetsel(array('id_rubrique', 'lang'),
+-			array('articles'),
++			array('spip_articles'),
+ 			array(&quot;id_article=$id&quot;));
+ 		$id_rubrique_fond = $row['id_rubrique'];
+ 		if ($row['lang'])
+
+Index: spip_inscription.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/spip_inscription.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- spip_inscription.php3	20 Jan 2005 10:25:49 -0000	1.2
++++ spip_inscription.php3	6 Feb 2005 13:59:32 -0000	1.3
+@@ -1,7 +1,7 @@
+ &lt;?php
+ include (&quot;ecrire/inc_version.php3&quot;);
+ include_ecrire(&quot;inc_presentation.php3&quot;);
+-include_local(&quot;inc-formulaire_inscription.php3&quot;);
++include_local(find_in_path(&quot;inc-formulaire_inscription.php3&quot;));
+ include_local(&quot;inc-public-global.php3&quot;); 
+ include_local (&quot;inc-cache.php3&quot;);
+ 
+
+Index: inc-messforum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-messforum.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-messforum.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-messforum.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -2,12 +2,13 @@
+ 
+ include_ecrire('inc_meta.php3');
+ include_ecrire('inc_forum.php3');
++include_ecrire(&quot;inc_abstract_sql.php3&quot;);
++include_local(_FILE_CONNECT);
+ 
+ // Ce fichier inclus par inc-public a un comportement special
+ // Voir commentaires dans celui-ci et dans inc-formulaire_forum
+ 
+-function prevenir_auteurs($auteur, $email_auteur, $id_article, $texte, $titre)
+-{
++function prevenir_auteurs($auteur, $email_auteur, $id_article, $texte, $titre) {
+ 	include_ecrire('inc_texte.php3');
+ 	include_ecrire('inc_filtres.php3');
+ 	include_ecrire('inc_mail.php3');
+@@ -43,139 +44,158 @@
+ 		if (strlen($email) &lt; 3) continue;
+ 		envoyer_mail($email, $sujet, $courr);
+ 	}
+-}	
++}
+ 
+-$retour_forum = rawurldecode($retour);
+-$forum_id_article = intval($id_article);
+-$forum_id_rubrique = intval($id_rubrique);
+-$forum_id_forum = intval($id_forum);
+-$forum_id_breve = intval($id_breve);
+-$forum_id_syndic = intval($id_syndic);
+-$slash_texte = addslashes($texte);
+-$slash_titre = addslashes($titre);
+-$slash_nom_site_forum = addslashes($nom_site_forum);
+-$slash_url_site = addslashes($url_site);
+-$id_message = intval($id_message);
+ 
+-if (!$id_auteur)
+-	$id_auteur = intval($auteur_session['id_auteur']);
++function controler_forum($id_article, $retour) {
++	global $auteur_session;
+ 
+-if ($forum_id_article) {
+-	$r = spip_query(&quot;SELECT accepter_forum FROM spip_articles WHERE id_article=$forum_id_article&quot;);
+-	$r = spip_fetch_array($r);
+-	if ($r)
+-		$forums_publics = $r['accepter_forum'];
+-	else
+-		$forums_publics = lire_meta(&quot;forums_publics&quot;);
+-} else {
+-	$forums_publics = substr(lire_meta(&quot;forums_publics&quot;),0,3);
+-}
++	// Reglage forums d'article
++	if ($id_article) {
++		$q = spip_query(&quot;SELECT accepter_forum FROM spip_articles
++			WHERE id_article=$id_article&quot;);
++		if ($r = spip_fetch_array($q))
++			$forums_publics = $r['accepter_forum'];
++	}
+ 
+-if ($forums_publics == &quot;abo&quot;) {
+-	if ($auteur_session) {
+-		$statut = $auteur_session['statut'];
+-		if (!$statut OR $statut == '5poubelle') {
+-			ask_php_auth(_T('forum_acces_refuse'),
++	// Valeur par defaut
++	if (!$forums_publics)
++		$forums_publics = substr(lire_meta(&quot;forums_publics&quot;),0,3);
++
++	if ($forums_publics == &quot;abo&quot;) {
++		if ($auteur_session) {
++			$statut = $auteur_session['statut'];
++			if (!$statut OR $statut == '5poubelle') {
++				ask_php_auth(_T('forum_acces_refuse'),
++					     _T('forum_cliquer_retour',
++						array('retour_forum' =&gt; $retour)));
++				exit;
++			}
++		} else {
++			ask_php_auth(_T('forum_non_inscrit'),
+ 				     _T('forum_cliquer_retour',
+-					array('retour_forum' =&gt; $retour_forum)));
+-			exit;		  
++					array('retour_forum' =&gt; $retour)));
++			exit;
+ 		}
+ 	}
+-	else {
+-		ask_php_auth(_T('forum_non_inscrit'),
++
++	return $forums_publics;
++}
++
++function mots_du_forum($ajouter_mot, $id_message)
++{
++	foreach ($ajouter_mot as $id_mot)
++		if ($id_mot = intval($id_mot))
++			spip_query(&quot;INSERT INTO spip_mots_forum (id_mot, id_forum)
++				VALUES ($id_mot, $id_message)&quot;);
++}
++
++function enregistre_forum() {
++	global $REMOTE_ADDR, $auteur_session,
++	  $afficher_texte, $ajouter_mot, $alea, $hash,
++	  $auteur, $confirmer_forum, $email_auteur,
++	  $id_article, $id_auteur, $id_breve, $id_forum, $id_rubrique, $id_syndic,
++	  $nom_site_forum, $retour_forum, $texte, $titre, $url_site;
++
++	$retour_forum = rawurldecode($retour_forum);
++	$id_article = intval($id_article);
++	$id_rubrique = intval($id_rubrique);
++	$id_forum = intval($id_forum);
++	$id_breve = intval($id_breve);
++	$id_syndic = intval($id_syndic);
++
++// initialisation de l'eventuel visiteur connecte
++	if (!$id_auteur)
++	$id_auteur = intval($auteur_session['id_auteur']);
++
++	$statut = controler_forum($id_article, $retour_forum);
++
++// Ne pas autoriser de changement de nom si forum sur abonnement
++
++	if ($statut == 'abo') {
++		$auteur = $auteur_session['nom'];
++		$email_auteur = $auteur_session['email'];
++	}
++
++// trop court ?
++	if ((strlen($texte) + strlen($titre) + strlen($nom_site_forum) + strlen($url_site) + strlen($auteur) + strlen($email_auteur)) &gt; 20 * 1024) {
++		ask_php_auth(_T('forum_message_trop_long'),
+ 			     _T('forum_cliquer_retour',
+ 				array('retour_forum' =&gt; $retour_forum)));
+-		exit;		  
++		exit;
+ 	}
+ 
+-	// Ne pas autoriser de changement de nom si forum sur abonnement
+-	$auteur = $auteur_session['nom'];
+-	$email_auteur = $auteur_session['email'];
+- } 
+-
+-$slash_auteur = addslashes($auteur);
+-$slash_email_auteur = addslashes($email_auteur);
++	// Verifier hash securite
++	include_ecrire(&quot;inc_admin.php3&quot;);
++	if (!verifier_action_auteur(&quot;ajout_forum $id_rubrique&quot;.
++	&quot; $id_forum $id_article $id_breve&quot;.
++	&quot; $id_syndic $alea&quot;, $hash))
++		exit; 	# echec silencieux du POST
+ 
+-if ((strlen($slash_texte) + strlen($slash_titre) + strlen($slash_nom_site_forum) + strlen($slash_url_site) + strlen($slash_auteur) + strlen($slash_email_auteur)) &gt; 20 * 1024) {
+-	ask_php_auth(_T('forum_message_trop_long'),
+-		     _T('forum_cliquer_retour',
+-			array('retour_forum' =&gt; $retour_forum)));
+-			exit;		  
+-}
++	// verifier fichier lock
++	$alea = preg_replace('/[^0-9]/', '', $alea);
++	if (!file_exists($hash = _DIR_SESSIONS.&quot;forum_$alea.lck&quot;))
++		exit; # echec silencieux du POST
++	unlink($hash);
+ 
+-spip_query(&quot;DELETE FROM spip_mots_forum WHERE id_forum='$id_message'&quot;);
+-if ($ajouter_mot) {
+-	for (reset($ajouter_mot);$key=key($ajouter_mot);next($ajouter_mot))
+-		$les_mots .= &quot;,&quot;.join($ajouter_mot[$key],&quot;,&quot;);
+-	$les_mots = explode(&quot;,&quot;, $les_mots);
+-	for ($index = 0; $index &lt; count($les_mots); $index++){
+-		$le_mot = $les_mots[$index];
+-		if ($le_mot &gt; 0)
+-		spip_query(&quot;INSERT INTO spip_mots_forum (id_mot, id_forum)
+-		VALUES ('$le_mot', '$id_message')&quot;);
+-	}
+-}
++	// Entrer le message dans la base
++	$id_message = spip_abstract_insert('spip_forum', '(date_heure)', '(NOW())');
+ 
+-$validation_finale = (strlen($confirmer) &gt; 0 OR
+-	($afficher_texte=='non' AND $ajouter_mot));
+-$statut = ((!$validation_finale) ? 'redac' : 
+-	(($forums_publics == 'non') ? 'off' :
+-	(($forums_publics == 'pri') ? 'prop' : 'publie')));
++	if ($id_forum)
++		list($id_thread) = spip_fetch_array(spip_query(
++		&quot;SELECT id_thread FROM spip_forum WHERE id_forum = $id_forum&quot;));
++	else
++		$id_thread = $id_message; # id_thread oblige INSERT puis UPDATE.
+ 
+-if ($forum_id_forum &gt; 0) $id_thread = $forum_id_forum;
+-else $id_thread = $id_message;
++	$statut = ($statut == 'non') ? 'off' : (($statut == 'pri') ? 'prop' :
++						'publie');
+ 
+-spip_query(&quot;UPDATE spip_forum SET id_parent = $forum_id_forum,
+-	id_rubrique =$forum_id_rubrique,
+-	id_article = $forum_id_article,
+-	id_breve = $forum_id_breve,
+-	id_syndic = $forum_id_syndic,
++	spip_query(&quot;UPDATE spip_forum SET id_parent = $id_forum,
++	id_rubrique = $id_rubrique,
++	id_article = $id_article,
++	id_breve = $id_breve,
++	id_syndic = $id_syndic,
+ 	id_auteur = $id_auteur,
+ 	id_thread = $id_thread,
+ 	date_heure = NOW(),
+-	titre = \&quot;$slash_titre\&quot;,
+-	texte = \&quot;$slash_texte\&quot;,
+-	nom_site = \&quot;$slash_nom_site_forum\&quot;,
+-	url_site = \&quot;$slash_url_site\&quot;,
+-	auteur = \&quot;$slash_auteur\&quot;,
+-	email_auteur = \&quot;$slash_email_auteur\&quot;,
+-	ip = \&quot;$REMOTE_ADDR\&quot;,
+-	statut = \&quot;$statut\&quot;
+-	WHERE id_forum = '$id_message'
+-&quot;);
++	titre = '&quot;.addslashes($titre).&quot;',
++	texte = '&quot;.addslashes($texte).&quot;',
++	nom_site = '&quot;.addslashes($nom_site_forum).&quot;',
++	url_site = '&quot;.addslashes($url_site).&quot;',
++	auteur = '&quot;.addslashes($auteur).&quot;',
++	email_auteur = '&quot;.addslashes($email_auteur).&quot;',
++	ip = '$REMOTE_ADDR',
++	statut = '$statut'
++	WHERE id_forum = $id_message
++	&quot;);
+ 
+-//calculer_threads();
++	// calculer_threads();
+ 
+-if ($validation_finale) {
+-	include_ecrire(&quot;inc_admin.php3&quot;);
+-	if (!(verifier_action_auteur(&quot;ajout_forum $forum_id_rubrique&quot;.
+-	&quot; $forum_id_forum $forum_id_article $forum_id_breve&quot;.
+-	&quot; $forum_id_syndic $alea&quot;, $hash))) {
+-		header(&quot;Status: 404&quot;);
+-		exit;
+-	} else {
+-	  if (lire_meta(&quot;prevenir_auteurs&quot;) == &quot;oui&quot; AND ($afficher_texte != &quot;non&quot;) AND ($id_article = $forum_id_article)) {
+-			prevenir_auteurs($auteur, $email_auteur, $id_article, $texte, $titre);
++	// Entrer les mots-cles associes
++	if (is_array($ajouter_mot)) mots_du_forum($ajouter_mot, $id_message);
+ 
+-		}
+-		// Poser un cookie pour ne pas retaper le nom / email
+-		$cookie_user = array('nom' =&gt; $auteur, 'email' =&gt; $email_auteur);
+-		spip_setcookie('spip_forum_user', serialize($cookie_user));
++	// Prevenir les auteurs de l'article
++	if (lire_meta(&quot;prevenir_auteurs&quot;) == &quot;oui&quot; AND ($afficher_texte != &quot;non&quot;))
++		prevenir_auteurs($auteur, $email_auteur, $id_article, $texte, $titre);
+ 
+-		//
+-		// INVALIDATION DES CACHES LIES AUX FORUMS
+-		//
+-		include_ecrire('inc_invalideur.php3');
+-		if ($statut == 'publie') {
+-			suivre_invalideur (&quot;id='id_forum/&quot; .
+-				calcul_index_forum($forum_id_article,
+-					$forum_id_breve,
+-					$forum_id_rubrique,
+-					$forum_id_syndic) . &quot;'&quot;);
+-		}
++	// Poser un cookie pour ne pas retaper le nom / email
+ 
+-		$redirect = $retour_forum;
++	spip_setcookie('spip_forum_user',
++		       serialize(array('nom' =&gt; $auteur, 'email' =&gt; $email_auteur)));
++
++	if ($statut == 'publie') {
++	//
++	// INVALIDATION DES CACHES LIES AUX FORUMS
++	//
++		include_ecrire('inc_invalideur.php3');
++		suivre_invalideur (&quot;id='id_forum/&quot; .
++			calcul_index_forum($id_article,
++				$id_breve,
++				$id_rubrique,
++				$id_syndic) . &quot;'&quot;);
+ 	}
++
++	return $retour_forum;
+ }
+ 
+ ?&gt;
+
+Index: inc-cache.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-cache.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-cache.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-cache.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -75,7 +75,7 @@
+ 
+ // Securite : est sur que c'est un cache
+ function retire_cache($cache) {
+-	if ($GLOBALS['flag_ecrire']) return;
++	if (!_DIR_RESTREINT) return;
+ 	if (preg_match('|^' . _DIR_CACHE .
+ 		&quot;([0-9a-f]/)?([0-9]+/)?[^.][\-_\%0-9a-z]+\.[0-9a-f]+(\.gz)?$|i&quot;,
+ 		       $cache)) {
+@@ -87,7 +87,7 @@
+ 
+ // Supprimer les caches marques &quot;x&quot;
+ function retire_caches() {
+-	if ($GLOBALS['flag_ecrire']) return;
++	if (!_DIR_RESTREINT) return;
+ 
+ 	// signaler
+ 	effacer_meta('invalider');
+@@ -104,7 +104,7 @@
+ 		foreach ($suppr as $cache =&gt; $ignore)
+ 			retire_cache($cache);
+ 		spip_query(&quot;DELETE FROM spip_caches WHERE &quot;
+-		.calcul_mysql_in('fichier', &quot;'&quot;.join(&quot;','&quot;,$suppr).&quot;'&quot;) );
++		.calcul_mysql_in('fichier', &quot;'&quot;.join(&quot;','&quot;,array_keys($suppr)).&quot;'&quot;) );
+ 	}
+ }
+ 
+@@ -112,16 +112,16 @@
+ // Retourne 0 s'il faut calculer le cache, 1 si on peut l'utiliser
+ //
+ function utiliser_cache($chemin_cache, $delais) {
+-	global $HTTP_SERVER_VARS;
++	global $_SERVER;
+ 
+ 	// ne jamais calculer pour les moteurs de recherche, proxies...
+-	if ($HTTP_SERVER_VARS['REQUEST_METHOD'] == 'HEAD')
++	if ($_SERVER['REQUEST_METHOD'] == 'HEAD')
+ 		return 1;
+ 
+ 	//  calcul par forcage
+ 	if ($GLOBALS['var_mode'] &amp;&amp;
+-		($GLOBALS['HTTP_COOKIE_VARS']['spip_session']
+-		|| $GLOBALS['HTTP_COOKIE_VARS']['spip_admin']
++		($GLOBALS['_COOKIE']['spip_session']
++		|| $GLOBALS['_COOKIE']['spip_admin']
+ 		|| @file_exists(_ACCESS_FILE_NAME))) # insuffisant...
+ 		return 0;
+ 
+@@ -170,7 +170,7 @@
+ function determiner_cache($delais, &amp;$use_cache, &amp;$chemin_cache) {
+ 
+ 	// Le fichier cache est-il valide ?
+-	if ($delais == 0 OR !empty($GLOBALS['HTTP_POST_VARS'])) {
++	if ($delais == 0 OR !empty($GLOBALS['_POST'])) {
+ 		$use_cache = 0;
+ 		$chemin_cache = '';
+ 	} else {
+
+Index: inc-criteres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-criteres.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-criteres.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-criteres.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -15,7 +15,7 @@
+ 	$boucle = &amp;$boucles[$idb];
+ 
+ 	if ($param != 'racine' OR $not)
+-		erreur_squelette(_T('info_erreur_squelette'), $param);
++		erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ 
+ 	$boucle-&gt;where[] = $boucle-&gt;id_table.&quot;.id_parent='0'&quot;;
+ 
+@@ -28,7 +28,7 @@
+ 	$id = $boucle-&gt;primary;
+ 
+ 	if ($param != 'exclus' OR $not OR !$id)
+-		erreur_squelette(_T('info_erreur_squelette'), $param);
++		erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ 
+ 	$arg = calculer_argument_precedent($idb,$id, $boucles);
+ 	$boucle-&gt;where[] = $boucle-&gt;id_table . '.' . $id.&quot;!='\&quot;.&quot; . $arg . &quot;.\&quot;'&quot;;
+@@ -42,7 +42,7 @@
+ 
+ 	if (!preg_match(&quot;/(doublons|unique)[[:space:]]*([a-z_0-9]*)/i&quot;,
+ 	$param, $match))
+-		erreur_squelette(_T('info_erreur_squelette'), $param);
++		erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ 
+ 	$boucle-&gt;doublons = $boucle-&gt;type_requete . $match[2];
+ 	$boucle-&gt;where[] = '&quot; .' .
+@@ -61,7 +61,7 @@
+ 			$lang_select = ($lang_select=='oui')?'non':'oui';
+ 		$boucle-&gt;lang_select = $lang_select;
+ 	}
+-	else erreur_squelette(_T('info_erreur_squelette'), $param);
++	else erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ }
+ 
+ // {debut_xxx}
+@@ -73,7 +73,7 @@
+ 		$boucle-&gt;limit =
+ 			'intval($GLOBALS[&quot;'.$debut_lim.'&quot;]).&quot;,'.$match[2] .'&quot;' ;
+ 	}
+-	else erreur_squelette(_T('info_erreur_squelette'), $param);
++	else erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ }
+ 
+ // {recherche}
+@@ -104,10 +104,10 @@
+ 		if ($boucle-&gt;order)
+ 			$boucle-&gt;order .= &quot;.' DESC'&quot;;
+ 		else 
+-			erreur_squelette(_L(&quot;inversion d'un ordre inexistant&quot;), 
++			erreur_squelette(_T('zbug_inversion_ordre_inexistant'), 
+ 			&quot;BOUCLE&quot; . $idb);
+ 	} else
+-		erreur_squelette(_T('info_erreur_squelette'), &quot;{$param} BOUCLE$idb&quot;);
++		erreur_squelette(_T('zbug_info_erreur_squelette'), &quot;{$param} BOUCLE$idb&quot;);
+ }
+ 
+ // {traduction}
+@@ -128,7 +128,7 @@
+ 				$boucles)
+ 			. &quot;.\&quot;'))&quot;;
+ 	} else
+-		erreur_squelette(_T('info_erreur_squelette'), $param);
++		erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ }
+ 
+ // {origine_traduction}
+@@ -139,7 +139,7 @@
+ 		$boucle-&gt;where[] = $boucle-&gt;id_table.&quot;.id_trad = &quot;
+ 		. $boucle-&gt;id_table . '.' . $boucle-&gt;primary;
+ 	else
+-		erreur_squelette(_T('info_erreur_squelette'), $param);
++		erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ }
+ 
+ 
+@@ -148,7 +148,7 @@
+ function critere_meme_parent_dist($idb, &amp;$boucles, $param, $not) {
+ 	$boucle = &amp;$boucles[$idb];
+ 	if ($param != 'meme_parent')
+-		erreur_squelette(_T('info_erreur_squelette'), $param);
++		erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ 	else {
+ 		if ($boucle-&gt;type_requete == 'rubriques') {
+ 			$boucle-&gt;where[] = $boucle-&gt;id_table.&quot;.id_parent='\&quot;.&quot;
+@@ -163,7 +163,7 @@
+ 			$boucle-&gt;where[] = $boucle-&gt;id_table.&quot;.id_parent &gt; 0&quot;;
+ 			$boucle-&gt;plat = true;
+ 		} else
+-			erreur_squelette(_L(&quot;{meme_parent} ne s'applique qu'aux boucles (FORUMS) ou (RUBRIQUES)&quot;), &quot;BOUCLE&quot; . $idb);
++			erreur_squelette(_T('zbug_erreur_meme_parent'), &quot;BOUCLE&quot; . $idb);
+ 	}
+ }
+ 
+@@ -187,7 +187,7 @@
+ 		else
+ 			$boucle-&gt;where[] = $where;
+ 	} else
+-		erreur_squelette(_T('info_erreur_squelette'), $param);
++		erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ }
+ 
+ // Tri : {par xxxx}
+@@ -195,12 +195,12 @@
+ function critere_par_dist($idb, &amp;$boucles, $param, $not) {
+ 	$boucle = &amp;$boucles[$idb];
+ 	if ($not)
+-		erreur_squelette(_T('info_erreur_squelette'), $param);
++		erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ 
+ 	$param = substr($param,3);
+ 
+ 	while ($param) {
+-	  spip_log($param);
++
+ 		preg_match('/[[:space:]]*([^,]*)[[:space:]]*,?(.*)/ims',
+ 			   $param, $regs);
+ 		$param = $regs[2];
+@@ -245,7 +245,8 @@
+ 			$s = $boucles[$idb]-&gt;sql_serveur;
+ 			if (!$s) $s = 'localhost';
+ 			$t = $table_des_tables[$r];
+-			if (!$t) $t = $r; // pour les tables non Spip
++			// pour les tables non Spip
++			if (!$t) $t = $r; else $t = &quot;spip_$t&quot;;
+ 			$desc = $tables_des_serveurs_sql[$s][$t];
+ 			if ($desc['field'][$tri])
+ 				$order = &quot;'&quot;.$boucle-&gt;id_table.&quot;.&quot;.$tri.&quot;'&quot;;
+@@ -264,7 +265,6 @@
+ 		if ($order) {
+ 		  if ($boucle-&gt;order) $boucle-&gt;order .= '.&quot;,&quot;.';
+ 		  $boucle-&gt;order .= $order;
+-
+ 		}
+ 	}
+ }
+@@ -272,7 +272,8 @@
+ 
+ 
+ function calculer_critere_parties($idb, &amp;$boucles, $param, $not, $match) {
+-  global $tables_relations, $table_des_tables, $table_date, $tables_des_serveurs_sql;
++  global $tables_relations, $table_date, $tables_des_serveurs_sql;
++
+ 	$boucle = &amp;$boucles[$idb];
+ 	list(,$a1,$op,$a2) = $match;
+ 	list($a11,$a12) = calculer_critere_parties_aux($idb, $boucles, $a1);
+@@ -331,7 +332,7 @@
+ # Criteres numeriques et de comparaison
+ 
+ function calculer_critere_DEFAUT($idb, &amp;$boucles, $param, $not) {
+-	global $table_des_tables, $table_date, $tables_des_serveurs_sql;
++	global $table_date, $tables_des_serveurs_sql;
+ 
+ 	$boucle = &amp;$boucles[$idb];
+ 	$type = $boucle-&gt;type_requete;
+@@ -345,6 +346,7 @@
+ 		// Restriction de valeurs (implicite ou explicite)
+ 	else if (eregi('^([a-z_]+\(?[a-z_]*\)?) *(\??)((!?)(&lt;=?|&gt;=?|==?|IN) *&quot;?([^&lt;&gt;=!&quot;]*))?&quot;?$', $param, $match)) {
+ 	  		$op = $match[5] ? $match[5] : '=';
++
+ 			// Variable comparee
+ 			$col = $match[1];
+ 			// fonction SQL
+@@ -404,8 +406,8 @@
+ 					$col_lien = &quot;syndic&quot;;
+ 				else
+ 					$col_lien = $type;
+-				$boucle-&gt;from[] = &quot;mots_$col_lien AS lien_mot&quot;;
+-				$boucle-&gt;from[] = 'mots AS mots';
++				$boucle-&gt;from[] = &quot;spip_mots_$col_lien AS lien_mot&quot;;
++				$boucle-&gt;from[] = 'spip_mots AS mots';
+ 				$boucle-&gt;where[] = &quot;$id_field=lien_mot.&quot; . $primary;
+ 				$boucle-&gt;where[] = 'lien_mot.id_mot=mots.id_mot';
+ 				$boucle-&gt;group = $id_field;
+@@ -514,11 +516,9 @@
+ 				if ($match[4] == '!') {
+ 					$where = &quot;NOT ($where)&quot;;
+ 				} else {
+-					if (!$boucle-&gt;order) {
+-						$boucle-&gt;order = 'rang';
+-						$boucle-&gt;select[] =
++					$boucle-&gt;default_order = 'rang';
++					$boucle-&gt;select[] =
+ 						&quot;FIND_IN_SET($col, \\\&quot;$val\\\&quot;) AS rang&quot;;
+-					}
+ 				}
+ 			} else {
+ 				if ($op == '==') $op = 'REGEXP';
+@@ -537,7 +537,8 @@
+ 			}
+ 			$boucle-&gt;where[] = $where;
+ 	} // fin du if sur les restrictions de valeurs
+-	else erreur_squelette(_L(&quot;critere inconnu $param&quot;));
++	else
++	erreur_squelette(_T('zbug_critere_inconnu', array('critere' =&gt; $param)));
+ }
+ 
+ // traitement des relations externes par une jointure.
+@@ -552,7 +553,7 @@
+ 		if (!$boucle-&gt;where || (!in_array($externe, $boucle-&gt;where))) {
+ 
+ 			$boucle-&gt;lien = true;
+-			$boucle-&gt;from[] = &quot;$col_table AS $col_table&quot;;
++			$boucle-&gt;from[] = &quot;spip_$col_table AS $col_table&quot;;
+ 			$boucle-&gt;where[] = $externe;
+ 			$boucle-&gt;group = $id_field;
+ 		// postgres exige que le champ pour GROUP soit dans le SELECT
+@@ -608,7 +609,7 @@
+ 	} else {
+ 	  if ($val[0]== '%') {
+ 	    spip_log($val .
+-		     &quot; est obsolete; utiliser HTTP_VARS{&quot; .  substr($val,1) . &quot;}&quot;);
++		     &quot; est obsolete; utiliser ENV{&quot; .  substr($val,1) . &quot;}&quot;);
+ 		  return '&quot; . addslashes($Pile[0][\''. substr($val,1)  .&quot;']) . \&quot;&quot;;
+ 	  }
+ 		else
+
+Index: spip_image_reduite.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/spip_image_reduite.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- spip_image_reduite.php3	13 Jan 2005 15:57:38 -0000	1.1
++++ spip_image_reduite.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -1,17 +1,18 @@
+ &lt;?php
+ 
+-$img = $_GET['img'];
+-$logo = $img;
+ include (&quot;ecrire/inc_version.php3&quot;);
+ include_ecrire(&quot;inc_admin.php3&quot;);
+ include_ecrire(&quot;inc_logos.php3&quot;);
+ 
++$img = $_GET['img'];
++$logo = $img;
++
+ if (!$taille_y)
+ 	$taille_y = $taille_x;
+ 	
+ if (eregi(&quot;(.*)\.(jpg|gif|png)$&quot;, $logo, $regs)) {
+ 	if ($i = cherche_image_nommee($regs[1], array($regs[2]))
+-	    AND verifier_action_auteur(&quot;reduire $taille_x $taille_y&quot;, $hash, $hash_id_auteur))
++		AND verifier_action_auteur(&quot;reduire $taille_x $taille_y&quot;, $hash, $hash_id_auteur))
+ 	{
+ 		list($dir,$nom,$format) = $i;
+ 		$logo = $dir . $nom . '.' . $format;
+@@ -23,20 +24,14 @@
+ 			$vignette = $preview['fichier'];
+ 			$width = $preview['width'];
+ 			$height = $preview['height'];
+-			//echo &quot;&lt;img src='$vignette' name='$name' border='0' align='$align' alt='' hspace='$espace' vspace='$espace' width='$width' height='$height' class='spip_logos' /&gt;&quot;;
+ 			$retour = $vignette;
+ 		}
+ 		else if ($taille_origine = @getimagesize($logo)) {
+-			//list ($destWidth,$destHeight) = image_ratio($taille_origine[0], $taille_origine[1], $taille_x, $taille_y);
+ 			$retour = $logo;
+-		}	
+-
+-	// Afficher l'image resultante, meme grande...
+-//	header(&quot;Content-type: image/$format&quot;);
+-//	echo implode ('', file ($retour));
++		}
+ 
+-	redirige_par_entete($retour);
++		redirige_par_entete($retour);
+ 	}
+- }
++}
+ 
+ ?&gt;
+
+Index: inc-public-global.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-public-global.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-public-global.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-public-global.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -4,6 +4,105 @@
+ if (defined(&quot;_INC_PUBLIC_GLOBAL&quot;)) return;
+ define(&quot;_INC_PUBLIC_GLOBAL&quot;, &quot;1&quot;);
+ 
++// fonction principale declenchant tout le service
++function calcule_header_et_page ($fond, $delais) {
++	  global $affiche_boutons_admin, $auteur_session, $flag_dynamique,
++	  $flag_ob, $flag_preserver, $forcer_lang, $ignore_auth_http,
++	  $lastmodified, $recherche, $use_cache, $val_confirm, $var_mode,
++	  $var_recherche, $tableau_des_erreurs;
++
++	// Regler le $delais par defaut
++	if (!isset($delais))
++		$delais = 1 * 3600;
++	if ($recherche)
++		$delais = 0;
++
++	// authentification du visiteur
++	if ($GLOBALS['_COOKIE']['spip_session'] OR
++	($GLOBALS['_SERVER']['PHP_AUTH_USER']  AND !$ignore_auth_http)) {
++		include_ecrire (&quot;inc_session.php3&quot;);
++		verifier_visiteur();
++	}
++	// multilinguisme
++	if ($forcer_lang AND ($forcer_lang!=='non') AND empty($GLOBALS['_POST'])) {
++		include_ecrire('inc_lang.php3');
++		verifier_lang_url();
++	}
++	if ($GLOBALS['_GET']['lang']) {
++		include_ecrire('inc_lang.php3');
++		lang_select($GLOBALS['_GET']['lang']);
++	}
++
++	// Si envoi pour un forum, enregistrer puis rediriger
++
++	if (strlen($GLOBALS['_POST']['confirmer_forum']) &gt; 0
++	OR ($GLOBALS['_POST']['afficher_texte']=='non'
++		AND $GLOBALS['_POST']['ajouter_mot'])) {
++		include('inc-messforum.php3');
++		redirige_par_entete(enregistre_forum());
++	}
++
++	// si signature de petition, l'enregistrer avant d'afficher la page
++	// afin que celle-ci contienne la signature
++
++	if ($GLOBALS['_GET']['val_confirm']) {
++		include_local(find_in_path('inc-formulaire_signature.php3'));
++		reponse_confirmation($GLOBALS['_GET']['id_article'], $val_confirm);
++	}
++
++	//  refus du debug si pas dans les options generales ni admin connecte
++	if ($var_mode=='debug') {
++		if (($GLOBALS['code_activation_debug'] == 'oui')
++		OR $auteur_session['statut'] == '0minirezo')
++			spip_log('debug !');
++		else
++			$var_mode = false; 
++	}
++
++	// est-on admin ?
++	if ($affiche_boutons_admin = (!$flag_preserver
++	AND ($GLOBALS['_COOKIE']['spip_admin']
++	OR $GLOBALS['_COOKIE']['spip_debug'])))
++		include_local(find_in_path('inc-formulaire_admin.php3'));
++
++	$tableau_des_erreurs = array();
++	$page = afficher_page_globale ($fond, $delais, $use_cache);
++
++
++	//
++	// Envoyer les entetes appropries
++	// a condition d'etre sur de pouvoir le faire
++	//
++	if (!$flag_preserver
++	AND $flag_ob AND !strlen(@ob_get_contents())) {
++
++		// Si la page est vide, gerer l'erreur 404
++		if (preg_match('/^[[:space:]]*$/', $page['texte'])
++		AND $var_mode != 'debug') {
++			header(&quot;HTTP/1.0 404&quot;);
++			header(&quot;Content-Type: text/html; charset=&quot;.lire_meta('charset'));
++			$contexte_inclus = array(
++				'erreur_aucun' =&gt; message_erreur_404()
++			);
++			include(find_in_path('404.php3'));
++		}
++		// Interdire au client de cacher un login, un admin ou un recalcul
++		else if ($flag_dynamique OR $var_mode
++		OR $GLOBALS['_COOKIE']['spip_admin']) {
++			header(&quot;Cache-Control: no-cache,must-revalidate&quot;);
++			header(&quot;Pragma: no-cache&quot;);
++		}
++		// Pour les autres donner l'heure de modif
++		else if ($lastmodified) {
++			header(&quot;Last-Modified: &quot;.http_gmoddate($lastmodified).&quot; GMT&quot;);
++			header(&quot;Content-Type: text/html; charset=&quot;.lire_meta('charset'));
++		}
++	}
++
++	return $page;
++}
++
++
+ //
+ // Aller chercher la page dans le cache ou pas
+ //
+@@ -28,7 +127,7 @@
+ 
+ 		// log
+ 		if (!$log = $chemin_cache) $log = &quot;($fond, delais=$delais, &quot;
+-		. $GLOBALS['HTTP_SERVER_VARS']['REQUEST_METHOD'].&quot;)&quot;;
++		. $GLOBALS['_SERVER']['REQUEST_METHOD'].&quot;)&quot;;
+ 		spip_log (($inclusion ? 'calcul inclus':'calcul').' ('
+ 		.spip_timer('calculer_page').&quot;): $log&quot;);
+ 
+@@ -86,7 +185,7 @@
+ 	// demande de previsualisation ?
+ 	// -&gt; inc-calcul.php3 n'enregistrera pas les fichiers caches
+ 	// -&gt; inc-reqsql-squel.php3 acceptera les objets non 'publie'
+-	if ($var_preview == 'oui') {
++	if ($var_mode == 'preview') {
+ 		// Verifier qu'on a le droit de previsualisation
+ 		$statut = $GLOBALS['auteur_session']['statut'];
+ 		if ($statut=='0minirezo' OR
+@@ -95,7 +194,8 @@
+ 			$delais = 0;
+ 			$var_preview = true;
+ 			spip_log('preview !');
+-		}
++		} else
++			$var_preview = false;
+ 	}
+ 
+ 	// Faut-il effacer des pages invalidees ?
+@@ -121,7 +221,7 @@
+ 		$lastmodified = @filemtime($chemin_cache);
+ 		$headers_only = http_last_modified($lastmodified);
+ 	}
+-	$headers_only |= ($GLOBALS['HTTP_SERVER_VARS']['REQUEST_METHOD'] == 'HEAD');
++	$headers_only |= ($GLOBALS['_SERVER']['REQUEST_METHOD'] == 'HEAD');
+ 
+ 	if ($headers_only) {
+ 		if ($chemin_cache)
+@@ -137,6 +237,7 @@
+ 		// Obtenir la page
+ 		$page = obtenir_page ('', $chemin_cache, $delais, $use_cache,
+ 		$fond, false);
++
+ 		if (!$flag_preserver) {
+ 		// Entete content-type: xml ou html ; charset
+ 			if ($xhtml) {
+@@ -163,10 +264,8 @@
+ 	if ($chemin_cache) $page['cache'] = $chemin_cache;
+ 
+ 	if ($var_preview AND !$flag_preserver) {
+-		$url = $GLOBALS['clean_link'];
+-		$url-&gt;delvar('var_preview');
+-		$url = $url-&gt;geturl();
+ 		include_ecrire('inc_lang.php3');
++		include_ecrire('inc_filtres.php3');
+ 		lang_select($GLOBALS['auteur_session']['lang']);
+ 		$page['texte'] .= '&lt;div style=&quot;
+ 		display: block;
+@@ -179,8 +278,9 @@
+ 		top: 0px;
+ 		left: 0px;
+ 		position: absolute;
+-		&quot;&gt;&lt;a href=&quot;'.$url.'&quot;&gt;&lt;img src=&quot;' . _DIR_IMG_PACK . 'naviguer-site.png&quot; align=&quot;left&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;
+-&nbsp; '.majuscules(_T('previsualisation')).'&lt;/div&gt;';
++		&quot;&gt;&lt;img src=&quot;' . _DIR_IMG_PACK
++		. 'naviguer-site.png&quot; align=&quot;left&quot; border=&quot;0&quot; /&gt;&nbsp; '
++		. majuscules(_T('previsualisation')).'&lt;/div&gt;';
+ 	}
+ 
+ 	return $page;
+@@ -189,14 +289,7 @@
+ 
+ function terminer_public_global() {
+ 
+-	// Mise a jour des fichiers langues de l'espace public
+-	if ($GLOBALS['cache_lang_modifs']) {
+-		include_ecrire('inc_lang.php3');
+-		ecrire_caches_langues();
+-	}
+-
+ 	// Gestion des statistiques du site public
+-
+ 	if (lire_meta(&quot;activer_statistiques&quot;) != &quot;non&quot;) {
+ 		include_local (&quot;inc-stats.php3&quot;);
+ 		ecrire_stats();
+@@ -206,13 +299,6 @@
+ 	cron();
+ }
+ 
+-// Cette fonction sert au dernier ob_start() de inc-public : elle
+-// va absorber les eventuels messages d'erreur de inc_cron(), permettant
+-// de ne pas planter le content-length qu'on a annonce ; decommenter la ligne
+-// pour afficher les bugs
+-function masquer_les_bugs ($bugs) {
+-	# return $bugs;
+-}
+ 
+ function inclure_page($fond, $delais_inclus, $contexte_inclus, $cache_incluant='') {
+ 
+@@ -232,6 +318,13 @@
+ 		lang_select($lang);
+ 		$lang_select = true; // pour lang_dselect en sortie
+ 	}
++	
++	// Si on est inclus en POST, il faut ajouter les variables _POST dans
++	// le contexte inclus, sinon les formulaires ne marchent pas...
++	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
++		include_local('inc-calcul.php3');
++		$contexte_inclus = array_merge(calculer_contexte(), $contexte_inclus);
++	}
+ 
+ 	$page = obtenir_page ($contexte_inclus, $chemin_cache, $delais_inclus,
+ 	$use_cache, $fond, true);
+@@ -242,7 +335,32 @@
+ 	return $page;
+ }
+ 
++// equivalente a texte_script dans inc_filtre.
++
++function securise_script($texte) {
++	return str_replace('\'', '\\\'', str_replace('\\', '\\\\', $texte));
++}
++
+ # les balises dynamiques sont traitees comme des inclusions
++
++function synthetiser_balise_dynamique($nom, $args, $file, $lang) {
++	return
++		('&lt;'.'?php 
++include_ecrire(\'inc_lang.php3\');
++lang_select(&quot;'.$lang.'&quot;);
++include_local(&quot;'
++		. $file
++		. '&quot;);
++inclure_balise_dynamique(balise_'
++		. $nom
++		. '_dyn(\''
++		. join(&quot;', '&quot;, array_map(&quot;securise_script&quot;, $args))
++		. '\'));
++	lang_dselect();
++?'
++		.&quot;&gt;&quot;);
++}
++
+ # Attention, un appel explicite a cette fonction suppose certains include
+ # (voir l'exemple de spip_inscription et spip_pass)
+ 
+@@ -251,17 +369,41 @@
+ 		echo $r;
+ 	else {
+ 		list($fond, $delais, $contexte_inclus) = $r;
++
+ 		if ((!$contexte_inclus['lang']) AND
+ 		($GLOBALS['spip_lang'] != lire_meta('langue_site')))
+-			$contexte_inclus['lang'] = $GLOBALS['spip_lang']; 
++			$contexte_inclus['lang'] = $GLOBALS['spip_lang'];
++
++
++		// Appeler la page
+ 		$page = inclure_page($fond, $delais, $contexte_inclus);
+ 		if ($page['process_ins'] == 'html')
+ 			echo $page['texte'];
+ 		else
+ 			eval('?' . '&gt;' . $page['texte']);
+-		
++
+ 		if ($page['lang_select'])
+ 			lang_dselect();
++
+ 	}
+ }
++
++
++function message_erreur_404 () {
++	if ($GLOBALS['id_article'])
++		$erreur = 'aucun_article';
++	else if ($GLOBALS['id_rubrique'])
++		$erreur = 'aucune_rubrique';
++	else if ($GLOBALS['id_breve'])
++		$erreur = 'aucune_breve';
++	else if ($GLOBALS['id_auteur'])
++		$erreur = 'aucun_auteur';
++	else if ($GLOBALS['id_syndic'])
++		$erreur = 'aucun_site';
++	else
++		$erreur = '';
++
++	return _T(&quot;public:&quot;.$erreur);
++}
++
+ ?&gt;
+
+Index: inc-urls-propres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-urls-propres.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-urls-propres.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-urls-propres.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -9,7 +9,7 @@
+ 
+ - Comment utiliser ce jeu d'URLs ?
+ 
+-Il faut recopier le fichier htaccess-propre.txt sous le nom .htaccess
++Il faut recopier le fichier htaccess-propres.txt sous le nom .htaccess
+ dans le repertoire de base du site SPIP (attention a ne pas ecraser
+ d'autres reglages que vous pourriez avoir mis dans ce fichier)
+ 
+@@ -29,7 +29,9 @@
+ 	// Sinon, creer l'URL
+ 	include_ecrire(&quot;inc_filtres.php3&quot;);
+ 	include_ecrire(&quot;inc_charsets.php3&quot;);
+-	$url = translitteration(corriger_caracteres(supprimer_tags(supprimer_numero($row['titre']))));
++	$url = translitteration(corriger_caracteres(
++		supprimer_tags(supprimer_numero(extraire_multi($row['titre'])))
++		));
+ 	$url = @preg_replace(',[[:punct:][:space:]]+,u', ' ', $url);
+ 	// S'il reste des caracteres non latins, utiliser l'id a la place
+ 	if (preg_match(&quot;,[^a-zA-Z0-9 ],&quot;, $url)) {
+@@ -54,7 +56,8 @@
+ 	// Verifier les eventuels doublons et mettre a jour
+ 	$lock = &quot;url $type $id_objet&quot;;
+ 	spip_get_lock($lock, 10);
+-	$query = &quot;SELECT $col_id FROM $table WHERE url_propre='&quot;.addslashes($url).&quot;'&quot;;
++	$query = &quot;SELECT $col_id FROM $table
++		WHERE url_propre='&quot;.addslashes($url).&quot;'&quot;;
+ 	if (spip_num_rows(spip_query($query)) &gt; 0) {
+ 		$url = $url.','.$id_objet;
+ 	}
+@@ -114,14 +117,15 @@
+ 	global $contexte;
+ 
+ 	// Migration depuis anciennes URLs ?
+-	if ($GLOBALS['HTTP_SERVER_VARS']['REQUEST_METHOD'] != 'POST' &amp;&amp;
+-		preg_match(',(^|/)(article|breve|rubrique|mot)\.php3?([\?&amp;].*)?$,', $url, $regs)) {
+-		$type = $regs[2];
++	if ($GLOBALS['_SERVER']['REQUEST_METHOD'] != 'POST' &amp;&amp;
++		preg_match(',(^|/)((article|breve|rubrique|mot)\.php3?([\?&amp;].*)?)$,', $url, $regs)) {
++		$type = $regs[3];
+ 		$id_objet = intval($GLOBALS['id_'.$type]);
+ 		if ($id_objet) {
+ 			$func = &quot;generer_url_$type&quot;;
+ 			$url_propre = $func($id_objet);
+-			if ($url_propre) {
++			if ($url_propre
++			AND ($url_propre&lt;&gt;$regs[2])) {
+ 				http_status(301);
+ 				Header(&quot;Location: $url_propre&quot;);
+ 				exit;
+@@ -130,7 +134,7 @@
+ 		return;
+ 	}
+ 
+-	$url_propre = $GLOBALS['HTTP_SERVER_VARS']['REDIRECT_url_propre'];
++	$url_propre = $GLOBALS['_SERVER']['REDIRECT_url_propre'];
+ 	if (!$url_propre) $url_propre = $GLOBALS['HTTP_ENV_VARS']['url_propre'];
+ 	if (!$url_propre) $url_propre = substr($url, strrpos($url, '/') + 1);
+ 	if (!$url_propre) return;
+@@ -154,7 +158,8 @@
+ 
+ 	$table = &quot;spip_&quot;.$type.&quot;s&quot;;
+ 	$col_id = &quot;id_&quot;.$type;
+-	$query = &quot;SELECT $col_id FROM $table WHERE url_propre='&quot;.addslashes($url_propre).&quot;'&quot;;
++	$query = &quot;SELECT $col_id FROM $table
++		WHERE url_propre='&quot;.addslashes($url_propre).&quot;'&quot;;
+ 	$result = spip_query($query);
+ 	if (spip_num_rows($result) == 1) {
+ 		$row = spip_fetch_array($result);
+
+Index: spip_cookie.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/spip_cookie.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- spip_cookie.php3	13 Jan 2005 15:57:38 -0000	1.1
++++ spip_cookie.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -3,20 +3,27 @@
+ include (&quot;ecrire/inc_version.php3&quot;);
+ include_ecrire (&quot;inc_session.php3&quot;);
+ 
++
+ // gerer l'auth http
+ function auth_http($url, $essai_auth_http) {
++	global $_SERVER;
+ 	if ($essai_auth_http == 'oui') {
+-		if (!verifier_php_auth()) {
+-		  $url = quote_amp(urlencode($url));
+-		  ask_php_auth(_T('login_connexion_refusee'),_T('login_login_pass_incorrect'),_T('login_retour_site'), &quot;url=$url&quot;,_T('login_nouvelle_tentative'), (ereg(_DIR_RESTREINT_ABS, $url)));
+-		  exit;
+-		}
+-		else
++		if (verifier_php_auth())
+ 			redirige_par_entete($url);
++		else {
++			$url = quote_amp(urlencode($url));
++			ask_php_auth(_T('login_connexion_refusee'),
++			_T('login_login_pass_incorrect'), _T('login_retour_site'),
++			&quot;url=$url&quot;, _T('login_nouvelle_tentative'),
++			(ereg(_DIR_RESTREINT_ABS, $url)));
++			exit;
++		}
+ 	}
+ 	// si demande logout auth_http
+ 	else if ($essai_auth_http == 'logout') {
+-		ask_php_auth(_T('login_deconnexion_ok'),_T('login_verifiez_navigateur'),_T('login_retour_public'),&quot;redirect=ecrire&quot;,_T('login_test_navigateur'), true);
++		ask_php_auth(_T('login_deconnexion_ok'),
++		_T('login_verifiez_navigateur'), _T('login_retour_public'),
++		&quot;redirect=&quot;._DIR_RESTREINT_ABS, _T('login_test_navigateur'), true);
+ 		exit;
+ 	}
+ }
+@@ -42,7 +49,6 @@
+ 		exit;
+ 	}
+ }
+-#spip_log(&quot;cookie: $url&quot;);
+ 
+ if ($url)  $url = urldecode($url);
+ 
+@@ -67,13 +73,19 @@
+ 			zap_sessions($auteur_session['id_auteur'], true);
+ 			spip_setcookie('spip_session', $spip_session, time() - 3600 * 24);
+ 		}
+-		if ($PHP_AUTH_USER AND !$ignore_auth_http) {
++		
++		if ($_SERVER['PHP_AUTH_USER']
++		AND !$ignore_auth_http
++		AND verifier_php_auth()) {
+ 			auth_http(($url ? $url : _DIR_RESTREINT_ABS), 'logout');
+ 		}
+ 		unset ($auteur_session);
+ 	}
+ 
+-	redirige_par_entete($url ? $url : &quot;spip_login.php3&quot;);
++	redirige_par_entete($url ? $url :
++			    (&quot;spip_login.php3?url=$url&amp;inscription=&quot; .
++			     ((lire_meta(&quot;accepter_inscriptions&quot;) == &quot;oui&quot;)?
++			      'spip_inscription.php3' : '')));
+ }
+ 
+ // en cas de login sur bonjour=oui, on tente de poser un cookie
+@@ -82,7 +94,10 @@
+ if ($test_echec_cookie == 'oui') {
+ 	spip_setcookie('spip_session', 'test_echec_cookie');
+ 	redirige_par_entete(&quot;spip_login.php3?var_echec_cookie=oui&amp;url=&quot; .
+-			    ($url ? $url : _DIR_RESTREINT_ABS));
++			    ($url ? $url : _DIR_RESTREINT_ABS) .
++			    &quot;&amp;inscription=&quot; .
++			     ((lire_meta(&quot;accepter_inscriptions&quot;) == &quot;oui&quot;)?
++			      'spip_inscription.php3' : ''));
+ }
+ 
+ // Tentative de login
+@@ -132,7 +147,9 @@
+ 	}
+ 	else {
+ 		if (ereg(_DIR_RESTREINT_ABS, $redirect)) {
+-			$redirect = &quot;spip_login.php3&quot;;
++			$redirect = &quot;spip_login.php3?inscription=&quot; .
++			     ((lire_meta(&quot;accepter_inscriptions&quot;) == &quot;oui&quot;)?
++			      'spip_inscription.php3' : '');
+ 		}
+ 		$redirect .= (strpos($redirect, &quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;) . &quot;var_login=$login&quot;;
+ 		if ($session_password || $session_password_md5)
+@@ -143,8 +160,13 @@
+ 
+ // cookie d'admin ?
+ if ($cookie_admin == &quot;non&quot;) {
++	if (!$retour)
++	  $retour = 'spip_login.php3?var_url='.urlencode($url) .
++	     &quot;&amp;inscription=&quot;  .
++	    ((lire_meta(&quot;accepter_inscriptions&quot;) == &quot;oui&quot;)? 'spip_inscription.php3' : '');
++
+ 	spip_setcookie('spip_admin', $spip_admin, time() - 3600 * 24);
+-	$redirect = ereg_replace(&quot;[?&amp;]var_login=[^&amp;]*&quot;, '', $redirect);
++	$redirect = ereg_replace(&quot;[?&amp;]var_login=[^&amp;]*&quot;, '', $retour);
+ 	$redirect .= (strpos($redirect, &quot;?&quot;) ? &quot;&amp;&quot; : &quot;?&quot;) . &quot;var_login=-1&quot;;
+ }
+ else if ($cookie_admin AND $spip_admin != $cookie_admin) {
+
+Index: inc-boucles.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/inc-boucles.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc-boucles.php3	20 Jan 2005 10:25:17 -0000	1.1
++++ inc-boucles.php3	6 Feb 2005 13:59:32 -0000	1.2
+@@ -33,7 +33,7 @@
+ function boucle_ARTICLES_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;articles AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_articles AS $id_table&quot;;
+ 	if (!$GLOBALS['var_preview']) {
+ 		$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+ 		if (lire_meta(&quot;post_dates&quot;) == 'non')
+@@ -49,13 +49,13 @@
+ function boucle_AUTEURS_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;auteurs AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_auteurs AS $id_table&quot;;
+ 	// Si pas de lien avec un article, selectionner
+ 	// uniquement les auteurs d'un article publie
+ 	if (!$GLOBALS['var_preview'])
+ 	if (!$boucle-&gt;lien AND !$boucle-&gt;tout) {
+-		$boucle-&gt;from[] =  &quot;auteurs_articles AS lien&quot;;
+-		$boucle-&gt;from[] =  &quot;articles AS articles&quot;;
++		$boucle-&gt;from[] =  &quot;spip_auteurs_articles AS lien&quot;;
++		$boucle-&gt;from[] =  &quot;spip_articles AS articles&quot;;
+ 		$boucle-&gt;where[] = &quot;lien.id_auteur=$id_table.id_auteur&quot;;
+ 		$boucle-&gt;where[] = 'lien.id_article=articles.id_article';
+ 		$boucle-&gt;where[] = &quot;articles.statut='publie'&quot;;
+@@ -72,7 +72,7 @@
+ function boucle_BREVES_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;breves AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_breves AS $id_table&quot;;
+ 	if (!$GLOBALS['var_preview'])
+ 		$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+ 	else
+@@ -87,7 +87,7 @@
+ function boucle_FORUMS_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;forum AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_forum AS $id_table&quot;;
+ 	// Par defaut, selectionner uniquement les forums sans pere
+ 	if (!$boucle-&gt;tout AND !$boucle-&gt;plat) 
+ 		{
+@@ -104,9 +104,9 @@
+ function boucle_SIGNATURES_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;signatures AS $id_table&quot;;
+-	$boucle-&gt;from[] =  &quot;petitions AS petitions&quot;;
+-	$boucle-&gt;from[] =  &quot;articles articles&quot;;
++	$boucle-&gt;from[] =  &quot;spip_signatures AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_petitions AS petitions&quot;;
++	$boucle-&gt;from[] =  &quot;spip_articles articles&quot;;
+ 	$boucle-&gt;where[] = &quot;petitions.id_article=articles.id_article&quot;;
+ 	$boucle-&gt;where[] = &quot;petitions.id_article=$id_table.id_article&quot;;
+ 	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+@@ -121,8 +121,8 @@
+ function boucle_DOCUMENTS_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;documents AS $id_table&quot;;
+-	$boucle-&gt;from[] =  &quot;types_documents AS types_documents&quot;;
++	$boucle-&gt;from[] =  &quot;spip_documents AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_types_documents AS types_documents&quot;;
+ 	$boucle-&gt;where[] = &quot;$id_table.id_type=types_documents.id_type&quot;;
+ 	$boucle-&gt;where[] = &quot;$id_table.taille &gt; 0&quot;;
+ 	return calculer_boucle($id_boucle, $boucles); 
+@@ -135,7 +135,7 @@
+ function boucle_TYPES_DOCUMENTS_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;types_documents AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_types_documents AS $id_table&quot;;
+ 	return calculer_boucle($id_boucle, $boucles); 
+ }
+ 
+@@ -146,7 +146,7 @@
+ function boucle_GROUPES_MOTS_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;groupes_mots AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_groupes_mots AS $id_table&quot;;
+ 	return calculer_boucle($id_boucle, $boucles); 
+ }
+ 
+@@ -157,7 +157,7 @@
+ function boucle_MOTS_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;mots AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_mots AS $id_table&quot;;
+ 	return calculer_boucle($id_boucle, $boucles); 
+ }
+ 
+@@ -168,7 +168,7 @@
+ function boucle_RUBRIQUES_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;rubriques AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_rubriques AS $id_table&quot;;
+ 	if (!$GLOBALS['var_preview'])
+ 		if (!$boucle-&gt;tout) $boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+ 	return calculer_boucle($id_boucle, $boucles); 
+@@ -181,7 +181,7 @@
+ function boucle_HIERARCHIE_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;rubriques AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_rubriques AS $id_table&quot;;
+ 
+ 	// Si la boucle mere est une boucle RUBRIQUES il faut ignorer la feuille
+ 	// sauf si le critere {tout} est present (cf. inc-html-squel)
+@@ -190,7 +190,7 @@
+ 	// $hierarchie sera calculee par une fonction de inc-calcul-outils
+ 	$boucle-&gt;where[] = 'id_rubrique IN ($hierarchie)';
+ 	$boucle-&gt;select[] = 'FIND_IN_SET(id_rubrique, \'$hierarchie\')-1 AS rang';
+-	$boucle-&gt;order = 'rang';
++	$boucle-&gt;default_order = 'rang';
+ 	$boucle-&gt;hierarchie = '$hierarchie = calculer_hierarchie('
+ 	. calculer_argument_precedent($boucle-&gt;id_boucle, 'id_rubrique', $boucles)
+ 	. ', '
+@@ -206,7 +206,7 @@
+ function boucle_SYNDICATION_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;syndic AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_syndic AS $id_table&quot;;
+ 	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+ 	return calculer_boucle($id_boucle, $boucles); 
+ }
+@@ -218,8 +218,8 @@
+ function boucle_SYNDIC_ARTICLES_dist($id_boucle, &amp;$boucles) {
+ 	$boucle = &amp;$boucles[$id_boucle];
+ 	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;syndic_articles  AS $id_table&quot;;
+-	$boucle-&gt;from[] =  &quot;syndic AS syndic&quot;;
++	$boucle-&gt;from[] =  &quot;spip_syndic_articles  AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_syndic AS syndic&quot;;
+ 	$boucle-&gt;where[] = &quot;$id_table.id_syndic=syndic.id_syndic&quot;;
+ 	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+ 	$boucle-&gt;where[] = &quot;syndic.statut='publie'&quot;;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000061.html">[Spip-carto-cvs] spip-carto/dist ical.html,NONE,1.1 resume.html,NONE,1.1 site.html,NONE,1.1 login.html,NONE,1.1 breve.html,NONE,1.1 sommaire.html,NONE,1.1 404.html,NONE,1.1 sommaire_texte.html,NONE,1.1 nouveautes.html,NONE,1.1 404.php3,NONE,1.1 rubrique.html,NONE,1.1 distrib.html,NONE,1.1 forum.html,NONE,1.1 recherche.html,NONE,1.1 auteur.html,NONE,1.1 article.html,NONE,1.1 mot.html,NONE,1.1 plan.html,NONE,1.1 backend-breves.html,NONE,1.1 backend.html,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000063.html">[Spip-carto-cvs] spip-carto carto_lien.php3,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#62">[ date ]</a>
+              <a href="thread.html#62">[ thread ]</a>
+              <a href="subject.html#62">[ subject ]</a>
+              <a href="author.html#62">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

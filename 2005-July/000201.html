@@ -1,0 +1,677 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto inc-html-squel.php3,1.6,1.7 inc-urls-propres.php3,1.4,1.5 inc-balises.php3,1.7,1.8 inc-criteres.php3,1.5,1.6 inc-public.php3,1.4,1.5 carto.php3,1.5,1.6 inc-cache.php3,1.9,1.10 inc-boucles.php3,1.5,1.6 inc-compilo.php3,1.6,1.7 inc-calcul-outils.php3,1.5,1.6 inc-compilo-api.php3,1.5,1.6
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-html-squel.php3%2C1.6%2C1.7%20inc-urls-propres.php3%2C1.4%2C1.5%20inc-balises.php3%2C1.7%2C1.8%20inc-criteres.php3%2C1.5%2C1.6%20inc-public.php3%2C1.4%2C1.5%20carto.php3%2C1.5%2C1.6%20inc-cache.php3%2C1.9%2C1.10%20inc-boucles.php3%2C1.5%2C1.6%20inc-compilo.php3%2C1.6%2C1.7%20inc-calcul-outils.php3%2C1.5%2C1.6%20inc-compilo-api.php3%2C1.5%2C1.6&In-Reply-To=%3C200507212147.j6LLlFqX023937%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000202.html">
+   <LINK REL="Next"  HREF="000195.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto inc-html-squel.php3,1.6,1.7 inc-urls-propres.php3,1.4,1.5 inc-balises.php3,1.7,1.8 inc-criteres.php3,1.5,1.6 inc-public.php3,1.4,1.5 carto.php3,1.5,1.6 inc-cache.php3,1.9,1.10 inc-boucles.php3,1.5,1.6 inc-compilo.php3,1.6,1.7 inc-calcul-outils.php3,1.5,1.6 inc-compilo-api.php3,1.5,1.6</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-html-squel.php3%2C1.6%2C1.7%20inc-urls-propres.php3%2C1.4%2C1.5%20inc-balises.php3%2C1.7%2C1.8%20inc-criteres.php3%2C1.5%2C1.6%20inc-public.php3%2C1.4%2C1.5%20carto.php3%2C1.5%2C1.6%20inc-cache.php3%2C1.9%2C1.10%20inc-boucles.php3%2C1.5%2C1.6%20inc-compilo.php3%2C1.6%2C1.7%20inc-calcul-outils.php3%2C1.5%2C1.6%20inc-compilo-api.php3%2C1.5%2C1.6&In-Reply-To=%3C200507212147.j6LLlFqX023937%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto inc-html-squel.php3,1.6,1.7 inc-urls-propres.php3,1.4,1.5 inc-balises.php3,1.7,1.8 inc-criteres.php3,1.5,1.6 inc-public.php3,1.4,1.5 carto.php3,1.5,1.6 inc-cache.php3,1.9,1.10 inc-boucles.php3,1.5,1.6 inc-compilo.php3,1.6,1.7 inc-calcul-outils.php3,1.5,1.6 inc-compilo-api.php3,1.5,1.6">stef at berlios.de
+       </A><BR>
+    <I>Thu Jul 21 23:47:15 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000202.html">[Spip-carto-cvs] spipcarto/formulaires formulaire_signature.html,1.4,1.5 formulaire_inscription.html,1.3,1.4 formulaire_site.html,1.3,1.4 formulaire_login.html,1.3,1.4 formulaire_forum_previsu.html,1.1,1.2 inc-formulaire_forum.php3,1.4,1.5 formulaire_admin.html,1.4,1.5 inc-formulaire_site.php3,1.3,1.4 inc-formulaire_signature.php3,1.3,1.4 inc-formulaire_admin.php3,1.3,1.4 inc-formulaire_inscription.php3,1.4,1.5 inc-login_public.php3,1.4,1.5
+</A></li>
+        <LI>Next message: <A HREF="000195.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_eu.php3,1.1,1.2 spip_en.php3,1.4,1.5 spip_gl.php3,1.3,1.4 spip_fa.php3,1.4,1.5 ecrire_it.php3,1.3,1.4 ecrire_fa.php3,1.3,1.4 ecrire_es.php3,1.4,1.5 spip_oc_va.php3,1.3,1.4 spip_zh.php3,1.3,1.4 spip_ro.php3,1.1,1.2 spip_tr.php3,1.1,1.2 spip_es.php3,1.4,1.5 ecrire_fr.php3,1.3,1.4 spip_ja.php3,1.1,1.2 ecrire_ro.php3,1.1,1.2 spip_fr.php3,1.4,1.5 spip_it.php3,1.4,1.5 spip_oc_prv.php3,1.3,1.4 ecrire_lb.php3,1.4,1.5 spip_ca.php3,1.4,1.5 ecrire_en.php3,1.3,1.4 ecrire_ar.php3,1.3,1.4 ecrire_tr.php3,1.1,1.2 spip_oc_ni.php3,1.3,1.4 ecrire_ja.php3,1.1,1.2 spip_lb.php3,1.4,1.5 ecrire_ca.php3,1.3,1.4 spip_ar.php3,1.4,1.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv22230
+
+Modified Files:
+	inc-html-squel.php3 inc-urls-propres.php3 inc-balises.php3 
+	inc-criteres.php3 inc-public.php3 carto.php3 inc-cache.php3 
+	inc-boucles.php3 inc-compilo.php3 inc-calcul-outils.php3 
+	inc-compilo-api.php3 
+Log Message:
+synchro CVS 20050719
+
+Index: inc-html-squel.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-html-squel.php3,v
+retrieving revision 1.6
+retrieving revision 1.7
+diff -u -d -r1.6 -r1.7
+--- inc-html-squel.php3	5 Jul 2005 00:43:56 -0000	1.6
++++ inc-html-squel.php3	21 Jul 2005 21:47:12 -0000	1.7
+@@ -346,7 +346,7 @@
+ 			else {
+ 			  preg_match(&quot;/^([a-zA-Z][a-zA-Z0-9]*)[[:space:]]*(.*)$/ms&quot;, $param, $m);
+ 			  $op = $m[1];
+-			  $v[1][0]-&gt;texte = $m[2];
++			  if ($m[2]) $v[1][0]-&gt;texte = $m[2]; else array_shift($v[1]);
+ 			}
+ 			array_shift($v);
+ 			$crit = new Critere;
+@@ -448,16 +448,16 @@
+ 		$result-&gt;id_parent = $id_parent;
+ 
+ # attention: reperer la premiere des 2 balises: pre_boucle ou boucle
+-# $n == $p possible car &lt;B est un prefixe de &lt;BOUCLE
+-		$n = strpos($texte, BALISE_PRE_BOUCLE);
+ 
+-		if ($n === false || ($n &gt;= $p)) {
++		$n = ereg(BALISE_PRE_BOUCLE . '[0-9_]', $texte, $r);
++		if ($n) $n = strpos($texte, $r[0]);
++		if (($n === false) || ($n &gt; $p)) {
+ 		  $debut = substr($texte, 0, $p);
+ 		  $milieu = substr($texte, $p);
+ 		  $k = strpos($milieu, '(');
+-		  $id_boucle = substr($milieu,
+-				       strlen(BALISE_BOUCLE),
+-				       $k - strlen(BALISE_BOUCLE));
++		  $id_boucle = trim(substr($milieu,
++					   strlen(BALISE_BOUCLE),
++					   $k - strlen(BALISE_BOUCLE)));
+ 		  $milieu = substr($milieu, $k);
+ 
+ 		  /* a adapter: si $n pointe sur $id_boucle ...
+@@ -475,8 +475,9 @@
+ 				       strlen(BALISE_PRE_BOUCLE),
+ 				       $k - strlen(BALISE_PRE_BOUCLE));
+ 
+-		  if (!($p = strpos($milieu, BALISE_BOUCLE . $id_boucle . &quot;(&quot;)))
++		  if (!ereg(BALISE_BOUCLE . $id_boucle . &quot;[[:space:]]*\(&quot;, $milieu, $r))
+ 		    erreur_squelette((_T('zbug_erreur_boucle_syntaxe')), $id_boucle);
++		  $p = strpos($milieu, $r[0]);
+ 		  $result-&gt;avant = substr($milieu, $k+1, $p-$k-1);
+ 		  $milieu = substr($milieu, $p+strlen($id_boucle)+strlen(BALISE_BOUCLE));
+ 		}
+
+Index: inc-urls-propres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-urls-propres.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- inc-urls-propres.php3	30 Jun 2005 10:09:36 -0000	1.4
++++ inc-urls-propres.php3	21 Jul 2005 21:47:12 -0000	1.5
+@@ -211,7 +211,10 @@
+ 
+ 	$url_propre = $GLOBALS['_SERVER']['REDIRECT_url_propre'];
+ 	if (!$url_propre) $url_propre = $GLOBALS['HTTP_ENV_VARS']['url_propre'];
+-	if (!$url_propre) $url_propre = substr($url, strrpos($url, '/') + 1);
++	if (!$url_propre) {
++		$url = substr($url, strrpos($url, '/') + 1);
++		$url_propre = preg_replace(',[?].*,', '', $url);
++	}
+ 	if (!$url_propre) return;
+ 
+ 	// Compatilibite avec propres2
+
+Index: inc-balises.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-balises.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- inc-balises.php3	30 Jun 2005 10:09:36 -0000	1.7
++++ inc-balises.php3	21 Jul 2005 21:47:12 -0000	1.8
+@@ -43,7 +43,7 @@
+ 		'NOM_SITE_SPIP' =&gt; 'typo(%s)',
+ 		'NOM_SITE' =&gt; 'typo(%s)',
+ 		'NOM' =&gt; 'typo(%s)',
+-		'PARAMETRES_FORUM' =&gt; 'htmlspecialchars(%s)',
++		'PARAMETRES_FORUM' =&gt; 'htmlspecialchars(lang_parametres_forum(%s))',
+ 		'PS' =&gt; 'traiter_raccourcis(%s)',
+ 		'SOUSTITRE' =&gt; 'typo(%s)',
+ 		'SURTITRE' =&gt; 'typo(%s)',
+@@ -773,8 +773,10 @@
+ 	return ajouter_invalideur($type, $valeur, $code);
+ }
+ 
+-// reference a l'URL de la page courante
+-
++// Reference a l'URL de la page courante
++// Attention dans un INCLURE() ou une balise dynamique on n'a pas le droit de
++// mettre en cache #SELF car il peut correspondre a une autre page (attaque XSS)
++// <A HREF="http://www.spip.net/@self">http://www.spip.net/@self</A>
+ function balise_SELF_dist($p) {
+ 	$p-&gt;code = 'quote_amp($GLOBALS[&quot;clean_link&quot;]-&gt;getUrl())';
+ 	$p-&gt;statut = 'php';
+
+Index: inc-criteres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-criteres.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc-criteres.php3	30 Jun 2005 10:09:36 -0000	1.5
++++ inc-criteres.php3	21 Jul 2005 21:47:12 -0000	1.6
+@@ -53,7 +53,6 @@
+ // attention: boucle-&gt;doublons designe une variable qu'on affecte
+ function critere_doublons_dist($idb, &amp;$boucles, $crit) {
+ 	$boucle = &amp;$boucles[$idb];
+-	$NOT_IN = $crit-&gt;not ? '' : 'NOT';
+ 	$boucle-&gt;where[] = '&quot; .' .
+ 	  &quot;calcul_mysql_in('&quot;.$boucle-&gt;id_table . '.' . $boucle-&gt;primary .
+ 	  &quot;', &quot; .
+@@ -64,8 +63,9 @@
+ 	  &quot;' . &quot; .
+ 	  calculer_liste($crit-&gt;param[0], array(), $boucles, $boucles[$idb]-&gt;id_parent) .
+ 	  ')], \'' . 
+-	  $NOT_IN . 
+-	  &quot; ') . \&quot;&quot;;
++	  ($crit-&gt;not ? '' : 'NOT') .
++	  &quot;') . \&quot;&quot;;
++	if ($crit-&gt;not) $boucle-&gt;doublons = &quot;&quot;;
+ }
+ 
+ // {lang_select}
+@@ -108,24 +108,6 @@
+ 
+ }
+ 
+-// {inverse}
+-// <A HREF="http://www.spip.net/@inverse">http://www.spip.net/@inverse</A>
+-function critere_inverse_dist($idb, &amp;$boucles, $crit) {
+-	$param = $crit-&gt;op;
+-	$not = $crit-&gt;not;
+-	$boucle = &amp;$boucles[$idb];
+-	// Classement par ordre inverse
+-
+-	if (!$not) {
+-		if ($boucle-&gt;order)
+-			$boucle-&gt;order .= &quot;.' DESC'&quot;;
+-		else 
+-			erreur_squelette(_T('zbug_inversion_ordre_inexistant'), 
+-			&quot;BOUCLE&quot; . $idb);
+-	} else
+-		erreur_squelette(_T('zbug_info_erreur_squelette'), &quot;{$param} BOUCLE$idb&quot;);
+-}
+-
+ // {traduction}
+ // <A HREF="http://www.spip.net/@traduction">http://www.spip.net/@traduction</A>
+ //   (id_trad&gt;0 AND id_trad=id_trad(precedent))
+@@ -196,52 +178,64 @@
+ // Tri : {par xxxx}
+ // <A HREF="http://www.spip.net/@par">http://www.spip.net/@par</A>
+ function critere_par_dist($idb, &amp;$boucles, $crit) {
++  critere_parinverse($idb, $boucles, $crit, '') ;
++}
++
++function critere_parinverse($idb, &amp;$boucles, $crit, $sens) {
+ 
+-	$not = $crit-&gt;not;
+ 	$boucle = &amp;$boucles[$idb];
+-	if ($not)
++	if ($crit-&gt;not)
+ 		erreur_squelette(_T('zbug_info_erreur_squelette'), $param);
+ 
+ 	$params = $crit-&gt;param;
+ 
+ 	foreach ($params as $tri) {
++
+ 	// tris specifies dynamiquement
+-	    if ($tri[0]-&gt;type != 'texte')
+-	      $order = calculer_liste($tri, array(), $boucles, $boucles[$idb]-&gt;id_parent);
++	  if ($tri[0]-&gt;type != 'texte') {
++	      $order = 
++		calculer_liste($tri, array(), $boucles, $boucles[$idb]-&gt;id_parent);
++	      $order =
++		&quot;((\$x = preg_replace(\&quot;/\\W/\&quot;,'',$order)) ? ('$boucle-&gt;id_table.' . \$x$sens) : '')&quot;;
++	  }
+ 	    else {
+-	      // on considere que {par   col#ENV{num}} est imposible
+-	      $tri = $tri[0]-&gt;texte;
++	      $par = array_shift($tri);
++	      $par = $par-&gt;texte;
+ 	// par hasard
+-		if ($tri == 'hasard') {
++		if ($par == 'hasard') {
+ 		// tester si cette version de MySQL accepte la commande RAND()
+ 		// sinon faire un gloubi-boulga maison avec de la mayonnaise.
+ 		  if (spip_query(&quot;SELECT RAND()&quot;))
+-			$tri = &quot;RAND()&quot;;
++			$par = &quot;RAND()&quot;;
+ 		  else
+-			$tri = &quot;MOD(&quot;.$boucle-&gt;id_table.'.'.$boucle-&gt;primary
++			$par = &quot;MOD(&quot;.$boucle-&gt;id_table.'.'.$boucle-&gt;primary
+ 			  .&quot; * UNIX_TIMESTAMP(),32767) &amp; UNIX_TIMESTAMP()&quot;;
+-		  $boucle-&gt;select[]= $tri . &quot; AS alea&quot;;
++		  $boucle-&gt;select[]= $par . &quot; AS alea&quot;;
+ 		  $order = &quot;'alea'&quot;;
+ 		}
+ 
+ 	// par titre_mot
+-		else if ($tri == 'titre_mot') {
++		else if ($par == 'titre_mot') {
+ 		  $order= &quot;'mots.titre'&quot;;
+ 		}
+ 
+ 	// par type_mot
+-		else if ($tri == 'type_mot'){
++		else if ($par == 'type_mot'){
+ 		  $order= &quot;'mots.type'&quot;;
+ 		}
+ 	// par num champ(, suite)
+-		else if (ereg(&quot;^num[[:space:]]+(.*)$&quot;,$tri, $match2)) {
+-		  $boucle-&gt;select[] = &quot;0+&quot;.$boucle-&gt;id_table.&quot;.&quot;.$match2[1].&quot; AS num&quot;;
+-		  $order = &quot;'num'&quot;;
++		else if (ereg(&quot;^num[[:space:]]*(.*)$&quot;,$par, $m)) {
++		  $texte = '0+' . $boucle-&gt;id_table . '.' . trim($m[1]);
++		  $suite = calculer_liste($tri, array(), $boucles, $boucle-&gt;id_parent);
++		  if ($suite !== &quot;''&quot;)
++		    $texte = &quot;\&quot; . ((\$x = $suite) ? ('$texte' . \$x) : '0')&quot; . &quot; . \&quot;&quot;;
++		  $as = 'num' .($boucle-&gt;order ? count($boucle-&gt;order) : &quot;&quot;);
++		  $boucle-&gt;select[] = $texte . &quot; AS $as&quot;;
++		  $order = &quot;'$as'&quot;;
+ 	}
+ 	// par champ. Verifier qu'ils sont presents.
+-		else
+-		  if (ereg(&quot;^[a-z][a-z0-9_]*$&quot;, $tri)) {
+-		    if ($tri == 'date')
++		elseif (ereg(&quot;^[a-z][a-z0-9_]*$&quot;, $par)) {
++		    if ($par == 'date')
+ 		      $order = &quot;'&quot;.$boucle-&gt;id_table.&quot;.&quot;.
+ 			$GLOBALS['table_date'][$boucle-&gt;type_requete]
+ 			.&quot;'&quot;;
+@@ -254,21 +248,43 @@
+ 			// pour les tables non Spip
+ 			if (!$t) $t = $r; else $t = &quot;spip_$t&quot;;
+ 			$desc = $tables_des_serveurs_sql[$s][$t];
+-			if ($desc['field'][$tri])
+-				$order = &quot;'&quot;.$boucle-&gt;id_table.&quot;.&quot;.$tri.&quot;'&quot;;
++			if ($desc['field'][$par])
++				$order = &quot;'&quot;.$boucle-&gt;id_table.&quot;.&quot;.$par.&quot;'&quot;;
+ 			else {
+ 			  // tri sur les champs synthetises (cf points)
+-				$order = &quot;'&quot;.$tri.&quot;'&quot;;
++				$order = &quot;'&quot;.$par.&quot;'&quot;;
+ 			}
+-		  }
+-		}
++		    }
++		} else
++		    erreur_squelette(_T('zbug_info_erreur_squelette'), &quot;{par $par} BOUCLE$idb&quot;);
+ 	    }
+-	// au final, gestion des tris multiples
+-		if ($order) {
+-		  if ($boucle-&gt;order) $boucle-&gt;order .= '.&quot;,&quot;.';
+-		  $boucle-&gt;order .= $order;
+-		}
++
++	    if ($order)
++	      $boucle-&gt;order[] = $order . (($order[0]==&quot;'&quot;) ? $sens : &quot;&quot;);
++	  }
++}
++
++
++// {inverse}
++// <A HREF="http://www.spip.net/@inverse">http://www.spip.net/@inverse</A>
++// ancienne spec si pas d'argument, nouvelle sinon
++function critere_inverse_dist($idb, &amp;$boucles, $crit) {
++
++	$boucle = &amp;$boucles[$idb];
++	// Classement par ordre inverse
++
++	if ($crit-&gt;not || $crit-&gt;param)
++		critere_parinverse($idb, $boucles, $crit, &quot; . ' DESC'&quot;);
++	else
++	  {
++	    $n = count($boucle-&gt;order);
++	    if ($n)
++	      $boucle-&gt;order[$n-1] .= &quot; . ' DESC'&quot;;
++	    else
++	      erreur_squelette(_T('zbug_info_erreur_squelette'), &quot;{inverse ?} BOUCLE$idb&quot;);
+ 	  }
++
++
+ }
+ 
+ function critere_agenda($idb, &amp;$boucles, $crit)
+@@ -558,7 +574,7 @@
+ 	      if ($crit-&gt;not) {
+ 		$where = &quot;NOT ($where)&quot;;
+ 	      } else {
+-			$boucle-&gt;default_order = 'rang';
++			$boucle-&gt;default_order = array('rang');
+ 			$boucle-&gt;select[]= &quot;FIND_IN_SET($ct, \\\&quot;'\&quot; . &quot; . $val . ' . &quot;\'\\&quot;) AS rang';
+ 	      }
+ 	    } else {
+@@ -646,9 +662,16 @@
+ }
+ 
+ function calculer_param_date($date_compare, $date_orig) {
++	if (ereg(&quot;'\&quot; *\.(.*)\. *\&quot;'&quot;, $date_compare, $r)) {
++	  $init = &quot;'\&quot; . (\$x = $r[1]) . \&quot;'&quot;;
++	  $date_compare = '\'$x\'';
++	}
++	else
++	  $init = $date_compare;
++
+ 	return
+ 	&quot;LEAST((UNIX_TIMESTAMP(&quot; .
+-	$date_compare .
++	$init .
+ 	&quot;)-UNIX_TIMESTAMP(&quot; .
+ 	$date_orig .
+ 	&quot;))/86400,\n\tTO_DAYS(&quot; .
+
+Index: inc-public.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-public.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- inc-public.php3	30 Jun 2005 10:09:36 -0000	1.4
++++ inc-public.php3	21 Jul 2005 21:47:12 -0000	1.5
+@@ -91,14 +91,11 @@
+ 	if (trim($page) AND $xhtml AND !$flag_preserver AND !headers_sent()) {
+ 		if ($xhtml === true) $xhtml = 'tidy';
+ 		$file = 'inc_' . $xhtml. &quot;.php&quot;;
+-		spip_log(_DIR_RESTREINT . $file);
+-		if (is_readable(_DIR_RESTREINT . $file))
+-		  include_ecrire($file);
++#		spip_log(_DIR_RESTREINT . $file);
++		if (is_readable(_DIR_RESTREINT . $file)) { include_ecrire($file); }
+ 		if (function_exists($xhtml))
+-		  {
+ 			$page = $xhtml($page);
+-		  }
+-		elseif (function_exists('xhtml'))
++		else if (function_exists('xhtml'))
+ 			$page = xhtml($page);
+ 	}
+ 
+
+Index: carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/carto.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- carto.php3	1 Jul 2005 07:05:31 -0000	1.5
++++ carto.php3	21 Jul 2005 21:47:12 -0000	1.6
+@@ -5,18 +5,20 @@
+ 
+ // Securite : le squelette *doit* exister dans squelettes/
+ // voir si 
+-	if ((strstr($contexte_inclus['fond'], '..'))||(strstr($_GET['fond'], '..'))
+-		) {
+-		die (&quot;Faut pas se gener&quot;);
+-	}
+-
+-// cette ligne empeche l'affichage des boutons d'administration
+-// Et les headers !!!! 
+ $flag_preserver = true;
+ 
+-
+-if (isset($contexte_inclus['fond'])) $fond = $rep_fond.&quot;/carto_&quot;.$contexte_inclus['fond'];
+-else if (isset($_GET[&quot;fond&quot;])&amp;&amp;($_GET[&quot;fond&quot;]!=&quot;&quot;)) $fond = $rep_fond.&quot;/carto_&quot;.$_GET[&quot;fond&quot;];
++if (isset($contexte_inclus['fond'])) {
++	if (strstr($contexte_inclus['fond'], '..'))
++		die (&quot;Faut pas se gener&quot;);
++	else
++		$fond = $rep_fond.&quot;/carto_&quot;.$contexte_inclus['fond'];
++}
++else if (isset($_GET[&quot;fond&quot;])&amp;&amp;($_GET[&quot;fond&quot;]!=&quot;&quot;)) {
++	if (strstr($_GET['fond'], '..'))
++		die (&quot;Faut pas se gener&quot;);
++	else	
++		$fond = $rep_fond.&quot;/carto_&quot;.$_GET[&quot;fond&quot;];
++}
+ else $fond = $rep_fond.&quot;/carto&quot;;
+ if (isset($contexte_inclus['delais'])) $delais = $contexte_inclus['delais'];
+ 
+
+Index: inc-cache.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-cache.php3,v
+retrieving revision 1.9
+retrieving revision 1.10
+diff -u -d -r1.9 -r1.10
+--- inc-cache.php3	30 Jun 2005 10:09:36 -0000	1.9
++++ inc-cache.php3	21 Jul 2005 21:47:12 -0000	1.10
+@@ -198,20 +198,21 @@
+ 
+ // Determination du fichier cache (si besoin)
+ function determiner_cache($delais, &amp;$use_cache, &amp;$chemin_cache) {
+-	global $_POST;
++	global $_SERVER;
++
++	$post = ($_SERVER['REQUEST_METHOD'] == 'POST');
+ 
+ 	// Le fichier cache est-il valide ?
+-	$use_cache = ($delais != 0 and !count($_POST));
+-	if ($use_cache)	$use_cache = utiliser_cache($chemin_cache, $delais);
++	if ($delais&lt;&gt;0 AND !$post)
++		$use_cache = utiliser_cache($chemin_cache, $delais);
+ 
+ 	// Sinon, tester qu'on a la connexion a la base
+ 	if (!$use_cache) {
+ 		include_local(_FILE_CONNECT);
+ 		if (!$GLOBALS['db_ok']) {
+ 			if (@file_exists($chemin_cache)) 
+-			  $use_cache = 1; // passer outre
+-			else
+-			  {
++				$use_cache = 1; // passer outre
++			else {
+ 				spip_log(&quot;Erreur base de donnees &amp; &quot;
+ 					. &quot;impossible utiliser $chemin_cache&quot;);
+ 				if (!$GLOBALS['flag_preserver']) {
+@@ -231,6 +232,13 @@
+ 				define ('spip_interdire_cache', true);
+ 			  }
+ 		}
++
++		// En cas de POST (et si la connexion est ok) supprimer le cache
++		// histoire de faciliter la gestion de certaines balises dynamiques
++		else if ($post AND $chemin_cache) {
++			supprimer_fichier($chemin_cache);
++		}
++
+ 	}
+ }
+ 
+
+Index: inc-boucles.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-boucles.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc-boucles.php3	5 Jul 2005 00:43:55 -0000	1.5
++++ inc-boucles.php3	21 Jul 2005 21:47:12 -0000	1.6
+@@ -233,7 +233,7 @@
+ 	// $hierarchie sera calculee par une fonction de inc-calcul-outils
+ 	$boucle-&gt;where[] = 'id_rubrique IN ($hierarchie)';
+ 	$boucle-&gt;select[] = 'FIND_IN_SET(id_rubrique, \'$hierarchie\')-1 AS rang';
+-	$boucle-&gt;default_order = 'rang';
++	$boucle-&gt;default_order = array('rang');
+ 	$boucle-&gt;hierarchie = '$hierarchie = calculer_hierarchie('
+ 	. calculer_argument_precedent($boucle-&gt;id_boucle, 'id_rubrique', $boucles)
+ 	. ', '
+
+Index: inc-compilo.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-compilo.php3,v
+retrieving revision 1.6
+retrieving revision 1.7
+diff -u -d -r1.6 -r1.7
+--- inc-compilo.php3	5 Jul 2005 00:43:56 -0000	1.6
++++ inc-compilo.php3	21 Jul 2005 21:47:12 -0000	1.7
+@@ -215,7 +215,7 @@
+ 
+ 	if (!$order = $boucle-&gt;order
+ 	AND !$order = $boucle-&gt;default_order)
+-		$order = &quot;''&quot;;
++		$order = array();
+ 
+ 	$init .= $boucle-&gt;hash . 
+ 	  &quot;\n\n	// REQUETE
+@@ -237,7 +237,9 @@
+ 		&quot;', $boucle-&gt;where) . '&quot;')) .
+ 		&quot;), # WHERE
+ 		'&quot;.addslashes($boucle-&gt;group).&quot;', # GROUP
+-		&quot; . $order .&quot;, # ORDER
++		array(&quot; .
++	  	join(', ', $order) .
++		&quot;), # ORDER
+ 		&quot; . (strpos($boucle-&gt;limit, 'intval') === false ?
+ 			&quot;'&quot;.$boucle-&gt;limit.&quot;'&quot; :
+ 			$boucle-&gt;limit). &quot;, # LIMIT
+@@ -253,10 +255,7 @@
+ 		$init .= &quot;\n	\$Numrows['$id_boucle']['compteur_boucle'] = 0;&quot;;
+ 
+ 	if ($boucle-&gt;mode_partie)
+-		$init .= calculer_parties($boucle-&gt;partie,
+-			$boucle-&gt;mode_partie,
+-			$boucle-&gt;total_parties,
+-			$id_boucle);
++		$init .= calculer_parties($boucles, $id_boucle);
+ 	else if ($boucle-&gt;numrows)
+ 		$init .= &quot;\n	\$Numrows['&quot; .
+ 			$id_boucle .
+@@ -286,7 +285,12 @@
+ // fonction traitant les criteres {1,n} (analyses dans inc-criteres)
+ //
+ ## a deplacer dans inc-criteres ??
+-function calculer_parties($partie, $mode_partie, $total_parties, $id_boucle) {
++function calculer_parties($boucles, $id_boucle) {
++
++	$boucle = &amp;$boucles[$id_boucle];
++	$partie = $boucle-&gt;partie;
++	$mode_partie = $boucle-&gt;mode_partie;
++	$total_parties = $boucle-&gt;total_parties;
+ 
+ 	// Notes :
+ 	// $debut_boucle et $fin_boucle sont les indices SQL du premier
+
+Index: inc-calcul-outils.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-calcul-outils.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc-calcul-outils.php3	30 Jun 2005 10:09:36 -0000	1.5
++++ inc-calcul-outils.php3	21 Jul 2005 21:47:12 -0000	1.6
+@@ -233,8 +233,7 @@
+ 				array('spip_rubriques AS rubriques'),
+ 				array(calcul_mysql_in('id_parent', 
+ 					$generation,
+-					'')),
+-				'','','','','','','');
++						      '')));
+ 	while ($row = spip_abstract_fetch($result))
+ 		$lesfils[] = $row['id_rubrique'];
+ 	return join(&quot;,&quot;,$lesfils);
+@@ -407,7 +406,7 @@
+ 				'spip_auteurs_articles AS lien'), 
+ 			array(&quot;lien.id_article=$id_article&quot;,
+ 				&quot;auteurs.id_auteur=lien.id_auteur&quot;),
+-			'','','','',1, 
++			'',array(),'','',1, 
+ 			$table, $id_boucle, $serveur);
+ 
+ 		while($row_auteur = spip_abstract_fetch($result_auteurs, $serveur)) {
+@@ -428,7 +427,7 @@
+ 		array('texte'),
+ 		array('spip_petitions'),
+ 		array(&quot;id_article=&quot;.intval($id_article)),
+-		'','','','',1, 
++		'',array(),'','',1, 
+ 		$table, $id_boucle, $serveur);
+ 
+ 	if (!$retour) return '';
+@@ -511,6 +510,26 @@
+ 			$lang = $row['lang'];
+ 		return array($id_rubrique_fond, $lang);
+ 	}
++}
++
++// Ajouter &quot;&amp;lang=...&quot; si la langue de base n'est pas celle du site
++function lang_parametres_forum($s) {
++
++	// ne pas se fatiguer si le site est unilingue (plus rapide)
++	if (strstr(lire_meta('langues_utilisees'), ',')
++	// chercher l'identifiant qui nous donnera la langue
++	AND preg_match(',id_(article|breve|rubrique|syndic)=([0-9]+),', $s, $r)){
++		$objet = $r[1];
++		$id = $r[2];
++		list($lang) = spip_fetch_array(spip_query(
++			&quot;SELECT lang FROM spip_${objet}s WHERE id_$objet=$id&quot;
++		));
++		// Si ce n'est pas la meme que celle du site, l'ajouter aux parametres
++		if ($lang AND $lang &lt;&gt; lire_meta('langue_site'))
++			$s .= &quot;&amp;lang=$lang&quot;;
++	}
++
++	return $s;
+ }
+ 
+ ?&gt;
+
+Index: inc-compilo-api.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-compilo-api.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc-compilo-api.php3	30 Jun 2005 10:09:36 -0000	1.5
++++ inc-compilo-api.php3	21 Jul 2005 21:47:12 -0000	1.6
+@@ -59,7 +59,7 @@
+ 	var $having = 0;
+ 	var $limit;
+ 	var $group = '';
+-	var $order = '';
++	var $order = array();
+ 	var $default_order = '';
+ 	var $date = 'date' ;
+ 	var $hash = &quot;&quot; ;
+@@ -138,9 +138,6 @@
+ global $tables_des_serveurs_sql, $tables_principales; // (voir inc_serialbase)
+ global $exceptions_des_tables, $table_des_tables;
+ global $tables_relations,  $table_primary, $table_date;
+-
+-$tables_des_serveurs_sql['localhost'] =  &amp;$tables_principales;
+-	
+ 
+  // champ principal des tables SQL
+ $table_primary['articles']=&quot;id_article&quot;;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000202.html">[Spip-carto-cvs] spipcarto/formulaires formulaire_signature.html,1.4,1.5 formulaire_inscription.html,1.3,1.4 formulaire_site.html,1.3,1.4 formulaire_login.html,1.3,1.4 formulaire_forum_previsu.html,1.1,1.2 inc-formulaire_forum.php3,1.4,1.5 formulaire_admin.html,1.4,1.5 inc-formulaire_site.php3,1.3,1.4 inc-formulaire_signature.php3,1.3,1.4 inc-formulaire_admin.php3,1.3,1.4 inc-formulaire_inscription.php3,1.4,1.5 inc-login_public.php3,1.4,1.5
+</A></li>
+	<LI>Next message: <A HREF="000195.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_eu.php3,1.1,1.2 spip_en.php3,1.4,1.5 spip_gl.php3,1.3,1.4 spip_fa.php3,1.4,1.5 ecrire_it.php3,1.3,1.4 ecrire_fa.php3,1.3,1.4 ecrire_es.php3,1.4,1.5 spip_oc_va.php3,1.3,1.4 spip_zh.php3,1.3,1.4 spip_ro.php3,1.1,1.2 spip_tr.php3,1.1,1.2 spip_es.php3,1.4,1.5 ecrire_fr.php3,1.3,1.4 spip_ja.php3,1.1,1.2 ecrire_ro.php3,1.1,1.2 spip_fr.php3,1.4,1.5 spip_it.php3,1.4,1.5 spip_oc_prv.php3,1.3,1.4 ecrire_lb.php3,1.4,1.5 spip_ca.php3,1.4,1.5 ecrire_en.php3,1.3,1.4 ecrire_ar.php3,1.3,1.4 ecrire_tr.php3,1.1,1.2 spip_oc_ni.php3,1.3,1.4 ecrire_ja.php3,1.1,1.2 spip_lb.php3,1.4,1.5 ecrire_ca.php3,1.3,1.4 spip_ar.php3,1.4,1.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

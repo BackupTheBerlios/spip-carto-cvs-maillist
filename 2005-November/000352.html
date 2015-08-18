@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] contrib/ecrire inc_carto_fonctions.php3,1.1,1.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20contrib/ecrire%20inc_carto_fonctions.php3%2C1.1%2C1.2&In-Reply-To=%3C200511081520.jA8FKHfG001564%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000350.html">
+   <LINK REL="Next"  HREF="000351.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] contrib/ecrire inc_carto_fonctions.php3,1.1,1.2</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20contrib/ecrire%20inc_carto_fonctions.php3%2C1.1%2C1.2&In-Reply-To=%3C200511081520.jA8FKHfG001564%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] contrib/ecrire inc_carto_fonctions.php3,1.1,1.2">stef at berlios.de
+       </A><BR>
+    <I>Tue Nov  8 16:20:17 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000350.html">[Spip-carto-cvs] contrib LISEZMOI.txt,1.1.1.1,1.2
+</A></li>
+        <LI>Next message: <A HREF="000351.html">[Spip-carto-cvs] contrib/squelettes/template carto_google.html,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#352">[ date ]</a>
+              <a href="thread.html#352">[ thread ]</a>
+              <a href="subject.html#352">[ subject ]</a>
+              <a href="author.html#352">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/contrib/ecrire
+In directory sheep:/tmp/cvs-serv1532/ecrire
+
+Modified Files:
+	inc_carto_fonctions.php3 
+Log Message:
+bugs generation des points
+
+Index: inc_carto_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/contrib/ecrire/inc_carto_fonctions.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc_carto_fonctions.php3	6 Nov 2005 22:45:34 -0000	1.1
++++ inc_carto_fonctions.php3	8 Nov 2005 15:20:14 -0000	1.2
+@@ -332,7 +332,13 @@
+ ///////////////////////////////////////////////
+ function wkt2coords_google($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage){	
+ // Conservation des Y selon le format WKT car en coordonn&#233;es g&#233;ographique
+-			$coordpair = explode (',',$wktGeom);
++if (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
++{
++	$coordTab = explode (&quot; &quot;, $wktGeom);
++	return &quot;GPoint(&quot;.$coordTab[1].&quot;,&quot;.$coordTab[0].&quot;)&quot;;
++}
++/*
++ 			$coordpair = explode (',',$wktGeom);
+ 			
+ 			for ($i=0; $i&lt;sizeof($coordpair); $i++)
+ 			{		
+@@ -356,6 +362,7 @@
+ 				$coordTab = explode (&quot; &quot;, $wktGeom);
+ 				return &quot;GPoint(&quot;.intval($coordTab[0]*$rgeo).&quot;,&quot;.intval($coordTab[1]*$rgeo).&quot;)&quot;;
+ 			}
++*/
+ }
+ function worldfile2google($callage){	
+ 	$tabcallage=worldfile2array($callage);
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000350.html">[Spip-carto-cvs] contrib LISEZMOI.txt,1.1.1.1,1.2
+</A></li>
+	<LI>Next message: <A HREF="000351.html">[Spip-carto-cvs] contrib/squelettes/template carto_google.html,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#352">[ date ]</a>
+              <a href="thread.html#352">[ thread ]</a>
+              <a href="subject.html#352">[ subject ]</a>
+              <a href="author.html#352">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

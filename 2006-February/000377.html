@@ -1,0 +1,988 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire/lang ecrire_cs.php3,NONE,1.1.2.1 spip_cs.php3,NONE,1.1.2.1 public_cs.php3,NONE,1.1.2.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire/lang%20ecrire_cs.php3%2CNONE%2C1.1.2.1%20spip_cs.php3%2CNONE%2C1.1.2.1%20public_cs.php3%2CNONE%2C1.1.2.1&In-Reply-To=%3C200602162306.k1GN6Ebx012732%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000376.html">
+   <LINK REL="Next"  HREF="000374.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire/lang ecrire_cs.php3,NONE,1.1.2.1 spip_cs.php3,NONE,1.1.2.1 public_cs.php3,NONE,1.1.2.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire/lang%20ecrire_cs.php3%2CNONE%2C1.1.2.1%20spip_cs.php3%2CNONE%2C1.1.2.1%20public_cs.php3%2CNONE%2C1.1.2.1&In-Reply-To=%3C200602162306.k1GN6Ebx012732%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire/lang ecrire_cs.php3,NONE,1.1.2.1 spip_cs.php3,NONE,1.1.2.1 public_cs.php3,NONE,1.1.2.1">stef at berlios.de
+       </A><BR>
+    <I>Fri Feb 17 00:06:14 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000376.html">[Spip-carto-cvs] spipcarto/ecrire/safehtml/classes HTMLSax3.php,NONE,1.1.2.1 safehtml.php,NONE,1.1.2.1
+</A></li>
+        <LI>Next message: <A HREF="000374.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_demo.html,NONE,1.1.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#377">[ date ]</a>
+              <a href="thread.html#377">[ thread ]</a>
+              <a href="subject.html#377">[ subject ]</a>
+              <a href="author.html#377">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire/lang
+In directory sheep:/tmp/cvs-serv12672/ecrire/lang
+
+Added Files:
+      Tag: BRANCH-V1
+	ecrire_cs.php3 spip_cs.php3 public_cs.php3 
+Log Message:
+Mise &#224; jour (Spip 1.8.2 SVN)
+bugs boucle document image
+safehtml
+ajout lang CS
+page (secu formulaires)
+
+--- NEW FILE: ecrire_cs.php3 ---
+&lt;?php
+
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+
+$GLOBALS[$GLOBALS['idx_lang']] = array(
+
+
+// A
+'aide_non_disponible' =&gt; 'Tato &#269;&aacute;st vestav&#283;n&eacute; n&aacute;pov&#283;dy nen&iacute; je&#353;t&#283; v tomto jazykov&eacute;m zn&#283;n&iacute; k dispozici.',
+'avis_acces_interdit' =&gt; 'P&#345;&iacute;stup zak&aacute;z&aacute;n.',
+'avis_article_modifie' =&gt; 'Varov&aacute;n&iacute;: Na tomto &#269;l&aacute;nku pracoval p&#345;ed @date_diff@ minutou/minutami @<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">nom_auteur_modif at .</A>',
+'avis_aucun_resultat' =&gt; 'Nenalezeny &#382;&aacute;dn&eacute; v&yacute;sledky.',
+'avis_chemin_invalide_1' =&gt; 'Zvolili jste cestu',
+'avis_chemin_invalide_2' =&gt; 'nejsp&iacute;&#353; neplatnou. Vra&#357;te se na p&#345;edchoz&iacute; str&aacute;nku a zkontrolujte zadan&eacute; &uacute;daje.',
+'avis_connexion_echec_1' =&gt; 'Spojen&iacute; k serveru MySQL selhalo.',
+'avis_connexion_echec_2' =&gt; 'Vra&#357;te se na p&#345;edchoz&iacute; str&aacute;nku a zkontrolujte zadan&eacute; &uacute;daje.',
+'avis_connexion_echec_3' =&gt; '&lt;b&gt;Pozn.:&lt;/b&gt; V mnoha p&#345;&iacute;padech mus&iacute;te nejprve &lt;b&gt;po&#382;&aacute;dat&lt;/b&gt; o aktivaci p&#345;&iacute;stupu k datab&aacute;zi MySQL a teprve pot&eacute;m ji m&#367;&#382;ete pou&#382;&iacute;vat. Nem&#367;&#382;ete-li se p&#345;ipojit, zkontrolujte, zda jste tento po&#382;adavek opravdu zadali.',
+'avis_connexion_ldap_echec_1' =&gt; 'Selhalo p&#345;ipojen&iacute; k serveru LDAP.',
+'avis_connexion_ldap_echec_2' =&gt; 'Vra&#357;te se na p&#345;edchoz&iacute; str&aacute;nku a zkontrolujte zadan&eacute; &uacute;daje.',
+[...1021 lines suppressed...]
+'titre_sites_syndiques' =&gt; 'Syndikovan&eacute; weby',
+'titre_sites_tous' =&gt; 'Odkazovan&eacute; weby',
+'titre_suivi_petition' =&gt; 'Sledov&aacute;n&iacute; petic&iacute;',
+'titre_syndication' =&gt; 'Syndikace web&#367;',
+'tout_dossier_upload' =&gt; 'Cel&aacute; slo&#382;ka @upload@',
+'trad_article_inexistant' =&gt; '&#268;l&aacute;nek tohoto &#269;&iacute;sla neexistuje.',
+'trad_article_traduction' =&gt; 'V&#353;echny verze tohoto &#269;l&aacute;nku:',
+'trad_deja_traduit' =&gt; 'Tento &#269;l&aacute;nek je ji&#382; p&#345;ekladem tohoto &#269;l&aacute;nku.',
+'trad_delier' =&gt; 'Tento &#269;l&aacute;nek nad&aacute;le s p&#345;eklady nespojovat',
+'trad_lier' =&gt; 'Toto je p&#345;eklad &#269;l&aacute;nku &#269;&iacute;slo:',
+'trad_new' =&gt; 'Nov&#283; p&#345;elo&#382;it &#269;l&aacute;nek',
+
+
+// V
+'version_initiale' =&gt; 'P&#367;vodn&iacute; verze'
+
+);
+
+
+?&gt;
+
+--- NEW FILE: spip_cs.php3 ---
+&lt;?php
+
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+
+$GLOBALS[$GLOBALS['idx_lang']] = array(
+
+
+// 0
+'0_URL' =&gt; '<A HREF="http://listes.rezo.net/mailman/listinfo/spip-dev">http://listes.rezo.net/mailman/listinfo/spip-dev</A>',
+'0_langue' =&gt; '&#268;e&#353;tina [cs]',
+'0_liste' =&gt; '<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">spip-cs at rezo.net</A>',
+'0_mainteneur' =&gt; '<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">otto at pacholik.cz</A>',
+
+
+// A
+'access_interface_graphique' =&gt; 'Zp&#283;t do kompletn&iacute;ho grafick&eacute;ho rozhran&iacute;',
+'access_mode_texte' =&gt; 'Zobrazit jednoduch&eacute; textov&eacute; rozhran&iacute;',
+'admin_debug' =&gt; 'lad&#283;n&iacute;',
+'admin_modifier_article' =&gt; 'Zm&#283;nit &#269;l&aacute;nek',
+'admin_modifier_auteur' =&gt; 'Zm&#283;nit autora',
+'admin_modifier_breve' =&gt; 'Zm&#283;nit tuto zpr&aacute;vu',
+'admin_modifier_mot' =&gt; 'Zm&#283;nit kl&iacute;&#269;ov&eacute; slovo',
+'admin_modifier_rubrique' =&gt; 'Zm&#283;nit sekci',
+'admin_recalculer' =&gt; 'Obnovit str&aacute;nku',
+'alerte_maj_impossible' =&gt; '&lt;b&gt;Varov&aacute;n&iacute;!&lt;/b&gt; Aktualizace datab&aacute;ze MySQL na verzi @version@ se nezda&#345;ilo. Je mo&#382;n&eacute;, &#382;e je to kv&#367;li probl&eacute;m&#367;m s p&#345;&iacute;stupov&yacute;mi pr&aacute;vy k datab&aacute;zi. Kontaktujte sv&eacute;ho poskytovatele p&#345;ipojen&iacute; k internetu (ISP).',
+'analyse_xml' =&gt; 'XML parsov&aacute;n&iacute;',
+'avis_archive_incorrect' =&gt; 'soubor nen&iacute; platn&yacute;m SPIP archivem',
+'avis_archive_invalide' =&gt; 'neplatn&yacute; soubor arch&iacute;vu',
+'avis_attention' =&gt; 'POZOR!',
+'avis_champ_incorrect_type_objet' =&gt; 'Naplatn&yacute; n&aacute;zev pole @name@ objektu typu @type@',
+'avis_colonne_inexistante' =&gt; 'Sloupec @col@ neexistuje',
+'avis_echec_syndication_01' =&gt; 'Vytvo&#345;en&iacute; dat selhalo: Bu&#271; nelze &#269;&iacute;st z vybran&eacute;ho z&aacute;kladn&iacute;ho syst&eacute;mu (backend) nebo na n&#283;m nen&iacute; &#382;&aacute;dn&yacute; &#269;l&aacute;nek.',
+'avis_echec_syndication_02' =&gt; 'Selhalo zpracov&aacute;n&iacute; dat: Nelze komunikovat se z&aacute;kladn&iacute;m syst&eacute;mem (backend) t&#283;chto str&aacute;nek.',
+'avis_erreur' =&gt; 'Chyba: viz n&iacute;&#382;e;',
+'avis_erreur_connexion' =&gt; 'Chyba p&#345;i spojen&iacute;',
+'avis_erreur_cookie' =&gt; 'Probl&eacute;my se su&#353;enkou :-) (cookie)',
+'avis_erreur_fonction_contexte' =&gt; 'Program&aacute;torsk&aacute; chyba. Funkce by nem&#283;la b&yacute;t v tomto kontextu vol&aacute;na.',
+'avis_erreur_mysql' =&gt; 'Chyba MySQL',
+'avis_erreur_sauvegarde' =&gt; 'Chyba v z&aacute;lohov&aacute;n&iacute; (@type@ @id_objet@)!',
+
+
+// B
+'barre_a_accent_grave' =&gt; 'Zadejte velk&eacute; A s obr&aacute;cenou &#269;&aacute;rkou (`)',
+'barre_aide' =&gt; 'Vzhled str&aacute;nek (layout) dola&#271;te pomoc&iacute; typografick&yacute;ch zkratek',
+'barre_aide_rac' =&gt; 'Nepou&#382;&iacute;v&aacute; se',
+'barre_e_accent_aigu' =&gt; 'Zadejte p&iacute;smeno &Eacute;',
+'barre_eo' =&gt; 'Zadejte p&iacute;smeno oe',
+'barre_eo_maj' =&gt; 'Zadejte p&iacute;smeno EO',
+'barre_euro' =&gt; 'Zadejte symbol &euro;',
+'barre_gras' =&gt; 'Zadejte {{tu&#269;n&eacute; p&iacute;smo}}',
+'barre_guillemets' =&gt; 'Um&iacute;st&#283;te znaky do dvojit&yacute;ch uvozovek (&quot;)',
+'barre_guillemets_simples' =&gt; 'Um&iacute;st&#283;te znaky do jednoduch&yacute;ch uvozovek (&#145;)',
+'barre_intertitre' =&gt; 'Zm&#283;&#328;te na {{{podz&aacute;hlav&iacute;}}}',
+'barre_italic' =&gt; 'Zadejte {kurz&iacute;vou}',
+'barre_lien' =&gt; 'Zm&#283;nit na [hypertextov&yacute; odkaz-&gt;<A HREF="http://...">http://...</A>]',
+'barre_lien_input' =&gt; 'Zadejte c&iacute;l hypertextov&eacute;ho odkazu (adresu URL ve form&aacute;tu <A HREF="http://www.mysite.com">http://www.mysite.com</A> nebo &#269;&iacute;slo &#269;l&aacute;nku na t&#283;chto str&aacute;nk&aacute;ch).',
+'barre_note' =&gt; 'Zm&#283;nit na [[pozn&aacute;mku pod &#269;arou]]',
+'barre_quote' =&gt; '&lt;quote&gt;Citovat zpr&aacute;vu&lt;/quote&gt;',
+'bouton_ajouter_document' =&gt; 'P&#344;IDAT DOKUMENT',
+'bouton_ajouter_image' =&gt; 'P&#344;IDAT OBR&Aacute;ZEK',
+'bouton_changer' =&gt; 'Zm&#283;nit',
+'bouton_chercher' =&gt; 'Naj&iacute;t',
+'bouton_choisir' =&gt; 'Vybrat',
+'bouton_enregistrer' =&gt; 'Ulo&#382;it',
+'bouton_radio_desactiver_messagerie_interne' =&gt; 'Vypnout intern&iacute; hl&aacute;&#353;en&iacute;',
+'bouton_radio_envoi_annonces' =&gt; 'Zaslat editorsk&aacute; ozn&aacute;men&iacute;',
+'bouton_radio_non_envoi_annonces' =&gt; 'Nezas&iacute;lat &#382;&aacute;dn&aacute; ozn&aacute;men&iacute;',
+'bouton_radio_non_envoi_liste_nouveautes' =&gt; 'Nezas&iacute;lat seznam nejnov&#283;j&#353;&iacute;ch zpr&aacute;v',
+'bouton_recharger_page' =&gt; 'znovu na&#269;&iacute;st tuto str&aacute;nku',
+'bouton_telecharger' =&gt; 'Odeslat',
+'bouton_valider' =&gt; 'Odeslat',
+
+
+// C
+'cal_apresmidi' =&gt; 'odpoledne',
+'cal_jour_entier' =&gt; 'cel&yacute; den',
+'cal_matin' =&gt; 'dopoledne',
+'cal_par_jour' =&gt; 'zobrazen&iacute; jednotliv&yacute;ch dn&#367;',
+'cal_par_mois' =&gt; 'zobrazen&iacute; cel&eacute;ho m&#283;s&iacute;ce',
+'cal_par_semaine' =&gt; 'zobrazen&iacute; cel&yacute;ch t&yacute;dn&#367;',
+'confirm_changer_statut' =&gt; 'Je nutn&eacute; potvrzen&iacute; akce: Po&#382;&aacute;dali jste o zm&#283;nu stavu &#269;l&aacute;nku. Chcete pokra&#269;ovat?',
+
+
+// D
+'date_aujourdhui' =&gt; 'dnes',
+'date_avant_jc' =&gt; 'p&#345;. n. l.',
+'date_dans' =&gt; 'b&#283;hem @delai@',
+'date_de_mois_1' =&gt; '@j@ ledna',
+'date_de_mois_10' =&gt; '@j@ &#345;&iacute;jna',
+'date_de_mois_11' =&gt; '@j@ listopadu',
+'date_de_mois_12' =&gt; '@j@ prosince',
+'date_de_mois_2' =&gt; '@j@ &uacute;nora',
+'date_de_mois_3' =&gt; '@j@ b&#345;ezna',
+'date_de_mois_4' =&gt; '@j@ dubna',
+'date_de_mois_5' =&gt; '@j@ kv&#283;tna',
+'date_de_mois_6' =&gt; '@j@ &#269;ervna',
+'date_de_mois_7' =&gt; '@j@ &#269;ervence',
+'date_de_mois_8' =&gt; '@j@ srpna',
+'date_de_mois_9' =&gt; '@j@ z&aacute;&#345;&iacute;',
+'date_demain' =&gt; 'z&iacute;tra',
+'date_fmt_heures_minutes' =&gt; '@<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">h at h</A>@<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">m at min</A>',
+'date_fmt_jour_heure' =&gt; '@jour@ a @heure@',
+'date_fmt_jour_mois' =&gt; '@jourmois@',
+'date_fmt_jour_mois_annee' =&gt; '@jourmois@ @annee@',
+'date_fmt_mois_annee' =&gt; '@nommois@ @annee@',
+'date_fmt_nomjour_date' =&gt; '@date@ @nomjour@',
+'date_heures' =&gt; 'hodin',
+'date_hier' =&gt; 'v&#269;era',
+'date_il_y_a' =&gt; 'p&#345;ed @delai@',
+'date_jnum1' =&gt; '1.',
+'date_jnum10' =&gt; '10.',
+'date_jnum11' =&gt; '11.',
+'date_jnum12' =&gt; '12.',
+'date_jnum13' =&gt; '13.',
+'date_jnum14' =&gt; '14.',
+'date_jnum15' =&gt; '15.',
+'date_jnum16' =&gt; '16.',
+'date_jnum17' =&gt; '17.',
+'date_jnum18' =&gt; '18.',
+'date_jnum19' =&gt; '19.',
+'date_jnum2' =&gt; '2.',
+'date_jnum20' =&gt; '20.',
+'date_jnum21' =&gt; '21.',
+'date_jnum22' =&gt; '22.',
+'date_jnum23' =&gt; '23.',
+'date_jnum24' =&gt; '24.',
+'date_jnum25' =&gt; '25.',
+'date_jnum26' =&gt; '26.',
+'date_jnum27' =&gt; '27.',
+'date_jnum28' =&gt; '28.',
+'date_jnum29' =&gt; '29.',
+'date_jnum3' =&gt; '3.',
+'date_jnum30' =&gt; '30.',
+'date_jnum31' =&gt; '31.',
+'date_jnum4' =&gt; '4.',
+'date_jnum5' =&gt; '5.',
+'date_jnum6' =&gt; '6.',
+'date_jnum7' =&gt; '7.',
+'date_jnum8' =&gt; '8.',
+'date_jnum9' =&gt; '9.',
+'date_jour_1' =&gt; 'ned&#283;le',
+'date_jour_2' =&gt; 'pond&#283;l&iacute;',
+'date_jour_3' =&gt; '&uacute;ter&yacute;',
+'date_jour_4' =&gt; 'st&#345;eda',
+'date_jour_5' =&gt; '&#269;tvrtek',
+'date_jour_6' =&gt; 'p&aacute;tek',
+'date_jour_7' =&gt; 'sobota',
+'date_jours' =&gt; 'dn&#367;',
+'date_minutes' =&gt; 'minut',
+'date_mois' =&gt; 'm&#283;s&iacute;c&#367;',
+'date_mois_1' =&gt; 'Leden',
+'date_mois_10' =&gt; '&#344;&iacute;jen',
+'date_mois_11' =&gt; 'Listopad',
+'date_mois_12' =&gt; 'Prosinec',
+'date_mois_2' =&gt; '&Uacute;nor',
+'date_mois_3' =&gt; 'B&#345;ezen',
+'date_mois_4' =&gt; 'Duben',
+'date_mois_5' =&gt; 'Kv&#283;ten',
+'date_mois_6' =&gt; '&#268;erven',
+'date_mois_7' =&gt; '&#268;ervenec',
+'date_mois_8' =&gt; 'Srpen',
+'date_mois_9' =&gt; 'Z&aacute;&#345;&iacute;',
+'date_saison_1' =&gt; 'zima',
+'date_saison_2' =&gt; 'jaro',
+'date_saison_3' =&gt; 'l&eacute;to',
+'date_saison_4' =&gt; 'podzim',
+'date_semaines' =&gt; 't&yacute;dn&#367;',
+'dirs_commencer' =&gt; 'pro vlastn&iacute; zah&aacute;jen&iacute; instalace',
+'dirs_preliminaire' =&gt; 'P&#345;edb&#283;&#382;n&aacute; akce: &lt;b&gt;Nastaven&iacute; p&#345;&iacute;stupov&yacute;ch pr&aacute;v&lt;/b&gt;',
+'dirs_probleme_droits' =&gt; 'Probl&eacute;m s p&#345;&iacute;stupov&yacute;mi pr&aacute;vy',
+'dirs_repertoires_absents' =&gt; '&lt;b&gt;Nebyl nalezen adres&aacute;&#345;, resp. adres&aacute;&#345;e: &lt;ul&gt;@<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">bad_dirs at .</A>&lt;/ul&gt; &lt;/b&gt;
+  &lt;p /&gt;M&#367;&#382;e to b&yacute;t kv&#367;li nespr&aacute;vn&eacute;mu zad&aacute;n&iacute; velk&yacute;ch a mal&yacute;ch p&iacute;smen.
+  Zkontrolujte, zda mal&aacute; a velk&aacute; p&iacute;smena uveden&eacute;ho adres&aacute;&#345;e, resp. adres&aacute;&#345;&#367; souhlas&iacute; s t&iacute;m,
+  co je uvedeno v&yacute;&#353;e. Pokud ne, p&#345;ejmenujte adres&aacute;&#345;e pomoc&iacute; klienta programu FTP. T&iacute;m chybu oprav&iacute;te.
+  &lt;p /&gt;Pot&eacute; m&#367;&#382;ete',
+'dirs_repertoires_suivants' =&gt; '&lt;b&gt;K n&aacute;sleduj&iacute;c&iacute;mu adres&aacute;&#345;i, resp. adres&aacute;&#345;&#367;m chyb&iacute; pr&aacute;vo z&aacute;pisu: &lt;ul&gt;@<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">bad_dirs at .</A>&lt;/ul&gt; &lt;/b&gt;
+
+  &lt;p /&gt;Zm&#283;&#328;te tato pr&aacute;va pomoc&iacute; klienta FTP a nastavte pr&aacute;va p&#345;&iacute;stupu jednotliv&yacute;ch adres&aacute;&#345;&#367;
+
+  Podrobn&yacute; popis je v n&aacute;vodu k instalaci.
+
+  &lt;p /&gt;Pot&eacute; m&#367;&#382;ete ',
+
+
+// E
+'entree_dimensions' =&gt; 'Velikost:',
+'entree_titre_document' =&gt; 'N&aacute;zev dokumentu:',
+'entree_titre_image' =&gt; 'N&aacute;zev obr&aacute;zku:',
+'envoi_via_le_site' =&gt; 'Odeslat pomoc&iacute; webu',
+
+
+// F
+'fichier_introuvable' =&gt; 'Nalezen nov&yacute; soubor: @fichier@',
+'form_deja_inscrit' =&gt; 'U&#382; jste zaregistrov&aacute;ni.',
+'form_email_non_valide' =&gt; 'Neplatn&aacute; elektronick&aacute; adresa.',
+'form_forum_access_refuse' =&gt; 'K tomuto webu ji&#382; nem&aacute;te p&#345;&iacute;stup.',
+'form_forum_bonjour' =&gt; 'Dobr&yacute; den @nom@,',
+'form_forum_email_deja_enregistre' =&gt; 'Tato elektronick&aacute; adresa je ji&#382; zaregistrov&aacute;na. M&#367;&#382;ete tedy pou&#382;&iacute;vat sv&eacute; obvykl&eacute; heslo.',
+'form_forum_identifiant_mail' =&gt; 'Nov&eacute; identifika&#269;n&iacute; &uacute;daje v&aacute;m byly odesl&aacute;ny elektronickou po&#353;tou.',
+'form_forum_identifiants' =&gt; 'Osobn&iacute; identifika&#269;n&iacute; &uacute;daje',
+'form_forum_indiquer_nom_email' =&gt; 'Zadejte jm&eacute;no a elektronickou adresu. Osobn&iacute; identifika&#269;n&iacute; &uacute;daje obdr&#382;&iacute;te v brzk&eacute; dob&#283; elektronickou po&#353;tou.',
+'form_forum_login' =&gt; 'Login:',
+'form_forum_message_auto' =&gt; '(toto je automatick&aacute; zpr&aacute;va)',
+'form_forum_pass' =&gt; 'Heslo:',
+'form_forum_probleme_mail' =&gt; 'Probl&eacute;my s elektronickou po&#353;tou: Odesl&aacute;n&iacute; identifika&#269;n&iacute;ch &uacute;daj&#367; se nezda&#345;ilo.',
+'form_forum_voici1' =&gt; 'Zde jsou identifika&#269;n&iacute; &uacute;daje umo&#382;&#328;uj&iacute;c&iacute; &uacute;&#269;ast na aktivit&aacute;ch tohoto webu
+&quot;@nom_site_spip@&quot; (@adresse_site@):',
+'form_forum_voici2' =&gt; 'Zde jsou identifika&#269;n&iacute; &uacute;daje, kter&eacute; v&aacute;m umo&#382;n&iacute; publikovat &#269;l&aacute;nky
+na webu &quot;@nom_site_spip@&quot; (@adresse_login@):',
+'form_indiquer_email' =&gt; 'Zadejte sv&#367;j e-mail.',
+'form_indiquer_nom' =&gt; 'Zadejte sv&eacute; jm&eacute;no.',
+'form_indiquer_nom_site' =&gt; 'Zadejte n&aacute;zev sv&eacute;ho webu.',
+'form_pet_adresse_site' =&gt; 'Zadejte adresu URL sv&eacute;ho webu',
+'form_pet_aucune_signature' =&gt; 'Tomuto k&oacute;du neodpov&iacute;d&aacute; &#382;&aacute;dn&yacute; podpis...',
+'form_pet_confirmation' =&gt; 'Potvr&#271;te sv&#367;j podpis:',
+'form_pet_deja_enregistre' =&gt; 'Tento web je ji&#382; zaregistrov&aacute;n',
+'form_pet_deja_signe' =&gt; 'Tento text jste ji&#382; podepsali.',
+'form_pet_envoi_mail_confirmation' =&gt; 'Byla v&aacute;m zasl&aacute;na elektronick&aacute; zpr&aacute;va s potvrzen&iacute;m. Platnost podpisu ov&#283;&#345;&iacute;te na adrese URL, kter&aacute; je v t&eacute;to zpr&aacute;v&#283; uvedena.',
+'form_pet_mail_confirmation' =&gt; '&lt;MODIF&gt;Dobr&yacute; den,
+
+Rozhodli jste se podepsat petici:
+@<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">titre at .</A>
+
+Uvedli jste n&aacute;sleduj&iacute;c&iacute; &uacute;daje:
+    Jm&eacute;no: @nom_email@
+    Web: @nom_site@ - @url_site@
+
+D&#366;LE&#381;IT&Eacute; UPOZORN&#282;N&Iacute;...
+Platnost sv&eacute;ho podpisu ov&#283;&#345;&iacute;te p&#345;echodem
+na n&iacute;&#382;e uvedenou adresu (jinak bude v&aacute;&#353; po&#382;adavek
+zam&iacute;tnut):
+    @url@
+
+D&#283;kujeme v&aacute;m za &uacute;&#269;ast
+',
+'form_pet_message_commentaire' =&gt; 'Chcete n&aacute;m n&#283;co sd&#283;lit nebo m&aacute;te n&#283;jak&eacute; p&#345;ipom&iacute;nky?',
+'form_pet_nom_site2' =&gt; 'N&aacute;zev va&#353;eho webu',
+'form_pet_probleme_technique' =&gt; 'Z technick&yacute;ch d&#367;vod&#367; nelze moment&aacute;ln&#283; podepisovat.',
+'form_pet_signature_pasprise' =&gt; 'V&aacute;&#353; podpis nebyl zohledn&#283;n.',
+'form_pet_signature_validee' =&gt; 'V&aacute;&#353; podpis je platn&yacute;. D&#283;kujeme v&aacute;m!',
+'form_pet_site_deja_enregistre' =&gt; 'Tento web je ji&#382; zaregistrov&aacute;n',
+'form_pet_url_invalide' =&gt; 'Zadali jste neplatnou adresu URL.',
+'form_pet_votre_email' =&gt; 'Nov&aacute; elektronick&aacute; adresa',
+'form_pet_votre_nom' =&gt; 'Jm&eacute;no nebo p&#345;ezd&iacute;vka (alias)',
+'form_pet_votre_site' =&gt; 'M&aacute;te-li web, m&#367;&#382;ete d&aacute;le zadat jeho adresu',
+'form_prop_confirmer_envoi' =&gt; 'Potvr&#271;te odesl&aacute;n&iacute;',
+'form_prop_description' =&gt; 'Popis/pozn&aacute;mka',
+'form_prop_enregistre' =&gt; 'V&aacute;&#353; n&aacute;vrh byl zaregistrov&aacute;n. Po kontrole spr&aacute;vci tohoto webu bude zv&#283;&#345;ejn&#283;n online.',
+'form_prop_envoyer' =&gt; 'Odeslat zpr&aacute;vu',
+'form_prop_indiquer_email' =&gt; 'Zadejte platnou elektronickou adresu',
+'form_prop_indiquer_nom_site' =&gt; 'Zadejte n&aacute;zev webu.',
+'form_prop_indiquer_sujet' =&gt; 'Zadejte p&#345;edm&#283;t',
+'form_prop_message_envoye' =&gt; 'Zpr&aacute;va byla odesl&aacute;na',
+'form_prop_nom_site' =&gt; 'N&aacute;zev webu',
+'form_prop_non_enregistre' =&gt; 'V&aacute;&#353; n&aacute;vrh byl zaznamen&aacute;n.',
+'form_prop_sujet' =&gt; 'P&#345;edm&#283;t',
+'form_prop_url_site' =&gt; 'Adresa URL webu',
+'forum_acces_refuse' =&gt; 'K t&#283;mto diskusn&iacute;m skupin&aacute;m ji&#382; nem&aacute;te p&#345;&iacute;stup.',
+'forum_attention_dix_caracteres' =&gt; '&lt;b&gt;Varov&aacute;n&iacute;!&lt;/b&gt; Zpr&aacute;va mus&iacute; obsahovat minim&aacute;ln&#283; deset znak&#367;.',
+'forum_attention_trois_caracteres' =&gt; '&lt;b&gt;Varov&aacute;n&iacute;!&lt;/b&gt; N&aacute;zev mus&iacute; obsahovat minim&aacute;ln&#283; deset znak&#367;.',
+'forum_avez_selectionne' =&gt; 'Zvolili jste:',
+'forum_cliquer_retour' =&gt; 'Pokra&#269;ujte klepnut&iacute;m &lt;a href=\'@retour_forum@\'&gt;na tento odkaz&lt;/a&gt;.',
+'forum_forum' =&gt; 'diskusn&iacute; skupina',
+'forum_info_modere' =&gt; 'Tato diskusn&iacute; skupina je moderovan&aacute;: va&#353;e p&#345;&iacute;sp&#283;vky se zobraz&iacute; a&#382; po schv&aacute;len&iacute; spr&aacute;vcem tohoto webu.',
+'forum_lien_hyper' =&gt; '&lt;b&gt;Hypertextov&yacute; odkaz&lt;/b&gt; (voliteln&eacute;)',
+'forum_message_definitif' =&gt; 'Z&aacute;v&#283;re&#269;n&aacute; zpr&aacute;va: odesl&aacute;no na web',
+'forum_message_trop_long' =&gt; 'Zpr&aacute;va je p&#345;&iacute;li&#353; dlouh&aacute;. Maximum je 20.000 znak&#367;.',
+'forum_ne_repondez_pas' =&gt; 'Neodpov&iacute;dejte na tuto zpr&aacute;vu. Odpov&#283;&#271; zve&#345;ejn&#283;te v r&aacute;mci skupiny na adrese:',
+'forum_non_inscrit' =&gt; 'Bu&#271; nejste zaregistrov&aacute;ni nebo jste zadali nespr&aacute;vnou adresu &#269;i heslo.',
+'forum_page_url' =&gt; '(T&yacute;k&aacute;-li se zpr&aacute;va &#269;l&aacute;nku zve&#345;ejn&#283;n&eacute;ho na webu nebo str&aacute;nky s dopl&#328;uj&iacute;c&iacute;mi informacemi, zadejte d&aacute;le n&aacute;zev str&aacute;nky a jej&iacute; adresu).',
+'forum_par_auteur' =&gt; 'Autor: @auteur@',
+'forum_poste_par' =&gt; 'Zpr&aacute;va od <A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">posted at parauteur</A>@ na z&aacute;klad&#283; va&#353;eho &#269;l&aacute;nku.',
+'forum_probleme_database' =&gt; 'Kv&#367;li probl&eacute;m&#367;m s datab&aacute;z&iacute; nebylo mo&#382;n&eacute; va&#353;i zpr&aacute;vu zaznamenat.',
+'forum_qui_etes_vous' =&gt; '&lt;b&gt;Kdo jste?&lt;/b&gt; (voliteln&eacute;)',
+'forum_texte' =&gt; 'Text zpr&aacute;vy:',
+'forum_titre' =&gt; 'P&#345;edm&#283;t:',
+'forum_titre_erreur' =&gt; 'Chyba...',
+'forum_url' =&gt; 'Adresa URL:',
+'forum_valider' =&gt; 'Potvrdit v&yacute;b&#283;r',
+'forum_voir_avant' =&gt; 'P&#345;ed odesl&aacute;n&iacute;m zpr&aacute;vu zobrazit',
+'forum_votre_email' =&gt; 'V&aacute;&#353; e-mail:',
+'forum_votre_nom' =&gt; 'Va&#353;e jm&eacute;no (resp. p&#345;ezd&iacute;vka):',
+'forum_vous_enregistrer' =&gt; 'T&eacute;to diskusn&iacute; skupiny se m&#367;&#382;ete &uacute;&#269;astnit
+  a&#382; po zaregistrov&aacute;n&iacute;. D&#283;kujeme v&aacute;m
+  za zad&aacute;n&iacute; identifika&#269;n&iacute;ch &uacute;daj&#367;.
+  Nejste-li doposud zaregistrov&aacute;ni, mus&iacute;te ',
+'forum_vous_inscrire' =&gt; 'tak u&#269;init nyn&iacute;.',
+
+
+// I
+'ical_texte_rss_articles' =&gt; 'Adresa souboru na serveru (backend) &#269;l&aacute;nk&#367; na webu je:',
+'ical_texte_rss_articles2' =&gt; 'M&#367;&#382;ete z&iacute;skat i serverov&eacute; soubory k &#269;l&aacute;nk&#367;m z jednotliv&yacute;ch sekc&iacute; webu:',
+'ical_texte_rss_breves' =&gt; 'D&aacute;le existuje soubor obsahuj&iacute;c&iacute; novinky z webu. Zad&aacute;n&iacute;m &#269;&iacute;sla sekce z&iacute;sk&aacute;te pouze novinky t&yacute;kaj&iacute;c&iacute; se dan&eacute; sekce.',
+'icone_a_suivre' =&gt; 'Hlavn&iacute; nab&iacute;dka',
+'icone_admin_site' =&gt; 'Spr&aacute;va webu',
+'icone_agenda' =&gt; 'Kalend&aacute;&#345;',
+'icone_aide_ligne' =&gt; 'N&aacute;pov&#283;da',
+'icone_articles' =&gt; '&#268;l&aacute;nky',
+'icone_auteurs' =&gt; 'Auto&#345;i',
+'icone_breves' =&gt; 'Novinky',
+'icone_brouteur' =&gt; 'Rychl&eacute; proch&aacute;zen&iacute;',
+'icone_configuration_site' =&gt; 'Nastaven&iacute;',
+'icone_configurer_site' =&gt; 'Nastavte sv&#367;j web',
+'icone_creer_mot_cle' =&gt; 'Zadejte nov&eacute; kl&iacute;&#269;ov&eacute; slovo a spojte jej s t&iacute;mto &#269;l&aacute;nkem',
+'icone_creer_nouvel_auteur' =&gt; 'Vytvo&#345;it nov&eacute;ho autora',
+'icone_creer_rubrique' =&gt; 'Vytvo&#345;it sekci',
+'icone_creer_sous_rubrique' =&gt; 'Vytvo&#345;it podsekci',
+'icone_deconnecter' =&gt; 'Odhl&aacute;sit',
+'icone_discussions' =&gt; 'Diskuse',
+'icone_doc_rubrique' =&gt; 'Dokumenty v p&#345;&iacute;loze',
+'icone_ecrire_article' =&gt; 'Napsat nov&yacute; &#269;l&aacute;nek',
+'icone_edition_site' =&gt; 'Editovat web',
+'icone_forum_administrateur' =&gt; 'Diskusn&iacute; skupina spr&aacute;vc&#367;',
+'icone_forum_suivi' =&gt; 'Navazuj&iacute;c&iacute; zpr&aacute;vy diskusn&iacute; skupiny',
+'icone_gestion_langues' =&gt; 'Spr&aacute;va jazyk&#367;',
+'icone_informations_personnelles' =&gt; 'Osobn&iacute; &uacute;daje',
+'icone_interface_complet' =&gt; '&Uacute;pln&eacute; rozhran&iacute;',
+'icone_interface_simple' =&gt; 'Jednoduch&eacute; rozhran&iacute;',
+'icone_maintenance_site' =&gt; '&Uacute;dr&#382;ba webu',
+'icone_messagerie_personnelle' =&gt; 'Osobn&iacute; zpr&aacute;vy',
+'icone_mots_cles' =&gt; 'Kl&iacute;&#269;ov&aacute; slova',
+'icone_nouvelle_breve' =&gt; 'Napsat novinku',
+'icone_repartition_actuelle' =&gt; 'Zobrazit aktu&aacute;ln&iacute; rozd&#283;len&iacute;',
+'icone_repartition_debut' =&gt; 'Zobrazit rozd&#283;len&iacute; od po&#269;&aacute;tku',
+'icone_repartition_visites' =&gt; 'Rozd&#283;len&iacute; n&aacute;v&#353;t&#283;v',
+'icone_rubriques' =&gt; 'Sekce',
+'icone_sauver_site' =&gt; 'Ulo&#382;en&iacute; webu',
+'icone_site_entier' =&gt; 'V&#353;echny str&aacute;nky',
+'icone_sites_references' =&gt; 'Str&aacute;nky na n&#283;&#382; existuj&iacute; odkazy',
+'icone_statistiques' =&gt; 'Statistiky str&aacute;nek',
+'icone_statistiques_visites' =&gt; 'Statistiky',
+'icone_suivi_activite' =&gt; 'Sledov&aacute;n&iacute; aktivity webu',
+'icone_suivi_actualite' =&gt; 'Statistiky str&aacute;nek',
+'icone_suivi_forums' =&gt; 'Spr&aacute;va diskusn&iacute;ch skupin',
+'icone_suivi_pettions' =&gt; 'Spr&aacute;va petic&iacute;',
+'icone_suivi_revisions' =&gt; 'Revize &#269;l&aacute;nk&#367;',
+'icone_supprimer_document' =&gt; 'Odstranit dokument',
+'icone_supprimer_image' =&gt; 'Odstranit obr&aacute;zek',
+'icone_supprimer_message' =&gt; 'Ostranit zpr&aacute;vu',
+'icone_tous_articles' =&gt; 'V&#353;echny va&#353;e &#269;l&aacute;nky',
+'icone_tous_auteur' =&gt; 'V&#353;ichni auto&#345;i',
+'icone_valider_message' =&gt; 'Schv&aacute;lit zpr&aacute;vu',
+'icone_visiter_site' =&gt; 'Zobrazit web',
+'icone_voir_en_ligne' =&gt; 'Prohl&iacute;&#382;et online',
+'image_tourner_180' =&gt; 'Oto&#269;it o 180&deg;',
+'image_tourner_droite' =&gt; 'Oto&#269;it o 90&deg; doprava',
+'image_tourner_gauche' =&gt; 'Oto&#269;it o 90&deg; doleva',
+'img_indisponible' =&gt; 'Obr&aacute;zek nen&iacute; k dispozici',
+'info_a_suivre' =&gt; 'HLAVN&Iacute; NAB&Iacute;DKA&quot;',
+'info_a_valider' =&gt; '[ke schv&aacute;len&iacute;]',
+'info_acces_interdit' =&gt; 'P&#345;&iacute;stup zak&aacute;z&aacute;n',
+'info_acces_refuse' =&gt; 'P&#345;&iacute;stup odep&#345;en',
+'info_action' =&gt; 'Akce: @action@',
+'info_administrer_rubriques' =&gt; 'M&#367;&#382;ete prov&aacute;d&#283;t &uacute;dr&#382;bu t&eacute;to sekce a jej&iacute;ch podsekc&iacute;',
+'info_adresse_non_indiquee' =&gt; 'Nezadali jste, kter&aacute; adresa se m&aacute; otestovat!',
+'info_aide' =&gt; 'N&Aacute;POV&#282;DA:',
+'info_ajouter_mot' =&gt; 'P&#345;idat kl&iacute;&#269;ov&eacute; slovo',
+'info_annonce' =&gt; 'OZN&Aacute;MEN&Iacute;',
+'info_annonces_generales' =&gt; 'Obecn&aacute; ozn&aacute;men&iacute;:',
+'info_article_propose' =&gt; '&#268;l&aacute;nek byl odesl&aacute;n',
+'info_article_publie' =&gt; '&#268;l&aacute;nek byl zve&#345;ejn&#283;n',
+'info_article_redaction' =&gt; '&#268;l&aacute;nky ve zpracov&aacute;n&iacute;',
+'info_article_refuse' =&gt; 'Odm&iacute;tnut&eacute; &#269;l&aacute;nky',
+'info_article_supprime' =&gt; 'Odstran&#283;n&eacute; &#269;l&aacute;nky',
+'info_articles' =&gt; '&#268;l&aacute;nky',
+'info_articles_a_valider' =&gt; '&#268;l&aacute;nky ke schv&aacute;len&iacute;',
+'info_articles_proposes' =&gt; 'P&#345;edlo&#382;en&eacute; &#269;l&aacute;nky',
+'info_auteurs_nombre' =&gt; 'Autor &#269;i auto&#345;i:',
+'info_authentification_ftp' =&gt; 'Autentifikace (pomoc&iacute; FTP).',
+'info_bloquer_lien' =&gt; 'zablokovat tento odkaz',
+'info_breves_02' =&gt; 'Novinky',
+'info_breves_2' =&gt; 'novinky',
+'info_breves_valider' =&gt; 'Novinky ke schv&aacute;len&iacute;',
+'info_connexion_refusee' =&gt; 'Spojen&iacute; bylo odep&#345;eno',
+'info_contact_developpeur' =&gt; 'Kontaktujte v&yacute;voj&aacute;&#345;e.',
+'info_contenance' =&gt; 'Tyto str&aacute;nky obsahuj&iacute;:',
+'info_contribution' =&gt; 'p&#345;&iacute;sp&#283;vky do diskusn&iacute; skupiny',
+'info_copyright' =&gt; '@spip@ je freeware distribuovan&yacute; @<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">lien_gpl at .</A>',
+'info_copyright_doc' =&gt; 'Bli&#382;&#353;&iacute; informace viz &lt;a href=\'<A HREF="http://www.spip.net/en\">http://www.spip.net/en\</A>'&gt;<A HREF="http://www.spip.net/en&lt;/a">http://www.spip.net/en&lt;/a</A>&gt;.',
+'info_copyright_gpl' =&gt; 'v r&aacute;mci licence GPL',
+'info_cours_edition' =&gt; 'Va&#353;e rozpracovan&eacute; &#269;l&aacute;nky',
+'info_creer_repertoire' =&gt; 'Vytvo&#345;te soubor nebo adres&aacute;&#345; s n&aacute;zvem:',
+'info_creer_repertoire_2' =&gt; 'v podadres&aacute;&#345;i &lt;b&gt;@repertoire@&lt;/b&gt;. Potom',
+'info_creer_vignette' =&gt; 'automatick&eacute; vytvo&#345;en&iacute; n&aacute;hledu',
+'info_deplier' =&gt; 'Rozbalit',
+'info_descriptif_nombre' =&gt; 'Popis:',
+'info_description' =&gt; 'Popis:',
+'info_description_2' =&gt; 'Popis:',
+'info_dimension' =&gt; 'Velikost:',
+'info_document' =&gt; 'Dokument',
+'info_documents' =&gt; 'Dokumenty',
+'info_echange_message' =&gt; 'Syst&eacute;m SPIP umo&#382;&#328;uje v&yacute;m&#283;nu zpr&aacute;v a vytv&aacute;&#345;en&iacute; soukrom&yacute;ch
+  diskusn&iacute;ch skupin pro &uacute;&#269;astn&iacute;ky webu. Tuto funkci m&#367;&#382;ete
+  zapnout nebo vypnout.',
+'info_ecire_message_prive' =&gt; 'Napsat soukromou zpr&aacute;vu',
+'info_email_invalide' =&gt; 'Neplatn&yacute; e-mail.',
+'info_en_cours_validation' =&gt; 'Va&#353;e rozpracovan&eacute; &#269;l&aacute;nky',
+'info_en_ligne' =&gt; 'Nyn&iacute; online:',
+'info_envoyer_message_prive' =&gt; 'Odeslat soukromou zpr&aacute;vu tomuto autorovi',
+'info_erreur_requete' =&gt; 'Chyba p&#345;i datab&aacute;zov&eacute;m dotazu:',
+'info_erreur_squelette2' =&gt; 'Neexistuj&iacute;c&iacute; &#353;ablona &lt;b&gt;@fichier@&lt;/b&gt;...',
+'info_erreur_systeme' =&gt; 'Syst&eacute;mov&aacute; chyba (&#269;&iacute;slo: @errsys@)',
+'info_erreur_systeme2' =&gt; 'Pevn&yacute; disk m&#367;&#382;e b&yacute;t pln&yacute; nebo m&#367;&#382;e b&yacute;t po&#353;kozen. &lt;br&gt;
+ &lt;font color=\'red\'&gt;Zkuste &lt;a href=\'@script@\'&gt;opravit datab&aacute;zi&lt;/a&gt;,
+ nebo kontaktujte sv&eacute;ho poskytovatele prostoru pro web.&lt;/font&gt;',
+'info_fini' =&gt; 'Hotovo!',
+'info_format_image' =&gt; 'Form&aacute;t obr&aacute;zku pro tvorbu n&aacute;hled&#367;: @<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">gd_formats at .</A>',
+'info_format_non_defini' =&gt; 'form&aacute;t nen&iacute; definov&aacute;n',
+'info_grand_ecran' =&gt; 'Velk&eacute; zobrazen&iacute;',
+'info_image_aide' =&gt; 'N&Aacute;POV&#282;DA',
+'info_image_process_titre' =&gt; 'N&aacute;vod k vytvo&#345;en&iacute; n&aacute;hled&#367;',
+'info_impossible_lire_page' =&gt; '&lt;B&gt;Chyba!&lt;/b&gt; Str&aacute;nku nelze &#269;&iacute;st &lt;tt&gt;&lt;html&gt;@test_proxy@&lt;/html&gt;&lt;/tt&gt; p&#345;es proxy br&aacute;nu &lt;tt&gt;',
+'info_inclusion_directe' =&gt; 'P&#345;&iacute;m&eacute; vlo&#382;en&iacute;:',
+'info_inclusion_vignette' =&gt; 'Vlo&#382;it n&aacute;hled:',
+'info_installation_systeme_publication' =&gt; 'Instalace publika&#269;n&iacute;ho syst&eacute;mu ...',
+'info_installer_documents' =&gt; 'V&#353;echny dokumenty ve slo&#382;ce @upload@ lze nainstalovat automaticky.',
+'info_installer_ftp' =&gt; 'Jako spr&aacute;vce m&#367;&#382;ete instalovat (pomoc&iacute; FTP) soubory do slo&#382;ky @upload@ a n&aacute;sledn&#283; je odtamtud m&#367;&#382;ete p&#345;&iacute;mo vyb&iacute;rat.',
+'info_installer_images' =&gt; 'Obr&aacute;zky lze instalovat ve form&aacute;tu JPEG, GIF a PNG.',
+'info_installer_images_dossier' =&gt; 'Nainstalujte obr&aacute;zky do slo&#382;ky @upload@, abyste je odtamtud mohli vyb&iacute;rat.',
+'info_installer_tous_documents' =&gt; 'Instalovat v&#353;echny dokumenty',
+'info_interface_complete' =&gt; '&uacute;pln&eacute; rozhran&iacute;',
+'info_interface_simple' =&gt; 'jednoduch&eacute; rozhran&iacute;',
+'info_joindre_document_article' =&gt; 'K &#269;l&aacute;nku lze p&#345;ipojit dokumenty ve form&aacute;tu',
+'info_joindre_document_rubrique' =&gt; 'K t&eacute;to sekci m&#367;&#382;ete p&#345;id&aacute;vat dokumenty ve form&aacute;tu',
+'info_joindre_documents_article' =&gt; 'K &#269;l&aacute;nku m&#367;&#382;ete p&#345;id&aacute;vat dokumenty ve form&aacute;tu:',
+'info_l_article' =&gt; '&#269;l&aacute;nek',
+'info_la_breve' =&gt; 'novinka',
+'info_la_rubrique' =&gt; 'sekce',
+'info_langue_principale' =&gt; 'Hlavn&iacute; jazyk str&aacute;nek',
+'info_largeur_vignette' =&gt; '@largeur_vignette@ &times; @hauteur_vignette@ pixel&#367;',
+'info_les_auteurs_1' =&gt; 'od @les_auteurs@',
+'info_logo_format_interdit' =&gt; 'Loga jsou povolena pouze ve form&aacute;tu @<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">formats at .</A>',
+'info_logo_max_poids' =&gt; 'Log nesm&iacute; b&yacute;t v&#283;t&#353;&iacute; ne&#382; @maxi@ (tento soubor m&aacute; velikost @actuel@).',
+'info_logo_max_taille' =&gt; 'Logo nesm&iacute; b&yacute;t v&#283;t&#353;&iacute; ne&#382; @maxi@ (tento soubor m&aacute; velikost @actuel@).',
+'info_mail_fournisseur' =&gt; '<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">you at isp.com</A>',
+'info_message_2' =&gt; 'ZPR&Aacute;VA',
+'info_message_supprime' =&gt; 'ZPR&Aacute;VA BYLA ODSTRAN&#282;NA',
+'info_mise_en_ligne' =&gt; 'Datum zve&#345;ejn&#283;n&iacute; online:',
+'info_modification_parametres_securite' =&gt; '&uacute;prava bezpe&#269;nostn&iacute;ch parametr&#367;',
+'info_mois_courant' =&gt; 'V m&#283;s&iacute;ci:',
+'info_mot_cle_ajoute' =&gt; 'Bylo p&#345;id&aacute;no toto kl&iacute;&#269;ov&eacute; slovo',
+'info_multi_herit' =&gt; 'V&yacute;choz&iacute; jazyk',
+'info_multi_langues_soulignees' =&gt; 'Jazyky &lt;u&gt;zobrazen&eacute; podtr&#382;en&#283;&lt;/u&gt; maj&iacute; p&#345;elo&#382;eno cel&eacute; rozhran&iacute;. Pokue je zvol&iacute;te, bude automaticky p&#345;elo&#382;ena cel&aacute; &#345;ada polo&#382;ek ve&#345;ejn&yacute;ch str&aacute;neki(data, formul&aacute;&#345;e). U jazyk&#367;, kter&eacute; nejsou podtr&#382;eny, budou tyto polo&#382;ky zobrazeny v hlavn&iacute;m jazyce str&aacute;nek.',
+'info_multilinguisme' =&gt; 'V&iacute;cejazy&#269;n&eacute;',
+'info_nom_non_utilisateurs_connectes' =&gt; 'Va&#353;e jm&eacute;no nen&iacute; uvedeno na seznamu p&#345;ipojen&yacute;ch u&#382;ivatel&#367;.',
+'info_nom_utilisateurs_connectes' =&gt; 'Va&#353;e jm&eacute;no je uvedeno na seznamu p&#345;ipojen&yacute;ch u&#382;ivatel&#367;.',
+'info_nombre_en_ligne' =&gt; 'Aktu&aacute;ln&#283; online:',
+'info_non_resultat' =&gt; '&#377;&aacute;dn&eacute; v&yacute;sledky pro &quot;@cherche_mot@&quot;',
+'info_non_utilisation_messagerie' =&gt; 'Nepou&#382;&iacute;v&aacute;te syst&eacute;m pro intern&iacute; zas&iacute;l&aacute;n&iacute; zpr&aacute;v v r&aacute;mci t&#283;chto str&aacute;nek.',
+'info_nouveau_message' =&gt; 'M&Aacute;TE NOVOU ZPR&Aacute;VU',
+'info_nouveaux_messages' =&gt; 'M&Aacute;TE CELKEM @total_messages@ NOV&Yacute;CH ZPR&Aacute;V',
+'info_numero_abbreviation' =&gt; '&#269;.',
+'info_panne_site_syndique' =&gt; 'Syndikovan&yacute; web nefunguje',
+'info_pense_bete' =&gt; 'POZN&Aacute;MKA',
+'info_petit_ecran' =&gt; 'Mal&yacute; displej',
+'info_pixels' =&gt; 'pixel&#367;',
+'info_plusieurs_mots_trouves' =&gt; 'Pro &quot;@cherche_mot@&quot; bylo nalezeno n&#283;kolik kl&iacute;&#269;ov&yacute;ch slov:',
+'info_popularite_5' =&gt; 'obl&iacute;benost:',
+'info_portfolio' =&gt; 'Portfolio',
+'info_portfolio_automatique' =&gt; 'Automatizovan&eacute; portfolio:',
+'info_premier_resultat' =&gt; '[@debut_limit@ prvn&iacute;ch v&yacute;sledk&#367; z @total@]',
+'info_premier_resultat_sur' =&gt; '[@debut_limit@ prvn&iacute;ch v&yacute;sledk&#367; z @total@]',
+'info_probleme_grave' =&gt; 'chyba',
+'info_propose_1' =&gt; '[@nom_site_spip@] P&#345;edlo&#382;eno: @titre@',
+'info_propose_2' =&gt; 'P&#345;edlo&#382;en &#269;l&aacute;nek
+-----------------',
+'info_propose_3' =&gt; '&#268;l&aacute;nek &quot;@titre@&quot; byl p&#345;edlo&#382;en ke zve&#345;ejn&#283;n&iacute;.',
+'info_propose_4' =&gt; 'Pros&iacute;m, p&#345;e&#269;t&#283;te si jej a sd&#283;lte sv&#367;j n&aacute;zor',
+'info_propose_5' =&gt; 'v diskusn&iacute; skupin&#283;, na n&iacute;&#382; navazuje. Je k dispozici na adrese:',
+'info_publie_01' =&gt; '&#268;l&aacute;nek &quot;@titre@&quot; byl schv&aacute;len @<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">connect_nom at .</A>',
+'info_publie_1' =&gt; '[@nom_site_spip@] ZVE&#344;EJN&#282;NO: @titre@',
+'info_publie_2' =&gt; 'Zve&#345;ejn&#283;n&yacute; &#269;l&aacute;nek
+-----------------',
+'info_rechercher' =&gt; 'Naj&iacute;t',
+'info_rechercher_02' =&gt; 'Naj&iacute;t:',
+'info_remplacer_vignette' =&gt; 'Nahradit standardn&iacute; n&aacute;hled vlastn&iacute;m logem:',
+'info_retablir_lien' =&gt; 'obnovit tento odkaz',
+'info_retirer_mot' =&gt; 'Odstranit toto kl&iacute;&#269;ov&eacute; slovo',
+'info_retirer_mots' =&gt; 'Odstranit v&#353;echna kl&iacute;&#269;ov&aacute; slova',
+'info_sans_titre_2' =&gt; 'bez n&aacute;zvu',
+'info_selectionner_fichier' =&gt; 'M&#367;&#382;ete vybrat soubor ze slo&#382;ky @upload@',
+'info_selectionner_fichier_2' =&gt; 'Vybrat soubor:',
+'info_site_attente' =&gt; 'Web &#269;ek&aacute; na schv&aacute;len&iacute;',
+'info_site_reference' =&gt; 'Web odkazovan&yacute; online',
+'info_site_refuse' =&gt; 'Web byl odm&iacute;tnut',
+'info_sites_referencer' =&gt; 'Zadat odkaz na web',
+'info_supprimer_vignette' =&gt; 'odstranit n&aacute;hled',
+'info_symbole_bleu' =&gt; '&lt;B&gt;Modr&yacute;m&lt;/B&gt; symbolem je ozna&#269;ena &lt;B&gt;intern&iacute; pozn&aacute;mka&lt;/B&gt;, tj. zpr&aacute;va ur&#269;en&aacute; pro osobn&iacute; pot&#345;ebu.',
+'info_symbole_jaune' =&gt; '&lt;B&gt;&#381;lut&yacute;m&lt;/B&gt; symbolem je ozna&#269;ena &lt;B&gt;zpr&aacute;va pro v&#353;echny redaktory&lt;/B&gt;: m&#367;&#382;e ji upravovat kter&yacute;koli ze spr&aacute;vc&#367; a zobrazuje se v&#353;em redaktor&#367;m.',
+'info_symbole_vert' =&gt; '&lt;B&gt;Zelen&yacute;m&lt;/B&gt; symbolem jsou ozna&#269;eny &lt;B&gt;zpr&aacute;vy vym&#283;&#328;ovan&eacute; s ostatn&iacute;mi u&#382;ivateli&lt;/B&gt; webu.',
+'info_syndication' =&gt; 'syndikace:',
+'info_syndication_articles' =&gt; '&#269;l&aacute;nek/&#269;l&aacute;nk&#367;',
+'info_telecharger' =&gt; 'Odeslat z po&#269;&iacute;ta&#269;e:',
+'info_telecharger_nouveau_logo' =&gt; 'Odeslat nov&eacute; logo:',
+'info_telecharger_ordinateur' =&gt; 'Odeslat z po&#269;&iacute;ta&#269;e:',
+'info_tous_resultats_enregistres' =&gt; '[v&#353;echny v&yacute;sledky jsou zaps&aacute;ny]',
+'info_tout_afficher' =&gt; 'Zobrazit v&#353;e',
+'info_travaux_texte' =&gt; 'Tyto str&aacute;nky nejsou je&#353;t&#283; nastaveny. Nav&#353;tivte je, pros&iacute;m, pozd&#283;ji...',
+'info_travaux_titre' =&gt; 'Na webu se pracuje',
+'info_trop_resultat' =&gt; 'Pro: &quot;@cherche_mot@&quot; bylo zobrazeno p&#345;&iacute;li&#353; mnoho v&yacute;sledk&#367;. Zadejte podrobn&#283;j&#353;&iacute; krit&eacute;ria pro vyhled&aacute;v&aacute;n&iacute;.',
+'info_utilisation_messagerie_interne' =&gt; 'U tohoto webu pou&#382;&iacute;v&aacute;te syst&eacute;m intern&iacute;ch zpr&aacute;v.',
+'info_valider_lien' =&gt; 'schv&aacute;lit tento odkaz',
+'info_verifier_image' =&gt; ', zkontrolujte, zda jste obr&aacute;zky p&#345;enesli spr&aacute;vn&#283;.',
+'info_vignette_defaut' =&gt; 'V&yacute;choz&iacute; n&aacute;hled',
+'info_vignette_personnalisee' =&gt; 'Vlastn&iacute; n&aacute;hled',
+'info_visite' =&gt; 'n&aacute;v&#353;t&#283;vy:',
+'info_visites' =&gt; 'n&aacute;v&#353;t&#283;vy:',
+'info_vos_rendez_vous' =&gt; 'Va&#353;e budouc&iacute; sch&#367;zky',
+'info_zoom' =&gt; 'zv&#283;t&#353;it/zmen&#353;it',
+'infos_vos_pense_bete' =&gt; 'Va&#353;e pozn&aacute;mky',
+'item_breve_proposee' =&gt; 'P&#345;edlo&#382;en&eacute; novinky',
+
+
+// L
+'lien_afficher_icones_seuls' =&gt; 'Zobrazit pouze ikony',
+'lien_afficher_texte_icones' =&gt; 'Zobrazit ikony a text',
+'lien_afficher_texte_seul' =&gt; 'Zobrazit pouze text',
+'lien_icones_interface' =&gt; 'Ikony rozhran&iacute; jsou od &lt;a href=\'<A HREF="http://jimmac.musichall.cz/\">http://jimmac.musichall.cz/\</A>'&gt;Jakuba \'Jimmac\' Steinera&lt;/a&gt;.',
+'lien_liberer' =&gt; 'verze',
+'lien_liberer_tous' =&gt; 'uvolnit tyto &#269;l&aacute;nky',
+'lien_nouvea_pense_bete' =&gt; 'NOV&Aacute; POZN&Aacute;MKA',
+'lien_nouveau_message' =&gt; 'NOV&Aacute; ZPR&Aacute;VA',
+'lien_nouvelle_annonce' =&gt; 'NOV&Eacute; OZN&Aacute;MEN&Iacute;',
+'lien_petitions' =&gt; 'PETICE',
+'lien_popularite' =&gt; 'obl&iacute;benost: @popularite@%',
+'lien_racine_site' =&gt; 'KO&#344;ENOV&Yacute; ADRES&Aacute;&#344; STR&Aacute;NEK',
+'lien_reessayer' =&gt; 'zkusit znovu',
+'lien_repondre_message' =&gt; 'Odpov&#283;d&#283;t na zpr&aacute;vu',
+'lien_supprimer' =&gt; 'odstranit',
+'lien_tout_afficher' =&gt; 'Zobrazit v&#353;e',
+'lien_visite_site' =&gt; 'nav&#353;t&iacute;vit tyto str&aacute;nky',
+'lien_visites' =&gt; '@visites@ n&aacute;v&#353;t&#283;v',
+'lien_voir_auteur' =&gt; 'Zobrazit autora',
+'login_acces_prive' =&gt; 'p&#345;&iacute;stup do neve&#345;ejn&eacute; oblasti',
+'login_autre_identifiant' =&gt; 'pou&#382;&iacute;t jin&eacute; ID',
+'login_connexion_refusee' =&gt; 'Spojen&iacute; odm&iacute;tnuto.',
+'login_cookie_accepte' =&gt; 'Nastavte prohl&iacute;&#382;e&#269; tak, aby je p&#345;ij&iacute;mal (alespo&#328; pro tento web).',
+'login_cookie_oblige' =&gt; 'Pro bezpe&#269;nou identifikaci mus&iacute; b&yacute;t povoleny soubory cookies.',
+'login_deconnexion_ok' =&gt; 'Byli jste odhl&aacute;&#353;eni.',
+'login_erreur_pass' =&gt; 'Nespr&aacute;vn&eacute; heslo.',
+'login_espace_prive' =&gt; 'neve&#345;ejn&aacute; oblast',
+'login_identifiant_inconnu' =&gt; 'Identifikace &quot;@login@&quot; je nezn&aacute;m&aacute;.',
+'login_login' =&gt; 'P&#345;ihl&aacute;&#353;en&iacute;:',
+'login_login2' =&gt; 'P&#345;ihla&#353;ovac&iacute; &uacute;daje (identifikace pro p&#345;ipojen&iacute; k t&#283;mto str&aacute;nk&aacute;m):',
+'login_login_pass_incorrect' =&gt; '(Nespr&aacute;vn&eacute; u&#382;ivatelsk&eacute; jm&eacute;no nebo heslo).',
+'login_motpasseoublie' =&gt; 'zapomn&#283;li jste heslo?',
+'login_non_securise' =&gt; 'POZOR! Tento formul&aacute;&#345; nen&iacute; zabezpe&#269;en&yacute;.
+   Pokud nechcete, aby va&#353;e heslo mohl n&#283;kdo
+   b&#283;hem p&#345;enosu po s&iacute;ti zachytit, zapn&#283;te v prohl&iacute;&#382;e&#269;i
+   Javascript a',
+'login_nouvelle_tentative' =&gt; 'Dal&#353;&iacute; pokus',
+'login_par_ici' =&gt; 'Jste registrov&aacute;ni... takto...',
+'login_pass2' =&gt; 'Heslo:',
+'login_preferez_refuser' =&gt; '&lt;b&gt;Nechcete-li soubory cookies povolit&lt;/b&gt;, existuje i jin&yacute; (m&eacute;n&#283; bezpe&#269;n&yacute;) zp&#367;sob p&#345;ipojen&iacute;:',
+'login_recharger' =&gt; 'znovu na&#269;&iacute;st tuto str&aacute;nku',
+'login_rester_identifie' =&gt; 'Pamatovat moje ID n&#283;kolik dn&iacute;',
+'login_retour_public' =&gt; 'Zp&#283;t na ve&#345;ejn&eacute; str&aacute;nky',
+'login_retour_site' =&gt; 'Zp&#283;t na ve&#345;ejn&eacute; str&aacute;nky',
+'login_retoursitepublic' =&gt; 'zp&#283;t na ve&#345;ejn&eacute; str&aacute;nky',
+'login_sans_cookiie' =&gt; 'Identifikace bez pou&#382;it&iacute; cookies',
+'login_sinscrire' =&gt; 'registrovat',
+'login_test_navigateur' =&gt; 'test prohl&iacute;&#382;e&#269;e/opakovan&eacute; p&#345;ipojen&iacute;',
+'login_verifiez_navigateur' =&gt; '(P&#345;esv&#283;d&#269;te se v&#353;ak, zda si prohl&iacute;&#382;e&#269; nezapamatoval va&#353;e heslo...)',
+
+
+// M
+'module_fichiers_langues' =&gt; 'Jazykov&eacute; soubory',
+
+
+// N
+'navigateur_pas_redirige' =&gt; 'Nedojde-li k p&#345;esm&#283;rov&aacute;n&iacute; prohl&iacute;&#382;e&#269;e, klepn&#283;te sem.',
+
+
+// O
+'onglet_affacer_base' =&gt; 'Odstranit datab&aacute;zi',
+'onglet_auteur' =&gt; 'Autor',
+'onglet_contenu_site' =&gt; 'Obsah webu',
+'onglet_evolution_visite_mod' =&gt; '&Uacute;rove&#328; n&aacute;v&#353;t&#283;v',
+'onglet_fonctions_avances' =&gt; 'Roz&#353;&iacute;&#345;en&eacute; funkce',
+'onglet_informations_personnelles' =&gt; 'Osobn&iacute; &uacute;daje',
+'onglet_interactivite' =&gt; 'Interaktivita',
+'onglet_messagerie' =&gt; 'Syst&eacute;m zpr&aacute;v',
+'onglet_messages_internes' =&gt; 'Intern&iacute; zpr&aacute;vy',
+'onglet_messages_publics' =&gt; 'Ve&#345;ejn&eacute; zpr&aacute;vy',
+'onglet_messages_vide' =&gt; 'Zpr&aacute;vy bez textu',
+'onglet_origine_visites' =&gt; 'P&#367;vod n&aacute;v&#353;t&#283;v',
+'onglet_repartition_debut' =&gt; 'od po&#269;&aacute;tku',
+'onglet_repartition_lang' =&gt; 'Rozd&#283;len&iacute; podle jazyk&#367;',
+'onglet_repartition_rubrique' =&gt; 'Rozd&#283;len&iacute; podle sekc&iacute;',
+'onglet_save_restaur_base' =&gt; 'Z&aacute;loha/obnova datab&aacute;ze',
+'onglet_vider_cache' =&gt; 'Vymazat mezipam&#283;t (cache)',
+'ortho_trop_de_fautes2' =&gt; 'Odstra&#328;te chyby patrn&eacute; na prvn&iacute; pohled a zkuste to znovu.',
+
+
+// P
+'pass_choix_pass' =&gt; 'Zadejte nov&eacute; heslo:',
+'pass_erreur' =&gt; 'Chyba',
+'pass_erreur_acces_refuse' =&gt; '&lt;b&gt;Chyba:&lt;/b&gt; K t&#283;mto str&aacute;nk&aacute;m ji&#382; nem&aacute;te p&#345;&iacute;stup.',
+'pass_erreur_code_inconnu' =&gt; '&lt;b&gt;Chyba:&lt;/b&gt; Zadan&eacute; k&oacute;dy neodpov&iacute;daj&iacute; &#382;&aacute;dn&eacute;mu n&aacute;v&#353;t&#283;vn&iacute;kovi, kter&yacute; m&aacute; k t&#283;mto str&aacute;nk&aacute;m p&#345;&iacute;stup.',
+'pass_erreur_non_enregistre' =&gt; '&lt;b&gt;Chyba:&lt;/b&gt; Adresa &lt;tt&gt;@email_oubli@&lt;/tt&gt; nen&iacute; na t&#283;chto str&aacute;nk&aacute;ch zaregistrov&aacute;na.',
+'pass_erreur_non_valide' =&gt; '&lt;b&gt;Chyba:&lt;/b&gt; Neplatn&yacute; e-mail &lt;tt&gt;@email_oubli@&lt;/tt&gt;!',
+'pass_erreur_probleme_technique' =&gt; '&lt;b&gt;Chyba:&lt;/b&gt; Z technick&yacute;ch d&#367;vod&#367; nebylo mo&#382;n&eacute; e-mail odeslat.',
+'pass_espace_prive_bla' =&gt; 'Neve&#345;ejn&aacute; oblast str&aacute;nek je n&aacute;v&#353;t&#283;vn&iacute;k&#367;m
+p&#345;&iacute;stupn&aacute; po registraci. Jakmile se zaregistrujete,
+budete moci korigovat rozpracovan&eacute; &#269;l&aacute;nky,
+p&#345;edkl&aacute;dat &#269;l&aacute;nky ke schv&aacute;len&iacute; a budete se moci &uacute;&#269;astnit diskusn&iacute;ch skupin.',
+'pass_forum_bla' =&gt; 'Po&#382;&aacute;dali jste o &uacute;&#269;ast v diskusn&iacute; skupin&#283;,
+kter&aacute; je vyhrazena registrovan&yacute;m u&#382;ivatel&#367;m.',
+'pass_indiquez_cidessous' =&gt; 'D&aacute;le zadejte elektronickou adresu, pod kterou
+jste ji&#382; zaregistrov&aacute;ni. Obdr&#382;&iacute;te
+e-mail, kde bude vysv&#283;tleno, jak
+z&iacute;sk&aacute;te p&#345;&iacute;stup zp&#283;t.',
+'pass_mail_passcookie' =&gt; '(toto je automatick&aacute; zpr&aacute;va)
+P&#345;&iacute;stup ke str&aacute;nk&aacute;m
+@nom_site_spip@ (@adresse_site@)
+
+z&iacute;sk&aacute;te p&#345;echodem na adresu:
+
+    @sendcookie@
+
+Tam zad&aacute;te nov&eacute; heslo
+a znovu se ke str&aacute;nk&aacute;m p&#345;ipoj&iacute;te.
+
+',
+'pass_mot_oublie' =&gt; 'Zapomenut&eacute; heslo',
+'pass_nouveau_enregistre' =&gt; 'Nov&eacute; heslo bylo zaps&aacute;no.',
+'pass_nouveau_pass' =&gt; 'Nov&eacute; heslo',
+'pass_ok' =&gt; 'V po&#345;&aacute;dku',
+'pass_oubli_mot' =&gt; 'Zapomenut&eacute; heslo',
+'pass_quitter_fenetre' =&gt; 'Odej&iacute;t z tohoto okna',
+'pass_rappel_login' =&gt; 'P&#345;ipomenut&iacute;: Va&#353;e u&#382;ivatelsk&eacute; jm&eacute;no (login) je &quot;@login@&quot;.',
+'pass_recevoir_mail' =&gt; 'Obdr&#382;&iacute;te e-mail s vysv&#283;tlen&iacute;m, jak znovu z&iacute;skat p&#345;&iacute;stup k t&#283;mto str&aacute;nk&aacute;m.',
+'pass_retour_public' =&gt; 'Zp&#283;t na ve&#345;ejn&#283; p&#345;&iacute;stupn&eacute; str&aacute;nky',
+'pass_rien_a_faire_ici' =&gt; 'Tady nen&iacute; co d&#283;lat :-).',
+'pass_vousinscrire' =&gt; 'Registrace p&#345;&iacute;stupu na str&aacute;nky',
+'precedent' =&gt; 'p&#345;edchoz&iacute;',
+'previsualisation' =&gt; 'N&aacute;hled',
+'previsualiser' =&gt; 'N&aacute;hled',
+
+
+// S
+'stats_visites_et_popularite' =&gt; 'po&#269;et n&aacute;v&#353;t&#283;v: @visites@; obl&iacute;benost: @popularite@',
+'suivant' =&gt; 'dal&#353;&iacute;',
+
+
+// T
+'taille_ko' =&gt; '@taille@&nbsp;kb',
+'taille_mo' =&gt; '@taille@&nbsp;Mb',
+'taille_octets' =&gt; '@taille@&nbsp;byt&#367;',
+'texte_actualite_site_1' =&gt; 'A&#382; se s rozhran&iacute;m obezn&aacute;m&iacute;te, klepn&#283;te na &quot;',
+'texte_actualite_site_2' =&gt; '&uacute;pln&eacute; rozhran&iacute;',
+'texte_actualite_site_3' =&gt; '&raquo; ke zp&#345;&iacute;stupn&#283;n&iacute; v&iacute;ce funkc&iacute;.',
+'texte_creation_automatique_vignette' =&gt; 'Na t&#283;chto str&aacute;nk&aacute;ch je zapnuta automatick&aacute; tvorba n&aacute;hled&#367; a jejich p&#345;edb&#283;&#382;n&eacute; zobrazen&iacute;. Pokud pomoc&iacute; tohoto formul&aacute;&#345;e nainstalujete obr&aacute;zky ve form&aacute;tu @gd_formats@, budou spojeny s n&aacute;hledem, kter&yacute; m&aacute; maxim&aacute;ln&iacute; velikost @taille_preview@ pixel&#367;.',
+'texte_documents_associes' =&gt; 'S &#269;l&aacute;nkem jsou spojeny n&aacute;sleduj&iacute;c&iacute; dokumenty,
+    je&#382; v&#353;ak do n&#283;j nejsou p&#345;&iacute;mo
+    vlo&#382;eny. Podle ve&#345;ejn&eacute;ho vzhledu str&aacute;nek
+    se mohou zobrazit jako p&#345;ilo&#382;en&eacute; dokumenty.',
+'texte_erreur_mise_niveau_base' =&gt; 'P&#345;i aktualizaci datab&aacute;ze do&#353;lo k chyb&#283;.
+      Obr&aacute;zek &lt;B&gt;@fichier@&lt;/B&gt; nebylo mo&#382;n&eacute; p&#345;edat (&#269;l&aacute;nek @id_article@).&lt;p&gt;
+      Pe&#269;liv&#283; si poznamenejte toto &#269;&iacute;slo, zkuste aktualizaci
+      a p&#345;esv&#283;d&#269;te se, &#382;e obr&aacute;zky jsou i nad&aacute;le v &#269;l&aacute;nc&iacute;ch
+      zobrazeny.',
+'texte_inc_auth_1' =&gt; 'P&#345;ihl&aacute;sili jsgte se jako
+  &lt;B&gt;@auth_login@&lt;/B&gt;, ale toto u&#382;ivatelsk&eacute; jm&eacute;no (ji&#382;) v datab&aacute;zi neexistuje. 
+  Zkuste',
+'texte_inc_auth_2' =&gt; 'znovu p&#345;ipojit',
+'texte_inc_auth_3' =&gt; 'po opu&#353;t&#283;n&iacute;
+  restartujte v p&#345;&iacute;pad&#283; pot&#345;eby prohl&iacute;&#382;e&#269;.',
+'texte_inc_config' =&gt; 'N&iacute;&#382;e uveden&eacute; &uacute;pravy v&yacute;znamn&#283; ovliv&#328;uj&iacute;
+  fungov&aacute;n&iacute; webu. M&#283;nit tato nastaven&iacute; by m&#283;li jenom u&#382;ivatel&eacute;, kte&#345;&iacute; dob&#345;e v&#283;d&iacute;,
+ jak syst&eacute;m SPIP funguje. &lt;P align=&quot;justify&quot;&gt;&lt;B&gt;Obecn&#283;
+ plat&iacute;, &#382;e s t&#283;mito str&aacute;nkami by m&#283;l pracovat pouze hlavn&iacute; spr&aacute;vce va&#353;eho webu.&lt;/b&gt;',
+'texte_inc_meta_1' =&gt; 'P&#345;i pokusu o z&aacute;pis do souboru  &lt;code&gt;@fichier@&lt;/code&gt; do&#353;lo k syst&eacute;mov&eacute; chyb&#283;. Jako&#382;to spr&aacute;vce webu',
+'texte_inc_meta_2' =&gt; 'zkontrolujte opr&aacute;vn&#283;n&iacute; k z&aacute;pisu ',
+'texte_inc_meta_3' =&gt; 'do adres&aacute;&#345;e &lt;code&gt;@repertoire@&lt;/code&gt;.',
+'texte_statut_en_cours_redaction' =&gt; 'rozpracovan&eacute; &uacute;pravy',
+'texte_statut_poubelle' =&gt; 'v ko&#353;i',
+'texte_statut_propose_evaluation' =&gt; 'p&#345;edlo&#382;eno ke schv&aacute;len&iacute;',
+'texte_statut_publie' =&gt; 'zve&#345;ejn&#283;no online',
+'texte_statut_refuse' =&gt; 'odm&iacute;tnuto',
+'titre_ajouter_mot_cle' =&gt; 'P&#344;IDAT KL&Iacute;&#268;OV&Eacute; SLOVO:',
+'titre_breve_proposee' =&gt; 'P&#345;edlo&#382;en&aacute; novinka',
+'titre_breve_publiee' =&gt; 'Novinka zve&#345;ejn&#283;na',
+'titre_breve_refusee' =&gt; 'Novinka zam&iacute;tnuta',
+'titre_cadre_raccourcis' =&gt; 'KL&Aacute;VESOV&Eacute; ZKRATKY:',
+'titre_changer_couleur_interface' =&gt; 'Zm&#283;na barvy rozhran&iacute;',
+'titre_forum' =&gt; 'Diskusn&iacute; skupina',
+'titre_image_admin_article' =&gt; 'M&aacute;te mo&#382;nost spr&aacute;vy tohoto &#269;l&aacute;nku',
+'titre_image_administrateur' =&gt; 'Spr&aacute;vce',
+'titre_image_aide' =&gt; 'N&aacute;pov&#283;da k polo&#382;ce',
+'titre_image_auteur_supprime' =&gt; 'Autor odstran&#283;n',
+'titre_image_redacteur' =&gt; 'Redaktor bez p&#345;&iacute;stupu',
+'titre_image_redacteur_02' =&gt; 'Redaktor',
+'titre_image_visiteur' =&gt; 'N&aacute;v&#353;t&#283;vn&iacute;k',
+'titre_joindre_document' =&gt; 'P&#344;IPOJIT DOKUMENT',
+'titre_liens_entrants' =&gt; 'P&#345;&iacute;choz&iacute; odkazy',
+'titre_mots_cles' =&gt; 'KL&Iacute;&#268;OV&Aacute; SLOVA',
+'titre_probleme_technique' =&gt; 'Varov&aacute;n&iacute;: Z technick&yacute;ch d&#367;vod&#367; (server MySQL) je tato &#269;&aacute;st webu nep&#345;&iacute;stupn&aacute;.&lt;p&gt;D&#283;kujeme v&aacute;m za pochopen&iacute;.',
+'titre_publier_document' =&gt; 'ZVE&#344;EJNIT DOKUMENT V T&Eacute;TO &#268;&Aacute;STI',
+'titre_statistiques' =&gt; 'Statistiky str&aacute;nek',
+'titre_titre_document' =&gt; 'N&aacute;zev dokumentu:',
+'trad_reference' =&gt; '(referen&#269;n&iacute; &#269;l&aacute;nek)',
+
+
+// U
+'upload_fichier_zip' =&gt; 'Komprimovan&yacute; soubor ZIP',
+'upload_fichier_zip_texte' =&gt; 'Chcete nainstalovat komprimovan&yacute; soubor ZIP.',
+'upload_fichier_zip_texte2' =&gt; 'Tento soubor m&#367;&#382;e b&yacute;t:',
+'upload_limit' =&gt; 'Soubor je pro server p&#345;&iacute;li&#353; velk&yacute;. Maxim&aacute;ln&iacute; povolen&aacute; velikost pro &lt;i&gt;odesl&aacute;n&iacute;&lt;/i&gt; je @<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">max at .</A>',
+'upload_zip_decompacter' =&gt; 'rozbalen&yacute; a ka&#382;d&yacute; ze soubor&#367; v n&#283;m obsa&#382;en&yacute; bude na web nainstalov&aacute;n. Budou nainstalov&aacute;ny tyto soubory:',
+'upload_zip_telquel' =&gt; 'nainstalovat tak, jak je, tedy ve form&aacute;tu ZIP;',
+
+
+// Z
+'zbug_balise_b_aval' =&gt; ': tag B je p&#345;&iacute;li&#353; pozd&#283; ve smy&#269;ce',
+'zbug_boucle' =&gt; 'smy&#269;ka',
+'zbug_boucle_recursive_undef' =&gt; 'nedefinovan&aacute; rekurzivn&iacute; smy&#269;ka',
+'zbug_champ_hors_boucle' =&gt; 'Pole @champ@ je mimo smy&#269;ku',
+'zbug_champ_hors_motif' =&gt; 'Pole @champ@ je mimo smy&#269;ku a m&aacute; tag @motif@',
+'zbug_code' =&gt; 'k&oacute;d',
+'zbug_critere_inconnu' =&gt; 'nezn&aacute;m&aacute; podm&iacute;nka @critere@',
+'zbug_distant_interdit' =&gt; 'extern&iacute; data jsou zak&aacute;z&aacute;na',
+'zbug_erreur_boucle_double' =&gt; 'SMY&#268;<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">KA at id</A>@: dvoj&iacute; definice',
+'zbug_erreur_boucle_fermant' =&gt; 'SMY&#268;<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">KA at id</A>@: chyb&iacute; uzav&iacute;rac&iacute; tag',
+'zbug_erreur_boucle_syntaxe' =&gt; 'Nespr&aacute;vn&aacute; syntax (BOUCLE)',
+'zbug_erreur_execution_page' =&gt; 'chyba p&#345;i v&yacute;po&#269;tu str&aacute;nky',
+'zbug_erreur_filtre' =&gt; 'Chyba - nedefinovan&yacute; filtr: &lt;b&gt;&quot;@filtre@&quot;&lt;/b&gt;',
+'zbug_erreur_meme_parent' =&gt; '{meme_parent} t&yacute;k&aacute; se jenom smy&#269;ek (FORUMS) a (RUBRIQUES)',
+'zbug_erreur_squelette' =&gt; 'Chyba &#269;i chyby v &#353;ablon&#283;',
+'zbug_info_erreur_squelette' =&gt; 'Na webu do&#353;lo k chyb&#283;',
+'zbug_inversion_ordre_inexistant' =&gt; 'obr&aacute;cen&eacute; nebo neexistuj&iacute;c&iacute; po&#345;ad&iacute;',
+'zbug_parametres_inclus_incorrects' =&gt; 'Nespr&aacute;vn&eacute; parametry inkluze',
+'zbug_resultat' =&gt; 'v&yacute;sledky',
+'zbug_serveur_indefini' =&gt; 'Nedefinovan&yacute; server SQL',
+'zbug_table_inconnue' =&gt; 'Nezn&aacute;m&aacute; tabulka SQL &quot;@table@&quot;'
+
+);
+
+
+?&gt;
+
+--- NEW FILE: public_cs.php3 ---
+&lt;?php
+
+// This is a SPIP language file  --  Ceci est un fichier langue de SPIP
+
+$GLOBALS[$GLOBALS['idx_lang']] = array(
+
+
+// A
+'accueil_site' =&gt; 'Hlavn&iacute; strana',
+'articles' =&gt; '&#268;l&aacute;nky',
+'articles_auteur' =&gt; '&#268;l&aacute;nky tohoto autora',
+'articles_populaires' =&gt; 'Nej&#269;ten&#283;j&#353;&iacute; &#269;l&aacute;nky',
+'articles_recents' =&gt; 'Ned&aacute;vn&eacute; &#269;l&aacute;nky',
+'articles_rubrique' =&gt; '&#268;l&aacute;nky v t&eacute;to rubrice',
+'aucun_article' =&gt; 'Na t&eacute;to adrese nen&iacute; &#382;&aacute;dn&yacute; &#269;l&aacute;nek',
+'aucun_auteur' =&gt; 'Na t&eacute;to adrese nen&iacute; &#382;&aacute;dn&yacute; autor',
+'aucun_site' =&gt; 'Na t&eacute;to adrese nen&iacute; &#382;&aacute;dn&yacute; odkaz',
+'aucune_breve' =&gt; 'Na t&eacute;to adrese nen&iacute; &#382;&aacute;dn&aacute; novinka',
+'aucune_rubrique' =&gt; 'Na t&eacute;to adrese nen&iacute; &#382;&aacute;dn&aacute; rubrika',
+'autres_breves' =&gt; 'Dal&#353;&iacute; novinky',
+'autres_groupes_mots_clefs' =&gt; 'Dal&#353;&iacute; skupiny kl&iacute;&#269;ov&yacute;ch slov',
+'autres_sites' =&gt; 'Dal&#353;&iacute; odkazy',
+
+
+// B
+'bonjour' =&gt; 'Dobr&yacute; den',
+'breves' =&gt; 'Novinky',
+
+
+// C
+'commenter_site' =&gt; 'Koment&aacute;&#345; k tomuto odkazu',
+
+
+// D
+'date' =&gt; 'Datum',
+'dernier_ajout' =&gt; 'Posledn&iacute; p&#345;&iacute;sp&#283;vky',
+'dernieres_breves' =&gt; 'Posledn&iacute; novinky',
+'derniers_articles' =&gt; 'Posledn&iacute; &#269;l&aacute;nky',
+'derniers_commentaires' =&gt; 'Posledn&iacute; koment&aacute;&#345;e',
+'derniers_messages_forum' =&gt; 'Posledn&iacute; p&#345;&iacute;sp&#283;vky v diskusn&iacute;ch f&oacute;rech',
+
+
+// E
+'edition_mode_texte' =&gt; 'Textov&yacute; re&#382;im',
+'en_reponse' =&gt; 'Odpov&#283;&#271; na:',
+'en_resume' =&gt; 'Shrnut&iacute;',
+'envoyer_message' =&gt; 'Odeslat zpr&aacute;vu',
+'espace_prive' =&gt; 'Vstup pro autory',
+
+
+// F
+'forum' =&gt; 'F&oacute;rum',
+
+
+// H
+'hierarchie_site' =&gt; 'Struktura str&aacute;nek',
+
+
+// J
+'jours' =&gt; 'dn&#367;',
+
+
+// M
+'meme_auteur' =&gt; 'Od stejn&eacute;ho autora',
+'meme_rubrique' =&gt; 'Ve stejn&eacute; rubrice',
+'memes_auteurs' =&gt; 'Od stejn&yacute;ch autor&#367;',
+'message' =&gt; 'Zpr&aacute;va',
+'messages_forum' =&gt; 'Zpr&aacute;vy v diskusn&iacute;m f&oacute;ru',
+'messages_recents' =&gt; 'Posledn&iacute; zpr&aacute;vy v diskusn&iacute;ch f&oacute;rech',
+'mots_clefs' =&gt; 'Kl&iacute;&#269;ov&aacute; slova',
+'mots_clefs_meme_groupe' =&gt; 'Kl&iacute;&#269;ov&aacute; slova ve stejn&eacute; skupin&#283;',
+
+
+// N
+'navigation' =&gt; 'Navigace',
+'nom' =&gt; 'Jm&eacute;no',
+'nouveautes' =&gt; 'Co je nov&eacute;ho',
+'nouveautes_web' =&gt; 'Novinky na webu',
+'nouveaux_articles' =&gt; 'Nov&eacute; &#269;l&aacute;nky',
+'nouvelles_breves' =&gt; 'Nov&eacute; novinky',
+
+
+// P
+'page_precedente' =&gt; 'p&#345;edchoz&iacute; strana',
+'page_suivante' =&gt; 'dal&#353;&iacute; strana',
+'par_auteur' =&gt; 'napsal(a)',
+'participer_site' =&gt; 'M&#367;&#382;ete se aktivn&#283; zapojit a napsat n&#283;jak&yacute; &#269;l&aacute;nek pro tento web - zaregistrujte se n&iacute;&#382;e. Okam&#382;it&#283; obdr&#382;&iacute;te e-mail s p&#345;&iacute;stupov&yacute;mi k&oacute;dy do &#269;&aacute;sti pro autory.',
+'plan_du_site' =&gt; 'Mapa str&aacute;nek',
+'plan_site' =&gt; 'Mapa str&aacute;nek',
+'popularite' =&gt; 'Popularita',
+'poster_message' =&gt; 'Napsat zpr&aacute;vu',
+'proposer_site' =&gt; 'M&#367;&#382;ete navrhnout odkaz, kter&yacute; m&aacute; b&yacute;t za&#345;azen do t&eacute;to rubriky:',
+
+
+// R
+'repondre_article' =&gt; 'Reagovat na tento &#269;l&aacute;nek',
+'repondre_breve' =&gt; 'Reagovat na tuto novinku ',
+'repondre_message' =&gt; 'Reagovat na tuto zpr&aacute;vu',
+'resultats_recherche' =&gt; 'V&yacute;sledky hled&aacute;n&iacute;',
+'retour_debut_forums' =&gt; 'Zp&#283;t na za&#269;&aacute;tek diskusn&iacute;ch f&oacute;r',
+'rubrique' =&gt; 'Rubrika',
+'rubriques' =&gt; 'Rubriky',
+
+
+// S
+'signatures_petition' =&gt; 'Podpisy',
+'site_realise_avec_spip' =&gt; 'Str&aacute;nky vytvo&#345;eny pomoc&iacute; SPIP',
+'sites_web' =&gt; 'Odkazy',
+'sous_rubriques' =&gt; 'Podrubriky',
+'suite' =&gt; 'pokra&#269;ov&aacute;n&iacute;',
+'sur_web' =&gt; 'Na webu',
+'syndiquer_rubrique' =&gt; 'Zahrnout tuto rubriku',
+'syndiquer_site' =&gt; 'Zahrnout cel&yacute; web',
+
+
+// T
+'texte_lettre_information' =&gt; 'Zde je zpravodaj tohoto webu',
+'texte_lettre_information_2' =&gt; 'Tento soupis sumarizuje &#269;l&aacute;nky a novinky publikovan&eacute; od ',
+
+
+// V
+'ver_imprimer' =&gt; 'Verze pro tisk',
+'voir_en_ligne' =&gt; 'Pod&iacute;vejte se online'
+
+);
+
+
+?&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000376.html">[Spip-carto-cvs] spipcarto/ecrire/safehtml/classes HTMLSax3.php,NONE,1.1.2.1 safehtml.php,NONE,1.1.2.1
+</A></li>
+	<LI>Next message: <A HREF="000374.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_demo.html,NONE,1.1.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#377">[ date ]</a>
+              <a href="thread.html#377">[ thread ]</a>
+              <a href="subject.html#377">[ subject ]</a>
+              <a href="author.html#377">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

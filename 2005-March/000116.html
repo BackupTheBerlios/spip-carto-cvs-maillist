@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto mes_fonctions.php3,1.6,1.7
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20mes_fonctions.php3%2C1.6%2C1.7&In-Reply-To=%3C200503011736.j21HajNx009739%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000115.html">
+   <LINK REL="Next"  HREF="000117.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto mes_fonctions.php3,1.6,1.7</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20mes_fonctions.php3%2C1.6%2C1.7&In-Reply-To=%3C200503011736.j21HajNx009739%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto mes_fonctions.php3,1.6,1.7">fxp at berlios.de
+       </A><BR>
+    <I>Tue Mar  1 18:36:45 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000115.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.5,1.6
+</A></li>
+        <LI>Next message: <A HREF="000117.html">[Spip-carto-cvs] spipcarto/squelettes carto_lien.html,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#116">[ date ]</a>
+              <a href="thread.html#116">[ thread ]</a>
+              <a href="subject.html#116">[ subject ]</a>
+              <a href="author.html#116">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv9575
+
+Modified Files:
+	mes_fonctions.php3 
+Log Message:
+Callage des Y par rapport au coin inf&#233;rieur gauche
+
+Index: mes_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/mes_fonctions.php3,v
+retrieving revision 1.6
+retrieving revision 1.7
+diff -u -d -r1.6 -r1.7
+--- mes_fonctions.php3	26 Feb 2005 10:45:20 -0000	1.6
++++ mes_fonctions.php3	1 Mar 2005 17:36:43 -0000	1.7
+@@ -16,11 +16,19 @@
+ }
+ function worldfileULX($callage){
+ 	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['top_left']['x'];
++	return $tabcallage['bottom_right']['x'];
+ }
+ function worldfileULY($callage){
+ 	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['top_left']['y']*-1;
++	return $tabcallage['bottom_right']['y']*-1;
++}
++function worldfileLRX($callage){
++	$tabcallage=worldfile2array($callage);
++	return $tabcallage['top_left']['x'];
++}
++function worldfileLRY($callage){
++	$tabcallage=worldfile2array($callage);
++	return $tabcallage['top_left']['y'];
+ }
+ function getPropMapHeight($callage, $width){
+ 	$tabcallage=worldfile2array($callage);
+@@ -29,37 +37,7 @@
+ }
+ 
+ 
+-/* +---------------------------------------------+
+- *    Nom    du    Filtre : WKT to STYLE
+- * +---------------------------------------------+    
+- * Date : mercredi 09 avril 2003
+- * Auteur :    
+- * site : 
+- * +---------------------------------------------+ 
+- * Fonctions de ce filtre : 
+- * Appelez le dans vos squellette tout simplement par :
+- * [(#GEOMETRIE|wkt2style)] 
+- * +--------------------------------------------- +
+- *  
+- * Pour toute suggestion, remarque, proposition d'ajout
+- * reportez-vous au forum de l'article :
+- * <A HREF="http://www.uzine.net/spip_contrib/">http://www.uzine.net/spip_contrib/</A>
+- *
+- */
+-function wkt2style($geometrie){
+-	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
+-	
+-	if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+-	{	$coordpair = explode(',',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));
+-		$coord = explode (' ', $coordpair[0]);	// TODO : Le centre de gravit&#233; du polygone serait pr&#233;f&#233;rable
+-	}elseif (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-		$coord = explode(' ',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));
+-	else
+-		$coord = array(0,0); 
+-		
+-	$returned_str=&quot;left: &quot;.$coord[0].&quot;px;top: &quot;.$coord[1].&quot;px;&quot;;
+-	return $returned_str;
+-}
++
+ 
+ /*
+  *   +---------------------------------------------+
+@@ -79,32 +57,94 @@
+  * <A HREF="http://www.uzine.net/spip_contrib/">http://www.uzine.net/spip_contrib/</A>
+  *
+  */
+-function wkt2coords($geometrie, $format = &quot;HTML&quot;){
++function wkt2coords($geometrie, $format = &quot;HTML&quot;, $callage = &quot;&quot;){
+ 	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
++	$wktGeom 	= substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1);
++	
++	$callage 	= worldfile2array ($callage);
++	
++	$GeoWidth 	= ($callage['bottom_right']['x']-$callage['top_left']['x']);
++	$GeoHeight 	= ($callage['bottom_right']['y']-$callage['top_left']['y']);
++	
+ 	$radius		 = 5;	// TODO : Param&#232;tre (ou fonction du callage ?) pr&#233;f&#233;rable car fonction des projections 5 peut &#234;tre bcp trop petit
+ 	switch ($format){
+ 		case &quot;HTML&quot;:
++			// Pour obtenir des objets HTML/MAP ...
++			// 	S&#233;parateur coordonn&#233;es ',' / S&#233;parateur paires de coordonn&#233;es ','
++			$coordpair = explode (',',$wktGeom);
++			
++			for ($i=0; $i&lt;sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= $coord[$i][0];
++				$coord[$i][1] 	= $GeoHeight-$coord[$i][1];		// Calcul de l'Y par rapport au coin inf&#233;rieur
++				$coordpair[$i] 	= implode(',',$coord[$i]);
++			}
++			$wktGeom = implode(',', $coordpair);
++
+ 			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+-				return str_replace(' ',',',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));
++				return $wktGeom;
+ 			if (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-				return str_replace(' ',',',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1)).&quot;,&quot;.$radius;
++				return $wktGeom.&quot;,&quot;.$radius;
+ 		break;
++		case &quot;HTMLDIV&quot;:
++			// Pour obtenir des objets HTML/DIV ...
++			// Pour les polygones, la moyenne des valeurs
++			// Pour les points, la valeur
++			$coordpair = explode (',',$wktGeom);
++			
++			for ($i=0; $i&lt;sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= $coord[$i][0];
++				$coord[$i][1] 	= $GeoHeight-$coord[$i][1];		// Calcul de l'Y par rapport au coin inf&#233;rieur
++				$x 				+= $coord[$i][1];
++				$y				+= $coord[$i][0];
++			}
++			return &quot;left: &quot;.$y/$i.&quot;px;top: &quot;.$x/$i.&quot;px;&quot;;
++					
++		break;		
+ 		case &quot;SVG&quot;:
+ 			// Pour obtenir des objets SVG ...
+-			// Faut-il inverser les y ? Voir fonction des notions de projections
++			// Inversion des Y en mode dessin
++			// 	S&#233;parateur coordonn&#233;es ' ' / S&#233;parateur paires de coordonn&#233;es ','
++			$coordpair = explode (',',$wktGeom);
+ 			
+-			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+-			{  	$coord = str_replace(' ','|',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));	// Inversion des y pour coordonn&#233;es r&#233;elles
+-				$coord = str_replace(',',' ',$coord);	// Inversion des y pour coordonn&#233;es r&#233;elles
+-				return &quot;points=\&quot;&quot;.str_replace('|',',',$coord).&quot;\&quot;&quot;;
+-		
+-			}elseif (strcasecmp($wktGeomType,&quot;LINE&quot;)==0)
+-			{  	$coord = str_replace(' ','|',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));	// Inversion des y pour coordonn&#233;es r&#233;elles
+-				$coord = str_replace(',',' ',$coord);	// Inversion des y pour coordonn&#233;es r&#233;elles
+-				return &quot;points=\&quot;&quot;.str_replace('|',',',$coord).&quot;\&quot;&quot;;
++			for ($i=0; $i&lt;sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= $coord[$i][0];
++				$coord[$i][1] 	= $GeoHeight-$coord[$i][1];		// Calcul de l'Y par rapport au coin inf&#233;rieur
++				$coordpair[$i] 	= implode(' ' ,$coord[$i]);
++			}
++			$wktGeom = implode(',', $coordpair);
++
++			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0 || strcasecmp($wktGeomType,&quot;LINE&quot;)==0)
++			{  	return &quot;points=\&quot;&quot;.$wktGeom.&quot;\&quot;&quot;;		
++			}elseif (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
++			{	$coordTab = explode (&quot; &quot;, $wktGeom);
++				return &quot;cx=\&quot;&quot;.$coordTab[0].&quot;\&quot; cy=\&quot;&quot;.$coordTab[1].&quot;\&quot; r=\&quot;&quot;.$radius.&quot;\&quot;&quot;;
++			}
++		break;
++		case &quot;SVGGEO&quot;:
++			// Pour obtenir des objets SVG ...
++			// Conservation des Y selon le format WKT car en coordonn&#233;es g&#233;ographique
++			// S&#233;parateur coordonn&#233;es ' ' / S&#233;parateur paires de coordonn&#233;es ','
++			$coordpair = explode (',',$wktGeom);
+ 			
++			for ($i=0; $i&lt;sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= $coord[$i][0];
++				$coord[$i][1] 	= $coord[$i][1]*-1;		// Y idem au WKT car gestion de la g&#233;om&#233;trie
++				$coordpair[$i] 	= implode(' ' ,$coord[$i]);
++			}
++			$wktGeom = implode(',', $coordpair);
++
++			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0 || strcasecmp($wktGeomType,&quot;LINE&quot;)==0)
++			{  	return &quot;points=\&quot;&quot;.$wktGeom.&quot;\&quot;&quot;;		
+ 			}elseif (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-			{	$coordTab = explode (&quot; &quot;, substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));
++			{	$coordTab = explode (&quot; &quot;, $wktGeom);
+ 				return &quot;cx=\&quot;&quot;.$coordTab[0].&quot;\&quot; cy=\&quot;&quot;.$coordTab[1].&quot;\&quot; r=\&quot;&quot;.$radius.&quot;\&quot;&quot;;
+ 			}
+ 		break;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000115.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.5,1.6
+</A></li>
+	<LI>Next message: <A HREF="000117.html">[Spip-carto-cvs] spipcarto/squelettes carto_lien.html,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#116">[ date ]</a>
+              <a href="thread.html#116">[ thread ]</a>
+              <a href="subject.html#116">[ subject ]</a>
+              <a href="author.html#116">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

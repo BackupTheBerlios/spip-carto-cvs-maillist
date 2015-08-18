@@ -1,0 +1,851 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto carto_svg2.php3,NONE,1.1 inc-compilo-index.php3,1.3,1.4 inc-compilo.php3,1.3,1.4 spip_cookie.php3,1.4,1.5 spip_admin.css,1.3,1.4 inc-compilo-api.php3,1.3,1.4 .htaccess,1.1,1.2 inc-criteres.php3,1.3,1.4 inc-messforum.php3,1.4,1.5 inc-public-global.php3,1.5,1.6 backend-breves.php3,1.3,1.4 inc-cache.php3,1.6,1.7 inc-balises.php3,1.5,1.6 inc-html-squel.php3,1.3,1.4 inc-stats.php3,1.3,1.4 backend.php3,1.3,1.4 mes_fonctions.php3,1.7,1.8 inc-calcul.php3,1.3,1.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20carto_svg2.php3%2CNONE%2C1.1%20inc-compilo-index.php3%2C1.3%2C1.4%20inc-compilo.php3%2C1.3%2C1.4%20spip_cookie.php3%2C1.4%2C1.5%20spip_admin.css%2C1.3%2C1.4%20inc-compilo-api.php3%2C1.3%2C1.4%20.htaccess%2C1.1%2C1.2%20inc-criteres.php3%2C1.3%2C1.4%20inc-messforum.php3%2C1.4%2C1.5%20inc-public-global.php3%2C1.5%2C1.6%20backend-breves.php3%2C1.3%2C1.4%20inc-cache.php3%2C1.6%2C1.7%20inc-balises.php3%2C1.5%2C1.6%20inc-html-squel.php3%2C1.3%2C1.4%20inc-stats.php3%2C1.3%2C1.4%20backend.php3%2C1.3%2C1.4%20mes_fonctions.php3%2C1.7%2C1.8%20inc-calcul.php3%2C1.3%2C1.4&In-Reply-To=%3C200503291516.j2TFGc9Y032743%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000143.html">
+   <LINK REL="Next"  HREF="000146.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto carto_svg2.php3,NONE,1.1 inc-compilo-index.php3,1.3,1.4 inc-compilo.php3,1.3,1.4 spip_cookie.php3,1.4,1.5 spip_admin.css,1.3,1.4 inc-compilo-api.php3,1.3,1.4 .htaccess,1.1,1.2 inc-criteres.php3,1.3,1.4 inc-messforum.php3,1.4,1.5 inc-public-global.php3,1.5,1.6 backend-breves.php3,1.3,1.4 inc-cache.php3,1.6,1.7 inc-balises.php3,1.5,1.6 inc-html-squel.php3,1.3,1.4 inc-stats.php3,1.3,1.4 backend.php3,1.3,1.4 mes_fonctions.php3,1.7,1.8 inc-calcul.php3,1.3,1.4</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20carto_svg2.php3%2CNONE%2C1.1%20inc-compilo-index.php3%2C1.3%2C1.4%20inc-compilo.php3%2C1.3%2C1.4%20spip_cookie.php3%2C1.4%2C1.5%20spip_admin.css%2C1.3%2C1.4%20inc-compilo-api.php3%2C1.3%2C1.4%20.htaccess%2C1.1%2C1.2%20inc-criteres.php3%2C1.3%2C1.4%20inc-messforum.php3%2C1.4%2C1.5%20inc-public-global.php3%2C1.5%2C1.6%20backend-breves.php3%2C1.3%2C1.4%20inc-cache.php3%2C1.6%2C1.7%20inc-balises.php3%2C1.5%2C1.6%20inc-html-squel.php3%2C1.3%2C1.4%20inc-stats.php3%2C1.3%2C1.4%20backend.php3%2C1.3%2C1.4%20mes_fonctions.php3%2C1.7%2C1.8%20inc-calcul.php3%2C1.3%2C1.4&In-Reply-To=%3C200503291516.j2TFGc9Y032743%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto carto_svg2.php3,NONE,1.1 inc-compilo-index.php3,1.3,1.4 inc-compilo.php3,1.3,1.4 spip_cookie.php3,1.4,1.5 spip_admin.css,1.3,1.4 inc-compilo-api.php3,1.3,1.4 .htaccess,1.1,1.2 inc-criteres.php3,1.3,1.4 inc-messforum.php3,1.4,1.5 inc-public-global.php3,1.5,1.6 backend-breves.php3,1.3,1.4 inc-cache.php3,1.6,1.7 inc-balises.php3,1.5,1.6 inc-html-squel.php3,1.3,1.4 inc-stats.php3,1.3,1.4 backend.php3,1.3,1.4 mes_fonctions.php3,1.7,1.8 inc-calcul.php3,1.3,1.4">stef at berlios.de
+       </A><BR>
+    <I>Tue Mar 29 17:16:38 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000143.html">[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.2,1.3
+</A></li>
+        <LI>Next message: <A HREF="000146.html">[Spip-carto-cvs] spipcarto/ecrire articles.php3,1.3,1.4 articles_versions.php3,1.2,1.3 articles_edit.php3,1.3,1.4 aide_index.php3,1.2,1.3 admin_vider.php3,1.3,1.4 auteurs_edit.php3,1.3,1.4 articles_forum.php3,1.2,1.3 auteur_infos.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#144">[ date ]</a>
+              <a href="thread.html#144">[ thread ]</a>
+              <a href="subject.html#144">[ subject ]</a>
+              <a href="author.html#144">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv32701/spipcarto
+
+Modified Files:
+	inc-compilo-index.php3 inc-compilo.php3 spip_cookie.php3 
+	spip_admin.css inc-compilo-api.php3 .htaccess 
+	inc-criteres.php3 inc-messforum.php3 inc-public-global.php3 
+	backend-breves.php3 inc-cache.php3 inc-balises.php3 
+	inc-html-squel.php3 inc-stats.php3 backend.php3 
+	mes_fonctions.php3 inc-calcul.php3 
+Added Files:
+	carto_svg2.php3 
+Log Message:
+1.8PR2 CVS 20050329
+
+--- NEW FILE: carto_svg2.php3 ---
+&lt;?php
+
+$fond = &quot;carto_svg2&quot;;
+$delais = 24*3600;
+
+include (&quot;inc-public.php3&quot;);
+
+?&gt;
+
+Index: inc-compilo-index.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-compilo-index.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-compilo-index.php3	20 Feb 2005 22:16:48 -0000	1.3
++++ inc-compilo-index.php3	29 Mar 2005 15:16:35 -0000	1.4
+@@ -263,7 +263,7 @@
+ 				}
+ 				if (function_exists($fonc))
+ 				  $code = &quot;$fonc($code$arglist)&quot;;
+-				else if (strpos(&quot; &lt; &gt; &lt;= &gt;= == &lt;&gt; ? &quot;, &quot; $fonc &quot;))
++				else if (strpos(&quot; &lt; &gt; &lt;= &gt;= == === != !== &lt;&gt; ? &quot;, &quot; $fonc &quot;))
+ 				  $code = &quot;($code $fonc &quot;
+ 				    . substr($arglist,1)
+ 				    . ')';
+@@ -288,9 +288,16 @@
+ 
+ function filtres_arglist($args, $p, $sep) {
+ 	$arglist ='';
+-	while (ereg('([^,]+),?(.*)$', $args, $regs)) {
+-		$arg = trim($regs[1]);
+-		if ($arg) {
++	while (strlen($args)) {
++		if ($args[0] =='&quot;')
++		  ereg(' *(&quot;[^&quot;]*&quot;) *,?(.*)$', $args, $regs);
++		elseif ($args[0] ==&quot;'&quot;)
++		  ereg(&quot; *('[^']*') *,?(.*)$&quot;, $args, $regs);
++		else
++		  ereg(' *([^,]+) *,?(.*)$', $args, $regs);
++		$arg = $regs[1];
++		spip_log(&quot;$args $arg&quot;);
++		if ($arg !== '') {
+ 			if ($arg[0] =='$')
+ 				$arg = '$Pile[0][\'' . substr($arg,1) . &quot;']&quot;;
+ 			elseif ($arg[0] =='&lt;')
+
+Index: inc-compilo.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-compilo.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-compilo.php3	20 Feb 2005 22:16:48 -0000	1.3
++++ inc-compilo.php3	29 Mar 2005 15:16:35 -0000	1.4
+@@ -46,19 +46,18 @@
+ // Calculer un &lt;INCLURE()&gt;
+ //
+ function calculer_inclure($fichier, $params, $id_boucle, &amp;$boucles) {
+-	global $dossier_squelettes;
+ 
+ 	$l = array();
+ 	if ($params) {
+ 		foreach($params as $var =&gt; $val) {
+ 			if ($val) {
+-			  $val = trim($val);
+-			  $val = ereg_replace('^[&quot;\'](.*)[&quot;\']$', &quot;\\1&quot;,$val);
+-			  $l[] = &quot;\'$var\' =&gt; \'&quot; .
+-				 addslashes(calculer_param_dynamique($val,
+-								     $boucles,
+-								     $idb)) .
+-				  &quot;\'&quot;;
++				$val = trim($val);
++				$val = ereg_replace('^[&quot;\'](.*)[&quot;\']$', &quot;\\1&quot;,$val);
++				$l[] = &quot;\'$var\' =&gt; \'&quot; .
++					addslashes(calculer_param_dynamique($val,
++						$boucles,
++						$idb)) .
++					&quot;\'&quot;;
+ 			}
+ 			else {
+ 			// Cas de la langue : passer $spip_lang
+@@ -195,7 +194,7 @@
+ 	// Cas {1/3} {1,4} {n-2,1}...
+ 
+ 	$flag_cpt = $boucle-&gt;mode_partie || // pas '$compteur' a cause du cas 0
+-		strpos($return,'compteur_boucle');
++	  strpos($return,'compteur_boucle');
+ 
+ 	//
+ 	// Creer le debut du corps de la boucle :
+@@ -225,6 +224,10 @@
+ 		index_pile($id_boucle, $primary, $boucles)
+ 		. &quot;; // doublons&quot;;
+ 
++
++	if (count($boucle-&gt;separateur))
++	  $code_sep = (&quot;'&quot; . ereg_replace(&quot;'&quot;,&quot;\'&quot;,join('',$boucle-&gt;separateur)) . &quot;'&quot;); 
++
+ 	// gestion optimale des separateurs et des boucles constantes
+ 
+ 	$corps = $debut . 
+@@ -236,8 +239,7 @@
+ 			 (&quot;.=&quot; . substr($return,4)) :
+ 			 ('= ' . $return)) .
+ 		  &quot;;\n\t\t&quot; .
+-		  '$t0 .= (($t1 &amp;&amp; $t0) ? \'' . $boucle-&gt;separateur .
+-		  &quot;' : '') . \$t1;&quot;));
++		  '$t0 .= (($t1 &amp;&amp; $t0) ? ' . $code_sep . &quot; : '') . \$t1;&quot;));
+      
+ 	// Fin de parties
+ 	if ($boucle-&gt;mode_partie)
+@@ -328,7 +330,6 @@
+ 	if ($flag_cpt)
+ 		$init .= &quot;\n	\$compteur_boucle = 0;&quot;;
+ 
+-
+ 	if ($boucle-&gt;mode_partie)
+ 		$init .= calculer_parties($boucle-&gt;partie,
+ 			$boucle-&gt;mode_partie,
+@@ -407,7 +408,7 @@
+ 
+ 	// calcul du total boucle final
+ 	$retour .= &quot;\n	&quot;
+-		.'$Numrows[\''.$id_boucle.'\'] = $fin_boucle - $debut_boucle + 1;';
++		.'$Numrows[\''.$id_boucle.'\'] = max(0,$fin_boucle - $debut_boucle + 1);';
+ 
+ 	return $retour;
+ }
+@@ -627,9 +628,10 @@
+ 		    if ($boucle-&gt;param &amp;&amp; is_array($boucle-&gt;param)) 
+ 				$pretty .= &quot; {&quot;.join(&quot;} {&quot;, $boucle-&gt;param).&quot;}&quot;;
+ 			// sans oublier les parametres traites en amont
+-			if ($boucle-&gt;separateur)
+-			  $pretty .= '{&quot;' . $boucle-&gt;separateur . '&quot;}';
+-			if ($boucle-&gt;tout)
++		    if ($boucle-&gt;separateur)
++		      foreach($boucle-&gt;separateur as $v)
++			$pretty .= ' {&quot;'. htmlspecialchars($v) . '&quot;}';
++		    if ($boucle-&gt;tout)
+ 			  $pretty .= '{tout}';
+ 			if ($boucle-&gt;plat)
+ 			  $pretty .= '{plat}';
+
+Index: spip_cookie.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/spip_cookie.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- spip_cookie.php3	3 Mar 2005 14:55:17 -0000	1.4
++++ spip_cookie.php3	29 Mar 2005 15:16:35 -0000	1.5
+@@ -137,6 +137,7 @@
+ 	if ($ok) {
+ 		// Nouveau redacteur ou visiteur inscrit par mail :
+ 		// 'nouveau' -&gt; '1comite' ou  '6forum'
++		// Si LDAP : importer l'utilisateur vers la base SPIP
+ 		$auth-&gt;activer();
+ 
+ 		if ($auth-&gt;login AND $auth-&gt;statut == '0minirezo') // force le cookie pour les admins
+
+Index: spip_admin.css
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/spip_admin.css,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- spip_admin.css	20 Feb 2005 22:16:48 -0000	1.3
++++ spip_admin.css	29 Mar 2005 15:16:35 -0000	1.4
+@@ -29,7 +29,6 @@
+ 	border-left: 1px solid #cecece;
+ 	border-right: 1px solid #cecece;
+ 	text-decoration: none;
+-	width: 3em;
+ 	text-align: center;
+ 	margin: 0;
+ 	padding: 1px .5em;
+@@ -56,14 +55,22 @@
+ 	background-color: #f0f0f0;
+ 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+ }
++
+ #spip-debug ul table {
+ 	font-size: 80%;
+ }
+ 
+ #spip-debug fieldset {
+ 	background-color: #FFF;
+-	font-family: &quot;Courier New&quot;, Courier, monospace;
++	font-family: Courier, &quot;Courier New&quot;, monospace;
+ 	font-size: 12px;
++	margin-bottom: 1em;
++}
++
++#spip-debug fieldset fieldset {
++	background-color: #CCF;
++	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
++	font-size: 80%;
+ }
+ 
+ #spip-debug legend {
+@@ -74,10 +81,54 @@
+ 	font-weight: bold;
+ }
+ 
+-#spip-debug ul table a {
++#spip-debug fieldset fieldset legend {
++	border: solid 1px #00F;
++	font-weight: normal;
++}
++
++#spip-debug a {
+ 	text-decoration: none;
+ }
+ 
+-#spip-debug ul table a:hover {
++#spip-debug a:hover {
+ 	text-decoration: underline;
+ }
++
++#debug_boucle fieldset {
++	background-color: #CCF;
++}
++#debug_boucle fieldset fieldset {
++	background-color: #FFF;
++	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
++	padding: 0.5em 1.5em;
++}
++
++#spip-boucles {
++	min-height: 200px;
++	max-height:50%;
++	margin: 0 0 1em 0;
++	padding: .5em 0;
++	overflow: -moz-scrollbars-vertical;
++	overflow-y: auto;
++	border-top: 1px solid #3399FF;
++	border-bottom: 2px solid #666666;
++}
++
++.spip-env fieldset {
++	background-color: #FFF;
++	border: solid 1px #008;
++	margin: 2px 2em;
++}
++
++.spip-env legend {
++	background-color: #FFF;
++	border: solid 1px #F00;
++	padding: 1px 1em;
++	font-weight: bold;
++}
++
++.spip-env fieldset div {
++	max-height: 10em;
++	overflow: auto; 
++}
++
+
+Index: inc-compilo-api.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-compilo-api.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-compilo-api.php3	20 Feb 2005 22:16:48 -0000	1.3
++++ inc-compilo-api.php3	29 Mar 2005 15:16:35 -0000	1.4
+@@ -41,7 +41,7 @@
+ 	var $type_requete;
+ 	var $sql_serveur;
+ 	var $param = array();
+-	var $separateur;
++	var $separateur = array();
+ 	var $doublons;
+ 	var $partie, $total_parties,$mode_partie;
+ 	var $externe = ''; # appel a partir d'une autre boucle (recursion)
+
+Index: .htaccess
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/.htaccess,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- .htaccess	25 Feb 2005 23:46:18 -0000	1.1
++++ .htaccess	29 Mar 2005 15:16:35 -0000	1.2
+@@ -1,2 +1,2 @@
+ RewriteEngine On
+-RewriteRule ^carto_svgfile([0-9]+)\.svg$	carto_svgfile.php3?id_carto_carte=$1 [QSA,L]
++RewriteRule ^carto_svgfile([0-9]+)\.svg$	carto_svgfile.php3?id_carto_carte=$1\&amp;var_mode=recalcul [QSA,L]
+
+Index: inc-criteres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-criteres.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-criteres.php3	20 Feb 2005 22:16:48 -0000	1.3
++++ inc-criteres.php3	29 Mar 2005 15:16:35 -0000	1.4
+@@ -283,8 +283,6 @@
+ 
+ 
+ function calculer_critere_parties($idb, &amp;$boucles, $param, $not, $match) {
+-  global $tables_relations, $table_date, $tables_des_serveurs_sql;
+-
+ 	$boucle = &amp;$boucles[$idb];
+ 	list(,$a1,$op,$a2) = $match;
+ 	list($a11,$a12) = calculer_critere_parties_aux($idb, $boucles, $a1);
+@@ -293,10 +291,10 @@
+ 	if (($op== ',')&amp;&amp;(is_numeric($a11) &amp;&amp; (is_numeric($a21))))
+ 		$boucle-&gt;limit = $a11 .',' . $a21;
+ 	else {
+-	  $boucle-&gt;partie =	($a11 != 'n') ? $a11 : $a12;
++		$boucle-&gt;partie = ($a11 != 'n') ? $a11 : $a12;
+ 		$boucle-&gt;total_parties =  ($a21 != 'n') ? $a21 : $a22;
+ 		$boucle-&gt;mode_partie = (($op == '/') ? '/' :
+-				(($a1=='n')?'-':'+').(($a2=='n')?'-':'+'));
++			(($a11=='n')?'-':'+').(($a21=='n')?'-':'+'));
+ 	}
+ }
+ 
+@@ -351,11 +349,11 @@
+ 	$primary = $boucle-&gt;primary;
+ 	$id_field = $id_table . '.' . $primary; 
+ 
+-	if (ereg('^([0-9a-zA-Z#_\{\}]+)([,/])([0-9a-zA-Z#_\{\}]+)$', $param, $match))
++	if (ereg('^([0-9a-zA-Z#_\{\}-]+)([,/])([0-9a-zA-Z#_\{\}-]+)$', $param, $match))
+ 	  calculer_critere_parties($idb, $boucles, $param, $not, $match);
+ 
+ 		// Restriction de valeurs (implicite ou explicite)
+-	else if (eregi('^([a-z_]+\(?[a-z_]*\)?) *(\??)((!?)(&lt;=?|&gt;=?|==?|IN) *&quot;?([^&lt;&gt;=!&quot;]*))?&quot;?$', $param, $match)) {
++	else if (eregi('^(`?[a-z_]+\(?[a-z_]*\)?`?) *(\??)((!?)(&lt;=?|&gt;=?|==?|IN) *&quot;?([^&lt;&gt;=!&quot;]*))?&quot;?$', $param, $match)) {
+ 	  		$op = $match[5] ? $match[5] : '=';
+ 
+ 			// Variable comparee
+@@ -518,8 +516,11 @@
+ 				$boucle-&gt;plat = true;
+ 
+ 			// Operateur de comparaison
+-			if ($col_table)
+-				$col = &quot;$col_table.$col&quot;;
++			if ($col_table) {
++				if ($col[0] == &quot;`&quot;) 
++				  $col = &quot;$col_table.&quot; . substr($col,1,-1);
++				else $col = &quot;$col_table.$col&quot;;
++			}
+ 
+ 			if (strtoupper($op) == 'IN') {
+ 				// traitement special des valeurs textuelles
+
+Index: inc-messforum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-messforum.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- inc-messforum.php3	25 Feb 2005 16:35:58 -0000	1.4
++++ inc-messforum.php3	29 Mar 2005 15:16:35 -0000	1.5
+@@ -13,22 +13,33 @@
+ 
+ include_ecrire('inc_meta.php3');
+ include_ecrire('inc_forum.php3');
++include_ecrire('inc_filtres.php3');
+ include_ecrire(&quot;inc_abstract_sql.php3&quot;);
+ include_local(_FILE_CONNECT);
+ 
+ // Ce fichier inclus par inc-public a un comportement special
+ // Voir commentaires dans celui-ci et dans inc-formulaire_forum
+ 
+-function prevenir_auteurs($auteur, $email_auteur, $id_article, $texte, $titre) {
++function prevenir_auteurs($auteur, $email_auteur, $id_forum, $id_article, $texte, $titre, $statut) {
+ 	include_ecrire('inc_texte.php3');
+ 	include_ecrire('inc_filtres.php3');
+ 	include_ecrire('inc_mail.php3');
+ 	// Gestionnaire d'URLs
+ 	if (@file_exists(&quot;inc-urls.php3&quot;))
+-	  include_local(&quot;inc-urls.php3&quot;);
++		include_local(&quot;inc-urls.php3&quot;);
+ 	else
+-	  include_local(&quot;inc-urls-&quot;.$GLOBALS['type_urls'].&quot;.php3&quot;);
+-	$url = ereg_replace('^/', '', generer_url_article($id_article));
++		include_local(&quot;inc-urls-&quot;.$GLOBALS['type_urls'].&quot;.php3&quot;);
++
++	if ($statut == 'prop') # forum modere
++		$url = &quot;ecrire/controle_forum.php3?debut_id_forum=$id_forum&quot;;
++	else if (function_exists('generer_url_forum'))
++		$url = generer_url_forum($id_forum);
++	else {
++		spip_log('inc-urls personnalise : ajoutez generer_url_forum() !');
++		$url = generer_url_article($id_article);
++	}
++
++	$url = ereg_replace('^/', '', $url);
+ 	$adresse_site = lire_meta(&quot;adresse_site&quot;);
+ 	$nom_site_spip = lire_meta(&quot;nom_site&quot;);
+ 	$url = &quot;$adresse_site/$url&quot;;
+@@ -173,12 +184,12 @@
+ 	id_auteur = $id_auteur,
+ 	id_thread = $id_thread,
+ 	date_heure = NOW(),
+-	titre = '&quot;.addslashes($titre).&quot;',
+-	texte = '&quot;.addslashes($texte).&quot;',
+-	nom_site = '&quot;.addslashes($nom_site_forum).&quot;',
+-	url_site = '&quot;.addslashes($url_site).&quot;',
+-	auteur = '&quot;.addslashes($auteur).&quot;',
+-	email_auteur = '&quot;.addslashes($email_auteur).&quot;',
++	titre = '&quot;.addslashes(corriger_caracteres($titre)).&quot;',
++	texte = '&quot;.addslashes(corriger_caracteres($texte)).&quot;',
++	nom_site = '&quot;.addslashes(corriger_caracteres($nom_site_forum)).&quot;',
++	url_site = '&quot;.addslashes(corriger_caracteres($url_site)).&quot;',
++	auteur = '&quot;.addslashes(corriger_caracteres($auteur)).&quot;',
++	email_auteur = '&quot;.addslashes(corriger_caracteres($email_auteur)).&quot;',
+ 	ip = '$REMOTE_ADDR',
+ 	statut = '$statut'
+ 	WHERE id_forum = $id_message
+@@ -191,7 +202,7 @@
+ 
+ 	// Prevenir les auteurs de l'article
+ 	if (lire_meta(&quot;prevenir_auteurs&quot;) == &quot;oui&quot; AND ($afficher_texte != &quot;non&quot;))
+-		prevenir_auteurs($auteur, $email_auteur, $id_article, $texte, $titre);
++		prevenir_auteurs($auteur, $email_auteur, $id_message, $id_article, $texte, $titre, $statut);
+ 
+ 	// Poser un cookie pour ne pas retaper le nom / email
+ 
+
+Index: inc-public-global.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-public-global.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc-public-global.php3	3 Mar 2005 14:55:17 -0000	1.5
++++ inc-public-global.php3	29 Mar 2005 15:16:35 -0000	1.6
+@@ -67,20 +67,20 @@
+ 		if (($GLOBALS['code_activation_debug'] == 'oui')
+ 		OR $auteur_session['statut'] == '0minirezo')
+ 			spip_log('debug !');
+-		else
+-			$var_mode = false; 
++		else {
++			$link = new Link();
++			$link-&gt;addvar('var_mode', 'debug');
++			redirige_par_entete('spip_login.php3?url='
++				.urlencode($link-&gt;getUrl()));
++			exit;
++		}
+ 	}
+ 
+ 	// est-on admin ?
+-	if ($affiche_boutons_admin = (!$flag_preserver
+-	AND ($GLOBALS['_COOKIE']['spip_admin']
+-	OR $GLOBALS['_COOKIE']['spip_debug'])))
++	if ($affiche_boutons_admin = (
++	(!$flag_preserver AND $GLOBALS['_COOKIE']['spip_admin'])
++	OR $var_mode == 'debug'))
+ 		include_local(find_in_path('inc-formulaire_admin.php3'));
+-		# attention, cet include ne considere pas forcement le
+-		# $dossier_squelettes defini dans mes_fonctions.php3, mais si
+-		# on incluait mes_fonctions.php3 on masquerait au webmestre l'erreur,
+-		# courante, qui est de croire que ce fichier est toujours inclus.
+-
+ 
+ 	$tableau_des_erreurs = array();
+ 	$page = afficher_page_globale ($fond, $delais, $use_cache);
+@@ -351,6 +351,8 @@
+ # (voir l'exemple de spip_inscription et spip_pass)
+ # $r = complexe (fond, delais, contexte) ; $echo = faut-il faire echo ou return
+ function inclure_balise_dynamique($r, $echo=true) {
++	global $contexte_inclus;	# provisoire : c'est pour le debuggueur
++
+ 	if (is_string($r))
+ 		if ($echo)
+ 			echo $r;
+
+Index: backend-breves.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/backend-breves.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- backend-breves.php3	20 Feb 2005 22:15:59 -0000	1.3
++++ backend-breves.php3	29 Mar 2005 15:16:35 -0000	1.4
+@@ -5,8 +5,6 @@
+ // cette ligne empeche l'affichage des boutons d'administration
+ $flag_preserver = true;
+ 
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">- at header</A>(&quot;Content-type: text/xml&quot;);
+-
+ include (&quot;inc-public.php3&quot;);
+ 
+ ?&gt;
+
+Index: inc-cache.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-cache.php3,v
+retrieving revision 1.6
+retrieving revision 1.7
+diff -u -d -r1.6 -r1.7
+--- inc-cache.php3	4 Mar 2005 10:45:01 -0000	1.6
++++ inc-cache.php3	29 Mar 2005 15:16:35 -0000	1.7
+@@ -113,14 +113,16 @@
+ 
+ 	// Et puis une centaine d'autres
+ 	if (lire_meta('invalider_caches')) {
+-		$on_efface = true;
++		$compte = 1;
+ 		effacer_meta('invalider_caches'); # concurrence
+ 		ecrire_metas();
+ 
+ 		$q = spip_query(&quot;SELECT fichier FROM spip_caches
+ 		WHERE type='x' LIMIT 0,100&quot;);
+-		while ($r = spip_fetch_array($q))
++		while ($r = spip_fetch_array($q)) {
++			$compte ++;	# compte le nombre de resultats vus (y compris doublons)
+ 			$suppr[$r['fichier']] = true;
++		}
+ 	}
+ 
+ 
+@@ -132,9 +134,9 @@
+ 		.calcul_mysql_in('fichier', &quot;'&quot;.join(&quot;','&quot;,array_keys($suppr)).&quot;'&quot;) );
+ 	}
+ 
+-	// signaler aux suivants
+-	if ($on_efface) {
+-		if ($n&gt;99)
++	// Si on a regarde (compte &gt; 0), signaler s'il reste des caches invalides
++	if ($compte &gt; 0) {
++		if ($compte &gt; 100) # s'il y en a 101 c'est qu'on n'a pas fini
+ 			ecrire_meta('invalider_caches', 'oui');
+ 		else
+ 			effacer_meta('invalider');
+
+Index: inc-balises.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-balises.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc-balises.php3	4 Mar 2005 10:45:01 -0000	1.5
++++ inc-balises.php3	29 Mar 2005 15:16:35 -0000	1.6
+@@ -172,7 +172,10 @@
+ // #DATE_NOUVEAUTES
+ // <A HREF="http://www.spip.net/fr_article1971.html">http://www.spip.net/fr_article1971.html</A>
+ function balise_DATE_NOUVEAUTES_dist($p) {
+-	$p-&gt;code = &quot;((lire_meta('quoi_de_neuf') == 'oui' AND lire_meta('majnouv')) ? normaliser_date(lire_meta('majnouv')) : \&quot;'0000-00-00'\&quot;)&quot;;
++	$p-&gt;code = &quot;((lire_meta('quoi_de_neuf') == 'oui'
++	AND @file_exists(_DIR_SESSIONS . 'mail.lock')) ?
++	normaliser_date(@filemtime(_DIR_SESSIONS . 'mail.lock')) :
++	\&quot;'0000-00-00'\&quot;)&quot;;
+ 	$p-&gt;statut = 'php';
+ 	return $p;
+ }
+
+Index: inc-html-squel.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-html-squel.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-html-squel.php3	20 Feb 2005 22:16:48 -0000	1.3
++++ inc-html-squel.php3	29 Mar 2005 15:16:35 -0000	1.4
+@@ -77,7 +77,7 @@
+ 	while (ereg(NOM_DE_CHAMP . '(.*)$', $texte, $regs)) {
+ 	  $p = strpos($texte, $regs[0]);
+ 
+-	  if ($regs[4] || !ereg(&quot;[0-9a-z]&quot;, $regs[5][0])) {
++	  if ($regs[4] || (strpos($regs[5][0], &quot;[0-9]&quot;) === false)) {
+ 		if ($p) {
+ 			$champ = new Texte;
+ 			$champ-&gt;texte = (substr($texte, 0, $p));
+@@ -172,59 +172,38 @@
+ 	$type = $result-&gt;type_requete;
+ 	while (ereg('^' . PARAM_DE_BOUCLE . '[[:space:]]*(.*)$', trim($params), $m)) {
+ 		$params = $m[3];
+-		$m[1] = trim($m[1]);
++		$param = trim($m[1]);
+ 		// cas d'un critere avec {...}
+-		if ($m[2])
+-			$params2[] = $m[1];
+-		else {
+-			if (strlen($m[1]) &lt; 2)
+-				$params2[] = $m[1];
+-	    else {
+-	      ereg('^(.)([^&quot;}]*)(.)$', $m[1], $args);
+-	      // cas syntaxique general, 
++		if ($m[2]) {
++			$params2[] = $param;
++		}
+ 	      // traiter qq lexemes particuliers pour faciliter la suite
+-	      if ($args[3] != '&quot;') {
+-			$param = $m[1];
+-			if (($param == 'tout') OR ($param == 'tous')) {
+-				$result-&gt;tout = true;
+-				unset ($param);
+-			}
+-			else if ($param == 'plat') {
+-				$result-&gt;plat = true;
+-				unset ($param);
+-			}
+-
+-			// Boucle hierarchie, analyser le critere id_article - id_rubrique
+-			// - id_syndic, afin, dans les cas autres que {id_rubrique}, de
+-			// forcer {tout} pour avoir la rubrique mere...
+-			else if ($type == 'hierarchie') {
++		else if (strlen($param) &lt; 2)
++			$params2[] = $param;
++		else if (($param == 'tout') OR ($param == 'tous'))
++			$result-&gt;tout = true;
++		else if ($param == 'plat') 
++			$result-&gt;plat = true;
++		else if ($param == 'unique')
++			$params2[] = 'doublons';
++		else {
++			if ($type == 'hierarchie') {
++	// Boucle hierarchie, analyser le critere id_article - id_rubrique
++	// - id_syndic, afin, dans les cas autres que {id_rubrique}, de
++	// forcer {tout} pour avoir la rubrique mere...
+ 				if ($param == 'id_article' OR $param == 'id_syndic') {
+ 					$result-&gt;tout = true;
+-					unset ($param);
++					$param = &quot;&quot;;
+ 				} else if ($param == 'id_rubrique')
+-					unset ($param);
+-			}
+-
+-			// synonyme
+-			if ($param == 'unique') $param = 'doublons';
+-
+-			// l'ajouter
+-			if ($param)
+-				$params2[] = $param;
+-	      }
+-		else {
+-		  // cas d'un guillemet final
+-			if ($args[1] == '&quot;') {
+-			  // si tout le param est entre guillement, vite vu
+-				$result-&gt;separateur = 
+-					ereg_replace(&quot;'&quot;,&quot;\'&quot;,$args[2]);
++					$param = &quot;&quot;;
+ 			}
++			// les separateurs (specs CSS3 aN+b a finaliser)
++			if (ereg('^&quot;([^&quot;}]*)&quot;( *, *(\-?[0-9]*)n)?(\+?([0-9]+))?)?$', $param, $args))
++			  $result-&gt;separateur[] = $args[1];
+ 			else {
+-				$params2[] = $args[1] . $args[2] . '&quot;' . $m[1];
++			  if ($param) $params2[] = $param;
+ 			}
+ 		}
+-	    }
+-	  }
+ 	}
+ 	$result-&gt;param = $params2;
+ }
+
+Index: inc-stats.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-stats.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-stats.php3	20 Feb 2005 22:16:48 -0000	1.3
++++ inc-stats.php3	29 Mar 2005 15:16:35 -0000	1.4
+@@ -58,7 +58,7 @@
+ 	if ($log_referer) {
+ 		$referer_md5 = '0x'.substr(md5($log_referer), 0, 15);
+ 		$query = &quot;INSERT IGNORE INTO spip_referers_temp (ip, referer, referer_md5, type, id_objet) &quot;.
+-			&quot;VALUES ($log_ip, '$log_referer', $referer_md5, '$log_type', $log_id_num)&quot;;
++			&quot;VALUES ($log_ip, '&quot;.texte_script($log_referer).&quot;', $referer_md5, '$log_type', $log_id_num)&quot;;
+ 		spip_query($query);
+ 	}
+ }
+
+Index: backend.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/backend.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- backend.php3	20 Feb 2005 22:15:59 -0000	1.3
++++ backend.php3	29 Mar 2005 15:16:35 -0000	1.4
+@@ -7,8 +7,6 @@
+ 
+ $flag_preserver = true;
+ 
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">- at header</A>(&quot;Content-type: text/xml&quot;);
+-
+ include (&quot;inc-public.php3&quot;);
+ 
+ ?&gt;
+
+Index: mes_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/mes_fonctions.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- mes_fonctions.php3	1 Mar 2005 17:36:43 -0000	1.7
++++ mes_fonctions.php3	29 Mar 2005 15:16:35 -0000	1.8
+@@ -1,42 +1,4 @@
+ &lt;?php
+-//////////////////////////////////////////////////
+-//////////////////////////////////////////////////
+-//FILTRES
+-//////////////////////////////////////////////////
+-//////////////////////////////////////////////////
+-
+-
+- function worldfileWidth($callage){	
+-	$tabcallage=worldfile2array($callage);
+-	return intval($tabcallage['bottom_right']['x']-$tabcallage['top_left']['x']);
+-}
+-function worldfileHeight($callage){	
+-	$tabcallage=worldfile2array($callage);
+-	return intval($tabcallage['bottom_right']['y']-$tabcallage['top_left']['y']);
+-}
+-function worldfileULX($callage){
+-	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['bottom_right']['x'];
+-}
+-function worldfileULY($callage){
+-	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['bottom_right']['y']*-1;
+-}
+-function worldfileLRX($callage){
+-	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['top_left']['x'];
+-}
+-function worldfileLRY($callage){
+-	$tabcallage=worldfile2array($callage);
+-	return $tabcallage['top_left']['y'];
+-}
+-function getPropMapHeight($callage, $width){
+-	$tabcallage=worldfile2array($callage);
+-	// Calcul d'une hauteur relative &#224; un callage (proportion)
+-	return $width*($tabcallage['bottom_right']['y']-$tabcallage['top_left']['y'])/($tabcallage['bottom_right']['x']-$tabcallage['top_left']['x']);
+-}
+-
+-
+ 
+ 
+ /*
+
+Index: inc-calcul.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-calcul.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-calcul.php3	20 Feb 2005 22:15:59 -0000	1.3
++++ inc-calcul.php3	29 Mar 2005 15:16:35 -0000	1.4
+@@ -31,9 +31,7 @@
+ include_ecrire(&quot;inc_debug_sql.php3&quot;);
+ include_local(&quot;inc-calcul-outils.php3&quot;);
+ 
+-// Ce fichier peut contenir une affectation de $dossier_squelettes  indiquant
+-// le repertoire du source des squelettes (les pseudo-html avec BOUCLE...)
+-
++// NB: Ce fichier peut initialiser $dossier_squelettes (old-style)
+ if ($f = find_in_path(&quot;mes_fonctions.php3&quot;))
+ 	include_local ($f);
+ 
+@@ -269,9 +267,9 @@
+ 					list(,$url) = extraire_lien(array('','','',
+ 					substr($chapo, 1)));
+ 					if ($url) { // sinon les navigateurs pataugent
+-						$url = addslashes($url);
++						$url = texte_script(str_replace('&amp;', '&amp;', $url));
+ 						$page = array('texte' =&gt; &quot;&lt;&quot;.
+-						&quot;?php header(\&quot;Location: $url\&quot;); ?&quot; . &quot;&gt;&quot;,
++						&quot;?php header('Location: $url'); ?&quot; . &quot;&gt;&quot;,
+ 						'process_ins' =&gt; 'php');
+ 					}
+ 				}
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000143.html">[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.2,1.3
+</A></li>
+	<LI>Next message: <A HREF="000146.html">[Spip-carto-cvs] spipcarto/ecrire articles.php3,1.3,1.4 articles_versions.php3,1.2,1.3 articles_edit.php3,1.3,1.4 aide_index.php3,1.2,1.3 admin_vider.php3,1.3,1.4 auteurs_edit.php3,1.3,1.4 articles_forum.php3,1.2,1.3 auteur_infos.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#144">[ date ]</a>
+              <a href="thread.html#144">[ thread ]</a>
+              <a href="subject.html#144">[ subject ]</a>
+              <a href="author.html#144">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

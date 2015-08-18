@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.4,1.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20carte_edit.php3%2C1.4%2C1.5&In-Reply-To=%3C200502251202.j1PC2INx032407%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000103.html">
+   <LINK REL="Next"  HREF="000108.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.4,1.5</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20carte_edit.php3%2C1.4%2C1.5&In-Reply-To=%3C200502251202.j1PC2INx032407%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.4,1.5">fxp at berlios.de
+       </A><BR>
+    <I>Fri Feb 25 13:02:18 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000103.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.6,1.7
+</A></li>
+        <LI>Next message: <A HREF="000108.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_pt_br.php3,NONE,1.1 public_pt_br.php3,NONE,1.1 ecrire_pt.php3,1.2,1.3 ecrire_oc_lnc.php3,1.2,1.3 spip_bg.php3,1.2,1.3 spip_pl.php3,1.2,1.3 spip_oc_lnc.php3,1.2,1.3 ecrire_pt_br.php3,1.2,1.3 ecrire_es.php3,1.2,1.3 spip_lb.php3,1.2,1.3 spip_es.php3,1.2,1.3 public_oc_lnc.php3,1.2,1.3 spip_pt.php3,1.2,1.3 spip_it.php3,1.2,1.3 ecrire_lb.php3,1.2,1.3 spip_fa.php3,1.2,1.3 spip_vi.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv32325/ecrire
+
+Modified Files:
+	carte_edit.php3 
+Log Message:
+Fxp / Mise en conformit&#233; avec le format WKT
+
+Index: carte_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/carte_edit.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- carte_edit.php3	21 Feb 2005 17:10:27 -0000	1.4
++++ carte_edit.php3	25 Feb 2005 12:02:14 -0000	1.5
+@@ -43,11 +43,12 @@
+ 	else {
+ 		if ($modif_carte == $id_carte) {
+ 			//TODO : generer automatiquement callage si document spip
+-			if ($document_id=intval($url_carte)) {
+-				//TODO : gerer type image et peut etre mime
+-				$image = spip_fetch_array(spip_query(&quot;SELECT * FROM spip_documents WHERE id_document = $document_id&quot;));;
+-				if ($image) $callage=array2worldfile($image);
+-			}
++			if (!$callage)
++				if ($document_id=intval($url_carte)) {
++					//TODO : gerer type image et peut etre mime
++					$image = spip_fetch_array(spip_query(&quot;SELECT * FROM spip_documents WHERE id_document = $document_id&quot;));;
++					if ($image) $callage=array2worldfile($image);
++				}
+ 			//TODO : passer tout ca en spip_abstract ...
+ 			$query = &quot;UPDATE spip_carto_cartes SET &quot;.
+ 			&quot;titre='&quot;.addslashes($titre).&quot;', &quot;.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000103.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.6,1.7
+</A></li>
+	<LI>Next message: <A HREF="000108.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_pt_br.php3,NONE,1.1 public_pt_br.php3,NONE,1.1 ecrire_pt.php3,1.2,1.3 ecrire_oc_lnc.php3,1.2,1.3 spip_bg.php3,1.2,1.3 spip_pl.php3,1.2,1.3 spip_oc_lnc.php3,1.2,1.3 ecrire_pt_br.php3,1.2,1.3 ecrire_es.php3,1.2,1.3 spip_lb.php3,1.2,1.3 spip_es.php3,1.2,1.3 public_oc_lnc.php3,1.2,1.3 spip_pt.php3,1.2,1.3 spip_it.php3,1.2,1.3 ecrire_lb.php3,1.2,1.3 spip_fa.php3,1.2,1.3 spip_vi.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

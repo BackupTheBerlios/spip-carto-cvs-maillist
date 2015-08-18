@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/squelettes carto_svgfile.html,1.4,1.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes%20carto_svgfile.html%2C1.4%2C1.5&In-Reply-To=%3C200505111019.j4BAJVDo020702%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000164.html">
+   <LINK REL="Next"  HREF="000166.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/squelettes carto_svgfile.html,1.4,1.5</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes%20carto_svgfile.html%2C1.4%2C1.5&In-Reply-To=%3C200505111019.j4BAJVDo020702%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/squelettes carto_svgfile.html,1.4,1.5">fxp at berlios.de
+       </A><BR>
+    <I>Wed May 11 12:19:31 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000164.html">[Spip-carto-cvs] spipcarto/squelettes carto_logo.html,1.2,1.3
+</A></li>
+        <LI>Next message: <A HREF="000166.html">[Spip-carto-cvs] spipcarto/squelettes carto.html,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#165">[ date ]</a>
+              <a href="thread.html#165">[ thread ]</a>
+              <a href="subject.html#165">[ subject ]</a>
+              <a href="author.html#165">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/squelettes
+In directory sheep:/tmp/cvs-serv20695/squelettes
+
+Modified Files:
+	carto_svgfile.html 
+Log Message:
+adaptation SRS
+
+Index: carto_svgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/carto_svgfile.html,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- carto_svgfile.html	29 Mar 2005 15:30:03 -0000	1.4
++++ carto_svgfile.html	11 May 2005 10:19:29 -0000	1.5
+@@ -1,6 +1,6 @@
+ &lt;?php echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot;?'.&quot;&gt;\n&quot;; ?&gt;
+ &lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
+-	&lt;svg viewBox=&quot;[(#CALLAGE|worldfileLRX)] [(#CALLAGE|worldfileLRY)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]&quot; xmlns=&quot;<A HREF="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</A>&quot; xmlns:xlink=&quot;<A HREF="http://www.w3.org/1999/xlink">http://www.w3.org/1999/xlink</A>&quot; xml:space=&quot;preserve&quot;&gt;
++	&lt;svg viewBox=&quot;[(#CALLAGE|worldfileLRX)] [(#CALLAGE|worldfileULY)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]&quot; xmlns=&quot;<A HREF="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</A>&quot; xmlns:xlink=&quot;<A HREF="http://www.w3.org/1999/xlink">http://www.w3.org/1999/xlink</A>&quot; xml:space=&quot;preserve&quot;&gt;
+ 		&lt;defs&gt;
+ 		 &lt;linearGradient id=&quot;myGradient&quot; gradientTransform=&quot;rotate(45)&quot;&gt;
+ 		  &lt;stop offset=&quot;0%&quot; style=&quot;stop-color:white&quot;/&gt;
+@@ -10,13 +10,13 @@
+ 		&lt;/defs&gt;
+ 		
+ 		&lt;g id=&quot;background&quot; visibility=&quot;visible&quot;&gt;
+-			&lt;image x=&quot;0&quot; y=&quot;0&quot; width=&quot;[(#CALLAGE|worldfileWidth)]px&quot; height=&quot;[(#CALLAGE|worldfileHeight)]px&quot; xlink:href=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot;/&gt;
++			&lt;image x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;[(#CALLAGE|worldfileULY)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]px&quot; height=&quot;[(#CALLAGE|worldfileHeight)]px&quot; xlink:href=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot;/&gt;
+ 		&lt;/g&gt;
+ 		 
+ 		 
+ 		&lt;g id=&quot;mainlayer&quot;&gt;
+ 		 	&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+-		  		&lt;a xlink:href=&quot;#URL_OBJET&quot; alt=&quot;#TITRE&quot;&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVG,#CALLAGE})] style=&quot;fill:url(#myGradient);opacity:.7;&quot;/&gt;&lt;/a&gt;
++		  		&lt;a xlink:href=&quot;#URL_OBJET&quot; alt=&quot;#TITRE&quot;&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVG,#CALLAGE,#URL_CARTE})] style=&quot;fill:url(#myGradient);opacity:.7;&quot;/&gt;&lt;/a&gt;
+ 		 	&lt;/BOUCLE_objets&gt;
+ 		&lt;/g&gt;
+ 	&lt;/svg&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000164.html">[Spip-carto-cvs] spipcarto/squelettes carto_logo.html,1.2,1.3
+</A></li>
+	<LI>Next message: <A HREF="000166.html">[Spip-carto-cvs] spipcarto/squelettes carto.html,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#165">[ date ]</a>
+              <a href="thread.html#165">[ thread ]</a>
+              <a href="subject.html#165">[ subject ]</a>
+              <a href="author.html#165">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.3,1.4 carto_svgfilex.html,1.3,1.4 carto_geosvgwmsfile.html,1.3,1.4 carto_svgfile.html,1.2,1.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_geosvgfile.html%2C1.3%2C1.4%20carto_svgfilex.html%2C1.3%2C1.4%20carto_geosvgwmsfile.html%2C1.3%2C1.4%20carto_svgfile.html%2C1.2%2C1.3&In-Reply-To=%3C200509051449.j85EnXAD006144%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000237.html">
+   <LINK REL="Next"  HREF="000239.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.3,1.4 carto_svgfilex.html,1.3,1.4 carto_geosvgwmsfile.html,1.3,1.4 carto_svgfile.html,1.2,1.3</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_geosvgfile.html%2C1.3%2C1.4%20carto_svgfilex.html%2C1.3%2C1.4%20carto_geosvgwmsfile.html%2C1.3%2C1.4%20carto_svgfile.html%2C1.2%2C1.3&In-Reply-To=%3C200509051449.j85EnXAD006144%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.3,1.4 carto_svgfilex.html,1.3,1.4 carto_geosvgwmsfile.html,1.3,1.4 carto_svgfile.html,1.2,1.3">fxp at berlios.de
+       </A><BR>
+    <I>Mon Sep  5 16:49:33 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000237.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.16,1.17
+</A></li>
+        <LI>Next message: <A HREF="000239.html">[Spip-carto-cvs] spipcarto style_carto_svgfilex.css,1.1,NONE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/squelettes/template
+In directory sheep:/tmp/cvs-serv6136/squelettes/template
+
+Modified Files:
+	carto_geosvgfile.html carto_svgfilex.html 
+	carto_geosvgwmsfile.html carto_svgfile.html 
+Log Message:
+SVG / Ajout du support des symboles
+
+Index: carto_geosvgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_geosvgfile.html,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- carto_geosvgfile.html	18 Aug 2005 06:33:33 -0000	1.3
++++ carto_geosvgfile.html	5 Sep 2005 14:49:31 -0000	1.4
+@@ -369,6 +369,10 @@
+ 	.normalline {stroke-width:2;}
+ 	.mediumThickLine {stroke-width:5;}
+   ]]&gt;&lt;/style&gt;
++		&lt;INCLURE(carto_style.css)&gt;
++		&lt;INCLURE(carto_symbol.xml)&gt;
++
++
+ 		&lt;!-- Symbols for checkboxes --&gt;
+ 		&lt;symbol id=&quot;checkBoxRect&quot; overflow=&quot;visible&quot;&gt;
+ 			&lt;rect x=&quot;-6&quot; y=&quot;-6&quot; width=&quot;12&quot; height=&quot;12&quot; class=&quot;whitefill normallinecol thinline&quot;/&gt;
+@@ -471,7 +475,7 @@
+ 				&lt;!-- Couche d'objets SPIP --&gt;
+ 				&lt;B_objets&gt;
+ 				&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+-				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; style=&quot;opacity:.6;&quot;/&gt;&lt;/a&gt;&lt;!-- style=&quot;fill:url(#MyGradient);&quot;--&gt;
++				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVG})]&quot;/&gt;&lt;/a&gt;
+ 				&lt;/BOUCLE_objets&gt;
+ 				&lt;/B_objets&gt;	
+ 			&lt;/g&gt;
+
+Index: carto_svgfilex.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_svgfilex.html,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- carto_svgfilex.html	18 Aug 2005 06:33:33 -0000	1.3
++++ carto_svgfilex.html	5 Sep 2005 14:49:31 -0000	1.4
+@@ -95,9 +95,14 @@
+ 	.thinline {stroke-width:1.5;}
+ 	.normalline {stroke-width:2;}
+ 	.mediumThickLine {stroke-width:5;}
+-	&lt;INCLURE(style_carto_svgfilex.css)&gt;
++	
+ 	
+   ]]&gt;&lt;/style&gt;
++
++		&lt;INCLURE(carto_style.css)&gt;
++		&lt;INCLURE(carto_symbol.xml)&gt;
++
++
+ 		&lt;!-- Symbols for checkboxes --&gt;
+ 		&lt;symbol id=&quot;checkBoxRect&quot; overflow=&quot;visible&quot;&gt;
+ 			&lt;rect x=&quot;-6&quot; y=&quot;-6&quot; width=&quot;12&quot; height=&quot;12&quot; class=&quot;whitefill normallinecol thinline&quot;/&gt;
+@@ -176,13 +181,7 @@
+ 		&lt;marker id=&quot;myEndArrow&quot; overflow=&quot;visible&quot; orient=&quot;auto&quot;&gt;
+ 			&lt;polyline class=&quot;nostroke normalfillcol&quot; points=&quot;0.5,0 -8,-2 -8,2&quot;/&gt;
+ 		&lt;/marker&gt;
+-		&lt;linearGradient id=&quot;MyGradient&quot; gradientTransform=&quot;rotate(45)&quot;&gt; 
+-			&lt;stop offset=&quot;0%&quot; style=&quot;stop-color:white&quot;/&gt; 
+-			&lt;stop offset=&quot;30%&quot; style=&quot;stop-color:red&quot;/&gt; 
+-			&lt;stop offset=&quot;100%&quot; style=&quot;stop-color:black&quot;/&gt; 
+-		&lt;/linearGradient&gt; 
+-
+-
++		
+ 	&lt;/defs&gt;
+ 	&lt;rect x=&quot;-500&quot; y=&quot;-500&quot; width=&quot;3000&quot; height=&quot;[(#CALLAGE|getPropMapHeight{3000})]&quot; stroke=&quot;none&quot; class=&quot;background&quot; /&gt;
+ 	
+@@ -200,7 +199,7 @@
+ 	&lt;!-- #DESCRIPTIF --&gt;
+ 			&lt;g id=&quot;spipCarto_#ID_MOT&quot;&gt;
+ 			&lt;BOUCLE_OBJECT(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{id_mot}{doublons obj}&gt;
+-				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVG})[(#_M:DESCRIPTIF)]]&quot;/&gt;&lt;/a&gt;
++				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE,#_M:DESCRIPTIF})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVG})[(#_M:DESCRIPTIF)]]&quot;/&gt;&lt;/a&gt;
+ 			&lt;/BOUCLE_OBJECT&gt;
+ 			&lt;/g&gt;
+ 		 &lt;/BOUCLE_M&gt;
+@@ -270,18 +269,10 @@
+ 				&lt;use id=&quot;checkBoxShadedRelief&quot; xlink:href=&quot;#checkBoxRect&quot; onclick=&quot;checkBoxScript(evt,'ShadedRelief');&quot;/&gt;
+ 				&lt;use id=&quot;checkCrossShadedRelief&quot; xlink:href=&quot;#checkBoxCross&quot; visibility=&quot;visible&quot;/&gt;
+ 			&lt;/g&gt;
+-			&lt;!-- third checkbox 
+-			&lt;g transform=&quot;translate(0 [(#ID_MOT|plus{60})])&quot;&gt;
+-				&lt;use id=&quot;checkBoxDOQ&quot; xlink:href=&quot;#checkBoxRect&quot;
+-				onclick=&quot;checkBoxScript(evt,'DOQ');&quot;/&gt;
+-				&lt;use id=&quot;checkCrossDOQ&quot; xlink:href=&quot;#checkBoxCross&quot;
+-				visibility=&quot;visible&quot;/&gt;
+-			&lt;/g&gt;--&gt;
+ 			&lt;!-- checkbox text labels --&gt;
+ 			&lt;g class=&quot;allText normalText&quot;&gt;
+-				&lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{26})]&quot;&gt;Objets SPIP-CARTO&lt;/text&gt;
+-				&lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{46})]&quot;&gt;Image de fond&lt;/text&gt;
+-				&lt;!-- Check for WMS &lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{66})]&quot;&gt;Bassin versant&lt;/text&gt;--&gt;
++				&lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{26})]&quot;&gt;Objets&lt;/text&gt;
++				&lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{46})]&quot;&gt;Fond de carte&lt;/text&gt;
+ 			&lt;/g&gt;
+ 		&lt;/g&gt;
+ 		&lt;/B_OBJ2&gt;
+
+Index: carto_geosvgwmsfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_geosvgwmsfile.html,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- carto_geosvgwmsfile.html	18 Aug 2005 06:33:33 -0000	1.3
++++ carto_geosvgwmsfile.html	5 Sep 2005 14:49:31 -0000	1.4
+@@ -284,9 +284,15 @@
+ 			//adopt width and height of map extent
+ 			document.getElementById(&quot;myScaleTextW&quot;).firstChild.nodeValue = formatNumberString(myMainMap.curWidth.toFixed(myMainMap.nrDecimals)) + myMainMap.units;
+ 			document.getElementById(&quot;myScaleTextH&quot;).firstChild.nodeValue = formatNumberString(myMainMap.curHeight.toFixed(myMainMap.nrDecimals)) + myMainMap.units;
+-			//adopt line width of park boundary
++			
+ 			document.getElementById(&quot;spipCartoObj&quot;).setAttributeNS(null,&quot;stroke-width&quot;,myMainMap.curWidth*0.005);	
+ 			
++			&lt;BOUCLE__OBJ(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{par num titre}&gt;
++		 	&lt;BOUCLE__M(MOTS){id_carto_objet}{par num titre}{doublons a}&gt;
++			document.getElementById(&quot;spipCarto_#ID_MOT&quot;).setAttributeNS(null,&quot;stroke-width&quot;,myMainMap.curWidth*0.005);	
++			&lt;/BOUCLE__M&gt;
++			&lt;/BOUCLE__OBJ&gt;
++
+ 			// Pour charger un claque WMS ... 
+ 			&lt;BOUCLE_WMS_evt(SITES){titre_mot=&quot;WMS&quot;}&gt;
+ 			getWMS(#ID_SYNDIC);
+@@ -366,6 +372,11 @@
+ 	.normalline {stroke-width:2;}
+ 	.mediumThickLine {stroke-width:5;}
+   ]]&gt;&lt;/style&gt;
++
++		&lt;INCLURE(carto_style.css)&gt;
++		&lt;INCLURE(carto_symbol.xml)&gt;
++
++
+ 		&lt;!-- Symbols for checkboxes --&gt;
+ 		&lt;symbol id=&quot;checkBoxRect&quot; overflow=&quot;visible&quot;&gt;
+ 			&lt;rect x=&quot;-6&quot; y=&quot;-6&quot; width=&quot;12&quot; height=&quot;12&quot; class=&quot;whitefill normallinecol thinline&quot;/&gt;
+@@ -468,12 +479,23 @@
+ 			&lt;BOUCLE_WMS_layer(SITES){titre_mot=&quot;WMS&quot;}&gt;
+ 				&lt;g id=&quot;#ID_SYNDIC&quot; visibility=&quot;hidden&quot; /&gt;
+ 			&lt;/BOUCLE_WMS_layer&gt;
+-
++		
++			&lt;BOUCLE_OBJ(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{par num titre}&gt;
++			 &lt;BOUCLE_M(MOTS){id_carto_objet}{par num titre}{doublons b}&gt;
++	 		 &lt;!-- #DESCRIPTIF --&gt;
++				&lt;g id=&quot;spipCarto_#ID_MOT&quot;&gt;
++				&lt;BOUCLE_OBJECT(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{id_mot}{doublons obj}&gt;
++					&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE,#_M:DESCRIPTIF})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVG})[(#_M:DESCRIPTIF)]]&quot;/&gt;&lt;/a&gt;
++				&lt;/BOUCLE_OBJECT&gt;
++				&lt;/g&gt;
++			 &lt;/BOUCLE_M&gt;
++			&lt;/BOUCLE_OBJ&gt;
+ 			&lt;g id=&quot;spipCartoObj&quot;&gt;
++			
+ 				&lt;!-- Couche d'objets SPIP --&gt;
+ 				&lt;B_objets&gt;
+-				&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+-				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; style=&quot;opacity:.6;&quot;/&gt;&lt;/a&gt;&lt;!-- style=&quot;fill:url(#MyGradient);&quot;--&gt;
++				&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{doublons obj}&gt;
++				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVG})]&quot;/&gt;&lt;/a&gt;
+ 				&lt;/BOUCLE_objets&gt;
+ 				&lt;/B_objets&gt;	
+ 			&lt;/g&gt;
+@@ -507,33 +529,50 @@
+ 		&lt;!-- control map layer visibility with checkBoxes --&gt;
+ 		&lt;g transform=&quot;translate(590 225)&quot;&gt;
+ 			&lt;text class=&quot;allText subTitleText&quot; x=&quot;-10&quot; y=&quot;0&quot;&gt;Calques :&lt;/text&gt;
+-			&lt;!-- first checkbox --&gt;
+-			&lt;g transform=&quot;translate(0 20)&quot;&gt;
+-				&lt;use id=&quot;checkBoxspipCartoObj&quot; xlink:href=&quot;#checkBoxRect&quot; onclick=&quot;checkBoxScript(evt,'spipCartoObj');&quot;/&gt;
+-				&lt;use id=&quot;checkCrossspipCartoObj&quot; xlink:href=&quot;#checkBoxCross&quot; visibility=&quot;visible&quot;/&gt;
+-			&lt;/g&gt;
+-			&lt;!-- second checkbox --&gt;
+-			&lt;g transform=&quot;translate(0 40)&quot;&gt;
+-				&lt;use id=&quot;checkBoxShadedRelief&quot; xlink:href=&quot;#checkBoxRect&quot; onclick=&quot;checkBoxScript(evt,'ShadedRelief');&quot;/&gt;
+-				&lt;use id=&quot;checkCrossShadedRelief&quot; xlink:href=&quot;#checkBoxCross&quot; visibility=&quot;visible&quot;/&gt;
+-			&lt;/g&gt;
++			
++			&lt;!-- checkbox --&gt;
++			&lt;BOUCLE_OBJ2(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{par num titre}&gt;
++			 &lt;BOUCLE_M2(MOTS){id_carto_objet}{par num titre}{doublons c}&gt;
++				&lt;g transform=&quot;translate(0 [(#ID_MOT|ajoute{20})])&quot;&gt;
++					&lt;use id=&quot;checkBoxspipCarto_#ID_MOT&quot; xlink:href=&quot;#checkBoxRect&quot; onclick=&quot;checkBoxScript(evt,'spipCarto_#ID_MOT');&quot;/&gt;
++					&lt;use id=&quot;checkCrossspipCarto_#ID_MOT&quot; xlink:href=&quot;#checkBoxCross&quot; visibility=&quot;visible&quot;/&gt;
++				&lt;/g&gt;
++				&lt;g class=&quot;allText normalText&quot;&gt;
++					&lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{6})]&quot;&gt;#TITRE&lt;/text&gt;';
++				&lt;/g&gt;
++			 &lt;/BOUCLE_M2&gt;
++			&lt;/BOUCLE_OBJ2&gt;
+ 
++
++			
+ 			&lt;BOUCLE_WMS_guick(SITES){titre_mot=&quot;WMS&quot;}{par nom_site}&gt;
+-				&lt;g transform=&quot;translate(0 [(#COMPTEUR_BOUCLE|guiPos{40})])&quot;&gt;
++				&lt;g transform=&quot;translate(0 [(#COMPTEUR_BOUCLE|ajoute{20})])&quot;&gt;
+ 				&lt;use id=&quot;checkBox#ID_SYNDIC&quot; xlink:href=&quot;#checkBoxRect&quot; visibility=&quot;visible&quot;
+ 				onclick=&quot;checkBoxScript(evt,'#ID_SYNDIC');&quot;/&gt;
+ 				&lt;use id=&quot;checkCross#ID_SYNDIC&quot; xlink:href=&quot;#checkBoxCross&quot; 
+ 				visibility=&quot;hidden&quot;/&gt;
+ 				&lt;/g&gt;
++				&lt;g class=&quot;allText normalText&quot;&gt;
++				&lt;text x=&quot;12&quot; y=&quot;[(#COMPTEUR_BOUCLE|plus{6})]&quot;&gt;[(#NOM_SITE|supprimer_numero)]&lt;/text&gt;
++				&lt;/g&gt;
+ 			&lt;/BOUCLE_WMS_guick&gt;
+ 			
++			&lt;!-- first checkbox --&gt;
++			&lt;g transform=&quot;translate(0 [(#COMPTEUR_BOUCLE|plus{20})])&quot;&gt;
++				&lt;use id=&quot;checkBoxspipCartoObj&quot; xlink:href=&quot;#checkBoxRect&quot; onclick=&quot;checkBoxScript(evt,'spipCartoObj');&quot;/&gt;
++				&lt;use id=&quot;checkCrossspipCartoObj&quot; xlink:href=&quot;#checkBoxCross&quot; visibility=&quot;visible&quot;/&gt;
++			&lt;/g&gt;
++			&lt;!-- second checkbox --&gt;
++			&lt;g transform=&quot;translate(0 [(#COMPTEUR_BOUCLE|plus{40})])&quot;&gt;
++				&lt;use id=&quot;checkBoxShadedRelief&quot; xlink:href=&quot;#checkBoxRect&quot; onclick=&quot;checkBoxScript(evt,'ShadedRelief');&quot;/&gt;
++				&lt;use id=&quot;checkCrossShadedRelief&quot; xlink:href=&quot;#checkBoxCross&quot; visibility=&quot;visible&quot;/&gt;
++			&lt;/g&gt;
++			
+ 			&lt;!-- checkbox text labels --&gt;
+ 			&lt;g class=&quot;allText normalText&quot;&gt;
+-				&lt;text x=&quot;12&quot; y=&quot;26&quot;&gt;Objets cartographiques&lt;/text&gt;
+-				&lt;text x=&quot;12&quot; y=&quot;46&quot;&gt;Image de fond&lt;/text&gt;
+-				&lt;BOUCLE_WMS_guilabel(SITES){titre_mot=&quot;WMS&quot;}{par nom_site}&gt;
+-				&lt;text x=&quot;12&quot; y=&quot;[(#COMPTEUR_BOUCLE|guiPos{46})]&quot;&gt;[(#NOM_SITE|supprimer_numero)]&lt;/text&gt;
+-				&lt;/BOUCLE_WMS_guilabel&gt;		
++				&lt;text x=&quot;12&quot; y=&quot;[(#COMPTEUR_BOUCLE|plus{26})]&quot;&gt;Objets cartographiques&lt;/text&gt;
++				&lt;text x=&quot;12&quot; y=&quot;[(#COMPTEUR_BOUCLE|plus{46})]&quot;&gt;Image de fond&lt;/text&gt;
++						
+ 			&lt;/g&gt;
+ 			
+ 			
+
+Index: carto_svgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_svgfile.html,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- carto_svgfile.html	18 Aug 2005 06:33:33 -0000	1.2
++++ carto_svgfile.html	5 Sep 2005 14:49:31 -0000	1.3
+@@ -7,6 +7,10 @@
+ 		  &lt;stop offset=&quot;30%&quot; style=&quot;stop-color:red&quot;/&gt;
+ 		  &lt;stop offset=&quot;100%&quot; style=&quot;stop-color:black&quot;/&gt;
+ 		 &lt;/linearGradient&gt;
++		
++		&lt;INCLURE(carto_style.css)&gt;
++		&lt;INCLURE(carto_symbol.xml)&gt;
++
+ 		&lt;/defs&gt;
+ 		
+ 		&lt;g id=&quot;background&quot; visibility=&quot;visible&quot;&gt;
+@@ -16,7 +20,7 @@
+ 		 
+ 		&lt;g id=&quot;mainlayer&quot;&gt;
+ 		 	&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+-		  		&lt;a xlink:href=&quot;[(#URL_OBJET|url)]&quot; alt=&quot;#TITRE&quot;&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVG,#CALLAGE,#URL_CARTE})] style=&quot;fill:url(#myGradient);opacity:.7;&quot;/&gt;&lt;/a&gt;
++		  		&lt;a xlink:href=&quot;[(#URL_OBJET|url)]&quot; alt=&quot;#TITRE&quot;&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVG,#CALLAGE,#URL_CARTE})] class=&quot;[(#GEOMETRIE|wkt2shape{SVG})]&quot;/&gt;&lt;/a&gt;
+ 		 	&lt;/BOUCLE_objets&gt;
+ 		&lt;/g&gt;
+ 	&lt;/svg&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000237.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.16,1.17
+</A></li>
+	<LI>Next message: <A HREF="000239.html">[Spip-carto-cvs] spipcarto style_carto_svgfilex.css,1.1,NONE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

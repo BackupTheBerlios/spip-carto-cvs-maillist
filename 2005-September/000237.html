@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.16,1.17
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.16%2C1.17&In-Reply-To=%3C200509051449.j85EnAAD006102%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000236.html">
+   <LINK REL="Next"  HREF="000238.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.16,1.17</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.16%2C1.17&In-Reply-To=%3C200509051449.j85EnAAD006102%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.16,1.17">fxp at berlios.de
+       </A><BR>
+    <I>Mon Sep  5 16:49:10 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000236.html">[Spip-carto-cvs] spipcarto carto_style.css,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000238.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.3,1.4 carto_svgfilex.html,1.3,1.4 carto_geosvgwmsfile.html,1.3,1.4 carto_svgfile.html,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#237">[ date ]</a>
+              <a href="thread.html#237">[ thread ]</a>
+              <a href="subject.html#237">[ subject ]</a>
+              <a href="author.html#237">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv6096/ecrire
+
+Modified Files:
+	inc_carto.php3 
+Log Message:
+SVG / Ajout du support des symboles
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.16
+retrieving revision 1.17
+diff -u -d -r1.16 -r1.17
+--- inc_carto.php3	17 Aug 2005 09:17:39 -0000	1.16
++++ inc_carto.php3	5 Sep 2005 14:49:08 -0000	1.17
+@@ -83,7 +83,7 @@
+ 			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+ 				return &quot;polygon&quot;; 
+ 			if (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-				return &quot;circle&quot;; 
++				return &quot;use&quot;; 
+ 			if (strcasecmp($wktGeomType,&quot;LINE&quot;)==0)
+ 				return &quot;polyline&quot;; 
+ 		break;
+@@ -158,7 +158,7 @@
+  * <A HREF="http://www.uzine.net/spip_contrib/">http://www.uzine.net/spip_contrib/</A>
+  *
+  */
+-function wkt2coords($geometrie, $format = &quot;HTML&quot;, $callage = &quot;&quot;,$url_carte, $args = &quot;&quot;){
++function wkt2coords($geometrie, $format = &quot;HTML&quot;, $callage = &quot;&quot;,$url_carte, $mot_desc = &quot;&quot;, $args = &quot;&quot;){
+ 	//recuperer geometrie
+ 	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
+ 	$wktGeom 	= substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1);
+@@ -171,8 +171,8 @@
+ 	$GeoHeight 	= $tab[2];
+ 	$GeoWidth 	= $tab[3];
+ 
+-	$radius		 = 3;	// TODO : Param&#232;tre (ou fonction du callage ?) pr&#233;f&#233;rable car fonction des projections 5 peut &#234;tre bcp trop petit
+-	$rgeo 		 = $radius*$GeoWidth/$ImgWidth;
++	$radius	= 6;	// TODO : Param&#232;tre (ou fonction du callage ?) pr&#233;f&#233;rable car fonction des projections 5 peut &#234;tre bcp trop petit
++	$rgeo 		= round($radius*$GeoWidth/$ImgWidth);
+ 	$callage 	= worldfile2array ($callage);
+ 	
+ 	switch ($format){
+@@ -248,7 +248,7 @@
+ 			{  	return &quot;points=\&quot;&quot;.$wktGeom.&quot;\&quot;&quot;;		
+ 			}elseif (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+ 			{	$coordTab = explode (&quot; &quot;, $wktGeom);
+-				return &quot;cx=\&quot;&quot;.$coordTab[0].&quot;\&quot; cy=\&quot;&quot;.$coordTab[1].&quot;\&quot; r=\&quot;&quot;.$rgeo.&quot;\&quot;&quot;;
++				return &quot;x=\&quot;&quot;.$coordTab[0].&quot;\&quot; y=\&quot;&quot;.$coordTab[1].&quot;\&quot; width=\&quot;&quot;.$rgeo.&quot;\&quot; height=\&quot;&quot;.$rgeo.&quot;\&quot; xlink:href=\&quot;#use&quot;.$mot_desc.&quot;\&quot;&quot;;
+ 			}
+ 		break;
+ 		case &quot;GOOGLE&quot;:
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000236.html">[Spip-carto-cvs] spipcarto carto_style.css,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000238.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.3,1.4 carto_svgfilex.html,1.3,1.4 carto_geosvgwmsfile.html,1.3,1.4 carto_svgfile.html,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#237">[ date ]</a>
+              <a href="thread.html#237">[ thread ]</a>
+              <a href="subject.html#237">[ subject ]</a>
+              <a href="author.html#237">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,408 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto style_carto.css,NONE,1.1 navigationTools.js,NONE,1.1 mes_fonctions.php3,1.10,1.11
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20style_carto.css%2CNONE%2C1.1%20navigationTools.js%2CNONE%2C1.1%20mes_fonctions.php3%2C1.10%2C1.11&In-Reply-To=%3C200507050046.j650kHqX025149%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000190.html">
+   <LINK REL="Next"  HREF="000192.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto style_carto.css,NONE,1.1 navigationTools.js,NONE,1.1 mes_fonctions.php3,1.10,1.11</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20style_carto.css%2CNONE%2C1.1%20navigationTools.js%2CNONE%2C1.1%20mes_fonctions.php3%2C1.10%2C1.11&In-Reply-To=%3C200507050046.j650kHqX025149%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto style_carto.css,NONE,1.1 navigationTools.js,NONE,1.1 mes_fonctions.php3,1.10,1.11">stef at berlios.de
+       </A><BR>
+    <I>Tue Jul  5 02:46:17 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000190.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_svgx.html,NONE,1.1 carto_svgfilex.html,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000192.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_svgfilex.html,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#191">[ date ]</a>
+              <a href="thread.html#191">[ thread ]</a>
+              <a href="subject.html#191">[ subject ]</a>
+              <a href="author.html#191">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv25039
+
+Modified Files:
+	mes_fonctions.php3 
+Added Files:
+	style_carto.css navigationTools.js 
+Log Message:
+version SVG avec une couche par mot
+
+--- NEW FILE: style_carto.css ---
+.polygondefault {fill:red;fill-opacity:.6;}
+.polygoncat1 {stroke:red;stroke-width:2;fill:transparent;fill-opacity:0;}
+.polygoncat2 {stroke:green;stroke-width:2;fill:transparent;fill-opacity:0;}
+
+--- NEW FILE: navigationTools.js ---
+
+/*
+Scripts for SVG only webmapping application navigation tools
+Copyright (C) &lt;2004&gt;  &lt;Andreas Neumann&gt;
+Version 1.03, 2005-02-22
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">neumann at karto.baug.ethz.ch</A>
+<A HREF="http://www.carto.net/">http://www.carto.net/</A>
+<A HREF="http://www.carto.net/neumann/">http://www.carto.net/neumann/</A>
+
+Credits: numerous people on <A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">svgdevelopers at yahoogroups.com</A>
+
+This ECMA script library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library (<A HREF="http://www.carto.net/papers/svg/navigationTools/lesser_gpl.txt">http://www.carto.net/papers/svg/navigationTools/lesser_gpl.txt</A>); if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+----
+
+current version: 1.02
+
+version history:
+1.0 initial version
+1.01 added cleanUp() method to map and dragObj objects, some fixes in the documentation
+1.02 fixed problems with double clicks, the second click of a double click is now ignored, using the evt.detail property
+1.03 introduced timestamp and nrLayerToLoad array for dynamic loading (getUrl)
+
+original document site: <A HREF="http://www.carto.net/papers/svg/navigationTools/">http://www.carto.net/papers/svg/navigationTools/</A>
+Please contact the author in case you want to use code or ideas commercially.
+If you use this code, please include this copyright header, the included full
+LGPL 2.1 text and read the terms provided in the LGPL 2.1 license
+(<A HREF="http://www.gnu.org/copyleft/lesser.txt">http://www.gnu.org/copyleft/lesser.txt</A>)
+
+-------------------------------
+
+Please report bugs and send improvements to <A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">neumann at karto.baug.ethz.ch</A>
+If you use these scripts, please link to the original (<A HREF="http://www.carto.net/papers/svg/navigationTools/">http://www.carto.net/papers/svg/navigationTools/</A>)
+somewhere in the source-code-comment or the &quot;about&quot; of your project and give credits, thanks!
+
+*/
+
+
+/* slider.js */
+//slider properties
+function slider(x1,y1,value1,x2,y2,value2,startVal,sliderGroupId,sliderColor,visSliderWidth,invisSliderWidth,sliderSymb,functionToCall,mouseMoveBool) {
+	this.x1 = x1;
+	this.y1 = y1;
+	this.value1 = value1;
+	this.x2 = x2;
+	this.y2 = y2;
+	this.value2 = value2;
+	this.startVal = startVal;
+	this.value = startVal;
+	this.sliderGroupId = sliderGroupId;
+	this.sliderGroup = document.getElementById(this.sliderGroupId);
+	this.sliderColor = sliderColor;
+	this.visSliderWidth = visSliderWidth;
+	this.invisSliderWidth = invisSliderWidth;
+	this.sliderSymb = sliderSymb;
+	this.functionToCall = functionToCall;
+	this.mouseMoveBool = mouseMoveBool;
+	this.length = toPolarDist((this.x2 - this.x1),(this.y2 - this.y1));
+	this.direction = toPolarDir((this.x2 - this.x1),(this.y2 - this.y1));
+	this.createSlider();
+	this.slideStatus = 0;
+	this.ctm = getTransformToRootElement(this.sliderGroup).inverse();
+}
+
+//create slider
+slider.prototype.createSlider = function() {
+	var mySliderLine = document.createElementNS(svgNS,&quot;line&quot;);
+	mySliderLine.setAttributeNS(null,&quot;x1&quot;,this.x1);
+	mySliderLine.setAttributeNS(null,&quot;y1&quot;,this.y1);
+	mySliderLine.setAttributeNS(null,&quot;x2&quot;,this.x2);
+	mySliderLine.setAttributeNS(null,&quot;y2&quot;,this.y2);
+	mySliderLine.setAttributeNS(null,&quot;stroke&quot;,this.sliderColor);
+	mySliderLine.setAttributeNS(null,&quot;stroke-width&quot;,this.invisSliderWidth);
+	mySliderLine.setAttributeNS(null,&quot;opacity&quot;,&quot;0&quot;);
+	mySliderLine.setAttributeNS(null,&quot;id&quot;,this.sliderGroupId+&quot;_invisibleSliderLine&quot;);
+	mySliderLine.addEventListener(&quot;mousedown&quot;,this,false);
+	this.sliderGroup.appendChild(mySliderLine);
+	mySliderLine = document.createElementNS(svgNS,&quot;line&quot;);
+	mySliderLine.setAttributeNS(null,&quot;x1&quot;,this.x1);
+	mySliderLine.setAttributeNS(null,&quot;y1&quot;,this.y1);
+	mySliderLine.setAttributeNS(null,&quot;x2&quot;,this.x2);
+	mySliderLine.setAttributeNS(null,&quot;y2&quot;,this.y2);
+	mySliderLine.setAttributeNS(null,&quot;stroke&quot;,this.sliderColor);
+	mySliderLine.setAttributeNS(null,&quot;stroke-width&quot;,this.visSliderWidth);
+	mySliderLine.setAttributeNS(null,&quot;id&quot;,this.sliderGroupId+&quot;_visibleSliderLine&quot;);
+	mySliderLine.setAttributeNS(null,&quot;pointer-events&quot;,&quot;none&quot;);
+	this.sliderGroup.appendChild(mySliderLine);
+	mySliderSymb = document.createElementNS(svgNS,&quot;use&quot;);
+	mySliderSymb.setAttributeNS(xlinkNS,&quot;xlink:href&quot;,&quot;#&quot;+this.sliderSymb);
+	var myStartDistance = this.length - ((this.value2 - this.startVal) / (this.value2 - this.value1)) * this.length;
+	var myPosX = this.x1 + toRectX(this.direction,myStartDistance);
+	var myPosY = this.y1 + toRectY(this.direction,myStartDistance);
+	var myTransformString = &quot;translate(&quot;+myPosX+&quot;,&quot;+myPosY+&quot;) rotate(&quot; + Math.round(this.direction / Math.PI * 180) + &quot;)&quot;;
+	mySliderSymb.setAttributeNS(null,&quot;transform&quot;,myTransformString);
+	mySliderSymb.setAttributeNS(null,&quot;id&quot;,this.sliderGroupId+&quot;_sliderSymbol&quot;);
+	this.sliderGroup.appendChild(mySliderSymb);
+}
+
+//remove all slider elements
+slider.prototype.removeSlider = function() {
+    var mySliderSymb = document.getElementById(this.sliderGroup+&quot;_sliderSymbol&quot;);
+	this.sliderGroup.removeChild(mySliderSymb);
+    var mySliderLine = document.getElementById(this.sliderGroup+&quot;_visibleSliderLine&quot;);
+	this.sliderGroup.removeChild(mySliderLine);
+    var mySliderLine = document.getElementById(this.sliderGroup+&quot;_invisibleSliderLine&quot;);
+	this.sliderGroup.removeChild(mySliderLine);
+}
+
+//handle events
+slider.prototype.handleEvent = function(evt) {
+	this.drag(evt);
+}
+
+//drag slider
+slider.prototype.drag = function(evt) {
+	var svgroot = document.documentElement;
+	if (evt.type == &quot;mousedown&quot; || (evt.type == &quot;mousemove&quot; &amp;&amp; this.slideStatus == 1)) {
+		var myCoords = myMapApp.calcCoord(evt.clientX,evt.clientY);
+		//undo the effect of transformations
+		var mySVGPoint = svgroot.createSVGPoint();
+		mySVGPoint.x = myCoords[&quot;x&quot;];
+		mySVGPoint.y = myCoords[&quot;y&quot;];
+		mySVGPoint = mySVGPoint.matrixTransform(this.ctm);
+		myCoords[&quot;x&quot;] = mySVGPoint.x;
+		myCoords[&quot;y&quot;] = mySVGPoint.y;
+	
+		//draw normal line for first vertex
+		var ax = this.x2 - this.x1;
+		var ay = this.y2 - this.y1;
+		//normal vector 1
+		var px1 = parseFloat(this.x1) + ay * -1;
+		var py1 = parseFloat(this.y1) + ax;
+		//normal vector 2
+		var px2 = parseFloat(this.x2) + ay * -1;
+		var py2 = parseFloat(this.y2) + ax;
+				
+		if (leftOfTest(myCoords[&quot;x&quot;],myCoords[&quot;y&quot;],this.x1,this.y1,px1,py1) == 0 &amp;&amp; leftOfTest(myCoords[&quot;x&quot;],myCoords[&quot;y&quot;],this.x2,this.y2,px2,py2) == 1) {
+			if (evt.type == &quot;mousedown&quot; &amp;&amp; evt.detail == 1) {
+				this.slideStatus = 1;
+				svgroot.addEventListener(&quot;mousemove&quot;,this,false);
+				svgroot.addEventListener(&quot;mouseup&quot;,this,false);
+			}
+			myNewPos = intersect2lines(this.x1,this.y1,this.x2,this.y2,myCoords[&quot;x&quot;],myCoords[&quot;y&quot;],myCoords[&quot;x&quot;] + ay * -1,myCoords[&quot;y&quot;] + ax);
+			var myPercentage = toPolarDist(myNewPos['x'] - this.x1,myNewPos['y'] - this.y1) / this.length;
+			this.value = this.value1 + myPercentage * (this.value2 - this.value1);
+		}
+		else {
+			var myNewPos = new Array();
+			if (leftOfTest(myCoords[&quot;x&quot;],myCoords[&quot;y&quot;],this.x1,this.y1,px1,py1) == 0 &amp;&amp; leftOfTest(myCoords[&quot;x&quot;],myCoords[&quot;y&quot;],this.x2,this.y2,px2,py2) == 0) {
+				//more than max
+				this.value = this.value2;
+				myNewPos['x'] = this.x2;
+				myNewPos['y'] = this.y2;
+			}
+			if (leftOfTest(myCoords[&quot;x&quot;],myCoords[&quot;y&quot;],this.x1,this.y1,px1,py1) == 1 &amp;&amp; leftOfTest(myCoords[&quot;x&quot;],myCoords[&quot;y&quot;],this.x2,this.y2,px2,py2) == 1) {
+				//less than min
+				this.value = this.value1;
+				myNewPos['x'] = this.x1;
+				myNewPos['y'] = this.y1;
+			}
+		}
+		var myTransformString = &quot;translate(&quot;+myNewPos['x']+&quot;,&quot;+myNewPos['y']+&quot;) rotate(&quot; + Math.round(this.direction / Math.PI * 180) + &quot;)&quot;;
+		document.getElementById(this.sliderGroupId+&quot;_sliderSymbol&quot;).setAttributeNS(null,&quot;transform&quot;,myTransformString);
+		this.getValue();
+	}
+	if (evt.type == &quot;mouseup&quot; &amp;&amp; evt.detail == 1) {
+		if (this.slideStatus == 1) {
+			this.slideStatus = 2;
+			svgroot.removeEventListener(&quot;mousemove&quot;,this,false);
+			svgroot.removeEventListener(&quot;mouseup&quot;,this,false);
+			this.getValue();
+		}
+		this.slideStatus = 0;
+	}
+}
+
+//this code is executed, after the slider is released
+//you can use switch/if to detect which slider was used (use this.sliderGroup) for that
+slider.prototype.getValue = function() {
+	if (this.slideStatus == 1 &amp;&amp; this.mouseMoveBool == true) {
+		if (typeof(this.functionToCall) == &quot;function&quot;) {
+			this.functionToCall(&quot;change&quot;,this.sliderGroupId,this.value);
+		}
+		if (typeof(this.functionToCall) == &quot;object&quot;) {
+			this.functionToCall.getSliderVal(&quot;change&quot;,this.sliderGroupId,this.value);
+		}
+		if (typeof(this.functionToCall) == &quot;string&quot;) {
+			eval(this.functionToCall+&quot;('change','&quot;+this.sliderGroupId+&quot;',&quot;+this.value+&quot;)&quot;);
+		}
+	}
+	if (this.slideStatus == 2) {
+		if (typeof(this.functionToCall) == &quot;function&quot;) {
+			this.functionToCall(&quot;release&quot;,this.sliderGroupId,this.value);
+		}
+		if (typeof(this.functionToCall) == &quot;object&quot;) {
+			this.functionToCall.getSliderVal(&quot;release&quot;,this.sliderGroupId,this.value);
+		}
+		if (typeof(this.functionToCall) == &quot;string&quot;) {
+			eval(this.functionToCall+&quot;('release','&quot;+this.sliderGroupId+&quot;',&quot;+this.value+&quot;)&quot;);
+		}
+	}
+}	
+
+//this is to set the value from other scripts
+slider.prototype.setValue = function(value) {
+	var myPercAlLine = (value - this.value1) / (this.value2 - this.value1);
+	this.value = myPercAlLine;
+	var myPosX = this.x1 + toRectX(this.direction,this.length * myPercAlLine);
+	var myPosY = this.y1 + toRectY(this.direction,this.length * myPercAlLine);
+	var myTransformString = &quot;translate(&quot;+myPosX+&quot;,&quot;+myPosY+&quot;) rotate(&quot; + Math.round(this.direction / Math.PI * 180) + &quot;)&quot;;
+	document.getElementById(this.sliderGroupId+&quot;_sliderSymbol&quot;).setAttributeNS(null,&quot;transform&quot;,myTransformString);
+}	
+/* slider.js */
+
+
+
+
+/* mapApp.js */	
+//holds data on window size
+function mapApp() {
+	if (!document.documentElement.getScreenCTM) {
+		//initialize ratio
+		this.resetFactors();
+		//add resize event to document element
+		document.documentElement.addEventListener(&quot;SVGResize&quot;,this,false);
+	}
+}
+
+mapApp.prototype.handleEvent = function(evt) {
+	if (evt.type == &quot;SVGResize&quot;) {
+		this.resetFactors();
+	}
+}
+
+mapApp.prototype.resetFactors = function() {
+	if (!document.documentElement.getScreenCTM) {
+		//case for viewers that don't support .getScreenCTM, such as ASV3
+		//calculate ratio and offset values of app window
+		var viewBoxArray = document.documentElement.getAttributeNS(null,&quot;viewBox&quot;).split(&quot; &quot;);
+		var myRatio = viewBoxArray[2]/viewBoxArray[3];
+		if ((window.innerWidth/window.innerHeight) &gt; myRatio) { //case window is more wide than myRatio
+			this.scaleFactor = viewBoxArray[3] / window.innerHeight;
+		}
+		else { //case window is more tall than myRatio
+			this.scaleFactor = viewBoxArray[2] / window.innerWidth;
+		}
+		this.offsetX = (window.innerWidth - viewBoxArray[2] * 1 / this.scaleFactor) / 2;
+		this.offsetY = (window.innerHeight - viewBoxArray[3] * 1 / this.scaleFactor) / 2;
+	}
+}
+
+mapApp.prototype.calcCoord = function(coordx,coordy) {
+	var coords = new Array();
+	if (!document.documentElement.getScreenCTM) {
+		//case ASV3 a. Corel
+		coords[&quot;x&quot;] = (coordx  - this.offsetX) * this.scaleFactor;
+		coords[&quot;y&quot;] = (coordy - this.offsetY) * this.scaleFactor;
+	}
+	else {
+		matrix=document.documentElement.getScreenCTM();
+		coords[&quot;x&quot;]= matrix.inverse().a*coordx+matrix.inverse().c*coordy+matrix.inverse().e;
+		coords[&quot;y&quot;]= matrix.inverse().b*coordx+matrix.inverse().d*coordy+matrix.inverse().f;
+	}
+	return coords;
+}
+/* mapApp.js */	
+	
+		
+/* checkbox.js */
+function checkBoxScript(evt,myLayer) { //checkBox for toggling layers an contextMenue
+	var myLayerObj = document.getElementById(myLayer);
+	var myCheckCrossObj = document.getElementById(&quot;checkCross&quot;+myLayer);
+	var myCheckCrossVisibility = myCheckCrossObj.getAttributeNS(null,&quot;visibility&quot;);
+	if (evt.type == &quot;click&quot; &amp;&amp; evt.detail == 1) {
+		if (myCheckCrossVisibility == &quot;visible&quot;) {
+			myLayerObj.setAttributeNS(null,&quot;visibility&quot;,&quot;hidden&quot;);
+			myCheckCrossObj.setAttributeNS(null,&quot;visibility&quot;,&quot;hidden&quot;);
+			//you can do if/else or switch statements to set different actions on activating a checkbox here
+			//myLayer holds the currentLayer name
+			/*if (myLayer == &quot;DOQ&quot;) {
+				getOrthoImage();
+			}*/
+		}
+		else {
+			myLayerObj.setAttributeNS(null,&quot;visibility&quot;,&quot;visible&quot;);
+			myCheckCrossObj.setAttributeNS(null,&quot;visibility&quot;,&quot;visible&quot;);
+		}
+	}
+}
+/* checkbox.js */	
+		
+
+Index: mes_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/mes_fonctions.php3,v
+retrieving revision 1.10
+retrieving revision 1.11
+diff -u -d -r1.10 -r1.11
+--- mes_fonctions.php3	1 Jul 2005 07:07:51 -0000	1.10
++++ mes_fonctions.php3	5 Jul 2005 00:46:14 -0000	1.11
+@@ -1,6 +1,17 @@
+ &lt;?php
+ include &quot;ecrire/inc_carto.php3&quot;;
+ 
++function ajoute($txt,$offset=1){
++	global $mini_compteur;
++	if (!isset($mini_compteur))$mini_compteur=0;
++	$mini_compteur+=$offset;
++	return $mini_compteur;
++}
++function plus($txt,$offset=1){
++	global $mini_compteur;
++	if (!isset($mini_compteur))return $offset;
++	return ($mini_compteur+$offset);
++}
+ 
+ 
+ function guiPos ($compteur, $offset){
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000190.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_svgx.html,NONE,1.1 carto_svgfilex.html,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000192.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_svgfilex.html,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#191">[ date ]</a>
+              <a href="thread.html#191">[ thread ]</a>
+              <a href="subject.html#191">[ subject ]</a>
+              <a href="author.html#191">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

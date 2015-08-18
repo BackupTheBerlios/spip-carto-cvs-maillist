@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgwmsfile.html,1.5,1.5.2.1 carto_geosvgfile.html,1.5,1.5.2.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_geosvgwmsfile.html%2C1.5%2C1.5.2.1%20carto_geosvgfile.html%2C1.5%2C1.5.2.1&In-Reply-To=%3C200509281524.j8SFOGmq019640%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000285.html">
+   <LINK REL="Next"  HREF="000287.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgwmsfile.html,1.5,1.5.2.1 carto_geosvgfile.html,1.5,1.5.2.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_geosvgwmsfile.html%2C1.5%2C1.5.2.1%20carto_geosvgfile.html%2C1.5%2C1.5.2.1&In-Reply-To=%3C200509281524.j8SFOGmq019640%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgwmsfile.html,1.5,1.5.2.1 carto_geosvgfile.html,1.5,1.5.2.1">stef at berlios.de
+       </A><BR>
+    <I>Wed Sep 28 17:24:16 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000285.html">[Spip-carto-cvs] spipcarto/ecrire/lang spipcarto_fr.php3,1.1,1.1.2.1 spipcarto_en.php3,1.1,1.1.2.1
+</A></li>
+        <LI>Next message: <A HREF="000287.html">[Spip-carto-cvs] spipcarto/ecrire inc_tag-machine.php,1.1,1.1.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/squelettes/template
+In directory sheep:/tmp/cvs-serv19613/squelettes/template
+
+Modified Files:
+      Tag: BRANCH-V1
+	carto_geosvgwmsfile.html carto_geosvgfile.html 
+Log Message:
+juste pour bien s&#233;parer SVG et GEOSVG
+
+Index: carto_geosvgwmsfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_geosvgwmsfile.html,v
+retrieving revision 1.5
+retrieving revision 1.5.2.1
+diff -u -d -r1.5 -r1.5.2.1
+--- carto_geosvgwmsfile.html	6 Sep 2005 05:41:40 -0000	1.5
++++ carto_geosvgwmsfile.html	28 Sep 2005 15:24:14 -0000	1.5.2.1
+@@ -489,7 +489,7 @@
+ 	 		 &lt;!-- #DESCRIPTIF --&gt;
+ 				&lt;g id=&quot;spipCarto_#ID_MOT&quot;&gt;
+ 				&lt;BOUCLE_OBJECT(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{id_mot}{doublons obj}&gt;
+-					&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE,#_M:DESCRIPTIF})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVG})[(#_M:DESCRIPTIF)]]&quot;/&gt;&lt;/a&gt;
++					&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVGGEO})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE,#_M:DESCRIPTIF})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVGGEO})[(#_M:DESCRIPTIF)]]&quot;/&gt;&lt;/a&gt;
+ 				&lt;/BOUCLE_OBJECT&gt;
+ 				&lt;/g&gt;
+ 			 &lt;/BOUCLE_M&gt;
+@@ -499,7 +499,7 @@
+ 				&lt;!-- Couche d'objets SPIP --&gt;
+ 				&lt;B_objets&gt;
+ 				&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{doublons obj}&gt;
+-				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVG})]&quot;/&gt;&lt;/a&gt;
++				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVGGEO})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVGGEO})]&quot;/&gt;&lt;/a&gt;
+ 				&lt;/BOUCLE_objets&gt;
+ 				&lt;/B_objets&gt;	
+ 			&lt;/g&gt;
+
+Index: carto_geosvgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_geosvgfile.html,v
+retrieving revision 1.5
+retrieving revision 1.5.2.1
+diff -u -d -r1.5 -r1.5.2.1
+--- carto_geosvgfile.html	6 Sep 2005 05:41:39 -0000	1.5
++++ carto_geosvgfile.html	28 Sep 2005 15:24:14 -0000	1.5.2.1
+@@ -480,7 +480,7 @@
+ 				&lt;!-- Couche d'objets SPIP --&gt;
+ 				&lt;B_objets&gt;
+ 				&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+-				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVG})]&quot;/&gt;&lt;/a&gt;
++				&lt;a target='new' xlink:href='[(#URL_OBJET|url)]'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVGGEO})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVGGEO})]&quot;/&gt;&lt;/a&gt;
+ 				&lt;/BOUCLE_objets&gt;
+ 				&lt;/B_objets&gt;	
+ 			&lt;/g&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000285.html">[Spip-carto-cvs] spipcarto/ecrire/lang spipcarto_fr.php3,1.1,1.1.2.1 spipcarto_en.php3,1.1,1.1.2.1
+</A></li>
+	<LI>Next message: <A HREF="000287.html">[Spip-carto-cvs] spipcarto/ecrire inc_tag-machine.php,1.1,1.1.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

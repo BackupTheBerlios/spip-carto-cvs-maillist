@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/squelettes/template carto_lien.html,1.2.2.2,1.2.2.3 carto_logo.html,1.2.2.2,1.2.2.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_lien.html%2C1.2.2.2%2C1.2.2.3%20carto_logo.html%2C1.2.2.2%2C1.2.2.3&In-Reply-To=%3C200511012319.jA1NJmfG018808%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000337.html">
+   <LINK REL="Next"  HREF="000341.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/squelettes/template carto_lien.html,1.2.2.2,1.2.2.3 carto_logo.html,1.2.2.2,1.2.2.3</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_lien.html%2C1.2.2.2%2C1.2.2.3%20carto_logo.html%2C1.2.2.2%2C1.2.2.3&In-Reply-To=%3C200511012319.jA1NJmfG018808%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/squelettes/template carto_lien.html,1.2.2.2,1.2.2.3 carto_logo.html,1.2.2.2,1.2.2.3">stef at berlios.de
+       </A><BR>
+    <I>Wed Nov  2 00:19:48 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000337.html">[Spip-carto-cvs] spipcarto/dist backend.html,1.5,1.5.2.1
+</A></li>
+        <LI>Next message: <A HREF="000341.html">[Spip-carto-cvs] spipcarto/ecrire auteurs.php3,1.4,1.4.2.1 inc_lang.php3,1.12,1.12.2.1 inc_filtres.php3,1.10.2.1,1.10.2.2 inc_cron.php3,1.4,1.4.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#340">[ date ]</a>
+              <a href="thread.html#340">[ thread ]</a>
+              <a href="subject.html#340">[ subject ]</a>
+              <a href="author.html#340">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/squelettes/template
+In directory sheep:/tmp/cvs-serv18742/squelettes/template
+
+Modified Files:
+      Tag: BRANCH-V1
+	carto_lien.html carto_logo.html 
+Log Message:
+bug avec plusieurs cartes dans un article
+Solution brutale mais efficace : relative + absolute avec style complet
+
+Index: carto_lien.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_lien.html,v
+retrieving revision 1.2.2.2
+retrieving revision 1.2.2.3
+diff -u -d -r1.2.2.2 -r1.2.2.3
+--- carto_lien.html	30 Sep 2005 00:17:41 -0000	1.2.2.2
++++ carto_lien.html	1 Nov 2005 23:19:46 -0000	1.2.2.3
+@@ -1,22 +1,20 @@
+-&lt;div style=&quot;float: left;visibility: visible; margin: 0px; padding: 0px; height: 500px;&quot;&gt;
+-	&lt;div style=&quot;position: absolute;&quot;&gt;
+-	&lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
+-		&lt;B_objets&gt;
+-			&lt;map name=&quot;map#ID_CARTO_CARTE&quot;&gt;
+-			&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+-			&lt;area shape=&quot;[(#GEOMETRIE|wkt2shape)]&quot; coords=&quot;[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE,#URL_CARTE,'',#ENV{args}})]&quot; href=&quot;[(#URL_OBJET)]&quot; alt=&quot;#TITRE&quot;/&gt;
+-		&lt;/BOUCLE_objets&gt;
+-		&lt;/map&gt;
+-		&lt;/B_objets&gt;
+-		&lt;img alt=&quot;#TITRE&quot; src=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; usemap=&quot;#map#ID_CARTO_CARTE&quot; [height=&quot;(#ENV{args}|wkt2imgheight{#CALLAGE,#URL_CARTE})px&quot;] [width=&quot;(#ENV{args}|wkt2imgwidth{#CALLAGE,#URL_CARTE})px&quot;] style=&quot;border: 0px;&quot;/&gt;
+-		&lt;BOUCLE_objets2(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+-			&lt;div style=&quot;position: absolute;margin: 0px; padding: 0px;[(#GEOMETRIE|wkt2coords{HTMLDIV,#CALLAGE,#URL_CARTE,'',#ENV{args}})]border: 0px;&quot;&gt;
+-			&lt;a href=&quot;[(#URL_OBJET)]&quot; class=&quot;cartolabel&quot; alt=&quot;#TEXTE&quot;&gt;
+-			&lt;BOUCLE_mot(MOTS){id_carto_objet}{par titre}{0,1}&gt;[(#LOGO_MOT)]
+-			&lt;/BOUCLE_mot&gt; #TITRE
+-			&lt;/a&gt;
+-			&lt;/div&gt;
+-		&lt;/BOUCLE_objets2&gt;
+-	&lt;/BOUCLE_carte&gt;
+-	&lt;/div&gt;
++&lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
++&lt;div style=&quot;position: relative; display: block; margin: 0px; padding: 0px;[ height: (#ENV{args}|wkt2imgheight{#CALLAGE,#URL_CARTE})px;][ width: (#ENV{args}|wkt2imgwidth{#CALLAGE,#URL_CARTE})px;]&quot;&gt;
++ &lt;div style=&quot;position: absolute; top: 0px; left: 0px;display: block; margin: 0px; padding: 0px;[ height: (#ENV{args}|wkt2imgheight{#CALLAGE,#URL_CARTE})px;][ width: (#ENV{args}|wkt2imgwidth{#CALLAGE,#URL_CARTE})px;]&quot;&gt;
++  &lt;B_objets&gt;
++  &lt;map name=&quot;map#ID_CARTO_CARTE&quot;&gt;
++  &lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
++	&lt;area shape=&quot;[(#GEOMETRIE|wkt2shape)]&quot; coords=&quot;[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE,#URL_CARTE,'',#ENV{args}})]&quot; href=&quot;[(#URL_OBJET)]&quot; alt=&quot;#TITRE&quot;/&gt;
++  &lt;/BOUCLE_objets&gt;
++  &lt;/map&gt;
++  &lt;/B_objets&gt;
++  &lt;img alt=&quot;#TITRE&quot; src=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; usemap=&quot;#map#ID_CARTO_CARTE&quot; [height=&quot;(#ENV{args}|wkt2imgheight{#CALLAGE,#URL_CARTE})px&quot;] [width=&quot;(#ENV{args}|wkt2imgwidth{#CALLAGE,#URL_CARTE})px&quot;] style=&quot;border: 0px;&quot;/&gt;
++  &lt;BOUCLE_objets2(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
++  &lt;div style=&quot;position: absolute;margin: 0px; padding: 0px;[(#GEOMETRIE|wkt2coords{HTMLDIV,#CALLAGE,#URL_CARTE,'',#ENV{args}})]border: 0px;&quot;&gt;
++	&lt;a href=&quot;[(#URL_OBJET)]&quot; class=&quot;cartolabel&quot; alt=&quot;#TEXTE&quot;&gt;
++	&lt;BOUCLE_mot(MOTS){id_carto_objet}{par titre}{0,1}&gt;[(#LOGO_MOT)]&lt;/BOUCLE_mot&gt; #TITRE&lt;/a&gt;
++  &lt;/div&gt;
++  &lt;/BOUCLE_objets2&gt;
++ &lt;/div&gt;
+ &lt;/div&gt;
++&lt;/BOUCLE_carte&gt;
+
+Index: carto_logo.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_logo.html,v
+retrieving revision 1.2.2.2
+retrieving revision 1.2.2.3
+diff -u -d -r1.2.2.2 -r1.2.2.3
+--- carto_logo.html	30 Sep 2005 00:18:40 -0000	1.2.2.2
++++ carto_logo.html	1 Nov 2005 23:19:46 -0000	1.2.2.3
+@@ -1,24 +1,22 @@
+-&lt;!-- TODO : Logo &#224; revoir PNG en dur !
+---&gt;
+-&lt;div style=&quot;position: relative;visibility: visible; margin: 0px; padding: 0px;&quot;&gt;
+-	&lt;div style=&quot;position: absolute;&quot;&gt;
+-	&lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
+-		&lt;B_objets&gt;
+-			&lt;map name=&quot;map#ID_CARTO_CARTE&quot;&gt;
+-			&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+-			&lt;area shape=&quot;[(#GEOMETRIE|wkt2shape)]&quot; coords=&quot;[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE,#URL_CARTE,'',#ENV{args}})]&quot; href=&quot;[(#URL_OBJET)]&quot; alt=&quot;#TITRE&quot;/&gt;
+-		&lt;/BOUCLE_objets&gt;
+-		&lt;/map&gt;
+-		&lt;/B_objets&gt;
++&lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
++&lt;div style=&quot;position: relative; display: block; margin: 0px; padding: 0px;[ height: (#ENV{args}|wkt2imgheight{#CALLAGE,#URL_CARTE})px;][ width: (#ENV{args}|wkt2imgwidth{#CALLAGE,#URL_CARTE})px;]&quot;&gt;
++ &lt;div style=&quot;position: absolute; top: 0px; left: 0px;display: block; margin: 0px; padding: 0px;[ height: (#ENV{args}|wkt2imgheight{#CALLAGE,#URL_CARTE})px;][ width: (#ENV{args}|wkt2imgwidth{#CALLAGE,#URL_CARTE})px;]&quot;&gt;
++  &lt;B_objets&gt;
++  &lt;map name=&quot;map#ID_CARTO_CARTE&quot;&gt;
++  &lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
++	&lt;area shape=&quot;[(#GEOMETRIE|wkt2shape)]&quot; coords=&quot;[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE,#URL_CARTE,'',#ENV{args}})]&quot; href=&quot;[(#URL_OBJET)]&quot; alt=&quot;#TITRE&quot;/&gt;
++  &lt;/BOUCLE_objets&gt;
++  &lt;/map&gt;
++  &lt;/B_objets&gt;
+ 		
+-		&lt;img alt=&quot;#TITRE&quot; src=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; usemap=&quot;#map#ID_CARTO_CARTE&quot; [height=&quot;(#ENV{args}|wkt2imgheight{#CALLAGE,#URL_CARTE})px&quot;] [width=&quot;(#ENV{args}|wkt2imgwidth{#CALLAGE,#URL_CARTE})px&quot;] style=&quot;border: 0px;&quot;/&gt;
++  &lt;img alt=&quot;#TITRE&quot; src=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; usemap=&quot;#map#ID_CARTO_CARTE&quot; [height=&quot;(#ENV{args}|wkt2imgheight{#CALLAGE,#URL_CARTE})px&quot;] [width=&quot;(#ENV{args}|wkt2imgwidth{#CALLAGE,#URL_CARTE})px&quot;] style=&quot;border: 0px;&quot;/&gt;
+ 		
+-		&lt;BOUCLE_objets2(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+-			&lt;a href=&quot;[(#URL_OBJET)]&quot;&gt;
+-			&lt;img style=&quot;position: absolute;margin: 0px; padding: 0px;[(#GEOMETRIE|wkt2coords{HTMLDIV,#CALLAGE,#URL_CARTE,'',#ENV{args}})]border: 0px;&quot; alt=&quot;#TEXTE&quot; 
++  &lt;BOUCLE_objets2(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
++  &lt;a href=&quot;[(#URL_OBJET)]&quot;&gt;
++	&lt;img style=&quot;position: absolute;margin: 0px; padding: 0px;[(#GEOMETRIE|wkt2coords{HTMLDIV,#CALLAGE,#URL_CARTE,'',#ENV{args}})]border: 0px;&quot; alt=&quot;#TEXTE&quot; 
+ 				src=&quot;&lt;BOUCLE_mot(MOTS){id_carto_objet}{par titre}{0,1}&gt;IMG/[(#LOGO_MOT|fichier)]&lt;/BOUCLE_mot&gt;ecrire\img_pack\croix-rouge.gif&lt;//B_mot&gt;&quot; border=&quot;0&quot;/&gt;
+-			&lt;/a&gt;
+-		&lt;/BOUCLE_objets2&gt;
+-	&lt;/BOUCLE_carte&gt;
+-	&lt;/div&gt;
+-&lt;/div&gt;
+\ No newline at end of file
++  &lt;/a&gt;
++  &lt;/BOUCLE_objets2&gt;
++ &lt;/div&gt;
++&lt;/div&gt;
++&lt;/BOUCLE_carte&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000337.html">[Spip-carto-cvs] spipcarto/dist backend.html,1.5,1.5.2.1
+</A></li>
+	<LI>Next message: <A HREF="000341.html">[Spip-carto-cvs] spipcarto/ecrire auteurs.php3,1.4,1.4.2.1 inc_lang.php3,1.12,1.12.2.1 inc_filtres.php3,1.10.2.1,1.10.2.2 inc_cron.php3,1.4,1.4.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#340">[ date ]</a>
+              <a href="thread.html#340">[ thread ]</a>
+              <a href="subject.html#340">[ subject ]</a>
+              <a href="author.html#340">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

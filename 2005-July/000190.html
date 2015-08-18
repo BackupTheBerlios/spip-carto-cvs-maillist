@@ -1,0 +1,408 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/squelettes/template carto_svgx.html,NONE,1.1 carto_svgfilex.html,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_svgx.html%2CNONE%2C1.1%20carto_svgfilex.html%2CNONE%2C1.1&In-Reply-To=%3C200507050046.j650kGqX025148%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000187.html">
+   <LINK REL="Next"  HREF="000191.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/squelettes/template carto_svgx.html,NONE,1.1 carto_svgfilex.html,NONE,1.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_svgx.html%2CNONE%2C1.1%20carto_svgfilex.html%2CNONE%2C1.1&In-Reply-To=%3C200507050046.j650kGqX025148%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/squelettes/template carto_svgx.html,NONE,1.1 carto_svgfilex.html,NONE,1.1">stef at berlios.de
+       </A><BR>
+    <I>Tue Jul  5 02:46:16 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000187.html">[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,NONE,1.1 inc_presentation.php3,1.7,1.8
+</A></li>
+        <LI>Next message: <A HREF="000191.html">[Spip-carto-cvs] spipcarto style_carto.css,NONE,1.1 navigationTools.js,NONE,1.1 mes_fonctions.php3,1.10,1.11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#190">[ date ]</a>
+              <a href="thread.html#190">[ thread ]</a>
+              <a href="subject.html#190">[ subject ]</a>
+              <a href="author.html#190">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/squelettes/template
+In directory sheep:/tmp/cvs-serv25039/squelettes/template
+
+Added Files:
+	carto_svgx.html carto_svgfilex.html 
+Log Message:
+version SVG avec une couche par mot
+
+--- NEW FILE: carto_svgx.html ---
+&lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
+&lt;embed src=&quot;carto.php3?id_carto_carte=#ID_CARTO_CARTE&amp;fond=svgfilex&quot; width=&quot;750px&quot; height=&quot;550px&quot; type=&quot;image/svg+xml&quot; name=&quot;emap&quot;&gt;&lt;/embed&gt;
+&lt;noembed&gt;
+	&lt;img alt=&quot;#TITRE&quot; src=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; usemap=&quot;#map#ID_CARTO_CARTE&quot; border=&quot;0&quot;/&gt;&lt;B_objets&gt;&lt;map name=&quot;map#ID_CARTO_CARTE&quot;&gt;&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}&gt;
+	&lt;area shape=&quot;[(#GEOMETRIE|wkt2shape)]&quot; coords=&quot;[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE,#URL_CARTE})]&quot; href=&quot;#URL_OBJET&quot; alt=&quot;#TEXTE&quot;/&gt;
+	&lt;/BOUCLE_objets&gt;&lt;/map&gt;&lt;/B_objets&gt;
+&lt;/noembed&gt;
+&lt;/BOUCLE_carte&gt;
+--- NEW FILE: carto_svgfilex.html ---
+&lt;?php echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot;?'.&quot;&gt;\n&quot;; ?&gt;
+&lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
+&lt;svg width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 760 500&quot; xmlns=&quot;<A HREF="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</A>&quot; xmlns:xlink=&quot;<A HREF="http://www.w3.org/1999/xlink">http://www.w3.org/1999/xlink</A>&quot; xmlns:attrib=&quot;<A HREF="http://www.carto.net/attrib">http://www.carto.net/attrib</A>&quot; onload=&quot;init(evt);&quot; zoomAndPan=&quot;enable&quot; encoding=&quot;ISO-8859-1&quot;&gt;
+	&lt;script type=&quot;text/ecmascript&quot; xlink:href=&quot;helper_functions.js&quot;/&gt;
+	&lt;script type=&quot;text/ecmascript&quot; xlink:href=&quot;navigation.js&quot;/&gt;
+	&lt;script type=&quot;text/ecmascript&quot; xlink:href=&quot;navigationTools.js&quot;/&gt;
+	&lt;script type=&quot;text/ecmascript&quot;&gt;&lt;![CDATA[
+		
+		
+		var myMapApp = new mapApp();
+		var myMainMap;
+		var myRefMapDragger;
+		var myZoomSlider;
+		function init(evt) {
+			//dynamic layer array that allow loading from database
+			var dynamicLayers = new Array();
+			//initialize digiLayers (layers that allow digitizing)
+			var digiLayers = new Array();
+			myMainMap = new map(&quot;mainMap&quot;,[(#CALLAGE|worldfileWidth)],0,0.6,0,&quot;m&quot;,true,&quot;coordX&quot;,&quot;coordY&quot;,dynamicLayers,digiLayers,&quot;&quot;);
+			//slider properties: x1,y1,value1,x2,y2,value2,startValue,group in which to build the slider,color of slider
+			//width of slider of sliderbar,width of invisible slider bar,width of visible slider
+			myZoomSlider = new slider(710,40,myMainMap.minWidth,710,140,myMainMap.maxWidth,myMainMap.maxWidth,&quot;mapZoomSlider&quot;,&quot;dimgray&quot;,2,10,&quot;sliderSymbol&quot;,&quot;myRefMapDragger.resizeDragger&quot;,true);
+			//set constraints to draggable rect in reference map
+			myRefMapDragger = new dragObj(&quot;dragRectForRefMap&quot;,&quot;referenceMap&quot;,&quot;myDragCross&quot;,4750,true,&quot;coordX&quot;,&quot;coordY&quot;,myMainMap);
+			loadProjectSpecific();
+		}
+		function loadProjectSpecific() {
+			//adopt width and height of map extent
+			document.getElementById(&quot;myScaleTextW&quot;).firstChild.nodeValue = formatNumberString(myMainMap.curWidth.toFixed(myMainMap.nrDecimals)) + myMainMap.units;
+			document.getElementById(&quot;myScaleTextH&quot;).firstChild.nodeValue = formatNumberString(myMainMap.curHeight.toFixed(myMainMap.nrDecimals)) + myMainMap.units;
+			//adopt line width of park boundary
+			document.getElementById(&quot;spipCartoObj&quot;).setAttributeNS(null,&quot;stroke-width&quot;,myMainMap.curWidth*0.005);	
+			// Pour charger un claque WMS ... getOrthoImage();
+		&lt;BOUCLE__OBJ(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{par num titre}&gt;
+		 &lt;BOUCLE__M(MOTS){id_carto_objet}{par num titre}{doublons a}&gt;
+			document.getElementById(&quot;spipCarto_#ID_MOT&quot;).setAttributeNS(null,&quot;stroke-width&quot;,myMainMap.curWidth*0.005);	
+		 &lt;/BOUCLE__M&gt;
+		&lt;/BOUCLE__OBJ&gt;
+			
+		}
+		
+		function openWin (url) {
+			window.open(url, &quot;info&quot;);
+		}
+
+
+		//load usgs/terraserver orthoimage
+		//you have to use full pixel values, otherwise an error appears
+		function getOrthoImage() {
+			var myRasterLayer = document.getElementById(&quot;DOQ&quot;);
+			if (myRasterLayer.childNodes.length &gt; 0) {
+				var oldImage = document.getElementById(&quot;DOQImage&quot;);
+				myRasterLayer.removeChild(oldImage);
+			}
+			if (document.getElementById(&quot;DOQ&quot;).getAttributeNS(null,&quot;visibility&quot;) == &quot;visible&quot;) {
+				var myRasterImage = document.createElementNS(svgNS,&quot;image&quot;);
+				myRasterImage.setAttributeNS(null,&quot;x&quot;,myMainMap.curxOrig);
+				myRasterImage.setAttributeNS(null,&quot;y&quot;,myMainMap.curyOrig);
+				myRasterImage.setAttributeNS(null,&quot;width&quot;,myMainMap.curWidth);
+				myRasterImage.setAttributeNS(null,&quot;height&quot;,myMainMap.curHeight);
+				myRasterImage.setAttributeNS(null,&quot;id&quot;,&quot;DOQImage&quot;);
+				var myImageUrl = &quot;<A HREF="http://www.sandre.fr/geo/wmszonage?version=1.1.1&amp;request=GetMap&amp;service=WMS&amp;Layers=CIBA&amp;Styles=&amp;SRS=EPSG:27572&amp;">http://www.sandre.fr/geo/wmszonage?version=1.1.1&amp;request=GetMap&amp;service=WMS&amp;Layers=CIBA&amp;Styles=&amp;SRS=EPSG:27572&amp;</A>&quot;;
+				myImageUrl += &quot;BBOX=&quot; + parseInt(myMainMap.curxOrig) + &quot;,&quot; + (parseInt(myMainMap.curyOrig + myMainMap.curHeight) * -1);
+				myImageUrl += &quot;,&quot; + parseInt(myMainMap.curxOrig + myMainMap.curWidth) + &quot;,&quot; + (parseInt(myMainMap.curyOrig) * -1);
+				myImageUrl += &quot;&amp;width=&quot; + myMainMap.pixWidth + &quot;&amp;height=&quot; + myMainMap.pixHeight + &quot;&amp;format=image/png&quot;;
+				myRasterImage.setAttributeNS(xlinkNS,&quot;xlink:href&quot;,myImageUrl);
+				myRasterLayer.appendChild(myRasterImage);
+			}
+		}		
+
+
+]]&gt;&lt;/script&gt;
+	&lt;defs&gt;
+	&lt;!-- section for CSS stylesheet definitions --&gt;
+	&lt;!-- you may globally adjust your styles here --&gt;
+	&lt;style type=&quot;text/css&quot;&gt;&lt;![CDATA[
+	.allText {font-family:Arial;fill:dimgray;}
+	.titleText {font-size:22;font-weight:bold;}
+	.subTitleText {font-size:18;font-weight:bold;}
+	.normalText {font-size:15;}
+	.smallText {font-size:12;}
+	.boldText {font-weight:bold;}
+	.centerText {text-anchor:middle;}
+	.dragRect {fill:lightskyblue;stroke:none;opacity:0.4;}
+	.dragSymbol {stroke:darkblue;}
+	.normalLinestyle {fill:none;stroke:dimgray;}
+	.background {fill:aliceblue;stroke:none;}
+	.darkRectstyle {fill:dimgray;stroke:none;}
+	.nofill {fill:none;}
+	.whitefill {fill:white;}
+	.normalfillcol {fill:dimgray;}
+	.normallinecol {stroke:dimgray;}
+	.nostroke {stroke:none;}
+	.verythinline {stroke-width:1;}
+	.thinline {stroke-width:1.5;}
+	.normalline {stroke-width:2;}
+	.mediumThickLine {stroke-width:5;}
+	.strokeFilled {stroke:red;stroke-width:2;fill:transparent;fill-opacity:0;}
+	&lt;INCLURE(style_carto.css)&gt;
+	
+  ]]&gt;&lt;/style&gt;
+		&lt;!-- Symbols for checkboxes --&gt;
+		&lt;symbol id=&quot;checkBoxRect&quot; overflow=&quot;visible&quot;&gt;
+			&lt;rect x=&quot;-6&quot; y=&quot;-6&quot; width=&quot;12&quot; height=&quot;12&quot; class=&quot;whitefill normallinecol thinline&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;symbol id=&quot;checkBoxCross&quot; overflow=&quot;visible&quot; class=&quot;normallinecol nofill verythinline&quot; pointer-events=&quot;none&quot;&gt;
+			&lt;line x1=&quot;-5&quot; y1=&quot;-5&quot; x2=&quot;5&quot; y2=&quot;5&quot;/&gt;
+			&lt;line x1=&quot;-5&quot; y1=&quot;5&quot; x2=&quot;5&quot; y2=&quot;-5&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;!-- Symbols for Zoom Magnifyer glasses --&gt;
+		&lt;symbol id=&quot;magnifyer&quot; overflow=&quot;visible&quot; class=&quot;whitefill normalline normallinecol&quot;&gt;
+			&lt;line x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;-8&quot; y2=&quot;20&quot;/&gt;
+			&lt;circle r=&quot;8&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;symbol id=&quot;magnifyerZoomOut&quot; overflow=&quot;visible&quot; class=&quot;whitefill normalline normallinecol&quot;&gt;
+			&lt;use xlink:href=&quot;#magnifyer&quot;/&gt;
+			&lt;line x1=&quot;-4&quot; y1=&quot;0&quot; x2=&quot;4&quot; y2=&quot;0&quot; style=&quot;stroke:dimgray;stroke-width:2;&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;symbol id=&quot;magnifyerZoomIn&quot; overflow=&quot;visible&quot;&gt;
+			&lt;use xlink:href=&quot;#magnifyer&quot;/&gt;
+			&lt;line x1=&quot;-4&quot; y1=&quot;0&quot; x2=&quot;4&quot; y2=&quot;0&quot; class=&quot;whitefill normalline normallinecol&quot;/&gt;
+			&lt;line x1=&quot;0&quot; y1=&quot;-4&quot; x2=&quot;0&quot; y2=&quot;4&quot; class=&quot;whitefill normalline normallinecol&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;symbol id=&quot;magnifyerFull&quot; overflow=&quot;visible&quot;&gt;
+			&lt;use xlink:href=&quot;#magnifyer&quot;/&gt;
+			&lt;text y=&quot;4.5&quot; class=&quot;allText smallText centerText boldText&quot; pointer-events=&quot;none&quot;&gt;F&lt;/text&gt;
+		&lt;/symbol&gt;
+		&lt;symbol id=&quot;magnifyerManual&quot; overflow=&quot;visible&quot;&gt;
+			&lt;line x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;-8&quot; y2=&quot;20&quot; class=&quot;whitefill normalline normallinecol&quot;/&gt;
+			&lt;circle r=&quot;8&quot; class=&quot;whitefill normalline normallinecol&quot;/&gt;
+			&lt;rect x=&quot;-3&quot; y=&quot;-3&quot; width=&quot;6&quot; height=&quot;6&quot; class=&quot;nofill thinline normallinecol&quot; stroke-dasharray=&quot;1.5,1.5&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;symbol id=&quot;magnifyerZoomInWo&quot; overflow=&quot;visible&quot; class=&quot;whitefill normalline normallinecol&quot;&gt;
+			&lt;circle r=&quot;8&quot;/&gt;
+			&lt;line x1=&quot;-4&quot; y1=&quot;0&quot; x2=&quot;4&quot; y2=&quot;0&quot;/&gt;
+			&lt;line x1=&quot;0&quot; y1=&quot;-4&quot; x2=&quot;0&quot; y2=&quot;4&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;symbol id=&quot;magnifyerZoomOutWo&quot; overflow=&quot;visible&quot; class=&quot;whitefill normalline normallinecol&quot;&gt;
+			&lt;circle r=&quot;8&quot;/&gt;
+			&lt;line x1=&quot;-4&quot; y1=&quot;0&quot; x2=&quot;4&quot; y2=&quot;0&quot; style=&quot;stroke:dimgray;stroke-width:2;&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;!-- hand symbol for panning --&gt;
+		&lt;symbol id=&quot;symbPan&quot; overflow=&quot;visible&quot;&gt;
+			&lt;circle r=&quot;9&quot; class=&quot;normallinecol normalline whitefill&quot;/&gt;
+			&lt;path class=&quot;normallinecol verythinline nofill&quot; d=&quot;M-2 6 C -2.2 2.5 -8.0 -0 -5.7 -1.9 C -4.3 -2.5 -3.3 -0.5 -2.5 0.7 C -3.2 -2.1 -5.5 -5.2 -3.6 -5.8 C -2.1 -6.3 -1.6 -3.6 -1.1 -1.9 C -0.9 -4.2 -1.6 -6.4 -0.2 -6.6 C 1.4 -6.8 0.9 -3 1.1 -1.9 C 1.5 -3.5 1.2 -6.1 2.5 -6.1 C 3.9 -6.1 3.5 -3.2 3.6 -1.6 C 4 -2.9 4.1 -4.3 5.3 -4.4 C 7.3 -3.5 4 2.2 3 6z&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;!-- Symbol for Pan Arrows --&gt;
+		&lt;symbol id=&quot;symbArrow&quot; overflow=&quot;visible&quot; class=&quot;nofill verythinline normallinecol&quot; pointer-events=&quot;none&quot;&gt;
+			&lt;polyline points=&quot;-3,-5 3,-5 3,1 5,1 0,5 -5,1 -3,1 -3,-5&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;!-- Symbol for Recentering Map --&gt;
+		&lt;symbol id=&quot;symbRecenter&quot; overflow=&quot;visible&quot;&gt;
+			&lt;circle r=&quot;9&quot; class=&quot;normallinecol normalline whitefill&quot;/&gt;
+			&lt;circle class=&quot;normalfillcol nostroke&quot; cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;1&quot; pointer-events=&quot;none&quot;/&gt;
+			&lt;g class=&quot;normallinecol thinline nofill&quot; pointer-events=&quot;none&quot;&gt;
+				&lt;line x1=&quot;-7&quot; y1=&quot;-7&quot; x2=&quot;-3&quot; y2=&quot;-3&quot;/&gt;
+				&lt;line x1=&quot;7&quot; y1=&quot;7&quot; x2=&quot;3&quot; y2=&quot;3&quot;/&gt;
+				&lt;line x1=&quot;-7&quot; y1=&quot;7&quot; x2=&quot;-3&quot; y2=&quot;3&quot;/&gt;
+				&lt;line x1=&quot;7&quot; y1=&quot;-7&quot; x2=&quot;3&quot; y2=&quot;-3&quot;/&gt;
+			&lt;/g&gt;
+		&lt;/symbol&gt;
+		&lt;!-- Symbol for Slider --&gt;
+		&lt;symbol id=&quot;sliderSymbol&quot; overflow=&quot;visible&quot; class=&quot;nofill mediumThickLine normallinecol&quot; pointer-events=&quot;none&quot;&gt;
+			&lt;line x1=&quot;0&quot; y1=&quot;-5&quot; x2=&quot;0&quot; y2=&quot;5&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;!-- Symbol for Dragging if zoomed in far --&gt;
+		&lt;symbol id=&quot;myDragCrossSymbol&quot; overflow=&quot;visible&quot; stroke-width=&quot;2000&quot; class=&quot;nofill dragSymbol&quot; pointer-events=&quot;none&quot;&gt;
+			&lt;line x1=&quot;-7000&quot; y1=&quot;0&quot; x2=&quot;-2500&quot; y2=&quot;0&quot;/&gt;
+			&lt;line x1=&quot;7000&quot; y1=&quot;0&quot; x2=&quot;2500&quot; y2=&quot;0&quot;/&gt;
+			&lt;line x1=&quot;0&quot; y1=&quot;-3300&quot; x2=&quot;0&quot; y2=&quot;-7800&quot;/&gt;
+			&lt;line x1=&quot;0&quot; y1=&quot;3300&quot; x2=&quot;0&quot; y2=&quot;7800&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;!-- Marker for Extent-Arrows --&gt;
+		&lt;marker id=&quot;myStartArrow&quot; overflow=&quot;visible&quot; orient=&quot;auto&quot;&gt;
+			&lt;polyline class=&quot;nostroke normalfillcol&quot; points=&quot;-0.5,0 8,-2 8,2&quot;/&gt;
+		&lt;/marker&gt;
+		&lt;marker id=&quot;myEndArrow&quot; overflow=&quot;visible&quot; orient=&quot;auto&quot;&gt;
+			&lt;polyline class=&quot;nostroke normalfillcol&quot; points=&quot;0.5,0 -8,-2 -8,2&quot;/&gt;
+		&lt;/marker&gt;
+		&lt;linearGradient id=&quot;MyGradient&quot; gradientTransform=&quot;rotate(45)&quot;&gt; 
+			&lt;stop offset=&quot;0%&quot; style=&quot;stop-color:white&quot;/&gt; 
+			&lt;stop offset=&quot;30%&quot; style=&quot;stop-color:red&quot;/&gt; 
+			&lt;stop offset=&quot;100%&quot; style=&quot;stop-color:black&quot;/&gt; 
+		&lt;/linearGradient&gt; 
+
+
+	&lt;/defs&gt;
+	&lt;rect x=&quot;-500&quot; y=&quot;-500&quot; width=&quot;3000&quot; height=&quot;[(#CALLAGE|getPropMapHeight{3000})]&quot; stroke=&quot;none&quot; class=&quot;background&quot; /&gt;
+	
+	
+	&lt;!-- Main Map Frame --&gt;
+	&lt;svg id=&quot;mainMap&quot; x=&quot;0&quot; y=&quot;15&quot; viewBox=&quot;[(#CALLAGE|worldfileLRX)] [(#CALLAGE|worldfileULY)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]&quot; width=&quot;553&quot; height=&quot;[(#CALLAGE|getPropMapHeight{553})]&quot;&gt;
+		&lt;!-- this group is necessary for manual panning, it temporarily gets a translate transformation which is later removed on mouseup --&gt;
+		&lt;g id=&quot;mainMapGroup&quot; transform=&quot;translate(0,0)&quot;&gt;
+			&lt;!-- within this group you should place all map layers, usually, if you have more than one element in a map layer, you would use a group instead of a single element, as in this example --&gt;
+			&lt;g id=&quot;DOQ&quot; visibility=&quot;visible&quot; /&gt;
+			&lt;image id=&quot;ShadedRelief&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;[(#CALLAGE|worldfileULY)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]px&quot; height=&quot;[(#CALLAGE|worldfileHeight)]px&quot; xlink:href=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; /&gt;
+
+		&lt;BOUCLE_OBJ(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{par num titre}&gt;
+		 &lt;BOUCLE_M(MOTS){id_carto_objet}{par num titre}{doublons b}&gt;
+	&lt;!-- #DESCRIPTIF --&gt;
+			&lt;g id=&quot;spipCarto_#ID_MOT&quot;&gt;
+			&lt;BOUCLE_OBJECT(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{id_mot}{doublons obj}&gt;
+				&lt;a target='new' xlink:href='#URL_OBJET'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;[(#GEOMETRIE|wkt2shape{SVG})[(#_M:DESCRIPTIF)]]&quot;/&gt;&lt;/a&gt;
+			&lt;/BOUCLE_OBJECT&gt;
+			&lt;/g&gt;
+		 &lt;/BOUCLE_M&gt;
+		&lt;/BOUCLE_OBJ&gt;
+
+			&lt;g id=&quot;spipCartoObj&quot;&gt;
+			
+				&lt;!-- Couche d'objets SPIP --&gt;
+				&lt;B_objets&gt;
+				&lt;BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{doublons obj}&gt;
+				&lt;a target='new' xlink:href='#URL_OBJET'&gt;&lt;[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover=&quot;statusChange('#TEXTE');&quot; class=&quot;strokeFilled&quot;/&gt;&lt;/a&gt;&lt;!-- class=&quot;[(#GEOMETRIE|wkt2shape{SVG})default]&quot; style=&quot;opacity:.6;&quot; style=&quot;fill:url(#MyGradient);&quot;--&gt;
+				&lt;/BOUCLE_objets&gt;
+				&lt;/B_objets&gt;	
+			&lt;/g&gt;
+		&lt;/g&gt;
+	&lt;/svg&gt;
+	
+	
+	
+	
+	&lt;!-- this group holds navigation, title and if you like, legend information --&gt;
+	&lt;g&gt;
+		&lt;!-- your map title --&gt;
+		&lt;text class=&quot;allText titleText&quot; x=&quot;200&quot; y=&quot;1&quot;&gt;#TITRE&lt;/text&gt;
+		&lt;!-- coordinate display --&gt;
+		&lt;g class=&quot;allText normalText&quot;&gt;
+			&lt;text id=&quot;coordX&quot; x=&quot;580&quot; y=&quot;230&quot;&gt;X:&lt;/text&gt;
+			&lt;text id=&quot;coordY&quot; x=&quot;680&quot; y=&quot;230&quot;&gt;Y:&lt;/text&gt;
+		&lt;/g&gt;
+		&lt;!-- display width and height of map extent --&gt;
+		&lt;g&gt;
+			&lt;!-- vertical line, displays current height of map extent --&gt;
+			&lt;line class=&quot;normalLinestyle&quot; style=&quot;stroke-width:1.5;marker-start:url(#myStartArrow);marker-end:url(#myEndArrow);&quot; x1=&quot;561&quot; y1=&quot;15&quot; x2=&quot;561&quot; y2=&quot;[(#CALLAGE|getPropMapHeight{575})]&quot;/&gt;
+			&lt;rect class=&quot;background&quot; x=&quot;555&quot; y=&quot;[(#CALLAGE|getPropMapHeight{230})]&quot; width=&quot;12&quot; height=&quot;100&quot;/&gt;
+			&lt;text id=&quot;myScaleTextH&quot; class=&quot;allText normalText centerText&quot; transform=&quot;translate(556,[(#CALLAGE|getPropMapHeight{280})]),rotate(90)&quot;&gt;81,000 m&lt;/text&gt;
+			&lt;!-- horizontal line, displays current width of map extent --&gt;
+			&lt;line class=&quot;normalLinestyle&quot; style=&quot;stroke-width:1.5;marker-start:url(#myStartArrow);marker-end:url(#myEndArrow);&quot; x1=&quot;0&quot; y1=&quot;[(#CALLAGE|getPropMapHeight{583})]&quot; x2=&quot;553.1&quot; y2=&quot;[(#CALLAGE|getPropMapHeight{583})]&quot;/&gt;
+			&lt;rect class=&quot;background&quot; x=&quot;236&quot; y=&quot;[(#CALLAGE|getPropMapHeight{580})]&quot; width=&quot;100&quot; height=&quot;12&quot;/&gt;
+			&lt;text id=&quot;myScaleTextW&quot; class=&quot;allText normalText centerText&quot; transform=&quot;translate(277,[(#CALLAGE|getPropMapHeight{590})])&quot;&gt;64,000 m&lt;/text&gt;
+			&lt;!-- small rectangle in lower right corner, onclick displays current map extent in real world coordinates --&gt;
+			&lt;rect class=&quot;darkRectstyle&quot; x=&quot;558.5&quot; y=&quot;[(#CALLAGE|getPropMapHeight{580})]&quot; width=&quot;5&quot; height=&quot;5&quot; onclick=&quot;showExtent()&quot; /&gt;
+		&lt;/g&gt;
+		&lt;!-- control map layer visibility with checkBoxes --&gt;
+		&lt;g transform=&quot;translate(590 250)&quot;&gt;
+			&lt;text class=&quot;allText subTitleText&quot; x=&quot;-10&quot; y=&quot;0&quot;&gt;Calques&lt;/text&gt;
+
+			&lt;!-- checkbox --&gt;
+		&lt;BOUCLE_OBJ2(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}{par num titre}&gt;
+		 &lt;BOUCLE_M2(MOTS){id_carto_objet}{par num titre}{doublons c}&gt;
+			&lt;g transform=&quot;translate(0 [(#ID_MOT|ajoute{20})])&quot;&gt;
+				&lt;use id=&quot;checkBoxspipCarto_#ID_MOT&quot; xlink:href=&quot;#checkBoxRect&quot; onclick=&quot;checkBoxScript(evt,'spipCarto_#ID_MOT');&quot;/&gt;
+				&lt;use id=&quot;checkCrossspipCarto_#ID_MOT&quot; xlink:href=&quot;#checkBoxCross&quot; visibility=&quot;visible&quot;/&gt;
+			&lt;/g&gt;
+			&lt;g class=&quot;allText normalText&quot;&gt;
+				&lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{6})]&quot;&gt;#TITRE&lt;/text&gt;';
+			&lt;/g&gt;
+		 &lt;/BOUCLE_M2&gt;
+		&lt;/BOUCLE_OBJ2&gt;
+
+			&lt;!-- first checkbox --&gt;
+			&lt;g transform=&quot;translate(0 [(#ID_MOT|plus{20})])&quot;&gt;
+				&lt;use id=&quot;checkBoxspipCartoObj&quot; xlink:href=&quot;#checkBoxRect&quot; onclick=&quot;checkBoxScript(evt,'spipCartoObj');&quot;/&gt;
+				&lt;use id=&quot;checkCrossspipCartoObj&quot; xlink:href=&quot;#checkBoxCross&quot; visibility=&quot;visible&quot;/&gt;
+			&lt;/g&gt;
+			&lt;!-- second checkbox --&gt;
+			&lt;g transform=&quot;translate(0 [(#ID_MOT|plus{40})])&quot;&gt;
+				&lt;use id=&quot;checkBoxShadedRelief&quot; xlink:href=&quot;#checkBoxRect&quot; onclick=&quot;checkBoxScript(evt,'ShadedRelief');&quot;/&gt;
+				&lt;use id=&quot;checkCrossShadedRelief&quot; xlink:href=&quot;#checkBoxCross&quot; visibility=&quot;visible&quot;/&gt;
+			&lt;/g&gt;
+			&lt;!-- third checkbox 
+			&lt;g transform=&quot;translate(0 [(#ID_MOT|plus{60})])&quot;&gt;
+				&lt;use id=&quot;checkBoxDOQ&quot; xlink:href=&quot;#checkBoxRect&quot;
+				onclick=&quot;checkBoxScript(evt,'DOQ');&quot;/&gt;
+				&lt;use id=&quot;checkCrossDOQ&quot; xlink:href=&quot;#checkBoxCross&quot;
+				visibility=&quot;visible&quot;/&gt;
+			&lt;/g&gt;--&gt;
+			&lt;!-- checkbox text labels --&gt;
+			&lt;g class=&quot;allText normalText&quot;&gt;
+				&lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{26})]&quot;&gt;Objets SPIP-CARTO&lt;/text&gt;
+				&lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{46})]&quot;&gt;Image de fond&lt;/text&gt;
+				&lt;!-- Check for WMS &lt;text x=&quot;12&quot; y=&quot;[(#ID_MOT|plus{66})]&quot;&gt;Bassin versant&lt;/text&gt;--&gt;
+			&lt;/g&gt;
+		&lt;/g&gt;
+		&lt;/B_OBJ2&gt;
+		&lt;!-- map impressum and status Bar --&gt;
+		&lt;g text-rendering=&quot;optimizeLegibility&quot;&gt;
+			&lt;!-- text with this id is required to show help texts --&gt;
+			&lt;text id=&quot;statusText&quot; class=&quot;allText smallText&quot; x=&quot;1&quot; y=&quot;[(#CALLAGE|getPropMapHeight{600})]&quot;&gt;Info: &lt;/text&gt;
+			&lt;text class=&quot;allText smallText&quot; x=&quot;1&quot; y=&quot;[(#CALLAGE|getPropMapHeight{620})]&quot;&gt;Auteur: spip-carto, 2004&lt;/text&gt;
+			&lt;text class=&quot;allText smallText&quot; x=&quot;510&quot; y=&quot;[(#CALLAGE|getPropMapHeight{620})]&quot;&gt;Source: &lt;/text&gt;
+		&lt;/g&gt;
+	&lt;/g&gt;
+	&lt;!-- small reference map, shares the same coordinate system than the main map --&gt;
+	&lt;svg id=&quot;referenceMap&quot; x=&quot;580&quot; y=&quot;45&quot; viewBox=&quot;[(#CALLAGE|worldfileLRX)] [(#CALLAGE|worldfileULY)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]&quot; width=&quot;118.52&quot; height=&quot;[(#CALLAGE|getPropMapHeight{118.52})]&quot; onmousedown=&quot;myRefMapDragger.drag(evt)&quot; onmousemove=&quot;myRefMapDragger.drag(evt)&quot; onmouseup=&quot;myRefMapDragger.drag(evt)&quot; onmouseout=&quot;myRefMapDragger.drag(evt)&quot;&gt;
+		&lt;image id=&quot;ShadedRelief&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;[(#CALLAGE|worldfileULY)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]&quot; height=&quot;[(#CALLAGE|worldfileHeight)]&quot; xlink:href=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; /&gt;
+		&lt;path pointer-events=&quot;none&quot; style=&quot;fill:none;stroke:salmon;stroke-width:1000&quot; d=&quot;M250528.8 -4218899.3l2380.5 -1305.3l1593.4 928.3l1326.1 -752.7l4218.1 -70.2l4072.3 -3965.5l5552.8 -1556.9l313 -1368.6l3042.8 -2535.6l1098.2 945.4l124.7 2135.2l2579.4 431.2l-22.8 1238l3516.2 779.5l-66.6 -1725.9l1001.7 -419l625.5 2735.2l1659.5 476.6l-330.2 1248.2l1330.8 747.9l-583.6 1341.1l1261.8 -103.1l285.3 729.8l1411.9 -2540.5l552.1 995.2l2360 129.9l1432.7 1622l2981.7 1123.5l2940.7 4333.1l-270.6 1128.2l792.4 1201.5l-1726.7 5827.8l785 2018.2l2160 2274.1l2083.2 772.6l-29.7 1587l2579.8 273.2l2903.1 2611.6l-1211.6 1736.7l-304 2424.3l1806.8 664.5l-952.3 432.8l228.8 1126.8l-1164.6 1204.8l1028.8 823.8l134.5 1768.4l-3601.7 2856.7l-1067.8 2250.5l-1294 1012.3l939.2 1643.7l-426.7 1493.5l-1730.1 1237.5l-1330.5 3254.3l-3443.5 3823l-1377.3 499.3l-1732.6 -647.3l-2658.4 9242.1l-2580.3 -63.8l-1626.7 1640.8l-11817 92.4l-111.4 4297.6l-745.7 11.6l-6670.9 -270.2l-1972.9 -5940.7l-1565.6 -523.5l821.7 -7022.1l-765 -!
+ 27.8l26.9 -795.4l742.7 19.8l74.1 -825.8l-2396.2 -52l748.7 -3186.1l-3846.4 -78l60.9 -5551.1l-1599 -53.4l110.1 -3306.4l-6584.6 -269.6l-573.6 -4908.1l-895.7 -69.6l-3.4 -3096.9l2384.7 -772.2l99.6 -1566.5l1598.9 3l268.3 -6583.2l-5123.5 -132.5l183.9 -10111.9l1168.6 -4214.1l-716.7 -975.6l1461.4 -2002.8l-593.4 -565.8l2659.9 -3238.9z&quot; /&gt;
+		&lt;!-- rectangle that represents map extent --&gt;
+		&lt;rect id=&quot;dragRectForRefMap&quot; class=&quot;dragRect&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;[(#CALLAGE|worldfileULY)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]&quot; height=&quot;[(#CALLAGE|worldfileHeight)]&quot; pointer-events=&quot;none&quot;/&gt;
+		&lt;!-- if zoomed in very far, we display a cross-symbol here to indicate the map position in the reference map --&gt;
+		&lt;use id=&quot;myDragCross&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;-[(#CALLAGE|worldfileHeight)]&quot; xlink:href=&quot;#myDragCrossSymbol&quot; visibility=&quot;hidden&quot; /&gt;
+	&lt;/svg&gt;
+	&lt;!-- this group holds symbol instances for navigation tools --&gt;
+	&lt;g&gt;
+		&lt;!-- empty group where zoomSlider is later appended --&gt;
+		&lt;g id=&quot;mapZoomSlider1&quot;/&gt;
+		&lt;use x=&quot;710&quot; y=&quot;25&quot; xlink:href=&quot;#magnifyerZoomInWo&quot; onclick=&quot;zoomIt(evt,'in');&quot; onmouseover=&quot;magnify(evt,1.2,'in');&quot; onmouseout=&quot;magnify(evt,1,'in');&quot;/&gt;
+		&lt;!-- button for zoom-out, below slider --&gt;
+		&lt;use x=&quot;710&quot; y=&quot;155&quot; xlink:href=&quot;#magnifyerZoomOutWo&quot; onclick=&quot;zoomIt(evt,'out');&quot; onmouseover=&quot;magnify(evt,1.2,'out');&quot; onmouseout=&quot;magnify(evt,1,'out');&quot;/&gt;
+	&lt;/g&gt;
+	&lt;g&gt;
+		&lt;!-- empty group where zoomSlider is later appended --&gt;
+		&lt;g id=&quot;mapZoomSlider&quot;/&gt;
+		&lt;text class=&quot;allText subTitleText&quot; x=&quot;580&quot; y=&quot;170&quot;&gt;Localisation&lt;/text&gt;
+		&lt;!-- button for full view (f) --&gt;
+		&lt;use x=&quot;610&quot; y=&quot;190&quot; xlink:href=&quot;#magnifyerFull&quot; onclick=&quot;zoomIt(evt,'full');&quot; onmouseover=&quot;magnify(evt,1.2,'full');&quot; onmouseout=&quot;magnify(evt,1,'full');&quot;/&gt;
+		&lt;!-- button for manual zoom (rectangle) --&gt;
+		&lt;use x=&quot;640&quot; y=&quot;190&quot; xlink:href=&quot;#magnifyerManual&quot; onclick=&quot;myMainMap.zoomManual(evt)&quot; onmouseover=&quot;magnify(evt,1.2,'manual');&quot; onmouseout=&quot;magnify(evt,1,'manual');&quot;/&gt;
+		&lt;!-- button for manual pan --&gt;
+		&lt;use x=&quot;670&quot; y=&quot;190&quot; xlink:href=&quot;#symbPan&quot; onclick=&quot;myMainMap.panManual(evt)&quot; onmouseover=&quot;magnify(evt,1.2,'panmanual');&quot; onmouseout=&quot;magnify(evt,1,'panmanual');&quot;/&gt;
+		&lt;!-- button for redefining map center --&gt;
+		&lt;use xlink:href=&quot;#symbRecenter&quot; x=&quot;700&quot; y=&quot;190&quot; onmouseover=&quot;magnify(evt,1.2,'recenter')&quot; onmouseout=&quot;magnify(evt,1,'recenter')&quot; onclick=&quot;myMainMap.recenter(evt)&quot;/&gt;
+	&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/BOUCLE_carte&gt;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000187.html">[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,NONE,1.1 inc_presentation.php3,1.7,1.8
+</A></li>
+	<LI>Next message: <A HREF="000191.html">[Spip-carto-cvs] spipcarto style_carto.css,NONE,1.1 navigationTools.js,NONE,1.1 mes_fonctions.php3,1.10,1.11
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#190">[ date ]</a>
+              <a href="thread.html#190">[ thread ]</a>
+              <a href="subject.html#190">[ subject ]</a>
+              <a href="author.html#190">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

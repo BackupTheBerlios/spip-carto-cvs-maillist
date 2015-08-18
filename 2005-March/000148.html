@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_typebase.php3,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_typebase.php3%2CNONE%2C1.1&In-Reply-To=%3C200503291527.j2TFRb9Y001608%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000147.html">
+   <LINK REL="Next"  HREF="000149.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_typebase.php3,NONE,1.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_typebase.php3%2CNONE%2C1.1&In-Reply-To=%3C200503291527.j2TFRb9Y001608%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_typebase.php3,NONE,1.1">stef at berlios.de
+       </A><BR>
+    <I>Tue Mar 29 17:27:37 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000147.html">[Spip-carto-cvs] spipcarto/ecrire inc_auth_ldap.php3,1.2,1.3 inc_mail.php3,1.2,1.3 config-contenu.php3,1.3,1.4 inc_sites.php3,1.3,1.4 inc_filtres.php3,1.3,1.4 inc_index.php3,1.2,1.3 inc_debug_sql.php3,1.2,1.3 inc_suivi_revisions.php,1.3,1.4 carte_edit.php3,1.7,1.8 config-lang.php3,1.3,1.4 inc_import.php3,1.2,1.3 inc_lang.php3,1.3,1.4 forum_envoi.php3,1.2,1.3 calendrier.php3,1.3,1.4 inc_config.php3,1.2,1.3 inc_documents.php3,1.3,1.4 inc_texte.php3,1.3,1.4 inc_base.php3,1.2,1.3 inc_presentation.php3,1.4,1.5 controle_forum.php3,1.2,1.3 inc_charsets.php3,1.3,1.4 inc_majbase.php3,1.2,1.3 inc_cron.php3,1.2,1.3 inc_forum.php3,1.2,1.3 inc_getdocument.php3,1.3,1.4 inc_logos.php3,1.4,1.5 inc_acces.php3,1.3,1.4 inc_carto.php3,1.8,1.9 inc_rubriques.php3,1.3,1.4 inc_calendrier.php,1.4,1.5
+</A></li>
+        <LI>Next message: <A HREF="000149.html">[Spip-carto-cvs] spipcarto/ecrire lab_revisions.php,1.2,1.3 install.php3,1.2,1.3 inc_version.php3,1.4,1.5 message.php3,1.3,1.4 index.php3,1.3,1.4 messagerie.php3,1.2,1.3 lab_diff.php,1.2,1.3 naviguer.php3,1.2,1.3 inc.php3,1.2,1.3 mes_options.php3,1.2,1.3 spip_style.php3,1.4,1.5 lang_raccourcis.php3,1.2,1.3 suivi_revisions.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#148">[ date ]</a>
+              <a href="thread.html#148">[ thread ]</a>
+              <a href="subject.html#148">[ subject ]</a>
+              <a href="author.html#148">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv1576/spipcarto/ecrire
+
+Added Files:
+	inc_typebase.php3 
+Log Message:
+1.8PR2 CVS 20050329
+
+--- NEW FILE: inc_typebase.php3 ---
+&lt;?php
+
+/***************************************************************************\
+ *  SPIP, Systeme de publication pour l'internet                           *
+ *                                                                         *
+ *  Copyright (c) 2001-2005                                                *
+ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
+ *                                                                         *
+ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
+ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
+\***************************************************************************/
+
+
+//
+// Ce fichier ne sera execute qu'une fois
+if (defined(&quot;_ECRIRE_INC_TYPEBASE&quot;)) return;
+define(&quot;_ECRIRE_INC_TYPEBASE&quot;, &quot;1&quot;);
+
+global $tables_images, $tables_sequences, $tables_documents, $tables_mime;
+
+$tables_images = array(
+		       // Images reconnues par PHP
+		       'jpg' =&gt; 1, 
+		       'png' =&gt; 2, 
+		       'gif' =&gt; 3,
+
+		       // Autres images (peuvent utiliser le tag &lt;img&gt;)
+		       'bmp' =&gt; 'BMP',
+		       'psd' =&gt; 'Photoshop',
+		       'tif' =&gt; 'TIFF'
+		       );
+
+// Multimedia (peuvent utiliser le tag &lt;embed&gt;)
+
+$tables_sequences = array(
+			  'aiff' =&gt; 'AIFF',
+			  'asf' =&gt; 'Windows Media',
+			  'avi' =&gt; 'Windows Media',
+			  'mid' =&gt; 'Midi',
+			  'mng' =&gt; 'MNG',
+			  'mov' =&gt; 'QuickTime',
+			  'mp3' =&gt; 'MP3',
+			  'mpg' =&gt; 'MPEG',
+			  'ogg' =&gt; 'Ogg',
+			  'qt' =&gt; 'QuickTime',
+			  'ra' =&gt; 'RealAudio',
+			  'ram' =&gt; 'RealAudio',
+			  'rm' =&gt; 'RealAudio',
+			  'swf' =&gt; 'Flash',
+			  'wav' =&gt; 'WAV',
+			  'wmv' =&gt; 'Windows Media'
+			  );
+
+// Documents varies
+$tables_documents = array(
+			  'ai' =&gt; 'Adobe Illustrator',
+			  'bz2' =&gt; 'BZip',
+			  'c' =&gt; 'C source',
+			  'css' =&gt; 'Cascading Style Sheet',
+			  'deb' =&gt; 'Debian',
+			  'doc' =&gt; 'Word',
+			  'djvu' =&gt; 'DjVu',
+			  'dvi' =&gt; 'LaTeX DVI',
+			  'eps' =&gt; 'PostScript',
+			  'gz' =&gt; 'GZ',
+			  'h' =&gt; 'C header',
+			  'html' =&gt; 'HTML',
+			  'pas' =&gt; 'Pascal',
+			  'pdf' =&gt; 'PDF',
+			  'pgn' =&gt; 'Portable Game Notation',
+			  'ppt' =&gt; 'PowerPoint',
+			  'ps' =&gt; 'PostScript',
+			  'rpm' =&gt; 'RedHat/Mandrake/SuSE',
+			  'rtf' =&gt; 'RTF',
+			  'sdd' =&gt; 'StarOffice',
+			  'sdw' =&gt; 'StarOffice',
+			  'sit' =&gt; 'Stuffit',
+			  'sxc' =&gt; 'OpenOffice Calc',
+			  'sxi' =&gt; 'OpenOffice Impress',
+			  'sxw' =&gt; 'OpenOffice',
+			  'tex' =&gt; 'LaTeX',
+			  'tgz' =&gt; 'TGZ',
+			  'txt' =&gt; 'texte',
+			  'xcf' =&gt; 'GIMP multi-layer',
+			  'xls' =&gt; 'Excel',
+			  'xml' =&gt; 'XML',
+			  'zip' =&gt; 'Zip'
+			  );
+
+$tables_mime = array(
+		// Images reconnues par PHP
+		'jpg'=&gt;'image/jpeg',
+		'png'=&gt;'image/png',
+		'gif'=&gt;'image/gif',
+
+		// Autres images (peuvent utiliser le tag &lt;img&gt;)
+		'bmp'=&gt;'image/x-ms-bmp', // pas enregistre par IANA, variante: image/bmp
+		'psd'=&gt;'image/x-photoshop',	// pas IANA
+		'tif'=&gt;'image/tiff',
+
+		// Multimedia (peuvent utiliser le tag &lt;embed&gt;)
+		'aiff'=&gt;'audio/x-aiff',
+		'asf'=&gt;'video/x-ms-asf',
+		'avi'=&gt;'video/x-msvideo',
+		'mid'=&gt;'audio/midi',
+		'mng'=&gt;'video/x-mng',
+		'mov'=&gt;'video/quicktime',
+		'mp3'=&gt;'audio/mpeg',
+		'mpg'=&gt;'video/mpeg',
+		'ogg'=&gt;'application/ogg',
+		'qt' =&gt;'video/quicktime',
+		'ra' =&gt;'audio/x-pn-realaudio',
+		'ram'=&gt;'audio/x-pn-realaudio',
+		'rm' =&gt;'audio/x-pn-realaudio',
+		'swf'=&gt;'application/x-shockwave-flash',
+		'wav'=&gt;'audio/x-wav',
+		'wmv'=&gt;'video/x-ms-wmv',
+
+		// Documents varies
+		'ai' =&gt;'application/illustrator',
+		'bz2'=&gt;'application/x-bzip2',
+		'c'  =&gt;'text/x-csrc',
+		'css'=&gt;'text/css',
+		'deb'=&gt;'application/x-debian-package',
+		'doc'=&gt;'application/msword',
+		'djvu'=&gt;'image/vnd.djvu',
+		'dvi'=&gt;'application/x-dvi',
+		'eps'=&gt;'application/postscript',
+		'gz' =&gt;'application/x-gzip',
+		'h'  =&gt;'text/x-chdr',
+		'html'=&gt;'text/html',
+		'pas'=&gt;'text/x-pascal',
+		'pdf'=&gt;'application/pdf',
+		'pgn' =&gt;'application/x-chess-pgn',
+		'ppt'=&gt;'application/vnd.ms-powerpoint',
+		'ps' =&gt;'application/postscript',
+		'rpm'=&gt;'application/x-redhat-package-manager',
+		'rtf'=&gt;'application/rtf',
+		'sdd'=&gt;'application/vnd.stardivision.impress',
+		'sdw'=&gt;'application/vnd.stardivision.writer',
+		'sit'=&gt;'application/x-stuffit',
+		'sxc'=&gt;'application/vnd.sun.xml.calc',
+		'sxi'=&gt;'application/vnd.sun.xml.impress',
+		'sxw'=&gt;'application/vnd.sun.xml.writer',
+		'tex'=&gt;'text/x-tex',
+		'tgz'=&gt;'application/x-gtar',
+		'txt'=&gt;'text/plain',
+		'xcf'=&gt;'application/x-xcf',
+		'xls'=&gt;'application/vnd.ms-excel',
+		'xml'=&gt;'application/xml',
+		'zip'=&gt;'application/zip'
+	);
+?&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000147.html">[Spip-carto-cvs] spipcarto/ecrire inc_auth_ldap.php3,1.2,1.3 inc_mail.php3,1.2,1.3 config-contenu.php3,1.3,1.4 inc_sites.php3,1.3,1.4 inc_filtres.php3,1.3,1.4 inc_index.php3,1.2,1.3 inc_debug_sql.php3,1.2,1.3 inc_suivi_revisions.php,1.3,1.4 carte_edit.php3,1.7,1.8 config-lang.php3,1.3,1.4 inc_import.php3,1.2,1.3 inc_lang.php3,1.3,1.4 forum_envoi.php3,1.2,1.3 calendrier.php3,1.3,1.4 inc_config.php3,1.2,1.3 inc_documents.php3,1.3,1.4 inc_texte.php3,1.3,1.4 inc_base.php3,1.2,1.3 inc_presentation.php3,1.4,1.5 controle_forum.php3,1.2,1.3 inc_charsets.php3,1.3,1.4 inc_majbase.php3,1.2,1.3 inc_cron.php3,1.2,1.3 inc_forum.php3,1.2,1.3 inc_getdocument.php3,1.3,1.4 inc_logos.php3,1.4,1.5 inc_acces.php3,1.3,1.4 inc_carto.php3,1.8,1.9 inc_rubriques.php3,1.3,1.4 inc_calendrier.php,1.4,1.5
+</A></li>
+	<LI>Next message: <A HREF="000149.html">[Spip-carto-cvs] spipcarto/ecrire lab_revisions.php,1.2,1.3 install.php3,1.2,1.3 inc_version.php3,1.4,1.5 message.php3,1.3,1.4 index.php3,1.3,1.4 messagerie.php3,1.2,1.3 lab_diff.php,1.2,1.3 naviguer.php3,1.2,1.3 inc.php3,1.2,1.3 mes_options.php3,1.2,1.3 spip_style.php3,1.4,1.5 lang_raccourcis.php3,1.2,1.3 suivi_revisions.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#148">[ date ]</a>
+              <a href="thread.html#148">[ thread ]</a>
+              <a href="subject.html#148">[ subject ]</a>
+              <a href="author.html#148">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

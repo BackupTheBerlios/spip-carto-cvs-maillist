@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto carto.php3,1.6.2.1,1.6.2.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20carto.php3%2C1.6.2.1%2C1.6.2.2&In-Reply-To=%3C200602170045.k1H0jsbx016217%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000379.html">
+   <LINK REL="Next"  HREF="000380.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto carto.php3,1.6.2.1,1.6.2.2</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20carto.php3%2C1.6.2.1%2C1.6.2.2&In-Reply-To=%3C200602170045.k1H0jsbx016217%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto carto.php3,1.6.2.1,1.6.2.2">stef at berlios.de
+       </A><BR>
+    <I>Fri Feb 17 01:45:54 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000379.html">[Spip-carto-cvs] spipcarto/ecrire mes_options.php3,1.8.2.7,1.8.2.8 carto_mes_options.php3,1.1.2.1,1.1.2.2
+</A></li>
+        <LI>Next message: <A HREF="000380.html">[Spip-carto-cvs] spipcarto/ecrire inc_version.php3,1.12.2.4,1.12.2.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#378">[ date ]</a>
+              <a href="thread.html#378">[ thread ]</a>
+              <a href="subject.html#378">[ subject ]</a>
+              <a href="author.html#378">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv16122
+
+Modified Files:
+      Tag: BRANCH-V1
+	carto.php3 
+Log Message:
+encore plus mieux int&#233;gr&#233; et en plus, ca marche !
+(bug inclure_ecrire / declarations de boucles)
+
+Index: carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/carto.php3,v
+retrieving revision 1.6.2.1
+retrieving revision 1.6.2.2
+diff -u -d -r1.6.2.1 -r1.6.2.2
+--- carto.php3	30 Sep 2005 22:08:45 -0000	1.6.2.1
++++ carto.php3	17 Feb 2006 00:45:52 -0000	1.6.2.2
+@@ -36,28 +36,42 @@
+ &#151; -
+ *
+ \***************************************************************************/
++// Appel spip
++if (!function_exists('find_in_path')) {
++	define('_SPIP_PAGE',1); # ne pas mourir si on passe le $fond
++	include ('ecrire/inc_version.php3');
++}
+ //specifier ici le nom du sous repertoire du dossier squelette contenant
+ //les squelettes de carte
+-$rep_fond=&quot;template&quot;;
++//squelettes de carte disponibles 
++//(preview dans cartes.php3 et raccourcis dans carte_edit.php3)
++$rep_fond=$GLOBALS['rep_cartes'];
+ //  valeurs par defaut
+ //$delai=24*3600;
+ 
+ $flag_preserver = true;
+ 
+-if (isset($contexte_inclus['fond'])) {
+-	if (strstr($contexte_inclus['fond'], '..'))
+-		die (&quot;Faut pas se gener&quot;);
+-	else
+-		$fond = $rep_fond.&quot;/carto_&quot;.$contexte_inclus['fond'];
++if (isset($contexte_inclus['fond'])&amp;&amp;($contexte_inclus['fond']!=&quot;&quot;)){
++		if (strstr($fond, '/')
++		OR preg_match(',^formulaire_,i', $fond))
++			die (&quot;Faut pas se gener&quot;);
++		else $fond = $rep_fond.&quot;/carto_&quot;.$contexte_inclus['fond'];
+ }
+-else if (isset($_GET[&quot;fond&quot;])&amp;&amp;($_GET[&quot;fond&quot;]!=&quot;&quot;)) {
+-	if (strstr($_GET['fond'], '..'))
+-		die (&quot;Faut pas se gener&quot;);
+-	else	
+-		$fond = $rep_fond.&quot;/carto_&quot;.$_GET[&quot;fond&quot;];
++elseif (isset($_GET[&quot;fond&quot;])&amp;&amp;($_GET[&quot;fond&quot;]!=&quot;&quot;)){
++		if (strstr($fond, '/')
++		OR preg_match(',^formulaire_,i', $fond))
++			die (&quot;Faut pas se gener&quot;);
++		else $fond = $rep_fond.&quot;/carto_&quot;.$_GET[&quot;fond&quot;];
+ }
+ else $fond = $rep_fond.&quot;/carto&quot;;
+-if (isset($contexte_inclus['delais'])) $delais = $contexte_inclus['delais'];
++
++// Securite 
++if (!find_in_path(&quot;$fond.html&quot;)) {
++	spip_log(&quot;carto.php3: find_in_path ne trouve pas le squelette $fond&quot;);
++	$fond = '404';
++}
++
++if (isset($contexte_inclus['delais'])) $delais = intval($contexte_inclus['delais']);
+ 
+ include (&quot;inc-public.php3&quot;);
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000379.html">[Spip-carto-cvs] spipcarto/ecrire mes_options.php3,1.8.2.7,1.8.2.8 carto_mes_options.php3,1.1.2.1,1.1.2.2
+</A></li>
+	<LI>Next message: <A HREF="000380.html">[Spip-carto-cvs] spipcarto/ecrire inc_version.php3,1.12.2.4,1.12.2.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#378">[ date ]</a>
+              <a href="thread.html#378">[ thread ]</a>
+              <a href="subject.html#378">[ subject ]</a>
+              <a href="author.html#378">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

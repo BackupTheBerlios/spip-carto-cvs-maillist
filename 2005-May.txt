@@ -1,0 +1,1881 @@
+From fxp at berlios.de  Wed May 11 12:08:27 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:08:27 +0200
+Subject: [Spip-carto-cvs] spipcarto/ecrire carte_import.php3,NONE,1.1
+Message-ID: <200505111008.j4BA8RDo020160@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv20154/ecrire
+
+Added Files:
+	carte_import.php3 
+Log Message:
+Import de donn?es / Format TXT
+
+--- NEW FILE: carte_import.php3 ---
+<?php
+
+
+
+include ("inc.php3");
+include_ecrire ("inc_documents.php3");
+include_ecrire ("inc_mots.php3");
+include_ecrire ("inc_import.php3");
+include_ecrire ("inc_documents.php3");
+include_ecrire ("inc_carto.php3");
+include_ecrire ("inc_carto_import.php3");
+
+
+// si XML disponible / Activation de l'import GPX
+if (extension_loaded ("xml"))
+	$xml = true;
+else
+	$xml = false;
+	
+//TODO : voir integration d'une option de configuration de Spip
+//bof, je prefere attendre d'avoir un systeme de gestion des modules
+//meme si il faut le faire ...
+//include_ecrire("inc_config.php3");
+
+$flag_editable=carte_editable($id_carte);
+$id_carte = intval($id_carte);
+$flag_mots = lire_meta("carto_mots");
+//$flag_mots = "oui";
+$nouveau=false;
+$dir = 'upload';						// R?pertoire o? chercher les fichiers
+			
+
+
+if ($id_carte) {
+	//TODO : passer tout ca en spip_abstract ...
+	$query = "SELECT * FROM spip_carto_cartes WHERE id_carto_carte=$id_carte";
+	$result = spip_query($query);
+	if ($row = spip_fetch_array($result)) {
+		$titre = entites_html($row['titre']);
+		$url_carte = $row['url_carte'];
+		$texte = entites_html($row['texte']);
+		$callage = entites_html($row['callage']);
+		$id_srs = intval($row['id_srs']);
+		$js_titre = "";
+	}
+}
+
+		
+
+
+$carte_link = new Link("carte_edit.php3");
+$carte_link->addVar('id_carte', $id_carte);
+if ($retour) $carte_link->addVar('retour', $retour);
+
+$carte_supplink = new Link("carte_edit.php3");
+$carte_supplink->addVar('id_carte', $id_carte);
+$carte_supplink->addVar('supp_carte', $id_carte);
+if ($retour) $carte_supplink->addVar('retour', $retour);
+
+$carte_importlink = new Link("carte_import.php3");
+$carte_importlink->addVar('id_carte', $id_carte);
+if ($retour) $carte_importlink->addVar('retour', $retour);
+
+
+//
+// Modifications des objets de la carte
+//
+
+if ($id_carte && $flag_editable) {
+
+	// Ajout d'un objet
+	if ($selection_type) {
+		$geometrie=coords2wkt($selection_type,$selection_coords, worldfile2array($row['callage'])); // Si pas de fonction de zoom le callage correspond bien ? la valeur. Sinon avec zoom, il faut passer les coordonn?es g?ographiques de la vue en cours ....
+		$objet_titre = _L("Nouvel objet");
+		$url_objet = "#";
+		//TODO : passer tout ca en spip_abstract ...
+		spip_query("INSERT INTO spip_carto_objets (id_carto_carte,titre,geometrie,url_objet) VALUES (".$id_carte.",'".addslashes($objet_titre)."','".$geometrie."','".$url_objet."')");
+		$id_objet = spip_insert_id();
+		$objet_visible=$id_objet;
+		$nouveau=true;
+	}
+	// Modif d'un objet
+	if ($modif_objet) {
+		//TODO : passer tout ca en spip_abstract ...
+		$query = "UPDATE spip_carto_objets SET ".
+			//"id_carto_carte=".intval($id_carte).", ".
+			"titre='".addslashes($objet_titre)."', ".
+			"texte='".addslashes($objet_texte)."', ".
+			"url_objet='".$url_objet."', ".
+			"url_logo='".$url_logo."', ".
+			"geometrie='".addslashes($geometrie)."' ".
+			"WHERE id_carto_objet=$modif_objet";
+			$result = spip_query($query);
+			$objet_visible=$modif_objet;
+	}
+	if ($id_objet) {
+			$objet_visible=$id_objet;
+	}
+	
+
+}
+
+
+//
+// Affichage de la page
+//
+
+debut_page("&laquo; $titre &raquo;", "documents", "cartes");
+
+debut_gauche();
+
+if ($new!="oui") {
+	# modifs de la description d'un des docs joints
+	maj_documents($id_carte, 'carto_carte');
+	
+	# affichage
+	afficher_documents_colonne($id_carte, 'carto_carte', true);
+}
+
+debut_droite();
+
+//
+// Importer des objets / Titre
+//
+if ($id_carte) {
+	gros_titre($titre);
+	
+	
+	avertissement_carto_import ();
+	
+	
+	
+	//
+	// Importer des objets / Formulaire
+	//	1.S?lection d'un fichier du r?pertoire upload
+	//	2.Analyse du fichier
+	// 	3.Importation
+	switch ($step)
+	{	case 2:
+			debut_cadre_relief("carte-24.gif");
+			
+			switch ($typeImport)
+			{	case "TXT":
+					echo "<form>";
+					echo "<input type='hidden' name='id_srs' id='srs_carte' ".
+							"value=\"".$id_srs."\" size='40'>";
+					echo "<input type='hidden' name='id_carte' id='id_carte' ".
+					"value=\"".$id_carte."\" size='40'>";
+					echo "<input type='hidden' name='typeImport' id='typeImport' ".
+									"value=\"".$typeImport."\" size='40'>";
+							
+				
+					//	2.Analyse du fichier texte  
+					echo "<strong class='verdana2'>"._L("S?lectionner les champs du fichier texte ? importer dans les objets de votre carte.") . "</strong><br/>";
+					echo "<input type='hidden' name='step' value='3'>";
+					echo "<input type='hidden' name='file' value='".$file."'>";
+				
+					// TODO : Param?trage du s?parateur de champ
+					// TODO : Filtrer les champs de type num?rique et les autres pour le choix des champs pour les coordonn?es
+					
+					$rec = new csvUtil($dir."/".$file, ";");		// Ouverture du fichier & lecture
+					$i = 0;
+					$nbcol = $rec->numCols();
+					while ($i<$nbcol) {								// Cr?ation d'une liste des colonnes du fichiers
+							$collist .= "<option value='".$i."'>".$rec->getField(0, $i)."</option>";
+							$i++;
+					}
+					echo "<ul>";
+					// Cr?ation du formulaire d'importation
+					echo "<li>"._L("Titre de l'objet :")."<select name='col'>" .
+							"<option value='null'>Nouvel Objet</option>\n".
+							$collist.
+							"</select>\n".
+							_L("('Nouvel Objet' par d?faut)")."</li>";
+					
+					echo "<li>"._L("Texte :")."<select name='desc'>" .
+							"<option value='null'>null</option>\n".
+							$collist.
+							"</select>\n".
+							_L("(null par d?faut)")."</li>";
+			
+					echo "<li>"._L("Lien de l'objet :").
+							"<br/><input id='link_prefix' name='link_prefix' value='' size='6'/>\n" .
+							"<select name='link'>" .
+							"<option value='null'>null</option>\n".
+							$collist.
+							"</select>\n".
+							"<input id='link_sufixe' name='link_sufixe' value='' size='3'/>\n" .
+							_L("(null par d?faut)")."</li>";
+			
+			
+					echo "<li>"._L("Coordonn?es X :")."<select name='x'>" .
+							"<option value='0'>0</option>\n".
+							$collist.
+							"</select>\n".
+							_L("(0 par d?faut)")."</li>";
+					
+					echo "<li>"._L("Coordonn?es Y :")."<select name='y'>" .
+							"<option value='0'>0</option>\n".
+							$collist.
+							"</select>\n".
+							_L("(0 par d?faut)")."</li>";
+					echo "</ul>";
+					
+					echo "\n  <div align='".$GLOBALS['spip_lang_right']."'><input name='ok_ftp' type='Submit' value='"._T('bouton_suivant')."' class='fondo'></div>";
+					echo "</form>";		
+			break;
+			case "GPX":
+				if ($xml){
+					echo "<form>";
+					echo "<input type='hidden' name='id_srs' id='srs_carte' ".
+							"value=\"".$id_srs."\" size='40'>";
+					echo "<input type='hidden' name='id_carte' id='id_carte' ".
+					"value=\"".$id_carte."\" size='40'>";
+					echo "<input type='hidden' name='typeImport' id='typeImport' ".
+									"value=\"".$typeImport."\" size='40'>";
+							
+					//	2.Analyse du fichier GPX  
+					// TODO : Lecture du fichier GPX
+					// TODO : Parse le fichier 
+					// TODO : Choix des attributs (Mapping GPX -> SPIP-CARTO-OBJET)
+							
+					echo "<strong class='verdana2'>"._L("S?lectionner les champs du fichier GPX ? importer dans les objets de votre carte.") . "</strong><br/>";
+					echo "<input type='hidden' name='step' value='3'>";
+					echo "<input type='hidden' name='file' value='".$file."'>";
+
+
+					/*
+					 * Structure d'un waypoint 
+						 <time>2003-07-02T10:29:58Z</time>
+						 <name>0101</name>
+						 <cmt>MONTGERON</cmt>
+						 <desc>0101</desc>
+						 <sym>Waypoint</sym>
+						 <type>Gas Station</type>
+						 
+						 -> Importer les types via des mots cl?s ?
+					 */
+					$collist = "<option value='name'>name</option>";
+					$collist .= "<option value='cmt'>cmt</option>";
+					$collist .= "<option value='desc'>desc</option>";
+					$collist .= "<option value='sym'>sym</option>";
+					$collist .= "<option value='time'>time</option>";
+					$collist .= "<option value='type'>type</option>";
+					
+					// Cr?ation du formulaire d'importation
+					echo "<ul>";
+					echo "<li>"._L("Titre de l'objet :")."<select name='col'>" .
+							"<option value='null'>Nouvel Objet</option>\n".
+							$collist.
+							"</select>\n".
+							_L("('Nouvel Objet' par d?faut)")."</li>";
+					
+					echo "<li>"._L("Texte :")."<select name='desc'>" .
+							"<option value='null'>null</option>\n".
+							$collist.
+							"</select>\n".
+							_L("(null par d?faut)")."</li>";
+			
+					echo "<li>"._L("Lien de l'objet :").
+							"<br/><input id='link_prefix' name='link_prefix' value='' size='6'/>\n" .
+							"<select name='link'>" .
+							"<option value='null'>null</option>\n".
+							$collist.
+							"</select>\n".
+							"<input id='link_sufixe' name='link_sufixe' value='' size='3'/>\n" .
+							_L("(null par d?faut)")."</li>";
+			
+
+					echo "\n  <div align='".$GLOBALS['spip_lang_right']."'><input name='ok_ftp' type='Submit' value='"._T('bouton_suivant')."' class='fondo'></div>";
+					echo "</form>";		
+				}
+				
+			break;
+			}
+
+			fin_cadre_relief();	
+		break;
+		case 3:
+			switch ($typeImport)
+			{	case "TXT": 
+					// 	3.Importation du fichier texte en base
+					debut_cadre_relief("carte-24.gif");
+					echo "<strong class='verdana2'>"._L("Importation des objets.") . "</strong> ";
+				
+					$rec = new csvUtil($dir."/".$file, ";");		// Ouverture du fichier & lecture
+					$i = 1;
+					$nbErr = 0;
+					$nb = $rec->numRows();
+					while ($i<$nb) {
+							if (!is_null($rec->getField($i,$col)) && 
+								is_numeric($rec->getField($i,$x)) && 
+								is_numeric($rec->getField($i,$y)))		// Champ code non null et x et y num?rique
+							{	$sql = sprintf ("Insert into spip_carto_objets (id_carto_carte, titre, texte, url_objet, url_logo, geometrie) values 		(%d, '%s', '%s', '%s', '', 'point(%f %f)');\n",
+									($carte=="null"?"0":$id_carte),
+									($col=="null"?"Nouvel Objet":addslashes ($rec->getField($i,$col))),
+									($desc=="null"?"":addslashes ($rec->getField($i,$desc))),
+									($link=="null"?"":addslashes ($link_prefix.$rec->getField($i,$link).$link_sufixe)),
+									($x=="0"?0:$rec->getField($i, $x)),
+									($y=="0"?0:$rec->getField($i, $y))
+									);
+							}else
+								$nbErr++;
+							
+							$i++;
+
+							spip_query ($sql);
+							// TODO : Tous les cas d'erreur 
+					}		
+					echo "<br/><strong class='verdana2'>"._L("Nombre d'objets ajout?s ? votre carte : "). ($i-$nbErr). "</strong> ";
+					fin_cadre_relief();	
+							
+				break;
+				case "GPX":
+				if ($xml){
+					// TODO : Lecture des WPT et conversion en objet ponctuel
+					// TODO : Insertion en base.
+					echo $dir."/".$file;
+							
+				}
+				break;	
+			}
+		break;
+		default: 
+			// ----------------------
+			// Import / Format CSV 
+			debut_cadre_relief("carte-24.gif");
+			echo "<form>";
+			echo "<input type='hidden' name='typeImport' id='typeImport' ".
+					"value=\"TXT\" size='40'>";
+			echo "<input type='hidden' name='id_srs' id='srs_carte' ".
+					"value=\"".$id_srs."\" size='40'>";
+			echo "<input type='hidden' name='id_carte' id='id_carte' ".
+					"value=\"".$id_carte."\" size='40'>";
+			echo "<div style='padding: 2px; background-color: $couleur_claire; color: black;'>&nbsp;";
+			echo bouton_block_visible("IMPORT-TXT");
+			echo "<strong>"._L("Import fichier texte (CSV)")."</strong>";
+			echo "<br /></div>";
+			echo debut_block_visible("IMPORT-TXT");			
+			
+			//	1.S?lection d'un fichier du r?pertoire upload
+			$texte_upload = texte_upload_file($dir, '', 'txt');
+			if ($texte_upload) {
+				echo "<p><div style='color: #505050;'>";
+				if ($forcer_document) echo '<input type="hidden" name="forcer_document" value="oui">';
+				echo "\n"._T('info_selectionner_fichier')."&nbsp;:<br />";
+				echo "\n<select name='file' size='1' class='fondl'>";
+				echo $texte_upload;
+				echo "\n</select>";
+				echo "<input type='hidden' name='dir' id='dir' ".
+					"value=\"".$dir."\" size='40'>";
+				echo "\n  <div align='".$GLOBALS['spip_lang_right']."'><input name='ok_ftp' type='Submit' value='"._T('bouton_suivant')."' class='fondo'></div>";
+			
+				echo "</div>\n";
+				echo "<input type='hidden' name='step' value='2'";
+			}else
+				echo "<strong class='verdana2'>"._L("Il n'y a pas de fichier dans le r?pertoire upload (Utilisez le FTP).") . "</strong> ";
+				
+			echo fin_block();
+			fin_cadre_relief();	
+			echo "</form>";		
+			
+			
+			// ----------------------
+			// Import / Format GPX - GPS
+			/*if ($xml){ 
+			debut_cadre_relief("carte-24.gif");
+			echo "<form>";
+			echo "<input type='hidden' name='typeImport' id='typeImport' ".
+					"value=\"GPX\" size='40'>";
+			echo "<input type='hidden' name='id_srs' id='srs_carte' ".
+					"value=\"".$id_srs."\" size='40'>";
+			echo "<input type='hidden' name='id_carte' id='id_carte' ".
+					"value=\"".$id_carte."\" size='40'>";
+			echo "<div style='padding: 2px; background-color: $couleur_claire; color: black;'>&nbsp;";
+			echo bouton_block_invisible("IMPORT-GPS");
+			echo "<strong>"._L("Import fichier GPS (GPX)")."</strong>";
+			echo "<br /></div>";
+			echo debut_block_invisible("IMPORT-GPS");
+			echo "<strong class='verdana2'>"._L("S?lectionner un fichier") . "</strong> ";
+			
+			$texte_upload = texte_upload_file($dir, '', 'gpx');
+			if ($texte_upload) {
+				echo "<p><div style='color: #505050;'>";
+				if ($forcer_document) echo '<input type="hidden" name="forcer_document" value="oui">';
+				echo "\n"._T('info_selectionner_fichier')."&nbsp;:<br />";
+				echo "\n<select name='file' size='1' class='fondl'>";
+				echo $texte_upload;
+				echo "\n</select>";
+				echo "<input type='hidden' name='dir' id='dir' ".
+					"value=\"".$dir."\" size='40'>";
+				echo "\n  <div align='".$GLOBALS['spip_lang_right']."'><input name='ok_ftp' type='Submit' value='"._T('bouton_suivant')."' class='fondo'></div>";
+			
+				echo "</div>\n";
+				echo "<input type='hidden' name='step' value='2'";
+			}else
+				echo "<strong class='verdana2'>"._L("Il n'y a pas de fichier dans le r?pertoire upload (Utilisez le FTP).") . "</strong> ";
+				
+			
+			echo fin_block();
+			fin_cadre_relief();	
+			echo "</form>";		
+			}*/
+			
+			
+			// ----------------------
+			// Import / Format Shapefile
+			/*
+			echo "<form>";
+			echo "<input type='hidden' name='typeImport' id='typeImport' ".
+					"value=\"SHP\" size='40'>";
+			echo "<input type='hidden' name='id_srs' id='srs_carte' ".
+					"value=\"".$id_srs."\" size='40'>";
+			echo "<input type='hidden' name='id_carte' id='id_carte' ".
+					"value=\"".$id_carte."\" size='40'>";
+			debut_cadre_relief("carte-24.gif");
+			echo "<div style='padding: 2px; background-color: $couleur_claire; color: black;'>&nbsp;";
+			echo bouton_block_invisible("IMPORT-SHP");
+			echo "<strong>"._L("Import fichier ESRI (SHP)")."</strong>";
+			echo "<br /></div>";
+			echo debut_block_invisible("IMPORT-SHP");
+			echo "<strong class='verdana2'>"._L("S?lectionner un fichier.") . "</strong> ";		
+			echo fin_block();
+			fin_cadre_relief();	
+			echo "</form>";		
+			*/			
+		break;
+		
+	}
+	
+	
+}
+
+
+		
+//
+if ($retour) {
+	echo "<br />\n";
+	echo "<div align='$spip_lang_right'>";
+	icone(_T('icone_retour'), $retour, "carte-24.gif", "rien.gif");
+	echo "</div>\n";
+}
+
+
+
+
+fin_page();
+
+?>
+
+
+From fxp at berlios.de  Wed May 11 12:08:41 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:08:41 +0200
+Subject: [Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,NONE,1.1
+Message-ID: <200505111008.j4BA8fDo020175@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv20169/ecrire
+
+Added Files:
+	inc_carto_import.php3 
+Log Message:
+Import de donn?es / Format TXT
+
+--- NEW FILE: inc_carto_import.php3 ---
+<?php
+	
+//
+// Ce fichier ne sera execute qu'une fois
+if (defined("_ECRIRE_INC_CARTE_IMPORT")) return;
+define("_ECRIRE_INC_CARTE_IMPORT", "1");
+	
+function avertissement_carto_import() {
+	global $spip_lang_right, $spip_lang_left;
+	debut_boite_info();
+
+	echo "<div class='verdana2' align='justify'>".
+			"<img src='" . _DIR_IMG_PACK . "warning.gif' alt='' width='48' height='48' />".
+			"<p align='center'><B>"._L('Attention, les objets que vous allez associer ? la carte doivent ?tre dans la m?me projection !')."</B></p>";
+	echo "</div>";
+
+	fin_boite_info();
+	echo "<p>&nbsp;<p>";
+}
+	
+	
+	
+//
+// Retourner le code HTML d'utilisation de fichiers uploades a la main
+//	Repris de inc_document avec ajout d'un filtre sur les extensions 
+
+function texte_upload_file($dir, $inclus = '', $extw = '') {
+	$fichiers = fichiers_upload($dir);
+	$exts = array();
+
+	while (list(, $f) = each($fichiers)) {
+		$f = ereg_replace("^$dir/","",$f);
+		if (ereg("\.([^.]+)$", $f, $match)) {
+			$ext = strtolower($match[1]);
+			
+			if (!$exts[$ext]) {
+				if ($ext == $extw || $extw == '') {
+					if ($ext == 'jpeg') $ext = 'jpg';
+					$req = "SELECT extension FROM spip_types_documents WHERE extension='$ext'";
+					if ($inclus) $req .= " AND inclus='$inclus'";
+					if (@spip_fetch_array(spip_query($req))) $exts[$ext] = 'oui';
+					else $exts[$ext] = 'non';
+				}
+			}
+			
+			$ledossier = substr($f, 0, strrpos($f,"/"));
+			if (strlen($ledossier) > 0) $ledossier = "$ledossier";
+			$lefichier = substr($f, strrpos($f, "/"), strlen($f));
+			
+			if ($ledossier != $ledossier_prec) {
+				$texte_upload .= "\n<option value=\"$ledossier\" style='font-weight: bold;'>Tout le dossier $ledossier</option>";
+			}
+			
+			$ledossier_prec = $ledossier;
+			
+			if ($exts[$ext] == 'oui') $texte_upload .= "\n<option value=\"$f\">&nbsp; &nbsp; &nbsp; &nbsp; $lefichier</option>";
+		}
+	}
+
+	return $texte_upload;
+}	
+	
+	
+	
+	
+class csvUtil {
+    /*
+     * Constructor
+     */
+     function csvUtil($file, $separator) {
+            $this->file = $file;
+            $this->separator = $separator;
+            $this->readArray();
+    }
+
+	/*
+	 * readArray(): reads $this->file with $this->separator
+	 *           and stores its content in an array
+	 */
+    function readArray() {
+            $handle = fopen ($this->file, "r");
+            $i = 0;
+            do {
+                    $this->buffer[$i] = fgets($handle);
+                    $this->buffer[$i] = explode($this->separator, $this->buffer[$i]);
+                    $i++;
+            } while (!feof ($handle));
+            fclose ($handle);
+    }
+	/*
+	 *getField($row, $col): find and return content of a give position
+	 */
+    function getField($row, $col) {
+            $retval = $this->buffer[$row][$col];
+            return $retval;
+    }
+
+    /*
+     *search($col, $expression): search for a value in given column
+     *returns an array with found rows
+     */
+    function search($col, $expression) {
+            $i = 0;
+            $j = 0;
+            do {
+                    if (@eregi($expression,$this->buffer[$i][$col])) {
+                            $retval[$j] = $i;
+                            $j++;
+                    }
+                    $i++;
+            } while ($this->buffer[$i][0]);
+
+            return $retval;
+    }
+
+	/*
+	 * numRows(): returns number of rows
+	 */
+    function numRows() {
+            $retval = count($this->buffer);
+            return $retval;
+    }
+	/*
+	 *  numCols():  returns number of cols
+	 */
+    function numCols() {
+            $retval = count($this->buffer[0]);
+            return $retval;
+    }
+}
+
+
+
+
+
+?>
+
+
+
+
+From fxp at berlios.de  Wed May 11 12:15:36 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:15:36 +0200
+Subject: [Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.11,1.12
+Message-ID: <200505111015.j4BAFaDo020448@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv20438/ecrire
+
+Modified Files:
+	inc_carto.php3 
+Log Message:
+DHTML ? la taille de l'image / Coordonn?es par rapport au LLC / SRS
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.11
+retrieving revision 1.12
+diff -u -d -r1.11 -r1.12
+--- inc_carto.php3	1 Apr 2005 23:55:03 -0000	1.11
++++ inc_carto.php3	11 May 2005 10:15:32 -0000	1.12
+@@ -13,18 +13,26 @@
+ //  TODO : Calcul des coordonn?es dans l'espace (pas de reprojection en terme de SIG)
+ function coords2wkt(	$selection_type,
+ 						$selection_coords, 
+-						$callageGeo = ""){
++						$callageGeo = "", 
++						$url_carte){
+ 	$GeoWidth 	= ($callageGeo['bottom_right']['x']-$callageGeo['top_left']['x']);
+ 	$GeoHeight 	= ($callageGeo['bottom_right']['y']-$callageGeo['top_left']['y']);
+-		
++	
++	// R?cup?rer largeur/hauteur de la carte associ?e :
++	$image = spip_fetch_array(spip_query("SELECT * FROM spip_documents WHERE id_document = $url_carte"));
++	$ImgWidth=$image['largeur'];
++	$ImgHeight=$image['hauteur'];
++
++	//echo "info : $ImgWidth, $ImgHeight // $GeoWidth, $GeoHeight";
++
+ 	$coordpair = explode (';',$selection_coords);
+ 	
+ 	for ($i=0; $i<sizeof($coordpair); $i++)
+ 	{		
+ 		$coord[$i] 		= explode(',',$coordpair[$i]);
+-		$coord[$i][0] 	= $coord[$i][0];
+-		//$coord[$i][1] 	= $GeoHeight-$coord[$i][1];		// Calcul de l'Y par rapport au coin inf?rieur
+- 		$coord[$i][1] 	= $coord[$i][1];		// recu et stock? en pixels ...
++		$coord[$i][0] 	= $coord[$i][0]*$GeoWidth/$ImgWidth+$callageGeo['top_left']['x'];
++		$coord[$i][1] 	= ($ImgHeight-$coord[$i][1])*$GeoHeight/$ImgHeight+$callageGeo['top_left']['y'];		// Calcul de l'Y par rapport au coin inf?rieur
++ 		//$coord[$i][1] 	= $coord[$i][1];		// recu et stock? en pixels ... non ok si approche SIG
+ 		$coordpair[$i] 	= implode(' ',$coord[$i]);
+ 	}
+ 	$wktCoords = implode(',', $coordpair);
+@@ -32,14 +40,180 @@
+ 	return $selection_type."(".$wktCoords.")";			// G?om?trie au format WKT
+ }
+ 
++function getImgWidth ($url_carte)
++{
++	$image = spip_fetch_array(spip_query("SELECT largeur FROM spip_documents WHERE id_document = $url_carte"));
++	return $image['largeur'];
++}
++function getImgHeight ($url_carte)
++{
++	$image = spip_fetch_array(spip_query("SELECT hauteur FROM spip_documents WHERE id_document = $url_carte"));
++	return $image['hauteur'];
++}
++
++/*
++ *   +---------------------------------------------+
++ *    Nom du Filtre : WKT to SHAPE 
++ *   +---------------------------------------------+
++ *    Date : mercredi 09 avril 2003
++ *    Auteur : 
++ *    site :  
++ *   +---------------------------------------------+
++ *    Fonctions de ce filtre :
++ *     Appelez le dans vos squellette tout simplement
++ *     par : [(#GEOMETRIE|wkt2shape)]
++ *   +---------------------------------------------+
++ *  
++ * Pour toute suggestion, remarque, proposition d'ajout
++ * reportez-vous au forum de l'article :
++ * http://www.uzine.net/spip_contrib/
++ *
++ */
++function wkt2shape($geometrie, $format = "HTML"){
++	$wktGeomType = substr($geometrie,0,strpos($geometrie,"("));
++	switch ($format){
++		case "HTML":
++			if (strcasecmp($wktGeomType,"POLYGON")==0)
++				return "POLY"; 
++			if (strcasecmp($wktGeomType,"POINT")==0)
++				return "CIRCLE"; 
++			// HTML Image map ne supporte pas les lignes
++		break;
++		case "SVG":
++			if (strcasecmp($wktGeomType,"POLYGON")==0)
++				return "polygon"; 
++			if (strcasecmp($wktGeomType,"POINT")==0)
++				return "circle"; 
++			if (strcasecmp($wktGeomType,"LINE")==0)
++				return "polyline"; 
++		break;
++	}
++}
++
++/*
++ *   +---------------------------------------------+
++ *    Nom du Filtre : WKT to COORDS
++ *   +---------------------------------------------+
++ *    Date : mercredi 09 avril 2003
++ *    Auteur : 
++ *    site :  
++ *   +---------------------------------------------+
++ *    Fonctions de ce filtre :
++ *     Appelez le dans vos squellette tout simplement
++ *     par : [(#GEOMETRIE|wkt2coords)]
++ *   +---------------------------------------------+
++ *  
++ * Pour toute suggestion, remarque, proposition d'ajout
++ * reportez-vous au forum de l'article :
++ * http://www.uzine.net/spip_contrib/
++ *
++ */
++function wkt2coords($geometrie, $format = "HTML", $callage = "", $url_carte = ""){
++	$wktGeomType = substr($geometrie,0,strpos($geometrie,"("));
++	$wktGeom 	= substr($geometrie,strpos($geometrie,"(")+1,-1);
++	
++	$callage 	= worldfile2array ($callage);
++	
++	$GeoWidth 	= ($callage['bottom_right']['x']-$callage['top_left']['x']);
++	$GeoHeight 	= ($callage['bottom_right']['y']-$callage['top_left']['y']);
++	
++	$ImgWidth = getImgWidth ($url_carte);
++	$ImgHeight = getImgHeight ($url_carte);;
++	
++	$radius		 = 3;	// TODO : Param?tre (ou fonction du callage ?) pr?f?rable car fonction des projections 5 peut ?tre bcp trop petit
++	$rgeo 		 = $radius*$GeoWidth/$ImgWidth;
++	switch ($format){
++		case "HTML":
++			// Pour obtenir des objets HTML/MAP ...
++			// 	S?parateur coordonn?es ',' / S?parateur paires de coordonn?es ','
++			$coordpair = explode (',',$wktGeom);
++			
++			for ($i=0; $i<sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= ($coord[$i][0]-$callage['top_left']['x'])/$GeoWidth*$ImgWidth;
++				$coord[$i][1] 	= ($callage['bottom_right']['y']-$coord[$i][1])/$GeoHeight*$ImgHeight;		// Calcul de l'Y par rapport au coin inf?rieur
++ 				$coordpair[$i] 	= implode(',',$coord[$i]);
++			}
++			$wktGeom = implode(',', $coordpair);
++
++			if (strcasecmp($wktGeomType,"POLYGON")==0)
++				return $wktGeom;
++			if (strcasecmp($wktGeomType,"POINT")==0)
++				return $wktGeom.",".$radius;
++		break;
++		case "HTMLDIV":
++			// Pour obtenir des objets HTML/DIV ...
++			// Pour les polygones, la moyenne des valeurs
++			// Pour les points, la valeur
++			$coordpair = explode (',',$wktGeom);
++			
++			for ($i=0; $i<sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= ($coord[$i][0]-$callage['top_left']['x'])/$GeoWidth*$ImgWidth;
++				$coord[$i][1] 	= ($callage['bottom_right']['y']-$coord[$i][1])/$GeoHeight*$ImgHeight;		// Calcul de l'Y par rapport au coin inf?rieur
++ 				$x 				+= $coord[$i][1];
++				$y				+= $coord[$i][0];
++			}
++			return "left: ".$y/$i."px;top: ".$x/$i."px;";
++					
++		break;		
++		case "JSDHTML":
++			// Pour obtenir des objets HTML/MAP pour la superpo avec l'interface DHTML...
++			$coordpair = explode (',',$wktGeom);
++			
++			for ($i=0; $i<sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= ($coord[$i][0]-$callage['top_left']['x'])/$GeoWidth*$ImgWidth;
++				$coord[$i][1] 	= ($callage['bottom_right']['y']-$coord[$i][1])/$GeoHeight*$ImgHeight;		// Calcul de l'Y par rapport au coin inf?rieur
++ 				$coord[$i][1]   = $ImgHeight/2-($coord[$i][1]-$ImgHeight/2);								// Pour que le dessin DHTML soit ok 
++ 				$coordpair[$i] 	= implode(',',$coord[$i]);
++			}
++			$wktGeom = implode(',', $coordpair);
++
++			return $wktGeom;
++		break;
++		case "SVG":
++		case "SVGGEO":
++			// Pour obtenir des objets SVG ...
++			// Conservation des Y selon le format WKT car en coordonn?es g?ographique
++			// S?parateur coordonn?es ' ' / S?parateur paires de coordonn?es ','
++			$coordpair = explode (',',$wktGeom);
++			
++			for ($i=0; $i<sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= $coord[$i][0];
++				$coord[$i][1] 	= $coord[$i][1]*-1;
++ 				$coordpair[$i] 	= implode(' ' ,$coord[$i]);
++			}
++			$wktGeom = implode(',', $coordpair);
++
++			if (strcasecmp($wktGeomType,"POLYGON")==0 || strcasecmp($wktGeomType,"LINE")==0)
++			{  	return "points=\"".$wktGeom."\"";		
++			}elseif (strcasecmp($wktGeomType,"POINT")==0)
++			{	$coordTab = explode (" ", $wktGeom);
++				return "cx=\"".$coordTab[0]."\" cy=\"".$coordTab[1]."\" r=\"".$rgeo."\"";
++			}
++		break;
++	}
++}
++
++
++
++
+ 
+ 
+ // D?finition du callage ? partir de la dimension de l'image
++// Option par d?faut / le callage est d?fini ? la main si une projection est utilis?e
+ function array2worldfile($mArray){	
+ 	return "polygon(0 0,".$mArray['largeur']." ".$mArray['hauteur'].")";
+ }
+ 
+ 
++
+ function embed_carto_url($id_carte, $url_parse) {
+ 	$lURL = $url_parse['path']."/carto.php3?id_carte=".$id_carte."&scale=".$_GET['scale']."&x=".$_GET['x']."&y=".$_GET['y'];
+ 	return $lURL;
+@@ -111,13 +285,25 @@
+ }
+ 
+ 
+-function afficher_carte_interface($id_carte,$retour,$fichier,$callage) {
++function afficher_carte_interface($id_carte,$retour,$fichier,$callage, $id_img = "-1") {
+ 	
+ 	$widthgeo=$callage['bottom_right']['x']-$callage['top_left']['x'];
+-	$heightgeo=$callage['bottom_right']['y']-$callage['top_left']['y'];
++	$heightgeo=$callage['top_left']['y']-$callage['bottom_right']['y'];
+ 	
+-	$width=$widthgeo;
+-	$height=$heightgeo;
++	//TODO : Possibilit?s :
++	// - vue non zoomable de la taille de l'image upload? (Actuel)
++	// - vue zoomable largeur fixe, hauteur variable , ...
++	
++	// R?cup?rer largeur/hauteur de la carte associ?e :
++	$image = spip_fetch_array(spip_query("SELECT * FROM spip_documents WHERE id_document = $id_img"));
++	
++	if ($image) {
++		$width=$image['largeur'];
++		$height=$image['hauteur'];
++	}else{
++		$width=400;
++		$height=300;
++	};
+ 	
+ 	$returned='<script type="text/javascript" src="js/x_core_nn4.js"></script>
+ <script type="text/javascript" src="js/x_dom_nn4.js"></script>
+@@ -125,7 +311,7 @@
+ <script type="text/javascript" src="js/navTools.js"></script>
+ <script type="text/javascript" src="js/graphTools.js"></script>
+ <form method="get" action="#nouveau_objet" name="carto_form">
+- <table border="1">
++ <table border="0">
+   <tr> 
+    <td colspan="7">
+ <script type="text/javascript">
+@@ -134,13 +320,12 @@
+     document.image = new Image;
+     document.image.src = \''.$fichier.'\';
+     
+-    if (xIE) {
++   if (xIE) {
+       dhtmlDivs = \'<div id="mapImageDiv" class="dhtmldiv" style="background-image:url(\'; 
+       dhtmlDivs += document.image.src;
+       dhtmlDivs += \');visibility:hidden;background-repeat:no-repeat;"></div>\';
+     } else {
+       dhtmlDivs = \'<div id="mapImageDiv" class="dhtmldiv" style="visibility:hidden"><img \';
+-      
+       dhtmlDivs += \'src="\' + document.image.src + \'" alt="Main map" title="" \';
+       dhtmlDivs += \'width="'.$width.'px" height="'.$height.'px" /></div>\';
+       
+@@ -182,10 +367,10 @@
+       
+       // map units values
+ 	  // dynamically given by the server
+-      dhtmlBox.mapHeight = '.$height.';
+-      dhtmlBox.boxx = 470000;
+-      dhtmlBox.boxy = 46300;
+-      dhtmlBox.pixel_size = 924.83333333334;
++      dhtmlBox.mapHeight = '.$heightgeo.';
++      dhtmlBox.boxx = '.$callage['top_left']['x'].';
++      dhtmlBox.boxy = '.($callage['bottom_right']['y']).';
++      dhtmlBox.pixel_size = '.$widthgeo/$width.';
+       dhtmlBox.dist_msg = \'Approx. distance: \';
+       dhtmlBox.dist_unit = \' m.\';
+       dhtmlBox.surf_msg = \'Approx. surface: \';
+@@ -223,31 +408,31 @@
+    </td>
+   </tr>
+   <tr>
+-   <td> 
+-    <input type="radio" name="tool" value="rectangle,submit,crossHair,zoom_in"  id="zoom_in" onclick="dhtmlBox.changeTool()" />
+-          zoom_in<br />
++   <td> Dessiner un objet
++    <!--<input type="radio" name="tool" value="rectangle,submit,crossHair,zoom_in"  id="zoom_in" onclick="dhtmlBox.changeTool()" />
++          zoom_in<br />-->
+    </td>
+    <td>
+-    <input type="radio" name="tool" value="point,submit,crossHair,zoom_out"  id="zoom_out" onclick="dhtmlBox.changeTool()" />
+-          zoom out<br />
++    <!--<input type="radio" name="tool" value="point,submit,crossHair,zoom_out"  id="zoom_out" onclick="dhtmlBox.changeTool()" />
++          zoom out<br />-->
+    </td>
+    <td>
+-    <input type="radio" name="tool" value="pan,submit,move,pan"  id="pan" onclick="dhtmlBox.changeTool()" />
+-          pan<br />
++    <!--<input type="radio" name="tool" value="pan,submit,move,pan"  id="pan" onclick="dhtmlBox.changeTool()" />
++          pan<br />-->
+    </td>
+    <td>
+-    <input type="radio" name="tool" value="rectangle,submit,help,query"  id="query" onclick="dhtmlBox.changeTool()" />
+-          query<br />
++    <!--<input type="radio" name="tool" value="rectangle,submit,help,query"  id="query" onclick="dhtmlBox.changeTool()" />
++          Rectangle<br />-->
+    </td>
+    <td>
+     <input type="radio" name="tool" value="point,submit,crossHair,point"   id="point" onclick="dhtmlBox.changeTool()" />
+-          point submit<br />
++          Point<br />
+    </td>
+    <td>
+     <input type="radio" name="tool" value="line,submit,crossHair,line"   id="line" onclick="dhtmlBox.changeTool()" />
+-          line submit<br />
+-          </td><td><input type="radio" name="tool" value="polygon,submit,crossHair,polygon"   checked="checked"  id="polygon" onclick="dhtmlBox.changeTool()" />
+-          polygon submit<br />
++          Ligne<br />
++   </td><td><input type="radio" name="tool" value="polygon,submit,crossHair,polygon"   checked="checked"  id="polygon" onclick="dhtmlBox.changeTool()" />
++          Polygone<br />
+    </td>
+   </tr>
+  </table>
+@@ -331,6 +516,45 @@
+ 	echo fin_block();
+ 
+ 	fin_cadre_relief();
++}
++
++
++/*
++ * Formulaire d'affichage des SRS 
++ * 
++ * - Initialisation avec la valeur d'un SRS
++ * - 2 options : 
++ * 		* S?lection d'un SRS d?j? en base
++ *  	* Ajout d'un SRS dans la base
++ * 
++ */
++function afficher_srs ($id_srs=''){
++
++	$query = "SELECT * FROM spip_carto_srs order by code asc";
++	$result = spip_query($query);
++	$nombre_srs = spip_num_rows($result);
++
++	if (!$nombre_srs) return;
++
++	echo "<a name='srs'></a>";
++	
++	debut_cadre_enfonce("carte-24.gif", false, "", _L('Syst?me de coordonn?es'));
++	
++	echo "<select name='id_srs' id='id_srs'>";
++	while ($row = spip_fetch_array($result)) {
++		$id_carto_srs = $row['id_carto_srs'];
++		$label = $row['label'];
++		$code = typo($row['code']);
++		
++		if ($id_carto_srs == $id_srs)
++			echo "<option selected value='".$id_carto_srs."''>".typo($label)." (".typo($code) .")"."</option>";
++		else
++			echo "<option value='".$id_carto_srs."''>".typo($label)." (".typo($code) .")"."</option>";
++	}
++	echo "</select>";
++
++	fin_cadre_enfonce();
++
+ }
+ 
+ ?>
+
+
+
+From fxp at berlios.de  Wed May 11 12:16:38 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:16:38 +0200
+Subject: [Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.9,1.10
+Message-ID: <200505111016.j4BAGcDo020482@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv20476/ecrire
+
+Modified Files:
+	carte_edit.php3 
+Log Message:
+SRS / Suppression de tous les objets / Import objets
+
+Index: carte_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/carte_edit.php3,v
+retrieving revision 1.9
+retrieving revision 1.10
+diff -u -d -r1.9 -r1.10
+--- carte_edit.php3	31 Mar 2005 15:57:20 -0000	1.9
++++ carte_edit.php3	11 May 2005 10:16:36 -0000	1.10
+@@ -1,4 +1,4 @@
+-<?php
++ <?php
+ 
+ include ("inc.php3");
+ include_ecrire ("inc_documents.php3");
+@@ -82,11 +82,17 @@
+ $carte_link = new Link("carte_edit.php3");
+ $carte_link->addVar('id_carte', $id_carte);
+ if ($retour) $carte_link->addVar('retour', $retour);
++
+ $carte_supplink = new Link("carte_edit.php3");
+ $carte_supplink->addVar('id_carte', $id_carte);
+ $carte_supplink->addVar('supp_carte', $id_carte);
+ if ($retour) $carte_supplink->addVar('retour', $retour);
+ 
++$carte_importlink = new Link("carte_import.php3");
++$carte_importlink->addVar('id_carte', $id_carte);
++if ($retour) $carte_importlink->addVar('retour', $retour);
++
++
+ //
+ // Modifications des objets de la carte
+ //
+@@ -95,7 +101,7 @@
+ 
+ 	// Ajout d'un objet
+ 	if ($selection_type) {
+-		$geometrie=coords2wkt($selection_type,$selection_coords, worldfile2array($row['callage'])); // Si pas de fonction de zoom le callage correspond bien ? la valeur. Sinon avec zoom, il faut passer les coordonn?es g?ographiques de la vue en cours ....
++		$geometrie=coords2wkt($selection_type,$selection_coords, worldfile2array($row['callage']), $url_carte); // Si pas de fonction de zoom le callage correspond bien ? la valeur. Sinon avec zoom, il faut passer les coordonn?es g?ographiques de la vue en cours ....
+ 		$objet_titre = _L("Nouvel objet");
+ 		$url_objet = "#";
+ 		//TODO : passer tout ca en spip_abstract ...
+@@ -129,7 +135,12 @@
+ 		$query = "DELETE FROM spip_carto_objets WHERE id_carto_objet=$supp_objet";
+ 		$result = spip_query($query);
+ 	}
+-	
++	// Suppression de tous les objets de la carte
++	if ($supp_objet_all) {
++		//TODO : passer tout ca en spip_abstract ...
++		$query = "DELETE FROM spip_carto_objets WHERE id_carto_carte=$id_carte";
++		$result = spip_query($query);
++	}
+ }
+ 
+ 
+@@ -217,7 +228,7 @@
+ 		$lurl_carte="../spip_carto.php?fond_carte=".urlencode($url_carte);
+ 		$tabcallage=worldfile2array($callage);
+    	
+-   		echo afficher_carte_interface($id_carte,$retour,$lurl_carte,$tabcallage);
++   		echo afficher_carte_interface($id_carte,$retour,$lurl_carte,$tabcallage, $url_carte);
+ 				
+ 		echo fin_block();
+ 		echo "</div>\n";
+@@ -291,9 +302,10 @@
+ 		echo $callage;
+ 		echo "</textarea>";
+ 
++		afficher_srs ();
+ 
+-		echo "<input type='hidden' name='id_srs' id='srs_carte' ".
+-			"value=\"".$id_srs."\" size='40'>";
++		/*echo "<input type='hidden' name='id_srs' id='srs_carte' ".
++			"value=\"".$id_srs."\" size='40'>";*/
+ 	}
+ 	else {
+ 		echo "<strong><label for='url_carte_carte'>"._L("Fond de carte")."</label></strong> "._T('info_obligatoire_02'). "<br />"._L("(Num?ro de l'image Spip ou URL de l'image)");
+@@ -308,10 +320,11 @@
+ 		echo "</textarea><br />\n";
+ 
+ 
+-		echo "<strong><label for='srs_carte'>"._L("S.R.S. de la carte")."</label></strong> "._T('info_obligatoire_02');
++		afficher_srs ($id_srs);
++		/*echo "<strong><label for='srs_carte'>"._L("S.R.S. de la carte")."</label></strong> "._T('info_obligatoire_02');
+ 		echo "<br />";
+ 		echo "<input type='text' name='id_srs' id='srs_carte' CLASS='formo' ".
+-			"value=\"".$id_srs."\" size='40'><br />\n";
++			"value=\"".$id_srs."\" size='40'><br />\n";*/
+ 	}
+ 	
+ 	
+@@ -323,18 +336,33 @@
+ 	//
+ 	// Modifier / supprimer les objets
+ 	//
+-
+-	$query = "SELECT * FROM spip_carto_objets WHERE id_carto_carte=$id_carte";
+-	$result = spip_query($query);
+-	
+-	if (spip_num_rows($result)>0) {
++	if (!$new) {
+ 		echo "<a name='objets'></a>";
+ 		echo "<p><hr><p>\n";
+ 		echo "<div class='verdana3'>";
+ 		echo "<strong>"._L("Objets de la carte")."</strong><br />\n";
+-		echo _L("Vous pouvez ici modifier et supprimer les objets de la carte.");
++		echo _L("Vous pouvez ici importer, modifier et supprimer les objets de la carte.");
+ 		echo "</div>\n";
++
++		echo "<br />\n";
++		echo "<div align='$spip_lang_right'>";
++		// Icone importer des objets
++		icone(_L("Importer des objets dans la carte"), $carte_importlink->getURL(), "carte-24.gif", "creer.gif");
++		echo "</div>\n";
++	}
++
++	$query = "SELECT * FROM spip_carto_objets WHERE id_carto_carte=$id_carte";
++	$result = spip_query($query);
+ 	
++	if (spip_num_rows($result)>0) {
++		// Icone supprimer tous les objets de la carte
++		echo "<div align='$spip_lang_right'>";
++		$carte_suppallobjlink = $carte_link;
++		$carte_suppallobjlink->addVar('supp_objet_all', 'ok');
++		icone(_L("Supprimer tous les objets de la carte"), $carte_suppallobjlink->getURL(), "carte-24.gif", "supprimer.gif");
++		echo "</div>\n";
++		
++
+ 		while ($t = spip_fetch_array($result)) {
+ 	
+ 			$id_objet= $t['id_carto_objet'];
+@@ -402,17 +430,19 @@
+ 				echo "</div>\n";
+ 				echo "</form>";
+ 				
+-				$geoArray= explode(',',substr($geometrie,strpos($geometrie,"(")+1,-1));
++				
++				// Objet g?om?trique pour l'affichage DHTML
++				$mygeom = wkt2coords($geometrie, "JSDHTML", $callage, $url_carte); 
++				$geoArray= explode(',',$mygeom);
+ 				echo "<script type=\"text/javascript\">/*<![CDATA[*/";
+ 		  		echo "geoArray_".$id_objet."=new Array();\n";
+-		  		for ($i=0; $i<count($geoArray) ; $i++) {
+-					$pointArray=explode(' ',$geoArray[$i]);
+-					echo "var geoPoint_".$id_objet."_".$i."=new Array(".$pointArray[0].",".$pointArray[1].");\n";
+-					echo "geoArray_".$id_objet."[".$i."]=geoPoint_".$id_objet."_".$i.";\n";
++		  		for ($i=0; $i<count($geoArray) ; $i=$i+2) {
++					echo "var geoPoint_".$id_objet."_".($i/2)."=new Array(".$geoArray[$i].",".$geoArray[$i+1].");\n";
++					echo "geoArray_".$id_objet."[".($i/2)."]=geoPoint_".$id_objet."_".($i/2).";\n";
+ 		  		}
+ 		  		$geoTypex= explode('(',$geometrie);
+ 		  		$geoType= $geoTypex[0];
+-//		  		echo "alert('".$geometrie."=>".$geoType."');\n";
++
+ 		  		switch ($geoType){
+ 		  			case 'circle':
+ 		  			case 'CIRCLE':
+
+
+
+From fxp at berlios.de  Wed May 11 12:17:06 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:17:06 +0200
+Subject: [Spip-carto-cvs] spipcarto carto-proto1.1.sql,1.1,1.2
+Message-ID: <200505111017.j4BAH6Do020512@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv20504
+
+Modified Files:
+	carto-proto1.1.sql 
+Log Message:
+SRS
+
+Index: carto-proto1.1.sql
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/carto-proto1.1.sql,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- carto-proto1.1.sql	8 Feb 2005 15:10:10 -0000	1.1
++++ carto-proto1.1.sql	11 May 2005 10:17:04 -0000	1.2
+@@ -1,96 +1,109 @@
+-#
+-# Table structure for table 'spip_carto_cartes'
+-#
+-
+-CREATE TABLE `spip_carto_cartes` (
+-  `id_carto_carte` smallint(5) unsigned NOT NULL auto_increment,
+-  `url_carte` varchar(255) NOT NULL default '',
+-  `titre` varchar(255) NOT NULL default '',
+-  `texte` text NOT NULL,
+-  `callage` text NOT NULL,
+-  `id_srs` smallint(5) unsigned default NULL,
+-  `idx` enum('','1','non','oui','idx') NOT NULL default '',
+-  PRIMARY KEY  (`id_carto_carte`),
+-  KEY `titre` (`titre`)
+-) TYPE=MyISAM;
+-
+-
+-
+-#
+-# Table structure for table 'spip_carto_cartes_articles'
+-#
+-
+-CREATE TABLE `spip_carto_cartes_articles` (
+-  `id_carto_carte` smallint(5) unsigned NOT NULL default '0',
+-  `id_article` smallint(5) unsigned NOT NULL default '0',
+-  PRIMARY KEY  (`id_carto_carte`,`id_article`)
+-) TYPE=MyISAM;
+-
+-
+-
+-#
+-# Table structure for table 'spip_carto_objets'
+-#
+-
+-CREATE TABLE `spip_carto_objets` (
+-  `id_carto_objet` smallint(5) unsigned NOT NULL auto_increment,
+-  `id_carto_carte` smallint(5) unsigned NOT NULL default '0',
+-  `titre` varchar(255) NOT NULL default '',
+-  `texte` text NOT NULL,
+-  `url_objet` text,
+-  `url_logo` text,
+-  `geometrie` text,
+-  `idx` enum('','1','non','oui','idx') NOT NULL default '',
+-  PRIMARY KEY  (`id_carto_objet`),
+-  KEY `id_carte` (`id_carto_carte`),
+-  KEY `titre` (`titre`)
+-) TYPE=MyISAM;
+-
+-
+-
+-#
+-# Table structure for table 'spip_carto_srs'
+-#
+-
+-CREATE TABLE `spip_carto_srs` (
+-  `id_carto_srs` smallint(5) unsigned NOT NULL auto_increment,
+-  `label` varchar(30) NOT NULL default '',
+-  `code` smallint(6) NOT NULL default '0',
+-  PRIMARY KEY  (`id_carto_srs`)
+-) TYPE=MyISAM;
+-
+-
+-
+-#
+-# Table structure for table 'spip_documents_carto_cartes'
+-#
+-
+-CREATE TABLE `spip_documents_carto_cartes` (
+-  `id_carto_carte` smallint(5) unsigned NOT NULL default '0',
+-  `id_document` smallint(5) unsigned NOT NULL default '0',
+-  `callage` text,
+-  PRIMARY KEY  (`id_carto_carte`,`id_document`)
+-) TYPE=MyISAM;
+-
+-
+-
+-#
+-# Table structure for table 'spip_mots_carto_objets'
+-#
+-
+-CREATE TABLE `spip_mots_carto_objets` (
+-  `id_carto_objet` smallint(5) unsigned NOT NULL default '0',
+-  `id_mot` smallint(5) unsigned NOT NULL default '0',
+-  `ordre` tinyint(3) unsigned NOT NULL default '0',
+-  PRIMARY KEY  (`id_carto_objet`,`id_mot`),
+-  KEY `ordre` (`ordre`)
+-) TYPE=MyISAM;
+-
+-
+-ALTER TABLE `spip_groupes_mots` ADD `carto_objets` CHAR( 3 ) NOT NULL AFTER `syndic` ;
+-
+-ALTER TABLE `spip_groupes_mots` ADD INDEX ( `carto_objets` ) ;
+-
+-
+-INSERT INTO spip_meta(nom, valeur, maj) VALUES ('activer_carto','oui',now());
++#
++# Table structure for table 'spip_carto_cartes'
++#
++
++CREATE TABLE `spip_carto_cartes` (
++  `id_carto_carte` smallint(5) unsigned NOT NULL auto_increment,
++  `url_carte` varchar(255) NOT NULL default '',
++  `titre` varchar(255) NOT NULL default '',
++  `texte` text NOT NULL,
++  `callage` text NOT NULL,
++  `id_srs` smallint(5) unsigned default NULL,
++  `idx` enum('','1','non','oui','idx') NOT NULL default '',
++  PRIMARY KEY  (`id_carto_carte`),
++  KEY `titre` (`titre`)
++) TYPE=MyISAM;
++
++
++
++#
++# Table structure for table 'spip_carto_cartes_articles'
++#
++
++CREATE TABLE `spip_carto_cartes_articles` (
++  `id_carto_carte` smallint(5) unsigned NOT NULL default '0',
++  `id_article` smallint(5) unsigned NOT NULL default '0',
++  PRIMARY KEY  (`id_carto_carte`,`id_article`)
++) TYPE=MyISAM;
++
++
++
++#
++# Table structure for table 'spip_carto_objets'
++#
++
++CREATE TABLE `spip_carto_objets` (
++  `id_carto_objet` smallint(5) unsigned NOT NULL auto_increment,
++  `id_carto_carte` smallint(5) unsigned NOT NULL default '0',
++  `titre` varchar(255) NOT NULL default '',
++  `texte` text NOT NULL,
++  `url_objet` text,
++  `url_logo` text,
++  `geometrie` text,
++  `idx` enum('','1','non','oui','idx') NOT NULL default '',
++  PRIMARY KEY  (`id_carto_objet`),
++  KEY `id_carte` (`id_carto_carte`),
++  KEY `titre` (`titre`)
++) TYPE=MyISAM;
++
++
++
++#
++# Table structure for table 'spip_carto_srs'
++#
++
++CREATE TABLE `spip_carto_srs` (
++  `id_carto_srs` smallint(5) unsigned NOT NULL auto_increment,
++  `label` varchar(50) NOT NULL default '',
++  `code` varchar(20) NOT NULL default '-1',
++  PRIMARY KEY  (`id_carto_srs`)
++) TYPE=MyISAM;
++
++
++
++#
++# Table structure for table 'spip_documents_carto_cartes'
++#
++
++CREATE TABLE `spip_documents_carto_cartes` (
++  `id_carto_carte` smallint(5) unsigned NOT NULL default '0',
++  `id_document` smallint(5) unsigned NOT NULL default '0',
++  `callage` text,
++  PRIMARY KEY  (`id_carto_carte`,`id_document`)
++) TYPE=MyISAM;
++
++
++
++#
++# Table structure for table 'spip_mots_carto_objets'
++#
++
++CREATE TABLE `spip_mots_carto_objets` (
++  `id_carto_objet` smallint(5) unsigned NOT NULL default '0',
++  `id_mot` smallint(5) unsigned NOT NULL default '0',
++  `ordre` tinyint(3) unsigned NOT NULL default '0',
++  PRIMARY KEY  (`id_carto_objet`,`id_mot`),
++  KEY `ordre` (`ordre`)
++) TYPE=MyISAM;
++
++
++ALTER TABLE `spip_groupes_mots` ADD `carto_objets` CHAR( 3 ) NOT NULL AFTER `syndic` ;
++
++ALTER TABLE `spip_groupes_mots` ADD INDEX ( `carto_objets` ) ;
++
++INSERT INTO spip_carto_srs (id_carto_srs, label, code) VALUES ('-1', 'Inconnu', '-1');
++
++# Projection FRANCE METROPOLITAINE
++INSERT INTO spip_carto_srs (label, code) VALUES ('NTF (Paris) / Lambert zone II', 'epsg:27572');
++INSERT INTO spip_carto_srs (label, code) VALUES ('NTF (Paris) / Lambert zone III', 'epsg:27573');
++INSERT INTO spip_carto_srs (label, code) VALUES ('NTF (Paris) / Lambert zone I', 'epsg:27571');
++INSERT INTO spip_carto_srs (label, code) VALUES ('NTF (Paris) / Lambert zone IV', 'epsg:27574');
++# PROJECTION DOM TODO
++# PROJECTION MONDE (UTM TODO)
++INSERT INTO spip_carto_srs (label, code) VALUES ('WGS 84', 'epsg:4326');
++# PROJECTION EUROPE
++INSERT INTO spip_carto_srs (label, code) VALUES ('ED50', 'epsg:4230');
++
++
++INSERT INTO spip_meta(nom, valeur, maj) VALUES ('activer_carto','oui',now());
+ INSERT INTO spip_meta(nom, valeur, maj) VALUES ('carto_mots','oui',now());
+
+
+
+From fxp at berlios.de  Wed May 11 12:17:22 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:17:22 +0200
+Subject: [Spip-carto-cvs] spipcarto mes_fonctions.php3,1.8,1.9
+Message-ID: <200505111017.j4BAHMDo020537@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv20529
+
+Modified Files:
+	mes_fonctions.php3 
+Log Message:
+
+
+Index: mes_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/mes_fonctions.php3,v
+retrieving revision 1.8
+retrieving revision 1.9
+diff -u -d -r1.8 -r1.9
+--- mes_fonctions.php3	29 Mar 2005 15:16:35 -0000	1.8
++++ mes_fonctions.php3	11 May 2005 10:17:20 -0000	1.9
+@@ -1,157 +1,7 @@
+ <?php
++include "ecrire/inc_carto.php3";
+ 
+ 
+-/*
+- *   +---------------------------------------------+
+- *    Nom du Filtre : WKT to COORDS
+- *   +---------------------------------------------+
+- *    Date : mercredi 09 avril 2003
+- *    Auteur : 
+- *    site :  
+- *   +---------------------------------------------+
+- *    Fonctions de ce filtre :
+- *     Appelez le dans vos squellette tout simplement
+- *     par : [(#GEOMETRIE|wkt2coords)]
+- *   +---------------------------------------------+
+- *  
+- * Pour toute suggestion, remarque, proposition d'ajout
+- * reportez-vous au forum de l'article :
+- * http://www.uzine.net/spip_contrib/
+- *
+- */
+-function wkt2coords($geometrie, $format = "HTML", $callage = ""){
+-	$wktGeomType = substr($geometrie,0,strpos($geometrie,"("));
+-	$wktGeom 	= substr($geometrie,strpos($geometrie,"(")+1,-1);
+-	
+-	$callage 	= worldfile2array ($callage);
+-	
+-	$GeoWidth 	= ($callage['bottom_right']['x']-$callage['top_left']['x']);
+-	$GeoHeight 	= ($callage['bottom_right']['y']-$callage['top_left']['y']);
+-	
+-	$radius		 = 5;	// TODO : Param?tre (ou fonction du callage ?) pr?f?rable car fonction des projections 5 peut ?tre bcp trop petit
+-	switch ($format){
+-		case "HTML":
+-			// Pour obtenir des objets HTML/MAP ...
+-			// 	S?parateur coordonn?es ',' / S?parateur paires de coordonn?es ','
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i<sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= $coord[$i][0];
+-				$coord[$i][1] 	= $GeoHeight-$coord[$i][1];		// Calcul de l'Y par rapport au coin inf?rieur
+-				$coordpair[$i] 	= implode(',',$coord[$i]);
+-			}
+-			$wktGeom = implode(',', $coordpair);
+-
+-			if (strcasecmp($wktGeomType,"POLYGON")==0)
+-				return $wktGeom;
+-			if (strcasecmp($wktGeomType,"POINT")==0)
+-				return $wktGeom.",".$radius;
+-		break;
+-		case "HTMLDIV":
+-			// Pour obtenir des objets HTML/DIV ...
+-			// Pour les polygones, la moyenne des valeurs
+-			// Pour les points, la valeur
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i<sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= $coord[$i][0];
+-				$coord[$i][1] 	= $GeoHeight-$coord[$i][1];		// Calcul de l'Y par rapport au coin inf?rieur
+-				$x 				+= $coord[$i][1];
+-				$y				+= $coord[$i][0];
+-			}
+-			return "left: ".$y/$i."px;top: ".$x/$i."px;";
+-					
+-		break;		
+-		case "SVG":
+-			// Pour obtenir des objets SVG ...
+-			// Inversion des Y en mode dessin
+-			// 	S?parateur coordonn?es ' ' / S?parateur paires de coordonn?es ','
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i<sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= $coord[$i][0];
+-				$coord[$i][1] 	= $GeoHeight-$coord[$i][1];		// Calcul de l'Y par rapport au coin inf?rieur
+-				$coordpair[$i] 	= implode(' ' ,$coord[$i]);
+-			}
+-			$wktGeom = implode(',', $coordpair);
+-
+-			if (strcasecmp($wktGeomType,"POLYGON")==0 || strcasecmp($wktGeomType,"LINE")==0)
+-			{  	return "points=\"".$wktGeom."\"";		
+-			}elseif (strcasecmp($wktGeomType,"POINT")==0)
+-			{	$coordTab = explode (" ", $wktGeom);
+-				return "cx=\"".$coordTab[0]."\" cy=\"".$coordTab[1]."\" r=\"".$radius."\"";
+-			}
+-		break;
+-		case "SVGGEO":
+-			// Pour obtenir des objets SVG ...
+-			// Conservation des Y selon le format WKT car en coordonn?es g?ographique
+-			// S?parateur coordonn?es ' ' / S?parateur paires de coordonn?es ','
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i<sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= $coord[$i][0];
+-				$coord[$i][1] 	= $coord[$i][1]*-1;		// Y idem au WKT car gestion de la g?om?trie
+-				$coordpair[$i] 	= implode(' ' ,$coord[$i]);
+-			}
+-			$wktGeom = implode(',', $coordpair);
+-
+-			if (strcasecmp($wktGeomType,"POLYGON")==0 || strcasecmp($wktGeomType,"LINE")==0)
+-			{  	return "points=\"".$wktGeom."\"";		
+-			}elseif (strcasecmp($wktGeomType,"POINT")==0)
+-			{	$coordTab = explode (" ", $wktGeom);
+-				return "cx=\"".$coordTab[0]."\" cy=\"".$coordTab[1]."\" r=\"".$radius."\"";
+-			}
+-		break;
+-	}
+-}
+-
+-
+-/*
+- *   +---------------------------------------------+
+- *    Nom du Filtre : WKT to SHAPE 
+- *   +---------------------------------------------+
+- *    Date : mercredi 09 avril 2003
+- *    Auteur : 
+- *    site :  
+- *   +---------------------------------------------+
+- *    Fonctions de ce filtre :
+- *     Appelez le dans vos squellette tout simplement
+- *     par : [(#GEOMETRIE|wkt2shape)]
+- *   +---------------------------------------------+
+- *  
+- * Pour toute suggestion, remarque, proposition d'ajout
+- * reportez-vous au forum de l'article :
+- * http://www.uzine.net/spip_contrib/
+- *
+- */
+-function wkt2shape($geometrie, $format = "HTML"){
+-	$wktGeomType = substr($geometrie,0,strpos($geometrie,"("));
+-	switch ($format){
+-		case "HTML":
+-			if (strcasecmp($wktGeomType,"POLYGON")==0)
+-				return "POLY"; 
+-			if (strcasecmp($wktGeomType,"POINT")==0)
+-				return "CIRCLE"; 
+-			// HTML Image map ne supporte pas les lignes
+-		break;
+-		case "SVG":
+-			if (strcasecmp($wktGeomType,"POLYGON")==0)
+-				return "polygon"; 
+-			if (strcasecmp($wktGeomType,"POINT")==0)
+-				return "circle"; 
+-			if (strcasecmp($wktGeomType,"LINE")==0)
+-				return "polyline"; 
+-		break;
+-	}
+-}
+ 
+ 
+ //////////////////////////////////////////////////
+
+
+
+From fxp at berlios.de  Wed May 11 12:18:06 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:18:06 +0200
+Subject: [Spip-carto-cvs] spipcarto/squelettes carto_lien.html,1.2,1.3
+Message-ID: <200505111018.j4BAI6Do020593@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/squelettes
+In directory sheep:/tmp/cvs-serv20583/squelettes
+
+Modified Files:
+	carto_lien.html 
+Log Message:
+adaptation SRS
+
+Index: carto_lien.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/carto_lien.html,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- carto_lien.html	1 Mar 2005 17:37:07 -0000	1.2
++++ carto_lien.html	11 May 2005 10:18:03 -0000	1.3
+@@ -1,17 +1,19 @@
+-<div style="float: left;visibility: visible; margin: 0px; padding: 0px;">
++
++
++<div style="float: left;visibility: visible; margin: 0px; padding: 0px; height: 500px;">
+ 	<div style="position: absolute;">
+ 	<BOUCLE_carte(CARTO_CARTES){id_carto_carte}>
+ 		<B_objets>
+ 			<map name="map#ID_CARTO_CARTE">
+ 			<BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}>
+-			<area shape="[(#GEOMETRIE|wkt2shape)]" coords="[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE})]" href="#URL_OBJET" alt="#TITRE"/>
++			<area shape="[(#GEOMETRIE|wkt2shape)]" coords="[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE,#URL_CARTE})]" href="#URL_OBJET" alt="#TITRE"/>
+ 		</BOUCLE_objets>
+ 		</map>
+ 		</B_objets>
+ 		<img alt="#TITRE" src="#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]" usemap="#map#ID_CARTO_CARTE" border="1"/>
+ 		<BOUCLE_objets2(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}>
+-			<div style="position: absolute;margin: 0px; padding: 0px;[(#GEOMETRIE|wkt2coords{HTMLDIV,#CALLAGE})]border: 0px;">
+-			<a href="#URL_OBJET" alt="#TEXTE">
++			<div style="position: absolute;margin: 0px; padding: 0px;[(#GEOMETRIE|wkt2coords{HTMLDIV,#CALLAGE,#URL_CARTE})]border: 0px;">
++			<a href="#URL_OBJET" class="cartolabel" alt="#TEXTE">
+ 			<BOUCLE_mot(MOTS){id_carto_objet}{par titre}{0,1}>[(#LOGO_MOT)]
+ 			</BOUCLE_mot> #TITRE
+ 			</a>
+@@ -19,4 +21,4 @@
+ 		</BOUCLE_objets2>
+ 	</BOUCLE_carte>
+ 	</div>
+-</div>
+\ No newline at end of file
++</div>
+
+
+
+From fxp at berlios.de  Wed May 11 12:18:23 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:18:23 +0200
+Subject: [Spip-carto-cvs] spipcarto/squelettes carto_logo.html,1.2,1.3
+Message-ID: <200505111018.j4BAINDo020635@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/squelettes
+In directory sheep:/tmp/cvs-serv20623/squelettes
+
+Modified Files:
+	carto_logo.html 
+Log Message:
+adaptation SRS
+
+Index: carto_logo.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/carto_logo.html,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- carto_logo.html	1 Mar 2005 17:37:22 -0000	1.2
++++ carto_logo.html	11 May 2005 10:18:20 -0000	1.3
+@@ -1,10 +1,12 @@
++<!-- TODO : Logo ? revoir PNG en dur !
++-->
+ <div style="position: relative;visibility: visible; margin: 0px; padding: 0px;">
+ 	<div style="position: absolute;">
+ 	<BOUCLE_carte(CARTO_CARTES){id_carto_carte}>
+ 		<B_objets>
+ 			<map name="map#ID_CARTO_CARTE">
+ 			<BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}>
+-			<area shape="[(#GEOMETRIE|wkt2shape)]" coords="[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE})]" href="#URL_OBJET" alt="#TITRE"/>
++			<area shape="[(#GEOMETRIE|wkt2shape)]" coords="[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE,#URL_CARTE})]" href="#URL_OBJET" alt="#TITRE"/>
+ 		</BOUCLE_objets>
+ 		</map>
+ 		</B_objets>
+@@ -13,7 +15,8 @@
+ 		
+ 		<BOUCLE_objets2(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}>
+ 			<a href="#URL_OBJET">
+-			<img style="position: absolute;margin: 0px; padding: 0px;[(#GEOMETRIE|wkt2coords{HTMLDIV,#CALLAGE})]border: 0px;" alt="#TEXTE" src="<BOUCLE_mot(MOTS){id_carto_objet=#ID_CARTO_OBJET}{par titre}{0,1}>IMG/moton[(#ID_MOT)].gif</BOUCLE_mot>" border="0"/>
++			<img style="position: absolute;margin: 0px; padding: 0px;[(#GEOMETRIE|wkt2coords{HTMLDIV,#CALLAGE,#URL_CARTE})]border: 0px;" alt="#TEXTE" 
++				src="<BOUCLE_mot(MOTS){id_mot=#URL_LOGO}{par titre}{0,1}>IMG/moton#ID_MOT.png</BOUCLE_mot>" border="0"/>
+ 			</a>
+ 		</BOUCLE_objets2>
+ 	</BOUCLE_carte>
+
+
+
+From fxp at berlios.de  Wed May 11 12:19:31 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:19:31 +0200
+Subject: [Spip-carto-cvs] spipcarto/squelettes carto_svgfile.html,1.4,1.5
+Message-ID: <200505111019.j4BAJVDo020702@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/squelettes
+In directory sheep:/tmp/cvs-serv20695/squelettes
+
+Modified Files:
+	carto_svgfile.html 
+Log Message:
+adaptation SRS
+
+Index: carto_svgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/carto_svgfile.html,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- carto_svgfile.html	29 Mar 2005 15:30:03 -0000	1.4
++++ carto_svgfile.html	11 May 2005 10:19:29 -0000	1.5
+@@ -1,6 +1,6 @@
+ <?php echo '<'.'?xml version="1.0" encoding="#CHARSET"?'.">\n"; ?>
+ <BOUCLE_carte(CARTO_CARTES){id_carto_carte}>
+-	<svg viewBox="[(#CALLAGE|worldfileLRX)] [(#CALLAGE|worldfileLRY)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
++	<svg viewBox="[(#CALLAGE|worldfileLRX)] [(#CALLAGE|worldfileULY)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+ 		<defs>
+ 		 <linearGradient id="myGradient" gradientTransform="rotate(45)">
+ 		  <stop offset="0%" style="stop-color:white"/>
+@@ -10,13 +10,13 @@
+ 		</defs>
+ 		
+ 		<g id="background" visibility="visible">
+-			<image x="0" y="0" width="[(#CALLAGE|worldfileWidth)]px" height="[(#CALLAGE|worldfileHeight)]px" xlink:href="#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]"/>
++			<image x="[(#CALLAGE|worldfileLRX)]" y="[(#CALLAGE|worldfileULY)]" width="[(#CALLAGE|worldfileWidth)]px" height="[(#CALLAGE|worldfileHeight)]px" xlink:href="#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]"/>
+ 		</g>
+ 		 
+ 		 
+ 		<g id="mainlayer">
+ 		 	<BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}>
+-		  		<a xlink:href="#URL_OBJET" alt="#TITRE"><[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVG,#CALLAGE})] style="fill:url(#myGradient);opacity:.7;"/></a>
++		  		<a xlink:href="#URL_OBJET" alt="#TITRE"><[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVG,#CALLAGE,#URL_CARTE})] style="fill:url(#myGradient);opacity:.7;"/></a>
+ 		 	</BOUCLE_objets>
+ 		</g>
+ 	</svg>
+
+
+
+From fxp at berlios.de  Wed May 11 12:19:49 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:19:49 +0200
+Subject: [Spip-carto-cvs] spipcarto/squelettes carto.html,1.2,1.3
+Message-ID: <200505111019.j4BAJnDo020724@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/squelettes
+In directory sheep:/tmp/cvs-serv20718/squelettes
+
+Modified Files:
+	carto.html 
+Log Message:
+adaptation SRS
+
+Index: carto.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/carto.html,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- carto.html	1 Mar 2005 17:38:45 -0000	1.2
++++ carto.html	11 May 2005 10:19:47 -0000	1.3
+@@ -1,4 +1,4 @@
+ <BOUCLE_carte(CARTO_CARTES){id_carto_carte}>
+ <img alt="#TITRE" src="#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]" usemap="#map#ID_CARTO_CARTE" border="0"/><B_objets><map name="map#ID_CARTO_CARTE"><BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}>
+-<area shape="[(#GEOMETRIE|wkt2shape)]" coords="[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE})]" href="#URL_OBJET" alt="#TITRE"/>
++<area shape="[(#GEOMETRIE|wkt2shape)]" coords="[(#GEOMETRIE|wkt2coords{HTML,#CALLAGE,#URL_CARTE})]" href="#URL_OBJET" alt="#TEXTE"/>
+ </BOUCLE_objets></map></B_objets></BOUCLE_carte>
+
+
+
+From fxp at berlios.de  Wed May 11 12:24:36 2005
+From: fxp at berlios.de (fxp at berlios.de)
+Date: Wed, 11 May 2005 12:24:36 +0200
+Subject: [Spip-carto-cvs] spipcarto/squelettes carto_geosvgfile.html,1.2,1.3
+Message-ID: <200505111024.j4BAOaDo021036@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/squelettes
+In directory sheep:/tmp/cvs-serv21030/squelettes
+
+Modified Files:
+	carto_geosvgfile.html 
+Log Message:
+adaptation SRS
+
+Index: carto_geosvgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/carto_geosvgfile.html,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- carto_geosvgfile.html	4 Mar 2005 13:14:57 -0000	1.2
++++ carto_geosvgfile.html	11 May 2005 10:24:33 -0000	1.3
+@@ -5,6 +5,54 @@
+ 	<script type="text/ecmascript" xlink:href="navigation.js"/>
+ 	<script type="text/ecmascript"><![CDATA[
+ 
++/*
++Scripts for SVG only webmapping application navigation tools
++Copyright (C) <2004>  <Andreas Neumann>
++Version 1.03, 2005-02-22
++neumann at karto.baug.ethz.ch
++http://www.carto.net/
++http://www.carto.net/neumann/
++
++Credits: numerous people on svgdevelopers at yahoogroups.com
++
++This ECMA script library is free software; you can redistribute it and/or
++modify it under the terms of the GNU Lesser General Public
++License as published by the Free Software Foundation; either
++version 2.1 of the License, or (at your option) any later version.
++
++This library is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++Lesser General Public License for more details.
++
++You should have received a copy of the GNU Lesser General Public
++License along with this library (http://www.carto.net/papers/svg/navigationTools/lesser_gpl.txt); if not, write to the Free Software
++Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++
++----
++
++current version: 1.02
++
++version history:
++1.0 initial version
++1.01 added cleanUp() method to map and dragObj objects, some fixes in the documentation
++1.02 fixed problems with double clicks, the second click of a double click is now ignored, using the evt.detail property
++1.03 introduced timestamp and nrLayerToLoad array for dynamic loading (getUrl)
++
++original document site: http://www.carto.net/papers/svg/navigationTools/
++Please contact the author in case you want to use code or ideas commercially.
++If you use this code, please include this copyright header, the included full
++LGPL 2.1 text and read the terms provided in the LGPL 2.1 license
++(http://www.gnu.org/copyleft/lesser.txt)
++
++-------------------------------
++
++Please report bugs and send improvements to neumann at karto.baug.ethz.ch
++If you use these scripts, please link to the original (http://www.carto.net/papers/svg/navigationTools/)
++somewhere in the source-code-comment or the "about" of your project and give credits, thanks!
++
++*/
++
+ 
+ /* slider.js */
+ //slider properties
+@@ -446,7 +494,7 @@
+ 				<!-- Couche d'objets SPIP -->
+ 				<B_objets>
+ 				<BOUCLE_objets(CARTO_OBJETS){id_carto_carte=#ID_CARTO_CARTE}>
+-				<a target='new' xlink:href='#URL_OBJET'><[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO})] style="fill:url(#MyGradient);" onmouseover="statusChange('#TEXTE');"/></a>
++				<a target='new' xlink:href='#URL_OBJET'><[(#GEOMETRIE|wkt2shape{SVG})] [(#GEOMETRIE|wkt2coords{SVGGEO,#CALLAGE,#URL_CARTE})] onmouseover="statusChange('#TEXTE');" style="opacity:.6;"/></a><!-- style="fill:url(#MyGradient);"-->
+ 				</BOUCLE_objets>
+ 				</B_objets>	
+ 			</g>
+
+
+

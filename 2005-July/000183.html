@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.1,1.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_geosvgfile.html%2C1.1%2C1.2&In-Reply-To=%3C200507041111.j64BBJqX020321%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000182.html">
+   <LINK REL="Next"  HREF="000184.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.1,1.2</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_geosvgfile.html%2C1.1%2C1.2&In-Reply-To=%3C200507041111.j64BBJqX020321%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.1,1.2">fxp at berlios.de
+       </A><BR>
+    <I>Mon Jul  4 13:11:19 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000182.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgwmsfile.html,1.1,1.2
+</A></li>
+        <LI>Next message: <A HREF="000184.html">[Spip-carto-cvs] spipcarto/ecrire/plugins plug_carto.php,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#183">[ date ]</a>
+              <a href="thread.html#183">[ thread ]</a>
+              <a href="subject.html#183">[ subject ]</a>
+              <a href="author.html#183">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/squelettes/template
+In directory sheep:/tmp/cvs-serv20228/squelettes/template
+
+Modified Files:
+	carto_geosvgfile.html 
+Log Message:
+Clean getOrthoImage
+
+Index: carto_geosvgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_geosvgfile.html,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- carto_geosvgfile.html	30 Jun 2005 10:09:35 -0000	1.1
++++ carto_geosvgfile.html	4 Jul 2005 11:11:17 -0000	1.2
+@@ -332,37 +332,14 @@
+ 			document.getElementById(&quot;myScaleTextH&quot;).firstChild.nodeValue = formatNumberString(myMainMap.curHeight.toFixed(myMainMap.nrDecimals)) + myMainMap.units;
+ 			//adopt line width of park boundary
+ 			document.getElementById(&quot;spipCartoObj&quot;).setAttributeNS(null,&quot;stroke-width&quot;,myMainMap.curWidth*0.005);	
+-			// Pour charger un claque WMS ... getOrthoImage();
++			
+ 		}
+ 		
+ 		function openWin (url) {
+ 			window.open(url, &quot;info&quot;);
+ 		}
+ 
+-
+-		//load usgs/terraserver orthoimage
+-		//you have to use full pixel values, otherwise an error appears
+-		function getOrthoImage() {
+-			var myRasterLayer = document.getElementById(&quot;DOQ&quot;);
+-			if (myRasterLayer.childNodes.length &gt; 0) {
+-				var oldImage = document.getElementById(&quot;DOQImage&quot;);
+-				myRasterLayer.removeChild(oldImage);
+-			}
+-			if (document.getElementById(&quot;DOQ&quot;).getAttributeNS(null,&quot;visibility&quot;) == &quot;visible&quot;) {
+-				var myRasterImage = document.createElementNS(svgNS,&quot;image&quot;);
+-				myRasterImage.setAttributeNS(null,&quot;x&quot;,myMainMap.curxOrig);
+-				myRasterImage.setAttributeNS(null,&quot;y&quot;,myMainMap.curyOrig);
+-				myRasterImage.setAttributeNS(null,&quot;width&quot;,myMainMap.curWidth);
+-				myRasterImage.setAttributeNS(null,&quot;height&quot;,myMainMap.curHeight);
+-				myRasterImage.setAttributeNS(null,&quot;id&quot;,&quot;DOQImage&quot;);
+-				var myImageUrl = &quot;<A HREF="http://www.sandre.fr/geo/wmszonage?version=1.1.1&amp;request=GetMap&amp;service=WMS&amp;Layers=CIBA&amp;Styles=&amp;SRS=EPSG:27572&amp;">http://www.sandre.fr/geo/wmszonage?version=1.1.1&amp;request=GetMap&amp;service=WMS&amp;Layers=CIBA&amp;Styles=&amp;SRS=EPSG:27572&amp;</A>&quot;;
+-				myImageUrl += &quot;BBOX=&quot; + parseInt(myMainMap.curxOrig) + &quot;,&quot; + (parseInt(myMainMap.curyOrig + myMainMap.curHeight) * -1);
+-				myImageUrl += &quot;,&quot; + parseInt(myMainMap.curxOrig + myMainMap.curWidth) + &quot;,&quot; + (parseInt(myMainMap.curyOrig) * -1);
+-				myImageUrl += &quot;&amp;width=&quot; + myMainMap.pixWidth + &quot;&amp;height=&quot; + myMainMap.pixHeight + &quot;&amp;format=image/png&quot;;
+-				myRasterImage.setAttributeNS(xlinkNS,&quot;xlink:href&quot;,myImageUrl);
+-				myRasterLayer.appendChild(myRasterImage);
+-			}
+-		}		
++	
+ 
+ 
+ ]]&gt;&lt;/script&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000182.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgwmsfile.html,1.1,1.2
+</A></li>
+	<LI>Next message: <A HREF="000184.html">[Spip-carto-cvs] spipcarto/ecrire/plugins plug_carto.php,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#183">[ date ]</a>
+              <a href="thread.html#183">[ thread ]</a>
+              <a href="subject.html#183">[ subject ]</a>
+              <a href="author.html#183">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

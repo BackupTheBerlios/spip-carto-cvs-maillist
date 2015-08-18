@@ -1,0 +1,2568 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_signatures.php3,NONE,1.1 filtery.js,NONE,1.1 mots_type.php3,1.3,1.4 inc_mots.php3,1.4,1.5 inc_serialbase.php3,1.3,1.4 inc_debug_sql.php3,1.5,1.6 inc_documents.php3,1.5,1.6 forum_envoi.php3,1.4,1.5 auteur_infos.php3,1.5,1.6 inc_acces.php3,1.5,1.6 mes_options.php3,1.4,1.5 mots_edit.php3,1.4,1.5 controle_petition.php3,1.2,1.3 inc_filtres.php3,1.6,1.7 inc_forum.php3,1.6,1.7 inc_version.php3,1.8,1.9 articles.php3,1.5,1.6 auteurs_edit.php3,1.5,1.6 rubriques_edit.php3,1.4,1.5 js_menu_rubriques.php,1.3,1.4 inc_majbase.php3,1.4,1.5 inc_barre.php3,1.2,1.3 inc_texte.php3,1.7,1.8 inc_sites.php3,1.5,1.6 articles_edit.php3,1.5,1.6 carte_edit.php3,1.12,1.13 inc_tidy.php,1.4,1.5 inc_getdocument.php3,1.5,1.6 inc_spip_sax.php,1.1,1.2 mots_tous.php3,1.2,1.3 inc_carto.php3,1.13,1.14 inc_abstract_sql.php3,1.2,1.3 inc_import.php3,1.5,1.6 inc_auth.php3,1.3,1.4 inc_db_mysql.php3,1.4,1.5 sites_edit.php3,1.4,1.5 inc_presentation.php3,1.8,1.9 sites.php3,1.3,1.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_signatures.php3%2CNONE%2C1.1%20filtery.js%2CNONE%2C1.1%20mots_type.php3%2C1.3%2C1.4%20inc_mots.php3%2C1.4%2C1.5%20inc_serialbase.php3%2C1.3%2C1.4%20inc_debug_sql.php3%2C1.5%2C1.6%20inc_documents.php3%2C1.5%2C1.6%20forum_envoi.php3%2C1.4%2C1.5%20auteur_infos.php3%2C1.5%2C1.6%20inc_acces.php3%2C1.5%2C1.6%20mes_options.php3%2C1.4%2C1.5%20mots_edit.php3%2C1.4%2C1.5%20controle_petition.php3%2C1.2%2C1.3%20inc_filtres.php3%2C1.6%2C1.7%20inc_forum.php3%2C1.6%2C1.7%20inc_version.php3%2C1.8%2C1.9%20articles.php3%2C1.5%2C1.6%20auteurs_edit.php3%2C1.5%2C1.6%20rubriques_edit.php3%2C1.4%2C1.5%20js_menu_rubriques.php%2C1.3%2C1.4%20inc_majbase.php3%2C1.4%2C1.5%20inc_barre.php3%2C1.2%2C1.3%20inc_texte.php3%2C1.7%2C1.8%20inc_sites.php3%2C1.5%2C1.6%20articles_edit.php3%2C1.5%2C1.6%20carte_edit.php3%2C1.12%2C1.13%20inc_tidy.php%2C1.4%2C1.5%20inc_getdocument.php3%2C1.5%2C1.6%20inc_spip_sax.php%2C1.1%2C1.2%20mots_tous.php3%2C1.2%2C1.3%20inc_carto.php3%2C1.13%2C1.14%20inc_abstract_sql.php3%2C1.2%2C1.3%20inc_import.php3%2C1.5%2C1.6%20inc_auth.php3%2C1.3%2C1.4%20inc_db_mysql.php3%2C1.4%2C1.5%20sites_edit.php3%2C1.4%2C1.5%20inc_presentation.php3%2C1.8%2C1.9%20sites.php3%2C1.3%2C1.4&In-Reply-To=%3C200507212147.j6LLlIqX024016%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000198.html">
+   <LINK REL="Next"  HREF="000196.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_signatures.php3,NONE,1.1 filtery.js,NONE,1.1 mots_type.php3,1.3,1.4 inc_mots.php3,1.4,1.5 inc_serialbase.php3,1.3,1.4 inc_debug_sql.php3,1.5,1.6 inc_documents.php3,1.5,1.6 forum_envoi.php3,1.4,1.5 auteur_infos.php3,1.5,1.6 inc_acces.php3,1.5,1.6 mes_options.php3,1.4,1.5 mots_edit.php3,1.4,1.5 controle_petition.php3,1.2,1.3 inc_filtres.php3,1.6,1.7 inc_forum.php3,1.6,1.7 inc_version.php3,1.8,1.9 articles.php3,1.5,1.6 auteurs_edit.php3,1.5,1.6 rubriques_edit.php3,1.4,1.5 js_menu_rubriques.php,1.3,1.4 inc_majbase.php3,1.4,1.5 inc_barre.php3,1.2,1.3 inc_texte.php3,1.7,1.8 inc_sites.php3,1.5,1.6 articles_edit.php3,1.5,1.6 carte_edit.php3,1.12,1.13 inc_tidy.php,1.4,1.5 inc_getdocument.php3,1.5,1.6 inc_spip_sax.php,1.1,1.2 mots_tous.php3,1.2,1.3 inc_carto.php3,1.13,1.14 inc_abstract_sql.php3,1.2,1.3 inc_import.php3,1.5,1.6 inc_auth.php3,1.3,1.4 inc_db_mysql.php3,1.4,1.5 sites_edit.php3,1.4,1.5 inc_presentation.php3,1.8,1.9 sites.php3,1.3,1.4</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_signatures.php3%2CNONE%2C1.1%20filtery.js%2CNONE%2C1.1%20mots_type.php3%2C1.3%2C1.4%20inc_mots.php3%2C1.4%2C1.5%20inc_serialbase.php3%2C1.3%2C1.4%20inc_debug_sql.php3%2C1.5%2C1.6%20inc_documents.php3%2C1.5%2C1.6%20forum_envoi.php3%2C1.4%2C1.5%20auteur_infos.php3%2C1.5%2C1.6%20inc_acces.php3%2C1.5%2C1.6%20mes_options.php3%2C1.4%2C1.5%20mots_edit.php3%2C1.4%2C1.5%20controle_petition.php3%2C1.2%2C1.3%20inc_filtres.php3%2C1.6%2C1.7%20inc_forum.php3%2C1.6%2C1.7%20inc_version.php3%2C1.8%2C1.9%20articles.php3%2C1.5%2C1.6%20auteurs_edit.php3%2C1.5%2C1.6%20rubriques_edit.php3%2C1.4%2C1.5%20js_menu_rubriques.php%2C1.3%2C1.4%20inc_majbase.php3%2C1.4%2C1.5%20inc_barre.php3%2C1.2%2C1.3%20inc_texte.php3%2C1.7%2C1.8%20inc_sites.php3%2C1.5%2C1.6%20articles_edit.php3%2C1.5%2C1.6%20carte_edit.php3%2C1.12%2C1.13%20inc_tidy.php%2C1.4%2C1.5%20inc_getdocument.php3%2C1.5%2C1.6%20inc_spip_sax.php%2C1.1%2C1.2%20mots_tous.php3%2C1.2%2C1.3%20inc_carto.php3%2C1.13%2C1.14%20inc_abstract_sql.php3%2C1.2%2C1.3%20inc_import.php3%2C1.5%2C1.6%20inc_auth.php3%2C1.3%2C1.4%20inc_db_mysql.php3%2C1.4%2C1.5%20sites_edit.php3%2C1.4%2C1.5%20inc_presentation.php3%2C1.8%2C1.9%20sites.php3%2C1.3%2C1.4&In-Reply-To=%3C200507212147.j6LLlIqX024016%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_signatures.php3,NONE,1.1 filtery.js,NONE,1.1 mots_type.php3,1.3,1.4 inc_mots.php3,1.4,1.5 inc_serialbase.php3,1.3,1.4 inc_debug_sql.php3,1.5,1.6 inc_documents.php3,1.5,1.6 forum_envoi.php3,1.4,1.5 auteur_infos.php3,1.5,1.6 inc_acces.php3,1.5,1.6 mes_options.php3,1.4,1.5 mots_edit.php3,1.4,1.5 controle_petition.php3,1.2,1.3 inc_filtres.php3,1.6,1.7 inc_forum.php3,1.6,1.7 inc_version.php3,1.8,1.9 articles.php3,1.5,1.6 auteurs_edit.php3,1.5,1.6 rubriques_edit.php3,1.4,1.5 js_menu_rubriques.php,1.3,1.4 inc_majbase.php3,1.4,1.5 inc_barre.php3,1.2,1.3 inc_texte.php3,1.7,1.8 inc_sites.php3,1.5,1.6 articles_edit.php3,1.5,1.6 carte_edit.php3,1.12,1.13 inc_tidy.php,1.4,1.5 inc_getdocument.php3,1.5,1.6 inc_spip_sax.php,1.1,1.2 mots_tous.php3,1.2,1.3 inc_carto.php3,1.13,1.14 inc_abstract_sql.php3,1.2,1.3 inc_import.php3,1.5,1.6 inc_auth.php3,1.3,1.4 inc_db_mysql.php3,1.4,1.5 sites_edit.php3,1.4,1.5 inc_presentation.php3,1.8,1.9 sites.php3,1.3,1.4">stef at berlios.de
+       </A><BR>
+    <I>Thu Jul 21 23:47:18 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000198.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_test.html,NONE,1.1 Copy of carto_svgfilex.html,NONE,1.1 carto_map.html,NONE,1.1 style_carto_svgfilex.css,NONE,1.1 Copy (2) of carto_svgfilex.html,NONE,1.1 carto_svgx.html,1.1,1.2 cartov2.html,1.1,NONE carto_svg2.html,1.1,NONE
+</A></li>
+        <LI>Next message: <A HREF="000196.html">[Spip-carto-cvs] spipcarto/squelettes article.html,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv22230/ecrire
+
+Modified Files:
+	mots_type.php3 inc_mots.php3 inc_serialbase.php3 
+	inc_debug_sql.php3 inc_documents.php3 forum_envoi.php3 
+	auteur_infos.php3 inc_acces.php3 mes_options.php3 
+	mots_edit.php3 controle_petition.php3 inc_filtres.php3 
+	inc_forum.php3 inc_version.php3 articles.php3 
+	auteurs_edit.php3 rubriques_edit.php3 js_menu_rubriques.php 
+	inc_majbase.php3 inc_barre.php3 inc_texte.php3 inc_sites.php3 
+	articles_edit.php3 carte_edit.php3 inc_tidy.php 
+	inc_getdocument.php3 inc_spip_sax.php mots_tous.php3 
+	inc_carto.php3 inc_abstract_sql.php3 inc_import.php3 
+	inc_auth.php3 inc_db_mysql.php3 sites_edit.php3 
+	inc_presentation.php3 sites.php3 
+Added Files:
+	inc_signatures.php3 filtery.js 
+Log Message:
+synchro CVS 20050719
+
+--- NEW FILE: inc_signatures.php3 ---
+&lt;?php
+
+/***************************************************************************\
+ *  SPIP, Systeme de publication pour l'internet                           *
+ *                                                                         *
+ *  Copyright (c) 2001-2005                                                *
+ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
+ *                                                                         *
+ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
+ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
+\***************************************************************************/
+
+
+//
+// Ce fichier ne sera execute qu'une fois
+if (defined(&quot;_ECRIRE_INC_SIGNATURES&quot;)) return;
+define(&quot;_ECRIRE_INC_SIGNATURES&quot;, &quot;1&quot;);
+
+include_ecrire('inc_urls.php3');
+
+function controle_signatures($script, $id, $debut, $where, $order, $limit=10) {
+	global $couleur_foncee;
+	
+	$where = tronconne_signatures($script, $id, $debut, $where, $limit);
+	$request = spip_query(&quot;SELECT * FROM spip_signatures &quot; .
+			      ($where ? &quot; WHERE $where&quot; : &quot;&quot;) .
+			      ($order ? &quot; ORDER BY $order&quot; : &quot;&quot;) .
+			      &quot; LIMIT &quot; . ($debut ? &quot;$debut,&quot; : &quot;&quot;) . $limit);
+
+ 	while($row=spip_fetch_array($request)){
+		$id_signature = $row['id_signature'];
+		$id_article = $row['id_article'];
+		$date_time = $row['date_time'];
+		$nom_email= typo(echapper_tags($row['nom_email']));
+		$ad_email = echapper_tags($row['ad_email']);
+		$nom_site = typo(echapper_tags($row['nom_site']));
+		$url_site = echapper_tags($row['url_site']);
+		$statut = $row['statut'];
+		
+		echo &quot;&lt;P&gt;&quot;;
+		
+		if ($statut==&quot;poubelle&quot;){
+			echo &quot;&lt;TABLE WIDTH=100% CELLPADDING=2 CELLSPACING=0 BORDER=0&gt;&lt;TR&gt;&lt;TD BGCOLOR='#FF0000'&gt;&quot;;
+		}
+		
+		echo &quot;&lt;TABLE WIDTH=100% CELLPADDING=3 CELLSPACING=0&gt;&lt;TR&gt;&lt;TD BGCOLOR='$couleur_foncee' class='verdana2' style='color: white;'&gt;&lt;b&gt;&quot;,
+		  ($nom_site ? &quot;$nom_site / &quot; : &quot;&quot;),
+		  $nom_email,
+		  &quot;&lt;/b&gt;&lt;/TD&gt;&lt;/TR&gt;&quot;,
+		  &quot;&lt;TR&gt;&lt;TD BGCOLOR='#FFFFFF' class='serif'&gt;&quot;;
+				
+		if ($statut==&quot;publie&quot;){
+			icone (_T('icone_supprimer_signature'), &quot;$script?supp_petition=$id_signature&amp;debut=$debut&quot;, &quot;forum-interne-24.gif&quot;, &quot;supprimer.gif&quot;, &quot;right&quot;);
+		}
+		if ($statut==&quot;poubelle&quot;){
+			icone (_T('icone_valider_signature'), &quot;$script?add_petition=$id_signature&amp;debut=$debut&quot;, &quot;forum-interne-24.gif&quot;, &quot;creer.gif&quot;, &quot;right&quot;);
+		}
+		
+		echo &quot;&lt;FONT SIZE=2&gt;&quot;.date_relative($date_time).&quot;&lt;/FONT&gt;&lt;BR&gt;&quot;;
+		if ($statut==&quot;poubelle&quot;){
+			echo &quot;&lt;FONT SIZE=1 COLOR='red'&gt;&quot;._T('info_message_efface').&quot;&lt;/FONT&gt;&lt;BR&gt;&quot;;
+		}
+		if (strlen($url_site)&gt;6 AND strlen($nom_site)&gt;0){
+			echo &quot;&lt;FONT SIZE=1&gt;&quot;._T('info_site_web').&quot;&lt;/FONT&gt; &lt;A HREF='$url_site'&gt;$nom_site&lt;/A&gt;&lt;BR&gt;&quot;;
+		}
+		if (strlen($ad_email)&gt;0){
+			echo &quot;&lt;FONT SIZE=1&gt;&quot;._T('info_adresse_email').&quot;&lt;/FONT&gt; &lt;A HREF='mailto:$ad_email'&gt;$ad_email&lt;/A&gt;&lt;BR&gt;&quot;;
+		}
+
+		echo &quot;&lt;p&gt;&quot;,message_de_signature($row),&quot;&lt;/p&gt;&quot;;
+		
+		list($titre) = spip_fetch_array(spip_query(&quot;SELECT titre FROM spip_articles WHERE id_article=$id_article&quot;));	
+
+		if (!$id)
+		  echo &quot;&lt;span class='arial1' style='float: $spip_lang_right; color: black; padding-$spip_lang_left: 4px;'&gt;&lt;b&gt;&quot;,
+		    _T('info_numero_abbreviation'),
+		    $id_article,
+		    &quot; &lt;/b&gt;&lt;/span&gt;&quot;;
+		
+		echo &quot;&lt;a href='&quot;,
+		  (($statut == 'publie') ? 
+		   &quot;../spip_redirect.php3&quot; :
+		   &quot;articles.php3&quot;),
+		  &quot;?id_article=$id_article&quot;,
+		  &quot;'&gt;&quot;,
+		  typo($titre),
+		  &quot;&lt;/a&gt;&quot;;
+
+		echo &quot;&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&quot;;
+		
+		if ($statut==&quot;poubelle&quot;){
+			echo &quot;&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&quot;;
+		}
+	}
+}
+
+function tronconne_signatures($script, $id_article, $debut, $where, $limit)
+{
+	if ($id_article) {
+		$script .= &quot;?id_article=$id_article&amp;&quot;;
+		$where .= ($where ? &quot; AND &quot; : &quot;&quot;) . &quot;id_article=$id_article&quot;;
+	}
+	else $script .= '?';
+
+	$res = spip_query(&quot;SELECT COUNT(*) AS cnt FROM spip_signatures WHERE $where AND date_time&gt;DATE_SUB(NOW(),INTERVAL 180 DAY)&quot;);
+
+	$total = ($row = spip_fetch_array($res)) ? $row['cnt'] : 0;
+
+	if ($total &gt; $limit) {
+		for ($i = 0; $i &lt; $total; $i += $limit){
+			if ($i &gt; 0) echo &quot; | &quot;;
+			if ($i == $debut)
+				echo &quot;&lt;FONT SIZE=3&gt;&lt;B&gt;$i&lt;/B&gt;&lt;/FONT&gt;&quot;;
+			else
+			  echo &quot;&lt;A HREF='$script&quot;,&quot;debut=$i'&gt;$i&lt;/A&gt;&quot;;
+		}
+	}
+	return $where;
+}
+
+?&gt;
+
+--- NEW FILE: filtery.js ---
+/*
+  Author: Justin Whitford
+  Source: www.evolt.org
+*/
+function filtery(pattern, list){
+  /*
+  if the dropdown list passed in hasn't
+  already been backed up, we'll do that now
+  */
+  if (!list.bak){
+    /*
+    We're going to attach an array to the select object
+    where we'll keep a backup of the original dropdown list
+    */
+    list.bak = new Array();
+    for (n=0; n&lt;list.length; n++){
+      list.bak[list.bak.length] = new Array(list[n].value, list[n].text);
+    }
+    bakselected = list.selectedIndex;
+  }
+
+  /*
+  We're going to iterate through the backed up dropdown
+  list. If an item matches, it is added to the list of
+  matches. If not, then it is added to the list of non matches.
+  */
+  match = new Array();
+  nomatch = new Array();
+  
+  if (pattern.length != 0) {
+	  for (n=0; n&lt;list.bak.length; n++){
+		if(list.bak[n][1].toLowerCase().indexOf(pattern.toLowerCase())!=-1 || list.bak[n][0] == pattern ){
+		  match[match.length] = new Array(list.bak[n][0], list.bak[n][1]);
+		}else{
+		  nomatch[nomatch.length] = new Array(list.bak[n][0], list.bak[n][1]);
+		}
+	  }
+  }
+
+  /*
+  Now we completely rewrite the dropdown list.
+  First we write in the matches, then we write
+  in the non matches
+  */
+  
+  if (match.length &gt; 0) {
+	  list.options.length = match.length;
+	  for (n=0; n&lt;match.length; n++){
+		list[n].value = match[n][0];
+		list[n].text = match[n][1];
+	  }
+
+    list.selectedIndex=0;
+  
+  }
+  else {
+	  list.options.length = list.bak.length;
+	  for (n=0; n&lt;list.bak.length; n++){
+		list[n].value =  list.bak[n][0];
+		list[n].text =  list.bak[n][1];
+	  }
+  list.selectedIndex = bakselected;
+  }
+
+}
+
+Index: mots_type.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mots_type.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- mots_type.php3	30 Jun 2005 10:09:39 -0000	1.3
++++ mots_type.php3	21 Jul 2005 21:47:15 -0000	1.4
+@@ -41,6 +41,8 @@
+ 		$type = $row['titre'];
+ 		$ancien_type = $type;
+ 		$titre = typo($type);
++		$descriptif = $row['descriptif'];
++		$texte = $row['texte'];
+ 		$unseul = $row['unseul'];
+ 		$obligatoire = $row['obligatoire'];
+ 		$articles = $row['articles'];
+@@ -52,9 +54,9 @@
+ 		//////////////////////////////
+ 		$carto_objets = $row['carto_objets'];
+ 		//////////////////////////////
+-		$acces_minirezo = $row['0minirezo'];
+-		$acces_comite = $row['1comite'];
+-		$acces_forum = $row['6forum'];
++		$acces_minirezo = $row['minirezo'];
++		$acces_comite = $row['comite'];
++		$acces_forum = $row['forum'];
+ 	}
+ }
+ 
+@@ -93,6 +95,26 @@
+ 	debut_cadre_formulaire();
+ 	echo &quot;&lt;b&gt;&quot;._T('info_changer_nom_groupe').&quot;&lt;/b&gt;&lt;br&gt;\n&quot;;
+ 	echo &quot;&lt;INPUT TYPE='Text' SIZE=40 CLASS='formo' NAME='change_type' VALUE=\&quot;$type\&quot; $onfocus&gt;\n&quot;;
++
++	if ($options == 'avancees' OR $descriptif) {
++		echo &quot;&lt;B&gt;&quot;._T('texte_descriptif_rapide').&quot;&lt;/B&gt;&lt;BR&gt;&quot;;
++		echo &quot;&lt;TEXTAREA NAME='descriptif' CLASS='forml' ROWS='4' COLS='40' wrap=soft&gt;&quot;;
++		echo $descriptif;
++		echo &quot;&lt;/TEXTAREA&gt;&lt;P&gt;\n&quot;;
++	}
++	else
++		echo &quot;&lt;INPUT TYPE='hidden' NAME='descriptif' VALUE=\&quot;$descriptif\&quot;&gt;&quot;;
++
++	if ($options == 'avancees' OR $texte) {
++		echo &quot;&lt;B&gt;&quot;._T('info_texte_explicatif').&quot;&lt;/B&gt;&lt;BR&gt;&quot;;
++		echo &quot;&lt;TEXTAREA NAME='texte' ROWS='8' CLASS='forml' COLS='40' wrap=soft&gt;&quot;;
++		echo $texte;
++		echo &quot;&lt;/TEXTAREA&gt;&lt;P&gt;\n&quot;;
++	}
++	else
++		echo &quot;&lt;INPUT TYPE='hidden' NAME='texte' VALUE=\&quot;$texte\&quot;&gt;&quot;;
++
++
+ 	echo &quot;&lt;p&gt;&lt;div align='right'&gt;&lt;INPUT TYPE='submit' CLASS='fondo' NAME='Valider' VALUE='&quot;._T('bouton_valider').&quot;'&gt;&lt;/div&gt;&quot;;
+ 	fin_cadre_formulaire();
+ }
+
+Index: inc_mots.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_mots.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- inc_mots.php3	30 Jun 2005 10:09:40 -0000	1.4
++++ inc_mots.php3	21 Jul 2005 21:47:15 -0000	1.5
+@@ -134,14 +134,15 @@
+ 		$id_objet=$id_objet['id_objet'];
+ 	}
+ 	////////////////////////////////
++	list($nombre_mots) = spip_fetch_array(spip_query(&quot;SELECT COUNT(*) FROM spip_mots AS mots, spip_mots_$table AS lien WHERE lien.$id_table=$id_objet AND mots.id_mot=lien.id_mot&quot;));
+ 
+-	$query = &quot;SELECT mots.* FROM spip_mots AS mots, spip_mots_$table AS lien WHERE lien.$id_table=$id_objet AND mots.id_mot=lien.id_mot&quot;;
+-	$nombre_mots = spip_num_rows(spip_query($query));
+-
+-	$query_groupes = &quot;SELECT * FROM spip_groupes_mots WHERE $table = 'oui' AND $connect_statut = 'oui'&quot;;
+-	$nombre_groupes = spip_num_rows(spip_query($query_groupes));
++	if (!$nombre_mots) {
++		if (!$flag_editable) return;
++		list($nombre_groupes) = spip_fetch_array(spip_query(&quot;SELECT COUNT(*) FROM spip_groupes_mots WHERE $table = 'oui'
++		AND &quot;.substr($connect_statut,1).&quot; = 'oui'&quot;));
+ 
+-	if (!$nombre_mots AND (!$nombre_groupes OR !$flag_editable)) return;
++		if (!$nombre_groupes) return;
++	}
+ 
+ 	echo &quot;&lt;a name='mots&quot;.$id_objet.&quot;'&gt;&lt;/a&gt;&quot;;
+ 	if ($flag_editable){
+@@ -314,8 +315,8 @@
+ 				$titre_groupe = entites_html($row_groupe['titre']);
+ 				$unseul = $row_groupe['unseul'];
+ 				$obligatoire = $row_groupe['obligatoire'];
+-				$acces_admin =  $row_groupe['0minirezo'];
+-				$acces_redacteur = $row_groupe['1comite'];
++				$acces_admin =  $row_groupe['minirezo'];
++				$acces_redacteur = $row_groupe['comite'];
+ 	
+ 				$flag_groupe = ($flag_editable AND (($connect_statut == '1comite' AND $acces_redacteur == 'oui') OR ($connect_statut == '0minirezo' AND $acces_admin == 'oui')));
+ 			}
+@@ -397,7 +398,7 @@
+ 	if ($id_groupes_vus) $id_groupes_vus = join($id_groupes_vus, &quot;,&quot;);
+ 	else $id_groupes_vus = &quot;0&quot;;
+ 
+-	$query_groupes = &quot;SELECT * FROM spip_groupes_mots WHERE $table = 'oui' AND $connect_statut = 'oui' AND obligatoire = 'oui' AND id_groupe NOT IN ($id_groupes_vus)&quot;;
++	$query_groupes = &quot;SELECT * FROM spip_groupes_mots WHERE $table = 'oui' AND &quot;.substr($connect_statut,1).&quot; = 'oui' AND obligatoire = 'oui' AND id_groupe NOT IN ($id_groupes_vus)&quot;;
+ 	$nb_groupes = spip_num_rows(spip_query($query_groupes));
+ 
+ 	//
+@@ -434,7 +435,7 @@
+ 
+ 		echo &quot;&lt;table border='0' width='100%' style='text-align: $spip_lang_right'&gt;&quot;;
+ 
+-		$query_groupes = &quot;SELECT * FROM spip_groupes_mots WHERE $table = 'oui' AND $connect_statut = 'oui' AND (unseul != 'oui'  OR (unseul = 'oui' AND id_groupe NOT IN ($id_groupes_vus))) ORDER BY titre&quot;;
++		$query_groupes = &quot;SELECT * FROM spip_groupes_mots WHERE $table = 'oui' AND &quot;.substr($connect_statut,1).&quot; = 'oui' AND (unseul != 'oui'  OR (unseul = 'oui' AND id_groupe NOT IN ($id_groupes_vus))) ORDER BY titre&quot;;
+ 		$result_groupes = spip_query($query_groupes);
+ 
+ 		// Afficher un menu par groupe de mots
+@@ -449,9 +450,9 @@
+ 			$breves = $row_groupes['breves'];
+ 			$rubriques = $row_groupes['rubriques'];
+ 			$syndic = $row_groupes['syndic'];
+-			$acces_minirezo = $row_groupes['0minirezo'];
+-			$acces_comite = $row_groupes['1comite'];
+-			$acces_forum = $row_groupes['6forum'];
++			$acces_minirezo = $row_groupes['minirezo'];
++			$acces_comite = $row_groupes['comite'];
++			$acces_forum = $row_groupes['forum'];
+ 			
+ 			$query = &quot;SELECT * FROM spip_mots WHERE id_groupe = '$id_groupe' &quot;;
+ 			if ($les_mots) $query .= &quot;AND id_mot NOT IN ($les_mots) &quot;;
+
+Index: inc_serialbase.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_serialbase.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_serialbase.php3	30 Jun 2005 10:09:40 -0000	1.3
++++ inc_serialbase.php3	21 Jul 2005 21:47:15 -0000	1.4
+@@ -154,15 +154,17 @@
+ $spip_groupes_mots = array(
+ 		&quot;id_groupe&quot;	=&gt; &quot;bigint(21) NOT NULL&quot;,
+ 		&quot;titre&quot;	=&gt; &quot;text NOT NULL&quot;,
++		&quot;descriptif&quot;	=&gt; &quot;text NOT NULL&quot;,
++		&quot;texte&quot;	=&gt; &quot;longblob NOT NULL&quot;,
+ 		&quot;unseul&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
+ 		&quot;obligatoire&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
+ 		&quot;articles&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
+ 		&quot;breves&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
+ 		&quot;rubriques&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
+ 		&quot;syndic&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
+-		&quot;0minirezo&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
+-		&quot;1comite&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
+-		&quot;6forum&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
++		&quot;minirezo&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
++		&quot;comite&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
++		&quot;forum&quot;	=&gt; &quot;varchar(3) NOT NULL&quot;,
+ 		&quot;maj&quot;	=&gt; &quot;TIMESTAMP&quot;);
+ 
+ $spip_groupes_mots_key = array(
+@@ -250,7 +252,10 @@
+ 		&quot;date_syndic&quot;	=&gt; &quot;datetime DEFAULT '0000-00-00 00:00:00' NOT NULL&quot;,
+ 		&quot;date_index&quot;	=&gt; &quot;datetime DEFAULT '0000-00-00 00:00:00' NOT NULL&quot;,
+ 		&quot;extra&quot;			=&gt; &quot;longblob NULL&quot;,
+-		&quot;moderation&quot;	=&gt; &quot;VARCHAR(3) NOT NULL&quot;);
++		&quot;moderation&quot;	=&gt; &quot;VARCHAR(3) DEFAULT 'non'&quot;,
++		&quot;miroir&quot;	=&gt; &quot;VARCHAR(3) DEFAULT 'non'&quot;,
++		&quot;oubli&quot;	=&gt; &quot;VARCHAR(3) DEFAULT 'non'&quot;
++);
+ 
+ $spip_syndic_key = array(
+ 		&quot;PRIMARY KEY&quot;	=&gt; &quot;id_syndic&quot;,
+
+Index: inc_debug_sql.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_debug_sql.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc_debug_sql.php3	5 Jul 2005 00:44:00 -0000	1.5
++++ inc_debug_sql.php3	21 Jul 2005 21:47:15 -0000	1.6
+@@ -67,25 +67,23 @@
+ // Si une boucle cree des soucis, on peut afficher la requete fautive
+ // avec son code d'erreur
+ //
+-function erreur_requete_boucle($query, $id_boucle, $type) {
++function erreur_requete_boucle($query, $id_boucle, $type, $erreur, $errno) {
+ 
+ 	$GLOBALS['bouton_admin_debug'] = true;
+ 
+-	$erreur = spip_sql_error();
+-	$errno = spip_sql_errno();
+ 	if (eregi('err(no|code):?[[:space:]]*([0-9]+)', $erreur, $regs))
+-		$errsys = $regs[2];
++		$errno = $regs[2];
+ 	else if (($errno == 1030 OR $errno &lt;= 1026)
+-	AND ereg('[^[:alnum:]]([0-9]+)[^[:alnum:]]', $erreur, $regs))
+-		$errsys = $regs[1];
++		AND ereg('[^[:alnum:]]([0-9]+)[^[:alnum:]]', $erreur, $regs))
++	$errno = $regs[1];
+ 
+ 	// Erreur systeme
+-	if ($errsys &gt; 0 AND $errsys &lt; 200) {
++	if ($errno &gt; 0 AND $errno &lt; 200) {
+ 		$retour .= &quot;&lt;tt&gt;&lt;br /&gt;&lt;br /&gt;&lt;blink&gt;&quot;
+-		. _T('info_erreur_systeme', array('errsys'=&gt;$errsys))
++		. _T('info_erreur_systeme', array('errsys'=&gt;$errno))
+ 		. &quot;&lt;/blink&gt;&lt;br /&gt;\n&quot;
+ 		. _T('info_erreur_systeme2');
+-		spip_log(&quot;Erreur systeme $errsys&quot;);
++		spip_log(&quot;Erreur systeme $errno&quot;);
+ 	}
+ 	// Requete erronee
+ 	else {
+@@ -101,7 +99,7 @@
+ 		include_ecrire('inc_lang.php3');
+ 		utiliser_langue_visiteur();
+ 		$retour .= aide('erreur_mysql');
+-		spip_log(&quot;Erreur MySQL BOUCLE$id_boucle (&quot;.$GLOBALS['fond'].&quot;.html)&quot;);
++		spip_log(&quot;Erreur requete $id_boucle (&quot;.$GLOBALS['fond'].&quot;.html)&quot;);
+ 	}
+ 
+ 	erreur_squelette($retour);
+@@ -326,7 +324,7 @@
+ 	@header('Content-Type: text/html; charset='.lire_meta('charset'));
+ 	echo debut_entete('Spip ' . $GLOBALS['spip_version_affichee'] . ' ' .
+ 			  _T('admin_debug') . ' ' .
+-			  _T('info_mon_site_spip')), 
++			  supprimer_tags(extraire_multi(lire_meta('nom_site')))), 
+ 	  &quot;&lt;link rel='stylesheet' href='spip_admin.css' type='text/css'&gt;&quot;,
+ 	  &quot;&lt;/head&gt;\n&lt;body style='margin:0 10px;'&gt;&quot;,
+ 	  &quot;\n&lt;div id='spip-debug' style='position: absolute; top: 22px; z-index: 1000;height:97%;left:10px;right:10px;'&gt;&lt;div id='spip-boucles'&gt;\n&quot;; 
+
+Index: inc_documents.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_documents.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc_documents.php3	30 Jun 2005 10:09:39 -0000	1.5
++++ inc_documents.php3	21 Jul 2005 21:47:15 -0000	1.6
+@@ -320,13 +320,13 @@
+ 	}
+ 
+ 	if ($align != 'center') {
+-		$float = &quot;float: $align;&quot;;
+-		if ($type_aff == 'IMG') {
+-			$width = extraire_attribut($vignette, 'width');
+-			if ($width &lt; 120) $width = 120;
+-			$width = ' width: '.$width.'px;';
+-		}
+-		$style = &quot; style='$float$width'&quot;;
++		// Largeur de la div = celle de l'image ; mais s'il y a une legende
++		// mettre au moins 120px
++		$width = extraire_attribut($vignette, 'width');
++		if (strlen($txt) AND $width &lt; 120) $width = 120;
++		$width = 'width: '.$width.'px;';
++
++		$style = &quot; style='float: $align; $width'&quot;;
+ 	}
+ 
+ 	return
+
+Index: forum_envoi.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/forum_envoi.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- forum_envoi.php3	30 Jun 2005 10:09:40 -0000	1.4
++++ forum_envoi.php3	21 Jul 2005 21:47:15 -0000	1.5
+@@ -136,10 +136,16 @@
+ 	echo &quot;&lt;div&gt;&nbsp;&lt;/div&gt;&quot;;
+ 
+ 
+-debut_cadre_formulaire();
++debut_cadre_formulaire(($statut == 'privac') ? &quot;&quot; : 'background-color: #dddddd;');
+ 
+ echo &quot;&lt;TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 BACKGROUND='' WIDTH=\&quot;100%\&quot;&gt;&lt;TR&gt;&lt;TD&gt;&quot;;
+-	icone(_T('icone_retour'), $adresse_retour, &quot;forum-interne-24.gif&quot;);
++$forum_stat = $statut;
++if ($forum_stat == &quot;prive&quot;) $logo = &quot;forum-interne-24.gif&quot;;
++ else if ($forum_stat == &quot;privadm&quot;) $logo = &quot;forum-admin-24.gif&quot;;
++ else if ($forum_stat == &quot;privrac&quot;) $logo = &quot;forum-interne-24.gif&quot;;
++ else $logo = &quot;forum-public-24.gif&quot;;
++
++icone(_T('icone_retour'), $adresse_retour, $logo);
+ echo &quot;&lt;/TD&gt;&quot;;
+ 
+ echo &quot;&lt;TD&gt;&lt;IMG SRC='&quot; . _DIR_IMG_PACK . &quot;rien.gif' WIDTH=10 BORDER=0&gt;&lt;/td&gt;&lt;TD WIDTH=\&quot;100%\&quot;&gt;&quot;;
+
+Index: auteur_infos.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/auteur_infos.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- auteur_infos.php3	30 Jun 2005 10:09:39 -0000	1.5
++++ auteur_infos.php3	21 Jul 2005 21:47:15 -0000	1.6
+@@ -193,7 +193,7 @@
+ }
+ 
+ // Appliquer des modifications de statut
+-modifier_statut_auteur($auteur);
++modifier_statut_auteur($auteur, $_POST['statut'], $_POST['add_rub'], $_GET['supp_rub']);
+ 
+ 
+ // Si on modifie la fiche auteur, reindexer et modifier htpasswd
+
+Index: inc_acces.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_acces.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc_acces.php3	30 Jun 2005 10:09:39 -0000	1.5
++++ inc_acces.php3	21 Jul 2005 21:47:15 -0000	1.6
+@@ -198,24 +198,24 @@
+ 	}
+ }
+ 
+-function modifier_statut_auteur (&amp;$auteur) {
+-	global $connect_statut, $connect_toutes_rubriques, $_GET, $_POST;
++function modifier_statut_auteur (&amp;$auteur, $statut, $add_rub='', $supp_rub='') {
++	global $connect_statut, $connect_toutes_rubriques;
+ 	// changer le statut ?
+-	if ($connect_statut == '0minirezo' AND $_POST['statut']) {
+-		if (ereg(&quot;^(0minirezo|1comite|5poubelle|6forum)$&quot;,$_POST['statut'])) {
+-			$auteur['statut'] = $_POST['statut'];
+-			spip_query(&quot;UPDATE spip_auteurs SET statut='&quot;.$_POST['statut'].&quot;'
++	if ($connect_statut == '0minirezo' AND $statut) {
++		if (ereg(&quot;^(0minirezo|1comite|5poubelle|6forum)$&quot;,$statut)) {
++			$auteur['statut'] = $statut;
++			spip_query(&quot;UPDATE spip_auteurs SET statut='&quot;.$statut.&quot;'
+ 			WHERE id_auteur=&quot;.$auteur['id_auteur']);
+ 		}
+ 	}
+ 	// modif auteur restreint, seulement pour les admins
+ 	if ($connect_toutes_rubriques) {
+-		if ($add_rub=intval($_POST['add_rub']))
++		if ($add_rub=intval($add_rub))
+ 			spip_query(&quot;INSERT INTO spip_auteurs_rubriques
+ 			(id_auteur,id_rubrique)
+ 			VALUES(&quot;.$auteur['id_auteur'].&quot;, $add_rub)&quot;);
+ 
+-		if ($supp_rub=intval($_GET['supp_rub']))
++		if ($supp_rub=intval($supp_rub))
+ 			spip_query(&quot;DELETE FROM spip_auteurs_rubriques
+ 			WHERE id_auteur=&quot;.$auteur['id_auteur'].&quot;
+ 			AND id_rubrique=$supp_rub&quot;);
+
+Index: mes_options.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mes_options.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- mes_options.php3	4 Jul 2005 09:15:33 -0000	1.4
++++ mes_options.php3	21 Jul 2005 21:47:15 -0000	1.5
+@@ -214,7 +214,25 @@
+ 	include_ecrire('plugins/plug_carto.php');
+     return avant_typo_carto($texte);
+ }
++$champs_extra = true;
++
++$GLOBALS['champs_extra'] = Array (
++'auteurs' =&gt; Array (
++				&quot;abo&quot; =&gt; &quot;radio|brut|Abonnement &agrave; lettre d'information|Format Html,Format texte,Ne pas recevoir de courrier|html,texte,non&quot;,
++&quot;choix&quot; =&gt; &quot;multiple|brut|choix|choix1,choix2,choix3&quot;
++      )
++);
++function get_extra_value($ar,$num)
++{
++	if (!is_array($ar)) return $ar;
++	else return $ar[$num];
++}
+ 
++function extra_afficher_fiche($extra, $type){
++	include_ecrire(&quot;inc_extra.php3&quot;);
++	include_ecrire(&quot;inc_presentation.php3&quot;);
++	extra_affichage($extra, $type);
++}
+ //======================================================================
+ // Integration contrib mots partout (Mortimer)
+ //======================================================================
+@@ -233,7 +251,6 @@
+ 																					'nom_id' =&gt;  'id_carto_carte'),
+ 															   )
+ 									  );
+-
+ function afficher_liste_carto_objets($choses) {
+   echo &quot;&lt;div style='height: 12px;'&gt;&lt;/div&gt;&quot;;
+   echo &quot;&lt;div class='liste'&gt;&quot;;
+@@ -312,5 +329,4 @@
+ }
+ 
+ //======================================================================
+-
+ ?&gt;
+
+Index: mots_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mots_edit.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- mots_edit.php3	30 Jun 2005 10:09:39 -0000	1.4
++++ mots_edit.php3	21 Jul 2005 21:47:15 -0000	1.5
+@@ -247,7 +247,7 @@
+ 		if (!$row_groupes) {
+ 			// il faut creer un groupe de mots (cas d'un mot cree depuis articles.php3)
+ 		  $row_groupes['id_groupe'] = spip_abstract_insert(&quot;spip_groupes_mots&quot;,
+-							  &quot;(titre, unseul, obligatoire, articles, breves, rubriques, syndic, 0minirezo, 1comite, 6forum)&quot;,
++							  &quot;(titre, unseul, obligatoire, articles, breves, rubriques, syndic, minirezo, comite, forum)&quot;,
+ 							  &quot;('&quot; .
+ 							  addslashes(_T('info_mot_sans_groupe')).&quot;', 'non',  'non', 'oui', 'oui', 'non', 'oui', 'oui', 'non', 'non'&quot;);
+ 
+
+Index: controle_petition.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/controle_petition.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- controle_petition.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ controle_petition.php3	21 Jul 2005 21:47:15 -0000	1.3
+@@ -12,13 +12,17 @@
+ 
+ 
+ include (&quot;inc.php3&quot;);
++include (&quot;inc_signatures.php3&quot;);
+ 
++function message_de_signature($row)
++{
++  return propre(echapper_tags($row['message']));
++}
+ 
+ 
+ debut_page(_T('titre_page_controle_petition'), &quot;redacteurs&quot;, &quot;suivi-petition&quot;);
+ debut_gauche();
+ 
+-
+ //
+ // Raccourcis
+ //
+@@ -30,69 +34,6 @@
+ 
+ debut_droite();
+ 
+-
+-function controle_forum($request,$adresse_retour) {
+-	global $debut;
+-	global $couleur_foncee;
+-	
+-	$nb_forum[$compteur_forum] = spip_num_rows($request);
+-	$i[$compteur_forum] = 1;
+- 	while($row=spip_fetch_array($request)){
+-		$id_signature = $row['id_signature'];
+-		$id_article = $row['id_article'];
+-		$date_time = $row['date_time'];
+-		$nom_email= typo(echapper_tags($row['nom_email']));
+-		$ad_email = echapper_tags($row['ad_email']);
+-		$nom_site = typo(echapper_tags($row['nom_site']));
+-		$url_site = echapper_tags($row['url_site']);
+-		$message = propre(echapper_tags($row['message']));
+-		$statut = $row['statut'];
+-		
+-		echo &quot;&lt;P&gt;&quot;;
+-		
+-		if ($statut==&quot;poubelle&quot;){
+-			echo &quot;&lt;TABLE WIDTH=100% CELLPADDING=2 CELLSPACING=0 BORDER=0&gt;&lt;TR&gt;&lt;TD BGCOLOR='#FF0000'&gt;&quot;;
+-		}
+-		
+-		echo &quot;&lt;TABLE WIDTH=100% CELLPADDING=3 CELLSPACING=0&gt;&lt;TR&gt;&lt;TD BGCOLOR='$couleur_foncee' class='verdana2' style='color: white;'&gt;&lt;B&gt;$nom_site / $nom_email&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;&quot;;
+-		echo &quot;&lt;TR&gt;&lt;TD BGCOLOR='#FFFFFF' class='serif'&gt;&quot;;
+-				
+-		if ($statut==&quot;publie&quot;){
+-			icone (_T('icone_supprimer_signature'), &quot;controle_petition.php3?supp_petition=$id_signature&amp;debut=$debut&quot;, &quot;forum-interne-24.gif&quot;, &quot;supprimer.gif&quot;, &quot;right&quot;);
+-		}
+-		if ($statut==&quot;poubelle&quot;){
+-			icone (_T('icone_valider_signature'), &quot;controle_petition.php3?add_petition=$id_signature&amp;debut=$debut&quot;, &quot;forum-interne-24.gif&quot;, &quot;creer.gif&quot;, &quot;right&quot;);
+-		}
+-		
+-		
+-		echo &quot;&lt;FONT SIZE=2&gt;&quot;.date_relative($date_time).&quot;&lt;/FONT&gt;&lt;BR&gt;&quot;;
+-		if ($statut==&quot;poubelle&quot;){
+-			echo &quot;&lt;FONT SIZE=1 COLOR='red'&gt;&quot;._T('info_message_efface').&quot;&lt;/FONT&gt;&lt;BR&gt;&quot;;
+-		}
+-		if (strlen($url_site)&gt;6 AND strlen($nom_site)&gt;0){
+-			echo &quot;&lt;FONT SIZE=1&gt;&quot;._T('info_site_web').&quot;&lt;/FONT&gt; &lt;A HREF='$url_site'&gt;$nom_site&lt;/A&gt;&lt;BR&gt;&quot;;
+-		}
+-		if (strlen($ad_email)&gt;0){
+-			echo &quot;&lt;FONT SIZE=1&gt;&quot;._T('info_adresse_email').&quot;&lt;/FONT&gt; &lt;A HREF='mailto:$ad_email'&gt;$ad_email&lt;/A&gt;&lt;BR&gt;&quot;;
+-		}
+-		if (strlen($message)&gt;0) echo &quot;&lt;P&gt;$message&quot;;
+-		
+-		$query_article=&quot;SELECT * FROM spip_articles WHERE id_article=$id_article&quot;;
+-		$result_article=spip_query($query_article);
+-		while($row=spip_fetch_array($result_article)){
+-			$id_article = $row['id_article'];
+-			$titre = typo($row[&quot;titre&quot;]);
+-		}
+-		echo &quot;&lt;P align='right'&gt;&lt;A HREF='../spip_redirect.php3?id_article=$id_article'&gt;$titre&lt;/A&gt;&quot;;
+-	
+-		echo &quot;&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&quot;;
+-		
+-		if ($statut==&quot;poubelle&quot;){
+-			echo &quot;&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&quot;;
+-		}
+-	}
+-}
+-
+   
+ echo &quot;&lt;div class='serif2'&gt;&quot;;
+  
+@@ -119,36 +60,15 @@
+ 
+ 	if (!$debut) $debut = 0;
+ 
+-	if ($id_article) {
+-		$signature_article = &quot; AND id_article=$id_article&quot;;
+-		$url_article = &quot;&amp;id_article=$id_article&quot;;
+-	}
+-	else
+-		$signature_article = '';
+-
+-	$query_forum = &quot;SELECT COUNT(*) AS cnt FROM spip_signatures WHERE (statut='publie' OR statut='poubelle') AND date_time&gt;DATE_SUB(NOW(),INTERVAL 180 DAY)$signature_article&quot;;
+-	$result_forum = spip_query($query_forum);
+-	$total = 0;
+-	if ($row = spip_fetch_array($result_forum)) $total = $row['cnt'];
+-
+-	if ($total &gt; 10) {
+-		echo &quot;&lt;p&gt;&quot;;
+-		for ($i = 0; $i &lt; $total; $i = $i + 10){
+-			if ($i &gt; 0) echo &quot; | &quot;;
+-			if ($i == $debut)
+-				echo &quot;&lt;FONT SIZE=3&gt;&lt;B&gt;$i&lt;/B&gt;&lt;/FONT&gt;&quot;;
+-			else
+-				echo &quot;&lt;A HREF='controle_petition.php3?debut=$i$url_article'&gt;$i&lt;/A&gt;&quot;;
+-		}
+-	}
++	spip_query(&quot;DELETE FROM spip_signatures WHERE NOT (statut='publie' OR statut='poubelle') AND date_time&lt;DATE_SUB(NOW(),INTERVAL 10 DAY)&quot;);
+ 
+-	$query_forum = &quot;DELETE FROM spip_signatures WHERE NOT (statut='publie' OR statut='poubelle') AND date_time&lt;DATE_SUB(NOW(),INTERVAL 10 DAY)&quot;;
+-	$result_forum = spip_query($query_forum);
++	controle_signatures('controle_petition.php3',
++			    $id_article,
++			    $debut, 
++			    &quot;(statut='publie' OR statut='poubelle')&quot;,
++			    &quot;date_time DESC&quot;);
+ 
+-	$query_forum = &quot;SELECT * FROM spip_signatures WHERE (statut='publie' OR statut='poubelle')$signature_article ORDER BY date_time DESC LIMIT $debut,10&quot;;
+-	$result_forum = spip_query($query_forum);
+-	controle_forum($result_forum, &quot;forum.php3&quot;);
+-}
++ }
+ else {
+ 	echo &quot;&lt;B&gt;&quot;._T('avis_non_acces_page').&quot;&lt;/B&gt;&quot;;
+ }
+
+Index: inc_filtres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_filtres.php3,v
+retrieving revision 1.6
+retrieving revision 1.7
+diff -u -d -r1.6 -r1.7
+--- inc_filtres.php3	30 Jun 2005 10:09:39 -0000	1.6
++++ inc_filtres.php3	21 Jul 2005 21:47:15 -0000	1.7
+@@ -98,8 +98,10 @@
+ 	$texte = filtrer_entites($texte);
+ 
+ 	// &quot; -&gt; &quot; et tout ce genre de choses
++	// contourner bug windows ou char(160) fait partie de la regexp \s
++	$u = (lire_meta('charset')=='utf-8') ? 'u':'';
+ 	$texte = str_replace(&quot;&nbsp;&quot;, &quot; &quot;, $texte);
+-	$texte = preg_replace(&quot;/[[:space:]][[:space:]]+/&quot;, &quot; &quot;, $texte);
++	$texte = preg_replace(&quot;/\s\s+/$u&quot;, &quot; &quot;, $texte);
+ 	$texte = entites_html($texte);
+ 
+ 	// verifier le charset
+@@ -140,7 +142,8 @@
+ 
+ // Convertit un texte HTML en texte brut
+ function textebrut($texte) {
+-	$texte = preg_replace(&quot;/[[:space:]]+/&quot;, &quot; &quot;, $texte);
++	$u = (lire_meta('charset')=='utf-8') ? 'u':'';
++	$texte = preg_replace(&quot;/\s+/$u&quot;, &quot; &quot;, $texte);
+ 	$texte = preg_replace(&quot;/&lt;(p|br)( [^&gt;]*)?&quot;.&quot;&gt;/i&quot;, &quot;\n\n&quot;, $texte);
+ 	$texte = preg_replace(&quot;/^\n+/&quot;, &quot;&quot;, $texte);
+ 	$texte = preg_replace(&quot;/\n+$/&quot;, &quot;&quot;, $texte);
+@@ -968,7 +971,7 @@
+ // recuperer un attribut html d'une balise
+ // ($complet demande de retourner $r)
+ function extraire_attribut($balise, $attribut, $complet = false) {
+-	if (preg_match(&quot;,(.*&lt;[^&gt;]*)([[:space:]]+$attribut=[[:space:]]*(['\&quot;])?(.*?)\\3)([[:space:]/&gt;].*&gt;.*),ims&quot;, $balise, $r)) {
++	if (preg_match(&quot;,(.*&lt;[^&gt;]*)([[:space:]]+$attribut=[[:space:]]*(['\&quot;])?(.*?)\\3)([^&gt;]*&gt;.*),ims&quot;, $balise, $r)) {
+ 		$att = $r[4];
+ 	}
+ 	else
+
+Index: inc_forum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_forum.php3,v
+retrieving revision 1.6
+retrieving revision 1.7
+diff -u -d -r1.6 -r1.7
+--- inc_forum.php3	30 Jun 2005 10:09:40 -0000	1.6
++++ inc_forum.php3	21 Jul 2005 21:47:15 -0000	1.7
+@@ -300,4 +300,71 @@
+ 	}
+ }
+ 
++
++// Recuperer le reglage des forums publics de l'article x
++function get_forums_publics($id_article=0) {
++	$forums_publics = lire_meta(&quot;forums_publics&quot;);
++	if ($id_article) {
++		$query = &quot;SELECT accepter_forum FROM spip_articles WHERE id_article=$id_article&quot;;
++		$res = spip_query($query);
++		if ($obj = spip_fetch_array($res))
++			$forums_publics = $obj['accepter_forum'];
++	} else { // dans ce contexte, inutile
++		$forums_publics = substr(lire_meta(&quot;forums_publics&quot;),0,3);
++	}
++	return $forums_publics;
++}
++
++// Modifier le reglage des forums publics de l'article x
++function modifier_forums_publics($id_article, $forums_publics) {
++		spip_query (&quot;UPDATE spip_articles
++			SET accepter_forum='$forums_publics'
++			WHERE id_article=&quot;.intval($id_article));
++		if ($forums_publics == 'abo') {
++			ecrire_meta('accepter_visiteurs', 'oui');
++			ecrire_metas();
++		}
++		include_ecrire('inc_invalideur.php3');
++		suivre_invalideur(&quot;id='id_forum/a$id_article'&quot;);
++
++}
++
++// Cree le formulaire de modification du reglage des forums de l'article
++function formulaire_modification_forums_publics($id_article, $forums_publics) {
++	global $spip_lang_right;
++
++	$r = &quot;\n&lt;form action='&quot;. $GLOBALS['clean_link']-&gt;getUrl()
++		.&quot;' method='POST'&gt;&quot;;
++
++	$r .= &quot;\n&lt;input type='hidden' name='id_article' value='$id_article'&gt;&quot;;
++	$r .= &quot;&lt;br&gt;&quot;._T('info_fonctionnement_forum').&quot;\n&quot;;
++	$r .= &quot;&lt;select name='change_accepter_forum'
++		class='fondl' style='font-size:10px;'
++		onChange=\&quot;setvisibility('valider_forum', 'visible');\&quot;
++		&gt;\n&quot;;
++
++	foreach (array(
++		'pos'=&gt;_T('bouton_radio_modere_posteriori'),
++		'pri'=&gt;_T('bouton_radio_modere_priori'),
++		'abo'=&gt;_T('bouton_radio_modere_abonnement'),
++		'non'=&gt;_T('info_pas_de_forum'))
++		as $val =&gt; $desc) {
++		$r .= &quot;&lt;option&quot;;
++		if ($forums_publics == $val)
++			$r .= &quot; selected&quot;;
++		$r .= &quot; value='$val'&gt;&quot;.$desc.&quot;&lt;/option&gt;\n&quot;;
++	}
++	$r .= &quot;&lt;/select&gt;\n&quot;;
++
++	$r .= &quot;&lt;div align='$spip_lang_right'
++	class='visible_au_chargement' id='valider_forum'&gt;
++	&lt;input type='submit' name='Changer' class='fondo'
++	value='&quot;._T('bouton_changer').&quot;' STYLE='font-size:10px'&gt;
++	&lt;/div&gt;\n&quot;;
++
++	$r .= &quot;&lt;/form&gt;&quot;;
++
++	return $r;
++}
++
+ ?&gt;
+
+Index: inc_version.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_version.php3,v
+retrieving revision 1.8
+retrieving revision 1.9
+diff -u -d -r1.8 -r1.9
+--- inc_version.php3	30 Jun 2005 10:09:39 -0000	1.8
++++ inc_version.php3	21 Jul 2005 21:47:15 -0000	1.9
+@@ -317,7 +317,7 @@
+ error_reporting(E_ALL ^ E_NOTICE);
+ 
+ // Variables du compilateur de squelettes
+-$tables_des_serveurs_sql = array();
++
+ $exceptions_des_tables = array();
+ $tables_principales = array();
+ $table_des_tables = array();
+@@ -325,6 +325,8 @@
+ $tables_relations_keys = array();
+ $table_primary = array();
+ $table_date = array();
++$tables_des_serveurs_sql['localhost'] =  &amp;$tables_principales;
++
+ /* ATTENTION CETTE VARIABLE NE FONCTIONNE PAS ENCORE */
+ // Extension du fichier du squelette 
+ $extension_squelette = 'html';
+@@ -410,10 +412,10 @@
+ // (utilise pour les modifs de la base de donnees)
+ 
+ // version de la base
+-$spip_version = 1.816;
++$spip_version = 1.819;
+ 
+ // version de spip
+-$spip_version_affichee = &quot;1.8.2 CVS beta 1&quot;;
++$spip_version_affichee = &quot;1.8.2 CVS beta 2&quot;;
+ 
+ // version de spip / tag cvs
+ if (ereg('Name: v(.*) ','$Name$', $regs)) $spip_version_affichee = $regs[1];
+
+Index: articles.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/articles.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- articles.php3	30 Jun 2005 10:09:39 -0000	1.5
++++ articles.php3	21 Jul 2005 21:47:15 -0000	1.6
+@@ -16,6 +16,7 @@
+ include_ecrire (&quot;inc_mots.php3&quot;);
+ include_ecrire (&quot;inc_date.php3&quot;);
+ include_ecrire (&quot;inc_documents.php3&quot;);
++include_ecrire (&quot;inc_forum.php3&quot;);
+ include_ecrire (&quot;inc_abstract_sql.php3&quot;);
+ 
+ $articles_surtitre = lire_meta(&quot;articles_surtitre&quot;);
+@@ -298,24 +299,6 @@
+ 
+ 
+ 
+-//
+-// Suivi forums publics
+-//
+-
+-// fonction dupliquee dans inc-forum.php3
+-function get_forums_publics($id_article=0) {
+-	$forums_publics = lire_meta(&quot;forums_publics&quot;);
+-	if ($id_article) {
+-		$query = &quot;SELECT accepter_forum FROM spip_articles WHERE id_article=$id_article&quot;;
+-		$res = spip_query($query);
+-		if ($obj = spip_fetch_array($res))
+-			$forums_publics = $obj['accepter_forum'];
+-	} else { // dans ce contexte, inutile
+-		$forums_publics = substr(lire_meta(&quot;forums_publics&quot;),0,3);
+-	}
+-	return $forums_publics;
+-}
+-
+ 
+ //
+ // Lire l'article
+@@ -398,17 +381,6 @@
+ 
+ voir_en_ligne ('article', $id_article, $statut_article);
+ 
+-if ($connect_statut=='0minirezo' AND acces_rubrique($id_rubrique)) {
+-	$query = &quot;SELECT count(*) AS count FROM spip_forum WHERE id_article=$id_article AND statut IN ('publie', 'off', 'prop')&quot;;
+-	if ($row = spip_fetch_array(spip_query($query))) {
+-		$nb_forums = $row['count'];
+-		if ($nb_forums) {
+-			icone_horizontale(_T('icone_suivi_forum', array('nb_forums' =&gt; $nb_forums)),
+-				&quot;articles_forum.php3?id_article=$id_article&quot;, &quot;suivi-forum-24.gif&quot;, &quot;&quot;);
+-		}
+-	}
+-}
+-
+ 
+ $activer_statistiques = lire_meta(&quot;activer_statistiques&quot;);
+ 
+@@ -445,15 +417,28 @@
+ if ($options == &quot;avancees&quot; &amp;&amp; $connect_statut=='0minirezo' &amp;&amp; $flag_editable) {
+ 	echo &quot;&lt;p&gt;&quot;;
+ 	debut_cadre_relief(&quot;forum-interne-24.gif&quot;);
+-	$visible = $change_accepter_forum || $change_petition;
+ 
+ 
++	list($nb_forums) = spip_fetch_array(spip_query(
++		&quot;SELECT count(*) AS count FROM spip_forum
++		WHERE id_article=$id_article
++		AND statut IN ('publie', 'off', 'prop')&quot;));
++
++	list($nb_signatures) = spip_fetch_array(spip_query(
++		&quot;SELECT COUNT(*) AS count FROM spip_signatures
++		WHERE id_article=$id_article
++		AND statut IN ('publie', 'poubelle')&quot;));
++
++
++	$visible = $change_accepter_forum || $change_petition
++		|| $nb_forums || $nb_signatures;
++
+ 	echo &quot;&lt;div class='verdana1' style='text-align: center;'&gt;&lt;b&gt;&quot;;
+ 	if ($visible)
+ 		echo bouton_block_visible(&quot;forumpetition&quot;);
+ 	else
+ 		echo bouton_block_invisible(&quot;forumpetition&quot;);
+-	echo _T('bouton_forum_petition');
++	echo _T('bouton_forum_petition') .aide('confforums');
+ 	echo &quot;&lt;/b&gt;&lt;/div&gt;&quot;;
+ 	if ($visible)
+ 		echo debut_block_visible(&quot;forumpetition&quot;);
+@@ -463,64 +448,29 @@
+ 
+ 	echo &quot;&lt;font face='Verdana,Arial,Sans,sans-serif' size='1'&gt;\n&quot;;
+ 
+-	// Forums et petitions
+ 
++	// Forums
++
++	if ($nb_forums) {
++		echo &quot;&lt;br /&gt;\n&quot;;
++		icone_horizontale(_T('icone_suivi_forum', array('nb_forums' =&gt; $nb_forums)),
++		&quot;articles_forum.php3?id_article=$id_article&quot;, &quot;suivi-forum-24.gif&quot;, &quot;&quot;);
++	}
++
++	// Reglage existant
+ 	$forums_publics = get_forums_publics($id_article);
+ 
++	// Modification du reglage ?
+ 	if (isset($change_accepter_forum)
+ 	AND $change_accepter_forum &lt;&gt; $forums_publics) {
+-		$query_forum = &quot;UPDATE spip_articles
+-			SET accepter_forum='$change_accepter_forum'
+-			WHERE id_article='$id_article'&quot;;
+-		$result_forum = spip_query($query_forum);
+ 		$forums_publics = $change_accepter_forum;
+-		if ($change_accepter_forum == 'abo') {
+-			ecrire_meta('accepter_visiteurs', 'oui');
+-			ecrire_metas();
+-		}
+-		include_ecrire('inc_invalideur.php3');
+-		suivre_invalideur(&quot;id='id_forum/a$id_article'&quot;);
+-	}
+-
+-	echo &quot;\n&lt;form action='articles.php3' method='get'&gt;&quot;;
+-
+-	echo &quot;\n&lt;input type='hidden' name='id_article' value='$id_article'&gt;&quot;;
+-	echo &quot;&lt;br&gt;&quot;._T('info_fonctionnement_forum').&quot;\n&quot;;
+-	if ($forums_publics == &quot;pos&quot;) {
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_accepter_forum' value='pos' id='accepterforumpos' checked&gt;&quot;;
+-		echo &quot;&lt;B&gt;&lt;label for='accepterforumpos'&gt; &quot;._T('bouton_radio_modere_posteriori').&quot;&lt;/label&gt;&lt;/B&gt;&quot;;
+-	} else {
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_accepter_forum' value='pos' id='accepterforumpos'&gt;&quot;;
+-		echo &quot;&lt;label for='accepterforumpos'&gt; &quot;._T('bouton_radio_modere_posteriori').&quot;&lt;/label&gt;&quot;;
+-	}
+-	if ($forums_publics == &quot;pri&quot;) {
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_accepter_forum' value='pri' id='accepterforumpri' checked&gt;&quot;;
+-		echo &quot;&lt;B&gt;&lt;label for='accepterforumpri'&gt; &quot;._T('bouton_radio_modere_priori').&quot;&lt;/label&gt;&lt;/B&gt;&quot;;
+-	} else {
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_accepter_forum' value='pri' id='accepterforumpri'&gt;&quot;;
+-		echo &quot;&lt;label for='accepterforumpri'&gt; &quot;._T('bouton_radio_modere_priori').&quot;&lt;/label&gt;&quot;;
+-	}
+-	if ($forums_publics == &quot;abo&quot;) {
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_accepter_forum' value='abo' id='accepterforumabo' checked&gt;&quot;;
+-		echo &quot;&lt;B&gt;&lt;label for='accepterforumabo'&gt; &quot;._T('bouton_radio_modere_abonnement').&quot;&lt;/label&gt;&lt;/B&gt;&quot;;
+-	} else {
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_accepter_forum' value='abo' id='accepterforumabo'&gt;&quot;;
+-		echo &quot;&lt;label for='accepterforumabo'&gt; &quot;._T('bouton_radio_modere_abonnement').&quot;&lt;/label&gt;&quot;;
+-	}
+-	if ($forums_publics == &quot;non&quot;) {
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_accepter_forum' value='non' id='accepterforumnon' checked&gt;&quot;;
+-		echo &quot;&lt;B&gt;&lt;label for='accepterforumnon'&gt; &quot;._T('info_pas_de_forum').&quot;&lt;/label&gt;&lt;/B&gt;&quot;;
+-	} else {
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_accepter_forum' value='non' id='accepterforumnon'&gt;&quot;;
+-		echo &quot;&lt;label for='accepterforumnon'&gt; &quot;._T('info_pas_de_forum').&quot;&lt;/label&gt;&quot;;
++		modifier_forums_publics($id_article, $forums_publics);
+ 	}
+ 
+-	echo &quot;&lt;div align='$spip_lang_right'&gt;&lt;input type='submit' name='Changer' class='fondo' value='&quot;._T('bouton_changer').&quot;' STYLE='font-size:10px'&gt;&lt;/div&gt;\n&quot;;
+-	echo &quot;&lt;/form&gt;&quot;;
++	// Afficher le formulaire de modification du reglage
++	echo formulaire_modification_forums_publics($id_article, $forums_publics);
+ 
+-	echo &quot;&lt;br&gt;&quot;;
+ 
+-	
+ 	// Petitions
+ 
+ 	if ($change_petition) {
+@@ -542,32 +492,56 @@
+ 		}
+ 	}
+ 
+-	$query_petition = &quot;SELECT * FROM spip_petitions WHERE id_article=$id_article&quot;;
+-	$result_petition = spip_query($query_petition);
+-	$petition = (spip_num_rows($result_petition) &gt; 0);
++	$petition = spip_fetch_array(spip_query(
++		&quot;SELECT * FROM spip_petitions WHERE id_article=$id_article&quot;));
+ 
+-	while ($row = spip_fetch_array($result_petition)) {
+-		$id_rubrique=$row[&quot;id_article&quot;];
+-		$email_unique=$row[&quot;email_unique&quot;];
+-		$site_obli=$row[&quot;site_obli&quot;];
+-		$site_unique=$row[&quot;site_unique&quot;];
+-		$message=$row[&quot;message&quot;];
+-		$texte_petition=$row[&quot;texte&quot;];
++	$email_unique=$petition[&quot;email_unique&quot;];
++	$site_obli=$petition[&quot;site_obli&quot;];
++	$site_unique=$petition[&quot;site_unique&quot;];
++	$message=$petition[&quot;message&quot;];
++	$texte_petition=$petition[&quot;texte&quot;];
++
++	echo &quot;\n&lt;form action='&quot;.$GLOBALS['clean_link']-&gt;getUrl()
++		.&quot;' method='POST'&gt;&quot;;
++	echo &quot;\n&lt;input type='hidden' name='id_article' value='$id_article'&gt;&quot;;
++
++	echo &quot;&lt;select name='change_petition'
++		class='fondl' style='font-size:10px;'
++		onChange=\&quot;setvisibility('valider_petition', 'visible');\&quot;
++		&gt;\n&quot;;
++
++	if ($petition) {
++		$menu = array(
++			'on' =&gt; _T('bouton_radio_petition_activee'),
++			'off'=&gt; _T('bouton_radio_supprimer_petition')
++		);
++		$val_menu = 'on';
++	} else {
++		$menu = array(
++			'off'=&gt; _T('bouton_radio_pas_petition'),
++			'on' =&gt; _T('bouton_radio_activer_petition')
++		);
++		$val_menu = 'off';
+ 	}
+ 
+-	echo &quot;\n&lt;FORM ACTION='articles.php3' METHOD='post'&gt;&quot;;
+-	echo &quot;\n&lt;INPUT TYPE='hidden' NAME='id_article' VALUE='$id_article'&gt;&quot;;
+ 
+-	if ($petition){
+-		echo &quot;&lt;input type='radio' name='change_petition' value='on' id='petitionon' checked&gt;&quot;;
+-		echo &quot;&lt;B&gt;&lt;label for='petitionon'&gt;&quot;._T('bouton_radio_petition_activee').&quot;&lt;/label&gt;&lt;/B&gt;&quot;;
+-		$query_signatures = &quot;SELECT COUNT(*) AS nb FROM spip_signatures WHERE id_article=$id_article&quot;;
+-		$result = spip_fetch_array(spip_query($query_signatures));
+-		if ($result['nb'] &gt; 0) {
+-			echo &quot;&lt;p&gt;&lt;font size=1&gt;&lt;a href='controle_petition.php3?id_article=$id_article'&gt;&quot;.$result['nb'].&quot; &quot;._T('info_signatures').&quot;&lt;/a&gt;&lt;/font&gt;\n&quot;;
++	foreach ($menu as $val =&gt; $desc) {
++		echo &quot;&lt;option&quot;;
++		if ($val_menu == $val)
++			echo &quot; selected&quot;;
++		echo &quot; value='$val'&gt;&quot;.$desc.&quot;&lt;/option&gt;\n&quot;;
++	}
++	echo &quot;&lt;/select&gt;\n&quot;;
++
++	if ($petition) {
++		if ($nb_signatures) {
++			echo &quot;&lt;br /&gt;\n&quot;;
++			icone_horizontale($nb_signatures.'&nbsp;'. _T('info_signatures'),
++			&quot;controle_petition.php3?id_article=$id_article&quot;, &quot;suivi-petition-24.gif&quot;, &quot;&quot;);
+ 		}
+ 
+-		echo &quot;&lt;p&gt;&quot;;
++		echo &quot;&lt;br /&gt;\n&quot;;
++
+ 		if ($email_unique==&quot;oui&quot;)
+ 			echo &quot;&lt;input type='checkbox' name='email_unique' value='oui' id='emailunique' checked&gt;&quot;;
+ 		else
+@@ -594,20 +568,12 @@
+ 		echo $texte_petition;
+ 		echo &quot;&lt;/TEXTAREA&gt;&lt;P&gt;\n&quot;;
+ 
+-	}
+-	else {
+-		echo &quot;&lt;input type='radio' name='change_petition' value='on' id='petitionon'&gt;&quot;;
+-		echo &quot;&lt;label for='petitionon'&gt;&quot;._T('bouton_radio_activer_petition').&quot;&lt;/label&gt;&quot;;
+-	}
+-	if (!$petition){
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_petition' value='off' id='petitionoff' checked&gt;&quot;;
+-		echo &quot;&lt;B&gt;&lt;label for='petitionoff'&gt;&quot;._T('bouton_radio_pas_petition').&quot;&lt;/label&gt;&lt;/B&gt;&quot;;
+-	}else{
+-		echo &quot;&lt;br&gt;&lt;input type='radio' name='change_petition' value='off' id='petitionoff'&gt;&quot;;
+-		echo &quot;&lt;label for='petitionoff'&gt;&quot;._T('bouton_radio_supprimer_petition').&quot;&lt;/label&gt;&quot;;
++		echo &quot;&lt;P align='$spip_lang_right'&gt;&quot;;
+ 	}
+ 
+-	echo &quot;&lt;P align='$spip_lang_right'&gt;&lt;INPUT TYPE='submit' NAME='Changer' CLASS='fondo' VALUE='&quot;._T('bouton_changer').&quot;' STYLE='font-size:10px'&gt;&quot;;
++	if (!$petition) echo &quot;&lt;span class='visible_au_chargement' id='valider_petition'&gt;&quot;;
++	echo &quot;&lt;INPUT TYPE='submit' NAME='Changer' CLASS='fondo' VALUE='&quot;._T('bouton_changer').&quot;' STYLE='font-size:10px'&gt;&quot;;
++	if (!$petition)  echo &quot;&lt;/span&gt;&quot;;
+ 	echo &quot;&lt;/FORM&gt;&quot;;
+ 
+ 	echo &quot;&lt;/font&gt;&quot;;
+
+Index: auteurs_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/auteurs_edit.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- auteurs_edit.php3	30 Jun 2005 10:09:39 -0000	1.5
++++ auteurs_edit.php3	21 Jul 2005 21:47:15 -0000	1.6
+@@ -77,8 +77,7 @@
+ 
+ 
+ // Appliquer des modifications de statut
+-modifier_statut_auteur($row);
+-
++modifier_statut_auteur($row, $_POST['statut'], $_POST['add_rub'], $_GET['supp_rub']);
+ 
+ if ($connect_id_auteur == $id_auteur) debut_page($nom, &quot;auteurs&quot;, &quot;perso&quot;);
+ else debut_page($nom,&quot;auteurs&quot;,&quot;redacteurs&quot;);
+
+Index: rubriques_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/rubriques_edit.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- rubriques_edit.php3	30 Jun 2005 10:09:39 -0000	1.4
++++ rubriques_edit.php3	21 Jul 2005 21:47:15 -0000	1.5
+@@ -167,8 +167,13 @@
+ 
+ 
+ debut_cadre_couleur(&quot;$logo_parent&quot;, false, '', _T('entree_interieur_rubrique').aide (&quot;rubrub&quot;));
+-//echo &quot;&lt;B&gt;&quot;._T('entree_interieur_rubrique').&quot;&lt;/B&gt; &quot;.aide (&quot;rubrub&quot;).&quot;&lt;BR&gt;\n&quot;;
+-echo &quot;&lt;SELECT NAME='id_parent' style='background-color:#ffffff; font-size:90%; font-face:verdana,arial,helvetica,sans-serif; max-height: 24px;' class='forml' SIZE='1'&gt;\n&quot;;
++
++// Integrer la recherche de rubrique au clavier
++echo &quot;&lt;script language='JavaScript' type='text/javascript' src='filtery.js'&gt;&lt;/script&gt;\n&quot;;
++echo &quot;&lt;input type='text' size='10' style='font-size: 90%; width: 15%;' onkeyup=\&quot;filtery(this.value,this.form.id_parent);\&quot; onChange=\&quot;filtery(this.value,this.form.id_parent);\&quot;&gt; &quot;;
++
++echo &quot;&lt;SELECT NAME='id_parent' style='font-size: 90%; width:80%; font-face:verdana,arial,helvetica,sans-serif; max-height: 24px;' SIZE=1&gt;\n&quot;;
++
+ if ($connect_toutes_rubriques) {
+   echo &quot;&lt;OPTION&quot;.mySel(&quot;0&quot;,$id_parent). http_style_background('racine-site-12.gif',  &quot;$spip_lang_left no-repeat; background-color:$couleur_foncee; padding-$spip_lang_left: 16px; font-weight:bold; color:white&quot;) .'&gt;'._T('info_racine_site').&quot;\n&quot;;
+ } else {
+
+Index: js_menu_rubriques.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/js_menu_rubriques.php,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- js_menu_rubriques.php	30 Jun 2005 10:09:40 -0000	1.3
++++ js_menu_rubriques.php	21 Jul 2005 21:47:15 -0000	1.4
+@@ -29,7 +29,8 @@
+ function gen_liste_rubriques() {
+ 	$q = &quot;SELECT id_rubrique, id_parent, titre 
+ 		FROM spip_rubriques 
+-		ORDER BY id_parent,0+titre,titre&quot;;
++		ORDER BY id_parent,0+titre,titre
++		LIMIT 0,150&quot;;
+ 
+ 	$res = spip_query($q);
+ 
+
+Index: inc_majbase.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_majbase.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- inc_majbase.php3	30 Jun 2005 10:09:39 -0000	1.4
++++ inc_majbase.php3	21 Jul 2005 21:47:15 -0000	1.5
+@@ -995,6 +995,32 @@
+ 		maj_version(1.816);
+ 	}
+ 
++	// Texte et descriptif des groupes de mots-cles
++	if ($version_installee &lt; 1.817) {
++		spip_query(&quot;ALTER TABLE spip_groupes_mots
++		ADD descriptif text NOT NULL AFTER titre&quot;);
++		spip_query(&quot;ALTER TABLE spip_groupes_mots
++		ADD COLUMN texte longblob NOT NULL AFTER descriptif&quot;);
++		maj_version(1.817);
++	}
++
++	// Conformite des noms de certains champs (0minirezo =&gt; minirezo)
++	if ($version_installee &lt; 1.818) {
++		spip_query(&quot;ALTER TABLE spip_groupes_mots CHANGE COLUMN 0minirezo minirezo char(3) NOT NULL&quot;);
++		spip_query(&quot;ALTER TABLE spip_groupes_mots CHANGE COLUMN 1comite comite char(3) NOT NULL&quot;);
++		spip_query(&quot;ALTER TABLE spip_groupes_mots CHANGE COLUMN 6forum forum char(3) NOT NULL&quot;);
++		maj_version(1.818);
++	}
++
++	// Options de syndication : miroir + oubli
++	if ($version_installee &lt; 1.819) {
++		spip_query(&quot;ALTER TABLE spip_syndic
++			ADD miroir VARCHAR(3) DEFAULT 'non'&quot;);
++		spip_query(&quot;ALTER TABLE spip_syndic
++			ADD oubli VARCHAR(3) DEFAULT 'non'&quot;);
++		maj_version(1.819);
++	}
++
+ 
+ 	return true;
+ }
+
+Index: inc_barre.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_barre.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_barre.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_barre.php3	21 Jul 2005 21:47:16 -0000	1.3
+@@ -22,12 +22,12 @@
+ 	return &quot;&lt;a\nhref=\&quot;javascript:&quot;
+ 		.$action
+ 		.&quot;\&quot; class='spip_barre' tabindex='1000'\ntitle=\&quot;&quot;
+-		.attribut_html($help)
++		.addslashes(attribut_html($help))
+ 		.&quot;\&quot;&quot; 
+ 		.(!_DIR_RESTREINT ? '' :  &quot;\nonMouseOver=\&quot;helpline('&quot;
+ 		  .addslashes(attribut_html($help))
+ 		  .&quot;',$champhelp)\&quot;\nonMouseOut=\&quot;helpline('&quot;
+-		  .attribut_html(_T('barre_aide'))
++		  .addslashes(attribut_html(_T('barre_aide')))
+ 		  .&quot;', $champhelp)\&quot;&quot;)
+ 		.&quot;&gt;&lt;img\nsrc='&quot;
+ 		._DIR_IMG_ICONES_BARRE
+
+Index: inc_texte.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_texte.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- inc_texte.php3	30 Jun 2005 10:09:39 -0000	1.7
++++ inc_texte.php3	21 Jul 2005 21:47:16 -0000	1.8
+@@ -119,10 +119,7 @@
+ 		. &quot;)|(&quot;
+ 		. &quot;&lt;(poesie|poetry)&gt;((.*?))&lt;\/(poesie|poetry)&gt;&quot; #poesie
+ 		. &quot;)/si&quot;);
+-
+-define ('__regexp_img_echappe', &quot;&lt;(IMG|DOC|EMB)([0-9]+)(\|([^\&gt;]*))?&quot;.&quot;&gt;&quot;);
+-define ('__regexp_img_seule_echappe', &quot;&lt;(IMG)([0-9]+)(\|([^\&gt;]*))?&quot;.&quot;&gt;&quot;);
+-define ('__regexp_doc_echappe', &quot;&lt;(DOC|EMB)([0-9]+)(\|([^\&gt;]*))?&quot;.&quot;&gt;&quot;);
++define('__preg_img', ',&lt;(img|doc|emb)([0-9]+)(\|([^&gt;]*))?'.'&gt;,i');
+ 
+ function echappe_html($letexte, $source='SOURCEPROPRE', $no_transform=false) {
+ 	if (preg_match_all(__regexp_echappe, $letexte, $matches, PREG_SET_ORDER))
+@@ -147,14 +144,15 @@
+ 			$lecode = ereg_replace(&quot;^\n+|\n+$&quot;, &quot;&quot;, $lecode);
+ 
+ 			// ne pas mettre le &lt;div...&gt; s'il n'y a qu'une ligne
+-			if (is_int(strpos($lecode,&quot;\n&quot;)))
+-				$lecode = nl2br(&quot;&lt;div align='left' class='spip_code' dir='ltr'&gt;&quot;.$lecode.&quot;&lt;/div&gt;&quot;);
+-			else
+-				$lecode = &quot;&lt;span class='spip_code' dir='ltr'&gt;&quot;.$lecode.&quot;&lt;/span&gt;&quot;;
++			if (is_int(strpos($lecode,&quot;\n&quot;))) {
++				$lecode = nl2br(&quot;&lt;div style='text-align: left;' class='spip_code' dir='ltr'&gt;&lt;tt&gt;&quot;.$lecode.&quot;&lt;/tt&gt;&lt;/div&gt;&quot;);
++				$marqueur_echap = &quot;&lt;/no p&gt;$marqueur_echap&lt;no p&gt;&quot;;
++			} else
++				$lecode = &quot;&lt;span class='spip_code' dir='ltr'&gt;&lt;tt&gt;&quot;.$lecode.&quot;&lt;/tt&gt;&lt;/span&gt;&quot;;
+ 
+ 			$lecode = str_replace(&quot;\t&quot;, &quot;&nbsp; &nbsp; &nbsp; &nbsp; &quot;, $lecode);
+ 			$lecode = str_replace(&quot;  &quot;, &quot; &nbsp;&quot;, $lecode);
+-			$les_echap[$num_echap] = &quot;&lt;tt&gt;&quot;.$lecode.&quot;&lt;/tt&gt;&quot;;
++			$les_echap[$num_echap] = $lecode;
+ 		}
+ 		else
+ 		if ($regs[7]) {
+@@ -185,36 +183,15 @@
+ 		$letexte = traiter_math($letexte, $les_echap, $num_echap, $source);
+ 	}
+ 
+-	//
+-	// Reperages d'images et de documents utilisateur 
++	// Traitement des images et documents &lt;IMGxx|right&gt;
+ 	// (insertion dans echappe_retour pour faciliter les doublons)
+-	// on explose par paragraphes pour sortir les insertions &quot;lourdes&quot; (xhtml)
+-	if (eregi(__regexp_img_echappe, $letexte)) {
+-		$letexte = str_replace(&quot;\r\n&quot;, &quot;\n&quot;, $letexte);
+-		$letexte = str_replace(&quot;\r&quot;, &quot;\n&quot;, $letexte);
+-
+-		// Attention certains raccourcis impliquent un paragraphe
+-		// (a completer, ou faire autrement !)
+-		$letexte = str_replace('}}}', &quot;}}}\n\n&quot;, $letexte);
+-
+-		$paragraphes = explode(&quot;\n\n&quot;, $letexte);
+-		
+-		foreach ($paragraphes as $para) {
+-			while (eregi(__regexp_doc_echappe, $para, $match)) {
+-				$num_echap++;	
+-				$para = &quot;&lt;/no p&gt;@@SPIP_$source$num_echap@@&lt;no p&gt;\n\n&quot;.str_replace($match[0], &quot;&quot;, $para);
+-				$les_echap[$num_echap] = $match;
+-				
+-			}
+-			while (eregi(__regexp_img_seule_echappe, $para, $match)) {
+-				$num_echap++;	
+-				$para = str_replace($match[0], &quot;@@SPIP_$source$num_echap@@&lt;no p&gt;&quot;, $para);
+-				$les_echap[$num_echap] = $match;
+-				
+-			}
+-			$paragraphe[] = &quot;$para&quot;;
++	if (preg_match_all(__preg_img, $letexte, $matches, PREG_SET_ORDER)) {
++		foreach ($matches as $match) {
++			$num_echap++;
++			$letexte = str_replace($match[0],
++				&quot;&lt;/no p&gt;@@SPIP_$source$num_echap@@&lt;no p&gt;&quot;, $letexte);
++			$les_echap[$num_echap] = $match;
+ 		}
+-		$letexte= join(&quot;\n\n&quot;,$paragraphe);
+ 	}
+ 
+ 	return array($letexte, $les_echap);
+@@ -249,9 +226,7 @@
+ 
+ function supprime_img($letexte) {
+ 	$message = _T('img_indisponible');
+-	while (eregi(__regexp_img_echappe, $letexte, $match)) {
+-	  $letexte = str_replace($match[0], &quot;($message)&quot;, $letexte);
+-	}
++	preg_replace(__preg_img, &quot;($message)&quot;, $letexte);
+ 	return $letexte;
+ }
+ 
+@@ -1081,9 +1056,6 @@
+ // Filtre a appliquer aux champs du type #TEXTE*
+ function propre($letexte, $echap=false) {
+ 	return interdire_scripts(traiter_raccourcis(trim($letexte), $echap));
+-//	$a=time(); $b=microtime();
+-//	interdire_scripts(traiter_raccourcis(trim($letexte)));
+-//	return time()-$a + microtime()-$b;
+ }
+ 
+ ?&gt;
+
+Index: inc_sites.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_sites.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc_sites.php3	30 Jun 2005 10:09:40 -0000	1.5
++++ inc_sites.php3	21 Jul 2005 21:47:16 -0000	1.6
+@@ -512,8 +512,8 @@
+ (preg_match(&quot;,&lt;title&gt;(.*?)&lt;/title&gt;,ims&quot;,$item,$match))
+ 			$data['titre'] = $match[1];
+ 			else if (($syndic_version==0.3) AND (strlen($letitre)==0))
+-				if (ereg('title[[:space:]]*=[[:space:]]*[\'&quot;]([^&quot;\']+)[\'&quot;]',$link_match,$mat))
+-				$data['titre']=$mat[1]; 
++				if (preg_match(',title[[:space:]]*=[[:space:]]*([\'&quot;])(.+?)\\1,ims',$link_match,$mat))
++				$data['titre']=$mat[2]; 
+ 		if (!$data['titre'] = trim($data['titre']))
+ 			$data['titre'] = _T('ecrire:info_sans_titre');
+ 
+@@ -668,11 +668,39 @@
+ 
+ 	// Les enregistrer dans la base
+ 	if (is_array($articles)) {
++		$urls = array();
+ 		foreach ($articles as $data) {
+-			if ($data['url'])
++			if ($data['url']) {
+ 				inserer_article_syndique ($data, $now_id_syndic, $moderation, $url_site);
++				$urls[] = $data['url'];
++			}
++		}
++
++		// moderation automatique des liens qui sont sortis du feed
++		if (count($urls) &gt; 0
++		AND $row['miroir'] == 'oui') {
++			spip_query(&quot;UPDATE spip_syndic_articles
++				SET statut='off', maj=maj
++				WHERE id_syndic=$now_id_syndic
++				AND NOT (url IN ('&quot;
++				. join(&quot;','&quot;, array_map('addslashes',$urls))
++				. &quot;'))&quot;);
++		}
++
++		// suppression apres 2 mois des liens qui sont sortis du feed
++		if (count($urls) &gt; 0
++		AND $row['oubli'] == 'oui') {
++			$time = date('U') - 61*24*3600; # deux mois
++			spip_query(&quot;DELETE FROM spip_syndic_articles
++				WHERE id_syndic=$now_id_syndic
++				AND UNIX_TIMESTAMP(maj) &lt; $time
++				AND UNIX_TIMESTAMP(date) &lt; $time
++				AND NOT (url IN ('&quot;
++				. join(&quot;','&quot;, array_map('addslashes',$urls))
++				. &quot;'))&quot;);
+ 		}
+ 
++
+ 		// Noter que la syndication est OK
+ 		spip_query(&quot;UPDATE spip_syndic SET syndication='oui'
+ 		WHERE id_syndic='$now_id_syndic'&quot;);
+@@ -891,7 +919,7 @@
+ 					$puce = 'puce-rouge.gif';
+ 			}
+ 
+-			else if ($statut == &quot;off&quot;) { // vieillerie
++			else if ($statut == &quot;off&quot;) { // feed d'un site en mode &quot;miroir&quot;
+ 					$puce = 'puce-rouge-anim.gif';
+ 			}
+ 
+@@ -899,7 +927,10 @@
+ 			$vals[] = $s;
+ 
+ 			$s = &quot;&lt;a href='$url'&gt;$titre&lt;/a&gt;&quot;;
+-			if (strlen($lesauteurs) &gt; 0) $s .= &quot; ($lesauteurs)&quot;;
++
++			$date = affdate_court($date);
++			if (strlen($lesauteurs) &gt; 0) $date = $lesauteurs.', '.$date;
++			$s.= &quot; ($date)&quot;;
+ 
+ 			// S'il y a des fichiers joints (enclosures), on les affiche ici
+ 			if (spip_num_rows($q = spip_query(&quot;SELECT docs.* FROM spip_documents AS docs, spip_documents_syndic AS lien WHERE lien.id_syndic_article = $id_syndic_article AND lien.id_document = docs.id_document&quot;))) {
+@@ -918,11 +949,11 @@
+ 			$vals[] = $s;
+ 
+ 			// $my_sites cache les resultats des requetes sur les sites
+-			if ($afficher_site) {
+-				if (!$my_sites[$id_syndic])
+-					$my_sites[$id_syndic] = spip_fetch_array(spip_query(
+-						&quot;SELECT * FROM spip_syndic WHERE id_syndic=$id_syndic&quot;));
++			if (!$my_sites[$id_syndic])
++				$my_sites[$id_syndic] = spip_fetch_array(spip_query(
++					&quot;SELECT * FROM spip_syndic WHERE id_syndic=$id_syndic&quot;));
+ 
++			if ($afficher_site) {
+ 				$aff = $my_sites[$id_syndic]['nom_site'];
+ 				if ($my_sites[$id_syndic]['moderation'] == 'oui')
+ 					$s = &quot;&lt;i&gt;$aff&lt;/i&gt;&quot;;
+@@ -943,7 +974,12 @@
+ 				else if ($statut == &quot;refuse&quot;){
+ 					$s =  &quot;[&lt;a href='&quot;.$adresse_page.$lien_url.&quot;id_syndic=$id_syndic&amp;ajouter_lien=$id_syndic_article'&gt;&quot;._T('info_retablir_lien').&quot;&lt;/a&gt;]&quot;;
+ 				}
+-				else /* if ($statut == &quot;dispo&quot;) */ {
++				else if ($statut == &quot;off&quot;
++				AND $my_sites[$id_syndic]['miroir'] == 'oui') {
++					$s = '('._T('syndic_lien_obsolete').')';
++				}
++				else /* 'dispo' ou 'off' (dans le cas ancien site 'miroir') */
++				{
+ 					$s = &quot;[&lt;a href='&quot;.$adresse_page.$lien_url.&quot;id_syndic=$id_syndic&amp;ajouter_lien=$id_syndic_article'&gt;&quot;._T('info_valider_lien').&quot;&lt;/a&gt;]&quot;;
+ 				}
+ 				$vals[] = $s;
+
+Index: articles_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/articles_edit.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- articles_edit.php3	30 Jun 2005 10:09:39 -0000	1.5
++++ articles_edit.php3	21 Jul 2005 21:47:16 -0000	1.6
+@@ -205,16 +205,16 @@
+ 
+ 	# affichage
+ 	afficher_documents_colonne($id_article, 'article', $flag_editable);
+-///////////////////////////
+-//MODIFICATION
+-///////////////////////////
++	///////////////////////////
++	//MODIFICATION
++	///////////////////////////
+ 	creer_colonne_droite();
+ 	if (lire_meta('activer_carto') == 'oui'){
+ 		//on l'a deja ?
+ 		include_ecrire (&quot;inc_carto.php3&quot;);
+ 		afficher_insertion_carte($id_article);
+ 	}
+-////////////////////////////
++	////////////////////////////
+ }
+ 
+ debut_droite();
+@@ -303,8 +303,8 @@
+ 			$titre = couper(supprimer_tags(typo(extraire_multi($titre))).&quot; &quot;, 50);
+ 			if (lire_meta('multi_rubriques') == 'oui' AND ($langue_choisie_rub == &quot;oui&quot; OR $leparent == 0)) $titre = $titre.&quot; [&quot;.traduire_nom_langue($lang_rub).&quot;]&quot;;
+ 			echo &quot;&lt;option&quot;.mySel($my_rubrique,$id_rubrique).&quot; class='$selec_rub' style=\&quot;$style\&quot;&gt;$espace$titre&lt;/option&gt;\n&quot;;
+-
+-	
++		
++		
+ 			$ja_rub .= addslashes(&quot;[$my_rubrique] $titre ///&quot;);
+ 		}
+ 		$premier = 0;
+@@ -394,81 +394,9 @@
+ 	debut_cadre_couleur(&quot;$logo_parent&quot;, false, &quot;&quot;, _T('titre_cadre_interieur_rubrique').aide (&quot;artrub&quot;));
+ 
+ 
+-	echo &quot;&lt;script language='JavaScript' type='text/javascript'&gt;
+-&lt;!--
+-/*
+-  Author: Justin Whitford
+-  Source: www.evolt.org
+-*/
+-function filtery(pattern, list){
+-  /*
+-  if the dropdown list passed in hasn't
+-  already been backed up, we'll do that now
+-  */
+-  if (!list.bak){
+-    /*
+-    We're going to attach an array to the select object
+-    where we'll keep a backup of the original dropdown list
+-    */
+-    list.bak = new Array();
+-    for (n=0; n&lt;list.length; n++){
+-      list.bak[list.bak.length] = new Array(list[n].value, list[n].text);
+-    }
+-    bakselected = list.selectedIndex;
+-  }
+-
+-  /*
+-  We're going to iterate through the backed up dropdown
+-  list. If an item matches, it is added to the list of
+-  matches. If not, then it is added to the list of non matches.
+-  */
+-  match = new Array();
+-  nomatch = new Array();
+-  
+-  if (pattern.length != 0) {
+-	  for (n=0; n&lt;list.bak.length; n++){
+-		if(list.bak[n][1].toLowerCase().indexOf(pattern.toLowerCase())!=-1 || list.bak[n][0] == pattern ){
+-		  match[match.length] = new Array(list.bak[n][0], list.bak[n][1]);
+-		}else{
+-		  nomatch[nomatch.length] = new Array(list.bak[n][0], list.bak[n][1]);
+-		}
+-	  }
+-  }
+-
+-  /*
+-  Now we completely rewrite the dropdown list.
+-  First we write in the matches, then we write
+-  in the non matches
+-  */
+-  
+-  if (match.length &gt; 0) {
+-	  list.options.length = match.length;
+-	  for (n=0; n&lt;match.length; n++){
+-		list[n].value = match[n][0];
+-		list[n].text = match[n][1];
+-	  }
+-
+-    list.selectedIndex=0;
+-  
+-  }
+-  else {
+-	  list.options.length = list.bak.length;
+-	  for (n=0; n&lt;list.bak.length; n++){
+-		list[n].value =  list.bak[n][0];
+-		list[n].text =  list.bak[n][1];
+-	  }
+-  list.selectedIndex = bakselected;
+-  }
+-
+-}
+-// --&gt;
+-&lt;/script&gt;&quot;;
+-
+-	
++	// Integrer la recherche de rubrique au clavier
++	echo &quot;&lt;script language='JavaScript' type='text/javascript' src='filtery.js'&gt;&lt;/script&gt;\n&quot;;
+ 	echo &quot;&lt;input type='text' size='10' style='font-size: 90%; width: 15%;' onkeyup=\&quot;filtery(this.value,this.form.id_rubrique);\&quot; onChange=\&quot;filtery(this.value,this.form.id_rubrique);\&quot;&gt; &quot;;
+-
+-
+-
+ 
+ 	echo &quot;&lt;SELECT NAME='id_rubrique' style='font-size: 90%; width:80%; font-face:verdana,arial,helvetica,sans-serif; max-height: 24px;' SIZE=1&gt;\n&quot;;
+ 	enfant(0);
+
+Index: carte_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/carte_edit.php3,v
+retrieving revision 1.12
+retrieving revision 1.13
+diff -u -d -r1.12 -r1.13
+--- carte_edit.php3	4 Jul 2005 09:25:14 -0000	1.12
++++ carte_edit.php3	21 Jul 2005 21:47:16 -0000	1.13
+@@ -164,7 +164,9 @@
+ if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec logos'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=logo&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+ if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec liens'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=lien&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+ if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec svg'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=svg&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
++if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec svgx'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=svgx&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+ if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec geosvg'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=geosvg&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
++if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec geosvgwms'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=geosvgwms&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+ 
+ echo &quot;&lt;/div&gt;\n&quot;;
+ 
+@@ -231,7 +233,7 @@
+    		echo afficher_carte_interface($id_carte,$retour,$lurl_carte,$tabcallage, $url_carte);
+ 				
+ 		echo fin_block();
+-		echo &quot;&lt;/div&gt;\n&quot;;
++		//echo &quot;&lt;/div&gt;\n&quot;;
+ 		
+ 		fin_cadre_relief();
+ 	}
+
+Index: inc_tidy.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_tidy.php,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- inc_tidy.php	30 Jun 2005 10:09:39 -0000	1.4
++++ inc_tidy.php	21 Jul 2005 21:47:16 -0000	1.5
+@@ -52,13 +52,15 @@
+ 
+ /** ici commence la petite usine a gaz des traitements d'erreurs de tidy **/
+ 	## NB: seul tidy en ligne de commande sait gerer ses erreurs,
++
++	// Conserver une liste des URLs en erreur tidy
++	lire_fichier($f = _DIR_SESSIONS.'w3c-go-home.txt', $liste);
++	$url = &quot;<A HREF="http://">http://</A>&quot;.$_SERVER['HTTP_HOST'].nettoyer_uri();
++
+ 	if (defined('_erreur_tidy')) {
+ 
+ 		if (defined('_calcul_tidy')) {
+ 			spip_log(&quot;Erreur tidy : $url\n&quot;._erreur_tidy, 'tidy');
+-
+-			// Conserver une liste des URLs en erreur tidy
+-			lire_fichier($f = _DIR_SESSIONS.'w3c-go-home.txt', $liste);
+ 			if (strpos($liste, &quot;- $url -\n&quot;) === false) {
+ 				$liste = substr($liste, - 8*1024); # anti-explosions
+ 				ecrire_fichier($f, $liste.&quot;- $url -\n&quot;);
+@@ -75,9 +77,7 @@
+ 	{
+ 		// Nettoyer la liste des URLs pourries, si maintenant on est correct
+ 		if (defined('_calcul_tidy')) {
+-			lire_fichier($f = _DIR_SESSIONS.'w3c-go-home.txt', $liste);
+-			$url = &quot;- <A HREF="http://">http://</A>&quot;.$_SERVER['HTTP_HOST'].nettoyer_uri().&quot; -\n&quot;;
+-			if (($liste2 = str_replace($url, '', $liste)) != $liste)
++			if (($liste2 = str_replace(&quot;- $url -\n&quot;, '', $liste)) != $liste)
+ 				ecrire_fichier($f, $liste2);
+ 		}
+ 
+@@ -89,11 +89,9 @@
+ #			entetes_xhtml();
+ 
+ 	}
+-	// Ajouter un pseudo bouton d'admin
+-	$GLOBALS['xhtml_check'] = '<A HREF="http://validator.w3.org/check?uri=">http://validator.w3.org/check?uri=</A>' .
+-	  stripslashes(preg_quote(entites_html(&quot;<A HREF="http://">http://</A>&quot; .
+-					       $_SERVER['HTTP_HOST'].
+-					       nettoyer_uri())));
++	// Ajouter un bouton d'admin &quot;Analyser&quot;
++	$GLOBALS['xhtml_check'] = '<A HREF="http://validator.w3.org/check?uri=">http://validator.w3.org/check?uri=</A>'
++		. urlencode(&quot;<A HREF="http://">http://</A>&quot; . $_SERVER['HTTP_HOST'] . nettoyer_uri());
+ /** fin de l'usine a gaz **/
+ 
+ 
+@@ -228,7 +226,7 @@
+ 			'indent-spaces' =&gt; 4,
+ 			'output-xhtml' =&gt; true,
+ 			'add-xml-decl' =&gt; false,
+-			'indent' =&gt; 5,
++			'indent' =&gt; 0,
+ 			'show-body-only' =&gt; false,
+ 			'quote-nbsp' =&gt; false
+ 			);
+
+Index: inc_getdocument.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_getdocument.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc_getdocument.php3	30 Jun 2005 10:09:39 -0000	1.5
++++ inc_getdocument.php3	21 Jul 2005 21:47:16 -0000	1.6
+@@ -280,7 +280,8 @@
+ 	}
+ 
+ 	// Echec avec HEAD, on tente avec GET
+-	if (!$a) {
++	if (!$a AND !$max) {
++	spip_log(&quot;tente $source&quot;);
+ 		$a = recuperer_infos_distantes($source, 1024*1024);
+ 	}
+ 
+
+Index: inc_spip_sax.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_spip_sax.php,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc_spip_sax.php	30 Jun 2005 10:09:39 -0000	1.1
++++ inc_spip_sax.php	21 Jul 2005 21:47:16 -0000	1.2
+@@ -43,8 +43,8 @@
+   $sep = ' ';
+   foreach ($attrs as $k =&gt; $v) {
+ 	$delim = strpos($v, &quot;'&quot;) === false ? &quot;'&quot; : '&quot;';
+-	$att .= $sep .  $k . &quot;=&quot; . $delim . 
+-	  $phraseur_xml-&gt;translate_entities($v)
++	$att .= $sep .  $k . &quot;=&quot; . $delim
++	  . str_replace('&quot;',  '&quot;', $phraseur_xml-&gt;translate_entities($v))
+ 	  . $delim;
+ 	$sep = &quot;\n $depth&quot;;
+     }
+@@ -96,7 +96,6 @@
+ 	  eval($data);
+ 	  $data = ob_get_contents();
+ 	  ob_end_clean();
+-	  //	  xml_parse($xml_parser, $data); // pas si simple
+ 	  $contenu[$depth] .= $data;
+   }
+ }
+
+Index: mots_tous.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mots_tous.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- mots_tous.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ mots_tous.php3	21 Jul 2005 21:47:16 -0000	1.3
+@@ -66,20 +66,22 @@
+ 	if ($modifier_groupe == &quot;oui&quot;) {
+ 		$change_type = addslashes(corriger_caracteres($change_type));
+ 		$ancien_type = addslashes(corriger_caracteres($ancien_type));
+-
++		$texte = addslashes(corriger_caracteres($texte));
++		$descriptif = addslashes(corriger_caracteres($descriptif));
++		
+ 		if ($ancien_type) {	// modif groupe
+ 			$query = &quot;UPDATE spip_mots SET type='$change_type' WHERE id_groupe='$id_groupe'&quot;;
+ 			spip_query($query);
+ 
+-			$query = &quot;UPDATE spip_groupes_mots SET titre='$change_type', unseul='$unseul', obligatoire='$obligatoire',
++			$query = &quot;UPDATE spip_groupes_mots SET titre='$change_type', texte='$texte', descriptif='$descriptif', unseul='$unseul', obligatoire='$obligatoire',
+ 				articles='$articles', breves='$breves', rubriques='$rubriques', syndic='$syndic',
+-				0minirezo='$acces_minirezo', 1comite='$acces_comite', 6forum='$acces_forum'
++				minirezo='$acces_minirezo', comite='$acces_comite', forum='$acces_forum'
+ 				,carto_objets='$carto_objets' WHERE id_groupe='$id_groupe'&quot;;
+ 			spip_query($query);
+ 		} else {	// creation groupe
+-			$query = &quot;INSERT INTO spip_groupes_mots SET titre='$change_type', unseul='$unseul', obligatoire='$obligatoire',
++			$query = &quot;INSERT INTO spip_groupes_mots SET titre='$change_type', texte='$texte', descriptif='$descriptif', unseul='$unseul', obligatoire='$obligatoire',
+ 				articles='$articles', breves='$breves', rubriques='$rubriques', syndic='$syndic',
+-				carto_objets='$carto_objets', 0minirezo='$acces_minirezo', 1comite='$acces_comite', 6forum='$acces_forum'&quot;;
++				carto_objets='$carto_objets', minirezo='$acces_minirezo', comite='$acces_comite', forum='$acces_forum'&quot;;
+ 			spip_query($query);
+ 		}
+ 	}
+@@ -197,15 +199,17 @@
+ while ($row_groupes = spip_fetch_array($result_groupes)) {
+ 	$id_groupe = $row_groupes['id_groupe'];
+ 	$titre_groupe = typo($row_groupes['titre']);
++	$descriptif = $row_groupes['descriptif'];
++	$texte = $row_groupes['texte'];
+ 	$unseul = $row_groupes['unseul'];
+ 	$obligatoire = $row_groupes['obligatoire'];
+ 	$articles = $row_groupes['articles'];
+ 	$breves = $row_groupes['breves'];
+ 	$rubriques = $row_groupes['rubriques'];
+ 	$syndic = $row_groupes['syndic'];
+-	$acces_minirezo = $row_groupes['0minirezo'];
+-	$acces_comite = $row_groupes['1comite'];
+-	$acces_forum = $row_groupes['6forum'];
++	$acces_minirezo = $row_groupes['minirezo'];
++	$acces_comite = $row_groupes['comite'];
++	$acces_forum = $row_groupes['forum'];
+ 
+ 	// Afficher le titre du groupe
+ 	debut_cadre_enfonce(&quot;groupe-mot-24.gif&quot;, false, '', $titre_groupe);
+@@ -226,6 +230,21 @@
+ 	if ($acces_forum == &quot;oui&quot;) echo &quot;&gt; &quot;._T('info_visiteurs_02').&quot; &nbsp;&nbsp;&quot;;
+ 
+ 	echo &quot;&lt;/font&gt;&quot;;
++	if ($descriptif) {
++		echo &quot;&lt;p&gt;&lt;div align='left' border: 1px dashed #aaaaaa;'&gt;&quot;;
++		echo &quot;&lt;font size=2 face='Verdana,Arial,Sans,sans-serif'&gt;&quot;;
++		echo &quot;&lt;b&gt;&quot;._T('info_descriptif').&quot;&lt;/b&gt; &quot;;
++		echo propre($descriptif);
++		echo &quot;&nbsp; &quot;;
++		echo &quot;&lt;/font&gt;&quot;;
++		echo &quot;&lt;/div&gt;&quot;;
++	}
++
++	if (strlen($texte)&gt;0){
++		echo &quot;&lt;FONT FACE='Verdana,Arial,Sans,sans-serif'&gt;&quot;;
++		echo &quot;&lt;P&gt;&quot;.propre($texte);
++		echo &quot;&lt;/FONT&gt;&quot;;
++	}
+ 
+ 	//
+ 	// Afficher les mots-cles du groupe
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.13
+retrieving revision 1.14
+diff -u -d -r1.13 -r1.14
+--- inc_carto.php3	30 Jun 2005 10:09:39 -0000	1.13
++++ inc_carto.php3	21 Jul 2005 21:47:16 -0000	1.14
+@@ -90,6 +90,56 @@
+ 	}
+ }
+ 
++function getArg($texte,$idArg){
++	$args=explode(&quot;,&quot;,$texte);
++	return $args[$idArg];
++}
++function wkt2imgheight($args, $callage = &quot;&quot;,$url_carte){
++	$tab=wkt2imgsize($args, $callage,$url_carte);
++	return $tab[0];
++}
++function wkt2imgwidth($args, $callage = &quot;&quot;,$url_carte){
++	$tab=wkt2imgsize($args, $callage,$url_carte);
++	return $tab[1];
++}
++function wkt2imgsize($args=&quot;&quot;, $callage = &quot;&quot;,$url_carte){
++	//recuperer taille reelle carte
++	$callage 	= worldfile2array ($callage);
++	
++	$GeoWidth 	= ($callage['bottom_right']['x']-$callage['top_left']['x']);
++	$GeoHeight 	= ($callage['bottom_right']['y']-$callage['top_left']['y']);
++	
++	
++	//recuperer taille de l'image
++	$ImgRealWidth = getImgWidth ($url_carte);
++	$ImgRealHeight = getImgHeight ($url_carte);
++	
++	//ou la taille pass&#233;e, ou &#224; defaut celle de la carte ???
++	if ($ImgRealWidth) $ImgWidth = $ImgRealWidth;
++	else $ImgWidth = $GeoWidth;
++	if ($ImgRealHeight) $ImgHeight = $ImgRealHeight;
++	else $ImgHeight = $GeoHeight;
++	$ratio=$ImgHeight/$ImgWidth;
++	
++	//tailles maximum parametr&#233;es ?
++	//TODO : optimiser un peu tout ca ...
++	$ImgMaxWidth = getArg($args,1);
++	$ImgMaxHeight = getArg($args,0);
++	if ($ImgMaxWidth==0) $ImgMaxWidth=$ImgWidth;
++	if ($ImgMaxHeight==0) $ImgMaxHeight=$ImgHeight;
++	
++	if (($ImgMaxWidth)&amp;&amp;($ImgMaxWidth&lt;$ImgWidth))
++	{
++		$ImgWidth=$ImgMaxWidth;
++		$ImgHeight=round($ratio*$ImgMaxWidth);
++	}
++	if (($ImgMaxHeight)&amp;&amp;($ImgMaxHeight&lt;$ImgHeight))
++	{
++		$ImgHeight=$ImgMaxHeight;
++		$ImgWidth=round($ImgMaxHeight/$ratio);
++	}
++	return array($ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth);
++}
+ /*
+  *   +---------------------------------------------+
+  *    Nom du Filtre : WKT to COORDS
+@@ -108,23 +158,23 @@
+  * <A HREF="http://www.uzine.net/spip_contrib/">http://www.uzine.net/spip_contrib/</A>
+  *
+  */
+-function wkt2coords($geometrie, $format = &quot;HTML&quot;, $callage = &quot;&quot;, $url_carte = &quot;&quot;){
++function wkt2coords($geometrie, $format = &quot;HTML&quot;, $callage = &quot;&quot;,$url_carte, $args = &quot;&quot;){
++	//recuperer geometrie
+ 	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
+ 	$wktGeom 	= substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1);
+ 	
+-	$callage 	= worldfile2array ($callage);
+-	
+-	$GeoWidth 	= ($callage['bottom_right']['x']-$callage['top_left']['x']);
+-	$GeoHeight 	= ($callage['bottom_right']['y']-$callage['top_left']['y']);
+-	
+-	$ImgWidth = getImgWidth ($url_carte);
+-	$ImgHeight = getImgHeight ($url_carte);;
++	$tab=wkt2imgsize($args, $callage,$url_carte);
++	//recuperer taille affich&#233;e 
++	$ImgHeight=$tab[0];
++	$ImgWidth=$tab[1];
++	//recuperer taille reelle carte
++	$GeoHeight 	= $tab[2];
++	$GeoWidth 	= $tab[3];
+ 
+-	if (!$ImgWidth) $ImgWidth = $GeoWidth;
+-	if (!$ImgHeight) $ImgHeight = $GeoHeight;
+-	
+ 	$radius		 = 3;	// TODO : Param&#232;tre (ou fonction du callage ?) pr&#233;f&#233;rable car fonction des projections 5 peut &#234;tre bcp trop petit
+ 	$rgeo 		 = $radius*$GeoWidth/$ImgWidth;
++	$callage 	= worldfile2array ($callage);
++	
+ 	switch ($format){
+ 		case &quot;HTML&quot;:
+ 			// Pour obtenir des objets HTML/MAP ...
+@@ -559,4 +609,5 @@
+ 	fin_cadre_enfonce();
+ 
+ }
++
+ ?&gt;
+
+Index: inc_abstract_sql.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_abstract_sql.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_abstract_sql.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_abstract_sql.php3	21 Jul 2005 21:47:16 -0000	1.3
+@@ -37,7 +37,7 @@
+ 
+ function spip_abstract_select (
+ 	$select = array(), $from = array(), $where = '',
+-	$groupby = '', $orderby = '', $limit = '',
++	$groupby = '', $orderby = array(), $limit = '',
+ 	$sousrequete = '', $cpt = '',
+ 	$table = '', $id = '', $serveur='') {
+ 
+@@ -56,7 +56,7 @@
+ 		}
+ 	}
+ 	return $f($select, $from, $where,
+-		  $groupby, $orderby, $limit,
++		  $groupby, array_filter($orderby), $limit,
+ 		  $sousrequete, $cpt,
+ 		  $table, $id, $serveur);
+ }
+@@ -105,7 +105,7 @@
+ # une composition tellement frequente...
+ function spip_abstract_fetsel(
+ 	$select = array(), $from = array(), $where = '',
+-	$groupby = '', $orderby = '', $limit = '',
++	$groupby = '', $orderby = array(), $limit = '',
+ 	$sousrequete = '', $cpt = '',
+ 	$table = '', $id = '', $serveur='') {
+ 	return spip_abstract_fetch(spip_abstract_select(
+
+Index: inc_import.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_import.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc_import.php3	30 Jun 2005 10:09:40 -0000	1.5
++++ inc_import.php3	21 Jul 2005 21:47:16 -0000	1.6
+@@ -477,6 +477,7 @@
+ 		else {
+ 			$affiche_progression_pourcent = filesize($archive);
+ 			$taille = floor(100 * $my_pos / $affiche_progression_pourcent).&quot; %&quot;;
++			$gz = false;
+ 		}
+ 		$texte_boite = _T('info_base_restauration').&quot;&lt;p&gt;
+ 		&lt;form name='progression'&gt;&lt;center&gt;&lt;input type='text' size=10 style='text-align:center;' name='taille' value='$taille'&gt;&lt;br&gt;
+
+Index: inc_auth.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_auth.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_auth.php3	3 Mar 2005 14:54:56 -0000	1.3
++++ inc_auth.php3	21 Jul 2005 21:47:16 -0000	1.4
+@@ -20,6 +20,10 @@
+ include_ecrire (&quot;inc_meta.php3&quot;);
+ include_ecrire (&quot;inc_session.php3&quot;);
+ 
++define(&quot;_DIR_LOGIN&quot;, _DIR_RESTREINT ? &quot;&quot; : &quot;../&quot;);
++define(&quot;_DIR_LOGED_IN&quot;,   _DIR_RESTREINT ? &quot;&quot; : _DIR_RESTREINT_ABS);
++
++
+ //
+ // Fonctions de gestion de l'acces restreint aux rubriques
+ //
+@@ -116,9 +120,9 @@
+ 
+ 	// Tentative de login echec
+ 	if ($_GET['bonjour'] == 'oui' AND !$auth_login) {
+-		$link = new Link(&quot;../spip_cookie.php3?test_echec_cookie=oui&quot;);
++		$link = new Link(_DIR_LOGIN . &quot;spip_cookie.php3?test_echec_cookie=oui&quot;);
+ 		$clean_link-&gt;delVar('bonjour');
+-		$url = str_replace('/./', '/', _DIR_RESTREINT_ABS .$clean_link-&gt;getUrl());
++		$url = str_replace('/./', '/', _DIR_LOGED_IN .$clean_link-&gt;getUrl());
+ 		$link-&gt;addVar('url', $url);
+ 		redirige_par_entete($link-&gt;getUrl());
+ 		exit;
+@@ -126,9 +130,9 @@
+ 
+ 	// Si pas authentifie, demander login / mdp
+ 	if (!$auth_login) {
+-		$url = str_replace('/./', '/',  _DIR_RESTREINT_ABS
++		$url = str_replace('/./', '/',  _DIR_LOGED_IN
+ 			. $clean_link-&gt;getUrl());
+-		redirige_par_entete(&quot;../spip_login.php3?url=&quot;.urlencode($url));
++		redirige_par_entete(_DIR_LOGIN . &quot;spip_login.php3?url=&quot;.urlencode($url));
+ 		exit;
+ 	}
+ 
+@@ -214,14 +218,17 @@
+ 		include_ecrire('inc_presentation.php3');
+ 		include_ecrire('inc_texte.php3');
+ 		install_debut_html(_T('avis_erreur_connexion'));
+-		echo &quot;&lt;br&gt;&lt;br&gt;&lt;p&gt;&quot;._T('texte_inc_auth_1', array('auth_login' =&gt; $auth_login)).&quot; &lt;A HREF='../spip_cookie.php3?logout=$auth_login'&gt;&quot;.
++		echo &quot;&lt;br&gt;&lt;br&gt;&lt;p&gt;&quot;.
++		  _T('texte_inc_auth_1', array('auth_login' =&gt; $auth_login)).
++		  &quot; &lt;a href='&quot; .
++		  _DIR_LOGIN . &quot;spip_cookie.php3?logout=$auth_login'&gt;&quot;.
+                 _T('texte_inc_auth_2').&quot;&lt;/A&gt;&quot;._T('texte_inc_auth_3');
+ 		install_fin_html();
+ 		exit;
+ 	}
+ 
+ 	if (!$auth_pass_ok) {
+-		redirige_par_entete(&quot;../spip_login.php3?var_erreur=pass&quot;);
++		redirige_par_entete(_DIR_LOGIN . &quot;spip_login.php3?var_erreur=pass&quot;);
+ 	}
+ 
+ 	// Si c'est un nouvel inscrit, le passer de 'nouveau' a '1comite'
+
+Index: inc_db_mysql.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_db_mysql.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- inc_db_mysql.php3	30 Jun 2005 10:09:39 -0000	1.4
++++ inc_db_mysql.php3	21 Jul 2005 21:47:16 -0000	1.5
+@@ -74,12 +74,12 @@
+ 			   $sousrequete, $having,
+ 			   $table, $id, $serveur) {
+ 
+-	$q = &quot;\nFROM &quot; . join(&quot;,\n\t&quot;, $from)
+-	. ($where ? &quot;\nWHERE &quot; . join(&quot;\n\tAND &quot;, $where) : '')
+-	. ($groupby ? &quot;\nGROUP BY $groupby&quot; : '')
+-	. ($having  ? &quot;\nHAVING $having&quot; : '')
+-	. ($orderby ? &quot;\nORDER BY $orderby&quot; : '')
+-	. ($limit ? &quot;\nLIMIT $limit&quot; : '');
++	$q = ($from  ?(&quot;\nFROM &quot; . join(&quot;,\n\t&quot;, $from)) : '')
++	  .  ($where ? (&quot;\nWHERE &quot; . join(&quot;\n\tAND &quot;, $where)) : '')
++	  .  ($groupby ? &quot;\nGROUP BY $groupby&quot; : '')
++	  .  ($having  ? &quot;\nHAVING $having&quot; : '')
++	  .  ($orderby ? (&quot;\nORDER BY &quot; . join(&quot;, &quot;, $orderby)) : '')
++	  .  ($limit ? &quot;\nLIMIT $limit&quot; : '');
+ 
+ 	if (!$sousrequete)
+ 		$q = &quot; SELECT &quot;. join(&quot;, &quot;, $select) . $q;
+@@ -97,9 +97,10 @@
+ 
+ 	if (!($res = @spip_query($q))) {
+ 		include_ecrire('inc_debug_sql.php3');
+-		echo erreur_requete_boucle($q, $id, $table);
++		erreur_requete_boucle($q, $id, $table,
++				      spip_sql_errno(),
++				      spip_sql_error());
+ 	}
+-
+ #	 spip_log($serveur . spip_num_rows($res) . $q);
+ 	return $res;
+ }
+@@ -239,19 +240,20 @@
+ 	if (!$valeurs) return '0=0';
+ 
+ 	$n = $i = 0;
+-	$chunk = array();
++	$in_sql =&quot;&quot;;
+ 	while ($n = strpos($valeurs, ',', $n+1)) {
+-		if ((++$i) &gt;= 255) {
+-			$chunk = substr($valeurs, 0, $n);
+-			$in_sql .= &quot;($val $not IN (&quot; . $chunk . &quot;))\n&quot; .
+-				($not ? &quot;AND\t&quot; : &quot;OR\t&quot;);
++	  if ((++$i) &gt;= 255) {
++			$in_sql .= &quot;($val $not IN (&quot; .
++			  substr($valeurs, 0, $n) .
++			  &quot;))\n&quot; .
++			  ($not ? &quot;AND\t&quot; : &quot;OR\t&quot;);
+ 			$valeurs = substr($valeurs, $n+1);
+ 			$i = $n = 0;
+ 		}
+ 	}
+ 	$in_sql .= &quot;($val $not IN ($valeurs))&quot;;
+ 
+-	return $in_sql;
++	return &quot;($in_sql)&quot;;
+ }
+ 
+ ?&gt;
+
+Index: sites_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/sites_edit.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- sites_edit.php3	30 Jun 2005 10:09:39 -0000	1.4
++++ sites_edit.php3	21 Jul 2005 21:47:16 -0000	1.5
+@@ -183,7 +183,7 @@
+ 		fin_cadre_relief();
+ 		echo &quot;&lt;/form&gt;&quot;;
+ 		
+-		echo &quot;&lt;p&gt;&lt;b&gt;&quot;._T('texte_non_fonction_referencement').&quot;&lt;/b&gt;&quot;;
++		echo &quot;&lt;p&gt;&lt;blockquote&gt;&lt;b&gt;&quot;._T('texte_non_fonction_referencement').&quot;&lt;/b&gt;&quot;;
+ 		$cadre_ouvert = true;
+ 		debut_cadre_enfonce(&quot;site-24.gif&quot;);
+ 		
+@@ -222,7 +222,12 @@
+ 	}
+ 
+ 	debut_cadre_couleur(&quot;$logo_parent&quot;, false, &quot;&quot;, _T('entree_interieur_rubrique'));
+-	echo &quot;&lt;select name='id_rubrique' style='background-color:#ffffff; font-size:90%; width:100%; max-height: 24px; font-face:verdana,arial,helvetica,sans-serif;' size=1&gt;\n&quot;;
++
++	// Integrer la recherche de rubrique au clavier
++	echo &quot;&lt;script language='JavaScript' type='text/javascript' src='filtery.js'&gt;&lt;/script&gt;\n&quot;;
++	echo &quot;&lt;input type='text' size='10' style='font-size: 90%; width: 15%;' onkeyup=\&quot;filtery(this.value,this.form.id_rubrique);\&quot; onChange=\&quot;filtery(this.value,this.form.id_rubrique);\&quot;&gt; &quot;;
++
++	echo &quot;&lt;SELECT NAME='id_rubrique' style='font-size: 90%; width:80%; font-face:verdana,arial,helvetica,sans-serif; max-height: 24px;' SIZE=1&gt;\n&quot;;
+ 	enfant(0);
+ 	echo &quot;&lt;/select&gt;\n&quot;;
+ 	fin_cadre_couleur();
+@@ -295,7 +300,10 @@
+ echo &quot;&lt;div ALIGN='right'&gt;&lt;INPUT TYPE='submit' NAME='Valider' VALUE='&quot;._T('bouton_enregistrer').&quot;' CLASS='fondo'&gt;&lt;/div&gt;&quot;;
+ echo &quot;&lt;/FORM&gt;&quot;;
+ 
+-if ($cadre_ouvert) fin_cadre_enfonce();
++if ($cadre_ouvert) {
++	fin_cadre_enfonce();
++	echo &quot;&lt;/blockquote&gt;\n&quot;;
++}
+ 
+ fin_cadre_formulaire();
+ 
+
+Index: inc_presentation.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_presentation.php3,v
+retrieving revision 1.8
+retrieving revision 1.9
+diff -u -d -r1.8 -r1.9
+--- inc_presentation.php3	5 Jul 2005 00:44:48 -0000	1.8
++++ inc_presentation.php3	21 Jul 2005 21:47:16 -0000	1.9
+@@ -1167,7 +1167,7 @@
+ 	}
+ 
+ 
+-	if ($afficher_auteurs) $cols = 3;
++	if ($afficher_auteurs) $cols = 4;
+ 	else $cols = 2;
+ 	$query_message .= ' ORDER BY date_heure DESC';
+ 	$tranches = afficher_tranches_requete($query_message, $cols);
+@@ -2041,7 +2041,7 @@
+ 	echo &quot;&lt;li&gt;&lt;a href=\&quot;naviguer.php3\&quot;&gt;&quot;._T('icone_edition_site').&quot;&lt;/a&gt;&quot;;
+ 	echo &quot;&lt;li&gt;&lt;a href=\&quot;forum.php3\&quot;&gt;&quot;._T('titre_forum').&quot;&lt;/a&gt;&quot;;
+ 	echo &quot;&lt;li&gt;&lt;a href=\&quot;auteurs.php3\&quot;&gt;&quot;._T('icone_auteurs').&quot;&lt;/a&gt;&quot;;
+-	echo &quot;&lt;li&gt;&lt;a href=\&quot;$adresse_site\&quot;&gt;&quot;._T('icone_visiter_site').&quot;&lt;/a&gt;&quot;;
++	echo &quot;&lt;li&gt;&lt;a href=\&quot;$adresse_site/\&quot;&gt;&quot;._T('icone_visiter_site').&quot;&lt;/a&gt;&quot;;
+ 	echo &quot;&lt;/ul&gt;&quot;;
+ }
+ else {
+@@ -2077,7 +2077,7 @@
+ 
+ 
+ 	icone_bandeau_principal (_T('icone_aide_ligne'), &quot;javascript:window.open('aide_index.php3?var_lang=$spip_lang', 'aide_spip', 'scrollbars=yes,resizable=yes,width=740,height=580');&quot;, &quot;aide-48$spip_lang_rtl.png&quot;, &quot;vide&quot;, &quot;&quot;, &quot;aide_index.php3?var_lang=$spip_lang&quot;, &quot;aide-en-ligne&quot;, $sous_rubrique);
+-	icone_bandeau_principal (_T('icone_visiter_site'), &quot;$adresse_site&quot;, &quot;visiter-48$spip_lang_rtl.png&quot;, &quot;visiter&quot;,&quot;&quot;, &quot;visiter&quot;, $sous_rubrique);
++	icone_bandeau_principal (_T('icone_visiter_site'), &quot;$adresse_site/&quot;, &quot;visiter-48$spip_lang_rtl.png&quot;, &quot;visiter&quot;,&quot;&quot;, &quot;visiter&quot;, $sous_rubrique);
+ 
+ 	echo &quot;&lt;/tr&gt;&lt;/table&gt;\n&quot;;
+ 
+@@ -2763,8 +2763,8 @@
+ 
+ // Cadre formulaires
+ 
+-function debut_cadre_formulaire(){
+-	echo &quot;\n&lt;div class='cadre-formulaire'&gt;&quot;;
++function debut_cadre_formulaire($style=''){
++	echo &quot;\n&lt;div class='cadre-formulaire'&quot; . (!$style ? &quot;&quot; : &quot;style='$style'&quot;) .&quot;&gt;&quot;;
+ }
+ 
+ function fin_cadre_formulaire(){
+
+Index: sites.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/sites.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- sites.php3	30 Jun 2005 10:09:39 -0000	1.3
++++ sites.php3	21 Jul 2005 21:47:16 -0000	1.4
+@@ -17,6 +17,7 @@
+ include_ecrire (&quot;inc_sites.php3&quot;);
+ include_ecrire (&quot;inc_date.php3&quot;);
+ include_ecrire (&quot;inc_abstract_sql.php3&quot;);
++include_ecrire (&quot;inc_config.php3&quot;);
+ 
+ $proposer_sites = lire_meta(&quot;proposer_sites&quot;);
+ 
+@@ -51,10 +52,10 @@
+ 					 &quot;(nom_site, id_rubrique, id_secteur, date, date_syndic, statut, syndication, moderation)&quot;,
+ 					 &quot;('&quot;._T('avis_site_introuvable').&quot;', $id_rubrique, $id_rubrique, NOW(), NOW(), 'refuse', 'non', '$moderation')&quot;);
+ 	}
+-}
++} else $id_syndic = intval($id_syndic);
+ 
+-$query = &quot;SELECT statut, id_rubrique FROM spip_syndic WHERE id_syndic='$id_syndic'&quot;;
+-$result = spip_query($query);
++$result = spip_query(&quot;SELECT statut, id_rubrique FROM spip_syndic
++	WHERE id_syndic=$id_syndic&quot;);
+ 
+ if ($row = spip_fetch_array($result)) {
+ 	$statut = $row[&quot;statut&quot;];
+@@ -81,10 +82,11 @@
+ 		$url_syndic = addslashes($v['url_syndic']);
+ 		$descriptif = addslashes($v['descriptif']);
+ 		$syndication = $v[syndic] ? 'oui' : 'non';
+-		$query = &quot;UPDATE spip_syndic &quot;.
+-			&quot;SET nom_site='$nom_site', url_site='$url_site', url_syndic='$url_syndic', descriptif='$descriptif', syndication='$syndication', statut='$statut' &quot;.
+-			&quot;WHERE id_syndic=&quot;.intval($id_syndic);
+-		$result = spip_query($query);
++		$result = spip_query(&quot;UPDATE spip_syndic &quot;.
++			&quot;SET nom_site='$nom_site', url_site='$url_site',
++			url_syndic='$url_syndic', descriptif='$descriptif',
++			syndication='$syndication', statut='$statut'
++			WHERE id_syndic=$id_syndic&quot;);
+ 		if ($syndication == 'oui') syndic_a_jour($id_syndic);
+ 		$link = new Link('sites.php3');
+ 		$link-&gt;addVar('id_syndic');
+@@ -101,13 +103,12 @@
+ 
+ if ($nouveau_statut AND $flag_administrable) {
+ 	$statut = $nouveau_statut;
+-	$query = &quot;UPDATE spip_syndic SET statut='$statut' WHERE id_syndic=&quot;.intval($id_syndic);
+-	$result = spip_query($query);
+-	//if ($statut == 'refuse') $redirect_ok = 'oui';
+-	if ($statut == 'publie') {
+-		$query = &quot;UPDATE spip_syndic SET date=NOW() WHERE id_syndic=&quot;.intval(id_syndic);
+-		$result = spip_query($query);
+-	}
++	$result = spip_query(&quot;UPDATE spip_syndic SET statut='$statut'
++	WHERE id_syndic=$id_syndic&quot;);
++	if ($statut == 'publie')
++		spip_query(&quot;UPDATE spip_syndic SET date=NOW() WHERE
++		id_syndic=$id_syndic&quot;);
++
+ 	calculer_rubriques();
+ 	if ($statut == 'publie') {
+ 		if (lire_meta('activer_moteur') == 'oui') {
+@@ -133,15 +134,18 @@
+ 	
+ 	
+ 	
+-	$query = &quot;UPDATE spip_syndic SET id_rubrique='$id_rubrique', nom_site='$nom_site', url_site='$url_site', url_syndic='$url_syndic', descriptif='$descriptif', syndication='$syndication', statut='$statut' $add_extra WHERE id_syndic=&quot;.intval($id_syndic);
+-	$result = spip_query($query);
++	spip_query(&quot;UPDATE spip_syndic SET id_rubrique='$id_rubrique',
++	nom_site='$nom_site', url_site='$url_site', url_syndic='$url_syndic',
++	descriptif='$descriptif', syndication='$syndication', statut='$statut'
++	$add_extra WHERE id_syndic=$id_syndic&quot;);
+ 
+-	if ($syndication_old != $syndication OR $url_syndic != $old_syndic) {
++	if ($syndication_old != $syndication OR $url_syndic != $old_syndic)
+ 		$reload = &quot;oui&quot;;
+-	}
+-	if ($syndication_old != $syndication AND $syndication == &quot;non&quot;) {
+-		spip_query(&quot;DELETE FROM spip_syndic_articles WHERE id_syndic='$id_syndic'&quot;);
+-	}
++
++	if ($syndication_old != $syndication AND $syndication == &quot;non&quot;)
++		spip_query(&quot;DELETE FROM spip_syndic_articles
++		WHERE id_syndic=$id_syndic&quot;);
++
+ 	calculer_rubriques();
+ 
+ 	// invalider et reindexer
+@@ -167,8 +171,8 @@
+ if ($jour AND $flag_administrable) {
+ 	if ($annee == &quot;0000&quot;) $mois = &quot;00&quot;;
+ 	if ($mois == &quot;00&quot;) $jour = &quot;00&quot;;
+-	$query = &quot;UPDATE spip_syndic SET date='$annee-$mois-$jour' WHERE id_syndic=&quot;.intval($id_syndic);
+-	$result = spip_query($query);
++	spip_query(&quot;UPDATE spip_syndic SET date='$annee-$mois-$jour'
++	WHERE id_syndic=$id_syndic&quot;);
+ 	calculer_rubriques();
+ }
+ 
+@@ -182,8 +186,9 @@
+ //
+ // reload
+ //
+-if ($reload ==  &quot;oui&quot;) {
+-	$result = spip_query (&quot;SELECT * FROM spip_syndic WHERE id_syndic='$id_syndic' AND syndication IN ('oui', 'sus', 'off')&quot;);
++if ($reload) {
++	$result = spip_query (&quot;SELECT * FROM spip_syndic WHERE id_syndic=$id_syndic
++	AND syndication IN ('oui', 'sus', 'off')&quot;);
+ 	if ($result AND spip_num_rows($result)&gt;0)
+ 		$erreur_syndic = syndic_a_jour ($id_syndic);
+ }
+@@ -195,8 +200,7 @@
+ 
+ calculer_droits();
+ 
+-$query = &quot;SELECT * FROM spip_syndic WHERE id_syndic='$id_syndic'&quot;;
+-$result = spip_query($query);
++$result = spip_query(&quot;SELECT * FROM spip_syndic WHERE id_syndic=$id_syndic&quot;);
+ 
+ if ($row = spip_fetch_array($result)) {
+ 	$id_syndic = $row[&quot;id_syndic&quot;];
+@@ -372,30 +376,80 @@
+ 		fin_boite_info();
+ 	}
+ 	afficher_syndic_articles(_T('titre_articles_syndiques'),
+-		&quot;SELECT * FROM spip_syndic_articles WHERE id_syndic='$id_syndic' ORDER BY date DESC&quot;);
++		&quot;SELECT * FROM spip_syndic_articles WHERE id_syndic=$id_syndic
++		ORDER BY date DESC&quot;);
+ 
+ 
+ 	echo &quot;&lt;font face='verdana,arial,helvetica' size=2&gt;&quot;;
+ 	// afficher la date de dernier acces a la syndication
+ 	if ($date_syndic)
+ 		echo &quot;&lt;p&gt;&lt;div align='left'&gt;&quot;._T('info_derniere_syndication').' '.affdate_heure($date_syndic)
+-		.&quot;.&lt;/div&gt;&lt;div align='right'&gt;&lt;a href='sites.php3?id_syndic=$id_syndic&amp;reload=oui'&gt;&quot;._T('lien_mise_a_jour_syndication').&quot;&lt;/a&gt;&lt;/div&gt;\n&quot;;
++		.&quot;.&lt;/div&gt;\n&quot;;
++		
++		echo &quot;&lt;div align='right'&gt;\n&quot;
++		. &quot;&lt;form method='post' action='sites.php3?id_syndic=$id_syndic'&gt;&quot;
++		. &quot;&lt;input type='submit' name='reload' value=\&quot;&quot;
++		. attribut_html(_T('lien_mise_a_jour_syndication'))
++		. &quot;\&quot; class='fondo' style='font-size:9px;' /&gt;&lt;/form&gt;&lt;/div&gt;\n&quot;;
+ 
+-	// modifier la moderation
++	// Options
+ 	if ($flag_administrable &amp;&amp; $options=='avancees') {
++
++		debut_cadre_relief();
++		echo &quot;&lt;u&gt;&quot;._T('syndic_options').&quot;&lt;/u&gt;&quot;
++			. aide('artsyn').&quot;\n&quot;
++			. &quot;&lt;form method='POST' action='sites.php3?id_syndic=$id_syndic' class='verdana2'&gt;\n&quot;;
++
++		// modifier la moderation
+ 		if ($moderation == 'oui' OR $moderation == 'non')
+-			spip_query(&quot;UPDATE spip_syndic SET moderation='$moderation' WHERE id_syndic=&quot;.intval($id_syndic));
++			spip_query(&quot;UPDATE spip_syndic SET moderation='$moderation'
++			WHERE id_syndic=$id_syndic&quot;);
+ 		else
+ 			$moderation = $mod;
++		if ($moderation != 'oui') $moderation='non';
+ 
+-		if ($moderation == 'non' || $moderation =='')
+-			echo &quot;&lt;p&gt;&lt;div align='left'&gt;&quot;._T('texte_liens_syndication'). aide('artsyn') .
+-				&quot;&lt;/div&gt;&lt;div align='right'&gt;&lt;a
+-				href='sites.php3?id_syndic=$id_syndic&amp;moderation=oui'&gt;&quot;._T('info_demander_blocage_priori').&quot;&lt;/a&gt;&lt;/div&gt;\n&quot;;
+-		else if ($moderation == 'oui')
+-			echo &quot;&lt;p&gt;&lt;div align='left'&gt;&quot;._T('texte_demander_blocage_priori'). aide('artsyn') .
+-				&quot;&lt;/div&gt;&lt;div align='right'&gt; &lt;a
+-				href='sites.php3?id_syndic=$id_syndic&amp;moderation=non'&gt;&quot;._T('info_annuler_blocage_priori').&quot;&lt;/a&gt;&lt;/div&gt;\n&quot;;
++		echo &quot;&lt;p&gt;&lt;div align='$spip_lang_left'&gt;&quot;
++			. _T('syndic_choix_moderation') . &quot;&lt;br /&gt;\n&quot;;
++		afficher_choix('moderation', $moderation,
++			array(
++			'non' =&gt; _T('info_publier')
++				.' ('._T('bouton_radio_modere_posteriori').')',
++			'oui' =&gt; _T('info_bloquer')
++				.' ('._T('bouton_radio_modere_priori').')'
++			));
++
++		// Oublier les vieux liens ?
++		# appliquer les choix
++		if ($miroir == 'oui' OR $miroir == 'non')
++			spip_query(&quot;UPDATE spip_syndic SET miroir='$miroir'
++			WHERE id_syndic=$id_syndic&quot;);
++		if ($oubli == 'oui' OR $oubli == 'non')
++			spip_query(&quot;UPDATE spip_syndic SET oubli='$oubli'
++			WHERE id_syndic=$id_syndic&quot;);
++
++		echo &quot;&lt;p&gt;&lt;div align='left'&gt;&quot;._T('syndic_choix_oublier');
++
++		# miroir
++		if (!$miroir AND !$miroir = $row['miroir']) $miroir = 'non';
++		echo &quot;&lt;li&gt;&quot;._T('syndic_option_miroir').' ';
++		afficher_choix('miroir', $miroir,
++			array('oui' =&gt; _T('item_oui'), 'non' =&gt; _T('item_non')),
++			&quot; &nbsp; &quot;);
++		echo &quot;&lt;/li&gt;\n&quot;;
++
++		# oubli
++		if (!$oubli AND !$oubli = $row['oubli']) $oubli = 'non';
++		echo &quot;&lt;li&gt;&quot;._T('syndic_option_oubli', array('mois' =&gt; 2)).' ';
++		afficher_choix('oubli', $oubli,
++			array('oui' =&gt; _T('item_oui'), 'non' =&gt; _T('item_non')),
++			&quot; &nbsp; &quot;);
++		echo &quot;&lt;/li&gt;\n&quot;;
++
++		// Bouton &quot;Valider&quot;
++		echo &quot;&lt;div style='text-align:$spip_lang_right'&gt;&lt;INPUT TYPE='submit' NAME='Valider' VALUE='&quot;._T('bouton_valider').&quot;' CLASS='fondo'&gt;&lt;/div&gt;&quot;;
++
++
++		fin_cadre_relief();
+ 	}
+ 	echo &quot;&lt;/font&gt;&quot;;
+ }
+@@ -460,8 +514,8 @@
+ 
+ echo &quot;&lt;p align='left'&gt;\n&quot;;
+ 
+-$query_forum = &quot;SELECT * FROM spip_forum WHERE statut='prive' AND id_syndic='$id_syndic' AND id_parent=0 ORDER BY date_heure DESC LIMIT 0,20&quot;;
+-$result_forum = spip_query($query_forum);
++$result_forum = spip_query(&quot;SELECT * FROM spip_forum WHERE statut='prive'
++AND id_syndic=$id_syndic AND id_parent=0 ORDER BY date_heure DESC LIMIT 0,20&quot;);
+ afficher_forum($result_forum, $forum_retour);
+ 
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000198.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_test.html,NONE,1.1 Copy of carto_svgfilex.html,NONE,1.1 carto_map.html,NONE,1.1 style_carto_svgfilex.css,NONE,1.1 Copy (2) of carto_svgfilex.html,NONE,1.1 carto_svgx.html,1.1,1.2 cartov2.html,1.1,NONE carto_svg2.html,1.1,NONE
+</A></li>
+	<LI>Next message: <A HREF="000196.html">[Spip-carto-cvs] spipcarto/squelettes article.html,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

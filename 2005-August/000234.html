@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto inc-balises.php3,1.9,1.10
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-balises.php3%2C1.9%2C1.10&In-Reply-To=%3C200508190049.j7J0nVXe016943%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000233.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto inc-balises.php3,1.9,1.10</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-balises.php3%2C1.9%2C1.10&In-Reply-To=%3C200508190049.j7J0nVXe016943%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto inc-balises.php3,1.9,1.10">stef at berlios.de
+       </A><BR>
+    <I>Fri Aug 19 02:49:31 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000233.html">[Spip-carto-cvs] spipcarto/IMG/icones_barre italique.png,NONE,1.1 guillemets.png,NONE,1.1 eacute-maj.png,NONE,1.1 oelig-maj.png,NONE,1.1 lien.png,NONE,1.1 espace.png,NONE,1.1 guillemets-de.png,NONE,1.1 notes.png,NONE,1.1 euro.png,NONE,1.1 guillemets-simples.png,NONE,1.1 guillemets-uniques.png,NONE,1.1 quote.png,NONE,1.1 guillemets-uniques-de.png,NONE,1.1 oelig.png,NONE,1.1
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#234">[ date ]</a>
+              <a href="thread.html#234">[ thread ]</a>
+              <a href="subject.html#234">[ subject ]</a>
+              <a href="author.html#234">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv16508
+
+Modified Files:
+	inc-balises.php3 
+Log Message:
+filtrage automatique de URL_OBJET pour gerer les artX, docX ...
+
+Index: inc-balises.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-balises.php3,v
+retrieving revision 1.9
+retrieving revision 1.10
+diff -u -d -r1.9 -r1.10
+--- inc-balises.php3	10 Aug 2005 12:00:39 -0000	1.9
++++ inc-balises.php3	19 Aug 2005 00:49:28 -0000	1.10
+@@ -59,7 +59,8 @@
+ 		'URL_SITE_SPIP' =&gt; 'htmlspecialchars(vider_url(%s))',
+ 		'URL_SITE' =&gt; 'htmlspecialchars(vider_url(%s))',
+ 		'URL_SYNDIC' =&gt; 'htmlspecialchars(vider_url(%s))',
+-		'ENV' =&gt; 'entites_html(%s)'
++		'ENV' =&gt; 'entites_html(%s)',
++		'URL_OBJET' =&gt; 'htmlspecialchars(vider_url(%s))'
+ 	);
+ 	$ps = $traitements[$p-&gt;nom_champ];
+ 	if (!$ps) return $p-&gt;code;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000233.html">[Spip-carto-cvs] spipcarto/IMG/icones_barre italique.png,NONE,1.1 guillemets.png,NONE,1.1 eacute-maj.png,NONE,1.1 oelig-maj.png,NONE,1.1 lien.png,NONE,1.1 espace.png,NONE,1.1 guillemets-de.png,NONE,1.1 notes.png,NONE,1.1 euro.png,NONE,1.1 guillemets-simples.png,NONE,1.1 guillemets-uniques.png,NONE,1.1 quote.png,NONE,1.1 guillemets-uniques-de.png,NONE,1.1 oelig.png,NONE,1.1
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#234">[ date ]</a>
+              <a href="thread.html#234">[ thread ]</a>
+              <a href="subject.html#234">[ subject ]</a>
+              <a href="author.html#234">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

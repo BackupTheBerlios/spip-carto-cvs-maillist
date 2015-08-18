@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_documents.php3,1.7.2.4,1.7.2.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_documents.php3%2C1.7.2.4%2C1.7.2.5&In-Reply-To=%3C200602281335.k1SDZubx030944%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000380.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_documents.php3,1.7.2.4,1.7.2.5</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_documents.php3%2C1.7.2.4%2C1.7.2.5&In-Reply-To=%3C200602281335.k1SDZubx030944%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_documents.php3,1.7.2.4,1.7.2.5">stef at berlios.de
+       </A><BR>
+    <I>Tue Feb 28 14:35:56 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000380.html">[Spip-carto-cvs] spipcarto/ecrire inc_version.php3,1.12.2.4,1.12.2.5
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#381">[ date ]</a>
+              <a href="thread.html#381">[ thread ]</a>
+              <a href="subject.html#381">[ subject ]</a>
+              <a href="author.html#381">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv30914/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc_documents.php3 
+Log Message:
+patch documents distants (pour permettre de specifier la taille)
+
+Index: inc_documents.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_documents.php3,v
+retrieving revision 1.7.2.4
+retrieving revision 1.7.2.5
+diff -u -d -r1.7.2.4 -r1.7.2.5
+--- inc_documents.php3	14 Feb 2006 01:11:06 -0000	1.7.2.4
++++ inc_documents.php3	28 Feb 2006 13:35:53 -0000	1.7.2.5
+@@ -432,9 +432,10 @@
+ 	AND $type = @spip_fetch_array($r))
+ 			$type_inclus = $type['inclus'];
+ 
+-	if (($type_inclus == &quot;embed&quot;  #meme pour le MP3 : &quot;l x h pixels&quot;? 
+-	OR $type_inclus == &quot;image&quot;)
+-	AND $document['largeur']*$document['hauteur']) {
++    if (($type_inclus == &quot;embed&quot;  #meme pour le MP3 : &quot;l x h pixels&quot;?
++    OR $type_inclus == &quot;image&quot;)
++        AND ($document['largeur'] * $document['hauteur']
++        OR $document['distant'] == 'oui')) {
+ 		echo &quot;&lt;br /&gt;&lt;b&gt;&quot;._T('entree_dimensions').&quot;&lt;/b&gt;&lt;br /&gt;\n&quot;;
+ 		echo &quot;&lt;input type='text' name='largeur_document' class='fondl' style='font-size:9px;' value=\&quot;&quot;.$document['largeur'].&quot;\&quot; size='5'&gt;&quot;;
+ 		echo &quot; &#215; &lt;input type='text' name='hauteur_document' class='fondl' style='font-size:9px;' value=\&quot;&quot;.$document['hauteur'].&quot;\&quot; size='5'&gt; &quot;._T('info_pixels');
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000380.html">[Spip-carto-cvs] spipcarto/ecrire inc_version.php3,1.12.2.4,1.12.2.5
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#381">[ date ]</a>
+              <a href="thread.html#381">[ thread ]</a>
+              <a href="subject.html#381">[ subject ]</a>
+              <a href="author.html#381">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

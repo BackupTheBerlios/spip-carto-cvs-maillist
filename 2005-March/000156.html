@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto inc-messforum.php3,1.5,1.6 inc-cache.php3,1.7,1.8
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-messforum.php3%2C1.5%2C1.6%20inc-cache.php3%2C1.7%2C1.8&In-Reply-To=%3C200503312118.j2VLI99Y010178%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000155.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto inc-messforum.php3,1.5,1.6 inc-cache.php3,1.7,1.8</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-messforum.php3%2C1.5%2C1.6%20inc-cache.php3%2C1.7%2C1.8&In-Reply-To=%3C200503312118.j2VLI99Y010178%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto inc-messforum.php3,1.5,1.6 inc-cache.php3,1.7,1.8">stef at berlios.de
+       </A><BR>
+    <I>Thu Mar 31 23:18:09 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000155.html">[Spip-carto-cvs] spipcarto/ecrire md5.js,1.2,1.3 inc_import.php3,1.3,1.4 inc_version.php3,1.5,1.6 inc_lab.php,1.2,1.3 inc_lang.php3,1.4,1.5 index.php3,1.4,1.5 inc_texte.php3,1.4,1.5 inc_meta.php3,1.2,1.3 articles_versions.php3,1.3,1.4 statistiques_visites.php3,1.2,1.3 inc_forum.php3,1.3,1.4 presentation.js,1.1,1.2 pclzip.lib.php,1.2,1.3 inc_math.php3,1.2,1.3 calendrier.css,1.1,1.2 inc_calendrier.php,1.5,1.6
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv10067/spipcarto
+
+Modified Files:
+	inc-messforum.php3 inc-cache.php3 
+Log Message:
+1.8PR3 CVS 20050331
+
+Index: inc-messforum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-messforum.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc-messforum.php3	29 Mar 2005 15:16:35 -0000	1.5
++++ inc-messforum.php3	31 Mar 2005 21:18:07 -0000	1.6
+@@ -21,6 +21,7 @@
+ // Voir commentaires dans celui-ci et dans inc-formulaire_forum
+ 
+ function prevenir_auteurs($auteur, $email_auteur, $id_forum, $id_article, $texte, $titre, $statut) {
++	global $nom_site_forum, $url_site;
+ 	include_ecrire('inc_texte.php3');
+ 	include_ecrire('inc_filtres.php3');
+ 	include_ecrire('inc_mail.php3');
+@@ -39,33 +40,38 @@
+ 		$url = generer_url_article($id_article);
+ 	}
+ 
+-	$url = ereg_replace('^/', '', $url);
+ 	$adresse_site = lire_meta(&quot;adresse_site&quot;);
+ 	$nom_site_spip = lire_meta(&quot;nom_site&quot;);
+-	$url = &quot;$adresse_site/$url&quot;;
+-	$parauteur = (strlen($auteur) &lt;= 2) ? '' :
+-	  (&quot; &quot;
+-	   ._T('forum_par_auteur',
+-	       array('auteur' =&gt; $auteur)) .
+-	   (!$email_auteur ? '' : (' &lt;' . $email_auteur . '&gt;')));
+-	$courr =  _T('form_forum_message_auto').&quot;\n\n&quot;
+-		. _T('forum_poste_par',
+-		     array('parauteur' =&gt; $parauteur)).&quot;\n&quot;
+-		. _T('forum_ne_repondez_pas').&quot;\n&quot;
++	$url = $adresse_site .'/' .  ereg_replace('^/', '', $url);
++	$corps = &quot;\n&quot;
+ 		. $url
+ 		. &quot;\n\n\n&quot;.$titre.&quot;\n\n&quot;.textebrut(propre($texte))
+ 		. &quot;\n\n$nom_site_forum\n$url_site\n&quot;;
+-	$sujet = &quot;[$nom_site_spip] [&quot;._T('forum_forum').&quot;] $titre&quot;;
+-	$result = spip_query(&quot;SELECT auteurs.email FROM spip_auteurs AS auteurs,
++	if ($email_auteur) 
++		$email_auteur = ' &lt;' . $email_auteur . '&gt;';
++	$result = spip_query(&quot;SELECT auteurs.email, auteurs.lang FROM spip_auteurs AS auteurs,
+ 				spip_auteurs_articles AS lien
+ 				WHERE lien.id_article='$id_article'
+ 				AND auteurs.id_auteur=lien.id_auteur&quot;);
+ 
+-	while (list($email) = spip_fetch_array($result)) {
++	$old_lang = $GLOBALS['spip_lang'];
++	while (list($email, $salangue) = spip_fetch_array($result)) {
+ 		$email = trim($email);
+ 		if (strlen($email) &lt; 3) continue;
++		$GLOBALS['spip_lang'] = ($salangue ? $salangue : $old_lang);
++		$parauteur = (strlen($auteur) &lt;= 2) ? '' :
++		  (&quot; &quot;
++		   ._T('forum_par_auteur',
++		       array('auteur' =&gt; $auteur))
++		   . $email_auteur);
++		$courr =  _T('form_forum_message_auto').&quot;\n\n&quot;
++		  . _T('forum_poste_par', array('parauteur' =&gt; $parauteur)).&quot;\n&quot;
++		  . _T('forum_ne_repondez_pas')
++		  . $corps ;
++		$sujet = &quot;[$nom_site_spip] [&quot;._T('forum_forum').&quot;] $titre&quot;;
+ 		envoyer_mail($email, $sujet, $courr);
+ 	}
++	$GLOBALS['spip_lang'] = $old_lang;	
+ }
+ 
+ 
+@@ -117,7 +123,6 @@
+ 	  $afficher_texte, $ajouter_mot, $alea, $hash,
+ 	  $auteur, $confirmer_forum, $email_auteur, $id_auteur,
+ 	  $nom_site_forum, $retour_forum, $texte, $titre, $url_site;
+-
+ 	$retour_forum = rawurldecode($retour_forum);
+ 
+ 	// Recuperer les donnees postees du formulaire ou stocker '0'
+
+Index: inc-cache.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-cache.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- inc-cache.php3	29 Mar 2005 15:16:35 -0000	1.7
++++ inc-cache.php3	31 Mar 2005 21:18:07 -0000	1.8
+@@ -30,7 +30,7 @@
+ }
+ 
+ //
+-// Le format souhaite : &quot;CACHE/a/(8400/)bout-d-url.md5(.gz)&quot;
++// Le format souhaite : &quot;CACHE/a/bout-d-url.md5(.gz)&quot;
+ // Attention a modifier simultanement le sanity check de
+ // la fonction retire_cache()
+ //
+@@ -48,8 +48,6 @@
+ 			$fichier_requete .= &quot;&amp;$var=$val&quot;;
+ 	}
+ 
+-	$md_cache = md5($fichier_requete);
+-
+ 	$fichier_cache = ereg_replace('^/+', '', $fichier_requete);
+ 	$fichier_cache = ereg_replace('\.[a-zA-Z0-9]*', '', $fichier_cache);
+ 	$fichier_cache = ereg_replace('&amp;[^&amp;]+=([^&amp;]+)', '&amp;\1', $fichier_cache);
+@@ -62,20 +60,19 @@
+ 	if (!$fichier_cache)
+ 		$fichier_cache = 'INDEX-';
+ 
+-	// morceau de md5
++	// morceau de md5 selon HOST et $fond
++	$md_cache = md5($fichier_requete . $GLOBALS['HTTP_HOST'] . $fond);
+ 	$fichier_cache .= '.'.substr($md_cache, 1, 8);
+ 
+ 	// Sous-repertoires 0...9a..f/
+ 	$subdir = creer_repertoire(_DIR_CACHE, substr($md_cache, 0, 1));
+-	// Sous-sous-repertoires delais/ (inutile avec l'invalidation par 't')
+-	# $subdir2 = creer_repertoire(&quot;CACHE/$subdir&quot;, $delais);
+ 
+ 	include_ecrire('inc_acces.php3');
+ 	verifier_htaccess(_DIR_CACHE);
+ 
+ 	$gzip = $flag_gz ? '.gz' : '';
+ 
+-	return _DIR_CACHE . $subdir.$subdir2.$fichier_cache.$gzip;
++	return _DIR_CACHE . $subdir.$fichier_cache.$gzip;
+ }
+ 
+ //
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000155.html">[Spip-carto-cvs] spipcarto/ecrire md5.js,1.2,1.3 inc_import.php3,1.3,1.4 inc_version.php3,1.5,1.6 inc_lab.php,1.2,1.3 inc_lang.php3,1.4,1.5 index.php3,1.4,1.5 inc_texte.php3,1.4,1.5 inc_meta.php3,1.2,1.3 articles_versions.php3,1.3,1.4 statistiques_visites.php3,1.2,1.3 inc_forum.php3,1.3,1.4 presentation.js,1.1,1.2 pclzip.lib.php,1.2,1.3 inc_math.php3,1.2,1.3 calendrier.css,1.1,1.2 inc_calendrier.php,1.5,1.6
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

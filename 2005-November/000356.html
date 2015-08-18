@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.21.2.3,1.21.2.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.21.2.3%2C1.21.2.4&In-Reply-To=%3C200511140957.jAE9vRfG026372%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000355.html">
+   <LINK REL="Next"  HREF="000357.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.21.2.3,1.21.2.4</H1>
+    <B>mose at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.21.2.3%2C1.21.2.4&In-Reply-To=%3C200511140957.jAE9vRfG026372%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.21.2.3,1.21.2.4">mose at berlios.de
+       </A><BR>
+    <I>Mon Nov 14 10:57:27 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000355.html">[Spip-carto-cvs] spipcarto/ecrire dhtml_tools.css,1.1,1.1.2.1
+</A></li>
+        <LI>Next message: <A HREF="000357.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.7,1.18.2.8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#356">[ date ]</a>
+              <a href="thread.html#356">[ thread ]</a>
+              <a href="subject.html#356">[ subject ]</a>
+              <a href="author.html#356">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv26332/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc_carto.php3 
+Log Message:
+ajout de labels pour les boutons radio
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.21.2.3
+retrieving revision 1.21.2.4
+diff -u -d -r1.21.2.3 -r1.21.2.4
+--- inc_carto.php3	30 Sep 2005 22:08:44 -0000	1.21.2.3
++++ inc_carto.php3	14 Nov 2005 09:57:23 -0000	1.21.2.4
+@@ -297,13 +297,13 @@
+    &lt;/td&gt;
+    &lt;td&gt;
+     &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;point,submit,crossHair,point&quot;   id=&quot;point&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          '._T('spipcarto:carte_point').'&lt;br /&gt;
++          &lt;label for=&quot;point&quot;&gt;'._T('spipcarto:carte_point').'&lt;/label&gt;&lt;br /&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+     &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;line,submit,crossHair,line&quot;   id=&quot;line&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          '._T('spipcarto:carte_line').'&lt;br /&gt;
++          &lt;label for=&quot;line&quot;&gt;'._T('spipcarto:carte_line').'&lt;/label&gt;&lt;br /&gt;
+    &lt;/td&gt;&lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;polygon,submit,crossHair,polygon&quot;   checked=&quot;checked&quot;  id=&quot;polygon&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          '._T('spipcarto:carte_polygon').'&lt;br /&gt;
++          &lt;label for=&quot;polygon&quot;&gt;'._T('spipcarto:carte_polygon').'&lt;/label&gt;&lt;br /&gt;
+    &lt;/td&gt;
+   &lt;/tr&gt;
+  &lt;/table&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000355.html">[Spip-carto-cvs] spipcarto/ecrire dhtml_tools.css,1.1,1.1.2.1
+</A></li>
+	<LI>Next message: <A HREF="000357.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.7,1.18.2.8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#356">[ date ]</a>
+              <a href="thread.html#356">[ thread ]</a>
+              <a href="subject.html#356">[ subject ]</a>
+              <a href="author.html#356">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

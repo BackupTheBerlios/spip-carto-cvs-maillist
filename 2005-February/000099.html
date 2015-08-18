@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.3,1.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.3%2C1.4&In-Reply-To=%3C200502211710.j1LHAk8Y003834%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000098.html">
+   <LINK REL="Next"  HREF="000100.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.3,1.4</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.3%2C1.4&In-Reply-To=%3C200502211710.j1LHAk8Y003834%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.3,1.4">stef at berlios.de
+       </A><BR>
+    <I>Mon Feb 21 18:10:46 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000098.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.3,1.4
+</A></li>
+        <LI>Next message: <A HREF="000100.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.4,1.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#99">[ date ]</a>
+              <a href="thread.html#99">[ thread ]</a>
+              <a href="subject.html#99">[ subject ]</a>
+              <a href="author.html#99">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv3816/ecrire
+
+Modified Files:
+	inc_carto.php3 
+Log Message:
+proto1.3.1
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_carto.php3	21 Feb 2005 16:11:17 -0000	1.3
++++ inc_carto.php3	21 Feb 2005 17:10:44 -0000	1.4
+@@ -8,7 +8,11 @@
+ 	
+ 	return $selection_type.&quot;(&quot;.$selection_coords.&quot;)&quot;;
+ }
+-function wkttoarray($callage){	
++function worldfile2array($mArray){	
++	return &quot;rect(0,0;&quot;.$image['largeur'].&quot;,&quot;.$image['hauteur'].&quot;)&quot;;
++}
++
++function worldfile2array($callage){	
+ 	$curseur=strpos($callage,&quot;(&quot;);
+ 	$tabcallage['shape']=substr($callage,0,$curseur);
+ 	$curseur2=strpos($callage,&quot;,&quot;);
+@@ -21,6 +25,7 @@
+ 	$tabcallage['bottom_right']['y']=substr($callage,$curseur2+1,$curseur-$curseur2-1);
+ 	return $tabcallage;
+ }
++
+ function embed_carto_url($id_carte, $url_parse) {
+ 	$lURL = $url_parse['path'].&quot;/carto.php3?id_carte=&quot;.$id_carte.&quot;&amp;scale=&quot;.$_GET['scale'].&quot;&amp;x=&quot;.$_GET['x'].&quot;&amp;y=&quot;.$_GET['y'];
+ 	return $lURL;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000098.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.3,1.4
+</A></li>
+	<LI>Next message: <A HREF="000100.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.4,1.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#99">[ date ]</a>
+              <a href="thread.html#99">[ thread ]</a>
+              <a href="subject.html#99">[ subject ]</a>
+              <a href="author.html#99">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

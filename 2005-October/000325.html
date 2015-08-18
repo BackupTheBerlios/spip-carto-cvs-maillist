@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto ajax.php3,NONE,1.1 mes_fonctions.php3,1.13,1.14
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20ajax.php3%2CNONE%2C1.1%20mes_fonctions.php3%2C1.13%2C1.14&In-Reply-To=%3C200510040102.j94128mq031924%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000324.html">
+   <LINK REL="Next"  HREF="000326.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto ajax.php3,NONE,1.1 mes_fonctions.php3,1.13,1.14</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20ajax.php3%2CNONE%2C1.1%20mes_fonctions.php3%2C1.13%2C1.14&In-Reply-To=%3C200510040102.j94128mq031924%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto ajax.php3,NONE,1.1 mes_fonctions.php3,1.13,1.14">stef at berlios.de
+       </A><BR>
+    <I>Tue Oct  4 03:02:08 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000324.html">[Spip-carto-cvs] spipcarto/ecrire ajaxTagMachine.js,NONE,1.1 ajaxTagMachine.css,NONE,1.1 ajax_mortimer.php,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000326.html">[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.6.2.2,1.6.2.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#325">[ date ]</a>
+              <a href="thread.html#325">[ thread ]</a>
+              <a href="subject.html#325">[ subject ]</a>
+              <a href="author.html#325">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv31872
+
+Modified Files:
+	mes_fonctions.php3 
+Added Files:
+	ajax.php3 
+Log Message:
+premiers pas en ajax sur mots_partout
+
+--- NEW FILE: ajax.php3 ---
+(This appears to be a binary file; contents omitted.)
+
+Index: mes_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/mes_fonctions.php3,v
+retrieving revision 1.13
+retrieving revision 1.14
+diff -u -d -r1.13 -r1.14
+--- mes_fonctions.php3	27 Sep 2005 20:11:14 -0000	1.13
++++ mes_fonctions.php3	4 Oct 2005 01:02:06 -0000	1.14
+@@ -11,13 +11,13 @@
+ 	$mini_compteur+=$offset;
+ 	return $mini_compteur;
+ }
++
+ function plus($txt,$offset=1){
+ 	global $mini_compteur;
+ 	if (!isset($mini_compteur))return $offset;
+ 	return ($mini_compteur+$offset);
+ }
+ 
+-
+ function guiPos ($compteur, $offset){
+ 	return $offset+$compteur*20;
+ }
+@@ -26,9 +26,145 @@
+ 	list(,$url) = extraire_lien(array('','','',$url));
+ 	return $url;
+ }
++
+ //////////////////////////////////////////////////
+ //////////////////////////////////////////////////
+ //			FIN MODULE SPIPCARTO
+ //////////////////////////////////////////////////
+ //////////////////////////////////////////////////
++
++//////////////////////////////////////////////////
++//////////////////////////////////////////////////
++//			MOTS PARTOUT
++//////////////////////////////////////////////////
++//////////////////////////////////////////////////
++/*
++g&#233;n&#233;re une regexp OU pour la liste de mot
++*/
++function enregexp($liste) {
++    include_ecrire('inc_tag-machine.php');
++	$tags = new ListeTags(filtrer_entites($liste));
++	$mots = $tags-&gt;getTags();
++	$str = '';
++	foreach ($mots as $mot) {
++	  $str .= $mot-&gt;titre.'|';
++	}
++	$str = substr($str,0,-1);
++	if ($str) {
++	  return '('.$str.')';
++	} else
++	  return '';
++}
++
++/*
++combien il y a de mots dans le param&#233;tre
++*/
++function compte_having($liste) {
++    include_ecrire('_libs_/tag-machine/inc_tag-machine.php');
++	$liste = dernier_quote($liste);
++	$tags = new ListeTags(filtrer_entites($liste));
++	return count($tags-&gt;getTags())-1;
++}
++
++/*
++un crit&#233;re pour le HAVING sql
++*/
++function critere_having($idb, &amp;$boucles, $crit){	
++	$hav = calculer_liste($crit-&gt;param[0], array(), $boucles, $boucles[$idb]-&gt;id_parent);
++ $boucles[$idb]-&gt;having = &quot;'.$hav.'&quot;;
++}
++
++//ajax
++
++function seulement_tout($tag) {
++  
++  if(is_object($tag)) {
++	return $tag-&gt;echapper();
++  } else {
++	$cgroupe = '';
++	$ctag = $tag;
++  }
++  
++  $cgroupe = (strpos($cgroupe,' ') || strpos($cgroupe,':'))?'&quot;'.$cgroupe.'&quot;':$cgroupe;
++  $ctag = (strpos($ctag,' ') || strpos($ctag,':'))?'&quot;'.$ctag.'&quot;':$ctag;
++
++  return ($cgroupe.($cgroupe)? ':':'').$ctag;
++  
++}
++
++function seulement_titre($tag) {
++  
++  if(is_object($tag)) {
++	return $tag-&gt;getTitreEchappe();
++  } else {
++  	$tag = (strpos($tag,' ') || strpos($tag,':') || strpos($tag,','))?'&quot;'.$tag.'&quot;':$tag;
++	return $tag;
++  }
++  
++}
++
++function seulement_type($tag) {
++  
++  if(is_object($tag)) {
++	return $tag-&gt;getTypeEchappe();
++  } else {
++  	$tag = (strpos($tag,' ') || strpos($tag,':') || strpos($tag,','))?'&quot;'.$tag.'&quot;':$tag;
++	return $tag;
++  }
++  
++}
++
++//marche pas ce truc!!
++function dernier_quote($lst) {
++  if(substr_count($lst,'&quot;')%2 != 0)
++	return $lst.'&quot;';
++  return $lst;
++}
++
++function trouve_debut($liste) {
++  include_ecrire('_libs_/tag-machine/inc_tag-machine.php');
++  $liste = dernier_quote($liste);
++  $tags = new ListeTags(filtrer_entites($liste));
++  return array_slice($tags-&gt;getTags(),0,-1);
++}
++
++function tout_debut($liste) {
++  $mots = array_map('seulement_tout',trouve_debut($liste));
++  return join(' ',$mots);
++}
++
++function titre_debut($liste) {
++  $mots = array_map('seulement_titre',trouve_debut($liste));
++  return join(' ',$mots);
++}
++
++function type_debut($liste) {
++  $mots = array_map('seulement_type',trouve_debut($liste));
++  return join(' ',$mots);
++}
++
++function trouve_fin($liste) {
++  $liste = dernier_quote($liste);
++  $tags = new ListeTags(filtrer_entites($liste));
++  $tags = $tags-&gt;getTags();
++  return $tags[count($tags)-1];
++}
++
++function titre_fin($liste) {
++  $mots = seulement_titre(trouve_fin($liste));
++  return str_replace('&quot;','',$mots);
++
++}
++
++function type_fin($liste) {
++  $mots = seulement_type(trouve_fin($liste));
++  return str_replace('&quot;','',$mots);
++
++}
++//////////////////////////////////////////////////
++//////////////////////////////////////////////////
++//			FIN MOTS PARTOUT
++//////////////////////////////////////////////////
++//////////////////////////////////////////////////
++
+ ?&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000324.html">[Spip-carto-cvs] spipcarto/ecrire ajaxTagMachine.js,NONE,1.1 ajaxTagMachine.css,NONE,1.1 ajax_mortimer.php,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000326.html">[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.6.2.2,1.6.2.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#325">[ date ]</a>
+              <a href="thread.html#325">[ thread ]</a>
+              <a href="subject.html#325">[ subject ]</a>
+              <a href="author.html#325">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

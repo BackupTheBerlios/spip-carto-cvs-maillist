@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/squelettes carto_geosvgfile.html,1.1,1.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes%20carto_geosvgfile.html%2C1.1%2C1.2&In-Reply-To=%3C200503041315.j24DF0Nx018528%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000141.html">
+   <LINK REL="Next"  HREF="000143.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/squelettes carto_geosvgfile.html,1.1,1.2</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes%20carto_geosvgfile.html%2C1.1%2C1.2&In-Reply-To=%3C200503041315.j24DF0Nx018528%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/squelettes carto_geosvgfile.html,1.1,1.2">fxp at berlios.de
+       </A><BR>
+    <I>Fri Mar  4 14:15:00 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000141.html">[Spip-carto-cvs] spipcarto/ecrire spip_style.php3,1.3,1.4
+</A></li>
+        <LI>Next message: <A HREF="000143.html">[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#142">[ date ]</a>
+              <a href="thread.html#142">[ thread ]</a>
+              <a href="subject.html#142">[ subject ]</a>
+              <a href="author.html#142">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/squelettes
+In directory sheep:/tmp/cvs-serv18522/squelettes
+
+Modified Files:
+	carto_geosvgfile.html 
+Log Message:
+
+
+Index: carto_geosvgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/carto_geosvgfile.html,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- carto_geosvgfile.html	1 Mar 2005 17:44:01 -0000	1.1
++++ carto_geosvgfile.html	4 Mar 2005 13:14:57 -0000	1.2
+@@ -434,12 +434,12 @@
+ 	
+ 	
+ 	&lt;!-- Main Map Frame --&gt;
+-	&lt;svg id=&quot;mainMap&quot; x=&quot;0&quot; y=&quot;15&quot; viewBox=&quot;[(#CALLAGE|worldfileLRX)] -[(#CALLAGE|worldfileHeight)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]&quot; width=&quot;553&quot; height=&quot;[(#CALLAGE|getPropMapHeight{553})]&quot;&gt;
++	&lt;svg id=&quot;mainMap&quot; x=&quot;0&quot; y=&quot;15&quot; viewBox=&quot;[(#CALLAGE|worldfileLRX)] [(#CALLAGE|worldfileULY)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]&quot; width=&quot;553&quot; height=&quot;[(#CALLAGE|getPropMapHeight{553})]&quot;&gt;
+ 		&lt;!-- this group is necessary for manual panning, it temporarily gets a translate transformation which is later removed on mouseup --&gt;
+ 		&lt;g id=&quot;mainMapGroup&quot; transform=&quot;translate(0,0)&quot;&gt;
+ 			&lt;!-- within this group you should place all map layers, usually, if you have more than one element in a map layer, you would use a group instead of a single element, as in this example --&gt;
+ 			&lt;g id=&quot;DOQ&quot; visibility=&quot;visible&quot; /&gt;
+-			&lt;image id=&quot;ShadedRelief&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;-[(#CALLAGE|worldfileHeight)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]px&quot; height=&quot;[(#CALLAGE|worldfileHeight)]px&quot; xlink:href=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; /&gt;
++			&lt;image id=&quot;ShadedRelief&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;[(#CALLAGE|worldfileULY)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]px&quot; height=&quot;[(#CALLAGE|worldfileHeight)]px&quot; xlink:href=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; /&gt;
+ 			
+ 			&lt;g id=&quot;spipCartoObj&quot;&gt;
+ 			
+@@ -513,11 +513,11 @@
+ 		&lt;/g&gt;
+ 	&lt;/g&gt;
+ 	&lt;!-- small reference map, shares the same coordinate system than the main map --&gt;
+-	&lt;svg id=&quot;referenceMap&quot; x=&quot;580&quot; y=&quot;45&quot; viewBox=&quot;[(#CALLAGE|worldfileLRX)] -[(#CALLAGE|worldfileHeight)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]&quot; width=&quot;118.52&quot; height=&quot;[(#CALLAGE|getPropMapHeight{118.52})]&quot; onmousedown=&quot;myRefMapDragger.drag(evt)&quot; onmousemove=&quot;myRefMapDragger.drag(evt)&quot; onmouseup=&quot;myRefMapDragger.drag(evt)&quot; onmouseout=&quot;myRefMapDragger.drag(evt)&quot;&gt;
+-		&lt;image id=&quot;ShadedRelief&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;-[(#CALLAGE|worldfileHeight)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]&quot; height=&quot;[(#CALLAGE|worldfileHeight)]&quot; xlink:href=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; /&gt;
++	&lt;svg id=&quot;referenceMap&quot; x=&quot;580&quot; y=&quot;45&quot; viewBox=&quot;[(#CALLAGE|worldfileLRX)] [(#CALLAGE|worldfileULY)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]&quot; width=&quot;118.52&quot; height=&quot;[(#CALLAGE|getPropMapHeight{118.52})]&quot; onmousedown=&quot;myRefMapDragger.drag(evt)&quot; onmousemove=&quot;myRefMapDragger.drag(evt)&quot; onmouseup=&quot;myRefMapDragger.drag(evt)&quot; onmouseout=&quot;myRefMapDragger.drag(evt)&quot;&gt;
++		&lt;image id=&quot;ShadedRelief&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;[(#CALLAGE|worldfileULY)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]&quot; height=&quot;[(#CALLAGE|worldfileHeight)]&quot; xlink:href=&quot;#URL_SITE_SPIP/spip_carto.php?fond_carte=[(#URL_CARTE)][&amp;scale=(#ENV{scale})][&amp;x=(#ENV{x})][&amp;y=(#ENV{y})]&quot; /&gt;
+ 		&lt;path pointer-events=&quot;none&quot; style=&quot;fill:none;stroke:salmon;stroke-width:1000&quot; d=&quot;M250528.8 -4218899.3l2380.5 -1305.3l1593.4 928.3l1326.1 -752.7l4218.1 -70.2l4072.3 -3965.5l5552.8 -1556.9l313 -1368.6l3042.8 -2535.6l1098.2 945.4l124.7 2135.2l2579.4 431.2l-22.8 1238l3516.2 779.5l-66.6 -1725.9l1001.7 -419l625.5 2735.2l1659.5 476.6l-330.2 1248.2l1330.8 747.9l-583.6 1341.1l1261.8 -103.1l285.3 729.8l1411.9 -2540.5l552.1 995.2l2360 129.9l1432.7 1622l2981.7 1123.5l2940.7 4333.1l-270.6 1128.2l792.4 1201.5l-1726.7 5827.8l785 2018.2l2160 2274.1l2083.2 772.6l-29.7 1587l2579.8 273.2l2903.1 2611.6l-1211.6 1736.7l-304 2424.3l1806.8 664.5l-952.3 432.8l228.8 1126.8l-1164.6 1204.8l1028.8 823.8l134.5 1768.4l-3601.7 2856.7l-1067.8 2250.5l-1294 1012.3l939.2 1643.7l-426.7 1493.5l-1730.1 1237.5l-1330.5 3254.3l-3443.5 3823l-1377.3 499.3l-1732.6 -647.3l-2658.4 9242.1l-2580.3 -63.8l-1626.7 1640.8l-11817 92.4l-111.4 4297.6l-745.7 11.6l-6670.9 -270.2l-1972.9 -5940.7l-1565.6 -523.5l821.7 -7022.1l-765 !
+ -27.8l26.9 -795.4l742.7 19.8l74.1 -825.8l-2396.2 -52l748.7 -3186.1l-3846.4 -78l60.9 -5551.1l-1599 -53.4l110.1 -3306.4l-6584.6 -269.6l-573.6 -4908.1l-895.7 -69.6l-3.4 -3096.9l2384.7 -772.2l99.6 -1566.5l1598.9 3l268.3 -6583.2l-5123.5 -132.5l183.9 -10111.9l1168.6 -4214.1l-716.7 -975.6l1461.4 -2002.8l-593.4 -565.8l2659.9 -3238.9z&quot; /&gt;
+ 		&lt;!-- rectangle that represents map extent --&gt;
+-		&lt;rect id=&quot;dragRectForRefMap&quot; class=&quot;dragRect&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;-[(#CALLAGE|worldfileHeight)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]&quot; height=&quot;[(#CALLAGE|worldfileHeight)]&quot; pointer-events=&quot;none&quot;/&gt;
++		&lt;rect id=&quot;dragRectForRefMap&quot; class=&quot;dragRect&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;[(#CALLAGE|worldfileULY)]&quot; width=&quot;[(#CALLAGE|worldfileWidth)]&quot; height=&quot;[(#CALLAGE|worldfileHeight)]&quot; pointer-events=&quot;none&quot;/&gt;
+ 		&lt;!-- if zoomed in very far, we display a cross-symbol here to indicate the map position in the reference map --&gt;
+ 		&lt;use id=&quot;myDragCross&quot; x=&quot;[(#CALLAGE|worldfileLRX)]&quot; y=&quot;-[(#CALLAGE|worldfileHeight)]&quot; xlink:href=&quot;#myDragCrossSymbol&quot; visibility=&quot;hidden&quot; /&gt;
+ 	&lt;/svg&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000141.html">[Spip-carto-cvs] spipcarto/ecrire spip_style.php3,1.3,1.4
+</A></li>
+	<LI>Next message: <A HREF="000143.html">[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#142">[ date ]</a>
+              <a href="thread.html#142">[ thread ]</a>
+              <a href="subject.html#142">[ subject ]</a>
+              <a href="author.html#142">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

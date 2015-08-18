@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto inc-cache.php3,1.3,1.4 habillage.css,1.3,1.4 inc-messforum.php3,1.3,1.4 inc-public-global.php3,1.3,1.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-cache.php3%2C1.3%2C1.4%20habillage.css%2C1.3%2C1.4%20inc-messforum.php3%2C1.3%2C1.4%20inc-public-global.php3%2C1.3%2C1.4&In-Reply-To=%3C200502251636.j1PGa0Nx006519%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000105.html">
+   <LINK REL="Next"  HREF="000107.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto inc-cache.php3,1.3,1.4 habillage.css,1.3,1.4 inc-messforum.php3,1.3,1.4 inc-public-global.php3,1.3,1.4</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-cache.php3%2C1.3%2C1.4%20habillage.css%2C1.3%2C1.4%20inc-messforum.php3%2C1.3%2C1.4%20inc-public-global.php3%2C1.3%2C1.4&In-Reply-To=%3C200502251636.j1PGa0Nx006519%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto inc-cache.php3,1.3,1.4 habillage.css,1.3,1.4 inc-messforum.php3,1.3,1.4 inc-public-global.php3,1.3,1.4">stef at berlios.de
+       </A><BR>
+    <I>Fri Feb 25 17:36:00 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000105.html">[Spip-carto-cvs] spipcarto/ecrire inc_invalideur.php3,1.2,1.3 calendrier_jour.php3,1.2,1.3 calendrier.php3,1.2,1.3 inc_presentation.php3,1.2,1.3 inc_charsets.php3,1.2,1.3 inc_logos.php3,1.2,1.3 calendrier_semaine.php3,1.2,1.3 inc_db_mysql.php3,1.2,1.3 inc_calendrier.php,1.2,1.3
+</A></li>
+        <LI>Next message: <A HREF="000107.html">[Spip-carto-cvs] spipcarto/ecrire/img_pack vignette-24.png,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv6379/spipcarto
+
+Modified Files:
+	inc-cache.php3 habillage.css inc-messforum.php3 
+	inc-public-global.php3 
+Log Message:
+1.8pr1 cvs
+
+Index: inc-cache.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-cache.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-cache.php3	20 Feb 2005 22:15:59 -0000	1.3
++++ inc-cache.php3	25 Feb 2005 16:35:58 -0000	1.4
+@@ -97,7 +97,7 @@
+ }
+ 
+ // Supprimer les caches marques &quot;x&quot;
+-function retire_caches() {
++function retire_caches($chemin = '') {
+ 	if (!_DIR_RESTREINT) return;
+ 
+ 	// signaler
+@@ -106,7 +106,18 @@
+ 
+ 	// recuperer la liste des caches voues a la suppression
+ 	$suppr = array();
+-	$q = spip_query(&quot;SELECT fichier FROM spip_caches WHERE type='x'&quot;);
++
++	// En priorite le cache qu'on appelle maintenant
++	if ($chemin) {
++		$q = spip_query(&quot;SELECT fichier FROM spip_caches
++		WHERE fichier = '&quot;.addslashes($chemin).&quot;' AND type='x' LIMIT 0,1&quot;);
++		if ($r = spip_fetch_array($q))
++			$suppr[$r['fichier']] = true;
++	}
++
++	// Et puis une centaine d'autres
++	$q = spip_query(&quot;SELECT fichier FROM spip_caches
++	WHERE type='x' LIMIT 0,100&quot;);
+ 	while ($r = spip_fetch_array($q))
+ 		$suppr[$r['fichier']] = true;
+ 
+@@ -116,6 +127,12 @@
+ 			retire_cache($cache);
+ 		spip_query(&quot;DELETE FROM spip_caches WHERE &quot;
+ 		.calcul_mysql_in('fichier', &quot;'&quot;.join(&quot;','&quot;,array_keys($suppr)).&quot;'&quot;) );
++
++		// signaler aux suivants
++		if ($n&gt;99) {
++			ecrire_meta('invalider', 'oui');
++			ecrire_metas();
++		}
+ 	}
+ }
+ 
+
+Index: habillage.css
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/habillage.css,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- habillage.css	20 Feb 2005 22:15:59 -0000	1.3
++++ habillage.css	25 Feb 2005 16:35:58 -0000	1.4
+@@ -343,7 +343,7 @@
+ 	margin-bottom: 1em;
+ 	width: 100%;
+ }
+-.signatures td {
++.signatures td, .signatures th {
+ 	-moz-border-radius: 0.4em;
+ }
+ .signatures-titre {
+
+Index: inc-messforum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-messforum.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-messforum.php3	20 Feb 2005 22:16:48 -0000	1.3
++++ inc-messforum.php3	25 Feb 2005 16:35:58 -0000	1.4
+@@ -150,7 +150,7 @@
+ 	// verifier fichier lock
+ 	$alea = preg_replace('/[^0-9]/', '', $alea);
+ 	if (!file_exists($hash = _DIR_SESSIONS.&quot;forum_$alea.lck&quot;))
+-		exit; # echec silencieux du POST
++		return $retour_forum; # echec silencieux du POST
+ 	unlink($hash);
+ 
+ 	// Entrer le message dans la base
+
+Index: inc-public-global.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-public-global.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc-public-global.php3	20 Feb 2005 22:16:48 -0000	1.3
++++ inc-public-global.php3	25 Feb 2005 16:35:58 -0000	1.4
+@@ -214,16 +214,16 @@
+ 			$var_preview = false;
+ 	}
+ 
++	// Calculer le chemin putatif du cache
++	$chemin_cache = generer_nom_fichier_cache('', $fond);
++
+ 	// Faut-il effacer des pages invalidees ?
+ 	if (lire_meta('invalider')) {
+ 		include_ecrire('inc_meta.php3');
+ 		lire_metas();
+ 		if (lire_meta('invalider'))
+-			retire_caches();
++			retire_caches($chemin_cache);
+ 	}
+-
+-	// Calculer le chemin putatif du cache
+-	$chemin_cache = generer_nom_fichier_cache('', $fond);
+ 
+ 	// Peut-on utiliser un fichier cache ?
+ 	determiner_cache($delais, $use_cache, $chemin_cache);
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000105.html">[Spip-carto-cvs] spipcarto/ecrire inc_invalideur.php3,1.2,1.3 calendrier_jour.php3,1.2,1.3 calendrier.php3,1.2,1.3 inc_presentation.php3,1.2,1.3 inc_charsets.php3,1.2,1.3 inc_logos.php3,1.2,1.3 calendrier_semaine.php3,1.2,1.3 inc_db_mysql.php3,1.2,1.3 inc_calendrier.php,1.2,1.3
+</A></li>
+	<LI>Next message: <A HREF="000107.html">[Spip-carto-cvs] spipcarto/ecrire/img_pack vignette-24.png,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto inc-balises.php3,1.12.2.2,1.12.2.3 inc-public-global.php3,1.7,1.7.2.1 spip_rss.php,1.2,1.2.2.1 spip_acces_doc.php3,1.3,1.3.2.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-balises.php3%2C1.12.2.2%2C1.12.2.3%20inc-public-global.php3%2C1.7%2C1.7.2.1%20spip_rss.php%2C1.2%2C1.2.2.1%20spip_acces_doc.php3%2C1.3%2C1.3.2.1&In-Reply-To=%3C200602140111.k1E1BBbx005265%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000366.html">
+   <LINK REL="Next"  HREF="000367.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto inc-balises.php3,1.12.2.2,1.12.2.3 inc-public-global.php3,1.7,1.7.2.1 spip_rss.php,1.2,1.2.2.1 spip_acces_doc.php3,1.3,1.3.2.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20inc-balises.php3%2C1.12.2.2%2C1.12.2.3%20inc-public-global.php3%2C1.7%2C1.7.2.1%20spip_rss.php%2C1.2%2C1.2.2.1%20spip_acces_doc.php3%2C1.3%2C1.3.2.1&In-Reply-To=%3C200602140111.k1E1BBbx005265%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto inc-balises.php3,1.12.2.2,1.12.2.3 inc-public-global.php3,1.7,1.7.2.1 spip_rss.php,1.2,1.2.2.1 spip_acces_doc.php3,1.3,1.3.2.1">stef at berlios.de
+       </A><BR>
+    <I>Tue Feb 14 02:11:11 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000366.html">[Spip-carto-cvs] spipcarto/ecrire inc_charsets.php3,1.6,1.6.2.1 inc_majbase.php3,1.7,1.7.2.1 inc_presentation.php3,1.12.2.1,1.12.2.2 spip_style.php3,1.10,1.10.2.1 suivi_revisions.php3,1.4,1.4.2.1 inc_lang.php3,1.12.2.1,1.12.2.2 inc_suivi_revisions.php,1.5,1.5.2.1 documents_liste.php3,1.2,1.2.2.1 inc_texte.php3,1.12.2.2,1.12.2.3 naviguer.php3,1.6,1.6.2.1 inc_signatures.php3,1.1,1.1.2.1 inc_documents.php3,1.7.2.3,1.7.2.4 inc_db_mysql.php3,1.6,1.6.2.1 inc_serialbase.php3,1.5,1.5.2.1 inc_version.php3,1.12.2.3,1.12.2.4 inc_sites.php3,1.8,1.8.2.1 inc_filtres.php3,1.10.2.2,1.10.2.3 inc_extra.php3,1.2.2.1,1.2.2.2 inc_rss.php3,1.2,1.2.2.1
+</A></li>
+        <LI>Next message: <A HREF="000367.html">[Spip-carto-cvs] spipcarto/ecrire carto_mots_possibles.php3,NONE,1.1.2.1 mots_possibles.php3,NONE,1.1.2.1 carto_mes_options.php3,NONE,1.1.2.1 mes_options.php3,1.8.2.5,1.8.2.6 mots_partout.php,1.6.2.4,1.6.2.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#365">[ date ]</a>
+              <a href="thread.html#365">[ thread ]</a>
+              <a href="subject.html#365">[ subject ]</a>
+              <a href="author.html#365">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv5072
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc-balises.php3 inc-public-global.php3 spip_rss.php 
+	spip_acces_doc.php3 
+Log Message:
+Mise &#224; jour de securit&#233; (Spip 1.8.2 SVN)
+quelques bugs fix&#233;s (Spip)
+remplacement de document et affichage des id
+
+Index: inc-balises.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-balises.php3,v
+retrieving revision 1.12.2.2
+retrieving revision 1.12.2.3
+diff -u -d -r1.12.2.2 -r1.12.2.3
+--- inc-balises.php3	5 Feb 2006 21:17:04 -0000	1.12.2.2
++++ inc-balises.php3	14 Feb 2006 01:11:09 -0000	1.12.2.3
+@@ -60,6 +60,11 @@
+ 		'URL_SITE' =&gt; 'htmlspecialchars(vider_url(%s))',
+ 		'URL_SYNDIC' =&gt; 'htmlspecialchars(vider_url(%s))',
+ 		'ENV' =&gt; 'entites_html(%s)'
++		/////////////////////////////////////////////////////
++		//MODIFICATION SPIPCARTO
++		/////////////////////////////////////////////////////
++		,'URL_OBJET' =&gt; 'htmlspecialchars(url(vider_url(%s)))'
++		/////////////////////////////////////////////////////
+ 	);
+ 	$ps = $traitements[$p-&gt;nom_champ];
+ 	if (!$ps) return $p-&gt;code;
+@@ -69,6 +74,23 @@
+ 			str_replace('typo(', 'typo_doublon($doublons,', $ps));
+ 	}
+ 
++	// Passer |safehtml sur les boucles &quot;sensibles&quot;
++	// sauf sur les champs dont on est surs
++	switch ($p-&gt;type_requete) {
++		case 'forums':
++		case 'signatures':
++		case 'syndic_articles':
++			$champs_surs = array(
++			'date', 'date_heure', 'statut', 'ip', 'url_article', 'maj', 'idx',
++			'parametres_forum');
++			if (!in_array(strtolower($p-&gt;nom_champ), $champs_surs)
++			AND !preg_match(',^ID_,', $p-&gt;nom_champ))
++				$ps = 'safehtml('.$ps.')';
++			break;
++		default:
++			break;
++	}
++
+ 	// on supprime les &lt; IMGnnn &gt; tant qu'on ne rapatrie pas
+ 	// les documents distants joints..
+ 	// il faudrait aussi corriger les raccourcis d'URL locales
+@@ -293,7 +315,7 @@
+ // Qu'afficher en cas d'erreur 404 ?
+ function balise_ERREUR_AUCUN_dist($p) {
+ 	$p-&gt;code = '$Pile[0][&quot;erreur_aucun&quot;]';
+-	$p-&gt;statut = 'php';
++	$p-&gt;statut = 'html';
+ 	return $p;
+ }
+ 
+
+Index: inc-public-global.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-public-global.php3,v
+retrieving revision 1.7
+retrieving revision 1.7.2.1
+diff -u -d -r1.7 -r1.7.2.1
+--- inc-public-global.php3	30 Jun 2005 10:09:36 -0000	1.7
++++ inc-public-global.php3	14 Feb 2006 01:11:09 -0000	1.7.2.1
+@@ -326,7 +326,14 @@
+ 		lang_select($lang);
+ 		$lang_select = true; // pour lang_dselect en sortie
+ 	}
+-	
++
++	// Une fois le chemin-cache decide, on ajoute la date (et date_redac) 
++	// dans le contexte inclus, pour que les criteres {age} etc fonctionnent 
++	if (!isset($contexte_inclus['date'])) 
++		$contexte_inclus['date'] = date('Y-m-d H:i:s'); 
++	if (!isset($contexte_inclus['date_redac'])) 
++		$contexte_inclus['date_redac'] = $contexte_inclus['date']; 
++
+ 	$page = obtenir_page ($contexte_inclus, $chemin_cache, $delais_inclus,
+ 	$use_cache, $fond, true);
+ 
+
+Index: spip_rss.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/spip_rss.php,v
+retrieving revision 1.2
+retrieving revision 1.2.2.1
+diff -u -d -r1.2 -r1.2.2.1
+--- spip_rss.php	10 Aug 2005 12:00:39 -0000	1.2
++++ spip_rss.php	14 Feb 2006 01:11:09 -0000	1.2.2.1
+@@ -35,8 +35,7 @@
+ spip_timer('rss');
+ if (!verifier_low_sec ($id, $cle,
+ &quot;rss $op $args&quot;
+-)
+-OR ($a['id_auteur']&gt;0 AND $id&lt;&gt;$a['id_auteur'])) {
++)) {
+ 	$op = 'erreur securite';
+ 	unset($a);
+ } else {
+
+Index: spip_acces_doc.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/spip_acces_doc.php3,v
+retrieving revision 1.3
+retrieving revision 1.3.2.1
+diff -u -d -r1.3 -r1.3.2.1
+--- spip_acces_doc.php3	20 Feb 2005 22:16:48 -0000	1.3
++++ spip_acces_doc.php3	14 Feb 2006 01:11:09 -0000	1.3.2.1
+@@ -17,7 +17,7 @@
+ # il verifie soit que le demandeur est authentifie
+ # soit que le fichier est joint &#224; au moins 1 article, breve ou rubrique
+ 
+-$id_document = ($_GET['id_document']);
++$id_document = intval($_GET['id_document']);
+ $file = urldecode($_GET['file']);
+ if (strpos($file,'../') !== false)
+   $refus = 1;
+@@ -41,7 +41,7 @@
+       }
+ 
+     if (!$id_document) {
+-      $id_document = @spip_fetch_array(spip_query(&quot;select id_document from spip_documents as documents where documents.fichier='&quot;.$file.&quot;'&quot;));
++      $id_document = @spip_fetch_array(spip_query(&quot;select id_document from spip_documents as documents where documents.fichier='&quot;.addslashes($file).&quot;'&quot;));
+       if (!$id_document) $refus = 2;
+       $id_document = $id_document['id_document'];
+     } else {
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000366.html">[Spip-carto-cvs] spipcarto/ecrire inc_charsets.php3,1.6,1.6.2.1 inc_majbase.php3,1.7,1.7.2.1 inc_presentation.php3,1.12.2.1,1.12.2.2 spip_style.php3,1.10,1.10.2.1 suivi_revisions.php3,1.4,1.4.2.1 inc_lang.php3,1.12.2.1,1.12.2.2 inc_suivi_revisions.php,1.5,1.5.2.1 documents_liste.php3,1.2,1.2.2.1 inc_texte.php3,1.12.2.2,1.12.2.3 naviguer.php3,1.6,1.6.2.1 inc_signatures.php3,1.1,1.1.2.1 inc_documents.php3,1.7.2.3,1.7.2.4 inc_db_mysql.php3,1.6,1.6.2.1 inc_serialbase.php3,1.5,1.5.2.1 inc_version.php3,1.12.2.3,1.12.2.4 inc_sites.php3,1.8,1.8.2.1 inc_filtres.php3,1.10.2.2,1.10.2.3 inc_extra.php3,1.2.2.1,1.2.2.2 inc_rss.php3,1.2,1.2.2.1
+</A></li>
+	<LI>Next message: <A HREF="000367.html">[Spip-carto-cvs] spipcarto/ecrire carto_mots_possibles.php3,NONE,1.1.2.1 mots_possibles.php3,NONE,1.1.2.1 carto_mes_options.php3,NONE,1.1.2.1 mes_options.php3,1.8.2.5,1.8.2.6 mots_partout.php,1.6.2.4,1.6.2.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#365">[ date ]</a>
+              <a href="thread.html#365">[ thread ]</a>
+              <a href="subject.html#365">[ subject ]</a>
+              <a href="author.html#365">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

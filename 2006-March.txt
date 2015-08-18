@@ -1,0 +1,264 @@
+From stef at berlios.de  Mon Mar 13 14:34:02 2006
+From: stef at berlios.de (stef at berlios.de)
+Date: Mon, 13 Mar 2006 14:34:02 +0100
+Subject: [Spip-carto-cvs] spipcarto inc-balises.php3,1.12.2.3,1.12.2.4 inc-compilo-index.php3,1.6,1.6.2.1 inc-html-squel.php3,1.9,1.9.2.1
+Message-ID: <200603131334.k2DDXvbx032453@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv32397
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc-balises.php3 inc-compilo-index.php3 inc-html-squel.php3 
+Log Message:
+MAJ 1.8.3
+
+Index: inc-balises.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-balises.php3,v
+retrieving revision 1.12.2.3
+retrieving revision 1.12.2.4
+diff -u -d -r1.12.2.3 -r1.12.2.4
+--- inc-balises.php3	14 Feb 2006 01:11:09 -0000	1.12.2.3
++++ inc-balises.php3	13 Mar 2006 13:33:47 -0000	1.12.2.4
+@@ -811,9 +811,9 @@
+ // #ENV
+ // l'"environnement", id est le $contexte (ou $contexte_inclus)
+ //
+-// en standard on applique |entites_html, mais attention si
+-// vous utilisez [(#ENV*{toto})] il *faut* vous assurer vous-memes
+-// de la securite anti-php et anti-javascript
++// en standard on applique |entites_html, mais si vous utilisez 
++// [(#ENV*{toto})] il *faut* vous assurer vous-memes de la securite 
++// anti-javascript (par exemple en filtrant avec |safehtml)
+ //
+ // La syntaxe #ENV{toto, rempl} renverra 'rempl' si $toto est vide
+ //
+@@ -833,7 +833,6 @@
+ 		// cas de #ENV sans argument : on retourne le serialize() du tableau
+ 		// une belle fonction [(#ENV|affiche_env)] serait pratique
+ 		$p->code = 'serialize($Pile[0])';
+-		$p->statut = 'html';
+ 	} else {
+ 		// admet deux arguments : nom de variable, valeur par defaut si vide
+ 		$p->code = '$Pile[0]["' . addslashes($nom) . '"]';
+@@ -842,9 +841,9 @@
+ 			  $p->code .
+ 			  compose_filtres_args($p, $sinon, ',') . 
+ 			  ')';
+-		$p->statut = 'php';
+ 	}
+-
++	$p->statut = 'html';
++	
+ 	return $p;
+ }
+ 
+
+Index: inc-compilo-index.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-compilo-index.php3,v
+retrieving revision 1.6
+retrieving revision 1.6.2.1
+diff -u -d -r1.6 -r1.6.2.1
+--- inc-compilo-index.php3	10 Aug 2005 12:00:39 -0000	1.6
++++ inc-compilo-index.php3	13 Mar 2006 13:33:47 -0000	1.6.2.1
+@@ -235,7 +235,8 @@
+ 	// Appliquer les filtres perso
+ 	if ($p->param) $code = compose_filtres($p, $code);
+ 	// post-traitement securite
+-	if ($p->statut == 'html') $code = "interdire_scripts($code)";
++	if ($p->statut == 'html'
++	AND $p->etoile !='**') $code = "interdire_scripts($code)";
+ 	return $code;
+ }
+ 
+
+Index: inc-html-squel.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-html-squel.php3,v
+retrieving revision 1.9
+retrieving revision 1.9.2.1
+diff -u -d -r1.9 -r1.9.2.1
+--- inc-html-squel.php3	7 Sep 2005 15:01:53 -0000	1.9
++++ inc-html-squel.php3	13 Mar 2006 13:33:47 -0000	1.9.2.1
+@@ -30,7 +30,7 @@
+ define('SPEC_BOUCLE','[[:space:]]*\(([^)]*)\)');
+ define('NOM_DE_BOUCLE', "[0-9]+|[-_][-_.a-zA-Z0-9]*");
+ # ecriture alambiquee pour rester compatible avec les hexadecimaux des vieux squelettes
+-define('NOM_DE_CHAMP', "#((" . NOM_DE_BOUCLE . "):)?(([A-F]*[G-Z_][A-Z_0-9]*)|[A-Z_]+)(\*?)");
++define('NOM_DE_CHAMP', "#((" . NOM_DE_BOUCLE . "):)?(([A-F]*[G-Z_][A-Z_0-9]*)|[A-Z_]+)(\*?\*?)");
+ define('CHAMP_ETENDU', '\[([^]\[]*)\(' . NOM_DE_CHAMP . '([^[)]*\)[^]\[]*)\]');
+ 
+ define('BALISE_INCLURE','<INCLU[DR]E[[:space:]]*\(([^)]*)\)');
+
+
+
+From stef at berlios.de  Wed Mar 15 17:46:52 2006
+From: stef at berlios.de (stef at berlios.de)
+Date: Wed, 15 Mar 2006 17:46:52 +0100
+Subject: [Spip-carto-cvs] spipcarto/formulaires formulaire_forum.html,1.3,1.3.2.1 inc-formulaire_forum.php3,1.6.2.2,1.6.2.3
+Message-ID: <200603151646.k2FGkqbx023599@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/formulaires
+In directory sheep:/tmp/cvs-serv23566/formulaires
+
+Modified Files:
+      Tag: BRANCH-V1
+	formulaire_forum.html inc-formulaire_forum.php3 
+Log Message:
+MAJ 1.8.3
+
+Index: formulaire_forum.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/formulaire_forum.html,v
+retrieving revision 1.3
+retrieving revision 1.3.2.1
+diff -u -d -r1.3 -r1.3.2.1
+--- formulaire_forum.html	3 Mar 2005 14:53:17 -0000	1.3
++++ formulaire_forum.html	15 Mar 2006 16:46:49 -0000	1.3.2.1
+@@ -14,7 +14,7 @@
+ 		<fieldset class="spip_encadrer">
+ 		<legend><b><:forum_texte:></b></legend>
+ 		<p><:info_creation_paragraphe:></p>
+-		[(#ENV{texte}|barre_forum)]
++		[(#ENV**{texte}|barre_forum)]
+ 		</fieldset>
+ 		<br />
+ 		[<p>(#ENV*{table})</p>]
+
+Index: inc-formulaire_forum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_forum.php3,v
+retrieving revision 1.6.2.2
+retrieving revision 1.6.2.3
+diff -u -d -r1.6.2.2 -r1.6.2.3
+--- inc-formulaire_forum.php3	3 Feb 2006 00:23:39 -0000	1.6.2.2
++++ inc-formulaire_forum.php3	15 Mar 2006 16:46:50 -0000	1.6.2.3
+@@ -173,13 +173,13 @@
+ 					'formulaire_forum_previsu',
+ 					0,
+ 					array(
+-						'titre' => interdire_scripts(typo($titre)),
+-						'email_auteur' => $email_auteur,
+-						'auteur' => interdire_scripts(typo($auteur)),
+-						'texte' => propre($texte),
+-						'url_site' => $url_site,
++						'titre' => safehtml(typo($titre)),
++						'email_auteur' => safehtml($email_auteur),
++						'auteur' => safehtml(typo($auteur)),
++						'texte' => safehtml(propre($texte)),
++						'url_site' => safehtml($url_site),
+ 						'nom_site_forum' =>
+-							interdire_scripts(typo($nom_site_forum)),
++							safehtml(typo($nom_site_forum)),
+ 						'mots_forum' => $mots_forum,
+ 						'erreur' => $erreur,
+ 						'bouton' => $bouton
+@@ -273,6 +273,7 @@
+ function barre_forum($texte)
+ {
+ 	include_ecrire('inc_layer.php3');
++	$texte = entites_html($texte);
+ 
+ 	if (!$GLOBALS['browser_barre'])
+ 		return "<textarea name='texte' rows='12' class='forml' cols='40'>$texte</textarea>";
+
+
+
+From stef at berlios.de  Wed Mar 15 17:46:51 2006
+From: stef at berlios.de (stef at berlios.de)
+Date: Wed, 15 Mar 2006 17:46:51 +0100
+Subject: [Spip-carto-cvs] spipcarto/ecrire inc_logos.php3,1.6.2.1,1.6.2.2 inc_version.php3,1.12.2.5,1.12.2.6 inc_layer.php3,1.3,1.3.2.1
+Message-ID: <200603151646.k2FGkpbx023593@sheep.berlios.de>
+
+Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv23566/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc_logos.php3 inc_version.php3 inc_layer.php3 
+Log Message:
+MAJ 1.8.3
+
+Index: inc_logos.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_logos.php3,v
+retrieving revision 1.6.2.1
+retrieving revision 1.6.2.2
+diff -u -d -r1.6.2.1 -r1.6.2.2
+--- inc_logos.php3	1 Nov 2005 21:51:54 -0000	1.6.2.1
++++ inc_logos.php3	15 Mar 2006 16:46:49 -0000	1.6.2.2
+@@ -343,8 +343,21 @@
+ 
+ 			// Recopie de l'image d'origine avec adaptation de la taille
+ 			$ok = false;
+-			if (($process == 'gd2') AND function_exists('ImageCopyResampled'))
++			if (($process == 'gd2') AND function_exists('ImageCopyResampled')) {
++				if ($format == "gif") {
++					// Si un GIF est transparent,
++					// fabriquer un PNG transparent 
++					$transp = imagecolortransparent($srcImage);
++					if ($transp > 0) $destFormat = "png";
++				}
++				if ($destFormat == "png") {
++					// Conserver la transparence
++					if (function_exists("imageAntiAlias")) imageAntiAlias($destImage,true);
++					 @imagealphablending($destImage, false);
++					 @imagesavealpha($destImage,true);
++				}
+ 				$ok = @ImageCopyResampled($destImage, $srcImage, 0, 0, 0, 0, $destWidth, $destHeight, $srcWidth, $srcHeight);
++			}
+ 			if (!$ok)
+ 				$ok = ImageCopyResized($destImage, $srcImage, 0, 0, 0, 0, $destWidth, $destHeight, $srcWidth, $srcHeight);
+ 
+
+Index: inc_version.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_version.php3,v
+retrieving revision 1.12.2.5
+retrieving revision 1.12.2.6
+diff -u -d -r1.12.2.5 -r1.12.2.6
+--- inc_version.php3	28 Feb 2006 13:34:45 -0000	1.12.2.5
++++ inc_version.php3	15 Mar 2006 16:46:49 -0000	1.12.2.6
+@@ -430,7 +430,7 @@
+ $spip_version = 1.830;
+ 
+ // version de spip
+-$spip_version_affichee = "1.8.2 g";
++$spip_version_affichee = "1.8.3 (SpipCarto)";
+ 
+ 
+ // ** Securite **
+
+Index: inc_layer.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_layer.php3,v
+retrieving revision 1.3
+retrieving revision 1.3.2.1
+diff -u -d -r1.3 -r1.3.2.1
+--- inc_layer.php3	30 Jun 2005 10:09:39 -0000	1.3
++++ inc_layer.php3	15 Mar 2006 16:46:49 -0000	1.3.2.1
+@@ -110,9 +110,9 @@
+ // Tests sur le nom du butineur
+ //
+ function verif_butineur() {
+-	global $HTTP_USER_AGENT, $browser_name, $browser_version;
++	global $browser_name, $browser_version;
+ 	global $browser_description, $browser_rev, $browser_layer, $browser_barre;
+-	ereg("^([A-Za-z]+)/([0-9]+\.[0-9]+) (.*)$", $HTTP_USER_AGENT, $match);
++	ereg("^([A-Za-z]+)/([0-9]+\.[0-9]+) (.*)$", $_SERVER['HTTP_USER_AGENT'], $match);
+ 	$browser_name = $match[1];
+ 	$browser_version = $match[2];
+ 	$browser_description = $match[3];
+@@ -137,6 +137,7 @@
+ 		$browser_name = "Safari";
+ 		$browser_version = $match[1];
+ 		$browser_layer = http_script('', _DIR_INCLUDE . 'layer.js','');
++		$browser_barre = ($browser_version >= 5.0);
+ 	}
+ 	else if (eregi("mozilla", $browser_name) AND $browser_version >= 5) {
+ 		$browser_layer = http_script('', _DIR_INCLUDE . 'layer.js','');
+
+
+

@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.4,1.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20mots_partout.php%2C1.4%2C1.5&In-Reply-To=%3C200507260015.j6Q0FWRc021878%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000211.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.4,1.5</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20mots_partout.php%2C1.4%2C1.5&In-Reply-To=%3C200507260015.j6Q0FWRc021878%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.4,1.5">stef at berlios.de
+       </A><BR>
+    <I>Tue Jul 26 02:15:32 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000211.html">[Spip-carto-cvs] spipcarto/ecrire inc_tag-machine.php,NONE,1.1
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv21611/ecrire
+
+Modified Files:
+	mots_partout.php 
+Log Message:
+version maison (ajout/suppression de mots par case &#224; cocher)
+
+Index: mots_partout.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mots_partout.php,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- mots_partout.php	22 Jul 2005 22:58:26 -0000	1.4
++++ mots_partout.php	26 Jul 2005 00:15:25 -0000	1.5
+@@ -25,14 +25,11 @@
+ include_ecrire (&quot;inc_documents.php3&quot;);
+ include_ecrire (&quot;inc_abstract_sql.php3&quot;);
+ include_ecrire (&quot;inc_objet.php3&quot;);
+-include('_libs_/tag-machine/inc_tag-machine.php');
+-
+-/***********************************************************************
+-* D&#233;finition des choses sur lesquels on peut vouloir mettre des mots clefs
+-***********************************************************************/
+ ////////////////////////////////////////////////////////////////////////
+ //MODIFICATION (spip-carto)
+ ////////////////////////////////////////////////////////////////////////
++include_ecrire('inc_tag-machine.php');
++
+ $choses_possibles['carto_objets'] = array(
+ 									  'titre_chose' =&gt; 'Objets',
+ 									  'id_chose' =&gt; 'id_carto_objet',
+@@ -128,8 +125,9 @@
+ //(spip-carto)
+ ////////////////////////////////////////////////////////////////////////
+ 
+-//======================================================================
+-
++/***********************************************************************
++* D&#233;finition des choses sur lesquels on peut vouloir mettre des mots clefs
++***********************************************************************/
+ 
+ $choses_possibles['articles'] = array(
+ 									  'titre_chose' =&gt; 'public:articles',
+@@ -342,8 +340,9 @@
+ 	$select = array('*');
+ 	$from = array('spip_documents');
+ 	$where = array(&quot;id_document = $id_document&quot;);
+-
++	echo &quot;&lt;hr/&gt;&quot;;
+ 	$results = spip_abstract_select($select,$from,$where);
++	echo &quot;&lt;hr/&gt;&quot;;
+ 
+ 	if($document = spip_abstract_fetch($results)) {
+ 	  $id_vignette = $document['id_vignette'];
+@@ -754,15 +753,67 @@
+ $limit =  $HTTP_GET_VARS['limit'];
+ $id_limit =  $HTTP_GET_VARS['id_limit'];
+ 
+-if($HTTP_GET_VARS['bouton'] == 'ajouter' &amp;&amp; $nom_tags &amp;&amp; count($choses)) {
+-  $tags = parser_liste($nom_tags);
+-	foreach($choses as $d) {
+-	  $warnings = ajouter_liste_mots($tags,$d,'',$nom_chose,$id_chose);
++if($HTTP_GET_VARS['bouton'] == 'ajouter' &amp;&amp; count($choses)) {
++	if(count($mots)) {
++	  foreach($mots as $m) {	
++		$from = array('spip_mots');
++		$select = array('id_groupe');
++		$where = array(&quot;id_mot = $m&quot;);
++		$res = spip_abstract_select($select,$from,$where);
++		$unseul = false;
++		$id_groupe = 0;
++		$titre_groupe = '';
++		if($row = spip_abstract_fetch($res)) {
++		  spip_abstract_free($res);
++		  $from = array('spip_groupes_mots');
++		  $select = array('unseul','titre');
++		  $id_groupe = $row['id_groupe'];
++		  $where = array(&quot;id_groupe = $id_groupe&quot;);
++		  $res = spip_abstract_select($select,$from,$where);
++		  if($row = spip_abstract_fetch($res)) {
++			$unseul = ($row['unseul'] == 'oui');
++			$titre_groupe = $row['titre'];
++		  }
++		}
++		spip_abstract_free($res);
++		foreach($choses as $d) {
++		  if($unseul) {
++			$from = array(&quot;spip_mots_$nom_chose&quot;,'spip_mots');
++			$select = array(&quot;count('id_mot') as cnt&quot;);
++			$where = array(&quot;id_groupe = $id_groupe&quot;,&quot;spip_mots_$nom_chose.id_mot = spip_mots.id_mot&quot;,&quot;$id_chose = $d&quot;);
++			$group = $id_chose;
++			$res = spip_abstract_select($select,$from,$where,$group);
++			if($row = spip_abstract_fetch($res)) {	
++			  if($row['cnt'] &gt; 0) {
++				$warnings[] = array(_T('motspartout:dejamotgroupe',array('groupe' =&gt; $titre_groupe, 'chose' =&gt; $d)));
++				continue; 
++			  }
++			}
++			spip_abstract_free($res);
++		  }
++		  spip_abstract_insert(&quot;spip_mots_$nom_chose&quot;,&quot;(id_mot,$id_chose)&quot;,&quot;($m,$d)&quot;);
++		}
++	  }
+ 	}
+-} else if ($HTTP_GET_VARS['bouton'] == 'enlever' &amp;&amp; $nom_tags &amp;&amp; count($choses)) {
+-	$tags = parser_liste($nom_tags);
+-	foreach($choses as $d) {
+-	  retirer_liste_mots($tags,$d,'',$nom_chose,$id_chose);
++	if ($nom_tags){
++	  	$tags = parser_liste($nom_tags);
++		foreach($choses as $d) {
++		  $warnings = ajouter_liste_mots($tags,$d,'',$nom_chose,$id_chose);
++		}
++	}
++} else if ($HTTP_GET_VARS['bouton'] == 'enlever' &amp;&amp; count($choses)) {
++	if (count($mots)) {
++	    foreach($mots as $m) {
++		  foreach($choses as $d) {
++			spip_query(&quot;DELETE FROM spip_mots_$nom_chose WHERE id_mot=$m AND $id_chose=$d&quot;);
++		  }
++		}
++	}
++	if ($nom_tags){
++		$tags = parser_liste($nom_tags);
++		foreach($choses as $d) {
++		  retirer_liste_mots($tags,$d,'',$nom_chose,$id_chose);
++		}
+ 	}
+ }
+ 
+@@ -900,7 +951,7 @@
+ echo &quot;&lt;td&gt;&lt;input type='text' size='3' name='id_limit' value='$id_limit'&gt;&lt;/td&gt;&lt;/tr&gt;&quot;;
+ echo '&lt;tr class=\'tr_liste\'&gt;';
+ ?&gt;
+-&lt;td&gt;&lt;button type='submit'&gt;
++&lt;td&gt;&lt;button type='submit'&quot;&gt;
+ &lt;?php echo _T('motspartout:voir'); ?&gt;
+ &lt;/button&gt;
+ &lt;/td&gt;
+@@ -936,7 +987,7 @@
+ 	$result = spip_abstract_select(array('*'),
+ 								  array('spip_mots'),
+ 								  array(&quot;id_groupe = '$id_groupe'&quot;),
+-								  '', 'titre');
++								  '', array('titre'));
+ 	$table = '';
+ 	
+ 	if (spip_abstract_count($result) &gt; 0) {
+@@ -988,46 +1039,11 @@
+   }
+ }
+ spip_abstract_free($m_result_groupes);
+-
+-//Milieu
+-
+-debut_droite();
+-
+-if(count($warnings) &gt; 0) {
+-  debut_cadre_relief('',false,'',_T('motspartout:ATTENTION'));
+-  echo '&lt;div class=&quot;liste&quot;&gt;&lt;table border=0 cellspacing=0 cellpadding=3 width=\&quot;100%\&quot;&gt;';
+-  $largeurs = array('100%');
+-  $styles = array( 'arial11');
+-  afficher_liste($largeurs, $warnings, $styles);
+-  echo '&lt;/table&gt;';
+-  echo '&lt;/div&gt;';
+-  fin_cadre_relief();
+-}
+-
+-// Affichage de toutes les choses (on pourrait imaginer faire une pagination l&#224;)
+-debut_cadre_relief('',false,'document', _T('portfolio'));
+-if(count($choses) &gt; 0) {
+-  $function = &quot;afficher_liste_$nom_chose&quot;;
+-  if(function_exists($function)) 
+-	$function($choses);
+-  else
+-	afficher_liste_defaut($choses);
+-?&gt;
+-&lt;!--
+-&lt;input type=&quot;radio&quot; name=&quot;selectall&quot; id=&quot;all&quot; onclick=&quot;selectAll(this.form, 'id_choses[]', 0);&quot;&gt;&lt;label for=&quot;all&quot;&gt;Select All&lt;/label&gt;
+-&lt;input type=&quot;radio&quot; name=&quot;selectall&quot; id=&quot;inverse&quot;  onclick=&quot;selectAll(this.form, 'id_choses[]', 1);&quot;&gt;&lt;label for=&quot;inverse&quot;&gt;Inverse All&lt;/label&gt;
+---&gt;
+-&lt;?php
+-} else {
+-  echo _T('motspartout:pas_de_documents').'.';
+-}
+-
+-
+-fin_cadre_relief();
+-echo '&lt;/form&gt;';
++  echo '&lt;/form&gt;';
++ creer_colonne_droite();
+ 
+ if(count($choses)) {
+-  echo '&lt;a name=&quot;action&quot;&gt;&lt;/a&gt;&lt;form action=&quot;mots_partout.php#voir&quot;&gt;';
++ 	echo '&lt;a name=&quot;action&quot;&gt;&lt;/a&gt;&lt;form action=&quot;mots_partout.php#voir&quot;&gt;';
+ 
+   echo '&lt;input type=&quot;hidden&quot; name=&quot;nom_chose&quot; value=&quot;'.$HTTP_GET_VARS['nom_chose'].'&quot;&gt;';  
+   echo &quot;&lt;input type='hidden' name='id_limit' value='$id_limit'&gt;&quot;;
+@@ -1068,8 +1084,117 @@
+ &lt;?php
+ 		   
+   fin_cadre_enfonce();
+-  echo '&lt;/form&gt;';
++// affichage de mots clefs.
++$select = array('*');
++$from = array('spip_groupes_mots');
++$order = array('titre');
++$m_result_groupes = spip_abstract_select($select,$from,'','',$order);
++
++while ($row_groupes = spip_abstract_fetch($m_result_groupes)) {
++  $id_groupe = $row_groupes['id_groupe'];
++  $titre_groupe = typo($row_groupes['titre']);
++  $unseul = $row_groupes['unseul'];
++  $acces_admin =  $row_groupes['minirezo'];
++  $acces_redacteur = $row_groupes['comite'];
++
++  if($row_groupes[$nom_chose] == 'oui' &amp;&amp; (($GLOBALS['connect_statut'] == '1comite' AND $acces_redacteur == 'oui') OR ($GLOBALS['connect_statut'] == '0minirezo' AND $acces_admin == 'oui'))) {
++	// Afficher le titre du groupe
++	debut_cadre_enfonce(&quot;groupe-mot-24.gif&quot;, false, '', $titre_groupe);
++	
++	//
++	// Afficher les mots-cles du groupe
++	//
++	$result = spip_abstract_select(array('*'),
++								  array('spip_mots'),
++								  array(&quot;id_groupe = '$id_groupe'&quot;),
++								  '', array('titre'));
++	$table = '';
++	
++	if (spip_abstract_count($result) &gt; 0) {
++	  echo &quot;&lt;div class='liste'&gt;&quot;;
++	  echo &quot;&lt;table border=0 cellspacing=0 cellpadding=3 width=\&quot;100%\&quot;&gt;&quot;;
++	  $i =0;
++	  $table[] = array(
++					   ' ' =&gt; 0,
++					   _T('motspartout:action') =&gt; 0,
++					   );
++	  while ($row = spip_abstract_fetch($result)) {
++		$i++;
++		$vals = '';
++		
++		$id_mot = $row['id_mot'];
++		$titre_mot = $row['titre'];
++		
++		$s = typo($titre_mot);
++		
++		$vals[&quot;&lt;label for='id_mot$i'&gt;$s&lt;/label&gt;&quot;] = calcul_numeros($show_mots,$id_mot,count($choses));
++		
++		$vals[&quot;&lt;input type='checkbox' name='id_mots[]' id='id_mot$i' value='$id_mot'&gt;&quot;] = calcul_numeros($show_mots,$id_mot,count($choses));
++
++		$table[] = $vals;
++	  }
++	  
++  }
++	$largeurs = array(40, 10, 10);
++	$styles = array(
++					array('arial11',
++						  'diff-deplace',
++						  'diff-ajoute'),
++					array('arial1',
++						  'diff-para-deplace',
++						  'diff-para-ajoute'),
++					array('arial1',
++						  'diff-para-deplace',
++						  'diff-para-ajoute')
++					);
++	md_afficher_liste($largeurs, $table, $styles);
++	
++	echo &quot;&lt;/table&gt;&quot;;
++	echo &quot;&lt;/div&gt;&quot;;
++	spip_abstract_free($result);
++	
++	fin_cadre_enfonce();
++  }
++}
++spip_abstract_free($m_result_groupes);
++
+ }
++//Milieu
++
++debut_droite();
++
++if(count($warnings) &gt; 0) {
++  debut_cadre_relief('',false,'',_T('motspartout:ATTENTION'));
++  echo '&lt;div class=&quot;liste&quot;&gt;&lt;table border=0 cellspacing=0 cellpadding=3 width=\&quot;100%\&quot;&gt;';
++  $largeurs = array('100%');
++  $styles = array( 'arial11');
++  afficher_liste($largeurs, $warnings, $styles);
++  echo '&lt;/table&gt;';
++  echo '&lt;/div&gt;';
++  fin_cadre_relief();
++}
++
++// Affichage de toutes les choses (on pourrait imaginer faire une pagination l&#224;)
++debut_cadre_relief('',false,'document', _T('portfolio'));
++if(count($choses) &gt; 0) {
++  $function = &quot;afficher_liste_$nom_chose&quot;;
++  if(function_exists($function)) 
++	$function($choses);
++  else
++	afficher_liste_defaut($choses);
++?&gt;
++&lt;!--
++&lt;input type=&quot;radio&quot; name=&quot;selectall&quot; id=&quot;all&quot; onclick=&quot;selectAll(this.form, 'id_choses[]', 0);&quot;&gt;&lt;label for=&quot;all&quot;&gt;Select All&lt;/label&gt;
++&lt;input type=&quot;radio&quot; name=&quot;selectall&quot; id=&quot;inverse&quot;  onclick=&quot;selectAll(this.form, 'id_choses[]', 1);&quot;&gt;&lt;label for=&quot;inverse&quot;&gt;Inverse All&lt;/label&gt;
++--&gt;
++&lt;?php
++} else {
++  echo _T('motspartout:pas_de_documents').'.';
++}
++
++
++fin_cadre_relief();
++echo '&lt;/form&gt;';
+ ?&gt;
+ 
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000211.html">[Spip-carto-cvs] spipcarto/ecrire inc_tag-machine.php,NONE,1.1
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

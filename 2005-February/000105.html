@@ -1,0 +1,415 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_invalideur.php3,1.2,1.3 calendrier_jour.php3,1.2,1.3 calendrier.php3,1.2,1.3 inc_presentation.php3,1.2,1.3 inc_charsets.php3,1.2,1.3 inc_logos.php3,1.2,1.3 calendrier_semaine.php3,1.2,1.3 inc_db_mysql.php3,1.2,1.3 inc_calendrier.php,1.2,1.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_invalideur.php3%2C1.2%2C1.3%20calendrier_jour.php3%2C1.2%2C1.3%20calendrier.php3%2C1.2%2C1.3%20inc_presentation.php3%2C1.2%2C1.3%20inc_charsets.php3%2C1.2%2C1.3%20inc_logos.php3%2C1.2%2C1.3%20calendrier_semaine.php3%2C1.2%2C1.3%20inc_db_mysql.php3%2C1.2%2C1.3%20inc_calendrier.php%2C1.2%2C1.3&In-Reply-To=%3C200502251636.j1PGa0Nx006503%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000108.html">
+   <LINK REL="Next"  HREF="000106.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_invalideur.php3,1.2,1.3 calendrier_jour.php3,1.2,1.3 calendrier.php3,1.2,1.3 inc_presentation.php3,1.2,1.3 inc_charsets.php3,1.2,1.3 inc_logos.php3,1.2,1.3 calendrier_semaine.php3,1.2,1.3 inc_db_mysql.php3,1.2,1.3 inc_calendrier.php,1.2,1.3</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_invalideur.php3%2C1.2%2C1.3%20calendrier_jour.php3%2C1.2%2C1.3%20calendrier.php3%2C1.2%2C1.3%20inc_presentation.php3%2C1.2%2C1.3%20inc_charsets.php3%2C1.2%2C1.3%20inc_logos.php3%2C1.2%2C1.3%20calendrier_semaine.php3%2C1.2%2C1.3%20inc_db_mysql.php3%2C1.2%2C1.3%20inc_calendrier.php%2C1.2%2C1.3&In-Reply-To=%3C200502251636.j1PGa0Nx006503%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_invalideur.php3,1.2,1.3 calendrier_jour.php3,1.2,1.3 calendrier.php3,1.2,1.3 inc_presentation.php3,1.2,1.3 inc_charsets.php3,1.2,1.3 inc_logos.php3,1.2,1.3 calendrier_semaine.php3,1.2,1.3 inc_db_mysql.php3,1.2,1.3 inc_calendrier.php,1.2,1.3">stef at berlios.de
+       </A><BR>
+    <I>Fri Feb 25 17:36:00 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000108.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_pt_br.php3,NONE,1.1 public_pt_br.php3,NONE,1.1 ecrire_pt.php3,1.2,1.3 ecrire_oc_lnc.php3,1.2,1.3 spip_bg.php3,1.2,1.3 spip_pl.php3,1.2,1.3 spip_oc_lnc.php3,1.2,1.3 ecrire_pt_br.php3,1.2,1.3 ecrire_es.php3,1.2,1.3 spip_lb.php3,1.2,1.3 spip_es.php3,1.2,1.3 public_oc_lnc.php3,1.2,1.3 spip_pt.php3,1.2,1.3 spip_it.php3,1.2,1.3 ecrire_lb.php3,1.2,1.3 spip_fa.php3,1.2,1.3 spip_vi.php3,1.2,1.3
+</A></li>
+        <LI>Next message: <A HREF="000106.html">[Spip-carto-cvs] spipcarto inc-cache.php3,1.3,1.4 habillage.css,1.3,1.4 inc-messforum.php3,1.3,1.4 inc-public-global.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv6379/spipcarto/ecrire
+
+Modified Files:
+	inc_invalideur.php3 calendrier_jour.php3 calendrier.php3 
+	inc_presentation.php3 inc_charsets.php3 inc_logos.php3 
+	calendrier_semaine.php3 inc_db_mysql.php3 inc_calendrier.php 
+Log Message:
+1.8pr1 cvs
+
+Index: inc_invalideur.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_invalideur.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_invalideur.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_invalideur.php3	25 Feb 2005 16:35:57 -0000	1.3
+@@ -106,10 +106,9 @@
+ 		// ce qui evite des chevauchements dans la validation des forums
+ 		// [ A valide un forum, B obtient de purger les invalides, et A
+ 		//   trouve son cache avant que B n'ait eu le temps de le purger ]
+-		if (!_DIR_RESTREINT) {
+-			ecrire_meta('invalider', 'oui');
+-			ecrire_metas();
+-		} else {
++		ecrire_meta('invalider', 'oui');
++		ecrire_metas();
++		if (_DIR_RESTREINT) {
+ 			include_local('inc-cache.php3');
+ 			retire_caches();
+ 		}
+
+Index: calendrier_jour.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/calendrier_jour.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- calendrier_jour.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ calendrier_jour.php3	25 Feb 2005 16:35:57 -0000	1.3
+@@ -10,7 +10,7 @@
+  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
+ \***************************************************************************/
+ 
+-$type = 'jour';
++if (!isset($_GET['type'])) $type = 'jour';
+ include (&quot;calendrier.php3&quot;);
+ exit;
+ ?&gt;
+
+Index: calendrier.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/calendrier.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- calendrier.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ calendrier.php3	25 Feb 2005 16:35:57 -0000	1.3
+@@ -36,7 +36,7 @@
+   $jour=$jour_today;
+   $mois=$mois_today;
+   $annee=$annee_today;
+-}
++ } else {if (!isset($jour)) $jour = 1;}
+ 
+ $date = date(&quot;Y-m-d&quot;, mktime(0,0,0,$mois, $jour, $annee));
+ $jour = journum($date);
+@@ -73,7 +73,7 @@
+  else debut_html($titre);
+ 
+ $f = 'http_calendrier_init_' . $type;
+-echo $f($jour,$mois,$annee, $date);
++echo $f($jour,$mois,$annee, $date, $GLOBALS['PHP_SELF']);
+ 
+ if (!_DIR_RESTREINT) fin_page(); else 	echo &quot;&lt;/body&gt;&lt;/html&gt;\n&quot;;
+ 
+
+Index: inc_presentation.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_presentation.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_presentation.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_presentation.php3	25 Feb 2005 16:35:57 -0000	1.3
+@@ -1987,7 +1987,7 @@
+ 			$retour .= &quot;&lt;/tr&gt;&lt;/table&gt;&lt;/a&gt;\n&quot;;
+ 		}
+ 		else {
+-			$retour .= &quot;&lt;a href='$lien' class='cellule-h-texte'&gt;&lt;div&gt;$texte&lt;/div&gt;&lt;/a&gt;\n&quot;;
++			$retour .= &quot;&lt;a href='$lien' class='cellule-h-texte' $javascript&gt;&lt;div&gt;$texte&lt;/div&gt;&lt;/a&gt;\n&quot;;
+ 		}
+ 		if ($danger) $retour .= &quot;&lt;/div&gt;&quot;;
+ 	} else {
+
+Index: inc_charsets.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_charsets.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_charsets.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_charsets.php3	25 Feb 2005 16:35:57 -0000	1.3
+@@ -2326,9 +2326,9 @@
+ 		return chr($num);
+ 	if($num&lt;2048)
+ 		return chr(($num&gt;&gt;6)+192).chr(($num&amp;63)+128);
+-	if($num&lt;32768)
++	if($num&lt;65536)
+ 		return chr(($num&gt;&gt;12)+224).chr((($num&gt;&gt;6)&amp;63)+128).chr(($num&amp;63)+128);
+-	if($num&lt;2097152)
++	if($num&lt;1114112)
+ 		return chr($num&gt;&gt;18+240).chr((($num&gt;&gt;12)&amp;63)+128).chr(($num&gt;&gt;6)&amp;63+128). chr($num&amp;63+128);
+ 	return '';
+ }
+
+Index: inc_logos.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_logos.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_logos.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_logos.php3	25 Feb 2005 16:35:57 -0000	1.3
+@@ -452,6 +452,11 @@
+ 	if (eregi(&quot;name='([^']+)'&quot;, $img, $regs)) $name = $regs[1];
+ 	if (eregi(&quot;hspace='([^']+)'&quot;, $img, $regs)) $espace = $regs[1];
+ 	if (!$logo) $logo = $img;
++	
++	// Ne pas creer de valeurs vides
++	if ($align) $align = &quot; align='$align'&quot;;
++	if ($name) $name = &quot; name='$name'&quot;;
++	if ($espace) $espace = &quot; hspace='$espace' vspace='$espace'&quot;;
+ 
+ 	if (eregi(&quot;(.*)\.(jpg|gif|png)$&quot;, $logo, $regs)) {
+ 		if ($i = cherche_image_nommee($regs[1], array($regs[2]))) {
+@@ -462,11 +467,11 @@
+ 				$vignette = $preview['fichier'];
+ 				$width = $preview['width'];
+ 				$height = $preview['height'];
+-				return &quot;&lt;img src='$vignette' name='$name' border='0' align='$align' alt='' hspace='$espace' vspace='$espace' width='$width' height='$height' class='spip_logos' /&gt;&quot;;
++				return &quot;&lt;img src='$vignette'$name border='0'$name alt=''$espace width='$width' height='$height' class='spip_logos' /&gt;&quot;;
+ 			}
+ 			else if ($taille_origine = @getimagesize($logo)) {
+ 				list ($destWidth,$destHeight) = image_ratio($taille_origine[0], $taille_origine[1], $taille, $taille_y);
+-				return &quot;&lt;img src='$logo' name='$name' width='$destWidth' height='$destHeight' border='0' align='$align' alt='' hspace='$espace' vspace='$espace' class='spip_logos' /&gt;&quot;;
++				return &quot;&lt;img src='$logo'$name width='$destWidth' height='$destHeight' border='0'$align alt=''$espace class='spip_logos' /&gt;&quot;;
+ 			}
+ 		}
+ 	}
+
+Index: calendrier_semaine.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/calendrier_semaine.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- calendrier_semaine.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ calendrier_semaine.php3	25 Feb 2005 16:35:57 -0000	1.3
+@@ -10,7 +10,7 @@
+  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
+ \***************************************************************************/
+ 
+-$type = 'semaine';
++if (!isset($_GET['type'])) $type = 'semaine';
+ include (&quot;calendrier.php3&quot;);
+ exit;
+ ?&gt;
+
+Index: inc_db_mysql.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_db_mysql.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_db_mysql.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_db_mysql.php3	25 Feb 2005 16:35:57 -0000	1.3
+@@ -226,15 +226,21 @@
+ //
+ function calcul_mysql_in($val, $valeurs, $not='') {
+ 	if (!$valeurs) return '0=0';
+-	$s = split(',', $valeurs, 255);
+-	if (count($s) &lt; 255) {
+-		return (&quot;($val $not IN ($valeurs))&quot;);
+-	} else {
+-		$valeurs = array_pop($s);
+-		return (&quot;($val $not IN (&quot; . join(',',$s) . &quot;))\n&quot; .
+-			($not ? &quot;AND\t&quot; : &quot;OR\t&quot;) .
+-			calcul_mysql_in($val, $valeurs, $not));
+-    }
++
++	$n = $i = 0;
++	$chunk = array();
++	while ($n = strpos($valeurs, ',', $n+1)) {
++		if ((++$i) &gt;= 255) {
++			$chunk = substr($valeurs, 0, $n);
++			$in_sql .= &quot;($val $not IN (&quot; . $chunk . &quot;))\n&quot; .
++				($not ? &quot;AND\t&quot; : &quot;OR\t&quot;);
++			$valeurs = substr($valeurs, $n+1);
++			$i = $n = 0;
++		}
++	}
++	$in_sql .= &quot;($val $not IN ($valeurs))&quot;;
++
++	return $in_sql;
+ }
+ 
+ ?&gt;
+
+Index: inc_calendrier.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_calendrier.php,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_calendrier.php	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_calendrier.php	25 Feb 2005 16:35:57 -0000	1.3
+@@ -10,7 +10,6 @@
+  *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
+ \***************************************************************************/
+ 
+-
+ //
+ // Ce fichier ne sera execute qu'une fois
+ if (defined(&quot;_ECRIRE_INC_CALENDRIER&quot;)) return;
+@@ -144,7 +143,7 @@
+ 
+ # affiche un mois en grand, avec des tableau de clics vers d'autres mois
+ 
+-function http_calendrier_init_mois($premier_jour, $mois, $annee, $date)
++function http_calendrier_init_mois($premier_jour, $mois, $annee, $date, $script)
+ {
+ 	global $spip_lang_left, $largeur_table, $largeur_gauche, $spip_ecran;
+ 
+@@ -609,9 +608,9 @@
+ {
+   global $bleu, $jaune, $vert;
+   $href = &quot;message_edit.php3?rv=$annee-$mois-$jour&amp;new=oui&quot;;
+-
++  $script = 'calendrier.php3' ; // ok pour espace de redac, pas pour public
+   return &quot;\n&quot; .
+-    http_href(&quot;calendrier.php3?type=jour&amp;jour=$jour&amp;mois=$mois&amp;annee=$annee&quot;, $clic) .
++    http_href(&quot;$script?type=jour&amp;jour=$jour&amp;mois=$mois&amp;annee=$annee&quot;, $clic) .
+     &quot;\n&quot; .
+     (_DIR_RESTREINT ? '' : (
+     http_href(&quot;$href&amp;type=pb&quot;, 
+@@ -734,8 +733,9 @@
+ 
+ // Calcule un agenda mensuel et l'affiche
+ 
+-function http_calendrier_agenda ($mois, $annee, $jour_ved, $mois_ved, $annee_ved, $semaine = false,  $script='calendrier.php3?', $ancre='') {
++function http_calendrier_agenda ($mois, $annee, $jour_ved, $mois_ved, $annee_ved, $semaine = false,  $script='', $ancre='') {
+ 
++  if (!$script) $script =  'calendrier.php3?' ;
+   if (!$mois) {$mois = 12; $annee--;}
+   elseif ($mois==13) {$mois = 1; $annee++;}
+   return 
+@@ -1044,16 +1044,16 @@
+ 			if ($bas &gt; $bas_prec) $bas_prec = $bas;
+ 			$url = $evenement['URL']; 
+ 			$desc = propre($evenement['DESCRIPTION']);
++			$perso = $evenement['ATTENDEE'];
++			$lieu = $evenement['LOCATION'];
+ 			$sum = ereg_replace(' +','&nbsp;', typo($evenement['SUMMARY']));
+ 			if (!$sum) { $sum = $desc; $desc = '';}
++			if (!$sum) { $sum = $lieu; $lieu = '';}
++			if (!$sum) { $sum = $perso; $perso = '';}
+ 			if ($sum)
+-			  $sum = &quot;&lt;span style='font-family: Verdana, Arial, Sans, sans-serif; font-size: 10px;'&gt;&lt;b&gt;$sum&lt;/b&gt;&lt;/span&gt;&quot;;
+-			if ($largeur &gt; 90) {
+-			  if ($desc)
+-			    $sum .=  &quot;&lt;br /&gt;&lt;span style='color: black'&gt;$desc&lt;/span&gt;&quot; . (!$evenement['ATTENDEE'] ? '' : (&quot;&lt;br /&gt;&quot; . $evenement['ATTENDEE']));
+-			}
+-			else 
+-			  $desc .= &quot; &quot; . $evenement['ATTENDEE'];
++			  $sum = &quot;&lt;span style='font-family: Verdana, Arial, Sans, sans-serif; font-size: 10px;'&gt;&lt;b&gt;$sum&lt;/b&gt;$lieu $perso&lt;/span&gt;&quot;;
++			if (($largeur &gt; 90) &amp;&amp; $desc)
++			  $sum .=  &quot;&lt;br /&gt;&lt;span style='color: black'&gt;$desc&lt;/span&gt;&quot;;
+ 			$colors = $detcolor($evenement);
+ 			if ($colors)
+ 			{
+@@ -1088,8 +1088,6 @@
+ 			  ((!$url) ? 
+ 					$sum :
+ 				 http_href($url, $sum, $desc,&quot;color: $fcolor&quot;)) . 
+-			  ((!$evenement['LOCATION']) ? '' : 
+-			   (&quot;&lt;br /&gt;&quot; . $evenement['LOCATION'])) .
+ 				&quot;&lt;/div&gt;&quot;;
+ 			}
+ 		}
+@@ -1100,7 +1098,8 @@
+ }
+ 
+ 
+-function http_calendrier_init_jour($jour_today,$mois_today,$annee_today, $date){
++function http_calendrier_init_jour($jour_today,$mois_today,$annee_today, $date, $script){
++
+ 	global $largeur_table, $largeur_gauche, $spip_ecran;
+ 	$jour = journum($date);
+ 	$mois = mois($date);
+@@ -1125,7 +1124,7 @@
+ 	}
+ 	$retour .= &quot;\n&lt;td width='$largeur_centre' valign='top'&gt;&quot;  .
+ 		&quot;&lt;div&gt;&quot; .
+-		http_calendrier_navigation_jour($jour,$mois,$annee, $GLOBALS['echelle'], 'calendrier.php3', '') .
++		http_calendrier_navigation_jour($jour,$mois,$annee, $GLOBALS['echelle'], $script, '') .
+ 		&quot;&lt;/div&gt;&quot;.
+ 		http_calendrier_jour($jour,$mois,$annee, &quot;large&quot;) .
+ 		'&lt;/td&gt;';
+@@ -1142,7 +1141,7 @@
+ 	return $retour;
+ }
+ 
+-function http_calendrier_init_semaine($jour_today,$mois_today,$annee_today,$date)
++function http_calendrier_init_semaine($jour_today,$mois_today,$annee_today,$date, $script)
+ {
+ 	global $spip_ecran, $spip_lang_left, $couleur_claire;	
+ 	
+@@ -1173,7 +1172,7 @@
+ 		&quot;&lt;table cellpadding=0 cellspacing=0 border=0 width='$largeur_table'&gt;&lt;tr&gt;&quot; .
+ 		&quot;&lt;td width='$largeur_table' valign='top'&gt;&quot; .
+ 		http_calendrier_suite_heures($jour_today,$mois_today,$annee_today, 			$articles, $breves, $messages,
+-			'calendrier.php3',
++			$script,
+ 			'') .
+ 		&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&quot; .
+ 		(!(strlen($breves[&quot;0&quot;]) &gt; 0 OR $articles[&quot;0&quot;] &gt; 0) ? '' :
+@@ -1190,6 +1189,7 @@
+ 	global $calendrier_message_fermeture;
+ 	global $partie_cal;
+ 	
++	$script =  'calendrier.php3' ; // ok pour espace de redac, pas pour public
+ 	if ($partie_cal == &quot;soir&quot;) {
+ 		$debut_cal = 12;
+ 		$fin_cal = 23;
+@@ -1224,14 +1224,14 @@
+ 
+ 	if ($large == &quot;col&quot; ) {
+ 	  $entete = &quot;&lt;div align='center' style='padding: 5px;'&gt;&lt;b class='verdana1'&gt;&quot; .
+-	    http_href(&quot;calendrier.php3?type=jour&amp;jour=$jour&amp;mois=$mois&amp;annee=$annee&quot;,
++	    http_href(&quot;$script?type=jour&amp;jour=$jour&amp;mois=$mois&amp;annee=$annee&quot;,
+ 				 affdate_jourcourt(&quot;$annee-$mois-$jour&quot;),
+ 				 '',
+ 				 'color:black;') .
+ 	    &quot;&lt;/b&gt;&lt;/div&gt;&quot;;
+ 	}
+ 	else {
+-		if ($large == &quot;large&quot;) 
++	  if (($large == &quot;large&quot;) &amp;&amp; !_DIR_RESTREINT)
+ 			$entete = &quot;&lt;div align='center' style='padding: 5px;'&gt;&quot; .
+ 			http_href(&quot;message_edit.php3?rv=$annee-$mois-$jour&amp;new=oui&amp;type=pb&quot;,
+ 				$bleu ._T(&quot;lien_nouvea_pense_bete&quot;),
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000108.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_pt_br.php3,NONE,1.1 public_pt_br.php3,NONE,1.1 ecrire_pt.php3,1.2,1.3 ecrire_oc_lnc.php3,1.2,1.3 spip_bg.php3,1.2,1.3 spip_pl.php3,1.2,1.3 spip_oc_lnc.php3,1.2,1.3 ecrire_pt_br.php3,1.2,1.3 ecrire_es.php3,1.2,1.3 spip_lb.php3,1.2,1.3 spip_es.php3,1.2,1.3 public_oc_lnc.php3,1.2,1.3 spip_pt.php3,1.2,1.3 spip_it.php3,1.2,1.3 ecrire_lb.php3,1.2,1.3 spip_fa.php3,1.2,1.3 spip_vi.php3,1.2,1.3
+</A></li>
+	<LI>Next message: <A HREF="000106.html">[Spip-carto-cvs] spipcarto inc-cache.php3,1.3,1.4 habillage.css,1.3,1.4 inc-messforum.php3,1.3,1.4 inc-public-global.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

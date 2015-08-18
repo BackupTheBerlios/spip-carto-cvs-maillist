@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.21,1.21.2.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.21%2C1.21.2.1&In-Reply-To=%3C200509292114.j8TLE5mq007077%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000297.html">
+   <LINK REL="Next"  HREF="000299.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.21,1.21.2.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.21%2C1.21.2.1&In-Reply-To=%3C200509292114.j8TLE5mq007077%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.21,1.21.2.1">stef at berlios.de
+       </A><BR>
+    <I>Thu Sep 29 23:14:05 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000297.html">[Spip-carto-cvs] spipcarto/ecrire/lang spipcarto_en.php3,1.1.2.1,1.1.2.2
+</A></li>
+        <LI>Next message: <A HREF="000299.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.4,1.1.2.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv7052/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc_carto.php3 
+Log Message:
+Traitement particulier pour IE supprim&#233; (?)
+un peu de place pour afficher les coordonn&#233;es
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.21
+retrieving revision 1.21.2.1
+diff -u -d -r1.21 -r1.21.2.1
+--- inc_carto.php3	26 Sep 2005 10:17:03 -0000	1.21
++++ inc_carto.php3	29 Sep 2005 21:14:03 -0000	1.21.2.1
+@@ -132,31 +132,30 @@
+ 		$height=300;
+ 	};
+ 	
+-	$returned='&lt;script type=&quot;text/javascript&quot; src=&quot;js/x_core_nn4.js&quot;&gt;&lt;/script&gt;
++	$returned=' &lt;table border=&quot;0&quot;&gt;
++  &lt;tr&gt; 
++   &lt;td colspan=&quot;7&quot;&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;js/x_core_nn4.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/x_dom_nn4.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/x_event_nn4.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/navTools.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/graphTools.js&quot;&gt;&lt;/script&gt;
+-&lt;form method=&quot;get&quot; action=&quot;#nouveau_objet&quot; name=&quot;carto_form&quot;&gt;
+- &lt;table border=&quot;0&quot;&gt;
+-  &lt;tr&gt; 
+-   &lt;td colspan=&quot;7&quot;&gt;
++&lt;form method=&quot;post&quot; action=&quot;#nouveau_objet&quot; name=&quot;carto_form&quot;&gt;
+ &lt;script type=&quot;text/javascript&quot;&gt;
+ /*&lt;![CDATA[*/ 
+     var dhtmlDivs = new String();
+     document.image = new Image;
+     document.image.src = \''.$fichier.'\';
+     document.image.usemap=\'#map'.$id_carte.'\';
+-   if (xIE) {
++//   if (xIE) {
+       dhtmlDivs = \'&lt;div id=&quot;mapImageDiv&quot; class=&quot;dhtmldiv&quot; style=&quot;background-image:url(\'; 
+       dhtmlDivs += document.image.src;
+       dhtmlDivs += \');visibility:hidden;background-repeat:no-repeat;&quot;&gt;&lt;/div&gt;\';
+-    } else {
++/*    } else {
+       dhtmlDivs = \'&lt;div id=&quot;mapImageDiv&quot; class=&quot;dhtmldiv&quot; style=&quot;visibility:hidden&quot;&gt;&lt;img \';
+       dhtmlDivs += \'src=&quot;\' + document.image.src + \'&quot; alt=&quot;Main map&quot; title=&quot;&quot; \';
+-      dhtmlDivs += \'width=&quot;'.$width.'px&quot; height=&quot;'.$height.'px&quot; /&gt;&lt;/div&gt;\';
+-      
++      dhtmlDivs += \'width=&quot;'.$width.'px&quot; height=&quot;'.$height.'px&quot; /&gt;&lt;/div&gt;\';    
+     }
++*/
+     dhtmlDivs += \'&lt;div id=&quot;myCanvasDiv&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+     dhtmlDivs += \'&lt;div id=&quot;myCanvas2Div&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+     dhtmlDivs += \'&lt;div id=&quot;myCanvas3Div&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+@@ -238,6 +237,9 @@
+      &lt;/table&gt;
+     &lt;/div&gt;
+    &lt;/td&gt;
++  &lt;/tr&gt;
++  &lt;tr&gt;
++   &lt;td colspan=&quot;7&quot;&gt;&nbsp;&lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
+    &lt;td&gt; '._T(&quot;spipcarto:carte_draw&quot;).'
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000297.html">[Spip-carto-cvs] spipcarto/ecrire/lang spipcarto_en.php3,1.1.2.1,1.1.2.2
+</A></li>
+	<LI>Next message: <A HREF="000299.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.4,1.1.2.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto Thumbs.db,1.1.2.1,1.1.2.2 mes_fonctions.php3,1.13.2.1,1.13.2.2 inc-criteres.php3,1.9,1.9.2.1 page.php3,1.3.2.1,1.3.2.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20Thumbs.db%2C1.1.2.1%2C1.1.2.2%20mes_fonctions.php3%2C1.13.2.1%2C1.13.2.2%20inc-criteres.php3%2C1.9%2C1.9.2.1%20page.php3%2C1.3.2.1%2C1.3.2.2&In-Reply-To=%3C200602162306.k1GN6Dbx012720%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000371.html">
+   <LINK REL="Next"  HREF="000373.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto Thumbs.db,1.1.2.1,1.1.2.2 mes_fonctions.php3,1.13.2.1,1.13.2.2 inc-criteres.php3,1.9,1.9.2.1 page.php3,1.3.2.1,1.3.2.2</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20Thumbs.db%2C1.1.2.1%2C1.1.2.2%20mes_fonctions.php3%2C1.13.2.1%2C1.13.2.2%20inc-criteres.php3%2C1.9%2C1.9.2.1%20page.php3%2C1.3.2.1%2C1.3.2.2&In-Reply-To=%3C200602162306.k1GN6Dbx012720%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto Thumbs.db,1.1.2.1,1.1.2.2 mes_fonctions.php3,1.13.2.1,1.13.2.2 inc-criteres.php3,1.9,1.9.2.1 page.php3,1.3.2.1,1.3.2.2">stef at berlios.de
+       </A><BR>
+    <I>Fri Feb 17 00:06:13 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000371.html">[Spip-carto-cvs] spipcarto/ecrire/safehtml license.txt,NONE,1.1.2.1 readme-SPIP.txt,NONE,1.1.2.1 readme.txt,NONE,1.1.2.1
+</A></li>
+        <LI>Next message: <A HREF="000373.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.6,1.1.2.7 mes_options.php3,1.8.2.6,1.8.2.7
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#372">[ date ]</a>
+              <a href="thread.html#372">[ thread ]</a>
+              <a href="subject.html#372">[ subject ]</a>
+              <a href="author.html#372">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv12672
+
+Modified Files:
+      Tag: BRANCH-V1
+	mes_fonctions.php3 inc-criteres.php3 page.php3 
+Added Files:
+      Tag: BRANCH-V1
+	Thumbs.db 
+Log Message:
+Mise &#224; jour (Spip 1.8.2 SVN)
+bugs boucle document image
+safehtml
+ajout lang CS
+page (secu formulaires)
+
+
+Index: mes_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/mes_fonctions.php3,v
+retrieving revision 1.13.2.1
+retrieving revision 1.13.2.2
+diff -u -d -r1.13.2.1 -r1.13.2.2
+--- mes_fonctions.php3	27 Sep 2005 20:53:22 -0000	1.13.2.1
++++ mes_fonctions.php3	16 Feb 2006 23:06:11 -0000	1.13.2.2
+@@ -32,4 +32,47 @@
+ //			FIN MODULE SPIPCARTO
+ //////////////////////////////////////////////////
+ //////////////////////////////////////////////////
++function geometrie_script($geometrie, $id_objet, $callage, $url_carte){	
++				// Objet g&#233;om&#233;trique pour l'affichage DHTML
++				$mygeom = wkt2coords($geometrie, &quot;JSDHTML&quot;, $callage, $url_carte); 
++				$geoArray= explode(',',$mygeom);
++		  		$returned=&quot;geoArray_&quot;.$id_objet.&quot;=new Array();\n&quot;;
++		  		for ($i=0; $i&lt;count($geoArray) ; $i=$i+2) {
++					$returned.=&quot;var geoPoint_&quot;.$id_objet.&quot;_&quot;.($i/2).&quot;=new Array(&quot;.$geoArray[$i].&quot;,&quot;.$geoArray[$i+1].&quot;);\n&quot;;
++					$returned.=&quot;geoArray_&quot;.$id_objet.&quot;[&quot;.($i/2).&quot;]=geoPoint_&quot;.$id_objet.&quot;_&quot;.($i/2).&quot;;\n&quot;;
++		  		}
++		  		$geoTypex= explode('(',$geometrie);
++		  		$geoType= $geoTypex[0];
++
++		  		switch ($geoType){
++		  			case 'circle':
++		  			case 'CIRCLE':
++		  						$geoType='circle';
++		  						break;
++		  			case 'rect':
++		  			case 'RECT':
++		  			case 'rectangle':
++		  			case 'RECTANGLE':
++		  						$geoType='rect';
++		  						break;
++		  			case 'line':
++		  			case 'LINE':
++		  						$geoType='line';
++		  						break;
++		  			case 'point':
++		  			case 'POINT':
++		  						$geoType='point';
++		  						break;
++					case 'poly':
++		  			case 'POLY':
++		  			case 'polygon':
++		  			case 'POLYGON':
++		  			default:
++		  						$geoType='poly';
++		  						break;
++		  		}
++				
++				$returned.=$geoType.&quot;s[&quot;.$geoType.&quot;count++]=geoArray_&quot;.$id_objet.&quot;;&quot;;
++				return $returned;
++}
+ ?&gt;
+
+Index: inc-criteres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-criteres.php3,v
+retrieving revision 1.9
+retrieving revision 1.9.2.1
+diff -u -d -r1.9 -r1.9.2.1
+--- inc-criteres.php3	7 Sep 2005 15:01:53 -0000	1.9
++++ inc-criteres.php3	16 Feb 2006 23:06:11 -0000	1.9.2.1
+@@ -519,11 +519,11 @@
+ 
+ 	// Cas particulier : selection des documents selon l'extension
+ 	if ($type == 'documents' AND $col == 'extension')
+-	  $col_table = 'types_documents';
++		$col_table = 'types_documents';
+ 	// HACK : selection des documents selon mode 'image'
+-	// (a creer en dur dans la base)
+-	else if ($type == 'documents' AND $col == 'mode' AND $val[0] == &quot;'image'&quot;)
+-	  $val[0] = &quot;'vignette'&quot;;
++	// =&gt; on cherche en fait 'vignette'
++	else if ($type == 'documents' AND $col == 'mode')
++		$val[0] = str_replace('image', 'vignette', $val[0]);
+ 	// Cas particulier : lier les articles syndiques
+ 	// au site correspondant
+ 	else if ($type == 'syndic_articles' AND
+
+Index: page.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/page.php3,v
+retrieving revision 1.3.2.1
+retrieving revision 1.3.2.2
+diff -u -d -r1.3.2.1 -r1.3.2.2
+--- page.php3	1 Nov 2005 21:51:53 -0000	1.3.2.1
++++ page.php3	16 Feb 2006 23:06:11 -0000	1.3.2.2
+@@ -19,7 +19,8 @@
+ 	$delais = $contexte_inclus['delais'];
+ 
+ // Securite 
+-if (strstr($fond, '/')) {
++if (strstr($fond, '/')
++OR preg_match(',^formulaire_,i', $fond)) {
+ 	die (&quot;Faut pas se gener&quot;);
+ }
+ if (!find_in_path(&quot;$fond.html&quot;)) {
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000371.html">[Spip-carto-cvs] spipcarto/ecrire/safehtml license.txt,NONE,1.1.2.1 readme-SPIP.txt,NONE,1.1.2.1 readme.txt,NONE,1.1.2.1
+</A></li>
+	<LI>Next message: <A HREF="000373.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.6,1.1.2.7 mes_options.php3,1.8.2.6,1.8.2.7
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#372">[ date ]</a>
+              <a href="thread.html#372">[ thread ]</a>
+              <a href="subject.html#372">[ subject ]</a>
+              <a href="author.html#372">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

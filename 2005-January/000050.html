@@ -1,0 +1,761 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spip-carto/ecrire inc_mots.php3,1.1,1.2 articles_edit.php3,1.1,1.2 inc_filtres.php3,1.1,1.2 statistiques_visites.php3,1.1,1.2 inc_carto.php3,1.1,1.2 inc_mail.php3,1.1,1.2 carte_edit.php3,1.1,1.2 mots_type.php3,1.1,1.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spip-carto/ecrire%20inc_mots.php3%2C1.1%2C1.2%20articles_edit.php3%2C1.1%2C1.2%20inc_filtres.php3%2C1.1%2C1.2%20statistiques_visites.php3%2C1.1%2C1.2%20inc_carto.php3%2C1.1%2C1.2%20inc_mail.php3%2C1.1%2C1.2%20carte_edit.php3%2C1.1%2C1.2%20mots_type.php3%2C1.1%2C1.2&In-Reply-To=%3C200501201021.j0KALjOp026146%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000049.html">
+   <LINK REL="Next"  HREF="000051.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spip-carto/ecrire inc_mots.php3,1.1,1.2 articles_edit.php3,1.1,1.2 inc_filtres.php3,1.1,1.2 statistiques_visites.php3,1.1,1.2 inc_carto.php3,1.1,1.2 inc_mail.php3,1.1,1.2 carte_edit.php3,1.1,1.2 mots_type.php3,1.1,1.2</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spip-carto/ecrire%20inc_mots.php3%2C1.1%2C1.2%20articles_edit.php3%2C1.1%2C1.2%20inc_filtres.php3%2C1.1%2C1.2%20statistiques_visites.php3%2C1.1%2C1.2%20inc_carto.php3%2C1.1%2C1.2%20inc_mail.php3%2C1.1%2C1.2%20carte_edit.php3%2C1.1%2C1.2%20mots_type.php3%2C1.1%2C1.2&In-Reply-To=%3C200501201021.j0KALjOp026146%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spip-carto/ecrire inc_mots.php3,1.1,1.2 articles_edit.php3,1.1,1.2 inc_filtres.php3,1.1,1.2 statistiques_visites.php3,1.1,1.2 inc_carto.php3,1.1,1.2 inc_mail.php3,1.1,1.2 carte_edit.php3,1.1,1.2 mots_type.php3,1.1,1.2">stef at berlios.de
+       </A><BR>
+    <I>Thu Jan 20 11:21:45 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000049.html">[Spip-carto-cvs] spip-carto/ecrire inc_version.php3,1.1,1.2
+</A></li>
+        <LI>Next message: <A HREF="000051.html">[Spip-carto-cvs] spip-carto/ecrire/upload remove.txt,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#50">[ date ]</a>
+              <a href="thread.html#50">[ thread ]</a>
+              <a href="subject.html#50">[ subject ]</a>
+              <a href="author.html#50">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spip-carto/ecrire
+In directory sheep:/tmp/cvs-serv26140/ecrire
+
+Modified Files:
+	inc_mots.php3 articles_edit.php3 inc_filtres.php3 
+	statistiques_visites.php3 inc_carto.php3 inc_mail.php3 
+	carte_edit.php3 mots_type.php3 
+Log Message:
+proto1.1
+
+Index: inc_mots.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/ecrire/inc_mots.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc_mots.php3	13 Jan 2005 16:16:22 -0000	1.1
++++ inc_mots.php3	20 Jan 2005 10:21:42 -0000	1.2
+@@ -109,7 +109,17 @@
+ 		$objet = 'syndic';
+ 		$url_base = &quot;sites.php3?id_syndic=$id_objet&quot;;
+ 	}
+-
++	/////////////////////////////////
++	//MODIFICATION
++	////////////////////////////////
++	else if ($table == 'carto_objets') {
++		$id_table = 'id_carto_objet';
++		$objet = 'carto_objet';
++		$url_base = &quot;carte_edit.php3?id_carte=&quot;.$id_objet['id_carte'].&quot;&amp;id_objet=&quot;.$id_objet['id_objet'];
++		$id_objet=$id_objet['id_objet'];
++	}
++	////////////////////////////////
++	
+ 	$query = &quot;SELECT mots.* FROM spip_mots AS mots, spip_mots_$table AS lien WHERE lien.$id_table=$id_objet AND mots.id_mot=lien.id_mot&quot;;
+ 	$nombre_mots = spip_num_rows(spip_query($query));
+ 
+@@ -118,12 +128,12 @@
+ 
+ 	if (!$nombre_mots AND (!$nombre_groupes OR !$flag_editable)) return;
+ 
+-	echo &quot;&lt;a name='mots'&gt;&lt;/a&gt;&quot;;
++	echo &quot;&lt;a name='mots&quot;.$id_objet.&quot;'&gt;&lt;/a&gt;&quot;;
+ 	if ($flag_editable){
+ 		if ($nouv_mot.$cherche_mot.$supp_mot)
+-			$bouton = bouton_block_visible(&quot;lesmots&quot;);
++			$bouton = bouton_block_visible(&quot;lesmots&quot;.$id_objet);
+ 		else
+-			$bouton =  bouton_block_invisible(&quot;lesmots&quot;);
++			$bouton =  bouton_block_invisible(&quot;lesmots&quot;.$id_objet);
+ 	}
+ 	debut_cadre_enfonce(&quot;mot-cle-24.gif&quot;, false, &quot;&quot;, $bouton._T('titre_mots_cles').aide (&quot;artmots&quot;));
+ 
+@@ -191,7 +201,7 @@
+ 					echo &quot;&lt;LI&gt;&lt;FONT FACE='Verdana,Arial,Sans,sans-serif' SIZE=2&gt;&lt;B&gt;&lt;FONT SIZE=3&gt;&quot;.typo($titre_mot).&quot;&lt;/FONT&gt;&lt;/B&gt;&quot;;
+ 
+ 					if ($type_mot) echo &quot; ($type_mot)&quot;;
+-					echo &quot; | &lt;A HREF=\&quot;$url_base&amp;nouv_mot=$id_mot#mots\&quot;&gt;&quot;._T('info_ajouter_mot').&quot;&lt;/A&gt;&quot;;
++					echo &quot; | &lt;A HREF=\&quot;$url_base&amp;nouv_mot=$id_mot#mots$id_objet\&quot;&gt;&quot;._T('info_ajouter_mot').&quot;&lt;/A&gt;&quot;;
+ 
+ 					if (strlen($descriptif_mot) &gt; 1) {
+ 						echo &quot;&lt;BR&gt;&lt;FONT SIZE=1&gt;&quot;.propre(couper($descriptif_mot, 100)).&quot;&lt;/FONT&gt;\n&quot;;
+@@ -304,14 +314,14 @@
+ 				$couleur=&quot;#EDF3FE&quot;;
+ 			}
+ 	
+-			$url = &quot;mots_edit.php3?id_mot=$id_mot&amp;redirect=&quot;.rawurlencode($url_base.'#mots');
++			$url = &quot;mots_edit.php3?id_mot=$id_mot&amp;redirect=&quot;.rawurlencode($url_base.'#mots'.$id_objet);
+ 	
+ 			$vals[] = &quot;&lt;A HREF='$url'&gt;&quot; . http_img_pack('petite-cle.gif', &quot;&quot;, &quot;width='23' height='12' border='0'&quot;) .&quot;&lt;/A&gt;&quot;;
+ 			
+ 	
+ 			// Changer
+ 			if ($unseul == &quot;oui&quot; AND $flag_groupe) {
+-				$s = &quot;&lt;form action='$url_base#mots' method='post' style='margin:0px; padding: 0px'&gt;&quot;;
++				$s = &quot;&lt;form action='$url_base#mots$id_objet' method='post' style='margin:0px; padding: 0px'&gt;&quot;;
+ 				$s .= &quot;&lt;INPUT TYPE='Hidden' NAME='$id_table' VALUE='$id_objet'&gt;&quot;;
+ 				if ($table == 'rubriques') $s .= &quot;&lt;INPUT TYPE='Hidden' NAME='id_rubrique' VALUE='$id_objet'&gt;&quot;;
+ 				$s .= &quot;&lt;select name='nouv_mot' onChange=\&quot;setvisibility('valider_groupe_$id_groupe', 'visible');\&quot; CLASS='fondl' STYLE='font-size:10px; width:90px;'&gt;&quot;;
+@@ -343,7 +353,7 @@
+ 			if ($flag_editable){
+ 				$s = &quot;&quot;;
+ 				if ($flag_groupe)
+-				  $s .= &quot;&lt;A HREF=\&quot;$url_base&amp;supp_mot=$id_mot#mots\&quot;&gt;&quot;._T('info_retirer_mot').&quot;&nbsp;&quot; . http_img_pack('croix-rouge.gif', &quot;X&quot;, &quot;width='7' height='7' border='0' align='middle'&quot;) .&quot;&lt;/A&gt;&quot;;
++				  $s .= &quot;&lt;A HREF=\&quot;$url_base&amp;supp_mot=$id_mot#mots$id_objet\&quot;&gt;&quot;._T('info_retirer_mot').&quot;&nbsp;&quot; . http_img_pack('croix-rouge.gif', &quot;X&quot;, &quot;width='7' height='7' border='0' align='middle'&quot;) .&quot;&lt;/A&gt;&quot;;
+ 				else $s .= &quot;&nbsp;&quot;;
+ 			}
+ 			$vals[] = $s;
+@@ -379,9 +389,9 @@
+ 
+ 	if ($flag_editable) {
+ 		if ($nouveaux_mots.$cherche_mot.$supp_mot)
+-			echo debut_block_visible(&quot;lesmots&quot;);
++			echo debut_block_visible(&quot;lesmots&quot;.$id_objet);
+ 		else if ($nb_groupes &gt; 0) {
+-			echo debut_block_visible(&quot;lesmots&quot;);
++			echo debut_block_visible(&quot;lesmots&quot;.$id_objet);
+ 			// vilain hack pour redresser un triangle
+ 			$couche_a_redresser = $GLOBALS['numero_block']['lesmots'];
+ 			if ($GLOBALS['browser_layer']) echo http_script(&quot;
+@@ -389,16 +399,16 @@
+ if (triangle) triangle.src = '&quot; . _DIR_IMG_PACK . &quot;deplierbas$spip_lang_rtl.gif';&quot;);
+ 		}
+ 		else
+-			echo debut_block_invisible(&quot;lesmots&quot;);
++			echo debut_block_invisible(&quot;lesmots&quot;.$id_objet);
+ 
+ 		if ($nombre_mots_associes &gt; 3) {
+ 			echo &quot;&lt;div align='right' class='arial1'&gt;&quot;;
+-			echo &quot;&lt;a href=\&quot;$url_base&amp;supp_mot=-1#mots\&quot;&gt;&quot;._T('info_retirer_mots').&quot;&lt;/a&gt;&quot;;
++			echo &quot;&lt;a href=\&quot;$url_base&amp;supp_mot=-1#mots$id_objet\&quot;&gt;&quot;._T('info_retirer_mots').&quot;&lt;/a&gt;&quot;;
+ 			echo &quot;&lt;/div&gt;&lt;br /&gt;\n&quot;;
+ 		}
+ 
+ 
+-		$form_mot = &quot;&lt;FORM ACTION='$url_base#mots' METHOD='post' STYLE='margin:1px;'&gt;&quot;
++		$form_mot = &quot;&lt;FORM ACTION='$url_base#mots$id_objet' METHOD='post' STYLE='margin:1px;'&gt;&quot;
+ 			.&quot;&lt;INPUT TYPE='Hidden' NAME='$id_table' VALUE='$id_objet'&gt;&quot;;
+ 
+ 		if ($table == 'rubriques') $form_mot .= &quot;&lt;INPUT TYPE='Hidden' NAME='id_rubrique' VALUE='$id_objet'&gt;&quot;;
+
+Index: articles_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/ecrire/articles_edit.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- articles_edit.php3	13 Jan 2005 16:04:32 -0000	1.1
++++ articles_edit.php3	20 Jan 2005 10:21:42 -0000	1.2
+@@ -205,12 +205,9 @@
+ ///////////////////////////
+ //MODIFICATION
+ ///////////////////////////
+-	if (lire_meta('activer_forms') == 'oui'){
+-		include_ecrire (&quot;inc_forms.php3&quot;);
+-		afficher_insertion_formulaire($id_article);
+-	}
++	creer_colonne_droite();
+ 	if (lire_meta('activer_carto') == 'oui'){
+-		//include_ecrire (&quot;inc_carto.php3&quot;);
++		include_ecrire (&quot;inc_carto.php3&quot;);
+ 		afficher_insertion_carte($id_article);
+ 	}
+ ////////////////////////////
+
+Index: inc_filtres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/ecrire/inc_filtres.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc_filtres.php3	13 Jan 2005 16:04:32 -0000	1.1
++++ inc_filtres.php3	20 Jan 2005 10:21:42 -0000	1.2
+@@ -261,7 +261,11 @@
+ 
+ // |choixsivide{vide,pasvide} affiche pasvide si la chaine n'est pas vide...
+ 
+-function choixsivide($a, $vide, $pasvide) {return $a ? $pasvide : $vide;}
++function choixsivide($a, $vide, $pasvide)
++{
++  spip_log(&quot;choix '$a'&quot; . $a ? $pasvide : $vide);
++  return $a ? $pasvide : $vide;
++}
+ 
+ // |choixsiegal{aquoi,oui,non} affiche oui si la chaine est egal a aquoi ...
+ function choixsiegal($a1,$a2,$v,$f) {return ($a1 == $a2) ? $v : $f;}
+@@ -746,6 +750,17 @@
+ 		. &quot;&lt;/script&gt;\n&quot;
+ 		. (!$noscript ? '' : &quot;&lt;noscript&gt;\n\t$noscript\n&lt;/noscript&gt;\n&quot;);
+ }
++
++/* dans les squelettes a present.
++function http_script_window_close() {
++  return http_script('
++document.write(&quot;&lt;br /&gt;&lt;div align=\'right\'&gt;&lt;a href=\'&quot;)
++document.write((window.opener) ? &quot;javascript:close()&quot; : &quot;./&quot;)
++document.write(&quot;\'&gt;' . _T('pass_quitter_fenetre') . '&lt;&quot; + &quot;/a&gt;&lt;/div&gt;&quot;)',
++	      '',
++	      &quot;&#91;&lt;a href='./'&gt;&lt;:pass_retour_public:&gt;&lt;/a&gt;&amp;#93&quot;);
++}
++*/
+ 
+ function inscriptionok($site, $mode)
+ {
+
+Index: statistiques_visites.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/ecrire/statistiques_visites.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- statistiques_visites.php3	13 Jan 2005 16:16:22 -0000	1.1
++++ statistiques_visites.php3	20 Jan 2005 10:21:42 -0000	1.2
+@@ -359,7 +359,7 @@
+ 						$tab_moyenne[$decal] = $value;
+ 	
+ 						$ce_jour=date(&quot;Y-m-d&quot;, $jour_prec+(3600*24*($i+1)));
+-						$jour = nom_jour($ce_jour).' '.affdate_court($ce_jour);
++						$jour = nom_jour($ce_jour).' '.affdate_jourcourt($ce_jour);
+ 	
+ 						reset($tab_moyenne);
+ 						$moyenne = 0;
+@@ -386,7 +386,7 @@
+ 				}
+ 	
+ 				$ce_jour=date(&quot;Y-m-d&quot;, $key);
+-				$jour = nom_jour($ce_jour).' '.affdate_court($ce_jour);
++				$jour = nom_jour($ce_jour).' '.affdate_jourcourt($ce_jour);
+ 	
+ 				$total_loc = $total_loc + $value;
+ 				reset($tab_moyenne);
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/ecrire/inc_carto.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc_carto.php3	13 Jan 2005 16:16:22 -0000	1.1
++++ inc_carto.php3	20 Jan 2005 10:21:42 -0000	1.2
+@@ -4,11 +4,18 @@
+ // Ce fichier ne sera execute qu'une fois
+ if (defined(&quot;_ECRIRE_INC_CARTE&quot;)) return;
+ define(&quot;_ECRIRE_INC_CARTE&quot;, &quot;1&quot;);
+-
+-function embed_map_url($id_carte, $url_parse) {
++function coords2wtk($selection_type,$selection_coords){
++	
++	return $selection_type.&quot;(&quot;.$selection_coords.&quot;)&quot;;
++}
++function embed_carto_url($id_carte, $url_parse) {
+ 	$lURL = $url_parse['path'].&quot;/carto.php3?id_carte=&quot;.$id_carte.&quot;&amp;scale=&quot;.$_GET['scale'].&quot;&amp;x=&quot;.$_GET['x'].&quot;&amp;y=&quot;.$_GET['y'];
+ 	return $lURL;
+ }
++function embed_fond_carte_url($fond_carte) {
++	$lURL = &quot;../spip_carto.php?fond_carte=&quot;.$fond_carte.&quot;&amp;scale=&quot;.$_GET['scale'].&quot;&amp;x=&quot;.$_GET['x'].&quot;&amp;y=&quot;.$_GET['y'];
++	return $lURL;
++}
+ 
+ function afficher_cartes($titre_table, $requete, $icone = '') {
+ 	global $couleur_claire, $couleur_foncee;
+@@ -77,12 +84,17 @@
+ 	return $tous_id;
+ }
+ 
++
+ function afficher_carte_inteface($fichier,$id_carte,$width,$height) {
+ 	$returned='&lt;script type=&quot;text/javascript&quot; src=&quot;js/x_core_nn4.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/x_dom_nn4.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/x_event_nn4.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/navTools.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/graphTools.js&quot;&gt;&lt;/script&gt;
++&lt;form method=&quot;get&quot; action=&quot;#objet_visible&quot; name=&quot;carto_form&quot;&gt;
++ &lt;table border=&quot;1&quot;&gt;
++  &lt;tr&gt; 
++   &lt;td colspan=&quot;7&quot;&gt;
+ &lt;script type=&quot;text/javascript&quot;&gt;
+ /*&lt;![CDATA[*/ 
+     var dhtmlDivs = new String();
+@@ -126,7 +138,7 @@
+       
+       // map units values
+ 	  // dynamically given by the server
+-      dhtmlBox.mapHeight = 300;
++      dhtmlBox.mapHeight = '.$height.';
+       dhtmlBox.boxx = 470000;
+       dhtmlBox.boxy = 46300;
+       dhtmlBox.pixel_size = 924.83333333334;
+@@ -146,37 +158,49 @@
+     }
+ 	/*]]&gt;*/
+   &lt;/script&gt;
+-&lt;form method=&quot;get&quot; action=&quot;#&quot; name=&quot;carto_form&quot;&gt;
+-  &lt;table&gt;
+-    &lt;tr&gt; 
+-      &lt;td&gt; &lt;input type=&quot;hidden&quot; name=&quot;id_carte&quot; value=&quot;'.$id_carte.'&quot;/&gt; &lt;input type=&quot;hidden&quot; name=&quot;selection_type&quot; /&gt; &lt;input type=&quot;hidden&quot; name=&quot;selection_coords&quot; /&gt; 
+-        &lt;div id=&quot;mapAnchorDiv&quot; style=&quot;position:relative; width:'.$width.'px; height:'.$height.'px;&quot;&gt; 
+-          &lt;table&gt;
+-            &lt;tr&gt; 
+-              &lt;td align=&quot;center&quot; valign=&quot;middle&quot; width=&quot;'.$width.'px&quot; height=&quot;'.$height.'px&quot;&gt;&lt;div id=&quot;loadbar&quot;&gt;Loading 
+-                  message&lt;/div&gt;&lt;/td&gt;
+-            &lt;/tr&gt;
+-          &lt;/table&gt;
+-        &lt;/div&gt;&lt;/td&gt;
+-      &lt;td&gt; &lt;p&gt; 
+-          &lt;!-- input value use : shapeType,action,cursorStyle,toolName (with no blank spaces!)--&gt;
+-          &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;rectangle,submit,crossHair,zoom_in&quot;  checked=&quot;checked&quot;  id=&quot;zoom_in&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
++    &lt;input type=&quot;hidden&quot; name=&quot;id_carte&quot; value=&quot;'.$id_carte.'&quot;/&gt;
++	&lt;input type=&quot;hidden&quot; name=&quot;selection_type&quot; /&gt;
++	&lt;input type=&quot;hidden&quot; name=&quot;selection_coords&quot; /&gt;
++	&lt;div id=&quot;mapAnchorDiv&quot; style=&quot;position:relative; width:'.$width.'px; height:'.$height.'px;&quot;&gt; 
++     &lt;table&gt;
++      &lt;tr&gt; 
++       &lt;td align=&quot;center&quot; valign=&quot;middle&quot; width=&quot;'.$width.'px&quot; height=&quot;'.$height.'px&quot;&gt;
++		&lt;div id=&quot;loadbar&quot;&gt;Loading message&lt;/div&gt;
++	   &lt;/td&gt;
++      &lt;/tr&gt;
++     &lt;/table&gt;
++    &lt;/div&gt;
++   &lt;/td&gt;
++  &lt;/tr&gt;
++  &lt;tr&gt;
++   &lt;td&gt; 
++    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;rectangle,submit,crossHair,zoom_in&quot;  id=&quot;zoom_in&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+           zoom_in&lt;br /&gt;
+-          &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;point,submit,crossHair,zoom_out&quot;  id=&quot;zoom_out&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
++   &lt;/td&gt;
++   &lt;td&gt;
++    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;point,submit,crossHair,zoom_out&quot;  id=&quot;zoom_out&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+           zoom out&lt;br /&gt;
+-          &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;pan,submit,move,pan&quot;  id=&quot;pan&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
++   &lt;/td&gt;
++   &lt;td&gt;
++    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;pan,submit,move,pan&quot;  id=&quot;pan&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+           pan&lt;br /&gt;
+-          &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;rectangle,submit,help,query&quot;  id=&quot;query&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
++   &lt;/td&gt;
++   &lt;td&gt;
++    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;rectangle,submit,help,query&quot;  id=&quot;query&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+           query&lt;br /&gt;
+-          &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;point,submit,crossHair,point&quot;   id=&quot;point&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
++   &lt;/td&gt;
++   &lt;td&gt;
++    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;point,submit,crossHair,point&quot;   id=&quot;point&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+           line submit&lt;br /&gt;
+-          &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;line,submit,crossHair,line&quot;   id=&quot;line&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
++   &lt;/td&gt;
++   &lt;td&gt;
++    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;line,submit,crossHair,line&quot;   id=&quot;line&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+           line submit&lt;br /&gt;
+-          &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;polygon,submit,crossHair,polygon&quot;   id=&quot;toto&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
++          &lt;/td&gt;&lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;polygon,submit,crossHair,polygon&quot;   checked=&quot;checked&quot;  id=&quot;polygon&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+           polygon submit&lt;br /&gt;
+-        &lt;/p&gt;&lt;/td&gt;
+-    &lt;/tr&gt;
+-  &lt;/table&gt;
++   &lt;/td&gt;
++  &lt;/tr&gt;
++ &lt;/table&gt;
+ &lt;/form&gt;';
+ 	return $returned;
+ }
+
+Index: inc_mail.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/ecrire/inc_mail.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc_mail.php3	13 Jan 2005 16:16:22 -0000	1.1
++++ inc_mail.php3	20 Jan 2005 10:21:42 -0000	1.2
+@@ -23,8 +23,11 @@
+ 	$hebergeur = 'altern';
+ }
+ // Free
+-else if (ereg('^/([^/]*)\.free.fr/', $REQUEST_URI, $regs)) {
+-	$hebergeur = 'free';
++else if (ereg('free\.fr$', $SERVER_NAME)) {
++		$hebergeur = 'free';
++//		$login_hebergeur = substr($SERVER_NAME,0,strlen($SERVER_NAME)-8);
++//(ereg('^/([^/]*)\.free.fr/', $REQUEST_URI, $regs)) {
++//	$hebergeur = 'free';
+ }
+ // NexenServices
+ else if ($SERVER_ADMIN == '<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">www at nexenservices.com</A>') {
+@@ -119,7 +122,9 @@
+ 			'headers' =&gt; $headers);
+ 		return true;
+ 	case 'free':
+-		return false;
++		//return false;
++		include(&quot;ecrire/lib.protomail.php&quot;);
++		return @protomail($email, $sujet, $texte);
+ 	case 'online':
+ 		return @email('webmaster', $email, $sujet, $texte);
+ 	default:
+
+Index: carte_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/ecrire/carte_edit.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- carte_edit.php3	13 Jan 2005 16:04:32 -0000	1.1
++++ carte_edit.php3	20 Jan 2005 10:21:42 -0000	1.2
+@@ -1,15 +1,19 @@
+ &lt;?php
+ 
+ include (&quot;inc.php3&quot;);
++include_ecrire (&quot;inc_documents.php3&quot;);
++include_ecrire (&quot;inc_mots.php3&quot;);
+ include_ecrire(&quot;inc_carto.php3&quot;);
+ //TODO : voir integration d'une option de configuration de Spip
+ //bof, je prefere attendre d'avoir un systeme de gestion des modules
+ //meme si il faut le faire ...
+ //include_ecrire(&quot;inc_config.php3&quot;);
+-//TODO : preparer les donn&#233;es pass&#233;es en POST par l'interface DHTML
+-//et par le formulaire contenant les donn&#233;es de la carte
+ 
++$flag_editable=carte_editable($id_carte);
+ $id_carte = intval($id_carte);
++$flag_mots = lire_meta(&quot;carto_mots&quot;);
++//$flag_mots = &quot;oui&quot;;
++$nouveau=false;
+ //
+ // Modifications aux donnees de base de la carte
+ //
+@@ -22,7 +26,7 @@
+ 	}
+ }
+ 
+-if (carte_editable($id_carte)) {
++if ($flag_editable) {
+ 	if ($new == 'oui') {
+ 		$titre = _L(&quot;Nouvelle carte&quot;);
+ 		$fichier = &quot;&quot;;
+@@ -32,10 +36,6 @@
+ 		$js_titre = &quot; onfocus=\&quot;if(!antifocus){this.value='';antifocus=true;}\&quot;&quot;;
+ 		spip_query(&quot;INSERT INTO spip_carto_carte (titre) VALUES ('&quot;.addslashes($titre).&quot;')&quot;);
+ 		$id_carte = spip_insert_id();
+-		//TODO : normalement pas besoin de ca ...
+-		//on continue et normalement c'est bon
+-		//Header(&quot;Location: carte_edit.php3?id_carte=$id_carte&quot;);
+-		//exit;
+ 	}
+ 
+ 	else {
+@@ -47,6 +47,7 @@
+ 			&quot;callage='&quot;.addslashes($callage).&quot;', &quot;.
+ 			&quot;id_srs='&quot;.intval($id_srs).&quot;' &quot;.
+ 			&quot;WHERE id_carte=$id_carte&quot;;
++
+ 			$result = spip_query($query);
+ 		}
+ 		if ($id_carte) {
+@@ -68,21 +69,24 @@
+ 		
+ 
+ 
+-$carte_link = new Link(&quot;carte_edit.php3?id_carte=$id_carte&quot;);
++$carte_link = new Link(&quot;carte_edit.php3&quot;);
++$carte_link-&gt;addVar('id_carte', $id_carte);
+ if ($retour) $carte_link-&gt;addVar('retour', $retour);
+ 
+ //
+ // Modifications des objets de la carte
+ //
+ 
+-if ($id_carte &amp;&amp; carte_editable($id_carte)) {
++if ($id_carte &amp;&amp; $flag_editable) {
+ 
+ 	// Ajout d'un objet
+-	if ($selection_type=='polygon') {
+-		$geometrie=$selection_type.&quot;(&quot;.$selection_coords.&quot;)&quot;;
++	if ($selection_type) {
++		$geometrie=coords2wtk($selection_type,$selection_coords);
+ 		$objet_titre = _L(&quot;Nouvel objet&quot;);
+ 		spip_query(&quot;INSERT INTO spip_carto_objet (id_carte,titre,geometrie) VALUES (&quot;.$id_carte.&quot;,'&quot;.addslashes($objet_titre).&quot;','&quot;.$geometrie.&quot;')&quot;);
+ 		$id_objet = spip_insert_id();
++		$objet_visible=$id_objet;
++		$nouveau=true;
+ 	}
+ 	// Modif d'un objet
+ 	if ($modif_objet) {
+@@ -95,8 +99,12 @@
+ 			&quot;geometrie='&quot;.addslashes($geometrie).&quot;' &quot;.
+ 			&quot;WHERE id_objet=$modif_objet&quot;;
+ 			$result = spip_query($query);
+-		
++			$objet_visible=$modif_objet;
+ 	}
++	if ($id_objet) {
++			$objet_visible=$id_objet;
++	}
++	
+ 
+ 	// Suppression d'un objet
+ 	if ($supp_objet) {
+@@ -112,20 +120,28 @@
+ //
+ 
+ debut_page(&quot;&laquo; $titre &raquo;&quot;, &quot;documents&quot;, &quot;cartes&quot;);
++
+ debut_gauche();
+ 
+-echo &quot;&lt;br /&gt;&lt;br /&gt;\n&quot;;
++
++
++//
++// Pave &quot;documents associes a l'article&quot;
++//
++
++if ($new != 'oui'){
++	afficher_documents_colonne($id_carte, 'carto_carte', true);
++}
+ 
+ 
+ debut_droite();
+ 
+ if ($supp_carte &amp;&amp; !$supp_confirme &amp;&amp; !$supp_rejet) {
+ 	echo &quot;&lt;p&gt;&lt;strong&gt;&quot;._L(&quot;Attention :&quot;).&quot;&lt;/strong&gt; &quot;;
+-	echo _L(&quot;Des objets ont &eacute;t&eacute; attach&eacute;s &agrave; cette carte. &quot;.
+-		&quot;Voulez-vous vraiment le supprimer ?&quot;).&quot;&lt;/p&gt;\n&quot;;
+-	$link = new Link();
++	echo _L(&quot;Voulez-vous vraiment supprimer cette carte ?&quot;).&quot;&lt;/p&gt;\n&quot;;
++	$link = $carte_link;//new Link();
+ 	$link-&gt;addVar('supp_carte', $supp_carte);
+-	echo $link-&gt;getform('GET');
++	echo $link-&gt;getform('POST');
+ 	echo &quot;&lt;input type='submit' name='supp_confirme' value=\&quot;&quot;._T('item_oui').&quot;\&quot; class='fondl'&gt;&quot;;
+ 	echo &quot; &nbsp; &quot;;
+ 	echo &quot;&lt;input type='submit' name='supp_rejet' value=\&quot;&quot;._T('item_non').&quot;\&quot; class='fondl'&gt;&quot;;
+@@ -134,7 +150,7 @@
+ 
+ 
+ if ($id_carte) {
+-	debut_cadre_relief(&quot;carte-24.png&quot;);
++	debut_cadre_relief(&quot;carte-24.gif&quot;);
+ 	echo &quot;&lt;br/&gt;&quot;;
+ 	gros_titre($titre);
+ 	
+@@ -149,35 +165,35 @@
+ 		echo &quot;&lt;br /&gt;&quot;;
+ 		debut_cadre_relief();
+ 		
+-		echo &quot;&lt;div style='padding: 2px; background-color: $couleur_claire; color: black;'&gt;&nbsp;&quot;;
+-		echo bouton_block_visible(&quot;dhtml_carte&quot;);
++		//echo &quot;&lt;div style='padding: 2px; background-color: $couleur_claire; color: black;'&gt;&nbsp;&quot;;
++		/*echo ($modif_carte == $id_carte) ? bouton_block_visible(&quot;dhtml_carte&quot;) : bouton_block_invisible(&quot;dhtml_carte&quot;);
+ 		echo &quot;&lt;strong class='verdana3' style='text-transform: uppercase;'&gt;&quot;
+ 			._L(&quot;Apparence du carte&quot;).&quot;&lt;/strong&gt;&quot;;
+ 		echo &quot;&lt;/div&gt;\n&quot;;
+ 		
+-		echo debut_block_visible(&quot;dhtml_carte&quot;);
+-		echo _L(&quot;Cr&eacute;ation d'objets.&quot;).&quot;&lt;p&gt;\n&quot;;
+-		echo &quot;&lt;div style='margin: 10px; padding: 10px; border: 1px dashed $couleur_foncee;'&gt;&quot;;
++		echo ($modif_carte == $id_carte) ? debut_block_visible(&quot;dhtml_carte&quot;) : debut_block_invisible(&quot;dhtml_carte&quot;);
++		*/
++		echo _L(&quot;Cr&eacute;ation d'objets.&quot;).&quot;\n&quot;;
++		//echo &quot;&lt;div style='margin: 10px; padding: 10px; border: 1px dashed $couleur_foncee;'&gt;&quot;;
+ 		
+ 		//remplacer id par appel &#224; spip_carte
+ 		//TODO : gerer zoom et position
+-		if (intval($fichier)&gt;0) $lefichier=&quot;../spip_carto.php?id_carte=&quot;.intval($fichier);
+-		else $lefichier=$fichier;
++		//if (intval($fichier)&gt;0) $lefichier=&quot;../spip_carto.php?fond_carte=&quot;.intval($fichier);
++		//else $lefichier=$fichier;
++		$lefichier=&quot;../spip_carto.php?fond_carte=&quot;.entites_html($fichier);
+ 		echo afficher_carte_inteface($lefichier,$id_carte,&quot;400&quot;,&quot;300&quot;);
+ 		
+-		echo &quot;&lt;/div&gt;\n&quot;;
+-		echo fin_block();
++		//echo &quot;&lt;/div&gt;\n&quot;;
++		//echo fin_block();
+ 		
+ 		fin_cadre_relief();
+ 	}
+-	/*
+-	//articles li&#233;s g&#233;r&#233;s &#224; la sauvegarde du contenu dans articles.php3 : 
+-	//relecture du contenu de l'article puis delete / insert des liaisons
+-	//de cet article
++	
++	//articles li&#233;s
+ 	afficher_articles(_L(&quot;Articles utilisant cette carte&quot;),
+ 		&quot;, spip_carto_carte_articles AS lien WHERE lien.id_article=articles.id_article &quot;.
+ 		&quot;AND id_carte=$id_carte AND statut!='poubelle' ORDER BY titre&quot;);
+-	*/
++	
+ 	
+ 	fin_cadre_relief();
+ }
+@@ -200,9 +216,9 @@
+ 	if (!$retour) {
+ 		$link-&gt;addVar('retour', 'cartes.php3');
+ 	}
+-	if (!$nb_reponses) {
+-		$link-&gt;addVar('supp_confirme', 'oui');
+-	}
++	//if (!$nb_reponses) {
++	//	$link-&gt;addVar('supp_confirme', 'oui');
++	//}
+ 	icone(_L(&quot;Supprimer cette carte&quot;), $link-&gt;getUrl(), &quot;carte-24.gif&quot;, &quot;supprimer.gif&quot;);
+ 	echo &quot;&lt;/div&gt;\n&quot;;
+ }
+@@ -211,14 +227,14 @@
+ //
+ // Edition des donnees de la carte
+ //
+-if (carte_editable($id_carte)) {
++if ($flag_editable) {
+ 	echo &quot;&lt;p&gt;&quot;;
+ 	debut_cadre_formulaire();
+ 
+ 	echo &quot;&lt;div class='verdana2'&gt;&quot;;
+ 	$link = $carte_link;
+ 	$link-&gt;addVar('modif_carte', $id_carte);
+-	echo $link-&gt;getForm('GET');
++	echo $link-&gt;getForm('POST');
+ 	
+ 	$titre= entites_html($titre);
+ 	$fichier= $fichier;
+@@ -263,7 +279,7 @@
+ 	// Modifier / supprimer les objets
+ 	//
+ 	if ($id_carte) {
+-		echo &quot;&lt;a name='objetss'&gt;&lt;/a&gt;&quot;;
++		echo &quot;&lt;a name='objets'&gt;&lt;/a&gt;&quot;;
+ 		echo &quot;&lt;p&gt;&lt;hr&gt;&lt;p&gt;\n&quot;;
+ 		echo &quot;&lt;div class='verdana3'&gt;&quot;;
+ 		echo &quot;&lt;strong&gt;&quot;._L(&quot;Objets de la carte&quot;).&quot;&lt;/strong&gt;&lt;br /&gt;\n&quot;;
+@@ -281,21 +297,22 @@
+ 		$logo_objet = $t['logo'];
+ 		$geometrie = entites_html($t['geometrie']);
+ 
+-		$nouveau = ($id_objet == $nouveau_objet);
++		$visible = ($id_objet == $objet_visible);
+ 		if ($nouveau) echo &quot;&lt;a name='nouveau_objet'&gt;&lt;/a&gt;&quot;;
++		else if ($visible) echo &quot;&lt;a name='objet_visible'&gt;&lt;/a&gt;&quot;;
+ 		echo &quot;&lt;p&gt;\n&quot;;
+ 		debut_cadre_relief();
+ 		echo &quot;&lt;div style='padding: 2px; background-color: $couleur_claire; color: black;'&gt;&nbsp;&quot;;
+ 		
+-		echo $nouveau ? bouton_block_visible(&quot;objet_$id_objet&quot;) : bouton_block_invisible(&quot;objet_$id_objet&quot;);
++		echo $visible ? bouton_block_visible(&quot;objet_$id_objet&quot;) : bouton_block_invisible(&quot;objet_$id_objet&quot;);
+ 		echo &quot;&lt;strong&gt;&quot;.$titre_objet.&quot;&lt;/strong&gt;&quot;;
+ 		echo &quot;&lt;br /&gt;&lt;/div&gt;&quot;;
+-		echo $nouveau ? debut_block_visible(&quot;objet_$id_objet&quot;) : debut_block_invisible(&quot;objet_$id_objet&quot;);
++		echo $visible ? debut_block_visible(&quot;objet_$id_objet&quot;) : debut_block_invisible(&quot;objet_$id_objet&quot;);
+ 			
+ 			// Modifier un objet
+ 			$link = $carte_link;
+ 			$link-&gt;addVar('modif_objet', $id_objet);
+-			echo $link-&gt;getForm('GET', 'objet_visible');
++			echo $link-&gt;getForm('POST', 'objet_visible');
+ 			echo &quot;&lt;div class='verdana2'&gt;&quot;;
+ 			echo &quot;&lt;p&gt;&quot;;
+ 			if ($nouveau) {
+@@ -334,6 +351,14 @@
+ 			echo &quot;&lt;input type='submit' name='Valider' value='&quot;._T('bouton_valider').&quot;' class='fondo verdana2'&gt;&lt;/div&gt;\n&quot;;
+ 			echo &quot;&lt;/div&gt;\n&quot;;
+ 			echo &quot;&lt;/form&gt;&quot;;
++			
++			if ($flag_mots!='non' AND $options == 'avancees') {
++				$tab_id['id_carte']=$id_carte;
++				$tab_id['id_objet']=$id_objet;
++				//TODO : passer les ,ouceau, cherche et supp que si bon mot
++				((!$nouveau) &amp;&amp; ($visible)) ? formulaire_mots('carto_objets', $tab_id, $nouv_mot, $supp_mot, $cherche_mot, $flag_editable): formulaire_mots('carto_objets', $tab_id, null, null, null, $flag_editable);
++			}
++
+ 			// Supprimer un objet
+ 			$link = $carte_link;
+ 			$link-&gt;addVar('supp_objet', $id_objet);
+
+Index: mots_type.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spip-carto/ecrire/mots_type.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- mots_type.php3	13 Jan 2005 16:04:32 -0000	1.1
++++ mots_type.php3	20 Jan 2005 10:21:42 -0000	1.2
+@@ -14,6 +14,11 @@
+ 	$breves = 'oui';
+ 	$rubriques = 'non';
+ 	$syndic = 'oui';
++	//////////////////////////////
++	//MODIFICATION
++	//////////////////////////////
++	$carto_objets= 'non';
++	//////////////////////////////
+ 	$acces_minirezo = 'oui';
+ 	$acces_comite = 'oui';
+ 	$acces_forum = 'non';
+@@ -31,6 +36,11 @@
+ 		$breves = $row['breves'];
+ 		$rubriques = $row['rubriques'];
+ 		$syndic = $row['syndic'];
++		//////////////////////////////
++		//MODIFICATION
++		//////////////////////////////
++		$carto_objets = $row['carto_objets'];
++		//////////////////////////////
+ 		$acces_minirezo = $row['0minirezo'];
+ 		$acces_comite = $row['1comite'];
+ 		$acces_forum = $row['6forum'];
+@@ -108,6 +118,13 @@
+ 		if ($syndic == &quot;oui&quot;) $checked = &quot;checked&quot;;
+ 		else $checked = &quot;&quot;;
+ 		echo &quot;&lt;input type='checkbox' name='syndic' value='oui' $checked id='syndic'&gt; &lt;label for='syndic'&gt;&quot;._T('item_mots_cles_association_sites').&quot;&lt;/label&gt;&quot;;
++		//////////////////////////////
++		//MODIFICATION
++		//////////////////////////////
++		if ($carto_objets == &quot;oui&quot;) $checked = &quot;checked&quot;;
++		else $checked = &quot;&quot;;
++		echo &quot;&lt;br&gt;&lt;input type='checkbox' name='carto_objets' value='oui' $checked id='carto_objets'&gt; &lt;label for='carto_objets'&gt;&quot;._L('aux objets des cartes').&quot;&lt;/label&gt;&quot;;
++		//////////////////////////////
+ 		
+ 		echo &quot;&lt;/ul&gt;&quot;;
+ 	echo &quot;&lt;/div&gt;&quot;;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000049.html">[Spip-carto-cvs] spip-carto/ecrire inc_version.php3,1.1,1.2
+</A></li>
+	<LI>Next message: <A HREF="000051.html">[Spip-carto-cvs] spip-carto/ecrire/upload remove.txt,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#50">[ date ]</a>
+              <a href="thread.html#50">[ thread ]</a>
+              <a href="subject.html#50">[ subject ]</a>
+              <a href="author.html#50">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

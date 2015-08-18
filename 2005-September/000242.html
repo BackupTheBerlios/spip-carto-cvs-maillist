@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.4,1.5 carto_svgfilex.html,1.4,1.5 carto_geosvgwmsfile.html,1.4,1.5 carto_svgfile.html,1.3,1.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_geosvgfile.html%2C1.4%2C1.5%20carto_svgfilex.html%2C1.4%2C1.5%20carto_geosvgwmsfile.html%2C1.4%2C1.5%20carto_svgfile.html%2C1.3%2C1.4&In-Reply-To=%3C200509060541.j865fiAD003256%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000241.html">
+   <LINK REL="Next"  HREF="000246.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.4,1.5 carto_svgfilex.html,1.4,1.5 carto_geosvgwmsfile.html,1.4,1.5 carto_svgfile.html,1.3,1.4</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/squelettes/template%20carto_geosvgfile.html%2C1.4%2C1.5%20carto_svgfilex.html%2C1.4%2C1.5%20carto_geosvgwmsfile.html%2C1.4%2C1.5%20carto_svgfile.html%2C1.3%2C1.4&In-Reply-To=%3C200509060541.j865fiAD003256%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgfile.html,1.4,1.5 carto_svgfilex.html,1.4,1.5 carto_geosvgwmsfile.html,1.4,1.5 carto_svgfile.html,1.3,1.4">fxp at berlios.de
+       </A><BR>
+    <I>Tue Sep  6 07:41:44 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000241.html">[Spip-carto-cvs] spipcarto/squelettes/template style_carto_svgfilex.css,1.1,NONE
+</A></li>
+        <LI>Next message: <A HREF="000246.html">[Spip-carto-cvs] spipcarto/ecrire naviguer.php3,1.5,1.6 inc_index.php3,1.4,1.5 rubriques_edit.php3,1.5,1.6 js_menu_rubriques.php,1.5,1.6 inc_mots.php3,1.5,1.6 inc_majbase.php3,1.6,1.7 inc_calendrier.php,1.10,1.11 inc_serialbase.php3,1.4,1.5 inc_texte.php3,1.10,1.11 inc_debug_sql.php3,1.8,1.9 inc_sites.php3,1.7,1.8 auteurs.php3,1.3,1.4 delete_all.php3,1.2,1.3 inc_acces.php3,1.6,1.7 inc_getdocument.php3,1.6,1.7 mots_tous.php3,1.4,1.5 aide_index.php3,1.5,1.6 mots_edit.php3,1.5,1.6 pclzip.lib.php,1.4,1.5 engines-list.txt,1.3,1.4 inc_filtres.php3,1.9,1.10 inc_flock.php3,1.4,1.5 inc_version.php3,1.11,1.12 inc_db_mysql.php3,1.5,1.6 inc_lang.php3,1.9,1.10 inc_presentation.php3,1.11,1.12 optimiser.php3,1.1,NONE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#242">[ date ]</a>
+              <a href="thread.html#242">[ thread ]</a>
+              <a href="subject.html#242">[ subject ]</a>
+              <a href="author.html#242">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/squelettes/template
+In directory sheep:/tmp/cvs-serv3114/squelettes/template
+
+Modified Files:
+	carto_geosvgfile.html carto_svgfilex.html 
+	carto_geosvgwmsfile.html carto_svgfile.html 
+Log Message:
+SVG / Ajout header
+
+Index: carto_geosvgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_geosvgfile.html,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- carto_geosvgfile.html	5 Sep 2005 14:49:31 -0000	1.4
++++ carto_geosvgfile.html	6 Sep 2005 05:41:39 -0000	1.5
+@@ -1,4 +1,9 @@
+-&lt;?php echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot;?'.&quot;&gt;\n&quot;; ?&gt;
++&lt;?php 
++header(&quot;Content-type: image/svg+xml&quot;);
++echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot; standalone=&quot;no&quot;?'.&quot;&gt;\n&quot;; 
++?&gt;
++&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.0//EN&quot; &quot;<A HREF="http://www.w3.org/TR/SVG/DTD/svg10.dtd">http://www.w3.org/TR/SVG/DTD/svg10.dtd</A>&quot;&gt;
++
+ &lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
+ &lt;svg width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 850 590&quot; xmlns=&quot;<A HREF="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</A>&quot; xmlns:xlink=&quot;<A HREF="http://www.w3.org/1999/xlink">http://www.w3.org/1999/xlink</A>&quot; xmlns:attrib=&quot;<A HREF="http://www.carto.net/attrib">http://www.carto.net/attrib</A>&quot; onload=&quot;init(evt);&quot; zoomAndPan=&quot;enable&quot; encoding=&quot;ISO-8859-1&quot;&gt;
+ 	&lt;script type=&quot;text/ecmascript&quot; xlink:href=&quot;helper_functions.js&quot;/&gt;
+
+Index: carto_svgfilex.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_svgfilex.html,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- carto_svgfilex.html	5 Sep 2005 14:49:31 -0000	1.4
++++ carto_svgfilex.html	6 Sep 2005 05:41:40 -0000	1.5
+@@ -1,4 +1,8 @@
+-&lt;?php echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot;?'.&quot;&gt;\n&quot;; ?&gt;
++&lt;?php 
++header(&quot;Content-type: image/svg+xml&quot;);
++echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot; standalone=&quot;no&quot;?'.&quot;&gt;\n&quot;; 
++?&gt;
++&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.0//EN&quot; &quot;<A HREF="http://www.w3.org/TR/SVG/DTD/svg10.dtd">http://www.w3.org/TR/SVG/DTD/svg10.dtd</A>&quot;&gt;
+ &lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
+ &lt;svg width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 760 500&quot; xmlns=&quot;<A HREF="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</A>&quot; xmlns:xlink=&quot;<A HREF="http://www.w3.org/1999/xlink">http://www.w3.org/1999/xlink</A>&quot; xmlns:attrib=&quot;<A HREF="http://www.carto.net/attrib">http://www.carto.net/attrib</A>&quot; onload=&quot;init(evt);&quot; zoomAndPan=&quot;enable&quot; encoding=&quot;ISO-8859-1&quot;&gt;
+ 	&lt;script type=&quot;text/ecmascript&quot; xlink:href=&quot;helper_functions.js&quot;/&gt;
+
+Index: carto_geosvgwmsfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_geosvgwmsfile.html,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- carto_geosvgwmsfile.html	5 Sep 2005 14:49:31 -0000	1.4
++++ carto_geosvgwmsfile.html	6 Sep 2005 05:41:40 -0000	1.5
+@@ -1,4 +1,8 @@
+-&lt;?php echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot;?'.&quot;&gt;\n&quot;; ?&gt;
++&lt;?php 
++header(&quot;Content-type: image/svg+xml&quot;);
++echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot; standalone=&quot;no&quot;?'.&quot;&gt;\n&quot;; 
++?&gt;
++&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.0//EN&quot; &quot;<A HREF="http://www.w3.org/TR/SVG/DTD/svg10.dtd">http://www.w3.org/TR/SVG/DTD/svg10.dtd</A>&quot;&gt;
+ &lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
+ &lt;svg width=&quot;100%&quot; height=&quot;100%&quot; viewBox=&quot;0 0 850 590&quot; xmlns=&quot;<A HREF="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</A>&quot; xmlns:xlink=&quot;<A HREF="http://www.w3.org/1999/xlink">http://www.w3.org/1999/xlink</A>&quot; xmlns:attrib=&quot;<A HREF="http://www.carto.net/attrib">http://www.carto.net/attrib</A>&quot; onload=&quot;init(evt);&quot; zoomAndPan=&quot;enable&quot; encoding=&quot;ISO-8859-1&quot;&gt;
+ 	&lt;script type=&quot;text/ecmascript&quot; xlink:href=&quot;helper_functions.js&quot;/&gt;
+
+Index: carto_svgfile.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/squelettes/template/carto_svgfile.html,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- carto_svgfile.html	5 Sep 2005 14:49:31 -0000	1.3
++++ carto_svgfile.html	6 Sep 2005 05:41:40 -0000	1.4
+@@ -1,4 +1,8 @@
+-&lt;?php echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot;?'.&quot;&gt;\n&quot;; ?&gt;
++&lt;?php 
++header(&quot;Content-type: image/svg+xml&quot;);
++echo '&lt;'.'?xml version=&quot;1.0&quot; encoding=&quot;#CHARSET&quot; standalone=&quot;no&quot;?'.&quot;&gt;\n&quot;; 
++?&gt;
++&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.0//EN&quot; &quot;<A HREF="http://www.w3.org/TR/SVG/DTD/svg10.dtd">http://www.w3.org/TR/SVG/DTD/svg10.dtd</A>&quot;&gt;
+ &lt;BOUCLE_carte(CARTO_CARTES){id_carto_carte}&gt;
+ 	&lt;svg viewBox=&quot;[(#CALLAGE|worldfileLRX)] [(#CALLAGE|worldfileULY)] [(#CALLAGE|worldfileWidth)] [(#CALLAGE|worldfileHeight)]&quot; xmlns=&quot;<A HREF="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</A>&quot; xmlns:xlink=&quot;<A HREF="http://www.w3.org/1999/xlink">http://www.w3.org/1999/xlink</A>&quot; xml:space=&quot;preserve&quot;&gt;
+ 		&lt;defs&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000241.html">[Spip-carto-cvs] spipcarto/squelettes/template style_carto_svgfilex.css,1.1,NONE
+</A></li>
+	<LI>Next message: <A HREF="000246.html">[Spip-carto-cvs] spipcarto/ecrire naviguer.php3,1.5,1.6 inc_index.php3,1.4,1.5 rubriques_edit.php3,1.5,1.6 js_menu_rubriques.php,1.5,1.6 inc_mots.php3,1.5,1.6 inc_majbase.php3,1.6,1.7 inc_calendrier.php,1.10,1.11 inc_serialbase.php3,1.4,1.5 inc_texte.php3,1.10,1.11 inc_debug_sql.php3,1.8,1.9 inc_sites.php3,1.7,1.8 auteurs.php3,1.3,1.4 delete_all.php3,1.2,1.3 inc_acces.php3,1.6,1.7 inc_getdocument.php3,1.6,1.7 mots_tous.php3,1.4,1.5 aide_index.php3,1.5,1.6 mots_edit.php3,1.5,1.6 pclzip.lib.php,1.4,1.5 engines-list.txt,1.3,1.4 inc_filtres.php3,1.9,1.10 inc_flock.php3,1.4,1.5 inc_version.php3,1.11,1.12 inc_db_mysql.php3,1.5,1.6 inc_lang.php3,1.9,1.10 inc_presentation.php3,1.11,1.12 optimiser.php3,1.1,NONE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#242">[ date ]</a>
+              <a href="thread.html#242">[ thread ]</a>
+              <a href="subject.html#242">[ subject ]</a>
+              <a href="author.html#242">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

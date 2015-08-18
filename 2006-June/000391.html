@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire naviguer.php3,1.6.2.1,1.6.2.2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20naviguer.php3%2C1.6.2.1%2C1.6.2.2&In-Reply-To=%3C200606141640.k5EGePr5023376%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000390.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire naviguer.php3,1.6.2.1,1.6.2.2</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20naviguer.php3%2C1.6.2.1%2C1.6.2.2&In-Reply-To=%3C200606141640.k5EGePr5023376%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire naviguer.php3,1.6.2.1,1.6.2.2">stef at berlios.de
+       </A><BR>
+    <I>Wed Jun 14 18:40:25 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000390.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.11,1.18.2.12
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#391">[ date ]</a>
+              <a href="thread.html#391">[ thread ]</a>
+              <a href="subject.html#391">[ subject ]</a>
+              <a href="author.html#391">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv23258/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	naviguer.php3 
+Log Message:
+vieille version ?
+
+Index: naviguer.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/naviguer.php3,v
+retrieving revision 1.6.2.1
+retrieving revision 1.6.2.2
+diff -u -d -r1.6.2.1 -r1.6.2.2
+--- naviguer.php3	14 Feb 2006 01:11:06 -0000	1.6.2.1
++++ naviguer.php3	14 Jun 2006 16:40:21 -0000	1.6.2.2
+@@ -56,9 +56,7 @@
+ 			spip_query(&quot;UPDATE spip_breves
+ 				SET id_rubrique=$id_secteur
+ 				WHERE id_rubrique=$id_rubrique&quot;);
+-	} else
+-		$id_parent = 0;
+-
++	}
+ 	if ($flag_editable) {
+ 
+ 		if ($champs_extra) {
+@@ -381,7 +379,7 @@
+ 
+ 	// Les articles syndiques en attente de validation
+ 	if ($id_rubrique == 0 AND $connect_statut == '0minirezo' AND $connect_toutes_rubriques) {
+-		$result = spip_query (&quot;SELECT COUNT(*) AS compte FROM spip_syndic_articles AND statut='dispo'&quot;);
++		$result = spip_query (&quot;SELECT COUNT(*) AS compte FROM spip_syndic_articles WHERE statut='dispo'&quot;);
+ 		if (($row = spip_fetch_array($result)) AND $row['compte'])
+ 			echo &quot;&lt;br&gt;&lt;small&gt;&lt;a href='sites_tous.php3'&gt;&quot;.$row['compte'].&quot; &quot;._T('info_liens_syndiques_1').&quot;&lt;/a&gt; &quot;._T('info_liens_syndiques_2').&quot;&lt;/small&gt;&quot;;
+ 	}
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000390.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.11,1.18.2.12
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#391">[ date ]</a>
+              <a href="thread.html#391">[ thread ]</a>
+              <a href="subject.html#391">[ subject ]</a>
+              <a href="author.html#391">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

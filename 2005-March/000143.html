@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.2,1.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_mots.php3%2C1.2%2C1.3&In-Reply-To=%3C200503041649.j24GnvNx031605%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000142.html">
+   <LINK REL="Next"  HREF="000144.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.2,1.3</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_mots.php3%2C1.2%2C1.3&In-Reply-To=%3C200503041649.j24GnvNx031605%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.2,1.3">stef at berlios.de
+       </A><BR>
+    <I>Fri Mar  4 17:49:57 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000142.html">[Spip-carto-cvs] spipcarto/squelettes carto_geosvgfile.html,1.1,1.2
+</A></li>
+        <LI>Next message: <A HREF="000144.html">[Spip-carto-cvs] spipcarto carto_svg2.php3,NONE,1.1 inc-compilo-index.php3,1.3,1.4 inc-compilo.php3,1.3,1.4 spip_cookie.php3,1.4,1.5 spip_admin.css,1.3,1.4 inc-compilo-api.php3,1.3,1.4 .htaccess,1.1,1.2 inc-criteres.php3,1.3,1.4 inc-messforum.php3,1.4,1.5 inc-public-global.php3,1.5,1.6 backend-breves.php3,1.3,1.4 inc-cache.php3,1.6,1.7 inc-balises.php3,1.5,1.6 inc-html-squel.php3,1.3,1.4 inc-stats.php3,1.3,1.4 backend.php3,1.3,1.4 mes_fonctions.php3,1.7,1.8 inc-calcul.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv31581/spipcarto/ecrire
+
+Modified Files:
+	inc_mots.php3 
+Log Message:
+Gestion des carto_objets et ancrages
+
+Index: inc_mots.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_mots.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_mots.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_mots.php3	4 Mar 2005 16:49:55 -0000	1.3
+@@ -117,6 +117,16 @@
+ 		$objet = 'syndic';
+ 		$url_base = &quot;sites.php3?id_syndic=$id_objet&quot;;
+ 	}
++	/////////////////////////////////
++	//MODIFICATION
++	////////////////////////////////
++	else if ($table == 'carto_objets') {
++		$id_table = 'id_carto_objet';
++		$objet = 'carto_objet';
++		$url_base = &quot;carte_edit.php3?id_carte=&quot;.$id_objet['id_carte'].&quot;&amp;id_objet=&quot;.$id_objet['id_objet'];
++		$id_objet=$id_objet['id_objet'];
++	}
++	////////////////////////////////
+ 
+ 	$query = &quot;SELECT mots.* FROM spip_mots AS mots, spip_mots_$table AS lien WHERE lien.$id_table=$id_objet AND mots.id_mot=lien.id_mot&quot;;
+ 	$nombre_mots = spip_num_rows(spip_query($query));
+@@ -126,12 +136,12 @@
+ 
+ 	if (!$nombre_mots AND (!$nombre_groupes OR !$flag_editable)) return;
+ 
+-	echo &quot;&lt;a name='mots'&gt;&lt;/a&gt;&quot;;
++	echo &quot;&lt;a name='mots&quot;.$id_objet.&quot;'&gt;&lt;/a&gt;&quot;;
+ 	if ($flag_editable){
+ 		if ($nouv_mot.$cherche_mot.$supp_mot)
+-			$bouton = bouton_block_visible(&quot;lesmots&quot;);
++			$bouton = bouton_block_visible(&quot;lesmots&quot;.$id_objet);
+ 		else
+-			$bouton =  bouton_block_invisible(&quot;lesmots&quot;);
++			$bouton =  bouton_block_invisible(&quot;lesmots&quot;.$id_objet);
+ 	}
+ 	debut_cadre_enfonce(&quot;mot-cle-24.gif&quot;, false, &quot;&quot;, $bouton._T('titre_mots_cles').aide (&quot;artmots&quot;));
+ 
+@@ -199,7 +209,7 @@
+ 					echo &quot;&lt;LI&gt;&lt;FONT FACE='Verdana,Arial,Sans,sans-serif' SIZE=2&gt;&lt;B&gt;&lt;FONT SIZE=3&gt;&quot;.typo($titre_mot).&quot;&lt;/FONT&gt;&lt;/B&gt;&quot;;
+ 
+ 					if ($type_mot) echo &quot; ($type_mot)&quot;;
+-					echo &quot; | &lt;A HREF=\&quot;$url_base&amp;nouv_mot=$id_mot#mots\&quot;&gt;&quot;._T('info_ajouter_mot').&quot;&lt;/A&gt;&quot;;
++					echo &quot; | &lt;A HREF=\&quot;$url_base&amp;nouv_mot=$id_mot#mots&quot;.$id_objet.&quot;\&quot;&gt;&quot;._T('info_ajouter_mot').&quot;&lt;/A&gt;&quot;;
+ 
+ 					if (strlen($descriptif_mot) &gt; 1) {
+ 						echo &quot;&lt;BR&gt;&lt;FONT SIZE=1&gt;&quot;.propre(couper($descriptif_mot, 100)).&quot;&lt;/FONT&gt;\n&quot;;
+@@ -312,14 +322,14 @@
+ 				$couleur=&quot;#EDF3FE&quot;;
+ 			}
+ 	
+-			$url = &quot;mots_edit.php3?id_mot=$id_mot&amp;redirect=&quot;.rawurlencode($url_base.'#mots');
++			$url = &quot;mots_edit.php3?id_mot=$id_mot&amp;redirect=&quot;.rawurlencode($url_base.'#mots'.$id_objet);
+ 	
+ 			$vals[] = &quot;&lt;A HREF='$url'&gt;&quot; . http_img_pack('petite-cle.gif', &quot;&quot;, &quot;width='23' height='12' border='0'&quot;) .&quot;&lt;/A&gt;&quot;;
+ 			
+ 	
+ 			// Changer
+ 			if ($unseul == &quot;oui&quot; AND $flag_groupe) {
+-				$s = &quot;&lt;form action='$url_base#mots' method='post' style='margin:0px; padding: 0px'&gt;&quot;;
++				$s = &quot;&lt;form action='$url_base#mots&quot;.$id_objet.&quot;' method='post' style='margin:0px; padding: 0px'&gt;&quot;;
+ 				$s .= &quot;&lt;INPUT TYPE='Hidden' NAME='$id_table' VALUE='$id_objet'&gt;&quot;;
+ 				if ($table == 'rubriques') $s .= &quot;&lt;INPUT TYPE='Hidden' NAME='id_rubrique' VALUE='$id_objet'&gt;&quot;;
+ 				$s .= &quot;&lt;select name='nouv_mot' onChange=\&quot;setvisibility('valider_groupe_$id_groupe', 'visible');\&quot; CLASS='fondl' STYLE='font-size:10px; width:90px;'&gt;&quot;;
+@@ -351,7 +361,7 @@
+ 			if ($flag_editable){
+ 				$s = &quot;&quot;;
+ 				if ($flag_groupe)
+-				  $s .= &quot;&lt;A HREF=\&quot;$url_base&amp;supp_mot=$id_mot#mots\&quot;&gt;&quot;._T('info_retirer_mot').&quot;&nbsp;&quot; . http_img_pack('croix-rouge.gif', &quot;X&quot;, &quot;width='7' height='7' border='0' align='middle'&quot;) .&quot;&lt;/A&gt;&quot;;
++				  $s .= &quot;&lt;A HREF=\&quot;$url_base&amp;supp_mot=$id_mot#mots&quot;.$id_objet.&quot;\&quot;&gt;&quot;._T('info_retirer_mot').&quot;&nbsp;&quot; . http_img_pack('croix-rouge.gif', &quot;X&quot;, &quot;width='7' height='7' border='0' align='middle'&quot;) .&quot;&lt;/A&gt;&quot;;
+ 				else $s .= &quot;&nbsp;&quot;;
+ 			}
+ 			$vals[] = $s;
+@@ -387,9 +397,9 @@
+ 
+ 	if ($flag_editable) {
+ 		if ($nouveaux_mots.$cherche_mot.$supp_mot)
+-			echo debut_block_visible(&quot;lesmots&quot;);
++			echo debut_block_visible(&quot;lesmots&quot;.$id_objet);
+ 		else if ($nb_groupes &gt; 0) {
+-			echo debut_block_visible(&quot;lesmots&quot;);
++			echo debut_block_visible(&quot;lesmots&quot;.$id_objet);
+ 			// vilain hack pour redresser un triangle
+ 			$couche_a_redresser = $GLOBALS['numero_block']['lesmots'];
+ 			if ($GLOBALS['browser_layer']) echo http_script(&quot;
+@@ -397,16 +407,16 @@
+ if (triangle) triangle.src = '&quot; . _DIR_IMG_PACK . &quot;deplierbas$spip_lang_rtl.gif';&quot;);
+ 		}
+ 		else
+-			echo debut_block_invisible(&quot;lesmots&quot;);
++			echo debut_block_invisible(&quot;lesmots&quot;.$id_objet);
+ 
+ 		if ($nombre_mots_associes &gt; 3) {
+ 			echo &quot;&lt;div align='right' class='arial1'&gt;&quot;;
+-			echo &quot;&lt;a href=\&quot;$url_base&amp;supp_mot=-1#mots\&quot;&gt;&quot;._T('info_retirer_mots').&quot;&lt;/a&gt;&quot;;
++			echo &quot;&lt;a href=\&quot;$url_base&amp;supp_mot=-1#mots&quot;.$id_objet.&quot;\&quot;&gt;&quot;._T('info_retirer_mots').&quot;&lt;/a&gt;&quot;;
+ 			echo &quot;&lt;/div&gt;&lt;br /&gt;\n&quot;;
+ 		}
+ 
+ 
+-		$form_mot = &quot;&lt;FORM ACTION='$url_base#mots' METHOD='post' STYLE='margin:1px;'&gt;&quot;
++		$form_mot = &quot;&lt;FORM ACTION='$url_base#mots&quot;.$id_objet.&quot;' METHOD='post' STYLE='margin:1px;'&gt;&quot;
+ 			.&quot;&lt;INPUT TYPE='Hidden' NAME='$id_table' VALUE='$id_objet'&gt;&quot;;
+ 
+ 		if ($table == 'rubriques') $form_mot .= &quot;&lt;INPUT TYPE='Hidden' NAME='id_rubrique' VALUE='$id_objet'&gt;&quot;;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000142.html">[Spip-carto-cvs] spipcarto/squelettes carto_geosvgfile.html,1.1,1.2
+</A></li>
+	<LI>Next message: <A HREF="000144.html">[Spip-carto-cvs] spipcarto carto_svg2.php3,NONE,1.1 inc-compilo-index.php3,1.3,1.4 inc-compilo.php3,1.3,1.4 spip_cookie.php3,1.4,1.5 spip_admin.css,1.3,1.4 inc-compilo-api.php3,1.3,1.4 .htaccess,1.1,1.2 inc-criteres.php3,1.3,1.4 inc-messforum.php3,1.4,1.5 inc-public-global.php3,1.5,1.6 backend-breves.php3,1.3,1.4 inc-cache.php3,1.6,1.7 inc-balises.php3,1.5,1.6 inc-html-squel.php3,1.3,1.4 inc-stats.php3,1.3,1.4 backend.php3,1.3,1.4 mes_fonctions.php3,1.7,1.8 inc-calcul.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

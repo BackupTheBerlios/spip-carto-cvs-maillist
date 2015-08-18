@@ -1,0 +1,348 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.17,1.18
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.17%2C1.18&In-Reply-To=%3C200509240052.j8O0qtmq001836%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000248.html">
+   <LINK REL="Next"  HREF="000250.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.17,1.18</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.17%2C1.18&In-Reply-To=%3C200509240052.j8O0qtmq001836%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.17,1.18">stef at berlios.de
+       </A><BR>
+    <I>Sat Sep 24 02:52:55 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000248.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000250.html">[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.6,1.7
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#249">[ date ]</a>
+              <a href="thread.html#249">[ thread ]</a>
+              <a href="subject.html#249">[ subject ]</a>
+              <a href="author.html#249">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv1510/ecrire
+
+Modified Files:
+	inc_carto.php3 
+Log Message:
+plus que les fonctions specifiques &#224; l'interface d'admin
+
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.17
+retrieving revision 1.18
+diff -u -d -r1.17 -r1.18
+--- inc_carto.php3	5 Sep 2005 14:49:08 -0000	1.17
++++ inc_carto.php3	24 Sep 2005 00:52:52 -0000	1.18
+@@ -5,7 +5,6 @@
+ if (defined(&quot;_ECRIRE_INC_CARTE&quot;)) return;
+ define(&quot;_ECRIRE_INC_CARTE&quot;, &quot;1&quot;);
+ 
+-// TODO : Faut il rendre fixe la taille de l'interface DHTML ?
+ 
+ // Conversion coordonn&#233;es interface DHTML -&gt; WKT
+ // 	- Modification des s&#233;parateurs d&#233;cimaux &amp; s&#233;parateurs de paires de coordonn&#233;es
+@@ -40,259 +39,7 @@
+ 	return $selection_type.&quot;(&quot;.$wktCoords.&quot;)&quot;;			// G&#233;om&#233;trie au format WKT
+ }
+ 
+-function getImgWidth ($url_carte)
+-{
+-	$image = spip_fetch_array(spip_query(&quot;SELECT largeur FROM spip_documents WHERE id_document = $url_carte&quot;));
+-	return $image['largeur'];
+-}
+-function getImgHeight ($url_carte)
+-{
+-	$image = spip_fetch_array(spip_query(&quot;SELECT hauteur FROM spip_documents WHERE id_document = $url_carte&quot;));
+-	return $image['hauteur'];
+-}
+-
+-/*
+- *   +---------------------------------------------+
+- *    Nom du Filtre : WKT to SHAPE 
+- *   +---------------------------------------------+
+- *    Date : mercredi 09 avril 2003
+- *    Auteur : 
+- *    site :  
+- *   +---------------------------------------------+
+- *    Fonctions de ce filtre :
+- *     Appelez le dans vos squellette tout simplement
+- *     par : [(#GEOMETRIE|wkt2shape)]
+- *   +---------------------------------------------+
+- *  
+- * Pour toute suggestion, remarque, proposition d'ajout
+- * reportez-vous au forum de l'article :
+- * <A HREF="http://www.uzine.net/spip_contrib/">http://www.uzine.net/spip_contrib/</A>
+- *
+- */
+-function wkt2shape($geometrie, $format = &quot;HTML&quot;){
+-	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
+-	switch ($format){
+-		case &quot;HTML&quot;:
+-			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+-				return &quot;POLY&quot;; 
+-			if (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-				return &quot;CIRCLE&quot;; 
+-			// HTML Image map ne supporte pas les lignes
+-		break;
+-		case &quot;SVG&quot;:
+-			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+-				return &quot;polygon&quot;; 
+-			if (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-				return &quot;use&quot;; 
+-			if (strcasecmp($wktGeomType,&quot;LINE&quot;)==0)
+-				return &quot;polyline&quot;; 
+-		break;
+-	}
+-}
+-
+-function getArg($texte,$idArg){
+-	$args=explode(&quot;,&quot;,$texte);
+-	return $args[$idArg];
+-}
+-function wkt2imgheight($args, $callage = &quot;&quot;,$url_carte){
+-	$tab=wkt2imgsize($args, $callage,$url_carte);
+-	return $tab[0];
+-}
+-function wkt2imgwidth($args, $callage = &quot;&quot;,$url_carte){
+-	$tab=wkt2imgsize($args, $callage,$url_carte);
+-	return $tab[1];
+-}
+-function wkt2imgsize($args=&quot;&quot;, $callage = &quot;&quot;,$url_carte){
+-	//recuperer taille reelle carte
+-	$callage 	= worldfile2array ($callage);
+-	
+-	$GeoWidth 	= ($callage['bottom_right']['x']-$callage['top_left']['x']);
+-	$GeoHeight 	= ($callage['bottom_right']['y']-$callage['top_left']['y']);
+-	
+-	
+-	//recuperer taille de l'image
+-	$ImgRealWidth = getImgWidth ($url_carte);
+-	$ImgRealHeight = getImgHeight ($url_carte);
+-	
+-	//ou la taille pass&#233;e, ou &#224; defaut celle de la carte ???
+-	if ($ImgRealWidth) $ImgWidth = $ImgRealWidth;
+-	else $ImgWidth = $GeoWidth;
+-	if ($ImgRealHeight) $ImgHeight = $ImgRealHeight;
+-	else $ImgHeight = $GeoHeight;
+-	$ratio=$ImgHeight/$ImgWidth;
+-	
+-	//tailles maximum parametr&#233;es ?
+-	//TODO : optimiser un peu tout ca ...
+-	$ImgMaxWidth = getArg($args,1);
+-	$ImgMaxHeight = getArg($args,0);
+-	if ($ImgMaxWidth==0) $ImgMaxWidth=$ImgWidth;
+-	if ($ImgMaxHeight==0) $ImgMaxHeight=$ImgHeight;
+-	
+-	if (($ImgMaxWidth)&amp;&amp;($ImgMaxWidth&lt;$ImgWidth))
+-	{
+-		$ImgWidth=$ImgMaxWidth;
+-		$ImgHeight=round($ratio*$ImgMaxWidth);
+-	}
+-	if (($ImgMaxHeight)&amp;&amp;($ImgMaxHeight&lt;$ImgHeight))
+-	{
+-		$ImgHeight=$ImgMaxHeight;
+-		$ImgWidth=round($ImgMaxHeight/$ratio);
+-	}
+-	return array($ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth);
+-}
+-/*
+- *   +---------------------------------------------+
+- *    Nom du Filtre : WKT to COORDS
+- *   +---------------------------------------------+
+- *    Date : mercredi 09 avril 2003
+- *    Auteur : 
+- *    site :  
+- *   +---------------------------------------------+
+- *    Fonctions de ce filtre :
+- *     Appelez le dans vos squellette tout simplement
+- *     par : [(#GEOMETRIE|wkt2coords)]
+- *   +---------------------------------------------+
+- *  
+- * Pour toute suggestion, remarque, proposition d'ajout
+- * reportez-vous au forum de l'article :
+- * <A HREF="http://www.uzine.net/spip_contrib/">http://www.uzine.net/spip_contrib/</A>
+- *
+- */
+-function wkt2coords($geometrie, $format = &quot;HTML&quot;, $callage = &quot;&quot;,$url_carte, $mot_desc = &quot;&quot;, $args = &quot;&quot;){
+-	//recuperer geometrie
+-	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
+-	$wktGeom 	= substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1);
+-	
+-	$tab=wkt2imgsize($args, $callage,$url_carte);
+-	//recuperer taille affich&#233;e 
+-	$ImgHeight=$tab[0];
+-	$ImgWidth=$tab[1];
+-	//recuperer taille reelle carte
+-	$GeoHeight 	= $tab[2];
+-	$GeoWidth 	= $tab[3];
+-
+-	$radius	= 6;	// TODO : Param&#232;tre (ou fonction du callage ?) pr&#233;f&#233;rable car fonction des projections 5 peut &#234;tre bcp trop petit
+-	$rgeo 		= round($radius*$GeoWidth/$ImgWidth);
+-	$callage 	= worldfile2array ($callage);
+-	
+-	switch ($format){
+-		case &quot;HTML&quot;:
+-			// Pour obtenir des objets HTML/MAP ...
+-			// 	S&#233;parateur coordonn&#233;es ',' / S&#233;parateur paires de coordonn&#233;es ','
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i&lt;sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= ($coord[$i][0]-$callage['top_left']['x'])/$GeoWidth*$ImgWidth;
+-				$coord[$i][1] 	= ($callage['bottom_right']['y']-$coord[$i][1])/$GeoHeight*$ImgHeight;		// Calcul de l'Y par rapport au coin inf&#233;rieur
+- 				$coordpair[$i] 	= implode(',',$coord[$i]);
+-			}
+-			$wktGeom = implode(',', $coordpair);
+-
+-			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+-				return $wktGeom;
+-			if (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-				return $wktGeom.&quot;,&quot;.$radius;
+-		break;
+-		case &quot;HTMLDIV&quot;:
+-			// Pour obtenir des objets HTML/DIV ...
+-			// Pour les polygones, la moyenne des valeurs
+-			// Pour les points, la valeur
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i&lt;sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= ($coord[$i][0]-$callage['top_left']['x'])/$GeoWidth*$ImgWidth;
+-				$coord[$i][1] 	= ($callage['bottom_right']['y']-$coord[$i][1])/$GeoHeight*$ImgHeight;		// Calcul de l'Y par rapport au coin inf&#233;rieur
+- 				$x 				+= $coord[$i][1];
+-				$y				+= $coord[$i][0];
+-			}
+-			return &quot;left: &quot;.$y/$i.&quot;px;top: &quot;.$x/$i.&quot;px;&quot;;
+-					
+-		break;		
+-		case &quot;JSDHTML&quot;:
+-			// Pour obtenir des objets HTML/MAP pour la superpo avec l'interface DHTML...
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i&lt;sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= ($coord[$i][0]-$callage['top_left']['x'])/$GeoWidth*$ImgWidth;
+-				$coord[$i][1] 	= ($callage['bottom_right']['y']-$coord[$i][1])/$GeoHeight*$ImgHeight;		// Calcul de l'Y par rapport au coin inf&#233;rieur
+- 				$coord[$i][1]   = $ImgHeight/2-($coord[$i][1]-$ImgHeight/2);								// Pour que le dessin DHTML soit ok 
+- 				$coordpair[$i] 	= implode(',',$coord[$i]);
+-			}
+-			$wktGeom = implode(',', $coordpair);
+-
+-			return $wktGeom;
+-		break;
+-		case &quot;SVG&quot;:
+-		case &quot;SVGGEO&quot;:
+-			// Pour obtenir des objets SVG ...
+-			// Conservation des Y selon le format WKT car en coordonn&#233;es g&#233;ographique
+-			// S&#233;parateur coordonn&#233;es ' ' / S&#233;parateur paires de coordonn&#233;es ','
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i&lt;sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= $coord[$i][0];
+-				$coord[$i][1] 	= $coord[$i][1]*-1;
+- 				$coordpair[$i] 	= implode(' ' ,$coord[$i]);
+-			}
+-			$wktGeom = implode(',', $coordpair);
+-
+-			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0 || strcasecmp($wktGeomType,&quot;LINE&quot;)==0)
+-			{  	return &quot;points=\&quot;&quot;.$wktGeom.&quot;\&quot;&quot;;		
+-			}elseif (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-			{	$coordTab = explode (&quot; &quot;, $wktGeom);
+-				return &quot;x=\&quot;&quot;.$coordTab[0].&quot;\&quot; y=\&quot;&quot;.$coordTab[1].&quot;\&quot; width=\&quot;&quot;.$rgeo.&quot;\&quot; height=\&quot;&quot;.$rgeo.&quot;\&quot; xlink:href=\&quot;#use&quot;.$mot_desc.&quot;\&quot;&quot;;
+-			}
+-		break;
+-		case &quot;GOOGLE&quot;:
+-			// Conservation des Y selon le format WKT car en coordonn&#233;es g&#233;ographique
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i&lt;sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= $coord[$i][0];
+-				$coord[$i][1] 	= $coord[$i][1]*-1;
+- 				$wktGoogle[$i]=&quot;GPoint(&quot;.intval($coord[$i][0]*$rgeo).&quot;,&quot;.intval($coord[$i][1]*$rgeo).&quot;)&quot;;
+-			}
+-			$wktGoogle = implode(',', $wktGoogle);
+-
+-			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+-			{  	
+-				return &quot;GPolyline=([&quot;.$wktGoogle.&quot;])&quot;;		
+-			}
+-			elseif (strcasecmp($wktGeomType,&quot;LINE&quot;)==0)
+-			{  	
+-				return &quot;GPolyline=([&quot;.$wktGoogle.&quot;])&quot;;		
+-			}
+-			elseif (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-			{	
+-				$coordTab = explode (&quot; &quot;, $wktGeom);
+-				return &quot;GPoint(&quot;.intval($coordTab[0]*$rgeo).&quot;,&quot;.intval($coordTab[1]*$rgeo).&quot;)&quot;;
+-			}
+-		break;
+-	}
+-}
+-
+-
+-
+-
+-
+-
+-// D&#233;finition du callage &#224; partir de la dimension de l'image
+-// Option par d&#233;faut / le callage est d&#233;fini &#224; la main si une projection est utilis&#233;e
+-function array2worldfile($mArray){	
+-	return &quot;polygon(0 0,&quot;.$mArray['largeur'].&quot; &quot;.$mArray['hauteur'].&quot;)&quot;;
+-}
+-
+-
++// TODO : Faut il rendre fixe la taille de l'interface DHTML ?
+ 
+ function embed_carto_url($id_carte, $url_parse) {
+ 	$lURL = $url_parse['path'].&quot;/carto.php3?id_carte=&quot;.$id_carte.&quot;&amp;scale=&quot;.$_GET['scale'].&quot;&amp;x=&quot;.$_GET['x'].&quot;&amp;y=&quot;.$_GET['y'];
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000248.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000250.html">[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.6,1.7
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#249">[ date ]</a>
+              <a href="thread.html#249">[ thread ]</a>
+              <a href="subject.html#249">[ subject ]</a>
+              <a href="author.html#249">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

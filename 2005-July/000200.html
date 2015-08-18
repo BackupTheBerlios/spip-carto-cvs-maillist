@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/dist mot.html,1.4,1.5 login.html,1.4,1.5 backend.html,1.3,1.4 article.html,1.4,1.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-July/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/dist%20mot.html%2C1.4%2C1.5%20login.html%2C1.4%2C1.5%20backend.html%2C1.3%2C1.4%20article.html%2C1.4%2C1.5&In-Reply-To=%3C200507212147.j6LLlEqX023933%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000194.html">
+   <LINK REL="Next"  HREF="000202.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/dist mot.html,1.4,1.5 login.html,1.4,1.5 backend.html,1.3,1.4 article.html,1.4,1.5</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/dist%20mot.html%2C1.4%2C1.5%20login.html%2C1.4%2C1.5%20backend.html%2C1.3%2C1.4%20article.html%2C1.4%2C1.5&In-Reply-To=%3C200507212147.j6LLlEqX023933%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/dist mot.html,1.4,1.5 login.html,1.4,1.5 backend.html,1.3,1.4 article.html,1.4,1.5">stef at berlios.de
+       </A><BR>
+    <I>Thu Jul 21 23:47:14 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000194.html">[Spip-carto-cvs] spipcarto/ecrire carte_import.php3,1.1,1.2
+</A></li>
+        <LI>Next message: <A HREF="000202.html">[Spip-carto-cvs] spipcarto/formulaires formulaire_signature.html,1.4,1.5 formulaire_inscription.html,1.3,1.4 formulaire_site.html,1.3,1.4 formulaire_login.html,1.3,1.4 formulaire_forum_previsu.html,1.1,1.2 inc-formulaire_forum.php3,1.4,1.5 formulaire_admin.html,1.4,1.5 inc-formulaire_site.php3,1.3,1.4 inc-formulaire_signature.php3,1.3,1.4 inc-formulaire_admin.php3,1.3,1.4 inc-formulaire_inscription.php3,1.4,1.5 inc-login_public.php3,1.4,1.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#200">[ date ]</a>
+              <a href="thread.html#200">[ thread ]</a>
+              <a href="subject.html#200">[ subject ]</a>
+              <a href="author.html#200">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/dist
+In directory sheep:/tmp/cvs-serv22230/dist
+
+Modified Files:
+	mot.html login.html backend.html article.html 
+Log Message:
+synchro CVS 20050719
+
+Index: mot.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/dist/mot.html,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- mot.html	30 Jun 2005 10:09:39 -0000	1.4
++++ mot.html	21 Jul 2005 21:47:11 -0000	1.5
+@@ -54,10 +54,10 @@
+ 
+ &lt;div class=&quot;menu&quot;&gt;
+ &lt;div class=&quot;divers&quot;&gt;
+-&lt;div class=&quot;menu-titre&quot;&gt;&lt;BOUCLE_groupe(GROUPES_MOTS) {id_groupe} {doublons}&gt;#TITRE&lt;/BOUCLE_groupe&gt;&lt;/div&gt;
+-	&lt;ul class=&quot;menu-liste&quot;&gt;
+-&lt;BOUCLE_mots_freres(MOTS) {type} {doublons} {par titre}&gt;
+-	&lt;li class=&quot;menu-item&quot;&gt;&lt;a href=&quot;#URL_MOT&quot; title=&quot;[(#DESCRIPTIF|textebrut|entites_html)]&quot;&gt;#TITRE&lt;/a&gt;&lt;/li&gt;
++&lt;BOUCLE_groupe(GROUPES_MOTS) {id_groupe} {doublons}&gt;&lt;div class=&quot;menu-titre&quot;[ title=&quot;(#DESCRIPTIF|attribut_html)&quot;]&gt;#TITRE&lt;/div&gt;&lt;/BOUCLE_groupe&gt;
++&lt;ul class=&quot;menu-liste&quot;&gt;
++&lt;BOUCLE_mots_freres(MOTS) {type} {par titre}&gt;
++	&lt;li class=&quot;menu-item&quot;&gt;&lt;a [(#EXPOSE{name,href})]=&quot;#URL_MOT&quot; title=&quot;[(#DESCRIPTIF|textebrut|entites_html)]&quot;&gt;#TITRE&lt;/a&gt;&lt;/li&gt;
+ &lt;/BOUCLE_mots_freres&gt;
+ 	&lt;/ul&gt;
+ &lt;/div&gt;
+@@ -76,7 +76,7 @@
+ 	&lt;ul class=&quot;menu-liste&quot;&gt;
+ &lt;BOUCLE_groupes_freres(GROUPES_MOTS) {par titre} {doublons}&gt;
+ &lt;BOUCLE_mot_cousin(MOTS) {id_groupe} {par titre} {0,1}&gt;
+-	&lt;li class=&quot;menu-item&quot;&gt;&lt;a href=&quot;#URL_MOT&quot;&gt;#TYPE&lt;/a&gt;&lt;/li&gt;
++	&lt;li class=&quot;menu-item&quot;[ title=&quot;(#_groupes_freres:DESCRIPTIF|attribut_html)&quot;]&gt;&lt;a href=&quot;#URL_MOT&quot;&gt;#TYPE&lt;/a&gt;&lt;/li&gt;
+ &lt;/BOUCLE_mot_cousin&gt;
+ &lt;/BOUCLE_groupes_freres&gt;
+ 	&lt;/ul&gt;
+
+Index: login.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/dist/login.html,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- login.html	30 Jun 2005 10:09:39 -0000	1.4
++++ login.html	21 Jul 2005 21:47:11 -0000	1.5
+@@ -32,7 +32,7 @@
+ 	target=&quot;spip_pass&quot; 
+ 	onclick=&quot;javascript:window.open(this.href, 'spip_pass', 'scrollbars=yes, resizable=yes, width=480, height=280'); return false;&quot;&gt;&lt;:login_motpasseoublie:&gt;&lt;/a&gt;&#93;
+ 
+-&#91;&lt;a style='color: #e86519' href='#URL_SITE_SPIP'&gt;&lt;:login_retoursitepublic:&gt;&lt;/a&gt;&#93;
++&#91;&lt;a style='color: #e86519' href=&quot;#URL_SITE_SPIP/&quot;&gt;&lt;:login_retoursitepublic:&gt;&lt;/a&gt;&#93;
+ 
+ &lt;/div&gt;
+ 
+
+Index: backend.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/dist/backend.html,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- backend.html	30 Jun 2005 10:09:39 -0000	1.3
++++ backend.html	21 Jul 2005 21:47:11 -0000	1.4
+@@ -28,7 +28,7 @@
+ 		&lt;dc:format&gt;text/html&lt;/dc:format&gt;
+ 		&lt;dc:language&gt;#LANG&lt;/dc:language&gt;
+ 		&lt;dc:creator&gt;&lt;BOUCLE_auteursb(AUTEURS){id_article}{&quot;, &quot;}&gt;[(#NOM|texte_backend)]&lt;/BOUCLE_auteursb&gt;&lt;/dc:creator&gt;
+-		&lt;BOUCLE_podcast(DOCUMENTS){id_article}{doublons}{extension==(mp3|zip)}&gt;[
++		&lt;BOUCLE_podcast(DOCUMENTS){id_article}{mode=document}&gt;[
+ 			&lt;enclosure url=&quot;(#URL_DOCUMENT|url_absolue|unique)&quot; length=&quot;[(#TAILLE)]&quot; type=&quot;#MIME_TYPE&quot; /&gt;]
+ 		&lt;/BOUCLE_podcast&gt;
+ 
+
+Index: article.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/dist/article.html,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- article.html	30 Jun 2005 10:09:39 -0000	1.4
++++ article.html	21 Jul 2005 21:47:11 -0000	1.5
+@@ -192,7 +192,7 @@
+ 
+ 
+ &lt;BOUCLE_afficher_document(DOCUMENTS){id_document}{mode=document}{extension==(png|jpg|gif)$}{doublons}&gt;
+-&lt;hr&gt;
++&lt;hr /&gt;
+ [&lt;h3 class=&quot;spip&quot;&gt;(#TITRE)&lt;/h3&gt;]
+ [&lt;div&gt;(#DESCRIPTIF)&lt;/div&gt;]
+ 
+@@ -200,7 +200,7 @@
+ &lt;/BOUCLE_afficher_document&gt;
+ 
+ &lt;B_documents_portfolio&gt;
+-&lt;div&gt;&lt;hr&gt;
++&lt;div&gt;&lt;hr /&gt;
+ &lt;BOUCLE_documents_portfolio(DOCUMENTS){id_article}{mode=document}{extension==(png|jpg|gif)$}{doublons}&gt;
+ 	&lt;div style=&quot;float: left;&quot;&gt;
+ 	[&lt;a href=&quot;#URL_ARTICLE[(#URL_ARTICLE|strpos{?}|?{&amp;,?})]id_document=#ID_DOCUMENT&quot;&gt;(#LOGO_DOCUMENT{0,60})&lt;/a&gt;]
+@@ -212,7 +212,7 @@
+ &lt;/B_documents_portfolio&gt;
+ 
+ &lt;B_documents_joints&gt;
+-&lt;div&gt;&lt;hr&gt;
++&lt;div&gt;&lt;hr /&gt;
+ &lt;BOUCLE_documents_joints(DOCUMENTS) {id_article} {mode=document} {doublons}&gt;
+ 	&lt;div style=&quot;float: left;&quot;&gt;
+ 	[(#LOGO_DOCUMENT|#URL_DOCUMENT)][&lt;div style=&quot;clear: both;&quot;&gt;&lt;b&gt;(#TITRE)&lt;/b&gt;&lt;/div&gt;][&lt;div style=&quot;clear: both;&quot;&gt;(#DESCRIPTIF)&lt;/div&gt;]
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000194.html">[Spip-carto-cvs] spipcarto/ecrire carte_import.php3,1.1,1.2
+</A></li>
+	<LI>Next message: <A HREF="000202.html">[Spip-carto-cvs] spipcarto/formulaires formulaire_signature.html,1.4,1.5 formulaire_inscription.html,1.3,1.4 formulaire_site.html,1.3,1.4 formulaire_login.html,1.3,1.4 formulaire_forum_previsu.html,1.1,1.2 inc-formulaire_forum.php3,1.4,1.5 formulaire_admin.html,1.4,1.5 inc-formulaire_site.php3,1.3,1.4 inc-formulaire_signature.php3,1.3,1.4 inc-formulaire_admin.php3,1.3,1.4 inc-formulaire_inscription.php3,1.4,1.5 inc-login_public.php3,1.4,1.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#200">[ date ]</a>
+              <a href="thread.html#200">[ thread ]</a>
+              <a href="subject.html#200">[ subject ]</a>
+              <a href="author.html#200">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

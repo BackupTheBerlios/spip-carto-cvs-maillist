@@ -1,0 +1,645 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/formulaires inc-formulaire_site.php3,1.2,1.3 formulaire_ecrire_auteur.html,1.2,1.3 inc-formulaire_forum.php3,1.2,1.3 inc-formulaire_ecrire_auteur.php3,1.2,1.3 inc-formulaire_signature.php3,1.2,1.3 formulaire_forum.html,1.2,1.3 formulaire_signature.html,1.2,1.3 inc-formulaire_inscription.php3,1.2,1.3 formulaire_admin.html,1.2,1.3 inc-login_public.php3,1.2,1.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/formulaires%20inc-formulaire_site.php3%2C1.2%2C1.3%20formulaire_ecrire_auteur.html%2C1.2%2C1.3%20inc-formulaire_forum.php3%2C1.2%2C1.3%20inc-formulaire_ecrire_auteur.php3%2C1.2%2C1.3%20inc-formulaire_signature.php3%2C1.2%2C1.3%20formulaire_forum.html%2C1.2%2C1.3%20formulaire_signature.html%2C1.2%2C1.3%20inc-formulaire_inscription.php3%2C1.2%2C1.3%20formulaire_admin.html%2C1.2%2C1.3%20inc-login_public.php3%2C1.2%2C1.3&In-Reply-To=%3C200503031453.j23ErKNx006379%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000128.html">
+   <LINK REL="Next"  HREF="000130.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/formulaires inc-formulaire_site.php3,1.2,1.3 formulaire_ecrire_auteur.html,1.2,1.3 inc-formulaire_forum.php3,1.2,1.3 inc-formulaire_ecrire_auteur.php3,1.2,1.3 inc-formulaire_signature.php3,1.2,1.3 formulaire_forum.html,1.2,1.3 formulaire_signature.html,1.2,1.3 inc-formulaire_inscription.php3,1.2,1.3 formulaire_admin.html,1.2,1.3 inc-login_public.php3,1.2,1.3</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/formulaires%20inc-formulaire_site.php3%2C1.2%2C1.3%20formulaire_ecrire_auteur.html%2C1.2%2C1.3%20inc-formulaire_forum.php3%2C1.2%2C1.3%20inc-formulaire_ecrire_auteur.php3%2C1.2%2C1.3%20inc-formulaire_signature.php3%2C1.2%2C1.3%20formulaire_forum.html%2C1.2%2C1.3%20formulaire_signature.html%2C1.2%2C1.3%20inc-formulaire_inscription.php3%2C1.2%2C1.3%20formulaire_admin.html%2C1.2%2C1.3%20inc-login_public.php3%2C1.2%2C1.3&In-Reply-To=%3C200503031453.j23ErKNx006379%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/formulaires inc-formulaire_site.php3,1.2,1.3 formulaire_ecrire_auteur.html,1.2,1.3 inc-formulaire_forum.php3,1.2,1.3 inc-formulaire_ecrire_auteur.php3,1.2,1.3 inc-formulaire_signature.php3,1.2,1.3 formulaire_forum.html,1.2,1.3 formulaire_signature.html,1.2,1.3 inc-formulaire_inscription.php3,1.2,1.3 formulaire_admin.html,1.2,1.3 inc-login_public.php3,1.2,1.3">stef at berlios.de
+       </A><BR>
+    <I>Thu Mar  3 15:53:20 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000128.html">[Spip-carto-cvs] spipcarto navigation.js,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000130.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_en.php3,1.2,1.3 spip_ca.php3,1.2,1.3 spip_ar.php3,1.2,1.3 spip_fr.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#129">[ date ]</a>
+              <a href="thread.html#129">[ thread ]</a>
+              <a href="subject.html#129">[ subject ]</a>
+              <a href="author.html#129">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/formulaires
+In directory sheep:/tmp/cvs-serv6354/spipcarto/formulaires
+
+Modified Files:
+	inc-formulaire_site.php3 formulaire_ecrire_auteur.html 
+	inc-formulaire_forum.php3 inc-formulaire_ecrire_auteur.php3 
+	inc-formulaire_signature.php3 formulaire_forum.html 
+	formulaire_signature.html inc-formulaire_inscription.php3 
+	formulaire_admin.html inc-login_public.php3 
+Log Message:
+1.8pr1 cvs 20050303
+
+Index: inc-formulaire_site.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_site.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-formulaire_site.php3	20 Feb 2005 22:13:52 -0000	1.2
++++ inc-formulaire_site.php3	3 Mar 2005 14:53:17 -0000	1.3
+@@ -19,7 +19,7 @@
+ 	return ((lire_meta(&quot;proposer_sites&quot;) != 2) ? '' : $args);
+ }
+ 
+-function balise_FORMULAIRE_SITE_dyn($id_rubrique, $nom_site, $url_site, $description_site) {
++function balise_FORMULAIRE_SITE_dyn($id_rubrique) {
+ 
+ 	if (!_request('nom_site')) return array('formulaire_site', 0);
+ 
+
+Index: formulaire_ecrire_auteur.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/formulaire_ecrire_auteur.html,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- formulaire_ecrire_auteur.html	20 Feb 2005 22:13:52 -0000	1.2
++++ formulaire_ecrire_auteur.html	3 Mar 2005 14:53:17 -0000	1.3
+@@ -1,6 +1,7 @@
+ [&lt;br /&gt;(#ENV*{sujetko})&lt;:form_prop_indiquer_sujet:&gt;&lt;br /&gt;&nbsp;][
+ &lt;br /&gt;(#ENV*{mailko})&lt;:form_prop_indiquer_email:&gt;&lt;br /&gt;&lt;br /&gt;
+-]&lt;form action=&quot;[(#ENV{action})]&quot; method='post'&gt;
++]&lt;form action=&quot;[(#ENV{action})]&quot; method='post'&gt;[
++&lt;input type=&quot;hidden&quot; name=&quot;id_formulaire_ecrire_auteur&quot; value=&quot;(#ENV{valide})&quot; /&gt;]
+ &lt;p&gt;&lt;label&gt;&lt;:form_pet_votre_email:&gt;
+ &lt;input type=&quot;text&quot; class=&quot;forml&quot; name=&quot;email_message_auteur[(#ENV{id})]&quot;
+ 	value=&quot;[(#ENV{mail})]&quot; size=&quot;30&quot; /&gt;
+@@ -13,7 +14,7 @@
+ &lt;textarea name=&quot;texte_message_auteur[(#ENV{id})]&quot; rows='10' class='forml' cols='40'&gt;[(#ENV{texte})]&lt;/textarea&gt;
+ &lt;/p&gt;
+ &lt;div align=&quot;right&quot;&gt;
+-	&lt;input type=&quot;submit&quot;  class=&quot;spip_bouton&quot; name=&quot;valide[(#ENV{id})]&quot;
+-		 value=&quot;[(#ENV{valide})]&quot; /&gt;
++	&lt;input type=&quot;submit&quot;  class=&quot;spip_bouton&quot; name=&quot;valide&quot;
++		 value=&quot;[(#ENV{bouton})]&quot; /&gt;
+ &lt;/div&gt;
+ &lt;/form&gt;
+
+Index: inc-formulaire_forum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_forum.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-formulaire_forum.php3	20 Feb 2005 22:13:52 -0000	1.2
++++ inc-formulaire_forum.php3	3 Mar 2005 14:53:17 -0000	1.3
+@@ -40,7 +40,11 @@
+ 	if (!$r = sql_recherche_donnees_forum ($idr, $idf, $ida, $idb, $ids))
+ 		return '';
+ 
+-	list($titre, $table, $forums_publics) = $r;
++	list ($titre, $table, $forums_publics) = $r;
++
++	// Attention id_rubrique est passe pour les articles =&gt; on n'en veut pas
++	if ($idr &gt; 0 AND ($ida OR $idb OR $ids))
++		$idr = 0;
+ 
+ 	return
+ 		array($titre, $table, $forums_publics, $idr, $idf, $ida, $idb, $ids,
+@@ -48,8 +52,15 @@
+ }
+ 
+ function balise_FORMULAIRE_FORUM_dyn($titre, $table, $forums_publics, $id_rubrique, $id_forum, $id_article, $id_breve, $id_syndic, $url) {
++	global $REMOTE_ADDR, $afficher_texte, $_COOKIE, $_POST;
+ 
+-	global $REMOTE_ADDR, $afficher_texte, $_COOKIE;
++	// Recuperer les donnees postees du formulaire ou, a defaut, du contexte
++	foreach (array('id_article', 'id_breve', 'id_syndic',
++	'id_rubrique', 'id_forum') as $id)
++		if (isset($_POST['forum_'.$id]))
++			$$id = intval($_POST['forum_'.$id]);
++		else
++			$$id = intval($$id);
+ 
+ 	// url de reference
+ 	if (!$url) {
+@@ -76,12 +87,6 @@
+ 		return array('formulaire_login_forum', 0, array());
+ 	}
+ 
+-	$id_rubrique = intval($id_rubrique);
+-	$id_forum = intval($id_forum);
+-	$id_article = intval($id_article);
+-	$id_breve = intval($id_breve);
+-	$id_syndic = intval($id_syndic);
+-
+ 	// ne pas mettre '', sinon le squelette n'affichera rien.
+ 	$previsu = ' ';
+ 
+@@ -208,22 +213,33 @@
+ 	else
+ 		$table = '';
+ 
++	// preparer les parametres du forum en input hidden
++	$parametres_forum = '';
++	foreach (array('alea', 'hash', 'retour_forum') as $var)
++		if ($val = entites_html($$var))
++			$parametres_forum .=
++			&quot;&lt;input type='hidden' name='$var' value=\&quot;$val\&quot; /&gt;\n&quot;;
++	foreach (array(
++	'id_article', 'id_breve', 'id_syndic', 'id_rubrique', 'id_forum')
++	as $var)
++		if ($val = $$var)
++			$parametres_forum .=
++			&quot;&lt;input type='hidden' name='forum_$var' value='$val' /&gt;\n&quot;;
++
+ 	return array('formulaire_forum', 0,
+ 	array(
+-		'alea' =&gt; $alea,
+ 		'auteur' =&gt; $auteur,
+ 		'disabled' =&gt; ($forums_publics == &quot;abo&quot;)? &quot; disabled='disabled'&quot; : '',
+ 		'email_auteur' =&gt; $email_auteur,
+-		'hash' =&gt; $hash,
+ 		'modere' =&gt; (($forums_publics != 'pri') ? '' : _T('forum_info_modere')),
+ 		'nom_site_forum' =&gt; $nom_site_forum,
+ 		'previsu' =&gt; $previsu,
+-		'retour_forum' =&gt; $retour_forum,
+ 		'table' =&gt; $table,
+ 		'texte' =&gt; $texte,
+ 		'titre' =&gt; $titre,
+ 		'url' =&gt;  $url,
+ 		'url_site' =&gt; ($url_site ? $url_site : &quot;<A HREF="http://">http://</A>&quot;),
++		'parametres_forum' =&gt; $parametres_forum,
+ 
+ 		## gestion des la variable de personnalisation $afficher_texte
+ 		# mode normal : afficher le texte en &lt; input text &gt;, cf. squelette
+@@ -347,10 +363,7 @@
+ function sql_recherche_donnees_forum ($idr, $idf, $ida, $idb, $ids) {
+ 
+ 	// changer la table de reference s'il y a lieu (pour afficher_groupes[] !!)
+-	if ($idr) {
+-		$r = &quot;SELECT titre FROM spip_rubriques WHERE id_rubrique = $idr&quot;;
+-		$table = &quot;rubriques&quot;;
+-	} else if ($ida) {
++	if ($ida) {
+ 		$r = &quot;SELECT titre FROM spip_articles WHERE id_article = $ida&quot;;
+ 		$table = &quot;articles&quot;;
+ 	} else if ($idb) {
+@@ -359,6 +372,9 @@
+ 	} else if ($ids) {
+ 		$r = &quot;SELECT nom_site AS titre FROM spip_syndic WHERE id_syndic = $ids&quot;;
+ 		$table = &quot;syndic&quot;;
++	} else if ($idr) {
++		$r = &quot;SELECT titre FROM spip_rubriques WHERE id_rubrique = $idr&quot;;
++		$table = &quot;rubriques&quot;;
+ 	}
+ 
+ 	if ($idf)
+@@ -366,7 +382,7 @@
+ 
+ 	if ($r) {
+ 		list($titre) = spip_fetch_array(spip_query($r));
+-		$titre = '&gt; ' . supprimer_numero($titre);
++		$titre = '&gt; ' . supprimer_numero(preg_replace('/^&gt; /', '', $titre));
+ 	} else {
+ 		$titre = _T('forum_titre_erreur');
+ 		$table = '';
+
+Index: inc-formulaire_ecrire_auteur.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_ecrire_auteur.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-formulaire_ecrire_auteur.php3	20 Feb 2005 22:13:52 -0000	1.2
++++ inc-formulaire_ecrire_auteur.php3	3 Mar 2005 14:53:17 -0000	1.3
+@@ -45,16 +45,18 @@
+ 
+ 	// id du formulaire (pour en avoir plusieurs sur une meme page)
+ 	$id = ($id_auteur ? '_'.$id_auteur : '_ar'.$id_article);
+-
++	#spip_log(&quot;id formulaire = $id, &quot;._request(&quot;valide&quot;.$id));
+ 	$sujet = _request('sujet_message_auteur'.$id);
+ 	$texte = _request('texte_message_auteur'.$id);
+ 	$adres = _request('email_message_auteur'.$id);
+ 
+ 	$mailko = $texte &amp;&amp; !email_valide($adres);
++
+ 	$validable = $texte &amp;&amp; $sujet &amp;&amp; (!$mailko);
+ 
++	// doit-on envoyer le mail ?
+ 	if ($validable
+-	AND (_request('valide'.$id) == _T('form_prop_confirmer_envoi'))) { 
++	AND $id == _request('id_formulaire_ecrire_auteur')) { 
+ 		$texte .= &quot;\n\n-- &quot;._T('envoi_via_le_site').&quot; &quot;.lire_meta('nom_site').&quot; (&quot;.lire_meta('adresse_site').&quot;/) --\n&quot;;
+ 		include_ecrire(&quot;inc_mail.php3&quot;);
+ 		envoyer_mail($mail, $sujet, $texte, $adres,
+@@ -66,7 +68,7 @@
+ 	$link-&gt;delVar('sujet_message_auteur'.$id);
+ 	$link-&gt;delVar('texte_message_auteur'.$id);
+ 	$link-&gt;delVar('email_message_auteur'.$id);
+-	$link-&gt;delVar('id_auteur');
++	$link-&gt;delVar('id_formulaire_ecrire_auteur');
+ 
+ 	return 
+ 		array('formulaire_ecrire_auteur', 0,
+@@ -78,7 +80,8 @@
+ 			'sujetko' =&gt; ($texte &amp;&amp; !$sujet) ? $puce : '',
+ 			'sujet' =&gt; $sujet,
+ 			'texte' =&gt; $texte,
+-			'valide' =&gt; ($validable ?
++			'valide' =&gt; ($validable ? $id : ''),
++			'bouton' =&gt; ($validable ?
+ 				_T('form_prop_confirmer_envoi') :
+ 				_T('form_prop_envoyer'))
+ 			)
+
+Index: inc-formulaire_signature.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_signature.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-formulaire_signature.php3	20 Feb 2005 22:13:52 -0000	1.2
++++ inc-formulaire_signature.php3	3 Mar 2005 14:53:17 -0000	1.3
+@@ -30,13 +30,23 @@
+ 	else if (!$args[1])
+ 		return '';
+ 
+-	else
++	else {
++		// aller chercher dans la base la petition associee
++		$s = spip_query(&quot;SELECT texte, site_obli, message
++			FROM spip_petitions WHERE id_article = &quot;.intval($args[0]));
++		if ($r = spip_fetch_array($s)) {
++			$args[2] = $r['texte'];
++			// le signataire doit-il donner un site ?
++			$args[3] = ($r['site_obli'] == 'oui') ? '':' ';
++			// le signataire peut-il proposer un commentaire
++			$args[4] = ($r['message'] == 'oui') ? ' ':'';
++		}
+ 		return $args;
++	}
+ }
+ 
+ // Executer la balise
+-function balise_FORMULAIRE_SIGNATURE_dyn($id_article, $petition) {
+-	include_local(_FILE_CONNECT);
++function balise_FORMULAIRE_SIGNATURE_dyn($id_article, $petition, $texte, $site_obli, $message) {
+ 
+ 	if (_request('var_confirm')) # _GET
+ 		return reponse_confirmation($id_article);
+@@ -44,15 +54,19 @@
+ 	else if (_request('nom_email') AND _request('adresse_email')) # _POST
+ 		return  reponse_signature($id_article,
+ 			_request('nom_email'), _request('adresse_email'),
+-			_request('message'), _request('nom_site'),
+-			_request('url_site'), _request('url_page')
++			_request('message'), _request('signature_nom_site'),
++			_request('signature_url_site'), _request('url_page')
+ 		);
+ 
+ 	else {
+-		$s = spip_query(&quot;SELECT * FROM spip_petitions
+-			WHERE id_article='$id_article'&quot;);
+-		if ($row = spip_fetch_array($s))
+-			return array('formulaire_signature', 0, $row);
++		return array('formulaire_signature', $GLOBALS['delais'],
++		array(
++			'id_article' =&gt; $id_article,
++			'petition' =&gt; $petition,
++			'texte' =&gt; $texte,
++			'site_obli' =&gt; $site_obli,
++			'message' =&gt; $message
++		));
+ 	}
+ }
+ 
+@@ -181,11 +195,11 @@
+ 			}
+ 	
+ 			if (strlen($nom_email) &lt; 2) {
+-				return (_T('form_indiquer_nom'));
++				return _T('form_indiquer_nom');
+ 			}
+ 	
+ 			if ($adresse_email == _T('info_mail_fournisseur')) {
+-				return (_T('form_indiquer_email'));
++				return _T('form_indiquer_email');
+ 			}
+ 	
+ 			if ($email_unique == &quot;oui&quot;) {
+@@ -193,22 +207,22 @@
+ 				$query = &quot;SELECT * FROM spip_signatures WHERE id_article=$id_article AND ad_email='$email' AND statut='publie'&quot;;
+ 				$result = spip_query($query);
+ 				if (spip_num_rows($result) &gt; 0) {
+-					return (_T('form_pet_deja_signe'));
++					return _T('form_pet_deja_signe');
+ 				}
+ 			}
+ 	
+ 			if (!email_valide($adresse_email)) {
+-				return (_T('form_email_non_valide'));
++				return _T('form_email_non_valide');
+ 			}
+ 	
+ 			if ($site_obli == &quot;oui&quot;) {
+ 				if (!$nom_site) {
+-					return (_T('form_indiquer_nom_site'));
++					return _T('form_indiquer_nom_site');
+ 				}
+ 				include_ecrire(&quot;inc_sites.php3&quot;);
+ 	
+ 				if (!recuperer_page($url_site)) {
+-					return (_T('form_pet_url_invalide'));
++					return _T('form_pet_url_invalide');
+ 				}
+ 			}
+ 			if ($site_unique == &quot;oui&quot;) {
+@@ -216,7 +230,7 @@
+ 				$query = &quot;SELECT * FROM spip_signatures WHERE id_article=$id_article AND url_site='$site' AND (statut='publie' OR statut='poubelle')&quot;;
+ 				$result = spip_query($query);
+ 				if (spip_num_rows($result) &gt; 0) {
+-					return (_T('form_pet_site_deja_enregistre'));
++					return _T('form_pet_site_deja_enregistre');
+ 				}
+ 			}
+ 	
+
+Index: formulaire_forum.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/formulaire_forum.html,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- formulaire_forum.html	20 Feb 2005 22:13:52 -0000	1.2
++++ formulaire_forum.html	3 Mar 2005 14:53:17 -0000	1.3
+@@ -1,7 +1,5 @@
+ &lt;form action=&quot;[(#ENV{url})]&quot; method=&quot;post&quot; name=&quot;formulaire&quot;&gt;[
+-&lt;input type=&quot;hidden&quot; name=&quot;alea&quot; value=&quot;(#ENV{alea})&quot; /&gt;][
+-&lt;input type=&quot;hidden&quot; name=&quot;hash&quot; value=&quot;(#ENV{hash})&quot; /&gt;][
+-&lt;input type=&quot;hidden&quot; name=&quot;retour_forum&quot; value=&quot;(#ENV{retour_forum})&quot; /&gt;
++(#ENV*{parametres_forum})
+ ][&lt;p&gt;(#ENV*{modere})&lt;/p&gt;
+ ][(#ENV*{afficher_texte_hidden})
+ ][(#ENV*{afficher_texte_input})
+@@ -51,4 +49,3 @@
+ 		class=&quot;spip_bouton&quot; /&gt;&lt;/div&gt;
+ 	]
+ ]&lt;/form&gt;
+-
+
+Index: formulaire_signature.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/formulaire_signature.html,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- formulaire_signature.html	20 Feb 2005 22:13:52 -0000	1.2
++++ formulaire_signature.html	3 Mar 2005 14:53:17 -0000	1.3
+@@ -1,44 +1,52 @@
+-&lt;form method='post'
+-      action='#SELF#sp[(#ENV{id_article})]' &gt;
+-      &lt;input type=&quot;hidden&quot; name=&quot;url_page&quot; value=&quot;#URL_SITE_SPIP/#SELF&quot;&gt;
+-      &lt;div class='spip_encadrer' style='color: black; font-size: 80%; font-weight: normal;'&gt;
+-	[(#ENV*{texte}|propre)]
+-	&lt;fieldset style='font-size: 110%; font-weight: bold;'&gt;
+-	  &lt;legend&gt;&lt;/legend&gt;
+-	  &lt;label&gt;
+-	    &lt;:form_pet_votre_nom:&gt;
+-	    &lt;input type=&quot;text&quot; class=&quot;forml&quot; name=&quot;nom_email&quot; value=&quot;&quot; size=&quot;20&quot; /&gt;
+-	  &lt;/label&gt;
+-	  &lt;label&gt;
+-	    &lt;:form_pet_votre_email:&gt;&lt;br /&gt;
+-	    &lt;input type=&quot;text&quot; class=&quot;forml&quot; name=&quot;adresse_email&quot; value=&quot;&quot; size=&quot;20&quot; /&gt;
+-	  &lt;/label&gt;
+-	&lt;/fieldset&gt;
+-	&lt;br /&gt;
+-	&lt;p&gt;[(#ENV{site_obli}|=={oui}|?{'',' '})&lt;:form_pet_votre_site:&gt;&lt;br /&gt;]
+-	&lt;fieldset style='font-size: 110%; font-weight: bold;'&gt;
+-	  &lt;legend&gt;&lt;/legend&gt;
+-	  &lt;label&gt;
+-	  &lt;:form_pet_nom_site2:&gt;&lt;br /&gt;
+-	  &lt;input type=&quot;text&quot; class=&quot;forml&quot; name=&quot;signature_nom_site&quot; value=&quot;&quot; size=&quot;20&quot; /&gt;
+-	  &lt;/label&gt;
+-	  &lt;label&gt;
+-	    &lt;:form_pet_adresse_site:&gt;&lt;br /&gt;
+-	    &lt;input type=&quot;text&quot; class=&quot;forml&quot; name=&quot;signature_url_site&quot; value=&quot;<A HREF="http://">http://</A>&quot; size=&quot;20&quot; /&gt;
+-	  &lt;/label&gt;
+-	&lt;/fieldset&gt;[
++&lt;form method='post' action='#SELF#sp[(#ENV{id_article})]'&gt;
++&lt;input type=&quot;hidden&quot; name=&quot;url_page&quot; value=&quot;#URL_SITE_SPIP/#SELF&quot;&gt;
++&lt;div class='spip_encadrer' style='color: black; font-size: 80%; font-weight: normal;'&gt;
++[(#ENV*{texte}|propre)]
++&lt;fieldset style='font-size: 110%; font-weight: bold;'&gt;
++	&lt;legend&gt;&lt;/legend&gt;
++	&lt;label&gt;
++		&lt;:form_pet_votre_nom:&gt;
++		&lt;input type=&quot;text&quot; class=&quot;forml&quot; name=&quot;nom_email&quot;
++		value=&quot;&quot; size=&quot;20&quot; /&gt;
++	&lt;/label&gt;
++	&lt;label&gt;
++		&lt;:form_pet_votre_email:&gt;&lt;br /&gt;
++		&lt;input type=&quot;text&quot; class=&quot;forml&quot; name=&quot;adresse_email&quot;
++		value=&quot;&quot; size=&quot;20&quot; /&gt;
++	&lt;/label&gt;
++&lt;/fieldset&gt;
++&lt;br /&gt;
++&lt;p&gt;
++[(#ENV{site_obli})&lt;:form_pet_votre_site:&gt;&lt;br /&gt;]
++&lt;fieldset style='font-size: 110%; font-weight: bold;'&gt;
++	&lt;legend&gt;&lt;/legend&gt;
++	&lt;label&gt;
++	&lt;:form_pet_nom_site2:&gt;&lt;br /&gt;
++	&lt;input type=&quot;text&quot; class=&quot;forml&quot; name=&quot;signature_nom_site&quot;
++	value=&quot;&quot; size=&quot;20&quot; /&gt;
++	&lt;/label&gt;
++	&lt;label&gt;
++		&lt;:form_pet_adresse_site:&gt;&lt;br /&gt;
++		&lt;input type=&quot;text&quot; class=&quot;forml&quot; name=&quot;signature_url_site&quot;
++		value=&quot;<A HREF="http://">http://</A>&quot; size=&quot;20&quot; /&gt;
++	&lt;/label&gt;
++&lt;/fieldset&gt;
++
++[
++(#ENV{message})
+ 	&lt;br /&gt;
+ 	&lt;fieldset style='font-weight: bold'&gt;
+-	  &lt;legend&gt;&lt;/legend&gt;
+-	(#ENV{message}|=={oui}|?{' ',''})
+-	  &lt;label&gt;
+-	  &lt;:form_pet_message_commentaire:&gt;&lt;br /&gt;
+-	    &lt;textarea name=&quot;message&quot; rows=&quot;3&quot; class=&quot;forml&quot; cols=&quot;20&quot;&gt;&lt;/textarea&gt;
+-	  &lt;/label&gt;
++		&lt;legend&gt;&lt;/legend&gt;
++		&lt;label&gt;
++		&lt;:form_pet_message_commentaire:&gt;&lt;br /&gt;
++			&lt;textarea name=&quot;message&quot; rows=&quot;3&quot;
++			class=&quot;forml&quot; cols=&quot;20&quot;&gt;&lt;/textarea&gt;
++		&lt;/label&gt;
+ 	&lt;/fieldset&gt;
+-	]
+-	&lt;br /&gt;
+-	&lt;div align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; class=&quot;spip_bouton&quot; value=&quot;&lt;:bouton_valider:&gt;&quot; /&gt;&lt;/div&gt;
+-      &lt;/div&gt;
+-&lt;/form&gt;
++]
+ 
++&lt;br /&gt;
++	&lt;div align=&quot;right&quot;&gt;&lt;input type=&quot;submit&quot; class=&quot;spip_bouton&quot;
++	value=&quot;&lt;:bouton_valider:&gt;&quot; /&gt;&lt;/div&gt;
++&lt;/div&gt;
++&lt;/form&gt;
+
+Index: inc-formulaire_inscription.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_inscription.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-formulaire_inscription.php3	20 Feb 2005 22:13:52 -0000	1.2
++++ inc-formulaire_inscription.php3	3 Mar 2005 14:53:17 -0000	1.3
+@@ -17,14 +17,17 @@
+ }
+ 
+ function balise_FORMULAIRE_INSCRIPTION_dyn($mode, $focus) {
+-	if (($mode == 'redac')
+-	AND (lire_meta(&quot;accepter_inscriptions&quot;) == &quot;oui&quot;))
+-		$statut = &quot;nouveau&quot;;
+-	else if (($mode == 'forum')
+-	AND ((lire_meta('accepter_visiteurs') == 'oui')
+-		OR (lire_meta('forums_publics') == 'abo'))
+-	)
+-		$statut = &quot;6forum&quot;;
++
++	// Si une inscription est autorisee, on enregistre le demandeur
++	// comme 'nouveau' et on lui envoie ses codes par email ; lors de
++	// sa premiere connexion il obtiendra son statut final (auth-&gt;activer())
++	if (($mode == 'redac' AND lire_meta('accepter_inscriptions') == 'oui')
++	OR ($mode == 'forum' AND (
++		lire_meta('accepter_visiteurs') == 'oui'
++		OR lire_meta('forums_publics') == 'abo'
++		)
++	))
++		$statut = 'nouveau';
+ 	else
+ 		return _T('pass_rien_a_faire_ici');
+ 
+@@ -45,7 +48,7 @@
+ 				'&quot;.addslashes($mail_inscription).&quot;', '$login', '$statut')&quot;);
+ 			$pass = creer_pass_pour_auteur($id_auteur);
+ 			$message = envoyer_inscription($mail_inscription,
+-				$statut, $mode, $login, $pass);
++				$statut, $mode, $login, $pass, $nom_inscription);
+ 		}
+ 
+ 		else {
+@@ -55,7 +58,7 @@
+ 				$pass = creer_pass_pour_auteur($id_auteur);
+ 				$message = envoyer_inscription(
+ 					$mail_inscription, $row['statut'], $mode,
+-					$row['login'], $pass);
++					$row['login'], $pass, $nom_inscription);
+ 			} else {
+ 				// dead
+ 				if ($row['statut'] == '5poubelle')
+@@ -94,11 +97,12 @@
+ 
+ 
+ // envoyer identifiants par mail
+-function envoyer_inscription($mail, $statut, $type, $login, $pass) {
++function envoyer_inscription($mail, $statut, $type, $login, $pass, $nom) {
+ 	$nom_site_spip = lire_meta(&quot;nom_site&quot;);
+ 	$adresse_site = lire_meta(&quot;adresse_site&quot;);
+ 	
+-	$message = _T('form_forum_message_auto').&quot;\n\n&quot;._T('form_forum_bonjour').&quot;\n\n&quot;;
++	$message = _T('form_forum_message_auto').&quot;\n\n&quot;
++	._T('form_forum_bonjour', array('nom'=&gt;$nom)).&quot;\n\n&quot;;
+ 	if ($type == 'forum') {
+ 		$message .= _T('form_forum_voici1', array('nom_site_spip' =&gt; $nom_site_spip, 'adresse_site' =&gt; $adresse_site)) . &quot;\n\n&quot;;
+ 	} else {
+
+Index: formulaire_admin.html
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/formulaire_admin.html,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- formulaire_admin.html	20 Feb 2005 22:13:52 -0000	1.2
++++ formulaire_admin.html	3 Mar 2005 14:53:17 -0000	1.3
+@@ -1,6 +1,5 @@
+ [&lt;(#ENV{floatdiv}) class=&quot;spip-admin-float&quot;&gt;]
+ &lt;div class=&quot;spip-admin-bloc&quot; dir='#LANG_DIR'&gt;
+-&lt;div class=&quot;spip-admin&quot;&gt;
+ 	&lt;ul&gt;[
+ 	&lt;li&gt;&lt;a href='ecrire/articles.php3?id_article=(#ENV{id_article})' class='spip-admin-boutons'&gt;&lt;:admin_modifier_article:&gt; ([(#ENV{id_article})])&lt;/a&gt;&lt;/li&gt;][
+ 	&lt;li&gt;&lt;a href='ecrire/breves_voir.php3?id_breve=(#ENV{id_breve})' class='spip-admin-boutons'&gt;&lt;:admin_modifier_breve:&gt; ([(#ENV{id_breve})])&lt;/a&gt;&lt;/li&gt;][
+@@ -11,6 +10,5 @@
+ 	&lt;li&gt;&lt;a href='ecrire/(#ENV{statistiques})[id_article=(#ENV{id_article})]' class='spip-admin-boutons'&gt;[&lt;:info_visites:&gt;&nbsp;(#ENV{visites})][;&nbsp;&lt;:info_popularite_5:&gt;&nbsp;(#ENV{popularite})]&lt;/a&gt;&lt;/li&gt;][
+ 	&lt;li&gt;&lt;a href='[(#ENV{action})]var_mode=(#ENV{debug})' class='spip-admin-boutons'&gt;&lt;:admin_debug:&gt;&lt;/a&gt;&lt;/li&gt;]
+ 	&lt;/ul&gt;
+-&lt;/div&gt;
+ &lt;/div&gt;
+ [&lt;/(#ENV{floatdiv})&gt;]
+
+Index: inc-login_public.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-login_public.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-login_public.php3	20 Feb 2005 22:13:52 -0000	1.2
++++ inc-login_public.php3	3 Mar 2005 14:53:17 -0000	1.3
+@@ -92,6 +92,19 @@
+ 		$s = spip_query(&quot;SELECT * FROM spip_auteurs
+ 			WHERE login='&quot; .addslashes($login) .&quot;'&quot;);
+ 		$row =  spip_fetch_array($s);
++
++		// Retrouver ceux qui signent de leur nom ou email
++		if (!$row AND !$GLOBALS['ldap_present']) {
++			if ($t = spip_fetch_array(
++			spip_query(
++				&quot;SELECT * FROM spip_auteurs
++				WHERE (nom LIKE '&quot; .addslashes($login) .&quot;'
++				OR email LIKE '&quot; .addslashes($login) .&quot;')
++				AND login&lt;&gt;'' AND statut&lt;&gt;'5poubelle'&quot;
++			)))
++				$row = $t;
++		}
++
+ 		if ((!$row AND !$GLOBALS['ldap_present']) OR
+ 			($row['statut'] == '5poubelle') OR 
+ 			(($row['source'] == 'spip') AND $row['pass'] == '')) {
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000128.html">[Spip-carto-cvs] spipcarto navigation.js,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000130.html">[Spip-carto-cvs] spipcarto/ecrire/lang spip_en.php3,1.2,1.3 spip_ca.php3,1.2,1.3 spip_ar.php3,1.2,1.3 spip_fr.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#129">[ date ]</a>
+              <a href="thread.html#129">[ thread ]</a>
+              <a href="subject.html#129">[ subject ]</a>
+              <a href="author.html#129">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

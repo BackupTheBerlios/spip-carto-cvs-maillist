@@ -1,0 +1,978 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_flock.php3,1.3,1.4 inc_version.php3,1.10,1.11 inc_lang.php3,1.8,1.9 calendrier.css,1.5,1.6 inc_filtres.php3,1.8,1.9 spip_style.php3,1.7,1.8 message.php3,1.7,1.8 inc_calendrier.php,1.9,1.10 inc_texte.php3,1.9,1.10 inc_presentation.php3,1.10,1.11 inc_debug_sql.php3,1.7,1.8
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-August/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_flock.php3%2C1.3%2C1.4%20inc_version.php3%2C1.10%2C1.11%20inc_lang.php3%2C1.8%2C1.9%20calendrier.css%2C1.5%2C1.6%20inc_filtres.php3%2C1.8%2C1.9%20spip_style.php3%2C1.7%2C1.8%20message.php3%2C1.7%2C1.8%20inc_calendrier.php%2C1.9%2C1.10%20inc_texte.php3%2C1.9%2C1.10%20inc_presentation.php3%2C1.10%2C1.11%20inc_debug_sql.php3%2C1.7%2C1.8&In-Reply-To=%3C200508182328.j7INSaXe023383%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000225.html">
+   <LINK REL="Next"  HREF="000227.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_flock.php3,1.3,1.4 inc_version.php3,1.10,1.11 inc_lang.php3,1.8,1.9 calendrier.css,1.5,1.6 inc_filtres.php3,1.8,1.9 spip_style.php3,1.7,1.8 message.php3,1.7,1.8 inc_calendrier.php,1.9,1.10 inc_texte.php3,1.9,1.10 inc_presentation.php3,1.10,1.11 inc_debug_sql.php3,1.7,1.8</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_flock.php3%2C1.3%2C1.4%20inc_version.php3%2C1.10%2C1.11%20inc_lang.php3%2C1.8%2C1.9%20calendrier.css%2C1.5%2C1.6%20inc_filtres.php3%2C1.8%2C1.9%20spip_style.php3%2C1.7%2C1.8%20message.php3%2C1.7%2C1.8%20inc_calendrier.php%2C1.9%2C1.10%20inc_texte.php3%2C1.9%2C1.10%20inc_presentation.php3%2C1.10%2C1.11%20inc_debug_sql.php3%2C1.7%2C1.8&In-Reply-To=%3C200508182328.j7INSaXe023383%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_flock.php3,1.3,1.4 inc_version.php3,1.10,1.11 inc_lang.php3,1.8,1.9 calendrier.css,1.5,1.6 inc_filtres.php3,1.8,1.9 spip_style.php3,1.7,1.8 message.php3,1.7,1.8 inc_calendrier.php,1.9,1.10 inc_texte.php3,1.9,1.10 inc_presentation.php3,1.10,1.11 inc_debug_sql.php3,1.7,1.8">stef at berlios.de
+       </A><BR>
+    <I>Fri Aug 19 01:28:36 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000225.html">[Spip-carto-cvs] spipcarto inc-html-squel.php3,1.7,1.8 inc-urls-standard.php3,1.4,1.5 inc-criteres.php3,1.7,1.8 page.php3,1.2,1.3 inc-compilo.php3,1.7,1.8
+</A></li>
+        <LI>Next message: <A HREF="000227.html">[Spip-carto-cvs] spipcarto/ecrire cartes.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#226">[ date ]</a>
+              <a href="thread.html#226">[ thread ]</a>
+              <a href="subject.html#226">[ subject ]</a>
+              <a href="author.html#226">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv22361/ecrire
+
+Modified Files:
+	inc_flock.php3 inc_version.php3 inc_lang.php3 calendrier.css 
+	inc_filtres.php3 spip_style.php3 message.php3 
+	inc_calendrier.php inc_texte.php3 inc_presentation.php3 
+	inc_debug_sql.php3 
+Log Message:
+Mise a jour 1.8.2 pr3 (CVS 18/08)
+
+Index: inc_flock.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_flock.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_flock.php3	30 Jun 2005 10:09:40 -0000	1.3
++++ inc_flock.php3	18 Aug 2005 23:28:33 -0000	1.4
+@@ -131,4 +131,4 @@
+ 	@unlink($fichier);
+ }
+ 
+-?&gt;
++?&gt;
+\ No newline at end of file
+
+Index: inc_version.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_version.php3,v
+retrieving revision 1.10
+retrieving revision 1.11
+diff -u -d -r1.10 -r1.11
+--- inc_version.php3	10 Aug 2005 12:00:38 -0000	1.10
++++ inc_version.php3	18 Aug 2005 23:28:33 -0000	1.11
+@@ -415,7 +415,7 @@
+ $spip_version = 1.820;
+ 
+ // version de spip
+-$spip_version_affichee = &quot;1.8.2 pr2&quot;;
++$spip_version_affichee = &quot;1.8.2 pr3&quot;;
+ 
+ // version de spip / tag cvs
+ if (ereg('Name: v(.*) ','$Name$', $regs)) $spip_version_affichee = $regs[1];
+
+Index: inc_lang.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_lang.php3,v
+retrieving revision 1.8
+retrieving revision 1.9
+diff -u -d -r1.8 -r1.9
+--- inc_lang.php3	10 Aug 2005 12:00:38 -0000	1.8
++++ inc_lang.php3	18 Aug 2005 23:28:33 -0000	1.9
+@@ -200,7 +200,7 @@
+ 	'co' =&gt; &quot;corsu&quot;,
+ 	'cpf' =&gt; &quot;Kr&eacute;ol r&eacute;yon&eacute;&quot;,
+ 	'cpf_dom' =&gt; &quot;Krey&ograve;l&quot;,
+-	'cpf_hat' =&gt; &quot;Krey&ograve;l ayisyen&quot;,
++	'cpf_hat' =&gt; &quot;Kr&eacute;y&ograve;l (P&eacute;yi Dayiti)&quot;,
+ 	'cs' =&gt; &quot;&#269;e&#353;tina&quot;,
+ 	'cy' =&gt; &quot;Cymraeg&quot;,	# welsh, gallois
+ 	'da' =&gt; &quot;dansk&quot;,
+
+Index: calendrier.css
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/calendrier.css,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- calendrier.css	10 Aug 2005 12:00:38 -0000	1.5
++++ calendrier.css	18 Aug 2005 23:28:33 -0000	1.6
+@@ -26,6 +26,7 @@
+ 
+ div.navigation-calendrier {
+ 	color: white;
++	background-color: #cccccc;
+ 	font-family: verdana, arial, sans,sans-serif;
+ 	font-weight: bold;
+ 	font-size: 14px;
+@@ -85,6 +86,10 @@
+ 	font-family: Verdana, Arial, Sans, sans-serif;
+  }
+ 
++.calendrier-th a { 
++  color: black;
++}
++
+ .calendrier-table-etroit  .calendrier-td-gauche {
+ 	width: 0px;
+   	vertical-align: top;
+@@ -105,9 +110,11 @@
+   	vertical-align: top;
+  }
+ 
+-.calendrier-jour { 
++.calendrier-jour {
+ 	position: relative; 
+ 	color: #999999;
++	background-color: white;
++	border: 1px solid #aaaaaa;
+ }
+ 
+ .calendrier-agenda { 
+@@ -137,9 +144,11 @@
+ .calendrier-cadreagenda { 
+ 	visibility: hidden;
+ 	width: 100%;
++	position: absolute; 
+ 	padding-top: 5px;
+ 	padding-bottom: 5px;
+ 	border: 0px;
++	background-color: white;
+ 	-moz-border-radius-bottomleft: 8px;
+ 	-moz-border-radius-bottomright: 8px;
+  }
+@@ -150,6 +159,11 @@
+ 	font-weight: bold;
+  }
+ 
++.calendrier-evenement { 
++	padding: 2px;
++	margin-top: 2px;
++ }
++
+ .calendrier-heurepile { 
+ 	position: absolute;
+ 	margin-left: 2px;
+@@ -213,10 +227,14 @@
+ 	border: 0px;
+ }
+ 
++.calendrier-noir  { 		/*  style anar */
++	color: black;
++}
++
+ .calendrier-nb  { 		/*  style cinemat(yp)ographe */
+-	background-color: black;
+-	border: 1px solid white;
+-	color: white;
++	background-color: white;
++	border: 1px solid black;
++	color: black;
+ }
+ 
+ .calendrier-couleur1 { 		/* Fushia */
+
+Index: inc_filtres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_filtres.php3,v
+retrieving revision 1.8
+retrieving revision 1.9
+diff -u -d -r1.8 -r1.9
+--- inc_filtres.php3	10 Aug 2005 12:00:38 -0000	1.8
++++ inc_filtres.php3	18 Aug 2005 23:28:33 -0000	1.9
+@@ -122,7 +122,7 @@
+ 
+ // Enleve le numero des titres numerotes (&quot;1. Titre&quot; -&gt; &quot;Titre&quot;)
+ function supprimer_numero($texte) {
+-	$texte = ereg_replace(&quot;^[[:space:]]*[0-9]+[.)&quot;.chr(176).&quot;][[:space:]]+&quot;, &quot;&quot;, $texte);
++	$texte = preg_replace(&quot;,^[[:space:]]*[0-9]+[.)&quot;.chr(176).&quot;][[:space:]]+,&quot;, &quot;&quot;, $texte);
+ 	return $texte;
+ }
+ 
+@@ -541,7 +541,7 @@
+ 		if ($jour)
+ 			return _T('date_fmt_jour_mois_annee', array ('jourmois'=&gt;$jourmois, 'jour'=&gt;$jour, 'mois'=&gt;$mois, 'nommois'=&gt;$nommois, 'annee'=&gt;$annee));
+ 		else
+-			return _T('date_fmt_mois_annee', array ('mois'=&gt;$mois, 'nommois'=&gt;$nommois, 'annee'=&gt;$annee));
++			return trim(_T('date_fmt_mois_annee', array ('mois'=&gt;$mois, 'nommois'=&gt;$nommois, 'annee'=&gt;$annee)));
+ 
+ 	case 'nom_mois':
+ 		return $nommois;
+@@ -671,8 +671,11 @@
+ 	return $texte;
+ }
+ 
+-function date_ical($date_heure, $minutes = 0) {
+-	return date(&quot;Ymd\THis&quot;, mktime(heures($date_heure),minutes($date_heure)+$minutes,0,mois($date_heure),jour($date_heure),annee($date_heure)));
++function date_ical($date, $addminutes = 0) {
++	list($heures, $minutes, $secondes) = recup_heure($date);
++	list($annee, $mois, $jour) = recup_date($date);
++	return date(&quot;Ymd\THis&quot;, 
++		    mktime($heures, $minutes+$addminutes,$secondes,$mois,$jour,$annee));
+ }
+ 
+ function date_iso($date_heure) {
+@@ -712,48 +715,64 @@
+   return in_array($type, array('jour','mois','semaine','periode')) ? ' ' : '';
+ }
+ 
+-// A chaque appel de moins 5 arguments,cette fonction memorise un evenement
+-// decrit par une date, un descriptif, un titre et une URL. 
+-// A l'appel avec 6 arguments, l'ensemble sera mis en page selon le type
+-// indique par le 6e argument et la couleur indiquee par le 5e 
+-// (nombre indexant le tableau $contraste de inc_calendrier -- a CSS-iser)
+-// Ce 5e argument sert aussi d'index de memorisation
+-// pour avoir plusieurs calendriers dans une meme page sans interferences
+ 
++// Cette fonction memorise dans un tableau indexe par son 5e arg
++// un evenement decrit par les 4 autres (date, descriptif, titre, URL). 
++// Appellee avec une date nulle, elle renvoie le tableau construit.
++// l'indexation par le 5e arg autorise plusieurs calendriers dans une page
+ 
+-function agenda_memo($date='', $descriptif='', $titre='', $url='', $cal='', $type='')
++function agenda_memo($date=0 , $descriptif='', $titre='', $url='', $cal='')
+ {
+   static $agenda = array();
+-  if (!$type)
+-    {
+-    $agenda[$cal][(date_anneemoisjour($date))][] =  array(
++  if (!$date) return $agenda;
++  $idate = date_ical($date);
++  $cal = trim($cal); // func_get_args (filtre alterner) rajoute \n !!!!
++  $agenda[$cal][(date_anneemoisjour($date))][] =  array(
+ 			'CATEGORIES' =&gt; $cal,
+-			'DTSTART' =&gt; date_ical($date),
+-			'DTEND' =&gt; date_ical($date),
++			'DTSTART' =&gt; $idate,
++			'DTEND' =&gt; $idate,
+                         'DESCRIPTION' =&gt; texte_script($descriptif),
+                         'SUMMARY' =&gt; texte_script($titre),
+                         'URL' =&gt; $url);
+-    // signifier qu'il y a qqch
+-    return &quot; &quot;;
+-  }  else {
++  // toujours retourner vide pour qu'il ne se passe rien
++  return &quot;&quot;;
++}
+ 
++// Cette fonction recoit un nombre d'evenements, un type de calendriers
++// et une suite de noms N.
++// Elle demande a la fonction la precedente son tableau
++// et affiche selon le type les elements indexes par N dans ce tableau.
++// Ces noms N sont aussi des classes CSS utilisees par http_calendrier_init
+ 
+-    if ($type != 'periode')
+-      $evt = array('', $agenda[$cal]);
+-    else
++function agenda_affiche($i)
++{
++  $args = func_get_args();
++  $nb = array_shift($args); // nombre d'evenements (on pourrait l'afficher)
++  $sinon = array_shift($args);
++  if (!$nb) return $sinon;
++  $type = array_shift($args);
++  $agenda = agenda_memo(0);
++  $evt = array();
++  foreach ($args as $k) {  
++      if (is_array($agenda[$k]))
++	foreach($agenda[$k] as $d =&gt; $v) { 
++	  $evt[$d] = $evt[$d] ? (array_merge($evt[$d], $v)) : $v;
++	}
++  }
++  if ($type != 'periode')
++      $evt = array('', $evt);
++  else
+       {
+-	$d = array_keys($agenda[$cal]);
++	$d = array_keys($evt);
+ 	$mindate = min($d);
+ 	$min = substr($mindate,6,2);
+ 	$max = $min + ((strtotime(max($d)) - strtotime($mindate)) / (3600 * 24));
+ 	if ($max &lt; 31) $max = 0;
+-	$evt = array('', $agenda[$cal], $min, $max);
++	$evt = array('', $evt, $min, $max);
+ 	$type = 'mois';
+       }
+     include('ecrire/inc_calendrier.php');
+     return http_calendrier_init('', $type, '', '', '', $evt);
+-    }
+-
+ }
+ 
+ //
+@@ -1020,7 +1039,10 @@
+ function inserer_attribut($balise, $attribut, $val, $texte_backend=true) {
+ 	// preparer l'attribut
+ 	if ($texte_backend) $val = texte_backend($val); # supprimer les &nbsp; etc
+-	$insert = &quot; $attribut=\&quot;&quot;.entites_html(texte_backend($val)).&quot;\&quot; &quot;;
++
++	// echapper les ' pour eviter tout bug
++	$val = str_replace(&quot;'&quot;, &quot;&#39;&quot;, $val);
++	$insert = &quot; $attribut='$val' &quot;;
+ 
+ 	list($old,$r) = extraire_attribut($balise, $attribut, true);
+ 
+
+Index: spip_style.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/spip_style.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- spip_style.php3	30 Jun 2005 10:09:39 -0000	1.7
++++ spip_style.php3	18 Aug 2005 23:28:33 -0000	1.8
+@@ -1396,3 +1396,12 @@
+ 	text-decoration: none;
+ 	margin: 0;
+ }
++
++.fond-agenda {
++	background: url&lt;?php echo '(', http_img_pack('fond-agenda.gif'), ') ', $right; ?&gt; center no-repeat;
++	float: &lt;?php echo $left; ?&gt;; 
++	margin-&lt;?php echo $right; ?&gt;: 3px;
++	padding-&lt;?php echo $right; ?&gt;: 4px;
++	line-height: 12px;
++	color: #666666; 
++}
+\ No newline at end of file
+
+Index: message.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/message.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- message.php3	10 Aug 2005 12:00:38 -0000	1.7
++++ message.php3	18 Aug 2005 23:28:33 -0000	1.8
+@@ -277,7 +277,6 @@
+ 	echo  http_calendrier_rv(sql_calendrier_taches_annonces(),&quot;annonces&quot;);
+ 	echo  http_calendrier_rv(sql_calendrier_taches_pb(),&quot;pb&quot;);
+ 	echo  http_calendrier_rv(sql_calendrier_taches_rv(), &quot;rv&quot;);
+-	spip_log(&quot;messs $id_message $rv&quot;);
+ 
+ 	if ($rv != &quot;non&quot;) {
+ 	  list ($sh, $ah) = sql_calendrier_interval(sql_calendrier_jour($lannee,$lemois, $lejour));
+
+Index: inc_calendrier.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_calendrier.php,v
+retrieving revision 1.9
+retrieving revision 1.10
+diff -u -d -r1.9 -r1.10
+--- inc_calendrier.php	10 Aug 2005 12:00:38 -0000	1.9
++++ inc_calendrier.php	18 Aug 2005 23:28:33 -0000	1.10
+@@ -155,7 +155,7 @@
+ 	if (!$lpartie_cal) $lpartie_cal = $partie_cal;
+ 	list($script, $ancre) = 
+ 	  calendrier_retire_args_ancre($script ? $script :
+-						  $GLOBALS['REQUEST_URI']); 
++						  $GLOBALS['clean_link']-&gt;getUrl()); 
+ 	if (!_DIR_RESTREINT) http_calendrier_titre($time, $ltype);
+ 	if (!$evt) {
+ 	  $g = 'sql_calendrier_' . $ltype;
+@@ -198,7 +198,8 @@
+ 
+ function http_calendrier_mois($annee, $mois, $jour, $echelle, $partie_cal, $script, $ancre, $evt)
+ {
+-	global $spip_ecran, $couleur_claire, $couleur_foncee;
++	global $spip_ecran;
++	if (!isset($spip_ecran)) $spip_ecran = 'large';
+ 
+ 	list($sansduree, $evenements, $premier_jour, $dernier_jour) = $evt;
+ 
+@@ -266,6 +267,7 @@
+ 
+ function http_calendrier_mois_noms($annee, $mois, $jour, $script, $ancre){
+ 	global $couleur_claire;
++
+ 	$bandeau =&quot;&quot;;
+ 	for ($j=1; $j&lt;8;$j++){
+ 		$bandeau .= 
+@@ -273,7 +275,9 @@
+ 		  _T('date_jour_' . (($j%7)+1)) .
+ 		  &quot;&lt;/th&gt;&quot;;
+ 	}
+-	return &quot;\n&lt;tr style='background-color: $couleur_claire'&gt;$bandeau\n&lt;/tr&gt;&quot;;
++	return &quot;\n&lt;tr&quot; .
++	  (!isset($couleur_claire) ? &quot;&quot; : &quot; style='background-color: $couleur_claire'&quot;) . 
++	  &quot;&gt;$bandeau\n&lt;/tr&gt;&quot;;
+ }
+ 
+ # dispose les lignes d'un calendrier de 7 colonnes (les jours)
+@@ -287,12 +291,14 @@
+ 	  $script .= (strpos($script,'?') ? '&amp;' : '?');
+ 
+ 	// affichage du debut de semaine hors periode
+-	$ligne = '';
++	$init = '';
+ 	$debut = date(&quot;w&quot;,mktime(1,1,1,$mois,$premier_jour,$annee));
+ 	for ($i=$debut ? $debut : 7;$i&gt;1;$i--)
+-	  {$ligne .= &quot;\n\t&lt;td style=\&quot;border-bottom: 1px solid $couleur_claire;\&quot;&gt;&nbsp;&lt;/td&gt;&quot;;}
++	  {$init .= &quot;\n\t&lt;td style=\&quot;border-bottom: 1px solid $couleur_claire;\&quot;&gt;&nbsp;&lt;/td&gt;&quot;;}
+ 
+ 	$total = '';
++	$ligne = '';
++	$today=date(&quot;Ymd&quot;);
+ 	for ($j=$premier_jour; $j&lt;=$dernier_jour; $j++){
+ 		$nom = mktime(1,1,1,$mois,$j,$annee);
+ 		$jour = date(&quot;d&quot;,$nom);
+@@ -300,42 +306,38 @@
+ 		$mois_en_cours = date(&quot;m&quot;,$nom);
+ 		$annee_en_cours = date(&quot;Y&quot;,$nom);
+ 		$amj = date(&quot;Y&quot;,$nom) . $mois_en_cours . $jour;
++		$couleur_lien = &quot;black&quot;;
++		$couleur_fond = &quot;&quot;;
+ 
+-		if ($jour_semaine == 0) {
+-			$couleur_lien = &quot;black&quot;;
+-			$couleur_fond = $couleur_claire;
+-		} else {
+-			$couleur_lien = &quot;black&quot;;
+-			$couleur_fond = &quot;#eeeeee&quot;;
+-			if ($jour_semaine==1) 
++		if ($jour_semaine == 0) $couleur_fond = $couleur_claire;
++		else if ($jour_semaine==1)
+ 			  { 
+-			    $total .= &quot;\n&lt;tr&gt;$ligne\n&lt;/tr&gt;&quot;;
+-			    $ligne = '';
+-			    $border_left = &quot; border-$spip_lang_left: 1px solid $couleur_claire;&quot;;
+-			  } else $border_left = &quot;&quot;;
+-		}
++			    $total .= &quot;\n&lt;tr&gt;$init$ligne\n&lt;/tr&gt;&quot;;
++			    $ligne = $init = '';
++			  }
+ 		
+-		if ($amj == date(&quot;Ymd&quot;)) {
++		if ($amj == $today) {
+ 			$couleur_lien = &quot;red&quot;;
+ 			$couleur_fond = &quot;white&quot;;
+ 		}
+-		$evts = $evenements[$amj];
+-		if ($evts) {
+-		  $res = '';
++		$res = '';
++		if ($evts = $evenements[$amj]) {
+ 		  foreach ($evts as $evenement)
+ 		    {
+-		      list($ev, $style, $class) =
+-			isset($evenement['DTSTART']) ?
++		      $res .= isset($evenement['DTSTART']) ?
+ 			http_calendrier_avec_heure($evenement, $amj) :
+ 			http_calendrier_sans_heure($evenement);
+-		      $res .= &quot;\n&lt;div class='$class' style='$style'&gt;$ev\n&lt;/div&gt;\n&quot;;
+ 		    }
+-		  $evts = $res;
+ 		}
++
+ 		$ligne .= &quot;\n\t\t&lt;td\tclass='calendrier-td'
+-			style='height: 100px; background-color: $couleur_fond; border-bottom: 1px solid $couleur_claire; border-$spip_lang_right: 1px solid $couleur_claire;$border_left'&gt;&quot; .
++			style='height: 100px; border-bottom: 1px solid $couleur_claire; border-$spip_lang_right: 1px solid $couleur_claire;&quot; .
++		  ($couleur_fond ? &quot; background-color: $couleur_fond;&quot; : &quot;&quot;) .
++		  ($ligne ? &quot;&quot; :
++		   &quot; border-$spip_lang_left: 1px solid $couleur_claire;&quot;) .
++		  &quot;'&gt;&quot; .
+ 		  http_calendrier_mois_clics($annee_en_cours, $mois_en_cours, $jour, $script, $ancre, $couleur_lien) .
+-		  $evts .
++		  $res .
+ 		  &quot;\n\t&lt;/td&gt;&quot;;
+ 	}
+ 	return  $total . ($ligne ? &quot;\n&lt;tr&gt;$ligne\n&lt;/tr&gt;&quot; : '');
+@@ -374,7 +376,8 @@
+ 
+ function http_calendrier_semaine($annee, $mois, $jour, $echelle, $partie_cal, $script, $ancre, $evt)
+ {
+-	global $couleur_claire, $couleur_foncee, $spip_ecran;
++	global $spip_ecran;
++	if (!isset($spip_ecran)) $spip_ecran = 'large';
+ 
+ 	$init = date(&quot;w&quot;,mktime(1,1,1,$mois,$jour,$annee));
+ 	$init = $jour+1-($init ? $init : 7);
+@@ -424,7 +427,7 @@
+ }
+ 
+ function http_calendrier_semaine_noms($annee, $mois, $jour, $script, $ancre){
+-	global $couleur_claire, $couleur_foncee, $spip_ecran;
++	global $couleur_claire;
+ 	$href = $script .
+ 	  (ereg('[?&amp;]$', $script) ? '' : (strpos($script,'?') ? '&amp;' : '?')) .
+ 	  &quot;type=jour&amp;&quot;;
+@@ -445,32 +448,31 @@
+ 			     &quot; &quot; .
+ 			     $num .
+ 			     (($num == 1) ? 'er' : '') .
+-			     ($ancre  ? ('/' . $numois) : '')),
+-			    '',
+-			    'color:black;') .
++			     ($ancre  ? ('/' . $numois) : ''))) .
+ 		  &quot;&lt;/th&gt;&quot;;
+ 	}
+-	return &quot;\n&lt;tr style='background-color: $couleur_claire'&gt;$bandeau\n&lt;/tr&gt;&quot; ;
++	return &quot;\n&lt;tr&quot; .
++	  (!isset($couleur_claire) ? &quot;&quot; : &quot; style='background-color: $couleur_claire'&quot;) . 
++	  &quot;&gt;$bandeau\n&lt;/tr&gt;&quot;;
+ }
+ 
+ function http_calendrier_semaine_sept($annee, $mois, $jour, $echelle, $partie_cal, $evt)
+ {
+-	global $couleur_claire, $couleur_foncee, $spip_ecran, $spip_lang_left;
++	global $couleur_claire, $spip_ecran, $spip_lang_left;
+ 
+ 	$largeur =  ($spip_ecran == &quot;large&quot;) ? 90 : 60;
+ 
+ 	$today=date(&quot;Ymd&quot;);
+ 	$total = '';
++	$style = &quot;border-$spip_lang_left: 1px solid $couleur_claire; border-bottom: 1px solid $couleur_claire; border-top: 0px; border-right: 0px;&quot;;
+ 	for ($j=$jour; $j&lt;$jour+7;$j++){
+ 		$v = mktime(0,0,0,$mois, $j, $annee);
+ 		$total .= &quot;\n&lt;td class='calendrier-td'&gt;&quot; .
+-		  http_calendrier_ics($annee,$mois,$j, $echelle, $partie_cal, $largeur, $evt, 
+-		 (&quot; background-color: &quot; .
+-		  ((!date(&quot;w&quot;,$v)) ? 
+-		   $couleur_claire :
+-		   ((date(&quot;Ymd&quot;, $v) == $today) ? &quot;white&quot; :
+-		    &quot;#eeeeee&quot;)) .
+-		  &quot;; border-$spip_lang_left: 1px solid $couleur_claire; border-bottom: 1px solid $couleur_claire;&quot;)) . 
++		  http_calendrier_ics($annee,$mois,$j, $echelle, $partie_cal, $largeur, $evt, ($style . ( (date(&quot;w&quot;,$v)==0 &amp;&amp; isset($couleur_claire)) ? 
++			  &quot; background-color: $couleur_claire;&quot; :
++			  ((date(&quot;Ymd&quot;, $v) == $today) ? 
++			   &quot; background-color: white;&quot; :
++			   &quot; background-color: #eeeeee;&quot;)))) .
+ 		  &quot;\n&lt;/td&gt;&quot;;
+ 	}
+ 	return &quot;\n&lt;tr class='calendrier-verdana10'&gt;$total&lt;/tr&gt;&quot;;
+@@ -479,10 +481,10 @@
+ 
+ function http_calendrier_jour($annee, $mois, $jour, $echelle, $partie_cal, $script, $ancre, $evt){
+ 	global $spip_ecran;
+-
++	if (!isset($spip_ecran)) $spip_ecran = 'large';
+ 	return 	
+ 	  &quot;\n&lt;table class='calendrier-table-$spip_ecran'&gt;&quot; .
+-	  &quot;\n&lt;tr&gt;&quot; . &quot;&lt;td class='calendrier-td-gauche'&gt;&lt;/td&gt;&quot; .
++	  &quot;\n&lt;tr&gt;&lt;td class='calendrier-td-gauche'&gt;&lt;/td&gt;&quot; .
+ 	  &quot;&lt;td colspan='5' class='calendrier-td-centre'&gt;&quot; .
+ 	  http_calendrier_navigation($annee, $mois, $jour, $echelle, $partie_cal,
+ 				     (nom_jour(&quot;$annee-$mois-$jour&quot;) . &quot; &quot; .
+@@ -650,7 +652,7 @@
+ 			if ($sum)
+ 			  $sum = &quot;&lt;span class='calendrier-verdana10'&gt;&lt;b&gt;$sum&lt;/b&gt;$lieu $perso&lt;/span&gt;&quot;;
+ 			if (($largeur &gt; 90) &amp;&amp; $desc)
+-			  $sum .=  &quot;\n&lt;br /&gt;&lt;span style='color: black'&gt;$desc&lt;/span&gt;&quot;;
++			  $sum .=  &quot;\n&lt;br /&gt;&lt;span class='calendrier-noir'&gt;$desc&lt;/span&gt;&quot;;
+ 			$colors = $evenement['CATEGORIES'];
+ 
+ 			$total .= &quot;\n&lt;div class='calendrier-arial10 $colors' 
+@@ -679,9 +681,7 @@
+ 		}
+     }
+ 	return
+-	   &quot;\n&lt;div class='calendrier-jour' style='height: ${dimjour}px; font-size: ${fontsize}px;&quot; .
+-	  ($style ? $style : &quot; background-color: white; border: 1px solid #aaaaaa;&quot;) .
+-	  &quot;'&gt;\n&quot; .
++	   &quot;\n&lt;div class='calendrier-jour' style='height: ${dimjour}px; font-size: ${fontsize}px;$style'&gt;\n&quot; .
+ 	  http_calendrier_ics_grille($debut, $fin, $dimheure, $dimjour, $fontsize) .
+ 	  $total .
+ 	  &quot;\n&lt;/div&gt;&quot; .
+@@ -704,9 +704,9 @@
+ 	for ($i = $debut; $i &lt; $fin; $i++) {
+ 		for ($j=0; $j &lt; $slice; $j++) 
+ 		{
+-			$gras = &quot;calendrier-heure&quot; . ($j  ? &quot;face&quot; : &quot;pile&quot;);
+-			
+-			$total .= &quot;\n&lt;div class='$gras' style='$spip_lang_left: 0px; top: &quot;.
++			$total .= &quot;\n&lt;div class='calendrier-heure&quot; .
++				($j  ? &quot;face&quot; : &quot;pile&quot;) .
++				&quot;' style='$spip_lang_left: 0px; top: &quot;.
+ 				calendrier_top (&quot;$i:&quot;.sprintf(&quot;%02d&quot;,floor(($j*60)/$slice)), $debut, $fin, $dimheure, $dimjour, $fontsize) .
+ 				&quot;px;'&gt;$i:&quot; .
+ 				sprintf(&quot;%02d&quot;,floor(($j*60)/$slice)) . 
+@@ -737,9 +737,7 @@
+ 	foreach ($types as $k =&gt; $v) {
+ 	  $res2 = '';
+ 	  foreach ($v as $evenement) {
+-	    list($ev, $style, $class) =
+-	      http_calendrier_sans_heure($evenement);
+-	    $res2 .= &quot;\n&lt;div class='$class' style='$style'&gt;$ev\n&lt;/div&gt;\n&quot;;
++	    $res2 .= http_calendrier_sans_heure($evenement);
+ 	  }
+ 	  $res .= &quot;\n&lt;div class='calendrier-verdana10 calendrier-titre'&gt;&quot;.
+ 	    _T($k) .
+@@ -760,13 +758,15 @@
+ 	$jour = date(&quot;d&quot;,$date);
+ 	$mois = date(&quot;m&quot;,$date);
+ 	$annee = date(&quot;Y&quot;,$date);
+-	
++
++	$l = new Link($script);
++	$l-&gt;addvar(&quot;type&quot;,&quot;jour&quot;);
++
+ 	return &quot;&lt;div class='calendrier-arial10 calendrier-titre'&gt;&quot; .
+-	  http_href(&quot;$script?type=jour&amp;&quot; .
++	  http_href($l-&gt;getUrl() . '&amp;' .
+ 		    calendrier_args_date($annee, $mois, $jour),
+-		      affdate_jourcourt(&quot;$annee-$mois-$jour&quot;),
+-		      '',
+-		      'color:black;') .
++		    affdate_jourcourt(&quot;$annee-$mois-$jour&quot;),
++		    '', '', 'calendrier-noir') .
+ 	  &quot;&lt;/div&gt;&quot;;
+ }
+ 
+@@ -805,12 +805,7 @@
+   $res = &quot;\n&lt;div class='calendrier-arial10 calendrier-titre'&gt;&quot;.
+     _T('info_mois_courant').
+     &quot;&lt;/div&gt;&quot;;
+-  foreach ($r as $evenement)
+-      {
+-	list($ev, $style, $class) =
+-	  http_calendrier_sans_heure($evenement);
+-	$res .= &quot;\n&lt;div class='$class' style='$style'&gt;$ev\n&lt;/div&gt;\n&quot;; 
+-      }
++  foreach ($r as $evenement) $res .= http_calendrier_sans_heure($evenement);
+   return $res;
+ }
+ 
+@@ -830,28 +825,26 @@
+ 	if ($evenement['URL']) {
+ 		$sum = http_href($evenement['URL'], $sum, $desc);
+ 	}
+-	return array($sum, &quot;color: black&quot;, 'calendrier-arial10');
++	return &quot;\n&lt;div class='calendrier-noir calendrier-arial10'&gt;$sum\n&lt;/div&gt;\n&quot;; 
+ }
+ 
+ function http_calendrier_avec_heure($evenement, $amj)
+ {
+ 	$jour_debut = substr($evenement['DTSTART'], 0,8);
+ 	$jour_fin = substr($evenement['DTEND'], 0, 8);
+-	if (!($jour_fin &gt; 0)) $jour_fin = $jour_debut;
+-	if (!(($jour_debut &gt; 0) AND
+-	      (($jour_debut &lt;= $amj) AND ($jour_fin &gt;= $amj))))
+-	  return array();
++	if ($jour_fin &lt;= 0) $jour_fin = $jour_debut;
++	if (($jour_debut &lt;= 0) OR ($jour_debut &gt; $amj) OR ($jour_fin &lt; $amj))
++	  return &quot;&quot;;
+ 	
+ 	$desc = propre($evenement['DESCRIPTION']);
+ 	$sum = $evenement['SUMMARY'];
+ 	if (!$sum) $sum = $desc;
+-	$sum = &quot;&lt;span style='color: black'&gt;&quot; .
++	$sum = &quot;&lt;span class='calendrier-noir'&gt;&quot; .
+ 	  ereg_replace(' +','&nbsp;', typo($sum)) .
+ 	  &quot;&lt;/span&gt;&quot;;
+ 	if ($evenement['URL'])
+ 	  $sum = http_href($evenement['URL'], $sum, $desc);
+-	$radius_top = &quot; radius-top&quot;;
+-	$radius_bottom = &quot; radius-bottom&quot;;
++	$opacity = &quot;&quot;;
+ 	$deb_h = substr($evenement['DTSTART'],-6,2);
+ 	$deb_m = substr($evenement['DTSTART'],-4,2);
+ 	$fin_h = substr($evenement['DTEND'],-6,2);
+@@ -862,28 +855,21 @@
+ 	    { $deb = '&lt;b&gt;' . $deb_h . ':' . $deb_m . '&lt;/b&gt; ';}
+ 	  else { 
+ 	    $deb = '...'; 
+-	    $radius_top = &quot;&quot;;
+ 	  }
+ 	  
+ 	  if ((($fin_h &gt; 0) OR ($fin_m &gt; 0)) AND $amj == $jour_fin)
+ 	    { $fin = '&lt;b&gt;' . $fin_h . ':' . $fin_m . '&lt;/b&gt; ';}
+ 	  else { 
+ 	    $fin = '...'; 
+-	    $radius_bottom = &quot;&quot;;
+ 	  }
+ 	  
+ 	  if ($amj == $jour_debut OR $amj == $jour_fin) {
+ 	    $sum = &quot;&lt;div&gt;$deb-$fin&lt;/div&gt;$sum&quot;;
+-	    $opacity = &quot;&quot;;
+-	  }
+-	  else {
+-	    $opacity = &quot; -moz-opacity: 0.5; filter: alpha(opacity=50);&quot;;
++	  } else {
++	    $opacity ='calendrier-opacity';
+ 	  }
+-	} else { $opacity = &quot;&quot;;	}
+-
+-	return array($sum,
+-		     &quot;padding: 2px; margin-top: 2px;$opacity&quot;,
+-		     &quot;calendrier-arial10 &quot; . $evenement['CATEGORIES']);
++	}
++	return &quot;\n&lt;div class='$opacity calendrier-evenement calendrier-arial10 &quot; . $evenement['CATEGORIES'] .&quot;'&gt;$sum\n&lt;/div&gt;\n&quot;; 
+ }
+ 
+ function http_calendrier_aide_mess()
+@@ -908,7 +894,6 @@
+ {
+ 	global $spip_lang_right, $spip_lang_left, $couleur_foncee;
+ 
+-	if (!isset($couleur_foncee)) $couleur_foncee = '#aaaaaa';
+ 	if (!$echelle) $echelle = DEFAUT_D_ECHELLE;
+ 
+ 	if (!ereg('[?&amp;]$', $script)) $script .= (strpos($script,'?') ? '&amp;' : '?');
+@@ -922,8 +907,9 @@
+ 	$id = 'nav-agenda' .ereg_replace('[^A-Za-z0-9]', '', $ancre);
+ 
+ 	return 
+-	  &quot;&lt;div class='navigation-calendrier calendrier-moztop8'\nstyle='background-color: $couleur_foncee;'&gt;&quot;
+-	  . &quot;&lt;div style='float: $spip_lang_right; padding-left: 5px; padding-right: 5px;'&gt;&quot;
++	  &quot;&lt;div class='navigation-calendrier calendrier-moztop8'&quot; 
++	  . (!isset($couleur_foncee) ? &quot;&quot; : &quot;\nstyle='background-color: $couleur_foncee;'&quot;)
++	  . &quot;&gt;&lt;div style='float: $spip_lang_right; padding-left: 5px; padding-right: 5px;'&gt;&quot;
+ 	  . (($type == &quot;mois&quot;) ? '' :
+ 	     (
+ 		  http_href_img((&quot;$script$args&amp;type=$type&amp;set_partie_cal=tout$ancre&quot;),
+@@ -974,7 +960,7 @@
+ 			  (&quot; onmouseover=\&quot;montrer('$id');\&quot;&quot; .
+ 			   (($annee == $annee_today &amp;&amp; $mois == $mois_today &amp;&amp; (($type == 'mois')  || ($jour == $jour_today)))
+ 			    ? &quot; class='calendrier-opacity'&quot; : &quot;&quot;)),
+-			  _T(&quot;info_aujourdhui&quot;))
++			  _T(&quot;ecrire:info_aujourdhui&quot;))
+ 	  . &quot;&nbsp;&quot;
+ 	  . (!$args_pred ? '' :
+ 	     http_href($script . &quot;type=$type&amp;echelle=$echelle&amp;$args_pred$ancre&quot;,
+@@ -997,13 +983,12 @@
+ function http_calendrier_invisible($annee, $mois, $jour, $script, $ancre, $id)
+ {
+ 	global $spip_lang_right, $spip_lang_left, $couleur_claire;
+-	if (!isset($couleur_claire)) $couleur_claire = 'white';
+ 	$gadget = &quot;&lt;div style='position: relative;z-index: 1000;'
+ 			onmouseover=\&quot;montrer('$id');\&quot;
+-			onmouseout=\&quot;cacher('$id');\&quot;&gt;&quot;;
+-
+-	$gadget .= &quot;&lt;table id='$id' class='calendrier-cadreagenda' style='position: absolute; background-color: $couleur_claire'&gt;&quot;;
+-	$gadget .= &quot;\n&lt;tr&gt;&lt;td colspan='3' style='text-align:$spip_lang_left;'&gt;&quot;;
++			onmouseout=\&quot;cacher('$id');\&quot;&gt;&quot;
++	  . &quot;&lt;table id='$id' class='calendrier-cadreagenda'&quot;
++	  . (!isset($couleur_claire) ? &quot;&quot; : &quot; style='background-color: $couleur_claire'&quot;)
++	  . &quot;&gt;\n&lt;tr&gt;&lt;td colspan='3' style='text-align:$spip_lang_left;'&gt;&quot;;
+ 
+ 	$annee_avant = $annee - 1;
+ 	$annee_apres = $annee + 1;
+@@ -1087,8 +1072,7 @@
+ function http_calendrier_agenda_rv ($annee, $mois, $les_rv, $fclic, $perso='',
+ 				    $jour_ved='', $mois_ved='', $annee_ved='',
+ 				    $semaine='') {
+-	global $couleur_foncee;
+-	global $spip_lang_left, $spip_lang_right;
++	global $couleur_foncee, $spip_lang_left, $spip_lang_right;
+ 
+ 	// Former une date correcte (par exemple: $mois=13; $annee=2003)
+ 	$date_test = date(&quot;Y-m-d&quot;, mktime(0,0,0,$mois, 1, $annee));
+@@ -1111,15 +1095,15 @@
+ 	$jour_semaine = date(&quot;w&quot;, mktime(1,1,1,$mois,1,$annee));
+ 	if ($jour_semaine==0) $jour_semaine=7;
+ 	for ($i=1;$i&lt;$jour_semaine;$i++) $ligne .= &quot;\n\t&lt;td&gt;&lt;/td&gt;&quot;;
+-	$style0 = &quot;border: 1px solid $couleur_foncee;&quot;;
++	$style0 = (!isset($couleur_foncee)) ? &quot;&quot; : &quot; style='border: 1px solid $couleur_foncee;'&quot;;
+ 	for ($j=1; (checkdate($mois,$j,$annee)); $j++) {
++		$style = &quot;&quot;;
+ 		$nom = mktime(1,1,1,$mois,$j,$annee);
+ 		$jour_semaine = date(&quot;w&quot;,$nom);
+ 		if ($jour_semaine==0) $jour_semaine=7;
+ 
+ 		if ($j == $jour_ved AND $mois == $mois_ved AND $annee == $annee_ved) {
+ 		  $class= 'calendrier-arial11 calendrier-demiagenda';
+-		  $style = $style0;
+ 		  $type = 'jour';
+ 		  $couleur = &quot;black&quot;;
+ 		  } else if ($semaine AND $nom &gt;= $debut AND $nom &lt;= $fin) {
+@@ -1127,30 +1111,33 @@
+  		      (($jour_semaine==1) ? &quot; calendrier-$spip_lang_left&quot;  :
+ 		       (($jour_semaine==7) ? &quot; calendrier-$spip_lang_right&quot; :
+ 			''));
+-		  $style = $style0;
+ 		  $type = ($semaine ? 'semaine' : 'jour') ;
+ 		  $couleur = &quot;black&quot;;
+ 		} else {
+ 		  if ($j == $jour_today AND $cemois) {
+-			$style = &quot;background-color: $couleur_foncee&quot;;
++			$style = $couleur_foncee;
++			if(!$style) $style = '#333333';
+ 			$couleur = &quot;white&quot;;
+ 		    } else {
+ 			if ($jour_semaine == 7) {
+-				$style = &quot;background-color: #aaaaaa&quot;;
++				$style = &quot;#aaaaaa&quot;;
+ 				$couleur = 'white';
+ 			} else {
+-				$style = &quot;background-color: #ffffff&quot;;
++				$style = &quot;#ffffff&quot;;
+ 				$couleur = &quot;#aaaaaa&quot;;
+ 			}
+ 			if ($les_rv[$j] &gt; 0) {
+-			  $style = &quot;background-color: #ffffff&quot;;
++			  $style = &quot;#ffffff&quot;;
+ 			  $couleur = &quot;black&quot;;
+ 			}
+ 		  }
+ 		  $class= 'calendrier-arial11 calendrier-agenda';
+ 		  $type = ($semaine ? 'semaine' : 'jour') ;
+ 		}
+-		$ligne .= &quot;\n\t&lt;td&gt;&lt;div class='$class' style='$style'&gt;&quot; .
++		if ($style)
++		  $style = &quot; style='background-color: $style'&quot;;
++		else $style = $style0;
++		$ligne .= &quot;\n\t&lt;td&gt;&lt;div class='$class'$style&gt;&quot; .
+ 		  $fclic($annee,$mois, $j, $type, $couleur, $perso) .
+ 		  &quot;&lt;/div&gt;&lt;/td&gt;&quot;;
+ 		if ($jour_semaine==7) 
+@@ -1201,14 +1188,10 @@
+ 		&quot;&lt;td valign='middle'&gt;&quot; .
+ 		((!$rv) ? '' :
+ 		((affdate($date) == affdate($date_fin)) ?
+-		 (&quot;&lt;div class='calendrier-arial9'&quot; . 
+-		  http_style_background('fond-agenda.gif', 
+-					&quot;$spip_lang_right center no-repeat; float: $spip_lang_left; line-height: 12px; color: #666666; margin-$spip_lang_right: 3px; padding-$spip_lang_right: 4px;&quot;) .'&gt;'
++		 (&quot;&lt;div class='calendrier-arial9 fond-agenda'&gt;&quot;
+ 		  . heures($date).&quot;:&quot;.minutes($date).&quot;&lt;br /&gt;&quot;
+ 		  . heures($date_fin).&quot;:&quot;.minutes($date_fin).&quot;&lt;/div&gt;&quot;) :
+-		( &quot;&lt;div class='calendrier-arial9'&quot; . 
+-		  http_style_background('fond-agenda.gif', 
+-					&quot;$spip_lang_right center no-repeat; float: $spip_lang_left; line-height: 12px; color: #666666; margin-$spip_lang_right: 3px; padding-$spip_lang_right: 4px; text-align: center;&quot;) . '&gt;'
++		( &quot;&lt;div class='calendrier-arial9 fond-agenda' style='text-align: center;'&gt;&quot;
+ 		  . heures($date).&quot;:&quot;.minutes($date).&quot;&lt;br /&gt;...&lt;/div&gt;&quot; ))) .
+ 		&quot;&lt;div&gt;&lt;b&gt;&quot; .
+ 		  http_href($url, typo($row['titre']), '', '', 'calendrier-verdana10') .
+
+Index: inc_texte.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_texte.php3,v
+retrieving revision 1.9
+retrieving revision 1.10
+diff -u -d -r1.9 -r1.10
+--- inc_texte.php3	10 Aug 2005 12:00:38 -0000	1.9
++++ inc_texte.php3	18 Aug 2005 23:28:33 -0000	1.10
+@@ -782,9 +782,10 @@
+ 
+ 				// puis les montees (y compris apres une descente un cran trop bas)
+ 				while ($niveau &lt; $profond) {
++					if ($niveau == 0) $ajout .= &quot;\n\n&quot;;
+ 					$niveau ++;
+-					$ajout .= &quot;&lt;$type class=\&quot;spip\&quot;&gt;&quot;;
+-					$pile_type[$niveau] = &quot;&lt;/$type&gt;&quot;;
++					$ajout .= &quot;&lt;/no p&gt;&quot;.&quot;&lt;$type class=\&quot;spip\&quot;&gt;&quot;;
++					$pile_type[$niveau] = &quot;&lt;/$type&gt;&quot;.&quot;&lt;no p&gt;&quot;;
+ 				}
+ 
+ 				$ajout .= &quot;&lt;li class=\&quot;spip\&quot;&gt;&quot;;
+
+Index: inc_presentation.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_presentation.php3,v
+retrieving revision 1.10
+retrieving revision 1.11
+diff -u -d -r1.10 -r1.11
+--- inc_presentation.php3	10 Aug 2005 12:00:38 -0000	1.10
++++ inc_presentation.php3	18 Aug 2005 23:28:33 -0000	1.11
+@@ -23,6 +23,12 @@
+ //
+ // Aide
+ //
++
++// en hebreu le ? ne doit pas etre inverse
++function aide_lang_dir($spip_lang,$spip_lang_rtl) {
++	return ($spip_lang&lt;&gt;'he') ? $spip_lang_rtl : '';
++}
++
+ function aide($aide='') {
+ 	global $couleur_foncee, $spip_lang, $spip_lang_rtl, $spip_display;
+ 
+@@ -34,7 +40,7 @@
+ 		. &quot;onclick=\&quot;javascript:window.open(this.href,&quot;
+ 		. &quot;'spip_aide', 'scrollbars=yes, resizable=yes, width=740, &quot;
+ 		. &quot;height=580'); return false;\&quot;&gt;&quot;
+-		. http_img_pack(&quot;aide&quot;.$spip_lang_rtl.&quot;.gif&quot;,
++		. http_img_pack(&quot;aide&quot;.aide_lang_dir($spip_lang,$spip_lang_rtl).&quot;.gif&quot;,
+ 			_T('info_image_aide'), &quot;title=\&quot;&quot;._T('titre_image_aide')
+ 			. &quot;\&quot; width=\&quot;12\&quot; height=\&quot;12\&quot; border=\&quot;0\&quot; align=\&quot;middle\&quot;&quot;)
+ 		. &quot;&lt;/a&gt;&quot;;
+@@ -2074,9 +2080,12 @@
+ 	echo &quot;&lt;td&gt; &nbsp; &lt;/td&gt;&quot;;
+ 
+ 
++	icone_bandeau_principal (_T('icone_aide_ligne'),
++		&quot;javascript:window.open('aide_index.php3?var_lang=$spip_lang', 'aide_spip', 'scrollbars=yes,resizable=yes,width=740,height=580');&quot;,
++		&quot;aide-48&quot;.aide_lang_dir($spip_lang,$spip_lang_rtl).&quot;.png&quot;,
++		&quot;vide&quot;, &quot;&quot;, &quot;aide_index.php3?var_lang=$spip_lang&quot;,
++		&quot;aide-en-ligne&quot;, $sous_rubrique);
+ 
+-
+-	icone_bandeau_principal (_T('icone_aide_ligne'), &quot;javascript:window.open('aide_index.php3?var_lang=$spip_lang', 'aide_spip', 'scrollbars=yes,resizable=yes,width=740,height=580');&quot;, &quot;aide-48$spip_lang_rtl.png&quot;, &quot;vide&quot;, &quot;&quot;, &quot;aide_index.php3?var_lang=$spip_lang&quot;, &quot;aide-en-ligne&quot;, $sous_rubrique);
+ 	icone_bandeau_principal (_T('icone_visiter_site'), &quot;$adresse_site/&quot;, &quot;visiter-48$spip_lang_rtl.png&quot;, &quot;visiter&quot;,&quot;&quot;, &quot;visiter&quot;, $sous_rubrique);
+ 
+ 	echo &quot;&lt;/tr&gt;&lt;/table&gt;\n&quot;;
+@@ -2136,13 +2145,14 @@
+ 			$articles_mots = lire_meta('articles_mots');
+ 			if ($articles_mots != &quot;non&quot;) {
+ 				icone_bandeau_secondaire (_T('icone_mots_cles'), &quot;mots_tous.php3&quot;, &quot;mot-cle-24.gif&quot;, &quot;mots&quot;, $sous_rubrique);
++			}
+ 			///////////////////////////////////////
+ 			//MODIFICATION
+ 			///////////////////////////////////////
+ 			if ($connect_statut == '0minirezo' and $connect_toutes_rubriques) 
+ 				icone_bandeau_secondaire (_T('mot-partout'), &quot;mots_partout.php&quot;, &quot;mot-cle-24.gif&quot;, &quot;mots++&quot;, $sous_rubrique);
+ 			///////////////////////////////////////
+-			}
++			
+ 
+ 			$activer_sites = lire_meta('activer_sites');
+ 			if ($activer_sites&lt;&gt;'non')
+@@ -3172,4 +3182,4 @@
+   return &quot; style='background: url(\&quot;&quot; . _DIR_IMG_PACK . $img .  '&quot;)' .
+     ($att ? (' ' . $att) : '') . &quot;;'&quot;;
+ }
+-?&gt;
+\ No newline at end of file
++?&gt;
+
+Index: inc_debug_sql.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_debug_sql.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- inc_debug_sql.php3	10 Aug 2005 12:00:38 -0000	1.7
++++ inc_debug_sql.php3	18 Aug 2005 23:28:33 -0000	1.8
+@@ -196,7 +196,8 @@
+ 	$debug_objets['courant'] = $nom;
+ 	$debug_objets['parent'][$nom.$id] = $id_parent;
+ 	$debug_objets['pretty'][$nom.$id] = 
+-	  &quot;BOUCLE$id($type)&quot; . ereg_replace(&quot;[\r\n]&quot;, &quot; &quot;, $crit) ;
++		&quot;BOUCLE$id($type)&quot; . htmlspecialchars(
++			preg_replace(&quot;,[\r\n],&quot;, &quot;\\n&quot;, $crit));
+ 	// on synthetise avec la syntaxe standard, mais &quot;&lt;//&quot; pose pb 
+ 	$debug_objets['boucle'][$nom.$id] = 
+ 	  (!$avant ? &quot;&quot; : &quot;&lt;B$id&gt;$avant&quot;) . 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000225.html">[Spip-carto-cvs] spipcarto inc-html-squel.php3,1.7,1.8 inc-urls-standard.php3,1.4,1.5 inc-criteres.php3,1.7,1.8 page.php3,1.2,1.3 inc-compilo.php3,1.7,1.8
+</A></li>
+	<LI>Next message: <A HREF="000227.html">[Spip-carto-cvs] spipcarto/ecrire cartes.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#226">[ date ]</a>
+              <a href="thread.html#226">[ thread ]</a>
+              <a href="subject.html#226">[ subject ]</a>
+              <a href="author.html#226">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto carto_svgfile.php3,NONE,1.1 .htaccess,NONE,1.1 carto_svg.php3,NONE,1.1 mes_fonctions.php3,1.4,1.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20carto_svgfile.php3%2CNONE%2C1.1%20.htaccess%2CNONE%2C1.1%20carto_svg.php3%2CNONE%2C1.1%20mes_fonctions.php3%2C1.4%2C1.5&In-Reply-To=%3C200502252346.j1PNkLNx014245%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000107.html">
+   <LINK REL="Next"  HREF="000110.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto carto_svgfile.php3,NONE,1.1 .htaccess,NONE,1.1 carto_svg.php3,NONE,1.1 mes_fonctions.php3,1.4,1.5</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20carto_svgfile.php3%2CNONE%2C1.1%20.htaccess%2CNONE%2C1.1%20carto_svg.php3%2CNONE%2C1.1%20mes_fonctions.php3%2C1.4%2C1.5&In-Reply-To=%3C200502252346.j1PNkLNx014245%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto carto_svgfile.php3,NONE,1.1 .htaccess,NONE,1.1 carto_svg.php3,NONE,1.1 mes_fonctions.php3,1.4,1.5">stef at berlios.de
+       </A><BR>
+    <I>Sat Feb 26 00:46:21 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000107.html">[Spip-carto-cvs] spipcarto/ecrire/img_pack vignette-24.png,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000110.html">[Spip-carto-cvs] spipcarto/squelettes carto_svg.html,NONE,1.1 carto_svgfile.html,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv14135/spipcarto
+
+Modified Files:
+	mes_fonctions.php3 
+Added Files:
+	carto_svgfile.php3 .htaccess carto_svg.php3 
+Log Message:
+premier essai svg ... HS
+
+--- NEW FILE: carto_svgfile.php3 ---
+&lt;?php
+
+$fond = &quot;carto_svgfile&quot;;
+$delais = 24*3600;
+// cette ligne empeche l'affichage des boutons d'administration
+// Et les headers !!!!
+$flag_preserver = true;
+@header(&quot;Content-type: image/svg+xml&quot;);
+include (&quot;inc-public.php3&quot;);
+
+?&gt;
+--- NEW FILE: .htaccess ---
+RewriteEngine On
+RewriteRule ^carto_svgfile([0-9]+)\.svg$	carto_svgfile.php3?id_carto_carte=$1 [QSA,L]
+
+--- NEW FILE: carto_svg.php3 ---
+&lt;?php
+
+$fond = &quot;carto_svg&quot;;
+$delais = 24*3600;
+
+include (&quot;inc-public.php3&quot;);
+
+?&gt;
+
+Index: mes_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/mes_fonctions.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- mes_fonctions.php3	25 Feb 2005 12:01:32 -0000	1.4
++++ mes_fonctions.php3	25 Feb 2005 23:46:18 -0000	1.5
+@@ -4,6 +4,30 @@
+ //FILTRES
+ //////////////////////////////////////////////////
+ //////////////////////////////////////////////////
++function worldfile2width($callage){	
++	$tabcallage=worldfile2array($callage);
++	return intval($tabcallage['bottom_right']['x']-$tabcallage['top_left']['x']);
++}
++function worldfile2height($callage){	
++	$tabcallage=worldfile2array($callage);
++	return intval($tabcallage['bottom_right']['y']-$tabcallage['top_left']['y']);
++}
++
++function wkt2svgform($geometrie){
++	$wktGeomType = substr($geometrie,0,strpos($geometrie,&quot;(&quot;));
++
++	if (strcasecmp($wktGeomType ,&quot;POLYGON&quot;)==0)
++		return &quot;polygon&quot;; 
++	if (strcasecmp($$wktGeomType ,&quot;POINT&quot;)==0)
++		return &quot;circle&quot;; 
++	if (strcasecmp($wktGeomType ,&quot;LINE&quot;)==0)
++		return &quot;polyline&quot;; 
++				
++}
++function wkt2svgcoords($geometrie){
++	
++	return substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1);
++}
+ /* +---------------------------------------------+
+  *    Nom    du    Filtre : WKT to STYLE
+  * +---------------------------------------------+    
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000107.html">[Spip-carto-cvs] spipcarto/ecrire/img_pack vignette-24.png,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000110.html">[Spip-carto-cvs] spipcarto/squelettes carto_svg.html,NONE,1.1 carto_svgfile.html,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#109">[ date ]</a>
+              <a href="thread.html#109">[ thread ]</a>
+              <a href="subject.html#109">[ subject ]</a>
+              <a href="author.html#109">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

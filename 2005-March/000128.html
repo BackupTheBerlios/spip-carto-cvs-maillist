@@ -1,0 +1,826 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto navigation.js,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20navigation.js%2CNONE%2C1.1&In-Reply-To=%3C200503011745.j21HjTNx012860%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000127.html">
+   <LINK REL="Next"  HREF="000129.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto navigation.js,NONE,1.1</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20navigation.js%2CNONE%2C1.1&In-Reply-To=%3C200503011745.j21HjTNx012860%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto navigation.js,NONE,1.1">fxp at berlios.de
+       </A><BR>
+    <I>Tue Mar  1 18:45:29 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000127.html">[Spip-carto-cvs] spipcarto helper_functions.js,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000129.html">[Spip-carto-cvs] spipcarto/formulaires inc-formulaire_site.php3,1.2,1.3 formulaire_ecrire_auteur.html,1.2,1.3 inc-formulaire_forum.php3,1.2,1.3 inc-formulaire_ecrire_auteur.php3,1.2,1.3 inc-formulaire_signature.php3,1.2,1.3 formulaire_forum.html,1.2,1.3 formulaire_signature.html,1.2,1.3 inc-formulaire_inscription.php3,1.2,1.3 formulaire_admin.html,1.2,1.3 inc-login_public.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#128">[ date ]</a>
+              <a href="thread.html#128">[ thread ]</a>
+              <a href="subject.html#128">[ subject ]</a>
+              <a href="author.html#128">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv12797
+
+Added Files:
+	navigation.js 
+Log Message:
+Interface SVG avanc&#233;e
+
+--- NEW FILE: navigation.js ---
+/*
+Scripts for SVG only webmapping application navigation tools
+Copyright (C) &lt;2004&gt;  &lt;Andreas Neumann&gt;
+Version 1.02, 2005-02-21
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">neumann at karto.baug.ethz.ch</A>
+<A HREF="http://www.carto.net/">http://www.carto.net/</A>
+<A HREF="http://www.carto.net/neumann/">http://www.carto.net/neumann/</A>
+
+Credits: numerous people on <A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">svgdevelopers at yahoogroups.com</A>
+
+This ECMA script library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library (<A HREF="http://www.carto.net/papers/svg/navigationTools/lesser_gpl.txt">http://www.carto.net/papers/svg/navigationTools/lesser_gpl.txt</A>); if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+----
+
+current version: 1.02
+
+version history:
+1.0 initial version
+1.01 added cleanUp() method to map and dragObj objects, some fixes in the documentation
+1.02 fixed problems with double clicks, the second click of a double click is now ignored, using the evt.detail property
+
+original document site: <A HREF="http://www.carto.net/papers/svg/navigationTools/">http://www.carto.net/papers/svg/navigationTools/</A>
+Please contact the author in case you want to use code or ideas commercially.
+If you use this code, please include this copyright header, the included full
+LGPL 2.1 text and read the terms provided in the LGPL 2.1 license
+(<A HREF="http://www.gnu.org/copyleft/lesser.txt">http://www.gnu.org/copyleft/lesser.txt</A>)
+
+-------------------------------
+
+Please report bugs and send improvements to <A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">neumann at karto.baug.ethz.ch</A>
+If you use these scripts, please link to the original (<A HREF="http://www.carto.net/papers/svg/navigationTools/">http://www.carto.net/papers/svg/navigationTools/</A>)
+somewhere in the source-code-comment or the &quot;about&quot; of your project and give credits, thanks!
+
+*/
+
+//constructor: holds data on map and initializes various references
+function map(mapName,maxWidth,minWidth,zoomFact,nrDecimals,units,showCoords,coordXId,coordYId,dynamicLayers,digiLayers,activeDigiLayer) {
+	this.mapName = mapName; //id of svg element containing the map geometry
+	this.mapSVG = document.getElementById(this.mapName); //reference to nested SVG element holding the map-graphics
+	this.mainMapGroup = document.getElementById(this.mapName+&quot;Group&quot;); //group within mainmap - to be transformed when panning manually
+	this.dynamicLayers = dynamicLayers; //an associative array holding ids of values that are loaded from the web server dynamically (.getUrl())
+	this.nrLayerToLoad = 0; //statusVariable to indicate how many layers are still to load
+	this.maxWidth = maxWidth; //max map width
+	this.minWidth = minWidth; //min map width, after zooming in
+	this.zoomFact = zoomFact; //ratio to zoom in or out in relation to previous viewBox
+	this.digiLayers = digiLayers; //references to digiLayers (for digitizing tools)
+	this.activeDigiLayer = activeDigiLayer; //active Digi Layer, key is final group id where geometry should be copied to after digitizing
+	this.pixXOffset = parseFloat(this.mapSVG.getAttributeNS(null,&quot;x&quot;)); //offset from left margin of outer viewBox
+	this.pixYOffset = parseFloat(this.mapSVG.getAttributeNS(null,&quot;y&quot;)); //offset from top margin of outer viewBox
+	var viewBoxArray = this.mapSVG.getAttributeNS(null,&quot;viewBox&quot;).split(&quot; &quot;);
+	this.curxOrig = parseFloat(viewBoxArray[0]); //holds the current xOrig
+	this.curyOrig = parseFloat(viewBoxArray[1]); //holds the current yOrig
+	this.curWidth = parseFloat(viewBoxArray[2]); //holds the current map width
+	this.curHeight = parseFloat(viewBoxArray[3]); //holds the current map height
+	this.pixWidth = parseFloat(this.mapSVG.getAttributeNS(null,&quot;width&quot;)); //holds width of the map in pixel coordinates
+	this.pixHeight = parseFloat(this.mapSVG.getAttributeNS(null,&quot;height&quot;)); //holds height of the map in pixel coordinates
+	this.pixSize = this.curWidth / this.pixWidth; //size of a screen pixel in map units
+	this.zoomVal = this.maxWidth / this.curWidth * 100; //zoomVal in relation to initial zoom
+	this.nrDecimals = nrDecimals; //nr of decimal places to be displayed for show coordinates or accuracy when working with digitizing
+	this.navStatus = &quot;false&quot;; //to reset status in navigation
+	this.units = units; //holds a string with map units, e.g. &quot;m&quot;, alternatively String.fromCharCode(176) for degrees
+	this.showCoords = showCoords;
+	//initialize coordinate display if showCoords == true
+	if (this.showCoords == true) {
+		//add event listener for coordinate display
+		this.mapSVG.addEventListener(&quot;mousemove&quot;,this,false);
+		if (typeof(coordXId) == &quot;string&quot;) {
+			this.coordXText = document.getElementById(coordXId).firstChild;
+		}
+		else {
+			alert(&quot;Error: coordXId needs to be an id of type string&quot;);
+		}
+		if (typeof(coordYId) == &quot;string&quot;) {
+			this.coordYText = document.getElementById(coordYId).firstChild;
+		}
+		else {
+			alert(&quot;Error: coordYId needs to be an id of type string&quot;);
+		}
+	}
+	//create background-element to receive events for showing coordinates
+	var myBackgroundRect = document.createElementNS(svgNS,&quot;rect&quot;);
+	myBackgroundRect.setAttributeNS(null,&quot;x&quot;,this.curxOrig);
+	myBackgroundRect.setAttributeNS(null,&quot;y&quot;,this.curyOrig);
+	myBackgroundRect.setAttributeNS(null,&quot;width&quot;,this.curWidth);
+	myBackgroundRect.setAttributeNS(null,&quot;height&quot;,this.curHeight);
+	myBackgroundRect.setAttributeNS(null,&quot;fill&quot;,&quot;white&quot;);
+	myBackgroundRect.setAttributeNS(null,&quot;stroke&quot;,&quot;none&quot;);
+	myBackgroundRect.setAttributeNS(null,&quot;id&quot;,&quot;mapBackgroundRect&quot;);
+	this.mainMapGroup.insertBefore(myBackgroundRect,this.mainMapGroup.firstChild);
+}
+
+//resets viewBox of main map after zooming and panning
+map.prototype.newViewBox = function(refRectId) {
+	this.checkAndRemoveTempLayer();
+	var myRefRect = document.getElementById(refRectId);
+	this.curxOrig = parseFloat(myRefRect.getAttributeNS(null,&quot;x&quot;));
+	this.curyOrig = parseFloat(myRefRect.getAttributeNS(null,&quot;y&quot;));
+	this.curWidth = parseFloat(myRefRect.getAttributeNS(null,&quot;width&quot;));
+	this.curHeight = parseFloat(myRefRect.getAttributeNS(null,&quot;height&quot;));
+	var myViewBoxString = this.curxOrig + &quot; &quot; + this.curyOrig + &quot; &quot; + this.curWidth + &quot; &quot; + this.curHeight;
+	this.pixSize = this.curWidth / this.pixWidth;
+	this.zoomVal = this.maxWidth / this.curWidth * 100;
+	this.mapSVG.setAttributeNS(null,&quot;viewBox&quot;,myViewBoxString);
+	myZoomSlider.setValue(this.curWidth);
+	loadProjectSpecific();
+}
+
+map.prototype.setNewViewBox = function(xmin,ymin,xmax,ymax) {
+	//check if within constraints
+	if (xmin &lt; myRefMapDragger.constrXmin) {
+		xmin = myRefMapDragger.constrXmin;
+	}
+	if (xmax &gt; myRefMapDragger.constrXmax) {
+		xmax = myRefMapDragger.constrXmin;
+	}
+	if (ymin &lt; (myRefMapDragger.constrYmax * -1)) {
+		ymin = myRefMapDragger.constrYmax * -1;
+	}
+	if (ymax &gt; (myRefMapDragger.constrYmin * -1)) {
+		ymax = myRefMapDragger.constrYmin * -1;
+	}
+	
+	var origWidth = xmax - xmin;
+	var origHeight = ymax - ymin;
+	var myRatio = this.curWidth/this.curHeight;
+	
+	if (origWidth / origHeight &gt; myRatio) { //case rect is more wide than ratio
+		var newWidth = origWidth;
+		var newHeight = origWidth * 1 / myRatio;
+		ymin = (ymax + (newHeight - origHeight) / 2) * -1;
+	}
+	else {
+		var newHeight = origHeight;
+		var newWidth = newHeight * myRatio;
+		xmin = xmin - (newWidth - origWidth) / 2;
+		ymin = ymax * -1;
+	}
+	//check if within constraints
+	if (xmin &lt; myRefMapDragger.constrXmin) {
+		xmin = myRefMapDragger.constrXmin;
+	}
+	if (ymin &lt; myRefMapDragger.constrYmin) {
+		ymin = myRefMapDragger.constrYmin;
+	}
+	if ((xmin + newWidth) &gt; myRefMapDragger.constrXmax) {
+		xmin = myRefMapDragger.constrXmax - newWidth;
+	}
+	if ((ymin + newHeight) &gt; myRefMapDragger.constrYmax) {
+		ymin = myRefMapDragger.constrYmax - newHeight;
+	}		
+	myRefMapDragger.newView(xmin,ymin,newWidth,newHeight);
+	this.newViewBox(myRefMapDragger.dragId);
+}
+
+//handles events associated with navigation
+map.prototype.handleEvent = function(evt) {
+	var callerId = evt.currentTarget.getAttributeNS(null,&quot;id&quot;);
+	if (callerId.match(/\bzoomBgRectManual/)) {
+		this.zoomManDragRect(evt);
+	}
+	if (callerId.match(/\bzoomBgRectRecenter/)) {
+		this.recenterFinally(evt);
+	}
+	if (callerId.match(/\bbgPanManual/)) {
+		this.panManualFinally(evt);
+	}
+	if (callerId == &quot;mainMap&quot; &amp;&amp; evt.type == &quot;mousemove&quot;) {
+		this.showCoordinates(evt);
+	}
+}
+
+//calcs coordinates; relies on myMapApp to handle different window sizes and resizing of windows
+map.prototype.calcCoord = function(coordx,coordy) {
+	var coords = myMapApp.calcCoord(coordx,coordy);
+	var mapCoords = new Array();
+	mapCoords[&quot;x&quot;] = this.curxOrig + (coords[&quot;x&quot;] - this.pixXOffset) * this.pixSize;
+	mapCoords[&quot;y&quot;] = (this.curyOrig + (coords[&quot;y&quot;] - this.pixYOffset) * this.pixSize);
+	return mapCoords;
+}
+
+//displays x and y coordinates in two separate text elements
+map.prototype.showCoordinates = function(evt) {
+	var mapCoords = this.calcCoord(evt.clientX,evt.clientY);
+	this.coordXText.nodeValue = &quot;X: &quot; + formatNumberString(mapCoords[&quot;x&quot;].toFixed(this.nrDecimals)) + this.units;
+	this.coordYText.nodeValue = &quot;Y: &quot; + formatNumberString((mapCoords[&quot;y&quot;] * -1).toFixed(this.nrDecimals)) + this.units;
+}
+
+//chekcs for and removes temporary rectangle objects
+map.prototype.checkAndRemoveTempLayer = function() {
+	if (this.navStatus != &quot;false&quot;) {
+		if (this.navStatus == &quot;zoomManual&quot;) {
+			this.mainMapGroup.removeChild(document.getElementById(&quot;zoomBgRectManual&quot;));	
+		}
+		if (this.navStatus == &quot;recenter&quot;) {
+			this.mainMapGroup.removeChild(document.getElementById(&quot;zoomBgRectRecenter&quot;));	
+		}
+		if (this.navStatus.match(/\bpanmanual/)) {
+			this.mainMapGroup.removeChild(document.getElementById(&quot;bgPanManual&quot;));	
+		}
+		this.navStatus = &quot;false&quot;;
+	}
+}
+
+//starts manual zooming mode
+map.prototype.zoomManual = function(evt) {
+	if (Math.round(myMainMap.curWidth) &gt; myMainMap.minWidth &amp;&amp; evt.detail == 1) {
+		this.checkAndRemoveTempLayer();
+		this.navStatus = &quot;zoomManual&quot;;
+		var zoomBgRect = document.createElementNS(svgNS,&quot;rect&quot;);
+		zoomBgRect.setAttributeNS(null,&quot;x&quot;,this.curxOrig);
+		zoomBgRect.setAttributeNS(null,&quot;y&quot;,this.curyOrig);
+		zoomBgRect.setAttributeNS(null,&quot;width&quot;,this.curWidth);
+		zoomBgRect.setAttributeNS(null,&quot;height&quot;,this.curHeight);
+		zoomBgRect.setAttributeNS(null,&quot;fill&quot;,&quot;white&quot;);
+		zoomBgRect.setAttributeNS(null,&quot;fill-opacity&quot;,&quot;0.3&quot;);
+		zoomBgRect.setAttributeNS(null,&quot;stroke&quot;,&quot;none&quot;);
+		zoomBgRect.setAttributeNS(null,&quot;id&quot;,&quot;zoomBgRectManual&quot;);
+		zoomBgRect.addEventListener(&quot;mousedown&quot;,this, false);
+		zoomBgRect.addEventListener(&quot;mousemove&quot;,this, false);
+		zoomBgRect.addEventListener(&quot;mouseup&quot;,this, false);
+		zoomBgRect.addEventListener(&quot;mouseout&quot;,this,false);
+		this.mainMapGroup.appendChild(zoomBgRect);
+		statusChange(&quot;Click and drag rectangle (upper left to lower right) for new map extent.&quot;);
+	}
+}
+
+//manages manual zooming by drawing a rectangle
+map.prototype.zoomManDragRect = function(evt) {
+	var mapCoords = this.calcCoord(evt.clientX,evt.clientY);
+	var myX = mapCoords[&quot;x&quot;];
+	var myY = mapCoords[&quot;y&quot;];
+	var myYXFact = this.curHeight / this.curWidth;
+	if (evt.type == &quot;mousedown&quot;) {
+		this.manZoomActive = 1;
+		this.zoomRect = document.createElementNS(svgNS,&quot;rect&quot;);
+		var myLineWidth = this.curWidth * 0.003;
+		this.zoomRect.setAttributeNS(null,&quot;id&quot;,&quot;zoomRect&quot;);
+		this.zoomRect.setAttributeNS(null,&quot;style&quot;,&quot;fill:darksalmon;fill-opacity:0.5;stroke:dimgray;stroke-width:&quot;+myLineWidth+&quot;;stroke-dasharray:&quot;+(myLineWidth*3)+&quot;,&quot;+myLineWidth);
+		this.zoomRect.setAttributeNS(null,&quot;pointer-events&quot;,&quot;none&quot;);
+		this.zoomRect.setAttributeNS(null,&quot;x&quot;,myX);
+		this.zoomRect.setAttributeNS(null,&quot;y&quot;,myY);
+		this.zoomRect.setAttributeNS(null,&quot;width&quot;,this.minWidth);
+		this.zoomRect.setAttributeNS(null,&quot;height&quot;,this.minWidth * myYXFact);
+		this.mainMapGroup.appendChild(this.zoomRect);
+		this.zoomRectOrigX = myX;
+		this.zoomRectOrigY = myY;
+	}
+	if (evt.type == &quot;mousemove&quot; &amp;&amp; this.manZoomActive == 1) {
+		var myZoomWidth = myX - this.zoomRectOrigX;
+		if (myZoomWidth &lt; 0) {
+			if (Math.abs(myZoomWidth) &lt; this.minWidth) {
+				this.zoomRect.setAttributeNS(null,&quot;x&quot;,this.zoomRectOrigX - this.minWidth);
+				this.zoomRect.setAttributeNS(null,&quot;y&quot;,this.zoomRectOrigY - this.minWidth * myYXFact);
+				this.zoomRect.setAttributeNS(null,&quot;width&quot;,this.minWidth);
+				this.zoomRect.setAttributeNS(null,&quot;height&quot;,this.minWidth * myYXFact);
+			}
+			else {
+				this.zoomRect.setAttributeNS(null,&quot;x&quot;,myX);
+				this.zoomRect.setAttributeNS(null,&quot;y&quot;,this.zoomRectOrigY - Math.abs(myZoomWidth) * myYXFact);
+				this.zoomRect.setAttributeNS(null,&quot;width&quot;,Math.abs(myZoomWidth));
+				this.zoomRect.setAttributeNS(null,&quot;height&quot;,Math.abs(myZoomWidth) * myYXFact);			
+			}
+		}
+		else {
+			this.zoomRect.setAttributeNS(null,&quot;x&quot;,this.zoomRectOrigX);
+			this.zoomRect.setAttributeNS(null,&quot;y&quot;,this.zoomRectOrigY);
+			if (myZoomWidth &lt; this.minWidth) {
+				this.zoomRect.setAttributeNS(null,&quot;width&quot;,this.minWidth);
+				this.zoomRect.setAttributeNS(null,&quot;height&quot;,this.minWidth * myYXFact);		
+			}
+			else {
+				this.zoomRect.setAttributeNS(null,&quot;width&quot;,myZoomWidth);
+				this.zoomRect.setAttributeNS(null,&quot;height&quot;,myZoomWidth * myYXFact);
+			}
+		}
+	}
+	if ((evt.type == &quot;mouseup&quot; || evt.type == &quot;mouseout&quot;) &amp;&amp; this.manZoomActive == 1) {
+		this.manZoomActive = 0;
+		this.navStatus = &quot;false&quot;;
+		if (parseFloat(this.zoomRect.getAttributeNS(null,&quot;width&quot;)) &gt; this.curWidth * 0.02) {
+			myRefMapDragger.newView(parseFloat(this.zoomRect.getAttributeNS(null,&quot;x&quot;)),parseFloat(this.zoomRect.getAttributeNS(null,&quot;y&quot;)),parseFloat(this.zoomRect.getAttributeNS(null,&quot;width&quot;)),parseFloat(this.zoomRect.getAttributeNS(null,&quot;height&quot;)));
+			this.newViewBox(myRefMapDragger.dragId);
+		}
+		this.mainMapGroup.removeChild(this.zoomRect);
+		this.mainMapGroup.removeChild(document.getElementById(&quot;zoomBgRectManual&quot;));
+		statusChange(&quot;map ready&quot;);
+	}
+}
+
+//initializes recentering mode
+map.prototype.recenter = function(evt) {
+	if (evt.detail == 1) {
+		this.checkAndRemoveTempLayer();
+		this.navStatus = &quot;recenter&quot;;
+		var zoomBgRect = document.createElementNS(svgNS,&quot;rect&quot;);
+		zoomBgRect.setAttributeNS(null,&quot;x&quot;,this.curxOrig);
+		zoomBgRect.setAttributeNS(null,&quot;y&quot;,this.curyOrig);
+		zoomBgRect.setAttributeNS(null,&quot;width&quot;,this.curWidth);
+		zoomBgRect.setAttributeNS(null,&quot;height&quot;,this.curHeight);
+		zoomBgRect.setAttributeNS(null,&quot;fill&quot;,&quot;white&quot;);
+		zoomBgRect.setAttributeNS(null,&quot;fill-opacity&quot;,&quot;0.3&quot;);
+		zoomBgRect.setAttributeNS(null,&quot;stroke&quot;,&quot;none&quot;);
+		zoomBgRect.setAttributeNS(null,&quot;id&quot;,&quot;zoomBgRectRecenter&quot;);
+		zoomBgRect.addEventListener(&quot;click&quot;,this, false);
+		this.mainMapGroup.appendChild(zoomBgRect);
+		statusChange(&quot;Click in map to define new map center.&quot;);
+	}
+}
+
+//finishes recentering after mouse-click
+map.prototype.recenterFinally = function(evt) {
+	if (evt.type == &quot;click&quot;) {
+		var mapCoords = this.calcCoord(evt.clientX,evt.clientY);
+		var myX = mapCoords[&quot;x&quot;];
+		var myY = mapCoords[&quot;y&quot;];
+		var myNewX = myX - this.curWidth / 2;
+		var myNewY = myY - this.curHeight / 2;
+		
+		//check if within constraints
+		if (myNewX &lt; myRefMapDragger.constrXmin) {
+			myNewX = myRefMapDragger.constrXmin;
+		}
+		if (myNewY &lt; myRefMapDragger.constrYmin) {
+			myNewY = myRefMapDragger.constrYmin;
+		}
+		if ((myNewX + this.curWidth) &gt; myRefMapDragger.constrXmax) {
+			myNewX = myRefMapDragger.constrXmax - this.curWidth;
+		}
+		if ((myNewY + this.curHeight) &gt; myRefMapDragger.constrYmax) {
+			myNewY = myRefMapDragger.constrYmax - this.curHeight;
+		}
+		myRefMapDragger.newView(myNewX,myNewY,this.curWidth,this.curHeight);
+		this.navStatus = &quot;false&quot;;
+		this.newViewBox(myRefMapDragger.dragId);
+			
+		this.mainMapGroup.removeChild(document.getElementById(&quot;zoomBgRectRecenter&quot;));
+		statusChange(&quot;map ready&quot;);
+	}
+}
+
+//initializes manual panning
+map.prototype.panManual = function(evt) {
+	if (evt.detail == 1) {
+		this.checkAndRemoveTempLayer();
+		this.navStatus = &quot;panmanual&quot;;
+		//draw a temporary over whole map to avoid interference with existing events
+		var myBackgroundRect = document.getElementById(&quot;mapBackgroundRect&quot;);
+		var panManRect = document.createElementNS(svgNS,&quot;rect&quot;);
+		panManRect.setAttributeNS(null,&quot;x&quot;,myBackgroundRect.getAttributeNS(null,&quot;x&quot;));
+		panManRect.setAttributeNS(null,&quot;y&quot;,myBackgroundRect.getAttributeNS(null,&quot;y&quot;));
+		panManRect.setAttributeNS(null,&quot;width&quot;,myBackgroundRect.getAttributeNS(null,&quot;width&quot;));
+		panManRect.setAttributeNS(null,&quot;height&quot;,myBackgroundRect.getAttributeNS(null,&quot;height&quot;));
+		panManRect.setAttributeNS(null,&quot;fill&quot;,&quot;white&quot;);
+		panManRect.setAttributeNS(null,&quot;fill-opacity&quot;,&quot;0.3&quot;);
+		panManRect.setAttributeNS(null,&quot;stroke&quot;,&quot;none&quot;);
+		panManRect.setAttributeNS(null,&quot;id&quot;,&quot;bgPanManual&quot;);
+		panManRect.addEventListener(&quot;mousedown&quot;,this, false);
+		panManRect.addEventListener(&quot;mousemove&quot;,this, false);
+		panManRect.addEventListener(&quot;mouseup&quot;,this, false);
+		panManRect.addEventListener(&quot;mouseout&quot;,this, false);
+		this.mainMapGroup.appendChild(panManRect);
+		statusChange(&quot;Mouse down and move to pan the map, up to load current view.&quot;);
+	}
+}
+
+//manages and finishes manual panning
+map.prototype.panManualFinally = function(evt) {
+	if (evt.type == &quot;mousedown&quot;) {
+		this.navStatus = &quot;panmanualActive&quot;;
+		this.panCoords = this.calcCoord(evt.clientX,evt.clientY);
+	}
+	if (evt.type == &quot;mousemove&quot; &amp;&amp; this.navStatus == &quot;panmanualActive&quot;) {
+		var mapCoords = this.calcCoord(evt.clientX,evt.clientY);
+		var diffX = this.panCoords[&quot;x&quot;] - mapCoords[&quot;x&quot;];
+		var diffY = this.panCoords[&quot;y&quot;] - mapCoords[&quot;y&quot;];
+		var myNewX = this.curxOrig + diffX;
+		var myNewY = this.curyOrig + diffY;
+		//check if within constraints
+		if (myNewX &lt; myRefMapDragger.constrXmin) {
+			var myNewXTemp = myRefMapDragger.constrXmin;
+			diffX = diffX + (myNewXTemp - myNewX);
+			myNewX = myNewXTemp;
+		}
+		if (myNewY &lt; myRefMapDragger.constrYmin) {
+			var myNewYTemp = myRefMapDragger.constrYmin;
+			diffY = diffY + (myNewYTemp - myNewY);
+			myNewY = myNewYTemp;
+		}
+		if ((myNewX + this.curWidth) &gt; myRefMapDragger.constrXmax) {
+			var myNewXTemp = myRefMapDragger.constrXmax - this.curWidth;
+			diffX = diffX + (myNewXTemp - myNewX);
+			myNewX = myNewXTemp;
+		}
+		if ((myNewY + this.curHeight) &gt; myRefMapDragger.constrYmax) {
+			var myNewYTemp = myRefMapDragger.constrYmax - this.curHeight;
+			diffY = diffY + (myNewYTemp - myNewY);
+			myNewY = myNewYTemp;
+		}		
+		var transformString = &quot;translate(&quot;+(diffX * -1) +&quot;,&quot;+(diffY * -1)+&quot;)&quot;;
+		this.mainMapGroup.setAttributeNS(null,&quot;transform&quot;,transformString);
+		myRefMapDragger.newView(myNewX,myNewY,this.curWidth,this.curHeight);
+	}
+	if ((evt.type == &quot;mouseup&quot; || evt.type == &quot;mouseout&quot;) &amp;&amp; this.navStatus == &quot;panmanualActive&quot;) {
+		this.navStatus = &quot;false&quot;;
+		this.mainMapGroup.setAttributeNS(null,&quot;transform&quot;,&quot;translate(0,0)&quot;);
+		this.newViewBox(myRefMapDragger.dragId);			
+		this.mainMapGroup.removeChild(document.getElementById(&quot;bgPanManual&quot;));
+		statusChange(&quot;map ready&quot;);	
+	}
+}
+
+//remove all temporarily added elements and event listeners
+map.prototype.cleanUp = function() {
+			//remove background rect
+			var oldBackground = document.getElementById(&quot;mapBackgroundRect&quot;);
+
+			oldBackground.parentNode.removeChild(oldBackground);
+			//remove eventlisteners
+			if (this.showCoords == true) {
+				//add event listener for coordinate display
+				this.mapSVG.removeEventListener(&quot;mousemove&quot;,this,false);
+			}
+
+}
+
+//make an element (rectangle) draggable within constraints
+function dragObj(dragId,referenceMap,myDragSymbol,dragSymbThreshold,showCoords,coordXId,coordYId,mainMapObj) {
+	this.dragId = dragId;
+	this.myDragger = document.getElementById(this.dragId);
+	this.myRefMap = document.getElementById(referenceMap);
+	this.myDragSymbol = document.getElementById(myDragSymbol);	
+	this.dragSymbThreshold = dragSymbThreshold;
+	var viewBox = this.myRefMap.getAttributeNS(null,&quot;viewBox&quot;).split(&quot; &quot;);
+	this.constrXmin = parseFloat(viewBox[0]);
+	this.constrYmin = parseFloat(viewBox[1]);
+	this.constrXmax = this.constrXmin + parseFloat(viewBox[2]);
+	this.constrYmax = this.constrYmin + parseFloat(viewBox[3]);
+	this.refMapX = parseFloat(this.myRefMap.getAttributeNS(null,&quot;x&quot;));
+	this.refMapY = parseFloat(this.myRefMap.getAttributeNS(null,&quot;y&quot;));
+	this.refMapWidth = parseFloat(this.myRefMap.getAttributeNS(null,&quot;width&quot;));
+	this.pixSize = (this.constrXmax - this.constrXmin) / this.refMapWidth;
+	this.mainMapObj = mainMapObj;
+	//initialize coordinate display if showCoords == true
+	this.showCoords = showCoords;
+	if (this.showCoords == true) {
+		//add event listener for coordinate display
+		this.myRefMap.addEventListener(&quot;mousemove&quot;,this,false);
+		if (typeof(coordXId) == &quot;string&quot;) {
+			this.coordXText = document.getElementById(coordXId).firstChild;
+		}
+		else {
+			alert(&quot;Error: coordXId needs to be an id of type string&quot;);
+		}
+		if (typeof(coordYId) == &quot;string&quot;) {
+			this.coordYText = document.getElementById(coordYId).firstChild;
+		}
+		else {
+			alert(&quot;Error: coordYId needs to be an id of type string&quot;);
+		}
+	}
+	this.status = false;
+}
+
+dragObj.prototype.calcCoord = function(coordx,coordy) {
+	var coords = myMapApp.calcCoord(coordx,coordy);
+	var mapCoords = new Array();
+	mapCoords[&quot;x&quot;] = this.constrXmin + (coords[&quot;x&quot;] - this.refMapX) * this.pixSize;
+	mapCoords[&quot;y&quot;] = this.constrYmin + ((coords[&quot;y&quot;]) - this.refMapY) * this.pixSize;
+	return mapCoords;
+}
+
+dragObj.prototype.handleEvent = function(evt) {
+	if (evt.type == &quot;mousemove&quot;) {
+		var mapCoords = this.calcCoord(evt.clientX,evt.clientY);
+		this.coordXText.nodeValue = &quot;X: &quot; + formatNumberString(mapCoords[&quot;x&quot;].toFixed(this.mainMapObj.nrDecimals)) + this.mainMapObj.units;
+		this.coordYText.nodeValue = &quot;Y: &quot; + formatNumberString((mapCoords[&quot;y&quot;] * -1).toFixed(this.mainMapObj.nrDecimals)) + this.mainMapObj.units;
+	}
+}
+
+dragObj.prototype.newView = function(x,y,width,height) {
+	this.myDragger.setAttributeNS(null,&quot;x&quot;,x);
+	this.myDragger.setAttributeNS(null,&quot;y&quot;,y);
+	this.myDragger.setAttributeNS(null,&quot;width&quot;,width);
+	this.myDragger.setAttributeNS(null,&quot;height&quot;,height);
+	this.myDragSymbol.setAttributeNS(null,&quot;x&quot;,(x + width/2));
+	this.myDragSymbol.setAttributeNS(null,&quot;y&quot;,(y + height/2));
+	if (width &lt; this.dragSymbThreshold) {
+		this.myDragSymbol.setAttributeNS(null,&quot;visibility&quot;,&quot;visible&quot;);
+	}
+	else {
+		this.myDragSymbol.setAttributeNS(null,&quot;visibility&quot;,&quot;hidden&quot;);	
+	}
+}
+
+dragObj.prototype.resizeDragger = function(status,sliderGroupName,width) {
+	var myX = parseFloat(this.myDragger.getAttributeNS(null,&quot;x&quot;));
+	var myY = parseFloat(this.myDragger.getAttributeNS(null,&quot;y&quot;));
+	var myWidth = parseFloat(this.myDragger.getAttributeNS(null,&quot;width&quot;));
+	var myHeight = parseFloat(this.myDragger.getAttributeNS(null,&quot;height&quot;));
+	var myCenterX = myX + myWidth / 2;
+	var myCenterY = myY + myHeight / 2;
+	var myRatio = myHeight / myWidth;
+	var toMoveX = myCenterX - width / 2;
+	var toMoveY = myCenterY - width * myRatio / 2;
+	if (toMoveX &lt; this.constrXmin) {
+		toMoveX = this.constrXmin;
+	}
+	if ((toMoveX + width) &gt; this.constrXmax) {
+		toMoveX = this.constrXmax - width;
+	}
+	if (toMoveY &lt; this.constrYmin) {
+		toMoveY = this.constrYmin;
+	}
+	if ((toMoveY + width * myRatio) &gt; this.constrYmax) {
+		toMoveY = this.constrYmax - width * myRatio;
+	}
+	this.newView(toMoveX,toMoveY,width,width * myRatio);
+	if (status == &quot;release&quot;) {
+		this.mainMapObj.newViewBox(this.dragId);
+	}
+}
+
+dragObj.prototype.drag = function(evt) {
+	if (evt.type == &quot;mousedown&quot;) {
+		this.status = true;
+	}
+	if ((evt.type == &quot;mousemove&quot; || evt.type == &quot;mousedown&quot;) &amp;&amp; this.status == true) {
+		var coords = this.calcCoord(evt.clientX,evt.clientY);
+		var newEvtX = coords[&quot;x&quot;];
+		var newEvtY = coords[&quot;y&quot;];
+		var myX = parseFloat(this.myDragger.getAttributeNS(null,&quot;x&quot;));
+		var myY = parseFloat(this.myDragger.getAttributeNS(null,&quot;y&quot;));
+		var myWidth = parseFloat(this.myDragger.getAttributeNS(null,&quot;width&quot;));
+		var myHeight = parseFloat(this.myDragger.getAttributeNS(null,&quot;height&quot;));
+		var toMoveX = newEvtX - myWidth / 2;
+		var toMoveY = newEvtY - myHeight / 2;
+		if (toMoveX &lt; this.constrXmin) {
+			toMoveX = this.constrXmin;
+		}
+		if ((toMoveX + myWidth) &gt; this.constrXmax) {
+			toMoveX = this.constrXmax - myWidth;
+		}
+		if (toMoveY &lt; this.constrYmin) {
+			toMoveY = this.constrYmin;
+		}
+		if ((toMoveY + myHeight) &gt; this.constrYmax) {
+			toMoveY = this.constrYmax - myHeight;
+		}
+		this.newView(toMoveX,toMoveY,myWidth,myHeight);
+	}
+	if ((evt.type == &quot;mouseup&quot; || evt.type == &quot;mouseout&quot;) &amp;&amp; this.status == true) {
+		this.status = false;
+		if (evt.detail == 1) { //second click is ignored
+			this.mainMapObj.newViewBox('dragRectForRefMap')
+		}
+	}
+}
+
+dragObj.prototype.zoom = function(inOrOut) {
+	var myOldX = this.myDragger.getAttributeNS(null,&quot;x&quot;);
+	var myOldY = this.myDragger.getAttributeNS(null,&quot;y&quot;);
+	var myOldWidth = this.myDragger.getAttributeNS(null,&quot;width&quot;);
+	var myOldHeight = this.myDragger.getAttributeNS(null,&quot;height&quot;);
+	switch (inOrOut) {
+		case &quot;in&quot;:
+			var myNewX = parseFloat(myOldX) + myOldWidth / 2 - (myOldWidth * this.mainMapObj.zoomFact * 0.5);
+			var myNewY = parseFloat(myOldY) + myOldHeight / 2 - (myOldHeight * this.mainMapObj.zoomFact * 0.5);
+			var myNewWidth = myOldWidth * this.mainMapObj.zoomFact;
+			var myNewHeight = myOldHeight * this.mainMapObj.zoomFact;
+			if (myNewWidth &lt; this.mainMapObj.minWidth) {
+				var myYXFact = this.mainMapObj.curHeight / this.mainMapObj.curWidth;
+				myNewWidth = this.mainMapObj.minWidth;
+				myNewHeight = myNewWidth * myYXFact;
+				myNewX = parseFloat(myOldX) + myOldWidth / 2 - (myNewWidth * 0.5);
+				myNewY = parseFloat(myOldY) + myOldHeight / 2 - (myNewHeight * 0.5);
+			}
+			break;
+		case &quot;out&quot;:
+			var myNewX = parseFloat(myOldX) + myOldWidth / 2 - (myOldWidth * (1 + this.mainMapObj.zoomFact) * 0.5);
+			var myNewY = parseFloat(myOldY) + myOldHeight / 2 - (myOldHeight * (1 + this.mainMapObj.zoomFact) * 0.5);
+			var myNewWidth = myOldWidth * (1 + this.mainMapObj.zoomFact);
+			var myNewHeight = myOldHeight * (1 + this.mainMapObj.zoomFact);
+			break;
+		default:
+			var myNewX = this.constrXmin;
+			var myNewY = this.constrYmin;
+			var myNewWidth = this.constrXmax - this.constrXmin;
+			var myNewHeight = this.constrYmax - this.constrYmin;
+			break;
+	}	
+	//check if within constraints
+	if (myNewWidth &gt; (this.constrXmax - this.constrXmin)) {
+		myNewWidth = this.constrXmax - this.constrXmin;
+	}
+	if (myNewHeight &gt; (this.constrYmax - this.constrYmin)) {
+		myNewHeight = this.constrYmax - this.constrYmin;
+	}
+	if (myNewX &lt; this.constrXmin) {
+		myNewX = this.constrXmin;
+	}
+	if (myNewY &lt; this.constrYmin) {
+		myNewY = this.constrYmin;
+	}
+	if ((myNewX + myNewWidth) &gt; this.constrXmax) {
+		myNewX = this.constrXmax - myNewWidth;
+	}
+	if ((myNewY + myNewHeight) &gt; this.constrYmax) {
+		myNewY = this.constrYmax - myNewHeight;
+	}
+	//alert(myNewX+&quot;, &quot;+myNewY+&quot;, &quot;+myNewWidth+&quot;, &quot;+myNewHeight);
+	this.newView(myNewX,myNewY,myNewWidth,myNewHeight);
+	this.mainMapObj.newViewBox(this.dragId);
+}
+
+dragObj.prototype.pan = function (myX,myY,howmuch) {
+	//get values from draggable rectangle
+	var xulcorner = parseFloat(this.myDragger.getAttributeNS(null,&quot;x&quot;));
+	var yulcorner = parseFloat(this.myDragger.getAttributeNS(null,&quot;y&quot;));
+	var width = parseFloat(this.myDragger.getAttributeNS(null,&quot;width&quot;));
+	var height = parseFloat(this.myDragger.getAttributeNS(null,&quot;height&quot;));
+
+	//set values of draggable rectangle
+	var rectXulcorner = xulcorner + howmuch * width * myX;
+	var rectYulcorner = yulcorner + howmuch * height * myY;
+	//check if within constraints
+	if (rectXulcorner &lt; this.constrXmin) {
+		rectXulcorner = this.constrXmin;
+	}
+	if (rectYulcorner &lt; this.constrYmin) {
+		rectYulcorner = this.constrYmin;
+	}
+	if ((rectXulcorner + width) &gt; this.constrXmax) {
+		rectXulcorner = this.constrXmax - width;
+	}
+	if ((rectYulcorner + height) &gt; this.constrYmax) {
+		rectYulcorner = this.constrYmax - height;
+	}
+	this.newView(rectXulcorner,rectYulcorner,width,height);
+
+	//set viewport of main map
+	if ((xulcorner != rectXulcorner) || (yulcorner != rectYulcorner)) {
+		this.mainMapObj.newViewBox(this.dragId);
+	}
+
+	statusChange(&quot;map ready ...&quot;);
+}
+
+//remove all temporarily used elements and event listeners
+dragObj.prototype.cleanUp = function() {
+			//remove eventlisteners
+			if (this.showCoords == true) {
+				//add event listener for coordinate display
+				this.myRefMap.removeEventListener(&quot;mousemove&quot;,this,false);
+			}
+
+}
+
+//magnifier glass mouse-over effects
+function magnify(evt,scaleFact,inOrOut) {
+	if (inOrOut == &quot;in&quot;) {
+		if (Math.round(myMainMap.curWidth) &gt; myMainMap.minWidth) {
+			statusChange(&quot;click to zoom in &quot;);
+			scaleObject(evt,scaleFact);
+		}
+		else {
+			statusChange(&quot;maximum zoom factor reached! cannot zoom in any more!&quot;);
+		}
+	}
+	if (inOrOut == &quot;out&quot;) {
+		if (Math.round(myMainMap.curWidth) &lt; myMainMap.maxWidth) {
+			statusChange(&quot;click to zoom out&quot;);
+			scaleObject(evt,scaleFact);
+		}
+		else {
+			statusChange(&quot;Minimum zoom factor reached. Cannot zoom out any more.&quot;);
+		}
+	}
+	if (inOrOut == &quot;manual&quot;) {
+		if (Math.round(myMainMap.curWidth) &gt; myMainMap.minWidth) {
+			statusChange(&quot;Click and Drag Rectangle in main map.&quot;);
+			scaleObject(evt,scaleFact);
+		}
+		else {
+			statusChange(&quot;Maximum zoom factor reached. Cannot zoom in any more.&quot;);
+		}
+	}
+	if (inOrOut == &quot;full&quot;) {
+		if (Math.round(myMainMap.curWidth) &lt; myMainMap.maxWidth) {
+			statusChange(&quot;click to set full view&quot;);
+			scaleObject(evt,scaleFact);
+		}
+		else {
+			statusChange(&quot;full view already reached&quot;);
+		}
+	}
+	if (inOrOut == &quot;panmanual&quot;) {
+			statusChange(&quot;click to start panning map&quot;);
+			scaleObject(evt,scaleFact);	
+	}
+	if (inOrOut == &quot;recenter&quot;) {
+			statusChange('Click to define new Map center');
+			scaleObject(evt,scaleFact);
+	}	
+	if (scaleFact == 1) {
+		statusChange(&quot;map ready&quot;);
+		scaleObject(evt,scaleFact);
+	}
+}
+
+function zoomIt(evt,inOrOut) {
+	if (evt.detail == 1) { //only react on first click, double click: second click is ignored
+		if (inOrOut == &quot;in&quot;) {
+			if (Math.round(myMainMap.curWidth) &gt; myMainMap.minWidth) {
+				myRefMapDragger.zoom(&quot;in&quot;);
+			}
+			else {
+				statusChange(&quot;Maximum zoom factor reached. Cannot zoom in any more.&quot;);
+			}
+		}
+		if (inOrOut == &quot;out&quot;) {
+			if (Math.round(myMainMap.curWidth) &lt; myMainMap.maxWidth) {
+				myRefMapDragger.zoom(&quot;out&quot;);
+			}
+			else {
+				statusChange(&quot;Minimum zoom factor reached. Cannot zoom out any more.&quot;);
+			}
+		}
+		if (inOrOut == &quot;full&quot;) {
+			//if (Math.round(myMainMap.curWidth) &lt; myMainMap.maxWidth) {
+				myRefMapDragger.zoom(&quot;full&quot;);
+			/*}
+			else {
+				statusChange(&quot;Full view already reached.&quot;);
+			}*/
+		}
+	}
+}
+
+//alert map extent
+function showExtent() {
+	with(myMainMap) {
+		alert(&quot;Xmin=&quot;+curxOrig.toFixed(nrDecimals)+units+&quot;; Xmax=&quot;+(curxOrig + curWidth).toFixed(nrDecimals)+units+&quot;\nYmin=&quot;+((curyOrig + curHeight) * -1).toFixed(nrDecimals) +units+&quot;; Ymax=&quot;+(curyOrig*-1).toFixed(nrDecimals)+units+&quot;\nWidth=&quot;+curWidth.toFixed(nrDecimals)+units+&quot;; Height=&quot;+curHeight.toFixed(nrDecimals)+units);
+	}
+}
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000127.html">[Spip-carto-cvs] spipcarto helper_functions.js,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000129.html">[Spip-carto-cvs] spipcarto/formulaires inc-formulaire_site.php3,1.2,1.3 formulaire_ecrire_auteur.html,1.2,1.3 inc-formulaire_forum.php3,1.2,1.3 inc-formulaire_ecrire_auteur.php3,1.2,1.3 inc-formulaire_signature.php3,1.2,1.3 formulaire_forum.html,1.2,1.3 formulaire_signature.html,1.2,1.3 inc-formulaire_inscription.php3,1.2,1.3 formulaire_admin.html,1.2,1.3 inc-login_public.php3,1.2,1.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#128">[ date ]</a>
+              <a href="thread.html#128">[ thread ]</a>
+              <a href="subject.html#128">[ subject ]</a>
+              <a href="author.html#128">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

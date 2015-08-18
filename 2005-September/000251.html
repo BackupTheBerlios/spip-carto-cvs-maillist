@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_texte.php3,1.11,1.12
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_texte.php3%2C1.11%2C1.12&In-Reply-To=%3C200509240058.j8O0wgmq018061%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000250.html">
+   <LINK REL="Next"  HREF="000252.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_texte.php3,1.11,1.12</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_texte.php3%2C1.11%2C1.12&In-Reply-To=%3C200509240058.j8O0wgmq018061%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_texte.php3,1.11,1.12">stef at berlios.de
+       </A><BR>
+    <I>Sat Sep 24 02:58:42 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000250.html">[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.6,1.7
+</A></li>
+        <LI>Next message: <A HREF="000252.html">[Spip-carto-cvs] spipcarto/ecrire mes_options.php3,1.7,1.8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#251">[ date ]</a>
+              <a href="thread.html#251">[ thread ]</a>
+              <a href="subject.html#251">[ subject ]</a>
+              <a href="author.html#251">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv18032/ecrire
+
+Modified Files:
+	inc_texte.php3 
+Log Message:
+hack principal : fonction apres_tout.
+interdire_script s&#233;par&#233; en 2 avec cette fonction au milieu (si elle existe)
+Attention : implique changement de sintaxe des balises :
+&lt;mapXX|typecarte(arguments)&gt;
+
+Les arguments sont pass&#233;s entre parentheses
+
+Index: inc_texte.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_texte.php3,v
+retrieving revision 1.11
+retrieving revision 1.12
+diff -u -d -r1.11 -r1.12
+--- inc_texte.php3	7 Sep 2005 15:01:53 -0000	1.11
++++ inc_texte.php3	24 Sep 2005 00:58:39 -0000	1.12
+@@ -374,7 +374,14 @@
+ 
+ // Securite : empecher l'execution de code PHP
+ function interdire_scripts($source) {
+-	$source = preg_replace(&quot;,&lt;(\%|\?|([[:space:]]*)script),&quot;, &quot;&lt;\\1&quot;, $source);
++	/////////////////////////////////////////////////////
++	//MODIFICATION SPIPCARTO
++	/////////////////////////////////////////////////////
++	$source = preg_replace(&quot;,&lt;(([[:space:]]*)script|base),ims&quot;, &quot;&lt;\\1&quot;, $source);
++	if (function_exists('apres_tout'))
++		$source = apres_tout($source);
++	$source = preg_replace(&quot;,&lt;(\%|\?),ims&quot;, &quot;&lt;\\1&quot;, $source);
++	/////////////////////////////////////////////////////
+ 	return $source;
+ }
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000250.html">[Spip-carto-cvs] spipcarto/ecrire inc_mots.php3,1.6,1.7
+</A></li>
+	<LI>Next message: <A HREF="000252.html">[Spip-carto-cvs] spipcarto/ecrire mes_options.php3,1.7,1.8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#251">[ date ]</a>
+              <a href="thread.html#251">[ thread ]</a>
+              <a href="subject.html#251">[ subject ]</a>
+              <a href="author.html#251">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

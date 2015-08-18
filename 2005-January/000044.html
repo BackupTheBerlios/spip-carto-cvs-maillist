@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spip-carto/ecrire/plugins plug_carto_lien.php,NONE,1.1 plug_small_caps.php,NONE,1.1 plug_carto_vignette.php,NONE,1.1 plug_carto_distant.php,NONE,1.1 plug_carto.php,NONE,1.1 plug_couleurs.php,NONE,1.1 plug_ancres.php,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-January/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spip-carto/ecrire/plugins%20plug_carto_lien.php%2CNONE%2C1.1%20plug_small_caps.php%2CNONE%2C1.1%20plug_carto_vignette.php%2CNONE%2C1.1%20plug_carto_distant.php%2CNONE%2C1.1%20plug_carto.php%2CNONE%2C1.1%20plug_couleurs.php%2CNONE%2C1.1%20plug_ancres.php%2CNONE%2C1.1&In-Reply-To=%3C200501201010.j0KAAaOp025533%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000043.html">
+   <LINK REL="Next"  HREF="000045.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spip-carto/ecrire/plugins plug_carto_lien.php,NONE,1.1 plug_small_caps.php,NONE,1.1 plug_carto_vignette.php,NONE,1.1 plug_carto_distant.php,NONE,1.1 plug_carto.php,NONE,1.1 plug_couleurs.php,NONE,1.1 plug_ancres.php,NONE,1.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spip-carto/ecrire/plugins%20plug_carto_lien.php%2CNONE%2C1.1%20plug_small_caps.php%2CNONE%2C1.1%20plug_carto_vignette.php%2CNONE%2C1.1%20plug_carto_distant.php%2CNONE%2C1.1%20plug_carto.php%2CNONE%2C1.1%20plug_couleurs.php%2CNONE%2C1.1%20plug_ancres.php%2CNONE%2C1.1&In-Reply-To=%3C200501201010.j0KAAaOp025533%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spip-carto/ecrire/plugins plug_carto_lien.php,NONE,1.1 plug_small_caps.php,NONE,1.1 plug_carto_vignette.php,NONE,1.1 plug_carto_distant.php,NONE,1.1 plug_carto.php,NONE,1.1 plug_couleurs.php,NONE,1.1 plug_ancres.php,NONE,1.1">stef at berlios.de
+       </A><BR>
+    <I>Thu Jan 20 11:10:36 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000043.html">[Spip-carto-cvs] CVSROOT modules,1.4,1.5
+</A></li>
+        <LI>Next message: <A HREF="000045.html">[Spip-carto-cvs] spip-carto/ecrire/js navTools.bak.js,NONE,1.1 navTools.js,NONE,1.1 carto.js,NONE,1.1 x_event_nn4.js,NONE,1.1 graphTools.js,NONE,1.1 Copie de navTools.js,NONE,1.1 tree.js,NONE,1.1 x_dom_nn4.js,NONE,1.1 x_core_nn4.js,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spip-carto/ecrire/plugins
+In directory sheep:/tmp/cvs-serv25524/ecrire/plugins
+
+Added Files:
+	plug_carto_lien.php plug_small_caps.php 
+	plug_carto_vignette.php plug_carto_distant.php plug_carto.php 
+	plug_couleurs.php plug_ancres.php 
+Log Message:
+proto1.1
+
+--- NEW FILE: plug_carto_lien.php ---
+&lt;?php
+// Ce plug-in ajoute le raccourci typographique &lt;mapXX&gt; 
+// XX est le numero de la carte
+
+function avant_typo_cartelien($texte) {
+	
+	if (preg_match_all(&quot;&lt;map(\d+)&gt;&quot;, $texte, $regs, PREG_SET_ORDER)) {
+		foreach ($regs as $r) {
+			$id_carte = $r[1];
+			//TODO : eviter cette rustine ...
+			//$cherche = &quot;&lt;&quot;.$r[0].&quot;&gt;&quot;;
+			//heu, en fait, c'est mon editeur WYSIWYG qui fait la transformation ...
+			//ca marche tr&#232;s bien comme ca :			
+			$cherche = &quot;&lt;&quot;.$r[0].&quot;&gt;&quot;;
+			$remplace='&lt;a href=&quot;carto.php3?id_carte=$id_carte&quot;&gt;map$id_carte&lt;/a&gt;';
+			$texte = str_replace($cherche, $remplace, $texte);
+		}
+	}
+	
+	return $texte;
+}
+
+completer_fonction(&quot;propre&quot;, &quot;avant_typo_cartelien&quot;, &quot;&quot;);
+
+?&gt;
+--- NEW FILE: plug_small_caps.php ---
+&lt;?php
+// Ce plug-in ajoute le raccourci typographique &lt;sc&gt;&lt;/sc&gt;
+
+function avant_typo_smallcaps($texte) {
+	$texte = str_replace(&quot;&lt;sc&gt;&quot;, &quot;&lt;span style=\&quot;font-variant: small-caps\&quot;&gt;&quot;, $texte);
+	$texte = str_replace(&quot;&lt;/sc&gt;&quot;, &quot;&lt;/span&gt;&quot;, $texte);
+	
+	return $texte;
+}
+
+completer_fonction(&quot;propre&quot;, &quot;avant_typo_smallcaps&quot;, &quot;&quot;);
+
+?&gt;
+--- NEW FILE: plug_carto_vignette.php ---
+&lt;?php
+// Ce plug-in ajoute le raccourci typographique &lt;map_vignetteXX&gt; 
+// XX est le numero de la carte
+
+function avant_typo_carto_vignette($texte) {
+	
+	if (preg_match_all(&quot;&lt;map(\d+)&gt;&quot;, $texte, $regs, PREG_SET_ORDER)) {
+		foreach ($regs as $r) {
+			$id_carte = $r[1];
+			//TODO : eviter cette rustine ...
+			//$cherche = &quot;&lt;&quot;.$r[0].&quot;&gt;&quot;;
+			//heu, en fait, c'est mon editeur WYSIWYG qui fait la transformation ...
+			//ca marche tr&#232;s bien comme ca :			
+			$cherche = &quot;&lt;&quot;.$r[0].&quot;&gt;&quot;;
+			$remplace='&lt;a href=&quot;carte_seule.php3?id_carte=$id_carte&quot;&gt;&lt;img src=&quot;spip_cartevignette.php3?id_carte=$id_carte&quot; border=&quot;0&quot;&lt;/a&gt;';
+			$texte = str_replace($cherche, $remplace, $texte);
+		}
+	}
+	
+	return $texte;
+}
+
+completer_fonction(&quot;propre&quot;, &quot;avant_typo_carto_vignette&quot;, &quot;&quot;);
+
+?&gt;
+--- NEW FILE: plug_carto_distant.php ---
+&lt;?php
+// Ce plug-in ajoute le raccourci typographique &lt;mapXX|align&gt; 
+// XX est le numero de la carte
+// align fonctionne comme les images (left / center / right)
+
+//le include pour la version HTTP
+include_ecrire('http.class.php');
+include_ecrire('inc_carto.php3');
+
+//la rustine d'inclusion pour /ecrire ...
+//abandonn&#233; pour le moment, manque de visibilit&#233;
+function avant_typo_carto_distant($texte) {
+	
+	if (preg_match_all(&quot;,&lt;carto_http(\d+)([|])?([a-zA-Z.]+)?&gt;,&quot;, $texte, $regs, PREG_SET_ORDER)) {
+		foreach ($regs as $r) {
+			$id_carte = $r[1];
+			//TODO : eviter cette rustine ...
+			//$cherche = &quot;&lt;&quot;.$r[0].&quot;&gt;&quot;;
+			//heu, en fait, c'est mon editeur WYSIWYG qui fait la transformation ...
+			//ca marche tr&#232;s bien comme ca :			
+			$cherche = $r[0];
+			
+			//TODO : traiter l'alignement avant replace
+			//Le mieux etant de les traiter ici, dans le plugin
+			//car le code doit rester identique &#224; celui de Spip
+			//$align = $r[2];
+			
+			//TODO : voir si on ne peut pas faire un reglage plus fin ...
+			// voir aussi pour les variables pass&#233;es en POST (pa de cache ???)
+			// en attendant : 60s ca permet de tester facilement le cache et le recalcul
+			$ledelai=&quot;60&quot;;
+			//TODO : peut etre d'autres parametres ... ???
+			//forcer un type de carte ?
+			//la methode doit plutot etre fonction du serveur, 
+			//mais pourquoi pas un peu de finesse de parametrage ...
+			//$type_carte = $r[3];
+			
+			//l'url du site pars&#233;e, ca peut servir ...
+			//$taburl=parse_url(lire_meta('adresse_site'));
+			//$taburl=parse_url(&quot;<A HREF="http://">http://</A>&quot;.$r[2]);
+			$taburl['path']=&quot;&quot;;
+			//recuperation de la map en cache
+			//TODO : utiliser l'API du cache plutot que cette usine &#224; gaz !
+			$http_client = new http( HTTP_V11, false);
+			$http_client-&gt;host = $r[3];//$taburl['host'];
+			$http_reponse=$http_client-&gt;get(embed_carto_url($id_carte,$taburl)) ;
+			$remplace=$r[3].embed_carto_url($id_carte,$taburl).&quot;:&quot;.$http_reponse;
+			if ( $http_reponse== HTTP_STATUS_OK)
+				$remplace = $http_client-&gt;get_response_body();
+			else $replace= &quot;HTTP_STATUT Error&quot;;
+			unset( $http_client );
+			
+			//TODO : ajouter alignement ici
+			$texte = str_replace($cherche, $remplace, $texte);
+			
+		}
+	}
+	
+	return $texte;
+}
+
+completer_fonction(&quot;propre&quot;, &quot;avant_typo_carto_distant&quot;, &quot;&quot;);
+
+?&gt;
+--- NEW FILE: plug_carto.php ---
+&lt;?php
+// Ce plug-in ajoute le raccourci typographique &lt;mapXX|align&gt; 
+// XX est le numero de la carte
+// align fonctionne comme les images (left / center / right)
+
+function avant_typo_carto($texte) {
+	
+	if (is_int(strpos($texte, '&lt;map')) &amp;&amp;
+	 (preg_match_all(&quot;,&lt;map(\d+)([|])?([a-zA-Z.]+)?&gt;,&quot;, $texte, $regs, PREG_SET_ORDER))) {
+		global $flag_ecrire;
+		$id_article=$_POST['id_article'];
+		if ($flag_ecrire) {
+			$query = &quot;DELETE FROM spip_carto_carte_articles WHERE id_article=$id_article&quot;;
+			spip_query($query);
+		}
+		foreach ($regs as $r) {
+			$id_carte = $r[1];
+			$cartes[$id_carte] = $id_carte;
+			$cherche = $r[0];
+			
+			//TODO : traiter l'alignement avant replace
+			//Le mieux etant de les traiter ici, dans le plugin
+			//car le code doit rester identique &#224; celui de Spip
+			$align = $r[3];
+			
+			//TODO : voir si on ne peut pas faire un reglage plus fin ...
+			// voir aussi pour les variables pass&#233;es en POST (pa de cache ???)
+			// en attendant : 60s ca permet de tester facilement le cache et le recalcul
+			$ledelai=&quot;60&quot;;
+			//TODO : peut etre d'autres parametres ... ???
+			//forcer un type de carte ?
+			//la methode doit plutot etre fonction du serveur, 
+			//mais pourquoi pas un peu de finesse de parametrage ...
+			//$type_carte = $r[3];
+			
+			//l'url du site pars&#233;e, ca peut servir ...
+			//$taburl=parse_url(lire_meta('adresse_site'));
+			
+			
+			//mettre &#224; jour la table de liaison avec les articles
+			if ($flag_ecrire &amp;&amp; $cartes) {
+				global $couleur_claire;
+//				$remplace=icone_bandeau_secondaire(_L(&quot;Carte &quot;).$r[1], &quot;../carto.php3?id_carte=&quot;.$r[1], &quot;carte-24.png&quot;, &quot;cartes&quot;, $sous_rubrique);
+				$remplace=&quot;&lt;div&gt;&lt;table class='gauche'&gt;&lt;tr&gt;&quot; .
+						&quot;&lt;td class='cellule36' style='width: 100px;'&gt;&lt;a href='../carto.php3?id_carte=&quot;.$r[1].&quot;' class='selection' target='_blank'&gt;&lt;img src='img_pack/carte-24.png' alt=' '/&gt;&quot; .
+						&quot;&lt;span&gt;Carte &quot;.$r[1].&quot;&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&quot;;				
+//				$remplace=http_img_pack(&quot;carte-24.gif&quot;, &quot;&quot;, &quot;&quot;).&quot;=&gt;&quot;.$r[1].&quot;/&quot;.$r[3];
+			}
+			//recuperation de la map en cache
+			else {
+				$lecontexte['id_carte']=$id_carte;
+				$lechemin=generer_nom_fichier_cache($lecontexte, &quot;carto&quot;);
+				$usecache=determiner_cache($ledelai, $usecache, $lechemin);
+				$tab=obtenir_page ($lecontexte,$lechemin , $ledelai, &amp;$usecache, &quot;carto&quot;);
+				$remplace=$tab['texte'];
+			}
+			//TODO : ajouter alignement ici
+			$texte = str_replace($cherche, $remplace, $texte);
+		}
+		//mettre &#224; jour la table de liaison avec les articles
+		if ($flag_ecrire) {
+			$query = &quot;INSERT INTO spip_carto_carte_articles (id_article, id_carte) &quot;.
+			&quot;VALUES ($id_article, &quot;.join(&quot;), ($id_article, &quot;, $cartes).&quot;)&quot;;
+			spip_query($query);
+		}
+	}
+	
+	return $texte;
+}
+
+completer_fonction(&quot;propre&quot;, &quot;avant_typo_carto&quot;, &quot;&quot;);
+
+?&gt;
+--- NEW FILE: plug_couleurs.php ---
+&lt;?php
+
+// Ce plug-in ajoute des couleurs a l'interface
+
+global $couleurs_spip;
+
+$couleurs_spip[10] = array (
+		&quot;couleur_foncee&quot; =&gt; &quot;#508A72&quot;,
+		&quot;couleur_claire&quot; =&gt; &quot;#A5DFC7&quot;,
+		&quot;couleur_lien&quot; =&gt; &quot;#657701&quot;,
+		&quot;couleur_lien_off&quot; =&gt; &quot;#A6C113&quot;
+);
+
+
+$couleurs_spip[11] = array (
+		&quot;couleur_foncee&quot; =&gt; &quot;#949064&quot;,
+		&quot;couleur_claire&quot; =&gt; &quot;#DFDBA5&quot;,
+		&quot;couleur_lien&quot; =&gt; &quot;#657701&quot;,
+		&quot;couleur_lien_off&quot; =&gt; &quot;#A6C113&quot;
+);
+
+$couleurs_spip[12] = array (
+		&quot;couleur_foncee&quot; =&gt; &quot;#6770AC&quot;,
+		&quot;couleur_claire&quot; =&gt; &quot;#F8D768&quot;,
+		&quot;couleur_lien&quot; =&gt; &quot;#363F7A&quot;,
+		&quot;couleur_lien_off&quot; =&gt; &quot;#747DB4&quot;
+);
+
+
+?&gt;
+--- NEW FILE: plug_ancres.php ---
+&lt;?php
+
+// Ce plug-in ajoute le raccourci ancre [#ancre&lt;-]
+
+function avant_propre_ancres($texte) {
+	$regexp = &quot;|\[#?([^][]*)&lt;-\]|&quot;;
+	if (preg_match_all($regexp, $texte, $matches, PREG_SET_ORDER))
+	foreach ($matches as $regs)
+		$texte = str_replace($regs[0],
+		'&lt;a name=&quot;'.entites_html($regs[1]).'&quot;&gt;&lt;/a&gt;', $texte);
+
+	return $texte;
+}
+
+completer_fonction(&quot;propre&quot;, &quot;avant_propre_ancres&quot;, &quot;&quot;);
+
+?&gt;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000043.html">[Spip-carto-cvs] CVSROOT modules,1.4,1.5
+</A></li>
+	<LI>Next message: <A HREF="000045.html">[Spip-carto-cvs] spip-carto/ecrire/js navTools.bak.js,NONE,1.1 navTools.js,NONE,1.1 carto.js,NONE,1.1 x_event_nn4.js,NONE,1.1 graphTools.js,NONE,1.1 Copie de navTools.js,NONE,1.1 tree.js,NONE,1.1 x_dom_nn4.js,NONE,1.1 x_core_nn4.js,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

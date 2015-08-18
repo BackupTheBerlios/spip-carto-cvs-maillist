@@ -1,0 +1,700 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_charsets.php3,1.6,1.6.2.1 inc_majbase.php3,1.7,1.7.2.1 inc_presentation.php3,1.12.2.1,1.12.2.2 spip_style.php3,1.10,1.10.2.1 suivi_revisions.php3,1.4,1.4.2.1 inc_lang.php3,1.12.2.1,1.12.2.2 inc_suivi_revisions.php,1.5,1.5.2.1 documents_liste.php3,1.2,1.2.2.1 inc_texte.php3,1.12.2.2,1.12.2.3 naviguer.php3,1.6,1.6.2.1 inc_signatures.php3,1.1,1.1.2.1 inc_documents.php3,1.7.2.3,1.7.2.4 inc_db_mysql.php3,1.6,1.6.2.1 inc_serialbase.php3,1.5,1.5.2.1 inc_version.php3,1.12.2.3,1.12.2.4 inc_sites.php3,1.8,1.8.2.1 inc_filtres.php3,1.10.2.2,1.10.2.3 inc_extra.php3,1.2.2.1,1.2.2.2 inc_rss.php3,1.2,1.2.2.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_charsets.php3%2C1.6%2C1.6.2.1%20inc_majbase.php3%2C1.7%2C1.7.2.1%20inc_presentation.php3%2C1.12.2.1%2C1.12.2.2%20spip_style.php3%2C1.10%2C1.10.2.1%20suivi_revisions.php3%2C1.4%2C1.4.2.1%20inc_lang.php3%2C1.12.2.1%2C1.12.2.2%20inc_suivi_revisions.php%2C1.5%2C1.5.2.1%20documents_liste.php3%2C1.2%2C1.2.2.1%20inc_texte.php3%2C1.12.2.2%2C1.12.2.3%20naviguer.php3%2C1.6%2C1.6.2.1%20inc_signatures.php3%2C1.1%2C1.1.2.1%20inc_documents.php3%2C1.7.2.3%2C1.7.2.4%20inc_db_mysql.php3%2C1.6%2C1.6.2.1%20inc_serialbase.php3%2C1.5%2C1.5.2.1%20inc_version.php3%2C1.12.2.3%2C1.12.2.4%20inc_sites.php3%2C1.8%2C1.8.2.1%20inc_filtres.php3%2C1.10.2.2%2C1.10.2.3%20inc_extra.php3%2C1.2.2.1%2C1.2.2.2%20inc_rss.php3%2C1.2%2C1.2.2.1&In-Reply-To=%3C200602140111.k1E1BAbx005229%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000364.html">
+   <LINK REL="Next"  HREF="000365.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_charsets.php3,1.6,1.6.2.1 inc_majbase.php3,1.7,1.7.2.1 inc_presentation.php3,1.12.2.1,1.12.2.2 spip_style.php3,1.10,1.10.2.1 suivi_revisions.php3,1.4,1.4.2.1 inc_lang.php3,1.12.2.1,1.12.2.2 inc_suivi_revisions.php,1.5,1.5.2.1 documents_liste.php3,1.2,1.2.2.1 inc_texte.php3,1.12.2.2,1.12.2.3 naviguer.php3,1.6,1.6.2.1 inc_signatures.php3,1.1,1.1.2.1 inc_documents.php3,1.7.2.3,1.7.2.4 inc_db_mysql.php3,1.6,1.6.2.1 inc_serialbase.php3,1.5,1.5.2.1 inc_version.php3,1.12.2.3,1.12.2.4 inc_sites.php3,1.8,1.8.2.1 inc_filtres.php3,1.10.2.2,1.10.2.3 inc_extra.php3,1.2.2.1,1.2.2.2 inc_rss.php3,1.2,1.2.2.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_charsets.php3%2C1.6%2C1.6.2.1%20inc_majbase.php3%2C1.7%2C1.7.2.1%20inc_presentation.php3%2C1.12.2.1%2C1.12.2.2%20spip_style.php3%2C1.10%2C1.10.2.1%20suivi_revisions.php3%2C1.4%2C1.4.2.1%20inc_lang.php3%2C1.12.2.1%2C1.12.2.2%20inc_suivi_revisions.php%2C1.5%2C1.5.2.1%20documents_liste.php3%2C1.2%2C1.2.2.1%20inc_texte.php3%2C1.12.2.2%2C1.12.2.3%20naviguer.php3%2C1.6%2C1.6.2.1%20inc_signatures.php3%2C1.1%2C1.1.2.1%20inc_documents.php3%2C1.7.2.3%2C1.7.2.4%20inc_db_mysql.php3%2C1.6%2C1.6.2.1%20inc_serialbase.php3%2C1.5%2C1.5.2.1%20inc_version.php3%2C1.12.2.3%2C1.12.2.4%20inc_sites.php3%2C1.8%2C1.8.2.1%20inc_filtres.php3%2C1.10.2.2%2C1.10.2.3%20inc_extra.php3%2C1.2.2.1%2C1.2.2.2%20inc_rss.php3%2C1.2%2C1.2.2.1&In-Reply-To=%3C200602140111.k1E1BAbx005229%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_charsets.php3,1.6,1.6.2.1 inc_majbase.php3,1.7,1.7.2.1 inc_presentation.php3,1.12.2.1,1.12.2.2 spip_style.php3,1.10,1.10.2.1 suivi_revisions.php3,1.4,1.4.2.1 inc_lang.php3,1.12.2.1,1.12.2.2 inc_suivi_revisions.php,1.5,1.5.2.1 documents_liste.php3,1.2,1.2.2.1 inc_texte.php3,1.12.2.2,1.12.2.3 naviguer.php3,1.6,1.6.2.1 inc_signatures.php3,1.1,1.1.2.1 inc_documents.php3,1.7.2.3,1.7.2.4 inc_db_mysql.php3,1.6,1.6.2.1 inc_serialbase.php3,1.5,1.5.2.1 inc_version.php3,1.12.2.3,1.12.2.4 inc_sites.php3,1.8,1.8.2.1 inc_filtres.php3,1.10.2.2,1.10.2.3 inc_extra.php3,1.2.2.1,1.2.2.2 inc_rss.php3,1.2,1.2.2.1">stef at berlios.de
+       </A><BR>
+    <I>Tue Feb 14 02:11:10 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000364.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.8,1.18.2.9
+</A></li>
+        <LI>Next message: <A HREF="000365.html">[Spip-carto-cvs] spipcarto inc-balises.php3,1.12.2.2,1.12.2.3 inc-public-global.php3,1.7,1.7.2.1 spip_rss.php,1.2,1.2.2.1 spip_acces_doc.php3,1.3,1.3.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#366">[ date ]</a>
+              <a href="thread.html#366">[ thread ]</a>
+              <a href="subject.html#366">[ subject ]</a>
+              <a href="author.html#366">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv5072/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc_charsets.php3 inc_majbase.php3 inc_presentation.php3 
+	spip_style.php3 suivi_revisions.php3 inc_lang.php3 
+	inc_suivi_revisions.php documents_liste.php3 inc_texte.php3 
+	naviguer.php3 inc_signatures.php3 inc_documents.php3 
+	inc_db_mysql.php3 inc_serialbase.php3 inc_version.php3 
+	inc_sites.php3 inc_filtres.php3 inc_extra.php3 inc_rss.php3 
+Log Message:
+Mise &#224; jour de securit&#233; (Spip 1.8.2 SVN)
+quelques bugs fix&#233;s (Spip)
+remplacement de document et affichage des id
+
+Index: inc_charsets.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_charsets.php3,v
+retrieving revision 1.6
+retrieving revision 1.6.2.1
+diff -u -d -r1.6 -r1.6.2.1
+--- inc_charsets.php3	10 Aug 2005 12:00:38 -0000	1.6
++++ inc_charsets.php3	14 Feb 2006 01:11:04 -0000	1.6.2.1
+@@ -2138,6 +2138,8 @@
+ 	if ($charset == 'AUTO')
+ 		$charset = lire_meta('charset');
+ 
++	$charset = strtolower($charset);
++
+ 	switch ($charset) {
+ 	case 'utf-8':
+ 		return utf_8_to_unicode($texte);
+
+Index: inc_majbase.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_majbase.php3,v
+retrieving revision 1.7
+retrieving revision 1.7.2.1
+diff -u -d -r1.7 -r1.7.2.1
+--- inc_majbase.php3	7 Sep 2005 15:01:53 -0000	1.7
++++ inc_majbase.php3	14 Feb 2006 01:11:05 -0000	1.7.2.1
+@@ -971,14 +971,12 @@
+ 		maj_version(1.813);
+ 	}
+ 
+-	// URLs propres auteurs (et prevoir les sites, sait-on jamais)
++	// URLs propres auteurs
+ 	if ($version_installee &lt; 1.814) {
+-		foreach (array('auteurs', 'syndic') as $objets) {
+-			spip_query(&quot;ALTER TABLE spip_$objets
+-				ADD url_propre VARCHAR(255) NOT NULL&quot;);
+-			spip_query(&quot;ALTER TABLE spip_$objets
+-				ADD INDEX url_propre (url_propre)&quot;);
+-		}
++		spip_query(&quot;ALTER TABLE spip_auteurs
++			ADD url_propre VARCHAR(255) NOT NULL&quot;);
++		spip_query(&quot;ALTER TABLE spip_auteurs
++			ADD INDEX url_propre (url_propre)&quot;);
+ 		maj_version(1.814);
+ 	}
+ 
+@@ -1044,6 +1042,20 @@
+ 		spip_query(&quot;ALTER TABLE spip_mots DROP INDEX type&quot;);
+ 		spip_query(&quot;ALTER TABLE spip_mots CHANGE type type TEXT NOT NULL&quot;);
+ 		maj_version(1.822);
++	}
++
++	// URLs propres des sites (sait-on jamais)
++	// + oubli des KEY url_propre sur les auteurs si installation neuve
++	if ($version_installee &lt; 1.830) {
++		spip_query(&quot;ALTER TABLE spip_syndic
++			ADD url_propre VARCHAR(255) NOT NULL&quot;);
++		spip_query(&quot;ALTER TABLE spip_syndic
++			ADD INDEX url_propre (url_propre)&quot;);
++		spip_query(&quot;ALTER TABLE spip_auteurs
++			ADD url_propre VARCHAR(255) NOT NULL&quot;);
++		spip_query(&quot;ALTER TABLE spip_auteurs
++			ADD INDEX url_propre (url_propre)&quot;);
++		maj_version(1.830);
+ 	}
+ 
+ 	return true;
+
+Index: inc_presentation.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_presentation.php3,v
+retrieving revision 1.12.2.1
+retrieving revision 1.12.2.2
+diff -u -d -r1.12.2.1 -r1.12.2.2
+--- inc_presentation.php3	28 Sep 2005 15:25:19 -0000	1.12.2.1
++++ inc_presentation.php3	14 Feb 2006 01:11:05 -0000	1.12.2.2
+@@ -1337,6 +1337,7 @@
+ 	if ($spip_display == 4) echo &quot;&lt;ul&gt;&quot;;
+  
+  	while($row = spip_fetch_array($request)) {
++		$row = safehtml_sur_row($row);
+ 		$id_forum=$row['id_forum'];
+ 		$id_parent=$row['id_parent'];
+ 		$id_rubrique=$row['id_rubrique'];
+
+Index: spip_style.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/spip_style.php3,v
+retrieving revision 1.10
+retrieving revision 1.10.2.1
+diff -u -d -r1.10 -r1.10.2.1
+--- spip_style.php3	26 Sep 2005 09:24:26 -0000	1.10
++++ spip_style.php3	14 Feb 2006 01:11:05 -0000	1.10.2.1
+@@ -46,11 +46,11 @@
+ 
+ 	function http_img_pack($f) { return _DIR_IMG_PACK . $f; }
+ ?&gt;
+-/*////////////////////////////////////////*/
+-/*/MODIFICATION SPIPCARTO*/
+-/*////////////////////////////////////////*/
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">- at import</A> &quot;dhtml_tools.css&quot;;*/
+-/*////////////////////////////////////////*/
++/* ************************************* */
++/* *******MODIFICATION SPIPCARTO******* */
++/* ************************************* */
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">+ at import</A> &quot;dhtml_tools.css&quot;; 
++/* ************************************* */
+ 
+ /*
+  * Police par defaut (bof...)
+
+Index: suivi_revisions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/suivi_revisions.php3,v
+retrieving revision 1.4
+retrieving revision 1.4.2.1
+diff -u -d -r1.4 -r1.4.2.1
+--- suivi_revisions.php3	30 Jun 2005 10:09:39 -0000	1.4
++++ suivi_revisions.php3	14 Feb 2006 01:11:06 -0000	1.4.2.1
+@@ -63,7 +63,7 @@
+ 	$query_rub = &quot;
+ SELECT versions.*, articles.statut, articles.titre
+ FROM spip_versions AS versions, spip_articles AS articles 
+-WHERE versions.id_article = articles.id_article AND versions.id_version &gt; 1 AND articles.id_secteur=$id_rubrique$req_where LIMIT 0,1&quot;;
++WHERE versions.id_article = articles.id_article AND versions.id_version &gt; 1 AND articles.id_secteur=&quot;.intval($id_rubrique).&quot;$req_where LIMIT 0,1&quot;;
+ 	$result_rub = spip_query($query_rub);
+ 	
+ 	if ($id_rubrique == $id_secteur)  echo &quot;&lt;li&gt;&lt;b&gt;$titre&lt;/b&gt;&quot;;
+@@ -80,7 +80,7 @@
+ 		$query_lang = &quot;
+ SELECT versions.*
+ FROM spip_versions AS versions, spip_articles AS articles 
+-WHERE versions.id_article = articles.id_article AND versions.id_version &gt; 1 AND articles.lang='$lang' $req_where LIMIT 0,1&quot;;
++WHERE versions.id_article = articles.id_article AND versions.id_version &gt; 1 AND articles.lang='&quot;.addslashes($lang).&quot;' $req_where LIMIT 0,1&quot;;
+ 		$result_lang = spip_query($query_lang);
+ 		
+ 		if ($lang == $lang_choisie)  echo &quot;&lt;li&gt;&lt;b&gt;$titre&lt;/b&gt;&quot;;
+
+Index: inc_lang.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_lang.php3,v
+retrieving revision 1.12.2.1
+retrieving revision 1.12.2.2
+diff -u -d -r1.12.2.1 -r1.12.2.2
+--- inc_lang.php3	5 Nov 2005 22:34:35 -0000	1.12.2.1
++++ inc_lang.php3	14 Feb 2006 01:11:06 -0000	1.12.2.2
+@@ -318,7 +318,7 @@
+ 	'su' =&gt; &quot;Sundanese&quot;,
+ 	'sv' =&gt; &quot;svenska&quot;,
+ 	'sw' =&gt; &quot;Kiswahili&quot;,
+-	'ta' =&gt; &quot;&#2980;&#2990;&#3007;&#2996;&#3021; - tamil&quot;,
++	'ta' =&gt; &quot;&#2980;&#2990;&#3007;&#2996;&#3021;&quot;, // Tamil
+ 	'te' =&gt; &quot;Telugu&quot;,
+ 	'tg' =&gt; &quot;Tajik&quot;,
+ 	'th' =&gt; &quot;&#3652;&#3607;&#3618;&quot;,
+
+Index: inc_suivi_revisions.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_suivi_revisions.php,v
+retrieving revision 1.5
+retrieving revision 1.5.2.1
+diff -u -d -r1.5 -r1.5.2.1
+--- inc_suivi_revisions.php	30 Jun 2005 10:09:39 -0000	1.5
++++ inc_suivi_revisions.php	14 Feb 2006 01:11:06 -0000	1.5.2.1
+@@ -45,9 +45,11 @@
+ 		$req_where = &quot; AND articles.statut IN ('prop','publie')&quot;;
+ 	}
+ 	
+-	if (strlen($lang) &gt; 0) $req_where .= &quot; AND articles.lang='$lang'&quot;;
++	if (strlen($lang) &gt; 0)
++		$req_where .= &quot; AND articles.lang='&quot;.addslashes($lang).&quot;'&quot;;
+ 
+-	if ($id_secteur &gt; 0) $req_where .= &quot; AND articles.id_secteur = $id_secteur&quot;;
++	if ($id_secteur &gt; 0)
++		$req_where .= &quot; AND articles.id_secteur = &quot;.intval($id_secteur);
+ 
+ 	$query = &quot;
+ 		SELECT versions.*, articles.statut, articles.titre 
+
+Index: documents_liste.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/documents_liste.php3,v
+retrieving revision 1.2
+retrieving revision 1.2.2.1
+diff -u -d -r1.2 -r1.2.2.1
+--- documents_liste.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ documents_liste.php3	14 Feb 2006 01:11:06 -0000	1.2.2.1
+@@ -58,7 +58,7 @@
+ 			if (!$titre) $titre = _T('info_document').' '.$id_document;
+ 			
+ 			debut_cadre_relief(&quot;doc-24.gif&quot;);
+-			echo &quot;&lt;b&gt;$titre&lt;/b&gt; (&quot; . $types[$row['type']]['titre'] . ', ' . affdate($date) . &quot;)&quot;;
++			echo &quot;$id_document - &lt;b&gt;$titre&lt;/b&gt; (&quot; . $types[$row['type']]['titre'] . ', ' . affdate($date) . &quot;)&quot;;
+ 			if ($descriptif)
+ 				echo &quot;&lt;p&gt;&quot;.propre($descriptif);
+ 			else
+
+Index: inc_texte.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_texte.php3,v
+retrieving revision 1.12.2.2
+retrieving revision 1.12.2.3
+diff -u -d -r1.12.2.2 -r1.12.2.3
+--- inc_texte.php3	6 Nov 2005 09:34:10 -0000	1.12.2.2
++++ inc_texte.php3	14 Feb 2006 01:11:06 -0000	1.12.2.3
+@@ -391,6 +391,53 @@
+ 	return $source;
+ }
+ 
++// Securite : utiliser SafeHTML s'il est present dans ecrire/safehtml/
++function safehtml($t) {
++	static $process, $test;
++
++	# attention safehtml nettoie deux ou trois caracteres de plus. A voir
++	if (strpos($t,'&lt;')===false)
++		return str_replace(&quot;\x00&quot;, '', $t);
++
++	if (!$test) {
++		define('XML_HTMLSAX3', _DIR_INCLUDE.&quot;safehtml/classes/&quot;);
++		if (@file_exists(XML_HTMLSAX3.'safehtml.php')) {
++			include_local(XML_HTMLSAX3.'safehtml.php');
++			$process = new safehtml();
++		}
++		if ($process)
++			$test = 1; # ok
++		else
++			$test = -1; # se rabattre sur interdire_scripts
++	}
++
++	if ($test &gt; 0) {
++		# reset ($process-&gt;clear() ne vide que _xhtml...),
++		# on doit pouvoir programmer ca plus propremement
++		$process-&gt;_counter = array();
++		$process-&gt;_stack = array();
++		$process-&gt;_dcCounter = array();
++		$process-&gt;_dcStack = array();
++		$process-&gt;_listScope = 0;
++		$process-&gt;_liStack = array();
++#		$process-&gt;parse(''); # cas particulier ?
++		$process-&gt;clear();
++		$t = $process-&gt;parse($t);
++	}
++
++	return interdire_scripts($t); # gere le &lt; ?php &gt; en plus
++}
++
++// Passer safehtml sur les rows de l'espace priv&#233;
++function safehtml_sur_row($row) {
++	$champs_surs = array(
++	'date', 'date_heure', 'statut', 'ip', 'url_article', 'maj', 'idx',
++	'parametres_forum');
++	foreach($row as $champ =&gt; $valeur)
++		if (!in_array(strtolower($champ), $champs_surs)	AND !preg_match(',^id_,', $champ))
++			$row[$champ] = safehtml($valeur);
++	return $row;
++}
+ 
+ // Correction typographique francaise
+ function typo_fr($letexte) {
+
+Index: naviguer.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/naviguer.php3,v
+retrieving revision 1.6
+retrieving revision 1.6.2.1
+diff -u -d -r1.6 -r1.6.2.1
+--- naviguer.php3	7 Sep 2005 15:01:53 -0000	1.6
++++ naviguer.php3	14 Feb 2006 01:11:06 -0000	1.6.2.1
+@@ -45,12 +45,19 @@
+ 	}
+ 
+ 	// si c'est une rubrique-secteur contenant des breves, ne deplacer
+-	// que si $confirme_deplace == 'oui'
+-
+-	if ((spip_num_rows(spip_query(&quot;SELECT id_rubrique FROM spip_breves WHERE id_rubrique='$id_rubrique' LIMIT 0,1&quot;)) &gt; 0)
+-	AND ($confirme_deplace != 'oui')) {
++	// que si $confirme_deplace == 'oui', et changer l'id_rubrique des
++	// breves en question
++	if ($GLOBALS['confirme_deplace'] == 'oui'
++	AND $id_parent &gt; 0) {
++		list($id_secteur) = spip_fetch_array(spip_query(
++			&quot;SELECT id_secteur FROM spip_rubriques
++			WHERE id_rubrique=$id_parent&quot;));
++		if ($id_secteur)
++			spip_query(&quot;UPDATE spip_breves
++				SET id_rubrique=$id_secteur
++				WHERE id_rubrique=$id_rubrique&quot;);
++	} else
+ 		$id_parent = 0;
+-	}
+ 
+ 	if ($flag_editable) {
+ 
+
+Index: inc_signatures.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_signatures.php3,v
+retrieving revision 1.1
+retrieving revision 1.1.2.1
+diff -u -d -r1.1 -r1.1.2.1
+--- inc_signatures.php3	21 Jul 2005 21:47:16 -0000	1.1
++++ inc_signatures.php3	14 Feb 2006 01:11:06 -0000	1.1.2.1
+@@ -28,6 +28,7 @@
+ 			      &quot; LIMIT &quot; . ($debut ? &quot;$debut,&quot; : &quot;&quot;) . $limit);
+ 
+  	while($row=spip_fetch_array($request)){
++		$row = safehtml_sur_row($row);
+ 		$id_signature = $row['id_signature'];
+ 		$id_article = $row['id_article'];
+ 		$date_time = $row['date_time'];
+
+Index: inc_documents.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_documents.php3,v
+retrieving revision 1.7.2.3
+retrieving revision 1.7.2.4
+diff -u -d -r1.7.2.3 -r1.7.2.4
+--- inc_documents.php3	1 Nov 2005 21:51:54 -0000	1.7.2.3
++++ inc_documents.php3	14 Feb 2006 01:11:06 -0000	1.7.2.4
+@@ -664,6 +664,7 @@
+ 				else
+ 					$triangle = bouton_block_invisible(&quot;port$id_document&quot;);
+ 			}
++			$triangle.=$id_document.&quot; - &quot;;
+ 			if (strlen($titre) &gt; 0) {
+ 				echo &quot;&lt;div class='verdana2'&gt;&lt;b&gt;$triangle&quot;.typo($titre).&quot;&lt;/b&gt;&lt;/div&gt;&quot;;
+ 			} else {
+
+Index: inc_db_mysql.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_db_mysql.php3,v
+retrieving revision 1.6
+retrieving revision 1.6.2.1
+diff -u -d -r1.6 -r1.6.2.1
+--- inc_db_mysql.php3	7 Sep 2005 15:01:53 -0000	1.6
++++ inc_db_mysql.php3	14 Feb 2006 01:11:07 -0000	1.6.2.1
+@@ -237,8 +237,7 @@
+ // IN (...) est limite a 255 elements, d'ou cette fonction assistante
+ //
+ function calcul_mysql_in($val, $valeurs, $not='') {
+-	if (!$valeurs) return '0=0';
+-
++	if (!$valeurs) return ($not ? &quot;0=0&quot; : '0=1');
+ 	$n = $i = 0;
+ 	$in_sql =&quot;&quot;;
+ 	while ($n = strpos($valeurs, ',', $n+1)) {
+
+Index: inc_serialbase.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_serialbase.php3,v
+retrieving revision 1.5
+retrieving revision 1.5.2.1
+diff -u -d -r1.5 -r1.5.2.1
+--- inc_serialbase.php3	7 Sep 2005 15:01:53 -0000	1.5
++++ inc_serialbase.php3	14 Feb 2006 01:11:07 -0000	1.5.2.1
+@@ -93,7 +93,8 @@
+ 		&quot;KEY statut&quot;	=&gt; &quot;statut&quot;,
+ 		&quot;KEY lang&quot;	=&gt; &quot;lang&quot;,
+ 		&quot;KEY idx&quot;	=&gt; &quot;idx&quot;,
+-		&quot;KEY en_ligne&quot;	=&gt; &quot;en_ligne&quot;);
++		&quot;KEY en_ligne&quot;	=&gt; &quot;en_ligne&quot;,
++		&quot;KEY url_propre&quot;	=&gt; &quot;url_propre&quot;);
+ 
+ $spip_breves = array(
+ 		&quot;id_breve&quot;	=&gt; &quot;bigint(21) NOT NULL&quot;,
+@@ -242,6 +243,7 @@
+ 		&quot;nom_site&quot;	=&gt; &quot;blob NOT NULL&quot;,
+ 		&quot;url_site&quot;	=&gt; &quot;blob NOT NULL&quot;,
+ 		&quot;url_syndic&quot;	=&gt; &quot;blob NOT NULL&quot;,
++		&quot;url_propre&quot;	=&gt; &quot;VARCHAR(255) NOT NULL&quot;,
+ 		&quot;descriptif&quot;	=&gt; &quot;blob NOT NULL&quot;,
+ 		&quot;idx&quot;		=&gt; &quot;ENUM('', '1', 'non', 'oui', 'idx') DEFAULT '' NOT NULL&quot;,
+ 		&quot;maj&quot;	=&gt; &quot;TIMESTAMP&quot;,
+@@ -261,7 +263,8 @@
+ 		&quot;KEY id_rubrique&quot;	=&gt; &quot;id_rubrique&quot;,
+ 		&quot;KEY id_secteur&quot;	=&gt; &quot;id_secteur&quot;,
+ 		&quot;KEY idx&quot;		=&gt; &quot;idx&quot;,
+-		&quot;KEY statut&quot;	=&gt; &quot;statut, date_syndic&quot;);
++		&quot;KEY statut&quot;	=&gt; &quot;statut, date_syndic&quot;,
++		&quot;KEY url_propre&quot;	=&gt; &quot;url_propre&quot;);
+ 
+ $spip_syndic_articles = array(
+ 		&quot;id_syndic_article&quot;	=&gt; &quot;bigint(21) NOT NULL&quot;,
+
+Index: inc_version.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_version.php3,v
+retrieving revision 1.12.2.3
+retrieving revision 1.12.2.4
+diff -u -d -r1.12.2.3 -r1.12.2.4
+--- inc_version.php3	5 Feb 2006 21:17:29 -0000	1.12.2.3
++++ inc_version.php3	14 Feb 2006 01:11:07 -0000	1.12.2.4
+@@ -64,6 +64,9 @@
+ }
+ 
+ 
++// Masquer les warning
++error_reporting(E_ALL ^ E_NOTICE);
++
+ // *********** traiter les variables ************
+ 
+ // Recuperer les superglobales $_GET si non definies
+@@ -79,35 +82,47 @@
+ 		$GLOBALS[$http_table_vars] = &amp; $GLOBALS[$_table];
+ }
+ 
++//
++// Securite
++//
+ 
+-// Magic quotes : on n'en veut pas sur la base,
+-// et on nettoie les GET/POST/COOKIE le cas echeant
+-function magic_unquote($_table) {
+-
+-	// Certains hebergeurs n'activent pas $GLOBALS['GLOBALS']
+-	if ($_table == 'GLOBALS'
+-	AND !isset($GLOBALS['GLOBALS']))
+-		$GLOBALS['GLOBALS'] = &amp;$GLOBALS;
++// Ne pas se faire manger par un bug php qui laisse passer ?GLOBALS[truc]=toto
++if (isset($_REQUEST['GLOBALS'])) die();
++// Annuler les magic quotes \' sur GET POST COOKIE et GLOBALS ;
++// supprimer aussi les eventuels caracteres nuls %00, qui peuvent tromper
++// la commande file_exists('chemin/vers/fichier/interdit%00truc_normal')
++function spip_desinfecte(&amp;$t) {
++	static $magic_quotes;
++	if (!isset($magic_quotes))
++		$magic_quotes = @get_magic_quotes_gpc();
+ 
+-	if (is_array($GLOBALS[$_table])) {
+-		foreach ($GLOBALS[$_table] as $key =&gt; $val) {
+-			if (is_string($val))
+-				$GLOBALS[$_table][$key] = stripslashes($val);
++	if (is_array($t)) {
++		foreach ($t as $key =&gt; $val) {
++			if (!is_array($val)
++			OR !isset($t['spip_recursions'])) { # interdire les recursions
++				$t['spip_recursions'] = true;
++				spip_desinfecte($t[$key]);
++			}
+ 		}
++	} else {
++		$t = str_replace(chr(0), '', $t);
++		if ($magic_quotes)
++			$t = stripslashes($t);
+ 	}
+ }
+-
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">- at set_magic_quotes_runtime</A>(0);
+-if (@get_magic_quotes_gpc()) {
+-	magic_unquote('_GET');
+-	magic_unquote('_POST');
+-	magic_unquote('_COOKIE');
+-
++spip_desinfecte($_GET);
++spip_desinfecte($_POST);
++spip_desinfecte($_COOKIE);
+ #	if (@ini_get('register_globals')) // pas fiable
+-		magic_unquote('GLOBALS');
+-}
+-
+-
++spip_desinfecte($GLOBALS);
++# a la fin supprimer la variable anti-recursion devenue inutile
++# (et meme nuisible, notamment si on teste $_POST)
++unset($_GET['spip_recursions']);
++unset($_POST['spip_recursions']);
++unset($_COOKIE['spip_recursions']);
++unset($GLOBALS['spip_recursions']);
++// Par ailleurs on ne veut pas de magic_quotes au cours de l'execution
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">+ at set_magic_quotes_runtime</A>(0);
+ 
+ // Dirty hack contre le register_globals a 'Off' (PHP 4.1.x)
+ // A remplacer (un jour!) par une gestion propre des variables admissibles ;-)
+@@ -316,9 +331,6 @@
+ // Produire du TeX ou du MathML ?
+ $traiter_math = 'tex';
+ 
+-// Masquer les warning
+-error_reporting(E_ALL ^ E_NOTICE);
+-
+ // Variables du compilateur de squelettes
+ 
+ $exceptions_des_tables = array();
+@@ -415,7 +427,7 @@
+ // (utilise pour les modifs de la base de donnees)
+ 
+ // version de la base
+-$spip_version = 1.822;
++$spip_version = 1.830;
+ 
+ // version de spip
+ $spip_version_affichee = &quot;1.8.2 g&quot;;
+@@ -525,7 +537,7 @@
+ 	}
+ 	$f = @fopen($logfile, &quot;ab&quot;);
+ 	if ($f) {
+-		fputs($f, $message);
++		fputs($f, htmlspecialchars($message));
+ 		fclose($f);
+ 	}
+ 	if ($rotate) {
+
+Index: inc_sites.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_sites.php3,v
+retrieving revision 1.8
+retrieving revision 1.8.2.1
+diff -u -d -r1.8 -r1.8.2.1
+--- inc_sites.php3	7 Sep 2005 15:01:53 -0000	1.8
++++ inc_sites.php3	14 Feb 2006 01:11:07 -0000	1.8.2.1
+@@ -325,7 +325,7 @@
+ 		// Cherchons quand meme un backend
+ 		include_ecrire('feedfinder.php');
+ 		$feeds = get_feed_from_url($url, $texte);
+-		if (count($feeds&gt;1)) {
++		if (count($feeds)&gt;1) {
+ 			spip_log(&quot;feedfinder.php :\n&quot;.join(&quot;\n&quot;, $feeds));
+ 			$result['url_syndic'] = &quot;select: &quot;.join(' ',$feeds);
+ 		} else
+@@ -902,6 +902,7 @@
+ 
+ 		$table = '';
+ 		while ($row = spip_fetch_array($result)) {
++			$row = safehtml_sur_row($row);
+ 			$vals = '';
+ 
+ 			$id_syndic_article=$row[&quot;id_syndic_article&quot;];
+
+Index: inc_filtres.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_filtres.php3,v
+retrieving revision 1.10.2.2
+retrieving revision 1.10.2.3
+diff -u -d -r1.10.2.2 -r1.10.2.3
+--- inc_filtres.php3	5 Nov 2005 22:34:35 -0000	1.10.2.2
++++ inc_filtres.php3	14 Feb 2006 01:11:07 -0000	1.10.2.3
+@@ -1394,7 +1394,7 @@
+ 		$dimensions = getimagesize($image);
+ 		$largeur = $dimensions[0];
+ 		$hauteur = $dimensions[1];
+-		return inserer_attribut(&quot;&lt;img src='$image' style='border: 0px; width: &quot;.$largeur.&quot;px; height: &quot;.$hauteur.px.&quot;' class='image_typo'&gt;&quot;, 'alt', $alt);
++		return inserer_attribut(&quot;&lt;img src='$image' style='border: 0px; width: &quot;.$largeur.&quot;px; height: &quot;.$hauteur.px.&quot;' class='image_typo' /&gt;&quot;, 'alt', $alt);
+ 	} else {
+ 		return $texte;
+ 	}
+
+Index: inc_extra.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_extra.php3,v
+retrieving revision 1.2.2.1
+retrieving revision 1.2.2.2
+diff -u -d -r1.2.2.1 -r1.2.2.2
+--- inc_extra.php3	1 Nov 2005 21:51:54 -0000	1.2.2.1
++++ inc_extra.php3	14 Feb 2006 01:11:07 -0000	1.2.2.2
+@@ -89,13 +89,12 @@
+ define(&quot;_ECRIRE_INC_EXTRA&quot;, &quot;1&quot;);
+ 
+ // a partir de la liste des champs, generer la liste des input
+-function extra_saisie($extra, $type, $ensemble='') {
++function extra_form($extra, $type, $ensemble='') {
+ 	$extra = unserialize($extra);
+ 
+ 	// quels sont les extras de ce type d'objet
+ 	if (!$champs = $GLOBALS['champs_extra'][$type])
+ 		$champs = Array();
+-
+ 	// prendre en compte, eventuellement, les champs presents dans la base
+ 	// mais oublies dans mes_options.
+ 	if (is_array($extra))
+@@ -233,7 +232,11 @@
+ 
+ 		$affiche .= &quot;&lt;p&gt;\n&quot;;
+ 	}
++	return $affiche;
+ 
++}
++function extra_saisie($extra, $type, $ensemble='') {
++	$affiche=extra_form($extra, $type, $ensemble);
+ 	if ($affiche) {
+ 		debut_cadre_enfonce();
+ 		echo $affiche;
+
+Index: inc_rss.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_rss.php3,v
+retrieving revision 1.2
+retrieving revision 1.2.2.1
+diff -u -d -r1.2 -r1.2.2.1
+--- inc_rss.php3	10 Aug 2005 12:00:38 -0000	1.2
++++ inc_rss.php3	14 Feb 2006 01:11:07 -0000	1.2.2.1
+@@ -193,6 +193,7 @@
+ 
+ // Suivi des forums
+ function rss_suivi_forums($a, $query_forum='', $lien_moderation=false) {
++	$rss = array();
+ 	include_ecrire(&quot;inc_forum.php3&quot;);
+ 
+ 	$result_forum = spip_query(&quot;
+@@ -302,6 +303,7 @@
+ }
+ 
+ function rss_articles($critere) {
++	$rss = array();
+ 	$s = spip_query(&quot;SELECT * FROM spip_articles WHERE $critere
+ 	ORDER BY date DESC LIMIT 0,10&quot;);
+ 	while ($t = spip_fetch_array($s)) {
+@@ -330,6 +332,7 @@
+ 
+ 
+ function rss_breves($critere) {
++	$rss = array();
+ 	$s = spip_query(&quot;SELECT * FROM spip_breves WHERE $critere
+ 	ORDER BY date_heure DESC LIMIT 0,10&quot;);
+ 	while ($t = spip_fetch_array($s)) {
+@@ -350,6 +353,7 @@
+ 
+ 
+ function rss_sites($critere) {
++	$rss = array();
+ 	$s = spip_query(&quot;SELECT * FROM spip_syndic WHERE $critere
+ 	ORDER BY date DESC LIMIT 0,10&quot;);
+ 	while ($t = spip_fetch_array($s)) {
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000364.html">[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.18.2.8,1.18.2.9
+</A></li>
+	<LI>Next message: <A HREF="000365.html">[Spip-carto-cvs] spipcarto inc-balises.php3,1.12.2.2,1.12.2.3 inc-public-global.php3,1.7,1.7.2.1 spip_rss.php,1.2,1.2.2.1 spip_acces_doc.php3,1.3,1.3.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#366">[ date ]</a>
+              <a href="thread.html#366">[ thread ]</a>
+              <a href="subject.html#366">[ subject ]</a>
+              <a href="author.html#366">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

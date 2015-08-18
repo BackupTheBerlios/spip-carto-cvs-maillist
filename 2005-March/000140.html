@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.6,1.7
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20carte_edit.php3%2C1.6%2C1.7&In-Reply-To=%3C200503041204.j24C4JNx026935%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000138.html">
+   <LINK REL="Next"  HREF="000141.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.6,1.7</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20carte_edit.php3%2C1.6%2C1.7&In-Reply-To=%3C200503041204.j24C4JNx026935%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire carte_edit.php3,1.6,1.7">stef at berlios.de
+       </A><BR>
+    <I>Fri Mar  4 13:04:19 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000138.html">[Spip-carto-cvs] spipcarto/ecrire inc_presentation.php3,1.3,1.4
+</A></li>
+        <LI>Next message: <A HREF="000141.html">[Spip-carto-cvs] spipcarto/ecrire spip_style.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#140">[ date ]</a>
+              <a href="thread.html#140">[ thread ]</a>
+              <a href="subject.html#140">[ subject ]</a>
+              <a href="author.html#140">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv26908/spipcarto/ecrire
+
+Modified Files:
+	carte_edit.php3 
+Log Message:
+bug passage par copie dans la class link (PHP5 ?)
+
+Index: carte_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/carte_edit.php3,v
+retrieving revision 1.6
+retrieving revision 1.7
+diff -u -d -r1.6 -r1.7
+--- carte_edit.php3	1 Mar 2005 17:36:25 -0000	1.6
++++ carte_edit.php3	4 Mar 2005 12:04:15 -0000	1.7
+@@ -82,6 +82,10 @@
+ $carte_link = new Link(&quot;carte_edit.php3&quot;);
+ $carte_link-&gt;addVar('id_carte', $id_carte);
+ if ($retour) $carte_link-&gt;addVar('retour', $retour);
++$carte_supplink = new Link(&quot;carte_edit.php3&quot;);
++$carte_supplink-&gt;addVar('id_carte', $id_carte);
++$carte_supplink-&gt;addVar('supp_carte', $id_carte);
++if ($retour) $carte_supplink-&gt;addVar('retour', $retour);
+ 
+ //
+ // Modifications des objets de la carte
+@@ -166,8 +170,8 @@
+ if ($supp_carte &amp;&amp; !$supp_confirme &amp;&amp; !$supp_rejet) {
+ 	echo &quot;&lt;p&gt;&lt;strong&gt;&quot;._L(&quot;Attention :&quot;).&quot;&lt;/strong&gt; &quot;;
+ 	echo _L(&quot;Voulez-vous vraiment supprimer cette carte ?&quot;).&quot;&lt;/p&gt;\n&quot;;
+-	$link = $carte_link;//new Link();
+-	$link-&gt;addVar('supp_carte', $supp_carte);
++	$link = $carte_supplink;//new Link();
++	//$link-&gt;addVar('supp_carte', $supp_carte);
+ 	echo $link-&gt;getform('GET');
+ 	echo &quot;&lt;input type='submit' name='supp_confirme' value=\&quot;&quot;._T('item_oui').&quot;\&quot; class='fondl'&gt;&quot;;
+ 	echo &quot; &nbsp; &quot;;
+@@ -238,11 +242,11 @@
+ if ($id_carte &amp;&amp; carte_administrable($id_carte)) {
+ 	echo &quot;&lt;br /&gt;\n&quot;;
+ 	echo &quot;&lt;div align='$spip_lang_right'&gt;&quot;;
+-	$link = $carte_link;
+-	$link-&gt;addVar('supp_carte', $id_carte);
+-	if (!$retour) {
+-		$link-&gt;addVar('retour', 'cartes.php3');
+-	}
++	$link = $carte_supplink;
++	//$link-&gt;addVar('supp_carte', $id_carte);
++	//if (!$retour) {
++	//	$link-&gt;addVar('retour', 'cartes.php3');
++	//}
+ 	//if (!$nb_reponses) {
+ 	//	$link-&gt;addVar('supp_confirme', 'oui');
+ 	//}
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000138.html">[Spip-carto-cvs] spipcarto/ecrire inc_presentation.php3,1.3,1.4
+</A></li>
+	<LI>Next message: <A HREF="000141.html">[Spip-carto-cvs] spipcarto/ecrire spip_style.php3,1.3,1.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#140">[ date ]</a>
+              <a href="thread.html#140">[ thread ]</a>
+              <a href="subject.html#140">[ subject ]</a>
+              <a href="author.html#140">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

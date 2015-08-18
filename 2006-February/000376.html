@@ -1,0 +1,1385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire/safehtml/classes HTMLSax3.php,NONE,1.1.2.1 safehtml.php,NONE,1.1.2.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire/safehtml/classes%20HTMLSax3.php%2CNONE%2C1.1.2.1%20safehtml.php%2CNONE%2C1.1.2.1&In-Reply-To=%3C200602162306.k1GN6Ebx012727%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000373.html">
+   <LINK REL="Next"  HREF="000377.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire/safehtml/classes HTMLSax3.php,NONE,1.1.2.1 safehtml.php,NONE,1.1.2.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire/safehtml/classes%20HTMLSax3.php%2CNONE%2C1.1.2.1%20safehtml.php%2CNONE%2C1.1.2.1&In-Reply-To=%3C200602162306.k1GN6Ebx012727%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire/safehtml/classes HTMLSax3.php,NONE,1.1.2.1 safehtml.php,NONE,1.1.2.1">stef at berlios.de
+       </A><BR>
+    <I>Fri Feb 17 00:06:14 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000373.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.6,1.1.2.7 mes_options.php3,1.8.2.6,1.8.2.7
+</A></li>
+        <LI>Next message: <A HREF="000377.html">[Spip-carto-cvs] spipcarto/ecrire/lang ecrire_cs.php3,NONE,1.1.2.1 spip_cs.php3,NONE,1.1.2.1 public_cs.php3,NONE,1.1.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#376">[ date ]</a>
+              <a href="thread.html#376">[ thread ]</a>
+              <a href="subject.html#376">[ subject ]</a>
+              <a href="author.html#376">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire/safehtml/classes
+In directory sheep:/tmp/cvs-serv12672/ecrire/safehtml/classes
+
+Added Files:
+      Tag: BRANCH-V1
+	HTMLSax3.php safehtml.php 
+Log Message:
+Mise &#224; jour (Spip 1.8.2 SVN)
+bugs boucle document image
+safehtml
+ajout lang CS
+page (secu formulaires)
+
+--- NEW FILE: HTMLSax3.php ---
+&lt;?php
+/* vim: set expandtab tabstop=4 shiftwidth=4: */
+//
+// +----------------------------------------------------------------------+
+// | PHP Version 4                                                        |
+// +----------------------------------------------------------------------+
+// | Copyright (c) 1997-2002 The PHP Group                                |
+// +----------------------------------------------------------------------+
+// | This source file is subject to version 2.02 of the PHP license,      |
+// | that is bundled with this package in the file LICENSE, and is        |
+// | available at through the world-wide-web at                           |
+// | <A HREF="http://www.php.net/license/3_0.txt.">http://www.php.net/license/3_0.txt.</A>                                  |
+// | If you did not receive a copy of the PHP license and are unable to   |
+// | obtain it through the world-wide-web, please send a note to          |
+// | <A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">license at php.net</A> so we can mail you a copy immediately.               |
+// +----------------------------------------------------------------------+
+// | Authors: Alexander Zhukov &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">alex at veresk.ru</A>&gt; Original port from Python |
+// | Authors: Harry Fuecks &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">hfuecks at phppatterns.com</A>&gt; Port to PEAR + more  |
+// | Authors: Many @ Sitepointforums Advanced PHP Forums                  |
+// +----------------------------------------------------------------------+
+//
+// $Id: HTMLSax3.php,v 1.1.2.1 2006/02/16 23:06:12 stef Exp $
+//
+/**
+* Main parser components
+* @package XML_HTMLSax3
+* @version $Id: HTMLSax3.php,v 1.1.2.1 2006/02/16 23:06:12 stef Exp $
+*/
+/**
+* Required classes
+*/
+if (!defined('XML_HTMLSAX3')) {
+    define('XML_HTMLSAX3', 'XML/');
+}
+require_once(XML_HTMLSAX3 . 'HTMLSax3/States.php');
+require_once(XML_HTMLSAX3 . 'HTMLSax3/Decorators.php');
+
+/**
+* Base State Parser
+* @package XML_HTMLSax3
+* @access protected
+* @abstract
+*/
+class XML_HTMLSax3_StateParser {
+    /**
+    * Instance of user front end class to be passed to callbacks
+    * @var XML_HTMLSax3
+    * @access private
+    */
+    var $htmlsax;
+    /**
+    * User defined object for handling elements
+    * @var object
+    * @access private
+    */
+    var $handler_object_element;
+    /**
+    * User defined open tag handler method
+    * @var string
+    * @access private
+    */
+    var $handler_method_opening;
+    /**
+    * User defined close tag handler method
+    * @var string
+    * @access private
+    */
+    var $handler_method_closing;
+    /**
+    * User defined object for handling data in elements
+    * @var object
+    * @access private
+    */
+    var $handler_object_data;
+    /**
+    * User defined data handler method
+    * @var string
+    * @access private
+    */
+    var $handler_method_data;
+    /**
+    * User defined object for handling processing instructions
+    * @var object
+    * @access private
+    */
+    var $handler_object_pi;
+    /**
+    * User defined processing instruction handler method
+    * @var string
+    * @access private
+    */
+    var $handler_method_pi;
+    /**
+    * User defined object for handling JSP/ASP tags
+    * @var object
+    * @access private
+    */
+    var $handler_object_jasp;
+    /**
+    * User defined JSP/ASP handler method
+    * @var string
+    * @access private
+    */
+    var $handler_method_jasp;
+    /**
+    * User defined object for handling XML escapes
+    * @var object
+    * @access private
+    */
+    var $handler_object_escape;
+    /**
+    * User defined XML escape handler method
+    * @var string
+    * @access private
+    */
+    var $handler_method_escape;
+    /**
+    * User defined handler object or NullHandler
+    * @var object
+    * @access private
+    */
+    var $handler_default;
+    /**
+    * Parser options determining parsing behavior
+    * @var array
+    * @access private
+    */
+    var $parser_options = array();
+    /**
+    * XML document being parsed
+    * @var string
+    * @access private
+    */
+    var $rawtext;
+    /**
+    * Position in XML document relative to start (0)
+    * @var int
+    * @access private
+    */
+    var $position;
+    /**
+    * Length of the XML document in characters
+    * @var int
+    * @access private
+    */
+    var $length;
+    /**
+    * Array of state objects
+    * @var array
+    * @access private
+    */
+    var $State = array();
+
+    /**
+    * Constructs XML_HTMLSax3_StateParser setting up states
+    * @var XML_HTMLSax3 instance of user front end class
+    * @access protected
+    */
+    function XML_HTMLSax3_StateParser (&amp; $htmlsax) {
+        $this-&gt;htmlsax = &amp; $htmlsax;
+        $this-&gt;State[XML_HTMLSAX3_STATE_START] =&amp; new XML_HTMLSax3_StartingState();
+
+        $this-&gt;State[XML_HTMLSAX3_STATE_CLOSING_TAG] =&amp; new XML_HTMLSax3_ClosingTagState();
+        $this-&gt;State[XML_HTMLSAX3_STATE_TAG] =&amp; new XML_HTMLSax3_TagState();
+        $this-&gt;State[XML_HTMLSAX3_STATE_OPENING_TAG] =&amp; new XML_HTMLSax3_OpeningTagState();
+
+        $this-&gt;State[XML_HTMLSAX3_STATE_PI] =&amp; new XML_HTMLSax3_PiState();
+        $this-&gt;State[XML_HTMLSAX3_STATE_JASP] =&amp; new XML_HTMLSax3_JaspState();
+        $this-&gt;State[XML_HTMLSAX3_STATE_ESCAPE] =&amp; new XML_HTMLSax3_EscapeState();
+    }
+
+    /**
+    * Moves the position back one character
+    * @access protected
+    * @return void
+    */
+    function unscanCharacter() {
+        $this-&gt;position -= 1;
+    }
+
+    /**
+    * Moves the position forward one character
+    * @access protected
+    * @return void
+    */
+    function ignoreCharacter() {
+        $this-&gt;position += 1;
+    }
+
+    /**
+    * Returns the next character from the XML document or void if at end
+    * @access protected
+    * @return mixed
+    */
+    function scanCharacter() {
+        if ($this-&gt;position &lt; $this-&gt;length) {
+            return $this-&gt;rawtext{$this-&gt;position++};
+        }
+    }
+
+    /**
+    * Returns a string from the current position to the next occurance
+    * of the supplied string
+    * @param string string to search until
+    * @access protected
+    * @return string
+    */
+    function scanUntilString($string) {
+        $start = $this-&gt;position;
+        $this-&gt;position = strpos($this-&gt;rawtext, $string, $start);
+        if ($this-&gt;position === FALSE) {
+            $this-&gt;position = $this-&gt;length;
+        }
+        return substr($this-&gt;rawtext, $start, $this-&gt;position - $start);
+    }
+
+    /**
+    * Returns a string from the current position until the first instance of
+    * one of the characters in the supplied string argument
+    * @param string string to search until
+    * @access protected
+    * @return string
+    * @abstract
+    */
+    function scanUntilCharacters($string) {}
+
+    /**
+    * Moves the position forward past any whitespace characters
+    * @access protected
+    * @return void
+    * @abstract
+    */
+    function ignoreWhitespace() {}
+
+    /**
+    * Begins the parsing operation, setting up any decorators, depending on
+    * parse options invoking _parse() to execute parsing
+    * @param string XML document to parse
+    * @access protected
+    * @return void
+    */
+    function parse($data) {
+        if ($this-&gt;parser_options['XML_OPTION_TRIM_DATA_NODES']==1) {
+            $decorator =&amp; new XML_HTMLSax3_Trim(
+                $this-&gt;handler_object_data,
+                $this-&gt;handler_method_data);
+            $this-&gt;handler_object_data =&amp; $decorator;
+            $this-&gt;handler_method_data = 'trimData';
+        }
+        if ($this-&gt;parser_options['XML_OPTION_CASE_FOLDING']==1) {
+            $open_decor =&amp; new XML_HTMLSax3_CaseFolding(
+                $this-&gt;handler_object_element,
+                $this-&gt;handler_method_opening,
+                $this-&gt;handler_method_closing);
+            $this-&gt;handler_object_element =&amp; $open_decor;
+            $this-&gt;handler_method_opening ='foldOpen';
+            $this-&gt;handler_method_closing ='foldClose';
+        }
+        if ($this-&gt;parser_options['XML_OPTION_LINEFEED_BREAK']==1) {
+            $decorator =&amp; new XML_HTMLSax3_Linefeed(
+                $this-&gt;handler_object_data,
+                $this-&gt;handler_method_data);
+            $this-&gt;handler_object_data =&amp; $decorator;
+            $this-&gt;handler_method_data = 'breakData';
+        }
+        if ($this-&gt;parser_options['XML_OPTION_TAB_BREAK']==1) {
+            $decorator =&amp; new XML_HTMLSax3_Tab(
+                $this-&gt;handler_object_data,
+                $this-&gt;handler_method_data);
+            $this-&gt;handler_object_data =&amp; $decorator;
+            $this-&gt;handler_method_data = 'breakData';
+        }
+        if ($this-&gt;parser_options['XML_OPTION_ENTITIES_UNPARSED']==1) {
+            $decorator =&amp; new XML_HTMLSax3_Entities_Unparsed(
+                $this-&gt;handler_object_data,
+                $this-&gt;handler_method_data);
+            $this-&gt;handler_object_data =&amp; $decorator;
+            $this-&gt;handler_method_data = 'breakData';
+        }
+        if ($this-&gt;parser_options['XML_OPTION_ENTITIES_PARSED']==1) {
+            $decorator =&amp; new XML_HTMLSax3_Entities_Parsed(
+                $this-&gt;handler_object_data,
+                $this-&gt;handler_method_data);
+            $this-&gt;handler_object_data =&amp; $decorator;
+            $this-&gt;handler_method_data = 'breakData';
+        }
+        // Note switched on by default
+        if ($this-&gt;parser_options['XML_OPTION_STRIP_ESCAPES']==1) {
+            $decorator =&amp; new XML_HTMLSax3_Escape_Stripper(
+                $this-&gt;handler_object_escape,
+                $this-&gt;handler_method_escape);
+            $this-&gt;handler_object_escape =&amp; $decorator;
+            $this-&gt;handler_method_escape = 'strip';
+        }
+        $this-&gt;rawtext = $data;
+        $this-&gt;length = strlen($data);
+        $this-&gt;position = 0;
+        $this-&gt;_parse();
+    }
+
+    /**
+    * Performs the parsing itself, delegating calls to a specific parser
+    * state
+    * @param constant state object to parse with
+    * @access protected
+    * @return void
+    */
+    function _parse($state = XML_HTMLSAX3_STATE_START) {
+        do {
+            $state = $this-&gt;State[$state]-&gt;parse($this);
+        } while ($state != XML_HTMLSAX3_STATE_STOP &amp;&amp;
+                    $this-&gt;position &lt; $this-&gt;length);
+    }
+}
+
+/**
+* Parser for PHP Versions below 4.3.0. Uses a slower parsing mechanism than
+* the equivalent PHP 4.3.0+  subclass of StateParser
+* @package XML_HTMLSax3
+* @access protected
+* @see XML_HTMLSax3_StateParser_Gtet430
+*/
+class XML_HTMLSax3_StateParser_Lt430 extends XML_HTMLSax3_StateParser {
+    /**
+    * Constructs XML_HTMLSax3_StateParser_Lt430 defining available
+    * parser options
+    * @var XML_HTMLSax3 instance of user front end class
+    * @access protected
+    */
+    function XML_HTMLSax3_StateParser_Lt430(&amp; $htmlsax) {
+        parent::XML_HTMLSax3_StateParser($htmlsax);
+        $this-&gt;parser_options['XML_OPTION_TRIM_DATA_NODES'] = 0;
+        $this-&gt;parser_options['XML_OPTION_CASE_FOLDING'] = 0;
+        $this-&gt;parser_options['XML_OPTION_LINEFEED_BREAK'] = 0;
+        $this-&gt;parser_options['XML_OPTION_TAB_BREAK'] = 0;
+        $this-&gt;parser_options['XML_OPTION_ENTITIES_PARSED'] = 0;
+        $this-&gt;parser_options['XML_OPTION_ENTITIES_UNPARSED'] = 0;
+        $this-&gt;parser_options['XML_OPTION_STRIP_ESCAPES'] = 0;
+    }
+
+    /**
+    * Returns a string from the current position until the first instance of
+    * one of the characters in the supplied string argument
+    * @param string string to search until
+    * @access protected
+    * @return string
+    */
+    function scanUntilCharacters($string) {
+        $startpos = $this-&gt;position;
+        while ($this-&gt;position &lt; $this-&gt;length &amp;&amp; strpos($string, $this-&gt;rawtext{$this-&gt;position}) === FALSE) {
+            $this-&gt;position++;
+        }
+        return substr($this-&gt;rawtext, $startpos, $this-&gt;position - $startpos);
+    }
+
+    /**
+    * Moves the position forward past any whitespace characters
+    * @access protected
+    * @return void
+    */
+    function ignoreWhitespace() {
+        while ($this-&gt;position &lt; $this-&gt;length &amp;&amp; 
+            strpos(&quot; \n\r\t&quot;, $this-&gt;rawtext{$this-&gt;position}) !== FALSE) {
+            $this-&gt;position++;
+        }
+    }
+
+    /**
+    * Begins the parsing operation, setting up the unparsed XML entities
+    * decorator if necessary then delegating further work to parent
+    * @param string XML document to parse
+    * @access protected
+    * @return void
+    */
+    function parse($data) {
+        parent::parse($data);
+    }
+}
+
+/**
+* Parser for PHP Versions equal to or greater than 4.3.0. Uses a faster
+* parsing mechanism than the equivalent PHP &lt; 4.3.0 subclass of StateParser
+* @package XML_HTMLSax3
+* @access protected
+* @see XML_HTMLSax3_StateParser_Lt430
+*/
+class XML_HTMLSax3_StateParser_Gtet430 extends XML_HTMLSax3_StateParser {
+    /**
+    * Constructs XML_HTMLSax3_StateParser_Gtet430 defining available
+    * parser options
+    * @var XML_HTMLSax3 instance of user front end class
+    * @access protected
+    */
+    function XML_HTMLSax3_StateParser_Gtet430(&amp; $htmlsax) {
+        parent::XML_HTMLSax3_StateParser($htmlsax);
+        $this-&gt;parser_options['XML_OPTION_TRIM_DATA_NODES'] = 0;
+        $this-&gt;parser_options['XML_OPTION_CASE_FOLDING'] = 0;
+        $this-&gt;parser_options['XML_OPTION_LINEFEED_BREAK'] = 0;
+        $this-&gt;parser_options['XML_OPTION_TAB_BREAK'] = 0;
+        $this-&gt;parser_options['XML_OPTION_ENTITIES_PARSED'] = 0;
+        $this-&gt;parser_options['XML_OPTION_ENTITIES_UNPARSED'] = 0;
+        $this-&gt;parser_options['XML_OPTION_STRIP_ESCAPES'] = 0;
+    }
+    /**
+    * Returns a string from the current position until the first instance of
+    * one of the characters in the supplied string argument.
+    * @param string string to search until
+    * @access protected
+    * @return string
+    */
+    function scanUntilCharacters($string) {
+        $startpos = $this-&gt;position;
+        $length = strcspn($this-&gt;rawtext, $string, $startpos);
+        $this-&gt;position += $length;
+        return substr($this-&gt;rawtext, $startpos, $length);
+    }
+
+    /**
+    * Moves the position forward past any whitespace characters
+    * @access protected
+    * @return void
+    */
+    function ignoreWhitespace() {
+        $this-&gt;position += strspn($this-&gt;rawtext, &quot; \n\r\t&quot;, $this-&gt;position);
+    }
+
+    /**
+    * Begins the parsing operation, setting up the parsed and unparsed
+    * XML entity decorators if necessary then delegating further work
+    * to parent
+    * @param string XML document to parse
+    * @access protected
+    * @return void
+    */
+    function parse($data) {
+        parent::parse($data);
+    }
+}
+
+/**
+* Default NullHandler for methods which were not set by user
+* @package XML_HTMLSax3
+* @access protected
+*/
+class XML_HTMLSax3_NullHandler {
+    /**
+    * Generic handler method which does nothing
+    * @access protected
+    * @return void
+    */
+    function DoNothing() {
+    }
+}
+
+/**
+* User interface class. All user calls should only be made to this class
+* @package XML_HTMLSax3
+* @access public
+*/
+class XML_HTMLSax3 {
+    /**
+    * Instance of concrete subclass of XML_HTMLSax3_StateParser
+    * @var XML_HTMLSax3_StateParser
+    * @access private
+    */
+    var $state_parser;
+
+    /**
+    * Constructs XML_HTMLSax3 selecting concrete StateParser subclass
+    * depending on PHP version being used as well as setting the default
+    * NullHandler for all callbacks&lt;br /&gt;
+    * &lt;b&gt;Example:&lt;/b&gt;
+    * &lt;pre&gt;
+    * $myHandler = &amp; new MyHandler();
+    * $parser = new XML_HTMLSax3();
+    * $parser-&gt;set_object($myHandler);
+    * $parser-&gt;set_option('XML_OPTION_CASE_FOLDING');
+    * $parser-&gt;set_element_handler('myOpenHandler','myCloseHandler');
+    * $parser-&gt;set_data_handler('myDataHandler');
+    * $parser-&gt;parser($xml);
+    * &lt;/pre&gt;
+    * @access public
+    */
+    function XML_HTMLSax3() {
+        if (version_compare(phpversion(), '4.3', 'ge')) {
+            $this-&gt;state_parser =&amp; new XML_HTMLSax3_StateParser_Gtet430($this);
+        } else {
+            $this-&gt;state_parser =&amp; new XML_HTMLSax3_StateParser_Lt430($this);
+        }
+        $nullhandler =&amp; new XML_HTMLSax3_NullHandler();
+        $this-&gt;set_object($nullhandler);
+        $this-&gt;set_element_handler('DoNothing', 'DoNothing');
+        $this-&gt;set_data_handler('DoNothing');
+        $this-&gt;set_pi_handler('DoNothing');
+        $this-&gt;set_jasp_handler('DoNothing');
+        $this-&gt;set_escape_handler('DoNothing');
+    }
+
+    /**
+    * Sets the user defined handler object. Returns a PEAR Error
+    * if supplied argument is not an object.
+    * @param object handler object containing SAX callback methods
+    * @access public
+    * @return mixed
+    */
+    function set_object(&amp;$object) {
+        if ( is_object($object) ) {
+            $this-&gt;state_parser-&gt;handler_default =&amp; $object;
+            return true;
+        } else {
+            require_once('PEAR.php');
+            PEAR::raiseError('XML_HTMLSax3::set_object requires '.
+                'an object instance');
+        }
+    }
+
+    /**
+    * Sets a parser option. By default all options are switched off.
+    * Returns a PEAR Error if option is invalid&lt;br /&gt;
+    * &lt;b&gt;Available options:&lt;/b&gt;
+    * &lt;ul&gt;
+    * &lt;li&gt;XML_OPTION_TRIM_DATA_NODES: trim whitespace off the beginning
+    * and end of data passed to the data handler&lt;/li&gt;
+    * &lt;li&gt;XML_OPTION_LINEFEED_BREAK: linefeeds result in additional data
+    * handler calls&lt;/li&gt;
+    * &lt;li&gt;XML_OPTION_TAB_BREAK: tabs result in additional data handler
+    * calls&lt;/li&gt;
+    * &lt;li&gt;XML_OPTION_ENTITIES_UNPARSED: XML entities are returned as
+    * seperate data handler calls in unparsed form&lt;/li&gt;
+    * &lt;li&gt;XML_OPTION_ENTITIES_PARSED: (PHP 4.3.0+ only) XML entities are
+    * returned as seperate data handler calls and are parsed with 
+    * PHP's html_entity_decode() function&lt;/li&gt;
+    * &lt;li&gt;XML_OPTION_STRIP_ESCAPES: strips out the -- -- comment markers
+    * or CDATA markup inside an XML escape, if found.&lt;/li&gt;
+    * &lt;/ul&gt;
+    * To get HTMLSax to behave in the same way as the native PHP SAX parser,
+    * using it's default state, you need to switch on XML_OPTION_LINEFEED_BREAK,
+    * XML_OPTION_ENTITIES_PARSED and XML_OPTION_CASE_FOLDING
+    * @param string name of parser option
+    * @param int (optional) 1 to switch on, 0 for off
+    * @access public
+    * @return boolean
+    */
+    function set_option($name, $value=1) {
+        if ( array_key_exists($name,$this-&gt;state_parser-&gt;parser_options) ) {
+            $this-&gt;state_parser-&gt;parser_options[$name] = $value;
+            return true;
+        } else {
+            require_once('PEAR.php');
+            PEAR::raiseError('XML_HTMLSax3::set_option('.$name.') illegal');
+        }
+    }
+
+    /**
+    * Sets the data handler method which deals with the contents of XML
+    * elements.&lt;br /&gt;
+    * The handler method must accept two arguments, the first being an
+    * instance of XML_HTMLSax3 and the second being the contents of an
+    * XML element e.g.
+    * &lt;pre&gt;
+    * function myDataHander(&amp; $parser,$data){}
+    * &lt;/pre&gt;
+    * @param string name of method
+    * @access public
+    * @return void
+    * @see set_object
+    */
+    function set_data_handler($data_method) {
+        $this-&gt;state_parser-&gt;handler_object_data =&amp; $this-&gt;state_parser-&gt;handler_default;
+        $this-&gt;state_parser-&gt;handler_method_data = $data_method;
+    }
+
+    /**
+    * Sets the open and close tag handlers
+    * &lt;br /&gt;The open handler method must accept three arguments; the parser,
+    * the tag name and an array of attributes e.g.
+    * &lt;pre&gt;
+    * function myOpenHander(&amp; $parser,$tagname,$attrs=array()){}
+    * &lt;/pre&gt;
+    * The close handler method must accept two arguments; the parser and
+    * the tag name e.g.
+    * &lt;pre&gt;
+    * function myCloseHander(&amp; $parser,$tagname){}
+    * &lt;/pre&gt;
+    * @param string name of open method
+    * @param string name of close method
+    * @access public
+    * @return void
+    * @see set_object
+    */
+    function set_element_handler($opening_method, $closing_method) {
+        $this-&gt;state_parser-&gt;handler_object_element =&amp; $this-&gt;state_parser-&gt;handler_default;
+        $this-&gt;state_parser-&gt;handler_method_opening = $opening_method;
+        $this-&gt;state_parser-&gt;handler_method_closing = $closing_method;
+    }
+
+    /**
+    * Sets the processing instruction handler method e.g. for PHP open
+    * and close tags&lt;br /&gt;
+    * The handler method must accept three arguments; the parser, the
+    * PI target and data inside the PI
+    * &lt;pre&gt;
+    * function myPIHander(&amp; $parser,$target, $data){}
+    * &lt;/pre&gt;
+    * @param string name of method
+    * @access public
+    * @return void
+    * @see set_object
+    */
+    function set_pi_handler($pi_method) {
+        $this-&gt;state_parser-&gt;handler_object_pi =&amp; $this-&gt;state_parser-&gt;handler_default;
+        $this-&gt;state_parser-&gt;handler_method_pi = $pi_method;
+    }
+
+    /**
+    * Sets the XML escape handler method e.g. for comments and doctype
+    * declarations&lt;br /&gt;
+    * The handler method must accept two arguments; the parser and the
+    * contents of the escaped section
+    * &lt;pre&gt;
+    * function myEscapeHander(&amp; $parser, $data){}
+    * &lt;/pre&gt;
+    * @param string name of method
+    * @access public
+    * @return void
+    * @see set_object
+    */
+    function set_escape_handler($escape_method) {
+        $this-&gt;state_parser-&gt;handler_object_escape =&amp; $this-&gt;state_parser-&gt;handler_default;
+        $this-&gt;state_parser-&gt;handler_method_escape = $escape_method;
+    }
+
+    /**
+    * Sets the JSP/ASP markup handler&lt;br /&gt;
+    * The handler method must accept two arguments; the parser and
+    * body of the JASP tag
+    * &lt;pre&gt;
+    * function myJaspHander(&amp; $parser, $data){}
+    * &lt;/pre&gt;
+    * @param string name of method
+    * @access public
+    * @return void
+    * @see set_object
+    */
+    function set_jasp_handler ($jasp_method) {
+        $this-&gt;state_parser-&gt;handler_object_jasp =&amp; $this-&gt;state_parser-&gt;handler_default;
+        $this-&gt;state_parser-&gt;handler_method_jasp = $jasp_method;
+    }
+
+    /**
+    * Returns the current string position of the &quot;cursor&quot; inside the XML
+    * document
+    * &lt;br /&gt;Intended for use from within a user defined handler called
+    * via the $parser reference e.g.
+    * &lt;pre&gt;
+    * function myDataHandler(&amp; $parser,$data) {
+    *     echo( 'Current position: '.$parser-&gt;get_current_position() );
+    * }
+    * &lt;/pre&gt;
+    * @access public
+    * @return int
+    * @see get_length
+    */
+    function get_current_position() {
+        return $this-&gt;state_parser-&gt;position;
+    }
+
+    /**
+    * Returns the string length of the XML document being parsed
+    * @access public
+    * @return int
+    */
+    function get_length() {
+        return $this-&gt;state_parser-&gt;length;
+    }
+
+    /**
+    * Start parsing some XML
+    * @param string XML document
+    * @access public
+    * @return void
+    */
+    function parse($data) {
+        $this-&gt;state_parser-&gt;parse($data);
+    }
+}
+?&gt;
+--- NEW FILE: safehtml.php ---
+&lt;?php
+/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
+
+/**
+ * SafeHTML Parser
+ *
+ * PHP versions 4 and 5
+ *
+ * @category   HTML
+ * @package    SafeHTML
+ * @author     Roman Ivanov &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">thingol at mail.ru</A>&gt;
+ * @copyright  2004-2005 Roman Ivanov
+ * @license    <A HREF="http://www.debian.org/misc/bsd.license">http://www.debian.org/misc/bsd.license</A>  BSD License (3 Clause)
+ * @version    CVS: $Id: safehtml.php,v 1.1.2.1 2006/02/16 23:06:12 stef Exp $
+ * @link       <A HREF="http://pixel-apes.com/safehtml/">http://pixel-apes.com/safehtml/</A>
+ */
+
+
+/**
+ * This package requires HTMLSax3 package
+ */
+require_once(XML_HTMLSAX3 . 'HTMLSax3.php');
+
+ 
+/**
+ *
+ * SafeHTML Parser
+ *
+ * This parser strips down all potentially dangerous content within HTML:
+ * &lt;ul&gt;
+ * &lt;li&gt;opening tag without its closing tag&lt;/li&gt;
+ * &lt;li&gt;closing tag without its opening tag&lt;/li&gt;
+ * &lt;li&gt;any of these tags: &quot;base&quot;, &quot;basefont&quot;, &quot;head&quot;, &quot;html&quot;, &quot;body&quot;, &quot;applet&quot;, 
+ * &quot;object&quot;, &quot;iframe&quot;, &quot;frame&quot;, &quot;frameset&quot;, &quot;script&quot;, &quot;layer&quot;, &quot;ilayer&quot;, &quot;embed&quot;, 
+ * &quot;bgsound&quot;, &quot;link&quot;, &quot;meta&quot;, &quot;style&quot;, &quot;title&quot;, &quot;blink&quot;, &quot;xml&quot; etc.&lt;/li&gt;
+ * &lt;li&gt;any of these attributes: on*, data*, dynsrc&lt;/li&gt;
+ * &lt;li&gt;javascript:/vbscript:/about: etc. protocols&lt;/li&gt;
+ * &lt;li&gt;expression/behavior etc. in styles&lt;/li&gt;
+ * &lt;li&gt;any other active content&lt;/li&gt;
+ * &lt;/ul&gt;
+ * It also tries to convert code to XHTML valid, but htmltidy is far better 
+ * solution for this task.
+ *
+ * &lt;b&gt;Example:&lt;/b&gt;
+ * &lt;pre&gt;
+ * $parser =&amp; new SafeHTML();
+ * $result = $parser-&gt;parse($doc);
+ * &lt;/pre&gt;
+ *
+ * @category   HTML
+ * @package    SafeHTML
+ * @author     Roman Ivanov &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">thingol at mail.ru</A>&gt;
+ * @copyright  1997-2005 Roman Ivanov
+ * @license    <A HREF="http://www.debian.org/misc/bsd.license">http://www.debian.org/misc/bsd.license</A>  BSD License (3 Clause)
+ * @version    Release: @package_version@
+ * @link       <A HREF="http://pear.php.net/package/SafeHTML">http://pear.php.net/package/SafeHTML</A>
+ */
+class SafeHTML 
+{
+    /**
+     * Storage for resulting HTML output
+     *
+     * @var string
+     * @access private
+     */
+    var $_xhtml = '';
+    
+    /**
+     * Array of counters for each tag
+     *
+     * @var array
+     * @access private
+     */
+    var $_counter = array();
+    
+    /**
+     * Stack of unclosed tags
+     *
+     * @var array
+     * @access private
+     */
+    var $_stack = array();
+    
+    /**
+     * Array of counters for tags that must be deleted with all content
+     *
+     * @var array
+     * @access private
+     */
+    var $_dcCounter = array();
+    
+    /**
+     * Stack of unclosed tags that must be deleted with all content
+     *
+     * @var array
+     * @access private
+     */
+    var $_dcStack = array();
+    
+    /**
+     * Stores level of list (ol/ul) nesting
+     *
+     * @var int
+     * @access private
+     */
+    var $_listScope = 0; 
+    
+    /**
+     * Stack of unclosed list tags 
+     *
+     * @var array
+     * @access private
+     */
+    var $_liStack = array();
+
+    /**
+     * Array of prepared regular expressions for protocols (schemas) matching
+     *
+     * @var array
+     * @access private
+     */
+    var $_protoRegexps = array();
+    
+    /**
+     * Array of prepared regular expressions for CSS matching
+     *
+     * @var array
+     * @access private
+     */
+    var $_cssRegexps = array();
+
+    /**
+     * List of single tags (&quot;&lt;tag /&gt;&quot;)
+     *
+     * @var array
+     * @access public
+     */
+    var $singleTags = array('area', 'br', 'img', 'input', 'hr', 'wbr', );
+
+    /**
+     * List of dangerous tags (such tags will be deleted)
+     *
+     * @var array
+     * @access public
+     */
+    var $deleteTags = array(
+        'applet', 'base',   'basefont', 'bgsound', 'blink',  'body', 
+        'embed',  'frame',  'frameset', 'head',    'html',   'ilayer', 
+        'iframe', 'layer',  'link',     'meta',    'object', 'style', 
+        'title',  'script', 
+        );
+
+    /**
+     * List of dangerous tags (such tags will be deleted, and all content 
+     * inside this tags will be also removed)
+     *
+     * @var array
+     * @access public
+     */
+    var $deleteTagsContent = array('script', 'style', 'title', 'xml', );
+
+    /**
+     * Type of protocols filtering ('white' or 'black')
+     *
+     * @var string
+     * @access public
+     */
+    var $protocolFiltering = 'white';
+
+    /**
+     * List of &quot;dangerous&quot; protocols (used for blacklist-filtering)
+     *
+     * @var array
+     * @access public
+     */
+    var $blackProtocols = array(
+        'about',   'chrome',     'data',       'disk',     'hcp',     
+        'help',    'javascript', 'livescript', 'lynxcgi',  'lynxexec', 
+        'ms-help', 'ms-its',     'mhtml',      'mocha',    'opera',   
+        'res',     'resource',   'shell',      'vbscript', 'view-source', 
+        'vnd.ms.radio',          'wysiwyg', 
+        );
+
+    /**
+     * List of &quot;safe&quot; protocols (used for whitelist-filtering)
+     *
+     * @var array
+     * @access public
+     */
+    var $whiteProtocols = array(
+        'ed2k',   'file', 'ftp',  'gopher', 'http',  'https', 
+        'irc',    'mailto', 'news', 'nntp', 'telnet', 'webcal', 
+        'xmpp', 
+        );
+
+    /**
+     * List of attributes that can contain protocols
+     *
+     * @var array
+     * @access public
+     */
+    var $protocolAttributes = array(
+        'action', 'background', 'codebase', 'dynsrc', 'href', 'lowsrc', 'src', 
+        );
+
+    /**
+     * List of dangerous CSS keywords
+     *
+     * Whole style=&quot;&quot; attribute will be removed, if parser will find one of 
+     * these keywords
+     *
+     * @var array
+     * @access public
+     */
+    var $cssKeywords = array(
+        'absolute', 'behavior',       'behaviour',   'content', 'expression', 
+        'fixed',    'include-source', 'moz-binding',
+        );
+
+    /**
+     * List of tags that can have no &quot;closing tag&quot;
+     *
+     * @var array
+     * @access public
+     * @deprecated XHTML does not allow such tags
+     */
+    var $noClose = array();
+
+    /**
+     * List of block-level tags that terminates paragraph
+     *
+     * Paragraph will be closed when this tags opened
+     *
+     * @var array
+     * @access public
+     */
+    var $closeParagraph = array(
+        'address', 'blockquote', 'center', 'dd',      'dir',       'div', 
+        'dl',      'dt',         'h1',     'h2',      'h3',        'h4', 
+        'h5',      'h6',         'hr',     'isindex', 'listing',   'marquee', 
+        'menu',    'multicol',   'ol',     'p',       'plaintext', 'pre', 
+        'table',   'ul',         'xmp', 
+        );
+
+    /**
+     * List of table tags, all table tags outside a table will be removed
+     *
+     * @var array
+     * @access public
+     */
+    var $tableTags = array(
+        'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
+        'thead',   'tr', 
+        );
+
+    /**
+     * List of list tags
+     *
+     * @var array
+     * @access public
+     */
+    var $listTags = array('dir', 'menu', 'ol', 'ul', );
+
+    /**
+     * List of dangerous attributes
+     *
+     * @var array
+     * @access public
+     */
+    var $attributes = array('dynsrc', 'id', 'name', );
+
+    /**
+     * Constructs class
+     *
+     * @access public
+     */
+    function SafeHTML() 
+    {
+        //making regular expressions based on Proto &amp; CSS arrays
+        foreach ($this-&gt;blackProtocols as $proto) {
+            $preg = &quot;/[\s\x01-\x1F]*&quot;;
+            for ($i=0; $i&lt;strlen($proto); $i++) {
+                $preg .= $proto{$i} . &quot;[\s\x01-\x1F]*&quot;;
+            }
+            $preg .= &quot;:/i&quot;;
+            $this-&gt;_protoRegexps[] = $preg;
+        }
+
+        foreach ($this-&gt;cssKeywords as $css) {
+            $this-&gt;_cssRegexps[] = '/' . $css . '/i';
+        }
+        return true;
+    }
+
+    /**
+     * Handles the writing of attributes - called from $this-&gt;_openHandler()
+     *
+     * @param array $attrs array of attributes $name =&gt; $value
+     * @return boolean
+     * @access private
+     */
+    function _writeAttrs ($attrs) 
+    {
+        if (is_array($attrs)) {
+            foreach ($attrs as $name =&gt; $value) {
+
+                $name = strtolower($name);
+
+                if (strpos($name, 'on') === 0) {
+                    continue;
+                }
+                if (strpos($name, 'data') === 0) {
+                    continue;
+                }
+                if (in_array($name, $this-&gt;attributes)) {
+                    continue;
+                }
+                if (!preg_match(&quot;/^[a-z0-9]+$/i&quot;, $name)) {
+                    continue;
+                }
+
+                if (($value === TRUE) || (is_null($value))) {
+                    $value = $name;
+                }
+
+                if ($name == 'style') {
+                   
+                   // removes insignificant backslahes
+                   $value = str_replace(&quot;\\&quot;, '', $value);
+
+                   // removes CSS comments
+                   while (1)
+                   {
+                     $_value = preg_replace(&quot;!/\*.*?\*/!s&quot;, '', $value);
+                     if ($_value == $value) break;
+                     $value = $_value;
+                   }
+                   
+                   // replace all &amp; to &amp;
+                   $value = str_replace('&amp;', '&amp;', $value);
+                   $value = str_replace('&amp;', '&amp;', $value);
+
+                   foreach ($this-&gt;_cssRegexps as $css) {
+                       if (preg_match($css, $value)) { 
+                           continue 2;
+                       }
+                   }
+                   foreach ($this-&gt;_protoRegexps as $proto) {
+                       if (preg_match($proto, $value)) {
+                           continue 2;
+                       }
+                   }
+                }
+
+                $tempval = preg_replace('/&amp;#(\d+);?/me', &quot;chr('\\1')&quot;, $value); //&quot;'
+                $tempval = preg_replace('/&amp;#x([0-9a-f]+);?/mei', &quot;chr(hexdec('\\1'))&quot;, $tempval);
+
+                if ((in_array($name, $this-&gt;protocolAttributes)) &amp;&amp; 
+                    (strpos($tempval, ':') !== false)) 
+                {
+                    if ($this-&gt;protocolFiltering == 'black') {
+                        foreach ($this-&gt;_protoRegexps as $proto) {
+                            if (preg_match($proto, $tempval)) continue 2;
+                        }
+                    } else {
+                        $_tempval = explode(':', $tempval);
+                        $proto = $_tempval[0];
+                        if (!in_array($proto, $this-&gt;whiteProtocols)) {
+                            continue;
+                        }
+                    }
+                }
+
+                $value = str_replace(&quot;\&quot;&quot;, &quot;&quot;&quot;, $value);
+                $this-&gt;_xhtml .= ' ' . $name . '=&quot;' . $value . '&quot;';
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Opening tag handler - called from HTMLSax
+     *
+     * @param object $parser HTML Parser
+     * @param string $name   tag name
+     * @param array  $attrs  tag attributes
+     * @return boolean
+     * @access private
+     */
+    function _openHandler(&amp;$parser, $name, $attrs) 
+    {
+        $name = strtolower($name);
+
+        if (in_array($name, $this-&gt;deleteTagsContent)) {
+            array_push($this-&gt;_dcStack, $name);
+            $this-&gt;_dcCounter[$name] = isset($this-&gt;_dcCounter[$name]) ? $this-&gt;_dcCounter[$name]+1 : 1;
+        }
+        if (count($this-&gt;_dcStack) != 0) {
+            return true;
+        }
+
+        if (in_array($name, $this-&gt;deleteTags)) {
+            return true;
+        }
+        
+        if (!preg_match(&quot;/^[a-z0-9]+$/i&quot;, $name)) {
+            if (preg_match(&quot;!(?:\@|://)!i&quot;, $name)) {
+                $this-&gt;_xhtml .= '&lt;' . $name . '&gt;';
+            }
+            return true;
+        }
+
+        if (in_array($name, $this-&gt;singleTags)) {
+            $this-&gt;_xhtml .= '&lt;' . $name;
+            $this-&gt;_writeAttrs($attrs);
+            $this-&gt;_xhtml .= ' /&gt;';
+            return true;
+        }
+
+        // TABLES: cannot open table elements when we are not inside table
+        if ((isset($this-&gt;_counter['table'])) &amp;&amp; ($this-&gt;_counter['table'] &lt;= 0) 
+            &amp;&amp; (in_array($name, $this-&gt;tableTags))) 
+        {
+            return true;
+        }
+
+        // PARAGRAPHS: close paragraph when closeParagraph tags opening
+        if ((in_array($name, $this-&gt;closeParagraph)) &amp;&amp; (in_array('p', $this-&gt;_stack))) {
+            $this-&gt;_closeHandler($parser, 'p');
+        }
+
+        // LISTS: we should close &lt;li&gt; if &lt;li&gt; of the same level opening
+        if ($name == 'li' &amp;&amp; count($this-&gt;_liStack) &amp;&amp; 
+            $this-&gt;_listScope == $this-&gt;_liStack[count($this-&gt;_liStack)-1]) 
+        {
+            $this-&gt;_closeHandler($parser, 'li');
+        }
+
+        // LISTS: we want to know on what nesting level of lists we are
+        if (in_array($name, $this-&gt;listTags)) {
+            $this-&gt;_listScope++;
+        }
+        if ($name == 'li') {
+            array_push($this-&gt;_liStack, $this-&gt;_listScope);
+        }
+            
+        $this-&gt;_xhtml .= '&lt;' . $name;
+        $this-&gt;_writeAttrs($attrs);
+        $this-&gt;_xhtml .= '&gt;';
+        array_push($this-&gt;_stack,$name);
+        $this-&gt;_counter[$name] = isset($this-&gt;_counter[$name]) ? $this-&gt;_counter[$name]+1 : 1;
+        return true;
+    }
+
+    /**
+     * Closing tag handler - called from HTMLSax
+     *
+     * @param object $parsers HTML parser
+     * @param string $name    tag name
+     * @return boolean
+     * @access private
+     */
+    function _closeHandler(&amp;$parser, $name) 
+    {
+
+        $name = strtolower($name);
+
+        if (isset($this-&gt;_dcCounter[$name]) &amp;&amp; ($this-&gt;_dcCounter[$name] &gt; 0) &amp;&amp; 
+            (in_array($name, $this-&gt;deleteTagsContent))) 
+        {
+           while ($name != ($tag = array_pop($this-&gt;_dcStack))) {
+            $this-&gt;_dcCounter[$tag]--;
+           }
+
+           $this-&gt;_dcCounter[$name]--;
+        }
+
+        if (count($this-&gt;_dcStack) != 0) {
+            return true;
+        }
+
+        if ((isset($this-&gt;_counter[$name])) &amp;&amp; ($this-&gt;_counter[$name] &gt; 0)) {
+           while ($name != ($tag = array_pop($this-&gt;_stack))) {
+               $this-&gt;_closeTag($tag);
+           }
+
+           $this-&gt;_closeTag($name);
+        }
+        return true;
+    }
+
+    /**
+     * Closes tag 
+     *
+     * @param string $tag tag name
+     * @return boolean
+     * @access private
+     */
+    function _closeTag($tag) 
+    {
+        if (!in_array($tag, $this-&gt;noClose)) {
+            $this-&gt;_xhtml .= '&lt;/' . $tag . '&gt;';
+        }
+
+        $this-&gt;_counter[$tag]--;
+
+        if (in_array($tag, $this-&gt;listTags)) {
+            $this-&gt;_listScope--;
+        }
+
+        if ($tag == 'li') {
+            array_pop($this-&gt;_liStack);
+        }
+        return true;
+    }
+
+    /**
+     * Character data handler - called from HTMLSax
+     *
+     * @param object $parser HTML parser
+     * @param string $data   textual data
+     * @return boolean
+     * @access private
+     */
+    function _dataHandler(&amp;$parser, $data) 
+    {
+        if (count($this-&gt;_dcStack) == 0) {
+            $this-&gt;_xhtml .= $data;
+        }
+        return true;
+    }
+
+    /**
+     * Escape handler - called from HTMLSax
+     *
+     * @param object $parser HTML parser
+     * @param string $data   comments or other type of data
+     * @return boolean
+     * @access private
+     */
+    function _escapeHandler(&amp;$parser, $data) 
+    {
+        return true;
+    }
+
+    /**
+     * Returns the XHTML document
+     *
+     * @return string Processed (X)HTML document
+     * @access public
+     */
+    function getXHTML () 
+    {
+        while ($tag = array_pop($this-&gt;_stack)) {
+            $this-&gt;_closeTag($tag);
+        }
+        
+        return $this-&gt;_xhtml;
+    }
+
+    /**
+     * Clears current document data
+     *
+     * @return boolean
+     * @access public
+     */
+    function clear() 
+    {
+        $this-&gt;_xhtml = '';
+        return true;
+    }
+
+    /**
+     * Main parsing fuction
+     *
+     * @param string $doc HTML document for processing
+     * @return string Processed (X)HTML document
+     * @access public
+     */
+    function parse($doc) 
+    {
+
+       // Save all '&lt;' symbols
+       $doc = preg_replace(&quot;/&lt;(?=[^a-zA-Z\/\!\?\%])/&quot;, '&lt;', $doc);
+
+       // Web documents shouldn't contains \x00 symbol
+       $doc = str_replace(&quot;\x00&quot;, '', $doc);
+
+       // Opera6 bug workaround
+       $doc = str_replace(&quot;\xC0\xBC&quot;, '&lt;', $doc);
+       
+       // UTF-7 encoding XSS workaround
+       $doc = str_replace(&quot;+ADw-&quot;, '&lt;', $doc);
+
+       // Instantiate the parser
+       $parser=&amp; new XML_HTMLSax3();
+
+       // Set up the parser
+       $parser-&gt;set_object($this);
+
+       $parser-&gt;set_element_handler('_openHandler','_closeHandler');
+       $parser-&gt;set_data_handler('_dataHandler');
+       $parser-&gt;set_escape_handler('_escapeHandler');
+
+       $parser-&gt;parse($doc);
+
+       return $this-&gt;getXHTML();
+
+    }
+
+}
+
+/*
+ * Local variables:
+ * tab-width: 4
+ * c-basic-offset: 4
+ * c-hanging-comment-ender-p: nil
+ * End:
+ */
+
+?&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000373.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.6,1.1.2.7 mes_options.php3,1.8.2.6,1.8.2.7
+</A></li>
+	<LI>Next message: <A HREF="000377.html">[Spip-carto-cvs] spipcarto/ecrire/lang ecrire_cs.php3,NONE,1.1.2.1 spip_cs.php3,NONE,1.1.2.1 public_cs.php3,NONE,1.1.2.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#376">[ date ]</a>
+              <a href="thread.html#376">[ thread ]</a>
+              <a href="subject.html#376">[ subject ]</a>
+              <a href="author.html#376">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

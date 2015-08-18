@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.2,1.1.2.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_fonctions.php3%2C1.1.2.2%2C1.1.2.3&In-Reply-To=%3C200509281623.j8SGNBmq025804%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000289.html">
+   <LINK REL="Next"  HREF="000291.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.2,1.1.2.3</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_fonctions.php3%2C1.1.2.2%2C1.1.2.3&In-Reply-To=%3C200509281623.j8SGNBmq025804%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.2,1.1.2.3">stef at berlios.de
+       </A><BR>
+    <I>Wed Sep 28 18:23:11 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000289.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.1,1.1.2.2
+</A></li>
+        <LI>Next message: <A HREF="000291.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgwmsfile.html,1.5.2.1,1.5.2.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#290">[ date ]</a>
+              <a href="thread.html#290">[ thread ]</a>
+              <a href="subject.html#290">[ subject ]</a>
+              <a href="author.html#290">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv25777/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc_carto_fonctions.php3 
+Log Message:
+jsdhtml oubli&#233; =&gt; affichage des formes dans l'interface DHTML
+
+Index: inc_carto_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto_fonctions.php3,v
+retrieving revision 1.1.2.2
+retrieving revision 1.1.2.3
+diff -u -d -r1.1.2.2 -r1.1.2.3
+--- inc_carto_fonctions.php3	28 Sep 2005 15:30:56 -0000	1.1.2.2
++++ inc_carto_fonctions.php3	28 Sep 2005 16:23:09 -0000	1.1.2.3
+@@ -186,7 +186,25 @@
+ 	if (function_exists($format)) return $format($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage,$mot_desc);
+ 	else return &quot;&quot;;
+ }
++///////////////////////////////////////////////
++// JSDHTML
++///////////////////////////////////////////////
++function wkt2coords_jsdhtml($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage,$mot_desc){	
++
++			$coordpair = explode (',',$wktGeom);
++			
++			for ($i=0; $i&lt;sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= ($coord[$i][0]-$callage['top_left']['x'])/$GeoWidth*$ImgWidth;
++				$coord[$i][1] 	= ($callage['bottom_right']['y']-$coord[$i][1])/$GeoHeight*$ImgHeight;		// Calcul de l'Y par rapport au coin inf&#233;rieur
++ 				$coord[$i][1]   = $ImgHeight/2-($coord[$i][1]-$ImgHeight/2);								// Pour que le dessin DHTML soit ok 
++ 				$coordpair[$i] 	= implode(',',$coord[$i]);
++			}
++			$wktGeom = implode(',', $coordpair);
+ 
++			return $wktGeom;
++}
+ ///////////////////////////////////////////////
+ // HTML
+ ///////////////////////////////////////////////
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000289.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto_fonctions.php3,1.1.2.1,1.1.2.2
+</A></li>
+	<LI>Next message: <A HREF="000291.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_geosvgwmsfile.html,1.5.2.1,1.5.2.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#290">[ date ]</a>
+              <a href="thread.html#290">[ thread ]</a>
+              <a href="subject.html#290">[ subject ]</a>
+              <a href="author.html#290">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

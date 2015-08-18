@@ -1,0 +1,1697 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,1.3,1.4 mes_options.php3,1.8,1.9 inc_carto.php3,1.21,1.22 carte_import.php3,1.4,1.5 cartes.php3,1.5,1.6 inc_tag-machine.php,1.2,1.3 inc_documents.php3,1.7,1.8 carte_edit.php3,1.18,1.19 inc_carto_fonctions.php3,1.1,1.2 mots_partout.php,1.6,1.7 inc_getdocument.php3,1.7,1.8 inc_presentation.php3,1.12,1.13
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_import.php3%2C1.3%2C1.4%20mes_options.php3%2C1.8%2C1.9%20inc_carto.php3%2C1.21%2C1.22%20carte_import.php3%2C1.4%2C1.5%20cartes.php3%2C1.5%2C1.6%20inc_tag-machine.php%2C1.2%2C1.3%20inc_documents.php3%2C1.7%2C1.8%20carte_edit.php3%2C1.18%2C1.19%20inc_carto_fonctions.php3%2C1.1%2C1.2%20mots_partout.php%2C1.6%2C1.7%20inc_getdocument.php3%2C1.7%2C1.8%20inc_presentation.php3%2C1.12%2C1.13&In-Reply-To=%3C200510040059.j940xfmq030543%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000323.html">
+   <LINK REL="Next"  HREF="000320.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,1.3,1.4 mes_options.php3,1.8,1.9 inc_carto.php3,1.21,1.22 carte_import.php3,1.4,1.5 cartes.php3,1.5,1.6 inc_tag-machine.php,1.2,1.3 inc_documents.php3,1.7,1.8 carte_edit.php3,1.18,1.19 inc_carto_fonctions.php3,1.1,1.2 mots_partout.php,1.6,1.7 inc_getdocument.php3,1.7,1.8 inc_presentation.php3,1.12,1.13</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_import.php3%2C1.3%2C1.4%20mes_options.php3%2C1.8%2C1.9%20inc_carto.php3%2C1.21%2C1.22%20carte_import.php3%2C1.4%2C1.5%20cartes.php3%2C1.5%2C1.6%20inc_tag-machine.php%2C1.2%2C1.3%20inc_documents.php3%2C1.7%2C1.8%20carte_edit.php3%2C1.18%2C1.19%20inc_carto_fonctions.php3%2C1.1%2C1.2%20mots_partout.php%2C1.6%2C1.7%20inc_getdocument.php3%2C1.7%2C1.8%20inc_presentation.php3%2C1.12%2C1.13&In-Reply-To=%3C200510040059.j940xfmq030543%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,1.3,1.4 mes_options.php3,1.8,1.9 inc_carto.php3,1.21,1.22 carte_import.php3,1.4,1.5 cartes.php3,1.5,1.6 inc_tag-machine.php,1.2,1.3 inc_documents.php3,1.7,1.8 carte_edit.php3,1.18,1.19 inc_carto_fonctions.php3,1.1,1.2 mots_partout.php,1.6,1.7 inc_getdocument.php3,1.7,1.8 inc_presentation.php3,1.12,1.13">stef at berlios.de
+       </A><BR>
+    <I>Tue Oct  4 02:59:41 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000323.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_lien.html,1.2,1.3 carto_svgfilex.html,1.6,1.7 carto_geosvgwmsfile.html,1.5,1.6 carto_logo.html,1.2,1.3 carto.html,1.2,1.3 carto_svgx.html,1.3,1.4 carto_map.html,1.2,1.3 carto_svgfile.html,1.4,1.5
+</A></li>
+        <LI>Next message: <A HREF="000320.html">[Spip-carto-cvs] spipcarto/ecrire/lang spipcarto_fr.php3,1.1,1.2 spipcarto_en.php3,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv30408/ecrire
+
+Modified Files:
+	inc_carto_import.php3 mes_options.php3 inc_carto.php3 
+	carte_import.php3 cartes.php3 inc_tag-machine.php 
+	inc_documents.php3 carte_edit.php3 inc_carto_fonctions.php3 
+	mots_partout.php inc_getdocument.php3 inc_presentation.php3 
+Log Message:
+synchro v1
+
+Index: inc_carto_import.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto_import.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_carto_import.php3	26 Sep 2005 10:17:03 -0000	1.3
++++ inc_carto_import.php3	4 Oct 2005 00:59:38 -0000	1.4
+@@ -1,4 +1,41 @@
+ &lt;?php
++/*****************************************************************************\
++* SPIP-CARTO, Solution de partage et d&#146;&#233;laboration d&#146;information 
++* (Carto)Graphique sous SPIP
++*
++* Copyright (c) 2005
++*
++* St&#233;phane Laurent, Fran&#231;ois-Xavier Prunayre, Pierre Giraud, Jean-Claude 
++* Moissinac et tous les membres du projet SPIP-CARTO V1 (Annie Danzart - Arnaud
++* Fontaine - Arnaud Saint L&#233;ger - Benoit Veler - Christine Potier - Christophe 
++* Betin - Daniel Faivre - David Delon - David Jonglez - Eric Guichard - Jacques
++* Chatignoux - Julien Custot - Laurent J&#233;gou - Mathieu G&#233;hin - Michel Briand - 
++* Mose - Olivier Fr&#233;rot - Philippe Fournel - Thierry Joliveau)
++* 
++* voir : <A HREF="http://www.geolibre.net/article.php3?id_article=16">http://www.geolibre.net/article.php3?id_article=16</A>
++*
++* Ce programme est un logiciel libre distribue sous licence GNU/GPL. 
++* Pour plus de details voir le fichier COPYING.txt ou l&#146;aide en ligne.
++* 
++&#151; -
++This program is free software ; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation ; either version 2 of the License, or
++(at your option) any later version.
++
++This program is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY ; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with this program (COPYING.txt) ; if not, write to
++the Free Software Foundation, Inc.,
++59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++or check <A HREF="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</A>
++&#151; -
++*
++\***************************************************************************/
+ // Ce fichier ne sera execute qu'une fois
+ if (defined(&quot;_ECRIRE_INC_CARTE_IMPORT&quot;)) return;
+ define(&quot;_ECRIRE_INC_CARTE_IMPORT&quot;, &quot;1&quot;);
+
+Index: mes_options.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mes_options.php3,v
+retrieving revision 1.8
+retrieving revision 1.9
+diff -u -d -r1.8 -r1.9
+--- mes_options.php3	24 Sep 2005 01:00:22 -0000	1.8
++++ mes_options.php3	4 Oct 2005 00:59:38 -0000	1.9
+@@ -155,12 +155,22 @@
+ 	return calculer_boucle($id_boucle, $boucles); 
+ }
+ 
++//fonctions de transformation
+ include_ecrire(&quot;inc_carto_fonctions.php3&quot;);
+ 
++//appel du plugin en dernier (peut g&#233;n&#233;rer du javascript)
+ function apres_tout($texte) {
+ 	include_ecrire('plugins/plug_carto.php');
+     return apres_tout_carto($texte);
+ }
++
++//squelettes de carte disponibles 
++//(preview dans cartes.php3 et raccourcis dans carte_edit.php3)
++$GLOBALS['sq_cartes']=array('map','logo','lien','svg','svgx','geosvgwms');
++			
++//////////////////////////////////////////////////
++//////////////////////////////////////////////////
++//          FIN MODULE CARTO
+ //////////////////////////////////////////////////
+ //////////////////////////////////////////////////
+ ?&gt;
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.21
+retrieving revision 1.22
+diff -u -d -r1.21 -r1.22
+--- inc_carto.php3	26 Sep 2005 10:17:03 -0000	1.21
++++ inc_carto.php3	4 Oct 2005 00:59:38 -0000	1.22
+@@ -1,4 +1,41 @@
+ &lt;?php
++/*****************************************************************************\
++* SPIP-CARTO, Solution de partage et d&#146;&#233;laboration d&#146;information 
++* (Carto)Graphique sous SPIP
++*
++* Copyright (c) 2005
++*
++* St&#233;phane Laurent, Fran&#231;ois-Xavier Prunayre, Pierre Giraud, Jean-Claude 
++* Moissinac et tous les membres du projet SPIP-CARTO V1 (Annie Danzart - Arnaud
++* Fontaine - Arnaud Saint L&#233;ger - Benoit Veler - Christine Potier - Christophe 
++* Betin - Daniel Faivre - David Delon - David Jonglez - Eric Guichard - Jacques
++* Chatignoux - Julien Custot - Laurent J&#233;gou - Mathieu G&#233;hin - Michel Briand - 
++* Mose - Olivier Fr&#233;rot - Philippe Fournel - Thierry Joliveau)
++* 
++* voir : <A HREF="http://www.geolibre.net/article.php3?id_article=16">http://www.geolibre.net/article.php3?id_article=16</A>
++*
++* Ce programme est un logiciel libre distribue sous licence GNU/GPL. 
++* Pour plus de details voir le fichier COPYING.txt ou l&#146;aide en ligne.
++* 
++&#151; -
++This program is free software ; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation ; either version 2 of the License, or
++(at your option) any later version.
++
++This program is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY ; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with this program (COPYING.txt) ; if not, write to
++the Free Software Foundation, Inc.,
++59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++or check <A HREF="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</A>
++&#151; -
++*
++\***************************************************************************/
+ 
+ //
+ // Ce fichier ne sera execute qu'une fois
+@@ -108,7 +145,7 @@
+ 		echo &quot;&lt;/table&gt;&quot;;
+ 		echo &quot;&lt;/div&gt;\n&quot;;
+ 	}
+-	return $tous_id;
++	return;// $tous_id;
+ }
+ 
+ 
+@@ -132,31 +169,30 @@
+ 		$height=300;
+ 	};
+ 	
+-	$returned='&lt;script type=&quot;text/javascript&quot; src=&quot;js/x_core_nn4.js&quot;&gt;&lt;/script&gt;
++	$returned=' &lt;table border=&quot;0&quot;&gt;
++  &lt;tr&gt; 
++   &lt;td colspan=&quot;7&quot;&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;js/x_core_nn4.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/x_dom_nn4.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/x_event_nn4.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/navTools.js&quot;&gt;&lt;/script&gt;
+ &lt;script type=&quot;text/javascript&quot; src=&quot;js/graphTools.js&quot;&gt;&lt;/script&gt;
+-&lt;form method=&quot;get&quot; action=&quot;#nouveau_objet&quot; name=&quot;carto_form&quot;&gt;
+- &lt;table border=&quot;0&quot;&gt;
+-  &lt;tr&gt; 
+-   &lt;td colspan=&quot;7&quot;&gt;
++&lt;form method=&quot;post&quot; action=&quot;#nouveau_objet&quot; name=&quot;carto_form&quot;&gt;
+ &lt;script type=&quot;text/javascript&quot;&gt;
+ /*&lt;![CDATA[*/ 
+     var dhtmlDivs = new String();
+     document.image = new Image;
+     document.image.src = \''.$fichier.'\';
+     document.image.usemap=\'#map'.$id_carte.'\';
+-   if (xIE) {
++//   if (xIE) {
+       dhtmlDivs = \'&lt;div id=&quot;mapImageDiv&quot; class=&quot;dhtmldiv&quot; style=&quot;background-image:url(\'; 
+       dhtmlDivs += document.image.src;
+       dhtmlDivs += \');visibility:hidden;background-repeat:no-repeat;&quot;&gt;&lt;/div&gt;\';
+-    } else {
++/*    } else {
+       dhtmlDivs = \'&lt;div id=&quot;mapImageDiv&quot; class=&quot;dhtmldiv&quot; style=&quot;visibility:hidden&quot;&gt;&lt;img \';
+       dhtmlDivs += \'src=&quot;\' + document.image.src + \'&quot; alt=&quot;Main map&quot; title=&quot;&quot; \';
+-      dhtmlDivs += \'width=&quot;'.$width.'px&quot; height=&quot;'.$height.'px&quot; /&gt;&lt;/div&gt;\';
+-      
++      dhtmlDivs += \'width=&quot;'.$width.'px&quot; height=&quot;'.$height.'px&quot; /&gt;&lt;/div&gt;\';    
+     }
++*/
+     dhtmlDivs += \'&lt;div id=&quot;myCanvasDiv&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+     dhtmlDivs += \'&lt;div id=&quot;myCanvas2Div&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+     dhtmlDivs += \'&lt;div id=&quot;myCanvas3Div&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+@@ -240,6 +276,9 @@
+    &lt;/td&gt;
+   &lt;/tr&gt;
+   &lt;tr&gt;
++   &lt;td colspan=&quot;7&quot;&gt;&nbsp;&lt;/td&gt;
++  &lt;/tr&gt;
++  &lt;tr&gt;
+    &lt;td&gt; '._T(&quot;spipcarto:carte_draw&quot;).'
+     &lt;!--&lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;rectangle,submit,crossHair,zoom_in&quot;  id=&quot;zoom_in&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+           zoom_in&lt;br /&gt;--&gt;
+@@ -300,39 +339,50 @@
+ 
+ 	echo debut_block_invisible(&quot;ajouter_carte&quot;);
+ 	echo &quot;&lt;div class='verdana2'&gt;&quot;;
+-	echo _T(&quot;spipcarto:carte_insert_desc&quot;);
++	echo _T(&quot;spipcarto:carte_insert_texte&quot;);
+ 	echo &quot;&lt;/div&gt;&quot;;
+ 
++	$cartes_article=array();
++	$query = &quot;SELECT id_carto_carte FROM spip_carto_cartes_articles where id_article=&quot;.$id_article;
++	$result = spip_query($query);
++	while($ligne=spip_fetch_array($result)) {
++		$cartes_article[]=$ligne[0];
++	}
+ 	$query = &quot;SELECT id_carto_carte, titre FROM spip_carto_cartes ORDER BY titre&quot;;
+ 	$result = spip_query($query);
+ 	if (spip_num_rows($result)) {
+ 		echo &quot;&lt;br /&gt;\n&quot;;
+-		echo &quot;&lt;div class='bandeau_rubriques' style='z-index: 1;'&gt;&quot;;
+-		echo &quot;&lt;div class='plan-articles'&gt;&quot;;
+ 		while ($row = spip_fetch_array($result)) {
+ 			$id_carte = $row['id_carto_carte'];
++			$inclus=(in_array($id_carte,$cartes_article));
+ 			$titre = typo($row['titre']);
+ 			
+ 			$link = new Link(&quot;carte_edit.php3&quot;);
+ 			$link-&gt;addVar(&quot;id_carte&quot;, $id_carte);
+ 			$link-&gt;addVar(&quot;retour&quot;, $GLOBALS['clean_link']-&gt;getUrl());
+-			echo &quot;&lt;a href='&quot;.$link-&gt;getUrl().&quot;'&gt;&quot;;
+-			echo $titre.&quot;&lt;/a&gt;\n&quot;;
+-			echo &quot;&lt;div class='arial1' align='$spip_lang_right' style='color: black; padding-$spip_lang_left: 4px;' &quot;.
++			echo &quot;&lt;div class='verdana3' style='border:1px;background-color: $couleur_claire;'&gt;&quot;;
++			echo bouton_block_invisible(&quot;lien_carte$id_carte&quot;);
++			echo &quot;&lt;a href='&quot;.$link-&gt;getUrl().&quot;'&gt;&quot;.$titre.&quot;&lt;/a&gt;\n&quot;;
++			echo debut_block_invisible(&quot;lien_carte$id_carte&quot;);
++			echo &quot;&lt;div class='arial1' align='$spip_lang_right' style='background-color: white;color: black; padding: 2px;margin: 0px;' &quot;.
+ 				&quot;title=\&quot;&quot;._T(&quot;spipcarto:carte_raccourci&quot;).
+ 				&quot;\&quot;&gt;&quot;;
+-			echo &quot;&lt;font color='333333'&gt;&quot;;
+-			echo &quot;&lt;div align='right'&gt;&quot;._T(&quot;spipcarto:carte_simple&quot;).&quot; &lt;map$id_carte&gt;&lt;/div&gt;&quot;;
+-			echo &quot;&lt;div align='right'&gt;&quot;._T(&quot;spipcarto:carte_logo&quot;).&quot; &lt;map$id_carte|logo&gt;&lt;/div&gt;&quot;;
+-			echo &quot;&lt;div align='right'&gt;&quot;._T(&quot;spipcarto:carte_lien&quot;).&quot; &lt;map$id_carte|lien&gt;&lt;/div&gt;&quot;;
+-			echo &quot;&lt;div align='right'&gt;&quot;._T(&quot;spipcarto:carte_svg&quot;).&quot; &lt;map$id_carte|svg&gt;&lt;/div&gt;&quot;;
+- 			echo &quot;&lt;div align='right'&gt;&quot;._T(&quot;spipcarto:carte_svgx&quot;).&quot; &lt;map$id_carte|svgx&gt;&lt;/div&gt;&quot;;
+-			echo &quot;&lt;div align='right'&gt;&quot;._T(&quot;spipcarto:carte_svggeo&quot;).&quot; &lt;map$id_carte|svggeo&gt;&lt;/div&gt;&quot;;
+-			echo &quot;&lt;/font&gt;\n&quot;;
++			//liste des squelettes disponible : dans mes_options
++			$sq_cartes=$GLOBALS['sq_cartes'];
++			if (!is_array($sq_cartes)) $sq_cartes=array('map');
++			foreach ($sq_cartes as $sq_carte){
++				echo &quot;&lt;div align='right' style='color:#333333'&quot;;
++				if ($inclus) echo &quot;style=\&quot;text-weight: bold;\&quot;&gt; &lt;map&quot;.$id_carte.&quot;|&quot;.$sq_carte.&quot;&gt;&quot;;
++				else echo &quot;&gt;&lt;a href=\&quot;javascript:barre_inserer('&lt;map&quot;.$id_carte.&quot;|&quot;.$sq_carte.&quot;&gt;',document.formulaire.texte)\&quot;&gt;&lt;map&quot;.$id_carte.&quot;|&quot;.$sq_carte.&quot;&gt;&lt;/a&gt;&quot;;
++				echo &quot;&lt;/div&gt;&quot;;
++			}
++
++			echo &quot;&lt;/div&gt;&quot;;
++			echo fin_block();
+ 			echo &quot;&lt;/div&gt;&quot;;
+ 		}
+-		echo &quot;&lt;/div&gt;&quot;;
+-		echo &quot;&lt;/div&gt;&quot;;
++	//	echo &quot;&lt;/div&gt;&quot;;
++	//	echo &quot;&lt;/div&gt;&quot;;
+ 	}
+ 
+ 	// Creer une carte
+
+Index: carte_import.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/carte_import.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- carte_import.php3	26 Sep 2005 10:17:03 -0000	1.4
++++ carte_import.php3	4 Oct 2005 00:59:38 -0000	1.5
+@@ -1,4 +1,41 @@
+ &lt;?php
++/*****************************************************************************\
++* SPIP-CARTO, Solution de partage et d&#146;&#233;laboration d&#146;information 
++* (Carto)Graphique sous SPIP
++*
++* Copyright (c) 2005
++*
++* St&#233;phane Laurent, Fran&#231;ois-Xavier Prunayre, Pierre Giraud, Jean-Claude 
++* Moissinac et tous les membres du projet SPIP-CARTO V1 (Annie Danzart - Arnaud
++* Fontaine - Arnaud Saint L&#233;ger - Benoit Veler - Christine Potier - Christophe 
++* Betin - Daniel Faivre - David Delon - David Jonglez - Eric Guichard - Jacques
++* Chatignoux - Julien Custot - Laurent J&#233;gou - Mathieu G&#233;hin - Michel Briand - 
++* Mose - Olivier Fr&#233;rot - Philippe Fournel - Thierry Joliveau)
++* 
++* voir : <A HREF="http://www.geolibre.net/article.php3?id_article=16">http://www.geolibre.net/article.php3?id_article=16</A>
++*
++* Ce programme est un logiciel libre distribue sous licence GNU/GPL. 
++* Pour plus de details voir le fichier COPYING.txt ou l&#146;aide en ligne.
++* 
++&#151; -
++This program is free software ; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation ; either version 2 of the License, or
++(at your option) any later version.
++
++This program is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY ; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with this program (COPYING.txt) ; if not, write to
++the Free Software Foundation, Inc.,
++59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++or check <A HREF="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</A>
++&#151; -
++*
++\***************************************************************************/
+ include (&quot;inc.php3&quot;);
+ include_ecrire (&quot;inc_documents.php3&quot;);
+ include_ecrire (&quot;inc_mots.php3&quot;);
+
+Index: cartes.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/cartes.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- cartes.php3	26 Sep 2005 10:17:03 -0000	1.5
++++ cartes.php3	4 Oct 2005 00:59:38 -0000	1.6
+@@ -1,5 +1,41 @@
+ &lt;?php
++/*****************************************************************************\
++* SPIP-CARTO, Solution de partage et d&#146;&#233;laboration d&#146;information 
++* (Carto)Graphique sous SPIP
++*
++* Copyright (c) 2005
++*
++* St&#233;phane Laurent, Fran&#231;ois-Xavier Prunayre, Pierre Giraud, Jean-Claude 
++* Moissinac et tous les membres du projet SPIP-CARTO V1 (Annie Danzart - Arnaud
++* Fontaine - Arnaud Saint L&#233;ger - Benoit Veler - Christine Potier - Christophe 
++* Betin - Daniel Faivre - David Delon - David Jonglez - Eric Guichard - Jacques
++* Chatignoux - Julien Custot - Laurent J&#233;gou - Mathieu G&#233;hin - Michel Briand - 
++* Mose - Olivier Fr&#233;rot - Philippe Fournel - Thierry Joliveau)
++* 
++* voir : <A HREF="http://www.geolibre.net/article.php3?id_article=16">http://www.geolibre.net/article.php3?id_article=16</A>
++*
++* Ce programme est un logiciel libre distribue sous licence GNU/GPL. 
++* Pour plus de details voir le fichier COPYING.txt ou l&#146;aide en ligne.
++* 
++&#151; -
++This program is free software ; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation ; either version 2 of the License, or
++(at your option) any later version.
++
++This program is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY ; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++GNU General Public License for more details.
+ 
++You should have received a copy of the GNU General Public License
++along with this program (COPYING.txt) ; if not, write to
++the Free Software Foundation, Inc.,
++59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++or check <A HREF="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</A>
++&#151; -
++*
++\***************************************************************************/
+ include (&quot;inc.php3&quot;);
+ 
+ include_ecrire (&quot;inc_carto.php3&quot;);
+
+Index: inc_tag-machine.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_tag-machine.php,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_tag-machine.php	28 Sep 2005 23:40:50 -0000	1.2
++++ inc_tag-machine.php	4 Oct 2005 00:59:38 -0000	1.3
+@@ -25,18 +25,24 @@
+ if (defined(&quot;_LIB_INC_TAG_MACHINE&quot;)) return;
+ define(&quot;_LIB_INC_TAG_MACHINE&quot;, &quot;1&quot;);
+ 
+-if(@file_exists('ecrire/inc_version.php')){
+-include('ecrire/inc_version.php');
+-}elseif(@file_exists('ecrire/inc_version.php3')){
+-include('ecrire/inc_version.php3');
+-}elseif(@file_exists('inc_version.php')){
+-include('inc_version.php');
+-}elseif(@file_exists('inc_version.php3')){
+-include('inc_version.php3');
++if (!defined(&quot;_ECRIRE_INC_VERSION&quot;)) {
++   if(@file_exists('ecrire/inc_version.php')){
++   include('ecrire/inc_version.php');
++   }elseif(@file_exists('ecrire/inc_version.php3')){
++   include('ecrire/inc_version.php3');
++   }elseif(@file_exists('inc_version.php')){
++   include('inc_version.php');
++   }elseif(@file_exists('inc_version.php3')){
++   include('inc_version.php3');
++   }
+ }
+ $path_inc_abstract_sql=&quot;inc_abstract_sql&quot;. _EXTENSION_PHP ;
+ include_ecrire ($path_inc_abstract_sql);
+ 
++function entableau($tag) {
++  return array('groupe' =&gt; $tag-&gt;type, 'tag' =&gt; $tag-&gt;titre);
++}
++
+ /**
+    Ajoute les mots clefs dans la liste pass&#233;e en param&#232;tre au bon objet.
+    Si le mot clef n'existe pas, on le cr&#233;e,
+@@ -57,80 +63,8 @@
+ 							$nom_objet='documents',
+ 							$id_objet='id_document',
+ 							$clear = false) {
+-  if($id) {
+-	if ($clear) {
+-	  spip_query(&quot;DELETE FROM spip_mots_$nom_objet WHERE $id_objet=$id&quot;);
+-	}
+-	for($i=0;$i&lt;sizeof($tags);$i++) {
+-	  $tag=$tags[$i]['tag'];
+-	  $groupe = $tags[$i]['groupe'];
+-	  $groupe = $groupe?$groupe:$groupe_defaut;
+-	  
+-	  $select_groupe = spip_abstract_select(array('id_groupe','unseul'), 
+-											array('spip_groupes_mots'), 
+-											array(&quot;titre = '$groupe'&quot;));
+-	  $id_groupe = 0;
+-	  $add = true;
+-	  if($groupe_row = spip_abstract_fetch($select_groupe)) {
+-		$id_groupe = $groupe_row['id_groupe']; 
+-		$unseul = $groupe_row['unseul'];
+-		if ($unseul == 'oui') {
+-		  // on verifie qu'il y a pas d&#233;j&#224; un mot associ&#233;
+-		  $celcount = spip_abstract_select(array('count(id_mot) as tot'), 
+-										   array('spip_mots as mots',
+-												 &quot;spip_mots_$nom_objet as objets&quot;), 
+-										   array(&quot;mots.id_groupe = $id_groupe&quot;,
+-												 &quot;mots.id_mot = objets.id_mot&quot;),
+-											   'mots.id_groupe');
+-		  if($numrow = spip_abstract_fetch($celcount) &amp;&amp; $numrow['tot'] &gt; 0) {
+-			$add = false;
+-			$warnings[] = array(_T('motspartout:dejamotgroupe',array('groupe' =&gt; $titre_groupe, 'chose' =&gt; $d)));
+-		  }
+-		  spip_abstract_free($celcount);
+-		}
+-	  } else {
+-		$id_groupe = spip_abstract_insert(&quot;spip_groupes_mots&quot;,
+-										  &quot;(titre, $nom_objet, minirezo)&quot;,
+-										  &quot;('$groupe','oui','oui')&quot;);
+-		$warnings[] = array('creer groupe '.$titre_groupe);
+-	  }
+-	  spip_abstract_free($select_groupe);
+-	  
+-	  if($add) {
+-		$select = array('id_mot');
+-		$from = array('spip_mots');
+-		$where = array(&quot;titre = '$tag'&quot;,
+-					   &quot;type='$groupe'&quot;);
+-		$result = spip_abstract_select($select,$from,$where);
+-		
+-		if (spip_abstract_count($result) == 0){
+-		  $id_mot = spip_abstract_insert(&quot;spip_mots&quot;,
+-										 '(id_groupe, type, titre)', 
+-										 &quot;('$id_groupe','$groupe','$tag')&quot;);
+-		  $result2 = spip_abstract_insert(&quot;spip_mots_$nom_objet&quot;,
+-										  &quot;(id_mot,$id_objet)&quot;,
+-										   &quot;($id_mot,$id)&quot;);
+-		  $warnings[] = array('creer mot '.$tag);
+-		} else {
+-		  while ($row = spip_fetch_array($result)) {
+-			$id_mot = $row['id_mot'];
+-			$result3 = spip_abstract_select(array('id_mot'),
+-											array(&quot;spip_mots_$nom_objet&quot;),
+-											array(&quot;id_mot='$id_mot'&quot;,&quot;$id_objet = $id&quot;));
+-			if (spip_abstract_count($result3) == 0) {
+-			  spip_abstract_insert(&quot;spip_mots_$nom_objet&quot;,
+-								   &quot;(id_mot, $id_objet)&quot;,
+-								   &quot;('$id_mot','$id')&quot;);
+-			}
+-			spip_abstract_free($result3);	  
+-		  }
+-		}
+-		spip_abstract_free($result);	 
+-	  }
+-	}
+-	return $warnings;
+-  } else 
+-	return array();
++  $tags = new ListeTags($tags,$groupe_defaut);
++  $tags-&gt;ajouter($id, $nom_objet, $id_objet,$clear);
+ }
+ 
+ 
+@@ -140,8 +74,8 @@
+ 					  $nom_objet='documents',
+ 					  $id_objet='id_document',
+ 					  $clear = false) {
+-						return ajouter_liste_mots(parser_liste($liste_tags), $id, $groupe_defaut, $nom_objet, $id_objet,$clear);
+-  return array();
++  $tags = new ListeTags($liste_tags,$groupe_defaut);
++  $tags-&gt;ajouter($id, $nom_objet, $id_objet,$clear);
+ }
+ 
+ /**
+@@ -160,24 +94,8 @@
+ 							$groupe_defaut='',
+ 							$nom_objet='documents',
+ 							$id_objet='id_document') {
+-  if($id) {
+-	for($i=0;$i&lt;sizeof($tags);$i++) {
+-	  $tag=$tags[$i]['tag'];
+-	  $groupe = $tags[$i]['groupe'];
+-	  $groupe = $groupe?$groupe:$groupe_defaut;
+-	  
+-	  $select = array('id_mot');
+-	  $from = array('spip_mots');
+-	  $where = array(&quot;titre = '$tag'&quot;,
+-					 &quot;type='$groupe'&quot;);
+-	  
+-	  $result = spip_abstract_select($select,$from,$where);
+-	  if ($row = spip_abstract_fetch($result)){
+-		spip_query(&quot;DELETE FROM spip_mots_$nom_objet WHERE id_mot=&quot;.$row['id_mot'].&quot; AND $id_objet=$id&quot;);
+-	  }
+-	  spip_abstract_free($result);
+-	}
+-  }
++  $tags = new ListeTags($tags,$groupe_defaut);
++  $tags-&gt;retirer($id, $nom_objet, $id_objet);
+ }
+ 
+ function retirer_mots($liste_tags,
+@@ -185,61 +103,352 @@
+ 					  $groupe_defaut='',
+ 					  $nom_objet='documents',
+ 					  $id_objet='id_document') {
+-  if($liste_tags) retirer_liste_mots(parser_liste($liste_tags), $id, $groupe_defaut, $nom_objet, $id_objet);
++  $tags = new ListeTags($liste_tags,$groupe_defaut);
++  $tags-&gt;retirer($id, $nom_objet, $id_objet);
+ }
+ 
+-/*Retourn un tableau de tags qui sont associ&#233; &#224; l'objet, si necessaire entre guillemet*/
+-function get_tags($id,
+-				  $groupe_defaut='',
+-				  $nom_objet='documents',
+-				  $id_objet='id_document') {
+-  $result = spip_abstract_select(array('titre','type'),
+-								 array(&quot;spip_mots_$nom_objet&quot;,'spip_mots'),
+-								  array(&quot;spip_mots_$nom_objet.id_mot=spip_mots.id_mot&quot;,&quot;spip_mots_$nom_objet.$id_objet = $id&quot;));
++function parser_liste($liste_tags) {
++  $tags = new ListeTags($liste_tags,'');
++  return array_map('entableau',$tags-&gt;getTags());
++}
++
++?&gt;
++
++&lt;?php
++/*des objets*/
++
++class Tag {
++ var $titre;
++ var $type;
++ var $id_mot;
++ var $id_groupe;
++
++ function Tag($titre, $type='', $id_groupe='') {
++	$this-&gt;titre = $titre;
++	$this-&gt;id_groupe = $id_groupe;
++	$this-&gt;type = $type;
++  }
++
++  /*  function Tag($id_mot,$id_groupe) {
++	$this-&gt;id_mot = $id_mot;
++	$this-&gt;id_groupe = $id_groupe;
++  }*/
++
++ function getID() {
++	return $this-&gt;id_mot;
++  }
++
++  /*public*/ function getIDGroupe() {
++	return $this-&gt;id_groupe;
++  }
++
++  /*public*/ function getTitre() {
++	return $this-&gt;titre;
++  }
++
++  /*public*/ function getType() {
++	return $this-&gt;type;
++  }
++
++  /*public*/ function getTitreEchappe() {
++      return (strpos($this-&gt;titre,' ') || strpos($this-&gt;titre,':') || strpos($this-&gt;titre,','))?'&quot;'.$this-&gt;titre.'&quot;':$this-&gt;titre;
++  }
++
++  /*public*/ function getTypeEchappe() {
++      return (strpos($this-&gt;type,' ') || strpos($this-&gt;type,':') || strpos($this-&gt;type,','))?'&quot;'.$this-&gt;type.'&quot;':$this-&gt;type;
++  }
++
++
++ function echapper() {
++   $cgroupe = $this-&gt;type;
++   $ctag = $this-&gt;titre;
++   
++   $cgroupe = (strpos($cgroupe,' ') || strpos($cgroupe,':') || strpos($cgroupe,','))?'&quot;'.$cgroupe.'&quot;':$cgroupe;
++   $ctag = (strpos($ctag,' ') || strpos($ctag,':') || strpos($ctag,','))?'&quot;'.$ctag.'&quot;':$ctag;
++   
++   return (($cgroupe)? ($cgroupe.':'):'').$ctag;
++ }
+   
+-  $to_ret = array();
+-  while ($row = spip_abstract_fetch($result)) {
+-	$groupe = '';
+-	if($groupe == $groupe_defaut) {
+-	  $groupe = $groupe_defaut;
+-	  if(strpos($groupe,' ') || strpos($groupe,':')) {
+-		$groupe = &quot;\&quot;groupe\&quot;&quot;;
++  //----------------------------------------------------------------------
++
++  /*private*/ function verifier($nom_objet) {
++   list($id_groupe,$unseul,$titre) = $this-&gt;verifier_groupe();
++	if($id_groupe &gt; 0) {
++	  if ($unseul == 'oui') {
++		// on verifie qu'il y a pas d&#233;j&#224; un mot associ&#233;
++		$celcount = spip_abstract_select(array('count(id_mot) as tot'), 
++										 array('spip_mots as mots',
++											   &quot;spip_mots_$nom_objet as objets&quot;), 
++										 array(&quot;mots.id_groupe = $id_groupe&quot;,
++											   &quot;mots.id_mot = objets.id_mot&quot;),
++										 'mots.id_groupe');
++		if($numrow = spip_abstract_fetch($celcount) &amp;&amp; $numrow['tot'] &gt; 0) {
++		  return false;
++		}
++		spip_abstract_free($celcount);
+ 	  }
++	} else if($this-&gt;type) {
++	  spip_log(&quot;cr&#233;ation du groupe $this-&gt;type&quot;);
++	  $id_groupe = spip_abstract_insert(&quot;spip_groupes_mots&quot;,
++										&quot;(titre, $nom_objet, minirezo)&quot;,
++										&quot;('&quot;.addslashes($this-&gt;type).&quot;','oui','oui')&quot;);
++	}	
++	
++	return $id_groupe;
++  }
++  
++  /*private*/ function verifier_groupe() {
++	static $groupes_verifie;
++	static $groupes_verifie_id;
++	if($this-&gt;type) {
++	  if(!isset($groupes_verifie[$this-&gt;type])) {
++		$select_groupe = spip_abstract_select(array('id_groupe','unseul'), 
++											  array('spip_groupes_mots'), 
++											  array(&quot;titre = '&quot;.addslashes($this-&gt;type).&quot;'&quot;));
++		if($groupe_row = spip_abstract_fetch($select_groupe)) {
++		$id = $groupe_row['id_groupe']; 
++		$unseul = $groupe_row['unseul'];
++		$groupes_verifie[$this-&gt;type] = array($id,$unseul,$this-&gt;type);
++		}
++	   
++		spip_abstract_free($select_groupe);
++	  }
++	  return $groupes_verifie[$this-&gt;type];
++	} else 	if($this-&gt;id_groupe) {
++	  if(!isset($groupes_verifie_id[$this-&gt;id_groupe])) {
++		$select_groupe = spip_abstract_select(array('titre','unseul'), 
++											  array('spip_groupes_mots'), 
++											  array(&quot;id_groupe = $this-&gt;id_groupe&quot;));
++		if($groupe_row = spip_abstract_fetch($select_groupe)) {
++		$type = $groupe_row['titre']; 
++		$unseul = $groupe_row['unseul'];
++		$groupes_verifie_id[$this-&gt;id_groupe] = array($this-&gt;id_groupe,$unseul,$type);
++		}
++	   
++		spip_abstract_free($select_groupe);
++	  }
++	  return $groupes_verifie_id[$this-&gt;id_groupe];
+ 	}
+-	$mot = $row['titre'];
+-	if(strpos($mot,' ') || strpos($mot,':')) {
+-	  $groupe = &quot;\&quot;groupe\&quot;&quot;;
++	return array(0,'');
++  }
++
++  //----------------------------------------------------------------------
++
++  function creer($nom_objet) {
++	if(!$this-&gt;id_mot &amp;&amp; ($this-&gt;id_groupe = $this-&gt;verifier($nom_objet)) &gt; 0) {
++	  $select = array('id_mot');
++	  $from = array('spip_mots');
++	  $where = array(&quot;titre = '&quot;.$this-&gt;titre.&quot;'&quot;);
++	  if($this-&gt;type) {$where[] = &quot;type='&quot;.$this-&gt;type.&quot;'&quot;;}
++	  else if($this-&gt;id_groupe) {$where[] = &quot;id_groupe='&quot;.$this-&gt;id_groupe.&quot;'&quot;;}
++	  $result = spip_abstract_select($select,$from,$where);
++	  if ($row = spip_fetch_array($result)) {
++		$this-&gt;id_mot = $row['id_mot'];
++	  } else {
++		 if($this-&gt;id_groupe) {
++		   spip_log(&quot;Creer le mot $this-&gt;type:$this-&gt;titre ($this-&gt;id_mot)&quot;);
++		   $this-&gt;id_mot = spip_abstract_insert(&quot;spip_mots&quot;,
++												'(id_groupe, type, titre)', 
++												&quot;('&quot;.$this-&gt;id_groupe.&quot;','&quot;.addslashes($this-&gt;type).&quot;','&quot;.addslashes($this-&gt;titre).&quot;')&quot;);		   
++		 }
++	  }
++	  spip_abstract_free($result);	 
+ 	}
+-	$to_ret[] = $groupe.($groupe)? ':':''.$mot;
++	return $this-&gt;id_mot;
+   }
+-  spip_abstract_free($result);
+-  return $to_ret;
++
++  function ajouter($id, $nom_objet, $id_objet) {
++	if($id) {
++	  if(!$this-&gt;id_mot) {
++		$this-&gt;creer($nom_objet);
++	  }  
++	  $select = array('id_mot');
++	  $from = array(&quot;spip_mots_$nom_objet&quot;);
++	  $where = array(&quot;id_mot = '$this-&gt;id_mot'&quot;,
++					 &quot;$id_objet = '$id'&quot;);
++	  $result = spip_abstract_select($select,$from,$where);
++	  if (spip_abstract_count($result) == 0) {
++		spip_abstract_insert(&quot;spip_mots_$nom_objet&quot;,
++							 &quot;(id_mot,$id_objet)&quot;,
++							 '('.$this-&gt;id_mot.&quot;,$id)&quot;);
++	  }
++	  spip_abstract_free($result);	 
++	} else
++	  spip_log(&quot;id_objet non d&#233;fini&quot;);
++  }
++
++  function retirer($id, $nom_objet, $id_objet) {
++	if ($this-&gt;id_mot){
++	  spip_query(&quot;DELETE FROM spip_mots_$nom_objet WHERE id_mot=&quot;.$this-&gt;id_mot.&quot; AND $id_objet=$id&quot;);
++	}
++  }
++
+ }
+ 
+-function parser_liste($liste_tags) {
++class ListeTags {
++
++  //------------------------------- Variables -------------------------------------
++
++  /*private*/ var $tags = array();
++  var $groupe_defaut;
++  var $id_objet;
++
++  //------------------------------- Constructeurs ---------------------------------
++
++  /*public*/ function ListeTags($liste_tags,
++								$groupe_defaut='',
++								$id_groupe='') {
++	if(!$groupe_defaut &amp;&amp; !$id_groupe) {
++	  echo 'You must specify either an id_groupe or a groupe_defaut';
++	  exit;
++	}
++	$this-&gt;groupe_defaut = $groupe_defaut;
++	$this-&gt;id_groupe = $id_groupe;
++	  
++	if(!is_array($liste_tags)) {
++	  $this-&gt;tags = $this-&gt;parser_liste($liste_tags);
++	} else {
++	  $this-&gt;tags = $liste_tags;
++	}
++  }
++
++  /*public*/ /*function ListeTags($id,
++							$groupe_defaut='',
++							$nom_objet='documents',
++							$id_objet='id_document') {
++	$result = spip_abstract_select(array('titre','type'),
++								   array(&quot;spip_mots_$nom_objet&quot;,'spip_mots'),
++								   array(&quot;spip_mots_$nom_objet.id_mot=spip_mots.id_mot&quot;,
++										 &quot;spip_mots_$nom_objet.$id_objet = $id&quot;));
++	
++	while ($row = spip_abstract_fetch($result)) {
++	  $this-&gt;tags[] = new Tag($row['titre'],$row['type']);
++	}
++	spip_abstract_free($result);
++	$this-&gt;groupe_defaut = $groupe_defaut;
++  }
++*/
++
++  //------------------------------- Info -----------------------------------------
++
++  function getTags() {
++	return $this-&gt;tags;
++  }
++  
++  // prend une liste de tags et retourne les id_mot reconnus (sans en creer)
++  function getTagsIDs() {
++	//?? Aller chercher les tags dans la boite
++	//?? pour faire plus generique : se baser sur id_$objet et/ou url_propre
++	//?? car &quot; dans l'url arrive ici sous la forme &quot; (#ENV{tags} et non #ENV*{tags})
++	
++	$ids_mot = array();
++	foreach ($this-&gt;tags as $mot) {
++	  if (strlen($mot-&gt;titre)) {
++		$where = array(&quot; titre='&quot;.addslashes($mot-&gt;titre).&quot;'&quot;);
++		if(strlen($mot-&gt;type)) {
++		  $where[] = 'type=\''.addslashes($mot-&gt;type).'\'';
++		}
++		$results = spip_abstract_select(array('id_mot'),
++										array('spip_mots'),
++										$where
++										); //+ url_propre ? id_objet ?
++		list($id) = spip_abstract_fetch_array($results);
++		if ($id) 
++		  $ids_mot[] = $id;
++		spip_abstract_free($results);
++	  }
++	}
++	return $ids_mot;
++  }
++  
++  function toStringArray() {
++	$to_ret = array();
++	foreach($this-&gt;tags as $tag) {
++	  $to_ret[] = $tag-&gt;echapper();
++	}
++	return $to_ret;
++  }
+ 
++  //--------------------------------- Modif DB -----------------------------------
++  
++  function ajouter($id,
++				   $nom_objet='documents',
++				   $id_objet='id_document',
++				   $clear=false) {
++	if($id) {
++	  if ($clear) {
++		$result = spip_abstract_select(array('id_mot'),
++									   array('spip_mots'),
++									   array(&quot;spip_mots.type = '&quot;.addslashes($this-&gt;groupe_defaut).&quot;' OR spip_mots.id_groupe = '&quot;.addslashes($this-&gt;id_groupe).&quot;'&quot;)
++									   );
++		$motsaeffacer = array('0');
++		while ($row = spip_abstract_fetch($result)) {
++		  $motsaeffacer[] = $row['id_mot']; 
++		}
++		spip_abstract_free($result);
++		spip_log(&quot;Enleve les mots: &quot;.join(',',$motsaeffacer));
++		spip_query(&quot;DELETE FROM spip_mots_$nom_objet WHERE $id_objet=$id AND id_mot IN (&quot;.join(',',$motsaeffacer).&quot;)&quot;);
++	  }
++	  foreach($this-&gt;tags as $mot) {
++		$mot-&gt;ajouter($id,$nom_objet,$id_objet);
++	  }
++	}
++  }
++
++  function retirer($id,
++				   $nom_objet='documents',
++				   $id_objet='id_document') {
++	
++	if($id) {
++	  foreach($this-&gt;tags as $mot) {
++		$mot-&gt;retirer($id,$nom_objet,$id_objet);
++	  }
++	}
++  }
++
++
++  //-------------------------------- Statique ------------------------------------
++  
++  //-- priv&#233;
++  
++  /*private*/ /*static*/ function parser_liste($liste_tags) {
++	
++	$liste_tags = trim($liste_tags);
++	
+ 	// supprimer les tab (notre separateur final)
+ 	$liste_tags = strtr($liste_tags, &quot;\t&quot;, &quot; &quot;);
+-
++	
+ 	// doubler les caracteres qui peuvent faire office de separateur
+ 	$liste_tags = ' '.preg_replace('/[[:space:],]/', '\\0\\0', $liste_tags).' ';
+-
++	
+ 	// trouver les tags et les separer par \t
+ 	$liste_tags = preg_replace('/[[:space:],]+(&quot;?)(.*?)\\1[[:space:],]/', &quot;\t\\2&quot;, $liste_tags);
+-
++	
+ 	// remettre les caracteres doubles en simple
+ 	$liste_tags = preg_replace('/([[:space:],])\\1/', '\\1', $liste_tags);
+-
++	
+ 	// exploser selon les tab
+ 	$tags = split(&quot;\t&quot;, substr($liste_tags,1));
+-
++	
+ 	// recuperer les groupes sous la forme  &lt;groupe:mot&gt;
+ 	foreach ($tags as $i =&gt; $tag) {
+-		$tag = str_replace('&quot;', '', $tag);
+-		preg_match('/((.*):)?(.*)/', $tag, $regs);
+-		$tags[$i] = array('groupe' =&gt; $regs[2], 'tag' =&gt; $regs[3]);
++	  $tag = str_replace('&quot;', '', $tag);
++	  preg_match('/((.*):)?(.*)/', $tag, $regs);
++	  $groupe = $regs[2];
++	  if(!$groupe)
++		$groupe = $this-&gt;groupe_defaut;
++	  $tags[$i] = new Tag($regs[3], $groupe, $this-&gt;id_groupe);
+ 	}
+-
++	
+ 	return $tags;
++  }
++  
++  function containsSeparateur($char) {
++	return (strpos($char,' ') || strpos($char,':') || strpos($char,','));
++  }
++ 
+ }
++
+ ?&gt;
++
++
+
+Index: inc_documents.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_documents.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- inc_documents.php3	10 Aug 2005 12:00:38 -0000	1.7
++++ inc_documents.php3	4 Oct 2005 00:59:38 -0000	1.8
+@@ -985,7 +985,7 @@
+ 	$link-&gt;addVar('ajout_doc', 'oui');
+ 	$link-&gt;addVar('mode', 'vignette');
+ 	$link-&gt;addVar('type', $type);
+-	afficher_upload($link, $redirect_url, _T('info_telecharger'));
++	afficher_upload($link, $redirect_url, _T('info_telecharger'),'',true,true);
+ 
+ 	fin_cadre_relief();
+ 
+
+Index: carte_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/carte_edit.php3,v
+retrieving revision 1.18
+retrieving revision 1.19
+diff -u -d -r1.18 -r1.19
+--- carte_edit.php3	26 Sep 2005 10:17:03 -0000	1.18
++++ carte_edit.php3	4 Oct 2005 00:59:38 -0000	1.19
+@@ -1,4 +1,42 @@
+ &lt;?php
++/*****************************************************************************\
++* SPIP-CARTO, Solution de partage et d&#146;&#233;laboration d&#146;information 
++* (Carto)Graphique sous SPIP
++*
++* Copyright (c) 2005
++*
++* St&#233;phane Laurent, Fran&#231;ois-Xavier Prunayre, Pierre Giraud, Jean-Claude 
++* Moissinac et tous les membres du projet SPIP-CARTO V1 (Annie Danzart - Arnaud
++* Fontaine - Arnaud Saint L&#233;ger - Benoit Veler - Christine Potier - Christophe 
++* Betin - Daniel Faivre - David Delon - David Jonglez - Eric Guichard - Jacques
++* Chatignoux - Julien Custot - Laurent J&#233;gou - Mathieu G&#233;hin - Michel Briand - 
++* Mose - Olivier Fr&#233;rot - Philippe Fournel - Thierry Joliveau)
++* 
++* voir : <A HREF="http://www.geolibre.net/article.php3?id_article=16">http://www.geolibre.net/article.php3?id_article=16</A>
++*
++* Ce programme est un logiciel libre distribue sous licence GNU/GPL. 
++* Pour plus de details voir le fichier COPYING.txt ou l&#146;aide en ligne.
++* 
++&#151; -
++This program is free software ; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation ; either version 2 of the License, or
++(at your option) any later version.
++
++This program is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY ; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with this program (COPYING.txt) ; if not, write to
++the Free Software Foundation, Inc.,
++59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++or check <A HREF="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</A>
++&#151; -
++*
++\***************************************************************************/
++
+ include (&quot;inc.php3&quot;);
+ include_ecrire (&quot;inc_documents.php3&quot;);
+ include_ecrire (&quot;inc_mots.php3&quot;);
+@@ -8,8 +46,27 @@
+ //meme si il faut le faire ...
+ //include_ecrire(&quot;inc_config.php3&quot;);
+ 
++$id_carte = intval($_REQUEST['id_carte']);
++$titre = stripslashes($_REQUEST['titre']);
++$url_carte = stripslashes($_REQUEST['url_carte']);
++$texte = stripslashes($_REQUEST['texte']);
++$callage = stripslashes($_REQUEST['callage']);
++$id_srs = intval($_REQUEST['id_srs']);
++$new =stripslashes($_REQUEST['new']);
++$supp_carte=stripslashes($_REQUEST['supp_carte']);
++$supp_confirme=stripslashes($_REQUEST['supp_confirme']);
++$supp_rejet=stripslashes($_REQUEST['supp_rejet']);
++$modif_carte=stripslashes($_REQUEST['modif_carte']);
++
++$selection_type=stripslashes($_REQUEST['selection_type']);
++$modif_objet=stripslashes($_REQUEST['modif_objet']);
++$objet_titre=stripslashes($_REQUEST['objet_titre']);
++$objet_texte=stripslashes($_REQUEST['objet_texte']);
++$url_objet=stripslashes($_REQUEST['url_objet']);
++$url_logo=stripslashes($_REQUEST['url_logo']);
++$geometrie=stripslashes($_REQUEST['geometrie']);
++
+ $flag_editable=carte_editable($id_carte);
+-$id_carte = intval($id_carte);
+ $flag_mots = lire_meta(&quot;carto_mots&quot;);
+ //$flag_mots = &quot;oui&quot;;
+ $nouveau=false;
+@@ -45,7 +102,7 @@
+ 			if (!$callage)
+ 				if ($document_id=intval($url_carte)) {
+ 					//TODO : gerer type image et peut etre mime
+-					$image = spip_fetch_array(spip_query(&quot;SELECT * FROM spip_documents WHERE id_document = $document_id&quot;));;
++					$image = spip_fetch_array(spip_query(&quot;SELECT * FROM spip_documents WHERE id_document = $document_id&quot;));
+ 					if ($image) $callage=array2worldfile($image);
+ 				}
+ 			//TODO : passer tout ca en spip_abstract ...
+@@ -159,24 +216,29 @@
+ echo &quot;&lt;br&gt;&lt;font face='Verdana,Arial,Sans,sans-serif' size='6'&gt;&lt;b&gt;$id_carte&lt;/b&gt;&lt;/font&gt;\n&quot;;
+ if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) {
+ 	echo &quot;&lt;br&gt;&lt;font face='Verdana,Arial,Sans,sans-serif' size='1'&gt;&lt;b&gt;&quot;._T('spipcarto:carte_apercu').&quot;&lt;/b&gt;&lt;/font&gt;\n&quot;;
+-	icone_horizontale( _T('spipcarto:carte_img'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+-	icone_horizontale( _T('spipcarto:carte_lien'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=lien&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+-	icone_horizontale( _T('spipcarto:carte_logo'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=logo&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+-	icone_horizontale( _T('spipcarto:carte_svg'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=svg&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+-	icone_horizontale( _T('spipcarto:carte_svgx'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=svgx&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+-	icone_horizontale( _T('spipcarto:carte_svggeo'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=geosvgwms&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
++	$sq_cartes=$GLOBALS['sq_cartes'];
++	if (!is_array($sq_cartes)) $sq_cartes=array('map');
++	foreach ($sq_cartes as $sq_carte)
++		icone_horizontale( _T('spipcarto:carte_'.$sq_carte), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;fond=&quot;.$sq_carte.&quot;&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+ }
+ echo &quot;&lt;/div&gt;\n&quot;;
+ 
+ fin_boite_info();
+ 
+ 
++
+ if ($new!=&quot;oui&quot;) {
+ 	# modifs de la description d'un des docs joints
+ 	maj_documents($id_carte, 'carto_carte');
+ 	
+ 	# affichage
+ 	afficher_documents_colonne($id_carte, 'carto_carte', true);
++
++	debut_cadre_relief(&quot;mot-cle-24.gif&quot;);
++	if ($connect_statut == &quot;0minirezo&quot;) {
++			icone_horizontale(_T('motspartout:titre_page'),&quot;mots_partout.php?chose=carto_cartes&amp;limit=carto_cartes&amp;id_limit=&quot;.$id_carte, &quot;mot-cle-24.gif&quot;);
++	}
++	fin_cadre_relief();
+ }
+ 
+ debut_droite();
+@@ -186,7 +248,7 @@
+ 	echo _T(&quot;spipcarto:carte_supp_confirm&quot;).&quot;&lt;/p&gt;\n&quot;;
+ 	$link = $carte_supplink;//new Link();
+ 	//$link-&gt;addVar('supp_carte', $supp_carte);
+-	echo $link-&gt;getform('GET');
++	echo $link-&gt;getform('POST');
+ 	echo &quot;&lt;input type='submit' name='supp_confirme' value=\&quot;&quot;._T('item_oui').&quot;\&quot; class='fondl'&gt;&quot;;
+ 	echo &quot; &nbsp; &quot;;
+ 	echo &quot;&lt;input type='submit' name='supp_rejet' value=\&quot;&quot;._T('item_non').&quot;\&quot; class='fondl'&gt;&quot;;
+@@ -211,10 +273,9 @@
+ 		echo &quot;&lt;br /&gt;&quot;;
+ 		debut_cadre_relief();
+ 		
+-		echo &quot;&lt;div style='padding: 2px; background-color: $couleur_claire; color: black;'&gt;&nbsp;&quot;;
++		echo &quot;&lt;div style='padding: 2px; background-color: $couleur_claire; color: black;'&gt;&quot;;
+ 		echo bouton_block_visible(&quot;dhtml_carte&quot;);
+-		echo &quot;&lt;strong class='verdana3' style='text-transform: uppercase;'&gt;&quot;
+-			._T(&quot;spipcarto:objet_add&quot;).&quot;&lt;/strong&gt;&quot;;
++		echo &quot;&lt;strong class='verdana3' style='text-transform: uppercase;'&gt;&nbsp;&quot;._T(&quot;spipcarto:objet_add&quot;).&quot;&lt;/strong&gt;&quot;;
+ 		echo &quot;&lt;/div&gt;\n&quot;;
+ 		
+ 		echo debut_block_visible(&quot;dhtml_carte&quot;);
+@@ -282,7 +343,7 @@
+ 	echo &quot;&lt;div class='verdana2'&gt;&quot;;
+ 	$link = $carte_link;
+ 	$link-&gt;addVar('modif_carte', $id_carte);
+-	echo $link-&gt;getForm('GET');
++	echo $link-&gt;getForm('POST');
+ 	
+ 	echo &quot;&lt;strong&gt;&lt;label for='titre_carte'&gt;&quot;._T(&quot;spipcarto:carte_titre&quot;).&quot;&lt;/label&gt;&lt;/strong&gt; &quot;._T('info_obligatoire_02');
+ 	echo &quot;&lt;br /&gt;&quot;;
+@@ -295,7 +356,7 @@
+ 	echo $texte;
+ 	echo &quot;&lt;/textarea&gt;&lt;br /&gt;\n&quot;;
+ 
+-	if ($new) {
++	if ($new==&quot;oui&quot;) {
+ 		echo &quot;&lt;input type='hidden' name='url_carte' id='url_carte_carte' &quot;.
+ 			&quot;value=\&quot;&quot;.$url_carte.&quot;\&quot; size='40'&gt;&quot;;
+ 		
+@@ -337,7 +398,7 @@
+ 	//
+ 	// Modifier / supprimer les objets
+ 	//
+-	if (!$new) {
++	if ($new!=&quot;oui&quot;) {
+ 		echo &quot;&lt;a name='objets'&gt;&lt;/a&gt;&quot;;
+ 		echo &quot;&lt;p&gt;&lt;hr&gt;&lt;p&gt;\n&quot;;
+ 		echo &quot;&lt;div class='verdana3'&gt;&quot;;
+@@ -376,7 +437,7 @@
+ 			$geometrie = entites_html($t['geometrie']);
+ 	
+ 			$visible = ($id_objet == $objet_visible);
+-			if ($nouveau) echo &quot;&lt;a name='nouveau_objet'&gt;&lt;/a&gt;&quot;;
++			if ($nouveau&amp;&amp;$visible) echo &quot;&lt;a name='nouveau_objet'&gt;&lt;/a&gt;&quot;;
+ 			else if ($visible) echo &quot;&lt;a name='objet_visible'&gt;&lt;/a&gt;&quot;;
+ 			echo &quot;&lt;p&gt;\n&quot;;
+ 			debut_cadre_relief();
+@@ -384,7 +445,7 @@
+ 				// Modifier un objet
+ 				$link = $carte_link;
+ 				$link-&gt;addVar('modif_objet', $id_objet);
+-				echo $link-&gt;getForm('GET', '#objet_visible');
++				echo $link-&gt;getForm('POST', '#objet_visible');
+ 				echo &quot;&lt;div class='verdana2'&gt;&quot;;
+ 				echo &quot;&lt;table&gt;&quot;;
+ 					echo &quot;&lt;tr valign='top'&gt;&lt;td&gt;&quot;;
+
+Index: inc_carto_fonctions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto_fonctions.php3,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- inc_carto_fonctions.php3	24 Sep 2005 00:51:43 -0000	1.1
++++ inc_carto_fonctions.php3	4 Oct 2005 00:59:38 -0000	1.2
+@@ -1,4 +1,42 @@
+ &lt;?php
++/*****************************************************************************\
++* SPIP-CARTO, Solution de partage et d&#146;&#233;laboration d&#146;information 
++* (Carto)Graphique sous SPIP
++*
++* Copyright (c) 2005
++*
++* St&#233;phane Laurent, Fran&#231;ois-Xavier Prunayre, Pierre Giraud, Jean-Claude 
++* Moissinac et tous les membres du projet SPIP-CARTO V1 (Annie Danzart - Arnaud
++* Fontaine - Arnaud Saint L&#233;ger - Benoit Veler - Christine Potier - Christophe 
++* Betin - Daniel Faivre - David Delon - David Jonglez - Eric Guichard - Jacques
++* Chatignoux - Julien Custot - Laurent J&#233;gou - Mathieu G&#233;hin - Michel Briand - 
++* Mose - Olivier Fr&#233;rot - Philippe Fournel - Thierry Joliveau)
++* 
++* voir : <A HREF="http://www.geolibre.net/article.php3?id_article=16">http://www.geolibre.net/article.php3?id_article=16</A>
++*
++* Ce programme est un logiciel libre distribue sous licence GNU/GPL. 
++* Pour plus de details voir le fichier COPYING.txt ou l&#146;aide en ligne.
++* 
++&#151; -
++This program is free software ; you can redistribute it and/or modify
++it under the terms of the GNU General Public License as published by
++the Free Software Foundation ; either version 2 of the License, or
++(at your option) any later version.
++
++This program is distributed in the hope that it will be useful,
++but WITHOUT ANY WARRANTY ; without even the implied warranty of
++MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++GNU General Public License for more details.
++
++You should have received a copy of the GNU General Public License
++along with this program (COPYING.txt) ; if not, write to
++the Free Software Foundation, Inc.,
++59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++or check <A HREF="http://www.gnu.org/copyleft/gpl.html">http://www.gnu.org/copyleft/gpl.html</A>
++&#151; -
++*
++\***************************************************************************/
++
+ // Ce fichier ne sera execute qu'une fois
+ if (defined(&quot;_ECRIRE_INC_CARTE&quot;)) return;
+ define(&quot;_ECRIRE_INC_CARTE&quot;, &quot;1&quot;);
+@@ -183,10 +221,28 @@
+ 	$rgeo 		= round($radius*$GeoWidth/$ImgWidth);
+ 	$callage 	= worldfile2array ($callage);
+ 	
+-	if (function_exists($format)) return $format($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage);
++	if (function_exists($format)) return $format($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage,$mot_desc);
+ 	else return &quot;&quot;;
+ }
++///////////////////////////////////////////////
++// JSDHTML
++///////////////////////////////////////////////
++function wkt2coords_jsdhtml($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage,$mot_desc){	
++
++			$coordpair = explode (',',$wktGeom);
++			
++			for ($i=0; $i&lt;sizeof($coordpair); $i++)
++			{		
++				$coord[$i] 		= explode(' ',$coordpair[$i]);
++				$coord[$i][0] 	= ($coord[$i][0]-$callage['top_left']['x'])/$GeoWidth*$ImgWidth;
++				$coord[$i][1] 	= ($callage['bottom_right']['y']-$coord[$i][1])/$GeoHeight*$ImgHeight;		// Calcul de l'Y par rapport au coin inf&#233;rieur
++ 				$coord[$i][1]   = $ImgHeight/2-($coord[$i][1]-$ImgHeight/2);								// Pour que le dessin DHTML soit ok 
++ 				$coordpair[$i] 	= implode(',',$coord[$i]);
++			}
++			$wktGeom = implode(',', $coordpair);
+ 
++			return $wktGeom;
++}
+ ///////////////////////////////////////////////
+ // HTML
+ ///////////////////////////////////////////////
+@@ -197,7 +253,7 @@
+ 				return &quot;CIRCLE&quot;; 
+ 			// HTML Image map ne supporte pas les lignes
+ }
+-function wkt2coords_html($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage){	
++function wkt2coords_html($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage,$mot_desc){	
+ 
+ 			// Pour obtenir des objets HTML/MAP ...
+ 			// 	S&#233;parateur coordonn&#233;es ',' / S&#233;parateur paires de coordonn&#233;es ','
+@@ -215,10 +271,10 @@
+ 			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0)
+ 				return $wktGeom;
+ 			else if (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-				return $wktGeom.&quot;,&quot;.$radius;
++				return $wktGeom.&quot;,6&quot;;//.$radius;
+ 			else return &quot;&quot;;
+ }
+-function wkt2coords_htmldiv($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage){	
++function wkt2coords_htmldiv($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage,$mot_desc){	
+ 			// Pour obtenir des objets HTML/DIV ...
+ 			// Pour les polygones, la moyenne des valeurs
+ 			// Pour les points, la valeur
+@@ -249,7 +305,7 @@
+ 			else return &quot;&quot;;
+ }
+ 
+-function wkt2coords_svg($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage){	
++function wkt2coords_svg($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage,$mot_desc){	
+ 			// Pour obtenir des objets SVG ...
+ 			// Conservation des Y selon le format WKT car en coordonn&#233;es g&#233;ographique
+ 			// S&#233;parateur coordonn&#233;es ',' / S&#233;parateur paires de coordonn&#233;es ' '
+@@ -267,59 +323,10 @@
+ 			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0 || strcasecmp($wktGeomType,&quot;LINE&quot;)==0){  	
+ 				return &quot;points=\&quot;&quot;.$wktGeom.&quot;\&quot;&quot;;		
+ 			} elseif (strcasecmp($wktGeomType,&quot;POINT&quot;)==0){	
+-				$coordTab = explode (&quot; &quot;, $wktGeom);
+-				return &quot;x=\&quot;&quot;.$coordTab[0].&quot;\&quot; y=\&quot;&quot;.$coordTab[1].&quot;\&quot; width=\&quot;&quot;.$rgeo.&quot;\&quot; height=\&quot;&quot;.$rgeo.&quot;\&quot; xlink:href=\&quot;#use&quot;.$mot_desc.&quot;\&quot;&quot;;
+-			}
+-}
+-function wkt2coords_svggeo($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage){	
+-			// Pour obtenir des objets SVG ...
+-			// Conservation des Y selon le format WKT car en coordonn&#233;es g&#233;ographique
+-			// S&#233;parateur coordonn&#233;es ' ' / S&#233;parateur paires de coordonn&#233;es ','
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i&lt;sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= $coord[$i][0];
+-				$coord[$i][1] 	= $coord[$i][1]*-1;
+- 				$coordpair[$i] 	= implode(' ' ,$coord[$i]);
+-			}
+-			$wktGeom = implode(',', $coordpair);
+-
+-			if (strcasecmp($wktGeomType,&quot;POLYGON&quot;)==0 || strcasecmp($wktGeomType,&quot;LINE&quot;)==0)
+-			{  	return &quot;points=\&quot;&quot;.$wktGeom.&quot;\&quot;&quot;;		
+-			}elseif (strcasecmp($wktGeomType,&quot;POINT&quot;)==0)
+-			{	$coordTab = explode (&quot; &quot;, $wktGeom);
+-				return &quot;x=\&quot;&quot;.$coordTab[0].&quot;\&quot; y=\&quot;&quot;.$coordTab[1].&quot;\&quot; width=\&quot;&quot;.$rgeo.&quot;\&quot; height=\&quot;&quot;.$rgeo.&quot;\&quot; xlink:href=\&quot;#use&quot;.$mot_desc.&quot;\&quot;&quot;;
+-			}
+-}
+-
+-
+-
+-///////////////////////////////////////////////
+-// EXPERIMENTAL
+-///////////////////////////////////////////////
+-
+-///////////////////////////////////////////////
+-// DHTML (pour squelette ou formulaire)
+-///////////////////////////////////////////////
+-function wkt2coords_jsdhtml($wktGeomType,$wktGeom,$ImgHeight,$ImgWidth,$GeoHeight,$GeoWidth,$rgeo,$callage){	
+-			// Pour obtenir des objets HTML/MAP pour la superpo avec l'interface DHTML...
+-			$coordpair = explode (',',$wktGeom);
+-			
+-			for ($i=0; $i&lt;sizeof($coordpair); $i++)
+-			{		
+-				$coord[$i] 		= explode(' ',$coordpair[$i]);
+-				$coord[$i][0] 	= ($coord[$i][0]-$callage['top_left']['x'])/$GeoWidth*$ImgWidth;
+-				$coord[$i][1] 	= ($callage['bottom_right']['y']-$coord[$i][1])/$GeoHeight*$ImgHeight;		// Calcul de l'Y par rapport au coin inf&#233;rieur
+- 				$coord[$i][1]   = $ImgHeight/2-($coord[$i][1]-$ImgHeight/2);								// Pour que le dessin DHTML soit ok 
+- 				$coordpair[$i] 	= implode(',',$coord[$i]);
++				$coordTab = explode (&quot;,&quot;, $wktGeom);
++				return &quot; x=\&quot;&quot;.$coordTab[0].&quot;\&quot; y=\&quot;&quot;.$coordTab[1].&quot;\&quot; width=\&quot;&quot;.$rgeo.&quot;\&quot; height=\&quot;&quot;.$rgeo.&quot;\&quot; xlink:href=\&quot;#use&quot;.$mot_desc.&quot;\&quot;&quot;;
+ 			}
+-			$wktGeom = implode(',', $coordpair);
+-
+-			return $wktGeom;
+ }
+-
+ ///////////////////////////////////////////////
+ // GOOGLE
+ ///////////////////////////////////////////////
+
+Index: mots_partout.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mots_partout.php,v
+retrieving revision 1.6
+retrieving revision 1.7
+diff -u -d -r1.6 -r1.7
+--- mots_partout.php	18 Aug 2005 23:53:13 -0000	1.6
++++ mots_partout.php	4 Oct 2005 00:59:38 -0000	1.7
+@@ -20,11 +20,19 @@
+ //    along with this program; if not, write to the Free Software
+ //    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ 
+-include (&quot;inc.php3&quot;);
+-include_ecrire (&quot;inc_version.php3&quot;);
+-include_ecrire (&quot;inc_documents.php3&quot;);
+-include_ecrire (&quot;inc_abstract_sql.php3&quot;);
+-include_ecrire (&quot;inc_objet.php3&quot;);
++if(@file_exists('inc.php')){
++  include('inc.php');
++} else if(@file_exists('inc.php3')){
++  include('inc.php3');
++}
++if(@file_exists('inc_version.php')){
++  include('inc_version.php');
++} else if(@file_exists('inc_version.php3')){
++  include('inc_version.php3');
++}
++include_ecrire (&quot;inc_documents&quot;._EXTENSION_PHP);
++include_ecrire (&quot;inc_abstract_sql&quot;._EXTENSION_PHP);
++include_ecrire (&quot;inc_objet&quot;._EXTENSION_PHP);
+ include_ecrire('inc_tag-machine.php');
+ 
+ /***********************************************************************
+@@ -270,7 +278,7 @@
+   
+   $from =  array($table);
+   
+-  $where = array(&quot;id_auteur = $connect_id_auteur&quot;, &quot;$id_chose = $id&quot;);
++  $where = array(&quot;id_auteur = $connect_id_auteur&quot;, &quot;$id_objet = $id&quot;);
+   
+   $result = spip_abstract_select($select,$from,$where);
+   
+@@ -373,9 +381,7 @@
+ 	$select = array('*');
+ 	$from = array('spip_documents');
+ 	$where = array(&quot;id_document = $id_document&quot;);
+-	echo &quot;&lt;hr/&gt;&quot;;
+ 	$results = spip_abstract_select($select,$from,$where);
+-	echo &quot;&lt;hr/&gt;&quot;;
+ 
+ 	if($document = spip_abstract_fetch($results)) {
+ 	  $id_vignette = $document['id_vignette'];
+@@ -434,8 +440,7 @@
+ 	  
+ 	  // bloc titre et descriptif
+ 	  if (strlen($titre) &gt; 0) {
+-		echo &quot;&lt;div class='verdana2'&gt;&lt;b&gt;&quot;.typo($titre).&quot;&lt;/b&gt;&quot;;
+-		echo '&lt;/div&gt;';
++		echo '&lt;div class=\'verdana2\' style=\'text-align:center;\'&gt;&lt;b&gt;'.typo($titre).'&lt;/b&gt;&lt;/div&gt;';
+ 	  } else {
+ 		$nom_fichier = basename($fichier);
+ 		
+@@ -526,10 +531,10 @@
+ 	// Le titre (et la langue)
+ 	$s = &quot;&lt;div&gt;&quot;;
+ 	
+-	$s .= &quot;&lt;a href=\&quot;articles.php3?id_article=$id_article\&quot;$descriptif$dir_lang style=\&quot;display:block;\&quot;&gt;&quot;;
++	$s .= &quot;&lt;a href=\&quot;articles&quot;._EXTENSION_PHP.&quot;?id_article=$id_article\&quot;$descriptif$dir_lang style=\&quot;display:block;\&quot;&gt;&quot;;
+ 	
+ 	if ($spip_display != 1 AND $spip_display != 4 AND lire_meta('image_process') != &quot;non&quot;) {
+-	  include_ecrire(&quot;inc_logos.php3&quot;);
++	  include_ecrire(&quot;inc_logos&quot;._EXTENSION_PHP);
+ 	  $logo = decrire_logo(&quot;arton$id_article&quot;);
+ 	  if ($logo) {
+ 		$fichier = $logo[0];
+@@ -543,7 +548,7 @@
+ 		$hash = calculer_action_auteur (&quot;reduire $w $h&quot;);
+ 		
+ 		$s.= &quot;&lt;div style='float: $spip_lang_right; margin-top: -2px; margin-bottom: -2px;'&gt;
+-&lt;img src='../spip_image_reduite.php3?img=&quot;._DIR_IMG.&quot;$fichier&amp;taille_x=$w&amp;taille_y=$h&amp;hash=$hash&amp;hash_id_auteur=$connect_id_auteur' alt='$fichier' width='$w' height='$h' border='0'&gt;&lt;/div&gt;&quot;;
++&lt;img src='../spip_image_reduite&quot;._EXTENSION_PHP.&quot;?img=&quot;._DIR_IMG.&quot;$fichier&amp;taille_x=$w&amp;taille_y=$h&amp;hash=$hash&amp;hash_id_auteur=$connect_id_auteur' alt='$fichier' width='$w' height='$h' border='0'&gt;&lt;/div&gt;&quot;;
+ 		
+ 	  }
+ 	}
+@@ -738,7 +743,7 @@
+ 	// Le titre (et la langue)
+ 	$s = &quot;&lt;div&gt;&quot;;
+ 	
+-	$s .= &quot;&lt;a href=\&quot;bloogletter.php3?mode=courrier&amp;id_message=$id_message\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
++	$s .= &quot;&lt;a href=\&quot;bloogletter&quot;._EXTENSION_PHP.&quot;?mode=courrier&amp;id_message=$id_message\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
+ 	
+ 	$s .= typo($titre);
+ 	$s .= &quot;&lt;/a&gt;&quot;;
+@@ -819,7 +824,7 @@
+ 	
+ 	// Le titre (et la langue)
+ 	$s = &quot;&lt;div&gt;&quot;;
+-	$s .= &quot;&lt;a href=\&quot;auteur_edit.php3?id_auteur=$id_auteur\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
++	$s .= &quot;&lt;a href=\&quot;auteur_edit&quot;._EXTENSION_PHP.&quot;?id_auteur=$id_auteur\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
+ 	$s .= typo($login);
+ 	$s .= &quot;&lt;/a&gt;&quot;;
+ 	$s .= &quot;&lt;/div&gt;&quot;;
+@@ -876,7 +881,7 @@
+  * r&#233;cuperation de la chose sur laquelle on travaille
+  ***********************************************************************/
+ 
+-$nom_chose = $HTTP_POST_VARS['nom_chose'];
++$nom_chose = $_REQUEST['nom_chose'];
+ if(!isset($choses_possibles[$nom_chose])) {
+   list($nom_chose,) = each($choses_possibles);
+   reset($choses_possibles);
+@@ -889,21 +894,21 @@
+ /***********************************************************************
+  * action
+  ***********************************************************************/
+-$mots = $HTTP_POST_VARS['id_mots'];
+-$sans_mots = $HTTP_POST_VARS['sans_mots'];
+-$choses = $HTTP_POST_VARS['id_choses'];
+-$nom_tags = $HTTP_POST_VARS['nom_tags'];
+-$limit =  $HTTP_POST_VARS['limit'];
+-$id_limit =  $HTTP_POST_VARS['id_limit'];
++$mots = $_REQUEST['id_mots'];
++$sans_mots = $_REQUEST['sans_mots'];
++$choses = $_REQUEST['id_choses'];
++$nom_tags = $_REQUEST['nom_tags'];
++$limit =  $_REQUEST['limit'];
++$id_limit =  $_REQUEST['id_limit'];
+ //echo &quot;!!!&quot;.$nom_chose.&quot;!!!&quot;;
+-//echo &quot;action :&quot;.$HTTP_POST_VARS['switch'].&quot;&lt;br&gt;&quot;;
++//echo &quot;action :&quot;.$_REQUEST['switch'].&quot;&lt;br&gt;&quot;;
+ //echo &quot;choses :&quot;.serialize($choses).&quot;&lt;br&gt;&quot;;
+ //echo &quot;mots :&quot;.serialize($mots).&quot;&lt;br&gt;&quot;;
+ //echo &quot;sans_mots :&quot;.serialize($sans_mots).&quot;&lt;br&gt;&quot;;
+ //echo &quot;nom_tags :&quot;.serialize($nom_tags).&quot;&lt;br&gt;&quot;;
+ //echo &quot;limit :&quot;.serialize($limit).&quot;&lt;br&gt;&quot;;
+ 
+-if($HTTP_POST_VARS['switch'] == 'action' &amp;&amp; count($choses)) {
++if($_REQUEST['switch'] == 'action' &amp;&amp; count($choses)) {
+ 	if(count($mots)) {
+ 	  foreach($mots as $m) {	
+ 		$from = array('spip_mots');
+@@ -956,13 +961,13 @@
+ 		}
+ 	}
+ 	if ($nom_tags){
+-		$tags = parser_liste($nom_tags);
++		$tags = new ListeTags($nom_tags,'Tag');
+ //		echo &quot;!!!!!!!tag:&quot;.$nom_tags.&quot;/&quot;.serialize($tags).&quot;!!!!!!!!!&quot;;
+ 		foreach($choses as $d) {
+-			if($HTTP_POST_VARS['bouton'] == 'ajouter')
+-			  ajouter_liste_mots($tags,$d,'',$nom_chose,$id_chose);
+-			if($HTTP_POST_VARS['bouton'] == 'retirer')
+-			  retirer_liste_mots($tags,$d,'',$nom_chose,$id_chose);
++			if($_REQUEST['bouton'] == 'ajouter')
++			  $tags-&gt;ajouter($d,$nom_chose,$id_chose);
++			if($_REQUEST['bouton'] == 'retirer')
++			  $tags-&gt;retirer($d,$nom_chose,$id_chose);
+ 		}
+ 	}
+ }
+@@ -989,7 +994,7 @@
+ 	  $from[1] = &quot;spip_mots_$nom_chose as table_temp&quot;;
+ 	  $where[1] = &quot;table_temp.$id_chose = main.$id_chose&quot;;
+ 	  $where[] = &quot;table_temp.id_mot IN (&quot;.calcul_in($mots).')';
+-	  if($HTTP_POST_VARS['strict']) {
++	  if($_REQUEST['strict']) {
+ 		$select[] = 'count(id_mot) as tot';
+ 		$group = &quot;main.$id_chose&quot;;
+ 		$order = array('tot DESC');
+@@ -999,7 +1004,7 @@
+ 	  $from[1] = &quot;spip_mots_$nom_chose as table_temp&quot;;
+ 	  $where[1] = &quot;table_temp.$id_chose = main.$id_chose&quot;;
+ 	  $where[] = &quot;table_temp.id_mot not IN (&quot;.calcul_in($sans_mots).')';
+-	  if($HTTP_POST_VARS['strict']) {
++	  if($_REQUEST['strict']) {
+ 		$select[] = 'count(id_mot) as tot';
+ 		$group = &quot;main.$id_chose&quot;;
+ 		$order = array('tot DESC');
+@@ -1009,7 +1014,7 @@
+   	if(count($mots) &gt; 0) {
+ 	  $from[0] = &quot;spip_mots_$nom_chose as main&quot;;
+ 	  $where[] = &quot;main.id_mot IN (&quot;.calcul_in($mots).')';
+-	  if($HTTP_POST_VARS['strict']) {
++	  if($_REQUEST['strict']) {
+ 		$select[] = 'count(id_mot) as tot';
+ 		$group = &quot;main.$id_chose&quot;;
+ 		$order = array('tot DESC');
+@@ -1018,7 +1023,7 @@
+   	if(count($sans_mots) &gt; 0) {
+ 	  $from[0] = &quot;spip_mots_$nom_chose as main&quot;;
+ 	  $where[] = &quot;main.id_mot not IN (&quot;.calcul_in($sans_mots).')';
+-	  if($HTTP_POST_VARS['strict']) {
++	  if($_REQUEST['strict']) {
+ 		$select[] = 'count(id_mot) as tot';
+ 		$group = &quot;main.$id_chose&quot;;
+ 		$order = array('tot DESC');
+@@ -1054,7 +1059,7 @@
+ 		}
+ 		spip_abstract_free($test);
+ 	  }
+-	  if(count($mots) &gt; 0 &amp;&amp; $HTTP_POST_VARS['strict']) {
++	  if(count($mots) &gt; 0 &amp;&amp; $_REQUEST['strict']) {
+ 		if($row['tot'] &gt;= count($mots)) {
+ 		  $choses[] = $row[$id_chose];
+ 		} else {
+@@ -1162,7 +1167,7 @@
+ if(count($choses)) {
+ // 	echo '&lt;a name=&quot;action&quot;&gt;&lt;/a&gt;&lt;form action=&quot;mots_partout.php#voir&quot;&gt;';
+ 
+-  echo '&lt;input type=&quot;hidden&quot; name=&quot;nom_chose&quot; value=&quot;'.$HTTP_POST_VARS['nom_chose'].'&quot;&gt;';  
++  echo '&lt;input type=&quot;hidden&quot; name=&quot;nom_chose&quot; value=&quot;'.$_REQUEST['nom_chose'].'&quot;&gt;';  
+ //  echo &quot;&lt;input type='hidden' name='id_limit' value='$id_limit'&gt;&quot;;
+ //  echo &quot;&lt;input type='hidden' name='limit' value='$limit'&gt;&quot;;
+ //  for($i=0; $i &lt; count($choses); $i++) {
+@@ -1188,18 +1193,30 @@
+ &lt;/td&gt;
+ &lt;/tr&gt;
+ 	&lt;tr class='tr_liste'&gt;
+-	  &lt;td colspan=2&gt;&lt;textarea name=&quot;nom_tags&quot; rows='10' class='forml' cols='40'&gt;&lt;/textarea&gt;&lt;/td&gt;
+-	   &lt;/tr&gt;
+-	   &lt;tr class='tr_liste'&gt;
++	  &lt;td colspan=2&gt;
++&lt;div style=&quot;position:relative;overflow:visible; width: 10em;&quot;&gt;
++        &lt;input autocomplete=&quot;off&quot; type=&quot;texte&quot; id=&quot;tags&quot; name=&quot;nom_tags&quot; class='forml' cols='40' style=&quot;width: 100%;&quot;&gt;
++        &lt;div id=&quot;suggest&quot; class=&quot;suggest_list&quot; style=&quot;width: 100%;&quot;&gt;&lt;/div&gt;
++      &lt;/div&gt;
++	  &lt;/td&gt;
++	 &lt;/tr&gt;
++	 &lt;tr class='tr_liste'&gt;
+ 	   &lt;td colspan=2&gt;&lt;button type='submit' name='switch' value='action'&gt;
+ 	   &lt;?php echo _T('bouton_valider'); ?&gt;
+ 	   &lt;/button&gt;&lt;/td&gt;
+ 		   &lt;/tr&gt;
+ 		   &lt;/table&gt;
+ 		   &lt;/div&gt;
+-		   
+-&lt;?php
+-		   
++&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;./ajaxTagMachine.css&quot;&gt;
++&lt;script  type='text/javascript' src=&quot;./ajaxTagMachine.js&quot;&gt;
++&lt;/script&gt;
++  &lt;script  type='text/javascript'&gt; &lt;!--
++	groupe = new AjaxSuggestMenu('ajax_mortimer.php', 'titre', 'tags','suggest');
++	groupe.addVar('nom_chose','&lt;?php echo $nom_chose; ?&gt;');
++	groupe.setNbrLineVisible(5);
++  	--&gt;&lt;/script&gt;
++
++&lt;?php		   
+   fin_cadre_enfonce();
+  creer_colonne_droite();
+ // affichage de mots clefs.
+
+Index: inc_getdocument.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_getdocument.php3,v
+retrieving revision 1.7
+retrieving revision 1.8
+diff -u -d -r1.7 -r1.8
+--- inc_getdocument.php3	7 Sep 2005 15:01:53 -0000	1.7
++++ inc_getdocument.php3	4 Oct 2005 00:59:38 -0000	1.8
+@@ -338,7 +338,18 @@
+ 			$type_image = $a['type_image'];
+ 
+ 			$distant = 'oui';
+-			$mode = 'document';
++			
++			$type_inclus_image = false;
++			ereg(&quot;\.([^.]+)$&quot;, $fichier, $match);
++			$ext = addslashes(corriger_extension(strtolower($match[1])));
++			
++			if ($row = spip_fetch_array(spip_query(
++			&quot;SELECT * FROM spip_types_documents
++			WHERE extension='$ext' AND upload='oui'&quot;))) {
++				$type_inclus_image = ($row['inclus'] == 'image');
++			}
++			if ($type_inclus_image) $mode = 'vignette';
++			else $mode = 'document';
+ 		}
+ 		else {
+ 			spip_log(&quot;Echec du lien vers le document $source, abandon&quot;);
+
+Index: inc_presentation.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_presentation.php3,v
+retrieving revision 1.12
+retrieving revision 1.13
+diff -u -d -r1.12 -r1.13
+--- inc_presentation.php3	7 Sep 2005 15:01:53 -0000	1.12
++++ inc_presentation.php3	4 Oct 2005 00:59:38 -0000	1.13
+@@ -2078,7 +2078,14 @@
+ 	if ($connect_statut == '0minirezo' and $connect_toutes_rubriques) {
+ 		icone_bandeau_principal (_T('icone_configuration_site'), &quot;configuration.php3&quot;, &quot;administration-48.png&quot;, &quot;administration&quot;, $rubrique, &quot;&quot;, &quot;configuration&quot;, $sous_rubrique);
+ 	}
+-
++	////////////////////////////////////////////////////
++	//MODIFICATION
++	////////////////////////////////////////////////////
++	else /*if ($connect_statut == '0minirezo')*/ {
++		icone_bandeau_principal (_T(&quot;cartes&quot;), &quot;cartes.php3&quot;, &quot;carte-24.png&quot;, &quot;cartes&quot;, $rubrique, &quot;&quot;, &quot;cartes&quot;, $sous_rubrique);
++	}
++	////////////////////////////////////////////////////
++	
+ 	echo &quot;&lt;td&gt; &nbsp; &lt;/td&gt;&quot;;
+ 
+ 
+@@ -2168,7 +2175,7 @@
+ 			//les cartes
+ 			//if (@spip_num_rows(spip_query(&quot;SELECT * FROM spip_carto_carte LIMIT 0,1&quot;)) &gt; 0) 
+ 			if (lire_meta('activer_carto')== 'oui') 
+-				icone_bandeau_secondaire(_L(&quot;Cartes&quot;), &quot;cartes.php3&quot;, &quot;carte-24.png&quot;, &quot;cartes&quot;, $sous_rubrique);
++				icone_bandeau_secondaire(_T(&quot;cartes&quot;), &quot;cartes.php3&quot;, &quot;carte-24.png&quot;, &quot;cartes&quot;, $sous_rubrique);
+ 			////////////////						
+ 		}
+ 		echo &quot;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&quot;;
+@@ -2237,6 +2244,13 @@
+ 		$decal = $decal + largeur_icone_bandeau_principal(_T('icone_suivi_actualite'));
+ 	
+ 	}
++	////////////////////////////////////////////////////
++	//MODIFICATION
++	////////////////////////////////////////////////////
++	else /*if ($connect_statut == '0minirezo')*/ {
++		$decal = $decal + largeur_icone_bandeau_principal(_T('cartes'));
++	}
++	////////////////////////////////////////////////////
+ 
+ 
+ 	if ($connect_statut == '0minirezo' and $connect_toutes_rubriques) {
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000323.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_lien.html,1.2,1.3 carto_svgfilex.html,1.6,1.7 carto_geosvgwmsfile.html,1.5,1.6 carto_logo.html,1.2,1.3 carto.html,1.2,1.3 carto_svgx.html,1.3,1.4 carto_map.html,1.2,1.3 carto_svgfile.html,1.4,1.5
+</A></li>
+	<LI>Next message: <A HREF="000320.html">[Spip-carto-cvs] spipcarto/ecrire/lang spipcarto_fr.php3,1.1,1.2 spipcarto_en.php3,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

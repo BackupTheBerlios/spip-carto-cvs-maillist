@@ -1,0 +1,4041 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto auteur.php3,1.2,1.3 ical.php3,1.2,1.3 inc-calcul.php3,1.2,1.3 htaccess-html.txt,1.2,1.3 breve.php3,1.2,1.3 forum.php3,1.2,1.3 impression.css,1.2,1.3 inc-calcul-outils.php3,1.2,1.3 backend.php3,1.2,1.3 inc-balises.php3,1.2,1.3 htaccess-propres.txt,1.2,1.3 inc-admin.php3,1.2,1.3 inc-cache.php3,1.2,1.3 distrib.php3,1.2,1.3 habillage.css,1.2,1.3 inc-boucles.php3,1.2,1.3 backend-breves.php3,1.2,1.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20auteur.php3%2C1.2%2C1.3%20ical.php3%2C1.2%2C1.3%20inc-calcul.php3%2C1.2%2C1.3%20htaccess-html.txt%2C1.2%2C1.3%20breve.php3%2C1.2%2C1.3%20forum.php3%2C1.2%2C1.3%20impression.css%2C1.2%2C1.3%20inc-calcul-outils.php3%2C1.2%2C1.3%20backend.php3%2C1.2%2C1.3%20inc-balises.php3%2C1.2%2C1.3%20htaccess-propres.txt%2C1.2%2C1.3%20inc-admin.php3%2C1.2%2C1.3%20inc-cache.php3%2C1.2%2C1.3%20distrib.php3%2C1.2%2C1.3%20habillage.css%2C1.2%2C1.3%20inc-boucles.php3%2C1.2%2C1.3%20backend-breves.php3%2C1.2%2C1.3&In-Reply-To=%3C200502202216.j1KMG18Y027572%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000086.html">
+   <LINK REL="Next"  HREF="000088.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto auteur.php3,1.2,1.3 ical.php3,1.2,1.3 inc-calcul.php3,1.2,1.3 htaccess-html.txt,1.2,1.3 breve.php3,1.2,1.3 forum.php3,1.2,1.3 impression.css,1.2,1.3 inc-calcul-outils.php3,1.2,1.3 backend.php3,1.2,1.3 inc-balises.php3,1.2,1.3 htaccess-propres.txt,1.2,1.3 inc-admin.php3,1.2,1.3 inc-cache.php3,1.2,1.3 distrib.php3,1.2,1.3 habillage.css,1.2,1.3 inc-boucles.php3,1.2,1.3 backend-breves.php3,1.2,1.3</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20auteur.php3%2C1.2%2C1.3%20ical.php3%2C1.2%2C1.3%20inc-calcul.php3%2C1.2%2C1.3%20htaccess-html.txt%2C1.2%2C1.3%20breve.php3%2C1.2%2C1.3%20forum.php3%2C1.2%2C1.3%20impression.css%2C1.2%2C1.3%20inc-calcul-outils.php3%2C1.2%2C1.3%20backend.php3%2C1.2%2C1.3%20inc-balises.php3%2C1.2%2C1.3%20htaccess-propres.txt%2C1.2%2C1.3%20inc-admin.php3%2C1.2%2C1.3%20inc-cache.php3%2C1.2%2C1.3%20distrib.php3%2C1.2%2C1.3%20habillage.css%2C1.2%2C1.3%20inc-boucles.php3%2C1.2%2C1.3%20backend-breves.php3%2C1.2%2C1.3&In-Reply-To=%3C200502202216.j1KMG18Y027572%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto auteur.php3,1.2,1.3 ical.php3,1.2,1.3 inc-calcul.php3,1.2,1.3 htaccess-html.txt,1.2,1.3 breve.php3,1.2,1.3 forum.php3,1.2,1.3 impression.css,1.2,1.3 inc-calcul-outils.php3,1.2,1.3 backend.php3,1.2,1.3 inc-balises.php3,1.2,1.3 htaccess-propres.txt,1.2,1.3 inc-admin.php3,1.2,1.3 inc-cache.php3,1.2,1.3 distrib.php3,1.2,1.3 habillage.css,1.2,1.3 inc-boucles.php3,1.2,1.3 backend-breves.php3,1.2,1.3">stef at berlios.de
+       </A><BR>
+    <I>Sun Feb 20 23:16:01 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000086.html">[Spip-carto-cvs] spipcarto article.php3,1.2,1.3
+</A></li>
+        <LI>Next message: <A HREF="000088.html">[Spip-carto-cvs] spipcarto COPYING.txt,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#89">[ date ]</a>
+              <a href="thread.html#89">[ thread ]</a>
+              <a href="subject.html#89">[ subject ]</a>
+              <a href="author.html#89">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv27564
+
+Modified Files:
+	auteur.php3 ical.php3 inc-calcul.php3 htaccess-html.txt 
+	breve.php3 forum.php3 impression.css inc-calcul-outils.php3 
+	backend.php3 inc-balises.php3 htaccess-propres.txt 
+	inc-admin.php3 inc-cache.php3 distrib.php3 habillage.css 
+	inc-boucles.php3 backend-breves.php3 
+Log Message:
+1.8pr1
+
+Index: auteur.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/auteur.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- auteur.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ auteur.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,7 +1,7 @@
+-&lt;?php
+-$fond = &quot;auteur&quot;;
+-$delais = 24 * 3600;
+-
+-include (&quot;inc-public.php3&quot;);
+-
+-?&gt;
++&lt;?php
++$fond = &quot;auteur&quot;;
++$delais = 24 * 3600;
++
++include (&quot;inc-public.php3&quot;);
++
++?&gt;
+
+Index: ical.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ical.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- ical.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ ical.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,12 +1,12 @@
+-&lt;?php
+-
+-$fond = &quot;ical&quot;;
+-$delais = 3600;
+-
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">- at header</A> (&quot;content-type:text/calendar&quot;);
+-
+-$flag_preserver=true;
+-include (&quot;inc-public.php3&quot;);
+-
+-
+-?&gt;
++&lt;?php
++
++$fond = &quot;ical&quot;;
++$delais = 3600;
++
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">+ at header</A> (&quot;content-type:text/calendar&quot;);
++
++$flag_preserver=true;
++include (&quot;inc-public.php3&quot;);
++
++
++?&gt;
+
+Index: inc-calcul.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-calcul.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-calcul.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ inc-calcul.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,284 +1,297 @@
+-&lt;?php
+-
+-
+-// Ce fichier ne sera execute qu'une fois
+-if (defined(&quot;_INC_CALCUL&quot;)) return;
+-define(&quot;_INC_CALCUL&quot;, &quot;1&quot;);
+-
+-//
+-// Ce fichier calcule une page en executant un squelette.
+-//
+-
+-include_ecrire(&quot;inc_meta.php3&quot;);
+-include_ecrire(&quot;inc_index.php3&quot;);
+-include_ecrire(&quot;inc_texte.php3&quot;);
+-include_ecrire(&quot;inc_filtres.php3&quot;);
+-include_ecrire(&quot;inc_lang.php3&quot;);
+-include_ecrire(&quot;inc_documents.php3&quot;);
+-include_ecrire(&quot;inc_abstract_sql.php3&quot;);
+-include_ecrire(&quot;inc_forum.php3&quot;);
+-include_ecrire(&quot;inc_debug_sql.php3&quot;);
+-include_local(&quot;inc-calcul-outils.php3&quot;);
+-
+-// Ce fichier peut contenir une affectation de $dossier_squelettes  indiquant
+-// le repertoire du source des squelettes (les pseudo-html avec BOUCLE...)
+-
+-if ($f = find_in_path(&quot;mes_fonctions.php3&quot;))
+-	include_local ($f);
+-
+-
+-// Gestionnaire d'URLs
+-if (@file_exists(&quot;inc-urls.php3&quot;))
+-	include_local(&quot;inc-urls.php3&quot;);
+-else
+-	include_local(&quot;inc-urls-&quot;.$GLOBALS['type_urls'].&quot;.php3&quot;);
+-
+-
+-// Le squelette compile est-il trop vieux ?
+-function squelette_obsolete($skel, $squelette) {
+-	return (
+-		$GLOBALS['var_mode']
+-		OR !@file_exists($skel)
+-		OR (@filemtime($squelette) &gt; ($date = @filemtime($skel)))
+-		OR (@filemtime('mes_fonctions.php3') &gt; $date)
+-		OR (@filemtime(_FILE_OPTIONS) &gt; $date)
+-	);
+-}
+-
+-
+-# Charge un squelette (au besoin le compile) 
+-# et retoune le nom de sa fonction principale, ou '' s'il est indefini
+-# Charge egalement un fichier homonyme de celui du squelette
+-# mais de suffixe '_fonctions.php3' pouvant contenir:
+-# - des filtres
+-# - des fonctions de traduction de balise, de critere et de boucle
+-# - des declaration de tables SQL supplementaires
+-
+-function charger_squelette ($squelette) {
+-	$ext = $GLOBALS['extension_squelette'];
+-	$nom = $ext . '_' . md5($squelette);
+-	$sourcefile = $squelette . &quot;.$ext&quot;;
+-
+-	// le squelette est-il deja en memoire (INCLURE  a repetition)
+-	if (function_exists($nom))
+-		return $nom;
+-
+-	$phpfile = _DIR_CACHE . 'skel_' . $nom . '.php';
+-
+-	// le squelette est-il deja compile et perenne ?
+-	if (!squelette_obsolete($phpfile, $sourcefile)
+-	AND lire_fichier ($phpfile, $contenu,
+-	array('critique' =&gt; 'oui', 'phpcheck' =&gt; 'oui'))) 
+-		eval('?'.'&gt;'.$contenu);
+-
+-	// sinon, charger le compilateur et verifier que le source est lisible
+-	if (!function_exists($nom)) {
+-		include_local(&quot;inc-compilo.php3&quot;);
+-		lire_fichier ($sourcefile, $skel);
+-	}
+-
+-	// Le fichier suivant peut contenir entre autres:
+-	// 1. les filtres utilises par le squelette
+-	// 2. des ajouts au compilateur
+-	// Le point 1 exige qu'il soit lu dans tous les cas.
+-	// Le point 2 exige qu'il soit lu apres inc-compilo
+-	// (car celui-ci initialise $tables_principales) mais avant la compil
+-	$f = $squelette . '_fonctions.php3';
+-	if (@file_exists($f)) include($f);
+-
+-	if (function_exists($nom)) return $nom;
+-
+-	$skel_code = calculer_squelette($skel, $nom, $ext, $sourcefile);
+-
+-	// Tester si le compilateur renvoie une erreur
+-	if (is_array($skel_code))
+-		erreur_squelette($skel_code[0], $skel_code[1]);
+-	else {
+-		if ($GLOBALS['var_mode'] == 'debug') {
+-			include_ecrire(&quot;inc_debug_sql.php3&quot;);
+-			debug_dumpfile ($skel_code, $nom, 'code');
+-		}
+-		eval('?'.'&gt;'.$skel_code);
+-		if (function_exists($nom)) {
+-			ecrire_fichier ($phpfile, $skel_code);
+-			return $nom;
+-		}
+-	}
+-}
+-
+-# Provoque la recherche du squelette $fond d'une $lang donnee,
+-# et l'applique sur un $contexte pour un certain $cache.
+-# Retourne un tableau de 3 elements:
+-# 'texte' =&gt; la page calculee
+-# 'process_ins' =&gt; 'html' ou 'php' si presence d'un '&lt; ?php'
+-# 'invalideurs' =&gt; les invalideurs (cf inc-calcul-squel)
+-
+-# En cas d'erreur process_ins est absent et texte est un tableau de 2 chaines
+-
+-# La recherche est assuree par la fonction chercher_squelette,
+-# definie dans inc-chercher, fichier non charge si elle est deja definie
+-# (typiquement dans mes_fonctions.php3)
+-
+-function cherche_page ($cache, $contexte, $fond)  {
+-	global $delais;
+-
+-	if (!function_exists('chercher_squelette'))
+-		include_local(&quot;inc-chercher-squelette.php3&quot;);
+-
+-	// Choisir entre $fond-dist.html, $fond=7.html, etc?
+-	$id_rubrique_fond = 0;
+-	// Chercher le fond qui va servir de squelette
+-	if ($r = sql_rubrique_fond($contexte))
+-		list($id_rubrique_fond, $lang) = $r;
+-	if (!$lang)
+-		$lang = lire_meta('langue_site');
+-	// Si inc-urls ou un appel dynamique veut fixer la langue, la recuperer
+-	$lang = $contexte['lang'];
+-
+-	if (!$GLOBALS['forcer_lang'])
+-		lang_select($lang);
+-
+-	$skel = chercher_squelette($fond,
+-			$id_rubrique_fond,
+-			$GLOBALS['spip_lang']);
+-
+-	// Charger le squelette et recuperer sa fonction principale
+-	// (compilation automatique au besoin) et calculer
+-
+-	$page = array();
+-
+-	if ($skel) {
+-		if ($fonc = charger_squelette($skel))
+-		  $page = $fonc(array('cache' =&gt; $cache), array($contexte));
+-
+-		// Passer la main au debuggueur)
+-		if ($GLOBALS['var_mode'] == 'debug')
+-		  {
+-			include_ecrire(&quot;inc_debug_sql.php3&quot;);
+-			debug_dumpfile ($page['texte'], $fonc, 'resultat');
+-		  }
+-	}
+-
+-	// Nettoyer le resultat si on est fou de XML
+-	if ($GLOBALS['xhtml']) {
+-		include_ecrire(&quot;inc_tidy.php&quot;);
+-		$page['texte'] = xhtml($page['texte']);
+-	}
+-
+-	// Entrer les invalideurs dans la base
+-	if ($delais&gt;0) {
+-		include_ecrire('inc_invalideur.php3');
+-		maj_invalideurs($cache, $page['invalideurs'], $delais);
+-	}
+-
+-	// Retourner la structure de la page
+-
+-	return $page;
+-}
+-
+-
+-//
+-// Contexte : lors du calcul d'une page spip etablit le contexte a partir
+-// des variables $_GET et $_POST, et leur ajoute la date
+-// Note : pour hacker le contexte depuis le fichier d'appel (article.php3),
+-// il est recommande de modifier $_GET['toto'] (meme si la page est
+-// appelee avec la methode POST).
+-//
+-function calculer_contexte() {
+-	foreach($GLOBALS['_GET'] as $var =&gt; $val) {
+-		if (strpos($var, 'var_') !== 0)
+-			$contexte[$var] = $val;
+-	}
+-	foreach($GLOBALS['_POST'] as $var =&gt; $val) {
+-		if (strpos($var, 'var_') !== 0)
+-			$contexte[$var] = $val;
+-	}
+-
+-	if ($GLOBALS['date'])
+-		$contexte['date'] = $contexte['date_redac'] = normaliser_date($GLOBALS['date']);
+-	else
+-		$contexte['date'] = $contexte['date_redac'] = date(&quot;Y-m-d H:i:s&quot;);
+-
+-	return $contexte;
+-}
+-
+-function calculer_page_globale($cache, $contexte_local, $fond) {
+-
+-	// Gestion des URLs personnalises - sale mais historique
+-	if (function_exists(&quot;recuperer_parametres_url&quot;)) {
+-		global $contexte;
+-		$contexte = $contexte_local;
+-		recuperer_parametres_url($fond, nettoyer_uri());
+-
+-		// remettre les globales pour le bouton &quot;Modifier cet article&quot;
+-		if (is_array($contexte))
+-			foreach ($contexte as $var=&gt;$val)
+-				if (substr($var,0,3) == 'id_')
+-					$GLOBALS[$var] = $val;
+-		$contexte_local = $contexte;
+-	}
+-
+-	// Go to work !
+-	$page = cherche_page($cache, $contexte_local, $fond);
+-
+-	$signal = array();
+-	foreach(array('id_parent', 'id_rubrique', 'id_article', 'id_auteur',
+-	'id_breve', 'id_forum', 'id_secteur', 'id_syndic', 'id_syndic_article',
+-	'id_mot', 'id_groupe', 'id_document') as $val) {
+-		if ($contexte_local[$val])
+-			$signal['contexte'][$val] = intval($contexte_local[$val]);
+-	}
+-
+-	$page['signal'] = $signal;
+-
+-	return $page;
+-}
+-
+-
+-
+-function calculer_page($chemin_cache, $elements, $delais, $inclusion=false) {
+-
+-	// Inclusion
+-	if ($inclusion) {
+-		$contexte_inclus = $elements['contexte'];
+-		$page = cherche_page($chemin_cache,
+-			$contexte_inclus, $elements['fond']);
+-	}
+-	else {
+-
+-		// Page globale
+-		// si le champ chapo commence par '=' c'est une redirection.
+-		if ($id_article = intval($GLOBALS['id_article'])) {
+-			if ($art = sql_chapo($id_article)) {
+-				$chapo = $art['chapo'];
+-				if (substr($chapo, 0, 1) == '=') {
+-					include_ecrire('inc_texte.php3');
+-					list(,$url) = extraire_lien(array('','','',
+-					substr($chapo, 1)));
+-					if ($url) { // sinon les navigateurs pataugent
+-						$url = addslashes($url);
+-						$page = array('texte' =&gt; &quot;&lt;&quot;.
+-						&quot;?php header(\&quot;Location: $url\&quot;); ?&quot; . &quot;&gt;&quot;,
+-						'process_ins' =&gt; 'php');
+-					}
+-				}
+-			}
+-		}
+-		if (!$page)
+-			$page = calculer_page_globale($chemin_cache,
+-				$elements['contexte'],
+-				$elements['fond']);
+-	}
+-
+-	$page['signal']['process_ins'] = $page['process_ins'];
+-	$signal = &quot;&lt;!-- &quot;.str_replace(&quot;\n&quot;, &quot; &quot;,
+-	serialize($page['signal'])).&quot; --&gt;\n&quot;;
+-
+-	// Enregistrer le fichier cache
+-	if ($delais &gt; 0 AND $GLOBALS['var_mode'] != 'debug'
+-	AND empty($GLOBALS['_POST']))
+-		ecrire_fichier($chemin_cache, $signal.$page['texte']);
+-
+-	return $page;
+-}
+-?&gt;
++&lt;?php
++
++/***************************************************************************\
++ *  SPIP, Systeme de publication pour l'internet                           *
++ *                                                                         *
++ *  Copyright (c) 2001-2005                                                *
++ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
++ *                                                                         *
++ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
++ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
++\***************************************************************************/
++
++
++
++// Ce fichier ne sera execute qu'une fois
++if (defined(&quot;_INC_CALCUL&quot;)) return;
++define(&quot;_INC_CALCUL&quot;, &quot;1&quot;);
++
++//
++// Ce fichier calcule une page en executant un squelette.
++//
++
++include_ecrire(&quot;inc_meta.php3&quot;);
++include_ecrire(&quot;inc_index.php3&quot;);
++include_ecrire(&quot;inc_texte.php3&quot;);
++include_ecrire(&quot;inc_filtres.php3&quot;);
++include_ecrire(&quot;inc_lang.php3&quot;);
++include_ecrire(&quot;inc_documents.php3&quot;);
++include_ecrire(&quot;inc_abstract_sql.php3&quot;);
++include_ecrire(&quot;inc_forum.php3&quot;);
++include_ecrire(&quot;inc_debug_sql.php3&quot;);
++include_local(&quot;inc-calcul-outils.php3&quot;);
++
++// Ce fichier peut contenir une affectation de $dossier_squelettes  indiquant
++// le repertoire du source des squelettes (les pseudo-html avec BOUCLE...)
++
++if ($f = find_in_path(&quot;mes_fonctions.php3&quot;))
++	include_local ($f);
++
++// Gestionnaire d'URLs
++if (@file_exists(&quot;inc-urls.php3&quot;))
++	include_local(&quot;inc-urls.php3&quot;);
++else
++	include_local(&quot;inc-urls-&quot;.$GLOBALS['type_urls'].&quot;.php3&quot;);
++
++
++// Le squelette compile est-il trop vieux ?
++function squelette_obsolete($skel, $squelette) {
++	return (
++		$GLOBALS['var_mode']
++		OR !@file_exists($skel)
++		OR (@filemtime($squelette) &gt; ($date = @filemtime($skel)))
++		OR (@filemtime('mes_fonctions.php3') &gt; $date)
++		OR (@filemtime(_FILE_OPTIONS) &gt; $date)
++	);
++}
++
++
++# Charge un squelette (au besoin le compile) 
++# et retoune le nom de sa fonction principale, ou '' s'il est indefini
++# Charge egalement un fichier homonyme de celui du squelette
++# mais de suffixe '_fonctions.php3' pouvant contenir:
++# - des filtres
++# - des fonctions de traduction de balise, de critere et de boucle
++# - des declaration de tables SQL supplementaires
++
++function charger_squelette ($squelette) {
++	$ext = $GLOBALS['extension_squelette'];
++	$nom = $ext . '_' . md5($squelette);
++	$sourcefile = $squelette . &quot;.$ext&quot;;
++
++	// le squelette est-il deja en memoire (INCLURE  a repetition)
++	if (function_exists($nom))
++		return $nom;
++
++	$phpfile = _DIR_CACHE . 'skel_' . $nom . '.php';
++
++	// le squelette est-il deja compile et perenne ?
++	if (!squelette_obsolete($phpfile, $sourcefile)
++	AND lire_fichier ($phpfile, $contenu,
++	array('critique' =&gt; 'oui', 'phpcheck' =&gt; 'oui'))) 
++		eval('?'.'&gt;'.$contenu);
++
++	// sinon, charger le compilateur et verifier que le source est lisible
++	if (!function_exists($nom)) {
++		include_local(&quot;inc-compilo.php3&quot;);
++		lire_fichier ($sourcefile, $skel);
++	}
++
++	// Le fichier suivant peut contenir entre autres:
++	// 1. les filtres utilises par le squelette
++	// 2. des ajouts au compilateur
++	// Le point 1 exige qu'il soit lu dans tous les cas.
++	// Le point 2 exige qu'il soit lu apres inc-compilo
++	// (car celui-ci initialise $tables_principales) mais avant la compil
++	$f = $squelette . '_fonctions.php3';
++	if (@file_exists($f)) include($f);
++
++	if (function_exists($nom)) return $nom;
++
++	$skel_code = calculer_squelette($skel, $nom, $ext, $sourcefile);
++
++	// Tester si le compilateur renvoie une erreur
++	if (is_array($skel_code))
++		erreur_squelette($skel_code[0], $skel_code[1]);
++	else {
++		if ($GLOBALS['var_mode'] == 'debug') {
++			include_ecrire(&quot;inc_debug_sql.php3&quot;);
++			debug_dumpfile ($skel_code, $nom, 'code');
++		}
++		eval('?'.'&gt;'.$skel_code);
++		if (function_exists($nom)) {
++			ecrire_fichier ($phpfile, $skel_code);
++			return $nom;
++		}
++	}
++}
++
++# Provoque la recherche du squelette $fond d'une $lang donnee,
++# et l'applique sur un $contexte pour un certain $cache.
++# Retourne un tableau de 3 elements:
++# 'texte' =&gt; la page calculee
++# 'process_ins' =&gt; 'html' ou 'php' si presence d'un '&lt; ?php'
++# 'invalideurs' =&gt; les invalideurs (cf inc-calcul-squel)
++
++# En cas d'erreur process_ins est absent et texte est un tableau de 2 chaines
++
++# La recherche est assuree par la fonction chercher_squelette,
++# definie dans inc-chercher, fichier non charge si elle est deja definie
++# (typiquement dans mes_fonctions.php3)
++
++function cherche_page ($cache, $contexte, $fond)  {
++	global $delais;
++
++	if (!function_exists('chercher_squelette'))
++		include_local(&quot;inc-chercher-squelette.php3&quot;);
++
++	// Choisir entre $fond-dist.html, $fond=7.html, etc?
++	$id_rubrique_fond = 0;
++	// Chercher le fond qui va servir de squelette
++	if ($r = sql_rubrique_fond($contexte))
++		list($id_rubrique_fond, $lang) = $r;
++	if (!$lang)
++		$lang = lire_meta('langue_site');
++	// Si inc-urls ou un appel dynamique veut fixer la langue, la recuperer
++	$lang = $contexte['lang'];
++
++	if (!$GLOBALS['forcer_lang'])
++		lang_select($lang);
++
++	$skel = chercher_squelette($fond,
++			$id_rubrique_fond,
++			$GLOBALS['spip_lang']);
++
++	// Charger le squelette et recuperer sa fonction principale
++	// (compilation automatique au besoin) et calculer
++
++	$page = array();
++
++	if ($skel) {
++		if ($fonc = charger_squelette($skel))
++		  $page = $fonc(array('cache' =&gt; $cache), array($contexte));
++
++		// Passer la main au debuggueur)
++		if ($GLOBALS['var_mode'] == 'debug')
++		  {
++			include_ecrire(&quot;inc_debug_sql.php3&quot;);
++			debug_dumpfile ($page['texte'], $fonc, 'resultat');
++		  }
++	}
++
++	// Nettoyer le resultat si on est fou de XML
++	if ($GLOBALS['xhtml']) {
++		include_ecrire(&quot;inc_tidy.php&quot;);
++		$page['texte'] = xhtml($page['texte']);
++	}
++
++	// Entrer les invalideurs dans la base
++	if ($delais&gt;0) {
++		include_ecrire('inc_invalideur.php3');
++		maj_invalideurs($cache, $page['invalideurs'], $delais);
++	}
++
++	// Retourner la structure de la page
++
++	return $page;
++}
++
++
++//
++// Contexte : lors du calcul d'une page spip etablit le contexte a partir
++// des variables $_GET et $_POST, et leur ajoute la date
++// Note : pour hacker le contexte depuis le fichier d'appel (article.php3),
++// il est recommande de modifier $_GET['toto'] (meme si la page est
++// appelee avec la methode POST).
++//
++function calculer_contexte() {
++	global $_GET, $_POST;
++
++	foreach($_GET as $var =&gt; $val) {
++		if (strpos($var, 'var_') !== 0)
++			$contexte[$var] = $val;
++	}
++	foreach($_POST as $var =&gt; $val) {
++		if (strpos($var, 'var_') !== 0)
++			$contexte[$var] = $val;
++	}
++
++	if ($GLOBALS['date'])
++		$contexte['date'] = $contexte['date_redac'] = normaliser_date($GLOBALS['date']);
++	else
++		$contexte['date'] = $contexte['date_redac'] = date(&quot;Y-m-d H:i:s&quot;);
++
++	return $contexte;
++}
++
++function calculer_page_globale($cache, $contexte_local, $fond) {
++
++	// Gestion des URLs personnalises - sale mais historique
++	if (function_exists(&quot;recuperer_parametres_url&quot;)) {
++		global $contexte;
++		$contexte = $contexte_local;
++		recuperer_parametres_url($fond, nettoyer_uri());
++
++		// remettre les globales pour le bouton &quot;Modifier cet article&quot;
++		if (is_array($contexte))
++			foreach ($contexte as $var=&gt;$val)
++				if (substr($var,0,3) == 'id_')
++					$GLOBALS[$var] = $val;
++		$contexte_local = $contexte;
++	}
++
++	// Go to work !
++	$page = cherche_page($cache, $contexte_local, $fond);
++
++	$signal = array();
++	foreach(array('id_parent', 'id_rubrique', 'id_article', 'id_auteur',
++	'id_breve', 'id_forum', 'id_secteur', 'id_syndic', 'id_syndic_article',
++	'id_mot', 'id_groupe', 'id_document') as $val) {
++		if ($contexte_local[$val])
++			$signal['contexte'][$val] = intval($contexte_local[$val]);
++	}
++
++	$page['signal'] = $signal;
++
++	return $page;
++}
++
++
++
++function calculer_page($chemin_cache, $elements, $delais, $inclusion=false) {
++	global $_POST;
++
++	// Inclusion
++	if ($inclusion) {
++		$contexte_inclus = $elements['contexte'];
++		$page = cherche_page($chemin_cache,
++			$contexte_inclus, $elements['fond']);
++	}
++	else {
++
++		// Page globale
++		// si le champ chapo commence par '=' c'est une redirection.
++		if ($id_article = intval($GLOBALS['id_article'])) {
++			if ($art = sql_chapo($id_article)) {
++				$chapo = $art['chapo'];
++				if (substr($chapo, 0, 1) == '=') {
++					include_ecrire('inc_texte.php3');
++					list(,$url) = extraire_lien(array('','','',
++					substr($chapo, 1)));
++					if ($url) { // sinon les navigateurs pataugent
++						$url = addslashes($url);
++						$page = array('texte' =&gt; &quot;&lt;&quot;.
++						&quot;?php header(\&quot;Location: $url\&quot;); ?&quot; . &quot;&gt;&quot;,
++						'process_ins' =&gt; 'php');
++					}
++				}
++			}
++		}
++		if (!$page)
++			$page = calculer_page_globale($chemin_cache,
++				$elements['contexte'],
++				$elements['fond']);
++	}
++
++	$page['signal']['process_ins'] = $page['process_ins'];
++	$signal = &quot;&lt;!-- &quot;.str_replace(&quot;\n&quot;, &quot; &quot;,
++	serialize($page['signal'])).&quot; --&gt;\n&quot;;
++
++	// Enregistrer le fichier cache
++	if ($delais &gt; 0 AND $GLOBALS['var_mode'] != 'debug'
++	AND !count($_POST))
++		ecrire_fichier($chemin_cache, $signal.$page['texte']);
++
++	return $page;
++}
++?&gt;
+
+Index: htaccess-html.txt
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/htaccess-html.txt,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- htaccess-html.txt	8 Feb 2005 15:10:10 -0000	1.2
++++ htaccess-html.txt	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,17 +1,17 @@
+-###########################################################
+-# Fichier .htaccess pour les URLs 'html' ; a installer    #
+-# si vous reglez $type_urls='html'                        #
+-# dans ecrire/mes_options.php3                            #
+-# (fichier associe : inc-urls-html.php3)                  #
+-###########################################################
+-
+-RewriteEngine On
+-
+-### si votre site est en sous-domaine, preciser ci-dessous
+-# RewriteBase /sous/domaine/
+-
+-RewriteRule ^rubrique([0-9]+)\.html$	rubrique.php3?id_rubrique=$1 [QSA,L]
+-RewriteRule ^article([0-9]+)\.html$		article.php3?id_article=$1 [QSA,L]
+-RewriteRule ^breve([0-9]+)\.html$		breve.php3?id_breve=$1 [QSA,L]
+-RewriteRule ^mot([0-9]+)\.html$			mot.php3?id_mot=$1 [QSA,L]
+-RewriteRule ^auteur([0-9]+)\.html$		auteur.php3?id_auteur=$1 [QSA,L]
++###########################################################
++# Fichier .htaccess pour les URLs 'html' ; a installer    #
++# si vous reglez $type_urls='html'                        #
++# dans ecrire/mes_options.php3                            #
++# (fichier associe : inc-urls-html.php3)                  #
++###########################################################
++
++RewriteEngine On
++
++### si votre site est en sous-domaine, preciser ci-dessous
++# RewriteBase /sous/domaine/
++
++RewriteRule ^rubrique([0-9]+)\.html$	rubrique.php3?id_rubrique=$1 [QSA,L]
++RewriteRule ^article([0-9]+)\.html$		article.php3?id_article=$1 [QSA,L]
++RewriteRule ^breve([0-9]+)\.html$		breve.php3?id_breve=$1 [QSA,L]
++RewriteRule ^mot([0-9]+)\.html$			mot.php3?id_mot=$1 [QSA,L]
++RewriteRule ^auteur([0-9]+)\.html$		auteur.php3?id_auteur=$1 [QSA,L]
+
+Index: breve.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/breve.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- breve.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ breve.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,8 +1,8 @@
+-&lt;?php
+-$fond = &quot;breve&quot;;
+-$delais = 12 * 3600;
+-
+-include (&quot;inc-public.php3&quot;);
+-
+-
+-?&gt;
++&lt;?php
++$fond = &quot;breve&quot;;
++$delais = 12 * 3600;
++
++include (&quot;inc-public.php3&quot;);
++
++
++?&gt;
+
+Index: forum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/forum.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- forum.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ forum.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,20 +1,20 @@
+-&lt;?php
+-
+-$fond = &quot;forum&quot;;
+-$delais = 3600;
+-
+-// Exemples de personnalisation :
+-// @ <A HREF="http://www.spip.net/fr_article1825.html">http://www.spip.net/fr_article1825.html</A>
+-//
+-// 1. seuls les mots-cles du groupe de mots numero 1 doivent s'afficher
+-// $afficher_groupe = array(1);
+-//
+-// 2. faire des forums uniquement pour affecter des mots-cles
+-// $afficher_texte = &quot;non&quot;;
+-
+-// En ca de forums sur abonnement, on a un panneau de login
+-$flag_dynamique = true;
+-
+-include (&quot;inc-public.php3&quot;);
+-
+-?&gt;
++&lt;?php
++
++$fond = &quot;forum&quot;;
++$delais = 3600;
++
++// Exemples de personnalisation :
++// @ <A HREF="http://www.spip.net/fr_article1825.html">http://www.spip.net/fr_article1825.html</A>
++//
++// 1. seuls les mots-cles du groupe de mots numero 1 doivent s'afficher
++// $afficher_groupe = array(1);
++//
++// 2. faire des forums uniquement pour affecter des mots-cles
++// $afficher_texte = &quot;non&quot;;
++
++// En ca de forums sur abonnement, on a un panneau de login
++$flag_dynamique = true;
++
++include (&quot;inc-public.php3&quot;);
++
++?&gt;
+
+Index: impression.css
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/impression.css,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- impression.css	8 Feb 2005 15:10:10 -0000	1.2
++++ impression.css	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,114 +1,114 @@
+-
+-/*
+- * Feuille de style specifique a l'impression
+- */
+- 
+-/* Pour les liens, on desactive les couleurs
+-   et on affiche l'URL cible a la suite du lien (!) */
+-
+-a { color: black; text-decoration: underline; }
+-a:visited { color: black; text-decoration: underline; }
+-a.spip_in { color: black; text-decoration: underline; }
+-a.spip_out { color: black; text-decoration: underline; }
+-a:after {
+-	display: inline;
+-	border: 1px solid dotted;
+-	content: &quot; [&quot; attr(href) &quot;]&quot;;
+-}
+-
+-/*
+- * Un peu de coquetterie
+- */
+-
+-.chapo {
+-	line-height: 1.4em;
+-	margin-top: 1em;
+-}
+-.texte {
+-}
+-.ps {
+-	padding-top: 0.6em;
+-	margin-top: 0.6em;
+-	border-top: 1px dashed #404040;
+-}
+-.notes {
+-	margin-top: 0.6em;
+-	margin-bottom: 0.6em;
+-	border-top: 1px solid #707070;
+-}
+-.structure {
+-	display: none;
+-}
+-.spip-admin {
+-	display: none;
+-}
+-
+-
+-.contenu {
+-	margin: 10px;
+-}
+-.contenu h1 {
+-	margin-top: 0em;
+-	margin-bottom: 0em;
+-}
+-.contenu h1.titre-extrait {
+-}
+-.contenu h1.titre-texte {
+-}
+-.contenu .surtitre {
+-	margin-top: 0em;
+-	margin-bottom: 0em;
+-}
+-.contenu .detail {
+-	margin-left: 2em;
+-}
+-.extrait {
+-	margin-top: 0.5em;
+-	margin-bottom: 0.5em;
+-	margin-left: 2em;
+-	margin-right: 0em;
+-	line-height: 1.4em;
+-}
+-
+-
+-/*
+- * Disposition : on elimine les elements de navigation (display: none)
+- * et on choisit un affichage de base pour le principal
+- */
+-
+-#principal {
+-	margin: 10px;
+-}
+-
+-#navigation {
+-	display: none;
+-}
+-
+-.encart {
+-	display: none;
+-}
+-
+-.cartouche {
+-	margin-top: 0.5em;
+-	padding-top: 1em;
+-	margin-bottom: 1em;
+-}
+-
+-.cartouche .spip_logos {
+-	margin-left: 0px;
+-	padding-left: 0px;
+-	margin-right: 0.8em;
+-}
+-
+-
+-/*
+- * Forums
+- */
+-
+-.forum-repondre {
+-	display: none;
+-}
+-.forum-repondre-message {
+-	display: none;
+-}
+-
++
++/*
++ * Feuille de style specifique a l'impression
++ */
++ 
++/* Pour les liens, on desactive les couleurs
++   et on affiche l'URL cible a la suite du lien (!) */
++
++a { color: black; text-decoration: underline; }
++a:visited { color: black; text-decoration: underline; }
++a.spip_in { color: black; text-decoration: underline; }
++a.spip_out { color: black; text-decoration: underline; }
++a:after {
++	display: inline;
++	border: 1px solid dotted;
++	content: &quot; [&quot; attr(href) &quot;]&quot;;
++}
++
++/*
++ * Un peu de coquetterie
++ */
++
++.chapo {
++	line-height: 1.4em;
++	margin-top: 1em;
++}
++.texte {
++}
++.ps {
++	padding-top: 0.6em;
++	margin-top: 0.6em;
++	border-top: 1px dashed #404040;
++}
++.notes {
++	margin-top: 0.6em;
++	margin-bottom: 0.6em;
++	border-top: 1px solid #707070;
++}
++.structure {
++	display: none;
++}
++.spip-admin {
++	display: none;
++}
++
++
++.contenu {
++	margin: 10px;
++}
++.contenu h1 {
++	margin-top: 0em;
++	margin-bottom: 0em;
++}
++.contenu h1.titre-extrait {
++}
++.contenu h1.titre-texte {
++}
++.contenu .surtitre {
++	margin-top: 0em;
++	margin-bottom: 0em;
++}
++.contenu .detail {
++	margin-left: 2em;
++}
++.extrait {
++	margin-top: 0.5em;
++	margin-bottom: 0.5em;
++	margin-left: 2em;
++	margin-right: 0em;
++	line-height: 1.4em;
++}
++
++
++/*
++ * Disposition : on elimine les elements de navigation (display: none)
++ * et on choisit un affichage de base pour le principal
++ */
++
++#principal {
++	margin: 10px;
++}
++
++#navigation {
++	display: none;
++}
++
++.encart {
++	display: none;
++}
++
++.cartouche {
++	margin-top: 0.5em;
++	padding-top: 1em;
++	margin-bottom: 1em;
++}
++
++.cartouche .spip_logos {
++	margin-left: 0px;
++	padding-left: 0px;
++	margin-right: 0.8em;
++}
++
++
++/*
++ * Forums
++ */
++
++.forum-repondre {
++	display: none;
++}
++.forum-repondre-message {
++	display: none;
++}
++
+
+Index: inc-calcul-outils.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-calcul-outils.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-calcul-outils.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ inc-calcul-outils.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,403 +1,448 @@
+-&lt;?php
+-
+-//
+-// Des fonctions diverses utilisees lors du calcul d'une page ; ces fonctions
+-// bien pratiques n'ont guere de logique organisationnelle ; elles sont
+-// appelees par certaines balises au moment du calcul des pages. (Peut-on
+-// trouver un modele de donnees qui les associe physiquement au fichier
+-// definissant leur balise ???
+-//
+-
+-// ON TROUVERA EN QUEUE DE FICHIER LES FONCTIONS FAISANT DES APPELS SQL
+-
+-
+-// Ce fichier ne sera execute qu'une fois
+-if (defined(&quot;_INC_CALCUL_OUTILS&quot;)) return;
+-define(&quot;_INC_CALCUL_OUTILS&quot;, &quot;1&quot;);
+-
+-// Pour les documents comme pour les logos, le filtre |fichier donne
+-// le chemin du fichier apres 'IMG/' ;  peut-etre pas d'une purete
+-// remarquable, mais a conserver pour compatibilite ascendante.
+-// -&gt; <A HREF="http://www.spip.net/fr_article901.html">http://www.spip.net/fr_article901.html</A>
+-function calcule_fichier_logo($on) {
+-	$r = ereg_replace(&quot;^&quot; . _DIR_IMG, &quot;&quot;, $on);
+-	return $r;
+-}
+-
+-// Renvoie le code html pour afficher un logo, avec ou sans survol, lien, etc.
+-// utilise la globale ci-dessous pour les attributs hspace &amp; vspace
+-
+-tester_variable('espace_logos',3);
+-
+-function affiche_logos($logos, $lien, $align) {
+-	static $num_survol=0;
+-	global $espace_logos;
+-	list ($arton, $artoff) = $logos;
+-
+-	if (!$arton) return $artoff;
+-
+-	$num_survol++;
+-	$milieu = &quot;&lt;img src='$arton'&quot;
+-		. ($align ? &quot; align='$align' &quot; : '') 
+-		. &quot; name='image$num_survol' border='0' &quot;
+-		. &quot;alt='image$num_survol'&quot;
+-		. &quot; hspace='$espace_logos' vspace='$espace_logos' class='spip_logos' /&gt;&quot;;
+-
+-	if (!$artoff) return ($lien ? http_href($lien, $milieu) : $milieu);
+-
+-	$att =	&quot;onmouseover=\&quot;image$num_survol.src='$artoff'\&quot; 
+-		onmouseout=\&quot;image$num_survol.src='$arton'\&quot;&quot;;
+-
+-	return ($lien ? &quot;&lt;a href='$lien' $att&gt;$milieu&lt;/a&gt;&quot; : &quot;&lt;div $att&gt;$milieu&lt;/div&gt;&quot;);
+-
+-}
+-
+-//
+-// Retrouver le logo d'un objet (et son survol)
+-//
+-
+-function calcule_logo($type, $onoff, $id, $id_rubrique, $ff) {
+-	include_ecrire('inc_logos.php3');
+-
+-	$table_logos = array (
+-	'ARTICLE' =&gt; 'art',
+-	'AUTEUR' =&gt;  'aut',
+-	'BREVE' =&gt;  'breve',
+-	'MOT' =&gt; 'mot',
+-	'RUBRIQUE' =&gt; 'rub',
+-	'SITE' =&gt; 'site'
+-	);
+-	$type = $table_logos[$type];
+-	$nom = strtolower($onoff);
+-	# attention au cas $id = '0' pour LOGO_SITE_SPIP : utiliser intval()
+-	while (1) {
+-		$on = cherche_image_nommee($type . $nom . intval($id));
+-		if ($on) {
+-			if ($ff)
+-			  return  (array('', &quot;$on[1].$on[2]&quot;));
+-			else {
+-				$off = ($onoff != 'ON') ? '' :
+-					cherche_image_nommee($type . 'off' . $id);
+-				return array (&quot;$on[0]$on[1].$on[2]&quot;,
+-					      ($off ? (&quot;$off[0]$off[1].$off[2]&quot;) : ''));
+-			}
+-		}
+-		else if ($id_rubrique) {
+-			$type = 'rub';
+-			$id = $id_rubrique;
+-			$id_rubrique = 0;
+-		} else if ($id AND $type == 'rub')
+-			$id = sql_parent($id);
+-		else return array('','');
+-	}
+-}
+-
+-//
+-// fonction standard de calcul de la balise #INTRODUCTION
+-// on peut la surcharger en definissant dans mes_fonctions.php3 :
+-// function introduction($type,$texte,$chapo,$descriptif) {...}
+-//
+-function calcul_introduction ($type, $texte, $chapo='', $descriptif='') {
+-	if (function_exists(&quot;introduction&quot;))
+-		return introduction ($type, $texte, $chapo, $descriptif);
+-
+-	switch ($type) {
+-		case 'articles':
+-			if ($descriptif)
+-				return propre($descriptif);
+-			else if (substr($chapo, 0, 1) == '=')	// article virtuel
+-				return '';
+-			else
+-				return PtoBR(propre(supprimer_tags(couper_intro($chapo.&quot;\n\n\n&quot;.$texte, 500))));
+-			break;
+-		case 'breves':
+-			return PtoBR(propre(supprimer_tags(couper_intro($texte, 300))));
+-			break;
+-		case 'forums':
+-			return PtoBR(propre(supprimer_tags(couper_intro($texte, 600))));
+-			break;
+-		case 'rubriques':
+-			if ($descriptif)
+-				return propre($descriptif);
+-			else
+-				return PtoBR(propre(supprimer_tags(couper_intro($texte, 600))));
+-			break;
+-	}
+-}
+-
+-function executer_balise_dynamique($nom, $args, $filtres, $lang) {
+-	if ($file = find_in_path('inc-' . strtolower($nom) . _EXTENSION_PHP))
+-		include_local($file);
+-	else
+-		die (&quot;pas de balise dynamique pour #&quot;. strtolower($nom).&quot; !&quot;);
+-
+-	$f = 'balise_' . $nom . '_stat';
+-	$r = $f($args, $filtres);
+-	return (!is_array($r)) ? $r : synthetiser_balise_dynamique($nom, $r, $file, $lang);
+-}
+-
+-//
+-// FONCTIONS FAISANT DES APPELS SQL
+-//
+-
+-# NB : a l'exception des fonctions pour les balises dynamiques
+-
+-function calcul_exposer ($id, $type, $reference) {
+-	static $exposer;
+-	static $ref_precedente;
+-
+-	// Que faut-il exposer ? Tous les elements de $reference
+-	// ainsi que leur hierarchie ; on ne fait donc ce calcul
+-	// qu'une fois (par squelette) et on conserve le resultat
+-	// en static.
+-	if ($reference&lt;&gt;$ref_precedente) {
+-		$ref_precedente = $reference;
+-
+-		$exposer = array();
+-		foreach ($reference as $element=&gt;$id_element) {
+-			if ($element == 'id_secteur') $element = 'id_rubrique';
+-			if ($x = table_from_primary($element)) {
+-				list($table,$hierarchie) = $x;
+-				$exposer[$element][$id_element] = true;
+-				if ($hierarchie) {
+-					list ($id_rubrique) = spip_abstract_fetsel(
+-array('id_rubrique'), 
+-array($table),
+-array(&quot;$element=$id_element&quot;));
+-				$hierarchie = substr(calculer_hierarchie($id_rubrique), 2);
+-				foreach (split(',',$hierarchie) as $id_rubrique)
+-					$exposer['id_rubrique'][$id_rubrique] = true;
+-				}
+-			}
+-		}
+-	}
+-
+-	// And the winner is...
+-	return $exposer[$type][$id];
+-}
+-
+-function table_from_primary($id) {
+-	global $tables_principales;
+-	include_ecrire('inc_serialbase.php3');
+-	foreach ($tables_principales as $k =&gt; $v) {
+-		if ($v['key']['PRIMARY KEY'] == $id)
+-			return array($k, array_key_exists('id_rubrique', $v['field']));
+-	}
+-	return '';
+-}
+-
+-function calcul_generation ($generation) {
+-	$lesfils = array();
+-	$result = spip_abstract_select(array('id_rubrique'),
+-				array('spip_rubriques AS rubriques'),
+-				array(calcul_mysql_in('id_parent', 
+-					$generation,
+-					'')),
+-				'','','','','','','');
+-	while ($row = spip_abstract_fetch($result))
+-		$lesfils[] = $row['id_rubrique'];
+-	return join(&quot;,&quot;,$lesfils);
+-}
+-
+-function calcul_branche ($generation) {
+-	if (!$generation) 
+-		return '0';
+-	else {
+-		$branche[] = $generation;
+-		while ($generation = calcul_generation ($generation))
+-			$branche[] = $generation;
+-		return join(&quot;,&quot;,$branche);
+-	}
+-}
+-
+-// fonction appelee par la balise #LOGO_DOCUMENT
+-function calcule_document($id_document, $doubdoc, &amp;$doublons) {
+-	if (!$id_document) return '';
+-	if ($doubdoc &amp;&amp; $id_document) $doublons[&quot;documents&quot;] .= ', ' . $id_document;
+-
+-	if (!($row = spip_abstract_select(array('id_type', 'id_vignette', 'fichier', 'mode'), array('spip_documents AS documents'), array(&quot;id_document = $id_document&quot;))))
+-// pas de document. Ne devrait pas arriver
+-		return ''; 
+-
+-	list($id_type, $id_vignette, $fichier, $mode) = spip_abstract_fetch($row);
+-	if ($id_vignette) {
+-		if ($res = spip_abstract_select(array('fichier'), array('spip_documents AS documents'), array(&quot;id_document = $id_vignette&quot;))) {
+-			list($vignette) = spip_abstract_fetch($res);
+-			if (@file_exists($vignette))
+-				return generer_url_document($id_vignette);
+-				# return ($fichier); # en std g_u_d fait ca
+-		}
+-	} else if ($mode == 'vignette') 
+-		return generer_url_document($id_document);
+-		# return $fichier; # en std g_u_d fait ca
+-
+-	// calcul de l'extension par tous les moyens
+-	if ($id_type) {
+-		list($ext) = spip_abstract_fetch(spip_abstract_select(array('extension'), array('spip_types_documents AS documents'), array(&quot;id_type = &quot; . intval($id_type))));
+-	} else {
+-		eregi('\.([a-z0-9]+)$', $fichier, $regs);
+-		$ext = $regs[1];
+-	}
+-
+-	// Pas de vignette mais une extension :
+-	// envoyer une vignette par defaut
+-	return vignette_par_defaut($ext ? $ext : 'txt', false);
+-}
+-
+-
+-// fonction appelee par la balise #EMBED
+-function calcule_embed_document($id_document, $filtres, &amp;$doublons, $doubdoc) {
+-	if ($doubdoc &amp;&amp; $id_document) $doublons[&quot;documents&quot;] .= ', ' . $id_document;
+-	return embed_document($id_document, $filtres, false);
+-}
+-
+-// fonction appelee par la balise #NOTES
+-function calculer_notes() {
+-	$r = $GLOBALS[&quot;les_notes&quot;];
+-	$GLOBALS[&quot;les_notes&quot;] = &quot;&quot;;
+-	$GLOBALS[&quot;compt_note&quot;] = 0;
+-	$GLOBALS[&quot;marqueur_notes&quot;] ++;
+-	return $r;
+-}
+-
+-# retourne la profondeur d'une rubrique
+-
+-function sql_profondeur($id) {
+-	$n = 0;
+-	while ($id) {
+-		$n++;
+-		$id = sql_parent($id);
+-	}
+-	return $n;
+-}
+-
+-
+-function sql_parent($id_rubrique) {
+-	$row = spip_abstract_fetsel(array(id_parent), 
+-			array('spip_rubriques'), 
+-			array(&quot;id_rubrique=&quot; . intval($id_rubrique)));
+-	return $row['id_parent'];
+-}
+-
+-function sql_rubrique($id_article) {
+-	$row = spip_abstract_fetsel(array('id_rubrique'),
+-			array('spip_articles'),
+-			array(&quot;id_article=&quot; . intval($id_article)));
+-	return $row['id_rubrique'];
+-}
+-
+-function sql_auteurs($id_article, $table, $id_boucle, $serveur='') {
+-	$auteurs = &quot;&quot;;
+-	if ($id_article) {
+-		$result_auteurs = spip_abstract_select(array('auteurs.nom', 'auteurs.email'),
+-			array('spip_auteurs AS auteurs',
+-				'spip_auteurs_articles AS lien'), 
+-			array(&quot;lien.id_article=$id_article&quot;,
+-				&quot;auteurs.id_auteur=lien.id_auteur&quot;),
+-			'','','','',1, 
+-			$table, $id_boucle, $serveur);
+-
+-		while($row_auteur = spip_abstract_fetch($result_auteurs, $serveur)) {
+-			$nom_auteur = typo($row_auteur[&quot;nom&quot;]);
+-			$email_auteur = $row_auteur[&quot;email&quot;];
+-			if ($email_auteur) {
+-				$auteurs[] = &quot;&lt;a href=\&quot;mailto:$email_auteur\&quot;&gt;$nom_auteur&lt;/a&gt;&quot;;
+-			} else {
+-				$auteurs[] = &quot;$nom_auteur&quot;;
+-			}
+-		}
+-	}
+-	return (!$auteurs) ? &quot;&quot; : join($auteurs, &quot;, &quot;);
+-}
+-
+-function sql_petitions($id_article, $table, $id_boucle, $serveur, &amp;$Cache) {
+-	$retour = spip_abstract_fetsel(
+-			array('texte'),
+-			array('spip_petitions'),
+-			array(&quot;id_article=&quot;.intval($id_article)),
+-			'','','','',1, 
+-			$table, $id_boucle, $serveur);
+-
+-	if (!$retour) return '';
+-	# cette page est invalidee par toute petition
+-	if ($Cache) $Cache['petition']['petition'] = 1;
+-	# ne pas retourner '' car le texte sert aussi de pr&#233;sence
+-	return ($retour['texte'] ? $retour['texte'] : ' ');
+-}
+-
+-# retourne le chapeau d'un article, et seulement s'il est publie
+-
+-function sql_chapo($id_article) {
+-	if ($id_article)
+-	return spip_abstract_fetsel(array('chapo'),
+-		array('spip_articles'),
+-		array(&quot;id_article=&quot;.intval($id_article),
+-		&quot;statut='publie'&quot;));
+-}
+-
+-# retourne le champ 'accepter_forum' d'un article
+-function sql_accepter_forum($id_article) {
+-	static $cache = array();
+-
+-	if (!$id_article) return;
+-
+-	if (!isset($cache[$id_article])) {
+-		$row = spip_abstract_fetsel(array('accepter_forum'),
+-			array('spip_articles'),
+-			array(&quot;id_article=&quot;.intval($id_article)));
+-		$cache[$id_article] = $row['accepter_forum'];
+-	}
+-
+-	return $cache[$id_article];
+-}
+-
+-
+-// Calcul de la rubrique associee a la requete
+-// (selection de squelette specifique par id_rubrique &amp; lang)
+-
+-function sql_rubrique_fond($contexte) {
+-
+-	if ($id = intval($contexte['id_rubrique'])) {
+-		$row = spip_abstract_fetsel(array('lang'),
+-					    array('spip_rubriques'),
+-					    array(&quot;id_rubrique=$id&quot;));
+-		if ($row['lang'])
+-			$lang = $row['lang'];
+-		return array ($id, $lang);
+-	}
+-
+-	if ($id  = intval($contexte['id_breve'])) {
+-		$row = spip_abstract_fetsel(array('id_rubrique', 'lang'),
+-			array('spip_breves'), 
+-			array(&quot;id_breve=$id&quot;));
+-		$id_rubrique_fond = $row['id_rubrique'];
+-		if ($row['lang'])
+-			$lang = $row['lang'];
+-		return array($id_rubrique_fond, $lang);
+-	}
+-
+-	if ($id = intval($contexte['id_syndic'])) {
+-		$row = spip_abstract_fetsel(array('id_rubrique'),
+-			array('spip_syndic'),
+-			array(&quot;id_syndic=$id&quot;));
+-		$id_rubrique_fond = $row['id_rubrique'];
+-		$row = spip_abstract_fetsel(array('lang'),
+-			array('spip_rubriques'),
+-			array(&quot;id_rubrique='$id_rubrique_fond'&quot;));
+-		if ($row['lang'])
+-			$lang = $row['lang'];
+-		return array($id_rubrique_fond, $lang);
+-	}
+-
+-	if ($id = intval($contexte['id_article'])) {
+-		$row = spip_abstract_fetsel(array('id_rubrique', 'lang'),
+-			array('spip_articles'),
+-			array(&quot;id_article=$id&quot;));
+-		$id_rubrique_fond = $row['id_rubrique'];
+-		if ($row['lang'])
+-			$lang = $row['lang'];
+-		return array($id_rubrique_fond, $lang);
+-	}
+-}
+-
++&lt;?php
++
++/***************************************************************************\
++ *  SPIP, Systeme de publication pour l'internet                           *
++ *                                                                         *
++ *  Copyright (c) 2001-2005                                                *
++ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
++ *                                                                         *
++ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
++ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
++\***************************************************************************/
++
++
++//
++// Des fonctions diverses utilisees lors du calcul d'une page ; ces fonctions
++// bien pratiques n'ont guere de logique organisationnelle ; elles sont
++// appelees par certaines balises au moment du calcul des pages. (Peut-on
++// trouver un modele de donnees qui les associe physiquement au fichier
++// definissant leur balise ???
++//
++
++// ON TROUVERA EN QUEUE DE FICHIER LES FONCTIONS FAISANT DES APPELS SQL
++
++
++// Ce fichier ne sera execute qu'une fois
++if (defined(&quot;_INC_CALCUL_OUTILS&quot;)) return;
++define(&quot;_INC_CALCUL_OUTILS&quot;, &quot;1&quot;);
++
++// Pour les documents comme pour les logos, le filtre |fichier donne
++// le chemin du fichier apres 'IMG/' ;  peut-etre pas d'une purete
++// remarquable, mais a conserver pour compatibilite ascendante.
++// -&gt; <A HREF="http://www.spip.net/fr_article901.html">http://www.spip.net/fr_article901.html</A>
++function calcule_fichier_logo($on) {
++	$r = ereg_replace(&quot;^&quot; . _DIR_IMG, &quot;&quot;, $on);
++	return $r;
++}
++
++// Renvoie le code html pour afficher un logo, avec ou sans survol, lien, etc.
++// utilise la globale ci-dessous pour les attributs hspace &amp; vspace
++
++tester_variable('espace_logos',3);
++
++function affiche_logos($logos, $lien, $align) {
++	static $num_survol=0;
++	global $espace_logos;
++	list ($arton, $artoff) = $logos;
++
++	if (!$arton) return $artoff;
++
++	$num_survol++;
++	$milieu = &quot;&lt;img src='$arton'&quot;
++		. ($align ? &quot; align='$align' &quot; : '') 
++		. &quot; name='image$num_survol' border='0' &quot;
++		. &quot;alt='image$num_survol'&quot;
++		. &quot; hspace='$espace_logos' vspace='$espace_logos' class='spip_logos' /&gt;&quot;;
++
++	if (!$artoff) return ($lien ? http_href($lien, $milieu) : $milieu);
++
++	$att =	&quot;onmouseover=\&quot;image$num_survol.src='$artoff'\&quot; 
++		onmouseout=\&quot;image$num_survol.src='$arton'\&quot;&quot;;
++
++	return ($lien ? &quot;&lt;a href='$lien' $att&gt;$milieu&lt;/a&gt;&quot; : &quot;&lt;div $att&gt;$milieu&lt;/div&gt;&quot;);
++
++}
++
++//
++// Retrouver le logo d'un objet (et son survol)
++//
++
++function calcule_logo($type, $onoff, $id, $id_rubrique, $ff) {
++	include_ecrire('inc_logos.php3');
++
++	$table_logos = array (
++	'ARTICLE' =&gt; 'art',
++	'AUTEUR' =&gt;  'aut',
++	'BREVE' =&gt;  'breve',
++	'MOT' =&gt; 'mot',
++	'RUBRIQUE' =&gt; 'rub',
++	'SITE' =&gt; 'site'
++	);
++	$type = $table_logos[$type];
++	$nom = strtolower($onoff);
++	# attention au cas $id = '0' pour LOGO_SITE_SPIP : utiliser intval()
++	while (1) {
++		$on = cherche_image_nommee($type . $nom . intval($id));
++		if ($on) {
++			if ($ff)
++			  return  (array('', &quot;$on[1].$on[2]&quot;));
++			else {
++				$off = ($onoff != 'ON') ? '' :
++					cherche_image_nommee($type . 'off' . $id);
++				return array (&quot;$on[0]$on[1].$on[2]&quot;,
++					      ($off ? (&quot;$off[0]$off[1].$off[2]&quot;) : ''));
++			}
++		}
++		else if ($id_rubrique) {
++			$type = 'rub';
++			$id = $id_rubrique;
++			$id_rubrique = 0;
++		} else if ($id AND $type == 'rub')
++			$id = sql_parent($id);
++		else return array('','');
++	}
++}
++
++//
++// fonction standard de calcul de la balise #INTRODUCTION
++// on peut la surcharger en definissant dans mes_fonctions.php3 :
++// function introduction($type,$texte,$chapo,$descriptif) {...}
++//
++function calcul_introduction ($type, $texte, $chapo='', $descriptif='') {
++	if (function_exists(&quot;introduction&quot;))
++		return introduction ($type, $texte, $chapo, $descriptif);
++
++	switch ($type) {
++		case 'articles':
++			if ($descriptif)
++				return propre($descriptif);
++			else if (substr($chapo, 0, 1) == '=')	// article virtuel
++				return '';
++			else
++				return PtoBR(propre(supprimer_tags(couper_intro($chapo.&quot;\n\n\n&quot;.$texte, 500))));
++			break;
++		case 'breves':
++			return PtoBR(propre(supprimer_tags(couper_intro($texte, 300))));
++			break;
++		case 'forums':
++			return PtoBR(propre(supprimer_tags(couper_intro($texte, 600))));
++			break;
++		case 'rubriques':
++			if ($descriptif)
++				return propre($descriptif);
++			else
++				return PtoBR(propre(supprimer_tags(couper_intro($texte, 600))));
++			break;
++	}
++}
++
++
++//
++// Balises dynamiques
++//
++
++// elles sont traitees comme des inclusions
++function synthetiser_balise_dynamique($nom, $args, $file, $lang) {
++	return
++		('&lt;'.'?php 
++include_ecrire(\'inc_lang.php3\');
++lang_select(&quot;'.$lang.'&quot;);
++include_local(&quot;'
++		. $file
++		. '&quot;);
++inclure_balise_dynamique(balise_'
++		. $nom
++		. '_dyn(\''
++		. join(&quot;', '&quot;, array_map('texte_script', $args))
++		. '\'));
++	lang_dselect();
++?'
++		.&quot;&gt;&quot;);
++}
++
++// verifier leurs arguments et filtres, et calculer le code a inclure
++function executer_balise_dynamique($nom, $args, $filtres, $lang) {
++	if ($file = find_in_path('inc-' . strtolower($nom) . _EXTENSION_PHP))
++		include_local($file);
++	else
++		die (&quot;pas de balise dynamique pour #&quot;. strtolower($nom).&quot; !&quot;);
++
++	// Y a-til une fonction de traitement filtres-arguments ?
++	$f = 'balise_' . $nom . '_stat';
++	if (function_exists($f))
++		$r = $f($args, $filtres);
++	else
++		$r = $args;
++	
++	if (!is_array($r))
++		return $r;
++	else
++		return synthetiser_balise_dynamique($nom, $r, $file, $lang);
++}
++
++
++//
++// FONCTIONS FAISANT DES APPELS SQL
++//
++
++# NB : a l'exception des fonctions pour les balises dynamiques
++
++function calcul_exposer ($id, $type, $reference) {
++	static $exposer;
++	static $ref_precedente;
++
++	// Que faut-il exposer ? Tous les elements de $reference
++	// ainsi que leur hierarchie ; on ne fait donc ce calcul
++	// qu'une fois (par squelette) et on conserve le resultat
++	// en static.
++	if ($reference&lt;&gt;$ref_precedente) {
++		$ref_precedente = $reference;
++
++		$exposer = array();
++		foreach ($reference as $element=&gt;$id_element) {
++			if ($element == 'id_secteur') $element = 'id_rubrique';
++			if ($x = table_from_primary($element)) {
++				list($table,$hierarchie) = $x;
++				$exposer[$element][$id_element] = true;
++				if ($hierarchie) {
++					list ($id_rubrique) = spip_abstract_fetsel(
++array('id_rubrique'), 
++array($table),
++array(&quot;$element=$id_element&quot;));
++				$hierarchie = substr(calculer_hierarchie($id_rubrique), 2);
++				foreach (split(',',$hierarchie) as $id_rubrique)
++					$exposer['id_rubrique'][$id_rubrique] = true;
++				}
++			}
++		}
++	}
++
++	// And the winner is...
++	return $exposer[$type][$id];
++}
++
++function table_from_primary($id) {
++	global $tables_principales;
++	include_ecrire('inc_serialbase.php3');
++	foreach ($tables_principales as $k =&gt; $v) {
++		if ($v['key']['PRIMARY KEY'] == $id)
++			return array($k, array_key_exists('id_rubrique', $v['field']));
++	}
++	return '';
++}
++
++function calcul_generation ($generation) {
++	$lesfils = array();
++	$result = spip_abstract_select(array('id_rubrique'),
++				array('spip_rubriques AS rubriques'),
++				array(calcul_mysql_in('id_parent', 
++					$generation,
++					'')),
++				'','','','','','','');
++	while ($row = spip_abstract_fetch($result))
++		$lesfils[] = $row['id_rubrique'];
++	return join(&quot;,&quot;,$lesfils);
++}
++
++function calcul_branche ($generation) {
++	if (!$generation) 
++		return '0';
++	else {
++		$branche[] = $generation;
++		while ($generation = calcul_generation ($generation))
++			$branche[] = $generation;
++		return join(&quot;,&quot;,$branche);
++	}
++}
++
++// fonction appelee par la balise #LOGO_DOCUMENT
++function calcule_document($id_document, $doubdoc, &amp;$doublons) {
++	if (!$id_document) return '';
++	if ($doubdoc &amp;&amp; $id_document) $doublons[&quot;documents&quot;] .= ', ' . $id_document;
++
++	if (!($row = spip_abstract_select(array('id_type', 'id_vignette', 'fichier', 'mode'), array('spip_documents AS documents'), array(&quot;id_document = $id_document&quot;))))
++// pas de document. Ne devrait pas arriver
++		return ''; 
++
++	list($id_type, $id_vignette, $fichier, $mode) = spip_abstract_fetch($row);
++	if ($id_vignette) {
++		if ($res = spip_abstract_select(array('fichier'), array('spip_documents AS documents'), array(&quot;id_document = $id_vignette&quot;))) {
++			list($vignette) = spip_abstract_fetch($res);
++			if (@file_exists($vignette))
++				return generer_url_document($id_vignette);
++				# return ($fichier); # en std g_u_d fait ca
++		}
++	} else if ($mode == 'vignette') 
++		return generer_url_document($id_document);
++		# return $fichier; # en std g_u_d fait ca
++
++	// calcul de l'extension par tous les moyens
++	if ($id_type) {
++		list($ext) = spip_abstract_fetch(spip_abstract_select(array('extension'), array('spip_types_documents AS documents'), array(&quot;id_type = &quot; . intval($id_type))));
++	} else {
++		eregi('\.([a-z0-9]+)$', $fichier, $regs);
++		$ext = $regs[1];
++	}
++
++	// Pas de vignette mais une extension :
++	// envoyer une vignette par defaut
++	return vignette_par_defaut($ext ? $ext : 'txt', false);
++}
++
++
++// fonction appelee par la balise #EMBED
++function calcule_embed_document($id_document, $filtres, &amp;$doublons, $doubdoc) {
++	if ($doubdoc &amp;&amp; $id_document) $doublons[&quot;documents&quot;] .= ', ' . $id_document;
++	return embed_document($id_document, $filtres, false);
++}
++
++// fonction appelee par la balise #NOTES
++function calculer_notes() {
++	$r = $GLOBALS[&quot;les_notes&quot;];
++	$GLOBALS[&quot;les_notes&quot;] = &quot;&quot;;
++	$GLOBALS[&quot;compt_note&quot;] = 0;
++	$GLOBALS[&quot;marqueur_notes&quot;] ++;
++	return $r;
++}
++
++# retourne la profondeur d'une rubrique
++
++function sql_profondeur($id) {
++	$n = 0;
++	while ($id) {
++		$n++;
++		$id = sql_parent($id);
++	}
++	return $n;
++}
++
++
++function sql_parent($id_rubrique) {
++	$row = spip_abstract_fetsel(array(id_parent), 
++			array('spip_rubriques'), 
++			array(&quot;id_rubrique=&quot; . intval($id_rubrique)));
++	return $row['id_parent'];
++}
++
++function sql_rubrique($id_article) {
++	$row = spip_abstract_fetsel(array('id_rubrique'),
++			array('spip_articles'),
++			array(&quot;id_article=&quot; . intval($id_article)));
++	return $row['id_rubrique'];
++}
++
++function sql_auteurs($id_article, $table, $id_boucle, $serveur='') {
++	$auteurs = &quot;&quot;;
++	if ($id_article) {
++		$result_auteurs = spip_abstract_select(array('auteurs.nom', 'auteurs.email'),
++			array('spip_auteurs AS auteurs',
++				'spip_auteurs_articles AS lien'), 
++			array(&quot;lien.id_article=$id_article&quot;,
++				&quot;auteurs.id_auteur=lien.id_auteur&quot;),
++			'','','','',1, 
++			$table, $id_boucle, $serveur);
++
++		while($row_auteur = spip_abstract_fetch($result_auteurs, $serveur)) {
++			$nom_auteur = typo($row_auteur[&quot;nom&quot;]);
++			$email_auteur = $row_auteur[&quot;email&quot;];
++			if ($email_auteur) {
++				$auteurs[] = &quot;&lt;a href=\&quot;mailto:$email_auteur\&quot;&gt;$nom_auteur&lt;/a&gt;&quot;;
++			} else {
++				$auteurs[] = &quot;$nom_auteur&quot;;
++			}
++		}
++	}
++	return (!$auteurs) ? &quot;&quot; : join($auteurs, &quot;, &quot;);
++}
++
++function sql_petitions($id_article, $table, $id_boucle, $serveur, &amp;$Cache) {
++	$retour = spip_abstract_fetsel(
++		array('texte'),
++		array('spip_petitions'),
++		array(&quot;id_article=&quot;.intval($id_article)),
++		'','','','',1, 
++		$table, $id_boucle, $serveur);
++
++	if (!$retour) return '';
++	# cette page est invalidee par toute petition
++	$Cache['varia']['pet'.$id_article] = 1;
++	# ne pas retourner '' car le texte sert aussi de presence
++	return ($retour['texte'] ? $retour['texte'] : ' ');
++}
++
++# retourne le chapeau d'un article, et seulement s'il est publie
++
++function sql_chapo($id_article) {
++	if ($id_article)
++	return spip_abstract_fetsel(array('chapo'),
++		array('spip_articles'),
++		array(&quot;id_article=&quot;.intval($id_article),
++		&quot;statut='publie'&quot;));
++}
++
++# retourne le champ 'accepter_forum' d'un article
++function sql_accepter_forum($id_article) {
++	static $cache = array();
++
++	if (!$id_article) return;
++
++	if (!isset($cache[$id_article])) {
++		$row = spip_abstract_fetsel(array('accepter_forum'),
++			array('spip_articles'),
++			array(&quot;id_article=&quot;.intval($id_article)));
++		$cache[$id_article] = $row['accepter_forum'];
++	}
++
++	return $cache[$id_article];
++}
++
++
++// Calcul de la rubrique associee a la requete
++// (selection de squelette specifique par id_rubrique &amp; lang)
++
++function sql_rubrique_fond($contexte) {
++
++	if ($id = intval($contexte['id_rubrique'])) {
++		$row = spip_abstract_fetsel(array('lang'),
++					    array('spip_rubriques'),
++					    array(&quot;id_rubrique=$id&quot;));
++		if ($row['lang'])
++			$lang = $row['lang'];
++		return array ($id, $lang);
++	}
++
++	if ($id  = intval($contexte['id_breve'])) {
++		$row = spip_abstract_fetsel(array('id_rubrique', 'lang'),
++			array('spip_breves'), 
++			array(&quot;id_breve=$id&quot;));
++		$id_rubrique_fond = $row['id_rubrique'];
++		if ($row['lang'])
++			$lang = $row['lang'];
++		return array($id_rubrique_fond, $lang);
++	}
++
++	if ($id = intval($contexte['id_syndic'])) {
++		$row = spip_abstract_fetsel(array('id_rubrique'),
++			array('spip_syndic'),
++			array(&quot;id_syndic=$id&quot;));
++		$id_rubrique_fond = $row['id_rubrique'];
++		$row = spip_abstract_fetsel(array('lang'),
++			array('spip_rubriques'),
++			array(&quot;id_rubrique='$id_rubrique_fond'&quot;));
++		if ($row['lang'])
++			$lang = $row['lang'];
++		return array($id_rubrique_fond, $lang);
++	}
++
++	if ($id = intval($contexte['id_article'])) {
++		$row = spip_abstract_fetsel(array('id_rubrique', 'lang'),
++			array('spip_articles'),
++			array(&quot;id_article=$id&quot;));
++		$id_rubrique_fond = $row['id_rubrique'];
++		if ($row['lang'])
++			$lang = $row['lang'];
++		return array($id_rubrique_fond, $lang);
++	}
++}
++
+ ?&gt;
+
+Index: backend.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/backend.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- backend.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ backend.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,14 +1,14 @@
+-&lt;?php
+-$fond = &quot;backend&quot;;
+-$delais = 3600;
+-
+-// cette ligne empeche l'affichage des boutons d'administration
+-// Et les headers !!!!
+-
+-$flag_preserver = true;
+-
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">- at header</A>(&quot;Content-type: text/xml&quot;);
+-
+-include (&quot;inc-public.php3&quot;);
+-
+-?&gt;
++&lt;?php
++$fond = &quot;backend&quot;;
++$delais = 3600;
++
++// cette ligne empeche l'affichage des boutons d'administration
++// Et les headers !!!!
++
++$flag_preserver = true;
++
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">+ at header</A>(&quot;Content-type: text/xml&quot;);
++
++include (&quot;inc-public.php3&quot;);
++
++?&gt;
+
+Index: inc-balises.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-balises.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-balises.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ inc-balises.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,732 +1,744 @@
+-&lt;?php
+-
+-//
+-// Ce fichier regroupe la quasi totalite des definitions de #BALISES de spip
+-// Pour chaque balise, il est possible de surcharger, dans mes_fonctions.php3,
+-// la fonction balise_TOTO_dist par une fonction balise_TOTO() respectant la
+-// meme API : 
+-// elle recoit en entree un objet de classe CHAMP, le modifie et le retourne.
+-// Cette classe est definie dans inc-compilo-index.php3
+-//
+-
+[...1445 lines suppressed...]
++// La syntaxe #ENV{toto, rempl} renverra 'rempl' si $toto est vide
++//
++function balise_ENV_dist($p) {
++	$nom = param_balise($p);
++	if (!$nom) {
++		// cas de #ENV sans argument : on retourne le serialize() du tableau
++		// une belle fonction [(#ENV|affiche_env)] serait pratique
++		$p-&gt;code = 'serialize($Pile[0])';
++		$p-&gt;statut = 'html';
++	} else {
++		// admet deux arguments : nom de variable, valeur par defaut si vide
++		$nom = split(',', $nom, 2);
++		$p-&gt;code = 'sinon($Pile[0][&quot;' . addslashes($nom[0]) . '&quot;],
++			\''. texte_script($nom[1]) .'\')';
++		$p-&gt;statut = 'php';
++	}
++	return $p;
++}
++
++?&gt;
+
+Index: htaccess-propres.txt
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/htaccess-propres.txt,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- htaccess-propres.txt	8 Feb 2005 15:10:10 -0000	1.2
++++ htaccess-propres.txt	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,36 +1,36 @@
+-###########################################################
+-# Fichier .htaccess pour les URLs propres ; a installer   #
+-# si vous reglez $type_urls='propres'                     #
+-# dans ecrire/mes_options.php3                            #
+-# (fichier associe : inc-urls-propres.php3)               #
+-###########################################################
+-
+-RewriteEngine On
+-
+-### si votre site est en sous-domaine, preciser ci-dessous
+-# RewriteBase /sous/domaine/
+-
+-# Rediriger les mots et breves sans le &quot;+&quot; final
+-RewriteCond %{REQUEST_FILENAME} !-f
+-RewriteCond %{REQUEST_FILENAME} !-d
+-RewriteRule ^(\+[^/\.\+]+)$ /$1+ [QSA,R]
+-
+-# Les mots-cles
+-RewriteCond %{REQUEST_FILENAME} !-f
+-RewriteCond %{REQUEST_FILENAME} !-d
+-RewriteRule ^\+-[^/\.]+-\+$ mot.php3 [QSA,E=url_propre:$0]
+-
+-# Les breves
+-RewriteCond %{REQUEST_FILENAME} !-f
+-RewriteCond %{REQUEST_FILENAME} !-d
+-RewriteRule ^\+[^/\.]+\+$ breve.php3 [QSA,E=url_propre:$0]
+-
+-# Les rubriques
+-RewriteCond %{REQUEST_FILENAME} !-f
+-RewriteCond %{REQUEST_FILENAME} !-d
+-RewriteRule ^-[^/\.]+-$ rubrique.php3 [QSA,E=url_propre:$0]
+-
+-# Les articles
+-RewriteCond %{REQUEST_FILENAME} !-f
+-RewriteCond %{REQUEST_FILENAME} !-d
+-RewriteRule ^[^/\.]+$ article.php3 [QSA,E=url_propre:$0]
++###########################################################
++# Fichier .htaccess pour les URLs propres ; a installer   #
++# si vous reglez $type_urls='propres'                     #
++# dans ecrire/mes_options.php3                            #
++# (fichier associe : inc-urls-propres.php3)               #
++###########################################################
++
++RewriteEngine On
++
++### si votre site est en sous-domaine, preciser ci-dessous
++# RewriteBase /sous/domaine/
++
++# Rediriger les mots et breves sans le &quot;+&quot; final
++RewriteCond %{REQUEST_FILENAME} !-f
++RewriteCond %{REQUEST_FILENAME} !-d
++RewriteRule ^(\+[^/\.\+]+)$ /$1+ [QSA,R]
++
++# Les mots-cles
++RewriteCond %{REQUEST_FILENAME} !-f
++RewriteCond %{REQUEST_FILENAME} !-d
++RewriteRule ^\+-[^/\.]+-\+$ mot.php3 [QSA,E=url_propre:$0]
++
++# Les breves
++RewriteCond %{REQUEST_FILENAME} !-f
++RewriteCond %{REQUEST_FILENAME} !-d
++RewriteRule ^\+[^/\.]+\+$ breve.php3 [QSA,E=url_propre:$0]
++
++# Les rubriques
++RewriteCond %{REQUEST_FILENAME} !-f
++RewriteCond %{REQUEST_FILENAME} !-d
++RewriteRule ^-[^/\.]+-$ rubrique.php3 [QSA,E=url_propre:$0]
++
++# Les articles
++RewriteCond %{REQUEST_FILENAME} !-f
++RewriteCond %{REQUEST_FILENAME} !-d
++RewriteRule ^[^/\.]+$ article.php3 [QSA,E=url_propre:$0]
+
+Index: inc-admin.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-admin.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-admin.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ inc-admin.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,50 +1,55 @@
+-&lt;?php
+-
+-// Inserer la feuille de style selon les normes, dans le &lt;head&gt;
+-// puis les boutons
+-// Feuilles de style admin : d'abord la CSS officielle, puis la perso,
+-
+-function affiche_boutons_admin($contenu) {
+-	$css = &quot;&lt;link rel='stylesheet' href='spip_admin.css' type='text/css' /&gt;\n&quot;;
+-	if ($f = find_in_path('spip_admin_perso.css'))
+-		$css2 = &quot;&lt;link rel='stylesheet' href='$f' type='text/css' /&gt;\n&quot;;
+-
+-	if (preg_match('@&lt;(/head|body)@i', $contenu, $regs)) {
+-		$contenu = explode($regs[0], $contenu, 2);
+-		$contenu = $contenu[0] . $css. $css2 . $regs[0] . $contenu[1];
+-	} else
+-		$contenu = $css . $css2 . $contenu;
+-
+-	if (preg_match('@&lt;(/body|/html)@i', $contenu, $regs)) {
+-		$split = explode($regs[0], $contenu, 2);
+-		$contenu = $split[0];
+-		$suite = $regs[0].$split[1];
+-	}
+-
+-	echo $contenu;
+-
+-	//
+-	// Regler les boutons dans la langue de l'admin (sinon tant pis)
+-	//
+-	include_local(_FILE_CONNECT);
+-	include_ecrire (&quot;inc_lang.php3&quot;);
+-	$login = addslashes(ereg_replace('^@','',$GLOBALS['spip_admin']));
+-	if ($row = spip_fetch_array(spip_query(&quot;SELECT lang FROM spip_auteurs WHERE login='$login'&quot;))) {
+-		$lang = $row['lang'];
+-	}
+-	lang_select($lang);
+-
+-	// Afficher la balise #FORMULAIRE_ADMIN mais en float
+-	inclure_balise_dynamique(
+-		balise_formulaire_admin_dyn(
+-		$GLOBALS['id_article'], $GLOBALS['id_breve'],
+-		$GLOBALS['id_rubrique'], $GLOBALS['id_mot'],
+-		$GLOBALS['id_auteur'], 'div'
+-	));
+-
+-	lang_dselect();
+-
+-	return $suite;
+-}
+-
+-?&gt;
++&lt;?php
++
++/***************************************************************************\
++ *  SPIP, Systeme de publication pour l'internet                           *
++ *                                                                         *
++ *  Copyright (c) 2001-2005                                                *
++ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
++ *                                                                         *
++ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
++ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
++\***************************************************************************/
++
++
++// Inserer la feuille de style selon les normes, dans le &lt;head&gt;
++// puis les boutons
++// Feuilles de style admin : d'abord la CSS officielle, puis la perso,
++
++function affiche_boutons_admin($contenu) {
++	$css = &quot;&lt;link rel='stylesheet' href='spip_admin.css' type='text/css' /&gt;\n&quot;;
++	if ($f = find_in_path('spip_admin_perso.css'))
++		$css .= &quot;&lt;link rel='stylesheet' href='$f' type='text/css' /&gt;\n&quot;;
++
++	if (preg_match('@&lt;(/head|body)@i', $contenu, $regs)) {
++		$contenu = explode($regs[0], $contenu, 2);
++		$contenu = $contenu[0] . $css . $regs[0] . $contenu[1];
++	} else
++		$contenu = $css . $contenu;
++
++	if (preg_match('@&lt;(/body|/html)@i', $contenu, $regs)) {
++		$split = explode($regs[0], $contenu, 2);
++		$contenu = $split[0];
++		$suite = $regs[0].$split[1];
++	}
++
++	//
++	// Regler les boutons dans la langue de l'admin (sinon tant pis)
++	//
++	include_ecrire (&quot;inc_lang.php3&quot;);
++	$login = addslashes(ereg_replace('^@','',$GLOBALS['spip_admin']));
++	$s = spip_query(&quot;SELECT lang FROM spip_auteurs WHERE login='$login'&quot;);
++	if ($row = spip_fetch_array($s))
++		$lang = $row['lang'];
++	lang_select($lang);
++
++	// Recuperer sans l'afficher la balise #FORMULAIRE_ADMIN, en float
++	$boutons_admin = inclure_balise_dynamique(
++		balise_FORMULAIRE_ADMIN_dyn('div'),
++	false);
++
++	lang_dselect();
++
++	return $contenu.$boutons_admin.$suite;
++}
++
++?&gt;
+
+Index: inc-cache.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-cache.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-cache.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ inc-cache.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,202 +1,214 @@
+-&lt;?php
+-
+-//
+-// Ce fichier ne sera execute qu'une fois
+-if (defined(&quot;_INC_CACHE&quot;)) return;
+-define(&quot;_INC_CACHE&quot;, &quot;1&quot;);
+-
+-
+-//
+-// Calcul du nom du fichier cache
+-//
+-
+-function nettoyer_uri() {
+-	$fichier_requete = $GLOBALS['REQUEST_URI'];
+-	$fichier_requete = eregi_replace
+-		('[?&amp;](PHPSESSID|(var_[^=&amp;]*))=[^&amp;]*',
+-		'', $fichier_requete);
+-	return $fichier_requete;
+-}
+-
+-//
+-// Le format souhaite : &quot;CACHE/a/(8400/)bout-d-url.md5(.gz)&quot;
+-// Attention a modifier simultanement le sanity check de
+-// la fonction retire_cache()
+-//
+-function generer_nom_fichier_cache($contexte='', $fond='') {
+-	global $delais;
+-	global $flag_gz, $compresser_cache;
+-
+-	if ($delais == 0) return '';
+-
+-	if (!$contexte) {
+-		$fichier_requete = nettoyer_uri();
+-	} else {
+-		$fichier_requete = $fond;
+-		foreach ($contexte as $var=&gt;$val)
+-			$fichier_requete .= &quot;&amp;$var=$val&quot;;
+-	}
+-
+-	$md_cache = md5($fichier_requete);
+-
+-	$fichier_cache = ereg_replace('^/+', '', $fichier_requete);
+-	$fichier_cache = ereg_replace('\.[a-zA-Z0-9]*', '', $fichier_cache);
+-	$fichier_cache = ereg_replace('&amp;[^&amp;]+=([^&amp;]+)', '&amp;\1', $fichier_cache);
+-	$fichier_cache = rawurlencode(strtr($fichier_cache, '/&amp;-', '--_'));
+-	if (strlen($fichier_cache) &gt; 24)
+-		$fichier_cache = substr(ereg_replace('([a-zA-Z]{1,3})[^-]*-',
+-		'\1-', $fichier_cache), -22);
+-
+-	// Pour la page d'accueil
+-	if (!$fichier_cache)
+-		$fichier_cache = 'INDEX-';
+-
+-	// morceau de md5
+-	$fichier_cache .= '.'.substr($md_cache, 1, 8);
+-
+-	// Sous-repertoires 0...9a..f/
+-	$subdir = creer_repertoire(_DIR_CACHE, substr($md_cache, 0, 1));
+-	// Sous-sous-repertoires delais/ (inutile avec l'invalidation par 't')
+-	# $subdir2 = creer_repertoire(&quot;CACHE/$subdir&quot;, $delais);
+-
+-	include_ecrire('inc_acces.php3');
+-	verifier_htaccess(_DIR_CACHE);
+-
+-	$gzip = $flag_gz &amp;&amp; $compresser_cache ? '.gz' : '';
+-
+-	return _DIR_CACHE . $subdir.$subdir2.$fichier_cache.$gzip;
+-}
+-
+-//
+-// Destruction des fichiers caches invalides
+-//
+-// NE PAS appeler ces fonctions depuis l'espace prive 
+-// car openbase_dir peut leur interdire l'acces au repertoire de cache
+-
+-// Securite : est sur que c'est un cache
+-function retire_cache($cache) {
+-	if (!_DIR_RESTREINT) return;
+-	if (preg_match('|^' . _DIR_CACHE .
+-		&quot;([0-9a-f]/)?([0-9]+/)?[^.][\-_\%0-9a-z]+\.[0-9a-f]+(\.gz)?$|i&quot;,
+-		       $cache)) {
+-		// supprimer le fichier (de facon propre)
+-		supprimer_fichier($cache);
+-	} else
+-		spip_log(&quot;Impossible de retirer $cache&quot;);
+-}
+-
+-// Supprimer les caches marques &quot;x&quot;
+-function retire_caches() {
+-	if (!_DIR_RESTREINT) return;
+-
+-	// signaler
+-	effacer_meta('invalider');
+-	ecrire_metas();
+-
+-	// recuperer la liste des caches voues a la suppression
+-	$suppr = array();
+-	$q = spip_query(&quot;SELECT fichier FROM spip_caches WHERE type='x'&quot;);
+-	while ($r = spip_fetch_array($q))
+-		$suppr[$r['fichier']] = true;
+-
+-	if ($n = count($suppr)) {
+-		spip_log (&quot;Retire $n caches&quot;);
+-		foreach ($suppr as $cache =&gt; $ignore)
+-			retire_cache($cache);
+-		spip_query(&quot;DELETE FROM spip_caches WHERE &quot;
+-		.calcul_mysql_in('fichier', &quot;'&quot;.join(&quot;','&quot;,array_keys($suppr)).&quot;'&quot;) );
+-	}
+-}
+-
+-//
+-// Retourne 0 s'il faut calculer le cache, 1 si on peut l'utiliser
+-//
+-function utiliser_cache($chemin_cache, $delais) {
+-	global $_SERVER;
+-
+-	// ne jamais calculer pour les moteurs de recherche, proxies...
+-	if ($_SERVER['REQUEST_METHOD'] == 'HEAD')
+-		return 1;
+-
+-	//  calcul par forcage
+-	if ($GLOBALS['var_mode'] &amp;&amp;
+-		($GLOBALS['_COOKIE']['spip_session']
+-		|| $GLOBALS['_COOKIE']['spip_admin']
+-		|| @file_exists(_ACCESS_FILE_NAME))) # insuffisant...
+-		return 0;
+-
+-	// calcul par absence
+-	if (!@file_exists($chemin_cache)) return 0;
+-
+-	// calcul par obsolescence
+-	return ((time() - @filemtime($chemin_cache)) &gt; $delais) ? 0 : 1;
+-}
+-
+-
+-// Obsolete ?  Utilisee pour vider le cache depuis l'espace prive
+-// (ou juste les squelettes si un changement de config le necessite)
+-function purger_repertoire($dir, $age='ignore', $regexp = '') {
+-	$handle = @opendir($dir);
+-	if (!$handle) return;
+-
+-	while (($fichier = @readdir($handle)) != '') {
+-		// Eviter &quot;.&quot;, &quot;..&quot;, &quot;.htaccess&quot;, etc.
+-		if ($fichier[0] == '.') continue;
+-		if ($regexp AND !ereg($regexp, $fichier)) continue;
+-		$chemin = &quot;$dir/$fichier&quot;;
+-		if (is_file($chemin))
+-			@unlink($chemin);
+-		else if (is_dir($chemin))
+-			if ($fichier != 'CVS')
+-				purger_repertoire($chemin);
+-	}
+-	closedir($handle);
+-}
+-
+-function purger_cache() {
+-	spip_log('vider le cache');
+-	include_ecrire('inc_invalideur.php3');
+-	supprime_invalideurs();
+-	purger_repertoire(_DIR_CACHE, 0);
+-}
+-
+-function purger_squelettes() {
+-	spip_log('effacer les squelettes compiles');
+-	purger_repertoire(_DIR_CACHE, 0, '^skel_');
+-}
+-
+-
+-// Determination du fichier cache (si besoin)
+-function determiner_cache($delais, &amp;$use_cache, &amp;$chemin_cache) {
+-
+-	// Le fichier cache est-il valide ?
+-	if ($delais == 0 OR !empty($GLOBALS['_POST'])) {
+-		$use_cache = 0;
+-		$chemin_cache = '';
+-	} else {
+-		$use_cache = utiliser_cache($chemin_cache, $delais);
+-	}
+-
+-	// Sinon, tester qu'on a la connexion a la base
+-	if (!$use_cache) {
+-		include_local(_FILE_CONNECT);
+-		if (!$GLOBALS['db_ok']) {
+-			if ($chemin_cache AND @file_exists($chemin_cache)) {
+-				$use_cache = 1;
+-			}
+-			else {
+-				spip_log(&quot;Erreur base de donnees &amp; &quot;
+-					. &quot;impossible utiliser $chemin_cache&quot;);
+-				if (!$GLOBALS['flag_preserver']) {
+-					include_ecrire('inc_presentation.php3');
+-					install_debut_html(_T('info_travaux_titre'));
+-					echo _T('titre_probleme_technique');
+-					install_fin_html();
+-				}
+-				exit;
+-			}
+-		}
+-	}
+-}
+-
+-?&gt;
++&lt;?php
++
++/***************************************************************************\
++ *  SPIP, Systeme de publication pour l'internet                           *
++ *                                                                         *
++ *  Copyright (c) 2001-2005                                                *
++ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
++ *                                                                         *
++ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
++ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
++\***************************************************************************/
++
++
++//
++// Ce fichier ne sera execute qu'une fois
++if (defined(&quot;_INC_CACHE&quot;)) return;
++define(&quot;_INC_CACHE&quot;, &quot;1&quot;);
++
++
++//
++// Calcul du nom du fichier cache
++//
++
++function nettoyer_uri() {
++	$fichier_requete = $GLOBALS['REQUEST_URI'];
++	$fichier_requete = eregi_replace
++		('[?&amp;](PHPSESSID|(var_[^=&amp;]*))=[^&amp;]*',
++		'', $fichier_requete);
++	return $fichier_requete;
++}
++
++//
++// Le format souhaite : &quot;CACHE/a/(8400/)bout-d-url.md5(.gz)&quot;
++// Attention a modifier simultanement le sanity check de
++// la fonction retire_cache()
++//
++function generer_nom_fichier_cache($contexte='', $fond='') {
++	global $delais;
++	global $flag_gz, $compresser_cache;
++
++	if ($delais == 0) return '';
++
++	if (!$contexte) {
++		$fichier_requete = nettoyer_uri();
++	} else {
++		$fichier_requete = $fond;
++		foreach ($contexte as $var=&gt;$val)
++			$fichier_requete .= &quot;&amp;$var=$val&quot;;
++	}
++
++	$md_cache = md5($fichier_requete);
++
++	$fichier_cache = ereg_replace('^/+', '', $fichier_requete);
++	$fichier_cache = ereg_replace('\.[a-zA-Z0-9]*', '', $fichier_cache);
++	$fichier_cache = ereg_replace('&amp;[^&amp;]+=([^&amp;]+)', '&amp;\1', $fichier_cache);
++	$fichier_cache = rawurlencode(strtr($fichier_cache, '/&amp;-', '--_'));
++	if (strlen($fichier_cache) &gt; 24)
++		$fichier_cache = substr(ereg_replace('([a-zA-Z]{1,3})[^-]*-',
++		'\1-', $fichier_cache), -22);
++
++	// Pour la page d'accueil
++	if (!$fichier_cache)
++		$fichier_cache = 'INDEX-';
++
++	// morceau de md5
++	$fichier_cache .= '.'.substr($md_cache, 1, 8);
++
++	// Sous-repertoires 0...9a..f/
++	$subdir = creer_repertoire(_DIR_CACHE, substr($md_cache, 0, 1));
++	// Sous-sous-repertoires delais/ (inutile avec l'invalidation par 't')
++	# $subdir2 = creer_repertoire(&quot;CACHE/$subdir&quot;, $delais);
++
++	include_ecrire('inc_acces.php3');
++	verifier_htaccess(_DIR_CACHE);
++
++	$gzip = $flag_gz &amp;&amp; $compresser_cache ? '.gz' : '';
++
++	return _DIR_CACHE . $subdir.$subdir2.$fichier_cache.$gzip;
++}
++
++//
++// Destruction des fichiers caches invalides
++//
++// NE PAS appeler ces fonctions depuis l'espace prive 
++// car openbase_dir peut leur interdire l'acces au repertoire de cache
++
++// Securite : est sur que c'est un cache
++function retire_cache($cache) {
++	if (!_DIR_RESTREINT) return;
++	if (preg_match('|^' . _DIR_CACHE .
++		&quot;([0-9a-f]/)?([0-9]+/)?[^.][\-_\%0-9a-z]+\.[0-9a-f]+(\.gz)?$|i&quot;,
++		       $cache)) {
++		// supprimer le fichier (de facon propre)
++		supprimer_fichier($cache);
++	} else
++		spip_log(&quot;Impossible de retirer $cache&quot;);
++}
++
++// Supprimer les caches marques &quot;x&quot;
++function retire_caches() {
++	if (!_DIR_RESTREINT) return;
++
++	// signaler
++	effacer_meta('invalider');
++	ecrire_metas();
++
++	// recuperer la liste des caches voues a la suppression
++	$suppr = array();
++	$q = spip_query(&quot;SELECT fichier FROM spip_caches WHERE type='x'&quot;);
++	while ($r = spip_fetch_array($q))
++		$suppr[$r['fichier']] = true;
++
++	if ($n = count($suppr)) {
++		spip_log (&quot;Retire $n caches&quot;);
++		foreach ($suppr as $cache =&gt; $ignore)
++			retire_cache($cache);
++		spip_query(&quot;DELETE FROM spip_caches WHERE &quot;
++		.calcul_mysql_in('fichier', &quot;'&quot;.join(&quot;','&quot;,array_keys($suppr)).&quot;'&quot;) );
++	}
++}
++
++//
++// Retourne 0 s'il faut calculer le cache, 1 si on peut l'utiliser
++//
++function utiliser_cache($chemin_cache, $delais) {
++	global $_SERVER;
++
++	// ne jamais calculer pour les moteurs de recherche, proxies...
++	if ($_SERVER['REQUEST_METHOD'] == 'HEAD')
++		return 1;
++
++	//  calcul par forcage
++	if ($GLOBALS['var_mode'] &amp;&amp;
++		($GLOBALS['_COOKIE']['spip_session']
++		|| $GLOBALS['_COOKIE']['spip_admin']
++		|| @file_exists(_ACCESS_FILE_NAME))) # insuffisant...
++		return 0;
++
++	// calcul par absence
++	if (!@file_exists($chemin_cache)) return 0;
++
++	// calcul par obsolescence
++	return ((time() - @filemtime($chemin_cache)) &gt; $delais) ? 0 : 1;
++}
++
++
++// Obsolete ?  Utilisee pour vider le cache depuis l'espace prive
++// (ou juste les squelettes si un changement de config le necessite)
++function purger_repertoire($dir, $age='ignore', $regexp = '') {
++	$handle = @opendir($dir);
++	if (!$handle) return;
++
++	while (($fichier = @readdir($handle)) != '') {
++		// Eviter &quot;.&quot;, &quot;..&quot;, &quot;.htaccess&quot;, etc.
++		if ($fichier[0] == '.') continue;
++		if ($regexp AND !ereg($regexp, $fichier)) continue;
++		$chemin = &quot;$dir/$fichier&quot;;
++		if (is_file($chemin))
++			@unlink($chemin);
++		else if (is_dir($chemin))
++			if ($fichier != 'CVS')
++				purger_repertoire($chemin);
++	}
++	closedir($handle);
++}
++
++function purger_cache() {
++	spip_log('vider le cache');
++	include_ecrire('inc_invalideur.php3');
++	supprime_invalideurs();
++	purger_repertoire(_DIR_CACHE, 0);
++}
++
++function purger_squelettes() {
++	spip_log('effacer les squelettes compiles');
++	purger_repertoire(_DIR_CACHE, 0, '^skel_');
++}
++
++
++// Determination du fichier cache (si besoin)
++function determiner_cache($delais, &amp;$use_cache, &amp;$chemin_cache) {
++	global $_POST;
++
++	// Le fichier cache est-il valide ?
++	if ($delais == 0 OR count($_POST)) {
++		$use_cache = 0;
++		$chemin_cache = '';
++	} else {
++		$use_cache = utiliser_cache($chemin_cache, $delais);
++	}
++
++	// Sinon, tester qu'on a la connexion a la base
++	if (!$use_cache) {
++		include_local(_FILE_CONNECT);
++		if (!$GLOBALS['db_ok']) {
++			if ($chemin_cache AND @file_exists($chemin_cache)) {
++				$use_cache = 1;
++			}
++			else {
++				spip_log(&quot;Erreur base de donnees &amp; &quot;
++					. &quot;impossible utiliser $chemin_cache&quot;);
++				if (!$GLOBALS['flag_preserver']) {
++					include_ecrire('inc_presentation.php3');
++					install_debut_html(_T('info_travaux_titre'));
++					echo _T('titre_probleme_technique');
++					install_fin_html();
++				}
++				exit;
++			}
++		}
++	}
++}
++
++?&gt;
+
+Index: distrib.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/distrib.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- distrib.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ distrib.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,10 +1,10 @@
+-&lt;?php
+-$fond = &quot;distrib&quot;;
+-$delais = 3600;
+-
+-// cette ligne empeche l'affichage des boutons d'administration
+-$flag_preserver = true;
+-
+-include (&quot;inc-public.php3&quot;);
+-
++&lt;?php
++$fond = &quot;distrib&quot;;
++$delais = 3600;
++
++// cette ligne empeche l'affichage des boutons d'administration
++$flag_preserver = true;
++
++include (&quot;inc-public.php3&quot;);
++
+ ?&gt;
+
+Index: habillage.css
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/habillage.css,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- habillage.css	8 Feb 2005 15:10:10 -0000	1.2
++++ habillage.css	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,420 +1,420 @@
+-
+-
+-/*
+- * Mise en page des textes (bordures...)
+- */
+-
+-.chapo {
+-	line-height: 1.4em;
+-	margin-top: 1em;
+-}
+-.texte {
+-}
+-.ps {
+-	padding-top: 0.6em;
+-	margin-top: 0.6em;
+-	border-top: 1px dashed #404040;
+-}
+-.notes {
+-	margin-top: 0.6em;
+-	margin-bottom: 0.6em;
+-	border-top: 1px solid #a0a0a0;
+-	padding: 1.5em;
+-}
+-
+-/*
+- * Habillage des menus et de la navigation
+- */
+-
+-.menu {
+-	border: 1px solid #a0a0a0;
+-	border-top: 0px;
+-	padding: 0px;
+-	margin: 0px;
+-	margin-bottom: 16px;
+-}
+-.menu ul {
+-	display: block;
+-	margin: 0px;
+-	padding: 0px;
+-	padding-bottom: 4px;
+-	list-style: none;
+-}
+-.menu ol {
+-	display: block;
+-	margin: 0px;
+-	padding: 0px;
+-	padding-bottom: 4px;
+-	list-style: none;
+-}
+-.menu-titre {
+-	border-top: 1px solid #a0a0a0;
+-	border-bottom: 1px dashed #d0d0d0;
+-	margin: 0px;
+-	padding-left: 4px;
+-	padding-right: 4px;
+-	padding-top: 3px;
+-	padding-bottom: 2px;
+-	font-size: 90%;
+-}
+-.menu-item {
+-	margin: 0px;
+-	padding-left: 4px;
+-	padding-right: 4px;
+-	padding-top: 1px;
+-	padding-bottom: 1px;
+-	font-size: 80%;
+-}
+-
+-/* Des couleurs specifiques selon les types de menus */
+-
+-.general		{ background-color: #f8f8e8; text-align:center; }
+-.general .menu-titre 	{ background-color: #fcfcf0; }
+-
+-.rubriques 		{ background-color: #eaffea; text-align:center; }
+-.rubriques .menu-titre	{ background-color: #f2fff2; }
+-
+-.breves 		{ background-color: #ffeaea; }
+-.breves .menu-titre	{ background-color: #fff2f2; text-align:center; }
+-
+-.divers 		{ background-color: #eaeaff; }
+-.divers .menu-titre	{ background-color: #f2f2ff; text-align:center; }
+-
+-.forums 		{ background-color: #e8f8f8; }
+-.forums .menu-titre	{ background-color: #f0fcfc; text-align:center; }
+-
+-
+-/*
+- * Styles pour le contenu (c-a-d. la colonne principale)
+- */
+-
+-.contenu {
+-	margin: 15px;
+-}
+-.contenu h2.titre-extrait {
+-}
+-.contenu h2.titre-texte {
+-}
+-.contenu .surtitre {
+-	margin-top: 0em;
+-	margin-bottom: 0em;
+-}
+-.contenu .detail {
+-	margin-left: 2em;
+-}
+-.contenu .detail .important {
+-	color: #a02020;
+-}
+-.extrait {
+-	margin: 0.1em;
+-	margin-top: 0.5em;
+-	margin-bottom: 0.5em;
+-	margin-left: 2em;
+-	margin-right: 0.1em;
+-	line-height: 1.4em;
+-}
+-.liste-articles {
+-	margin-top: 1em;
+-	margin-bottom: 1em;
+-	clear: left;
+-}
+-.contenu .forum-repondre {
+-	font-family: Verdana, Arial, Helvetica, sans-serif;
+-	text-align: left;
+-	font-size: 90%;
+-	font-weight: bold;
+-	margin-top: 0.6em;
+-}
+-
+-
+-/*
+- * Disposition a l'ecran : colonnes, encarts, cartouches
+- */
+-
+-#principal {
+-	position: absolute;
+-	left: 30%;
+-	/*left: 18em;*/
+-	top: 0px;
+-	margin: 0px;
+-	padding: 0px;
+-	/*margin-right: 2em;*/
+-	margin-right: 3%;
+-	margin-top: 1.5em;
+-}
+-
+-#plan {
+-	position: absolute;
+-	left: 2em;
+-	top: 0px;
+-	margin: 0px;
+-	padding: 0px;
+-	margin-right: 2em;
+-	margin-top: 2em;
+-}
+-
+-#navigation {
+-	position: absolute;
+-	left: 0px;
+-	top: 0px;
+-	width: 24%;
+-	/*width: 14em;*/
+-	padding: 0px;
+-	margin: 0px;
+-	/*margin-left: 1.8em;*/
+-	margin-left: 3%;
+-	margin-top: 1.5em;
+-}
+-
+-.encart {
+-	float: right;
+-	/*width: 14em;*/
+-	width: 34%;
+-	margin-left: 4%;
+-	/*margin-left: 2em;*/
+-	margin-top: 1em;
+-	margin-bottom: 0em;
+-	margin-right: 0px;
+-}
+-
+-.cartouche {
+-	padding-top: 1em;
+-	border-top: 2px solid #404040;
+-	margin-bottom: 0em;
+-}
+-
+-.cartouche .spip_logos {
+-	margin-left: 0px;
+-	padding-left: 0px;
+-	margin-right: 0.8em;
+-}
+-
+-
+-/*
+- * Habillage du plan du site
+- */
+-
+-.plan-secteur {
+-	margin-top: 0em;
+-	margin-bottom: 3em;
+-	clear: right;
+-}
+-
+-.plan-secteur h1 {
+-	display: block;
+-	border: 1px solid #a0a0a0;
+-	margin: 0px;
+-	padding: 8px;
+-	font-size: 150%;
+-	font-weight: bold;
+-	background-color: #e0ffe0;
+-	text-align:center;
+-}
+-.plan-rubriques {
+-	clear: left;
+-	display: block;
+-	list-style: none;
+-}
+-.plan-rubrique {
+-	display: inline;
+-	border: 1px solid #a0a0a0;
+-	padding: 3px;
+-	font-weight: bold;
+-}
+-.plan-articles {
+-	clear: left;
+-	margin-top: 0.5em;
+-	margin-bottom: 1em;
+-	list-style: square;
+-}
+-
+-/* Eclaircissement progressif des rubriques en fonction de la profondeur */
+-
+-ul .plan-rubrique {
+-	background-color: #e0ffe0;
+-	border-color: #b8b8b8;
+-}
+-ul ul .plan-rubrique {
+-	background-color: #eaffea;
+-	border-color: #d0d0d0;
+-}
+-ul ul ul .plan-rubrique {
+-	background-color: #f4fff4;
+-	border-color: #e8e8e8;
+-}
+-
+-
+-/*
+- * Habillage des forums
+- */
+-
+-ul.forum-total {
+-	display: block;
+-	padding: 0px;
+-	margin: 0px;
+-	list-style: none;
+-}
+-.forum-fil {
+-	margin-top: 3em;
+-}
+-.forum-fil ul {
+-	display: block;
+-	margin: 0px;
+-	margin-left: 2em;
+-	padding: 0px;
+-	list-style: none;
+-}
+-.forum-titre {
+-	font-weight: bold;
+-	font-size: 120%;
+-}
+-.forum-item {
+-	margin: 0px;
+-	padding: 1em;
+-	padding-top: 0.5em;
+-	padding-bottom: 0em;
+-	text-align: justify;
+-	color: #303030;
+-	font-size: 80%;
+-}
+-.forum-repondre-message {
+-	text-align: right;
+-}
+-
+-/* Boite d'un forum : eclaircissement progressif des bords */
+-
+-ul .forum {
+-	border: 1px solid #909090;
+-	padding: 0px;
+-	margin: 0px;
+-	margin-bottom: 1em;
+-}
+-ul ul .forum {
+-	border: 1px solid #a4a4a4;
+-}
+-ul ul ul .forum {
+-	border: 1px solid #b8b8b8;
+-}
+-ul ul ul ul .forum {
+-	border: 1px solid #cccccc;
+-}
+-ul ul ul ul ul .forum {
+-	border: 1px solid #e0e0e0;
+-}
+-ul ul ul ul ul ul .forum {
+-	border: 1px dashed #e0e0e0;
+-}
+-
+-/* Boite de titre d'un forum : mise en couleur selon la profondeur du forum */
+-
+-ul .forum-chapo {
+-	border: 0px;
+-	border-bottom: 1px dashed #b8b8b8;
+-	margin: 0px;
+-	padding-left: 6px;
+-	padding-right: 6px;
+-	padding-top: 3px;
+-	padding-bottom: 2px;
+-	font-size: 90%;
+-	background: #c4e0e0;
+-}
+-ul ul .forum-chapo {
+-	background: #d4e8e8;
+-}
+-ul ul ul .forum-chapo {
+-	background: #e4f0f0;
+-}
+-ul ul ul ul .forum-chapo {
+-	background: #f4f8f8;
+-}
+-ul ul ul ul ul .forum-chapo {
+-	background: #ffffff;
+-}
+-
+-
+-/*
+- * Habillage des petitions
+- */
+-
+-.signatures {
+-	margin-left: 0px;
+-	margin-right: 0px;
+-	margin-top: 1em;
+-	margin-bottom: 1em;
+-	width: 100%;
+-}
+-.signatures td {
+-	-moz-border-radius: 0.4em;
+-}
+-.signatures-titre {
+-	clear: right;
+-	font-weight: bold;
+-	font-size: 120%;
+-	text-align: center;
+-	padding: 0.5em;
+-	margin: 0px;
+-}
+-.signature-date {
+-	white-space: nowrap;
+-	background: #e4f0f0;
+-	padding: 0.5em;
+-}
+-.signature-nom {
+-	font-weight: bold;
+-	background: #ecf4f4;
+-	padding: 0.2em;
+-	text-align: center;
+-}
+-.signature-message {
+-	font-size: 85%;
+-	background: #f4f8f8;
+-	padding: 0.4em;
+-	text-align: justify;
+-}
+-
+-
+-/*
+- * Formulaires
+- */
+-
+-.formrecherche {
+-	background-color: #f2f2f2;
+-	color: #505030;
+-	margin: 0px;
+-	padding: 2px;
+-	border: solid 1px #909090;
+-	font-family: Verdana, Arial, Helvetica, sans-serif;
+-	font-size: 80%;
+-	font-weight: normal;
+-}
+-
+-.formulaire {
+-	color: black;
+-	margin: 0px;
+-	margin-bottom: 16px;
+-	padding: 4px;
+-	border: 1px solid #a0a0a0;
+-	background-color: #f6f6f6;
+-	font-family: Verdana, Arial, Helvetica, sans-serif;
+-	font-size: 80%;
+-	font-weight: normal;
+-}
+-.forml {
+-	background-color: #ececec;
+-	margin: 4px;
+-	padding: 1px;
+-	border: dashed 1px #909090;
+-	font-family: Verdana, Arial, Helvetica, sans-serif;
+-	font-size: 90%;
+-}
+-.spip_bouton {
+-	border: 2px solid #404040;
+-	padding: 3px;
+-	background: #d0d0d0;
+-	font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, Helvetica, sans-serif;
+-}
+-
+-.spip-admin {
+-}
+-
+-
++
++
++/*
++ * Mise en page des textes (bordures...)
++ */
++
++.chapo {
++	line-height: 1.4em;
++	margin-top: 1em;
++}
++.texte {
++}
++.ps {
++	padding-top: 0.6em;
++	margin-top: 0.6em;
++	border-top: 1px dashed #404040;
++}
++.notes {
++	margin-top: 0.6em;
++	margin-bottom: 0.6em;
++	border-top: 1px solid #a0a0a0;
++	padding: 1.5em;
++}
++
++/*
++ * Habillage des menus et de la navigation
++ */
++
++.menu {
++	border: 1px solid #a0a0a0;
++	border-top: 0px;
++	padding: 0px;
++	margin: 0px;
++	margin-bottom: 16px;
++}
++.menu ul {
++	display: block;
++	margin: 0px;
++	padding: 0px;
++	padding-bottom: 4px;
++	list-style: none;
++}
++.menu ol {
++	display: block;
++	margin: 0px;
++	padding: 0px;
++	padding-bottom: 4px;
++	list-style: none;
++}
++.menu-titre {
++	border-top: 1px solid #a0a0a0;
++	border-bottom: 1px dashed #d0d0d0;
++	margin: 0px;
++	padding-left: 4px;
++	padding-right: 4px;
++	padding-top: 3px;
++	padding-bottom: 2px;
++	font-size: 90%;
++}
++.menu-item {
++	margin: 0px;
++	padding-left: 4px;
++	padding-right: 4px;
++	padding-top: 1px;
++	padding-bottom: 1px;
++	font-size: 80%;
++}
++
++/* Des couleurs specifiques selon les types de menus */
++
++.general		{ background-color: #f8f8e8; text-align:center; }
++.general .menu-titre 	{ background-color: #fcfcf0; }
++
++.rubriques 		{ background-color: #eaffea; text-align:center; }
++.rubriques .menu-titre	{ background-color: #f2fff2; }
++
++.breves 		{ background-color: #ffeaea; }
++.breves .menu-titre	{ background-color: #fff2f2; text-align:center; }
++
++.divers 		{ background-color: #eaeaff; }
++.divers .menu-titre	{ background-color: #f2f2ff; text-align:center; }
++
++.forums 		{ background-color: #e8f8f8; }
++.forums .menu-titre	{ background-color: #f0fcfc; text-align:center; }
++
++
++/*
++ * Styles pour le contenu (c-a-d. la colonne principale)
++ */
++
++.contenu {
++	margin: 15px;
++}
++.contenu h2.titre-extrait {
++}
++.contenu h2.titre-texte {
++}
++.contenu .surtitre {
++	margin-top: 0em;
++	margin-bottom: 0em;
++}
++.contenu .detail {
++	margin-left: 2em;
++}
++.contenu .detail .important {
++	color: #a02020;
++}
++.extrait {
++	margin: 0.1em;
++	margin-top: 0.5em;
++	margin-bottom: 0.5em;
++	margin-left: 2em;
++	margin-right: 0.1em;
++	line-height: 1.4em;
++}
++.liste-articles {
++	margin-top: 1em;
++	margin-bottom: 1em;
++	clear: left;
++}
++.contenu .forum-repondre {
++	font-family: Verdana, Arial, Helvetica, sans-serif;
++	text-align: left;
++	font-size: 90%;
++	font-weight: bold;
++	margin-top: 0.6em;
++}
++
++
++/*
++ * Disposition a l'ecran : colonnes, encarts, cartouches
++ */
++
++#principal {
++	position: absolute;
++	left: 30%;
++	/*left: 18em;*/
++	top: 0px;
++	margin: 0px;
++	padding: 0px;
++	/*margin-right: 2em;*/
++	margin-right: 3%;
++	margin-top: 1.5em;
++}
++
++#plan {
++	position: absolute;
++	left: 2em;
++	top: 0px;
++	margin: 0px;
++	padding: 0px;
++	margin-right: 2em;
++	margin-top: 2em;
++}
++
++#navigation {
++	position: absolute;
++	left: 0px;
++	top: 0px;
++	width: 24%;
++	/*width: 14em;*/
++	padding: 0px;
++	margin: 0px;
++	/*margin-left: 1.8em;*/
++	margin-left: 3%;
++	margin-top: 1.5em;
++}
++
++.encart {
++	float: right;
++	/*width: 14em;*/
++	width: 34%;
++	margin-left: 4%;
++	/*margin-left: 2em;*/
++	margin-top: 1em;
++	margin-bottom: 0em;
++	margin-right: 0px;
++}
++
++.cartouche {
++	padding-top: 1em;
++	border-top: 2px solid #404040;
++	margin-bottom: 0em;
++}
++
++.cartouche .spip_logos {
++	margin-left: 0px;
++	padding-left: 0px;
++	margin-right: 0.8em;
++}
++
++
++/*
++ * Habillage du plan du site
++ */
++
++.plan-secteur {
++	margin-top: 0em;
++	margin-bottom: 3em;
++	clear: right;
++}
++
++.plan-secteur h1 {
++	display: block;
++	border: 1px solid #a0a0a0;
++	margin: 0px;
++	padding: 8px;
++	font-size: 150%;
++	font-weight: bold;
++	background-color: #e0ffe0;
++	text-align:center;
++}
++.plan-rubriques {
++	clear: left;
++	display: block;
++	list-style: none;
++}
++.plan-rubrique {
++	display: inline;
++	border: 1px solid #a0a0a0;
++	padding: 3px;
++	font-weight: bold;
++}
++.plan-articles {
++	clear: left;
++	margin-top: 0.5em;
++	margin-bottom: 1em;
++	list-style: square;
++}
++
++/* Eclaircissement progressif des rubriques en fonction de la profondeur */
++
++ul .plan-rubrique {
++	background-color: #e0ffe0;
++	border-color: #b8b8b8;
++}
++ul ul .plan-rubrique {
++	background-color: #eaffea;
++	border-color: #d0d0d0;
++}
++ul ul ul .plan-rubrique {
++	background-color: #f4fff4;
++	border-color: #e8e8e8;
++}
++
++
++/*
++ * Habillage des forums
++ */
++
++ul.forum-total {
++	display: block;
++	padding: 0px;
++	margin: 0px;
++	list-style: none;
++}
++.forum-fil {
++	margin-top: 3em;
++}
++.forum-fil ul {
++	display: block;
++	margin: 0px;
++	margin-left: 2em;
++	padding: 0px;
++	list-style: none;
++}
++.forum-titre {
++	font-weight: bold;
++	font-size: 120%;
++}
++.forum-item {
++	margin: 0px;
++	padding: 1em;
++	padding-top: 0.5em;
++	padding-bottom: 0em;
++	text-align: justify;
++	color: #303030;
++	font-size: 80%;
++}
++.forum-repondre-message {
++	text-align: right;
++}
++
++/* Boite d'un forum : eclaircissement progressif des bords */
++
++ul .forum {
++	border: 1px solid #909090;
++	padding: 0px;
++	margin: 0px;
++	margin-bottom: 1em;
++}
++ul ul .forum {
++	border: 1px solid #a4a4a4;
++}
++ul ul ul .forum {
++	border: 1px solid #b8b8b8;
++}
++ul ul ul ul .forum {
++	border: 1px solid #cccccc;
++}
++ul ul ul ul ul .forum {
++	border: 1px solid #e0e0e0;
++}
++ul ul ul ul ul ul .forum {
++	border: 1px dashed #e0e0e0;
++}
++
++/* Boite de titre d'un forum : mise en couleur selon la profondeur du forum */
++
++ul .forum-chapo {
++	border: 0px;
++	border-bottom: 1px dashed #b8b8b8;
++	margin: 0px;
++	padding-left: 6px;
++	padding-right: 6px;
++	padding-top: 3px;
++	padding-bottom: 2px;
++	font-size: 90%;
++	background: #c4e0e0;
++}
++ul ul .forum-chapo {
++	background: #d4e8e8;
++}
++ul ul ul .forum-chapo {
++	background: #e4f0f0;
++}
++ul ul ul ul .forum-chapo {
++	background: #f4f8f8;
++}
++ul ul ul ul ul .forum-chapo {
++	background: #ffffff;
++}
++
++
++/*
++ * Habillage des petitions
++ */
++
++.signatures {
++	margin-left: 0px;
++	margin-right: 0px;
++	margin-top: 1em;
++	margin-bottom: 1em;
++	width: 100%;
++}
++.signatures td {
++	-moz-border-radius: 0.4em;
++}
++.signatures-titre {
++	clear: right;
++	font-weight: bold;
++	font-size: 120%;
++	text-align: center;
++	padding: 0.5em;
++	margin: 0px;
++}
++.signature-date {
++	white-space: nowrap;
++	background: #e4f0f0;
++	padding: 0.5em;
++}
++.signature-nom {
++	font-weight: bold;
++	background: #ecf4f4;
++	padding: 0.2em;
++	text-align: center;
++}
++.signature-message {
++	font-size: 85%;
++	background: #f4f8f8;
++	padding: 0.4em;
++	text-align: justify;
++}
++
++
++/*
++ * Formulaires
++ */
++
++.formrecherche {
++	background-color: #f2f2f2;
++	color: #505030;
++	margin: 0px;
++	padding: 2px;
++	border: solid 1px #909090;
++	font-family: Verdana, Arial, Helvetica, sans-serif;
++	font-size: 80%;
++	font-weight: normal;
++}
++
++.formulaire {
++	color: black;
++	margin: 0px;
++	margin-bottom: 16px;
++	padding: 4px;
++	border: 1px solid #a0a0a0;
++	background-color: #f6f6f6;
++	font-family: Verdana, Arial, Helvetica, sans-serif;
++	font-size: 80%;
++	font-weight: normal;
++}
++.forml {
++	background-color: #ececec;
++	margin: 4px;
++	padding: 1px;
++	border: dashed 1px #909090;
++	font-family: Verdana, Arial, Helvetica, sans-serif;
++	font-size: 90%;
++}
++.spip_bouton {
++	border: 2px solid #404040;
++	padding: 3px;
++	background: #d0d0d0;
++	font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, Helvetica, sans-serif;
++}
++
++.spip-admin {
++}
++
++
+
+Index: inc-boucles.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/inc-boucles.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc-boucles.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ inc-boucles.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,232 +1,243 @@
+-&lt;?php
+-
+-//
+-// Ce fichier definit les boucles standard de SPIP
+-//
+-
+-// Ce fichier ne sera execute qu'une fois
+-if (defined(&quot;_INC_BOUCLES&quot;)) return;
+-define(&quot;_INC_BOUCLES&quot;, &quot;1&quot;);
+-
+-
+-//
+-// Boucle sur une table hors SPIP
+-//
+-function boucle_DEFAUT($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$boucle-&gt;from[] =  $boucle-&gt;type_requete . &quot; AS &quot; . $boucle-&gt;type_requete;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(BOUCLE)&gt; boucle dite recursive
+-//
+-function boucle_BOUCLE_dist($id_boucle, &amp;$boucles) {
+-
+-	    return &quot;\n	\$t0 = &quot; . $boucles[$id_boucle]-&gt;return . &quot;;&quot;;
+-}
+-
+-//
+-// &lt;BOUCLE(ARTICLES)&gt;
+-//
+-function boucle_ARTICLES_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_articles AS $id_table&quot;;
+-	if (!$GLOBALS['var_preview']) {
+-		$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+-		if (lire_meta(&quot;post_dates&quot;) == 'non')
+-			$boucle-&gt;where[] = &quot;$id_table.date &lt; NOW()&quot;;
+-	} else
+-		$boucle-&gt;where[] = &quot;$id_table.statut IN ('publie','prop')&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-//
+-// &lt;BOUCLE(AUTEURS)&gt;
+-//
+-function boucle_AUTEURS_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_auteurs AS $id_table&quot;;
+-	// Si pas de lien avec un article, selectionner
+-	// uniquement les auteurs d'un article publie
+-	if (!$GLOBALS['var_preview'])
+-	if (!$boucle-&gt;lien AND !$boucle-&gt;tout) {
+-		$boucle-&gt;from[] =  &quot;spip_auteurs_articles AS lien&quot;;
+-		$boucle-&gt;from[] =  &quot;spip_articles AS articles&quot;;
+-		$boucle-&gt;where[] = &quot;lien.id_auteur=$id_table.id_auteur&quot;;
+-		$boucle-&gt;where[] = 'lien.id_article=articles.id_article';
+-		$boucle-&gt;where[] = &quot;articles.statut='publie'&quot;;
+-		$boucle-&gt;group =  $boucle-&gt;id_table . '.' . $boucle-&gt;primary;
+-	}
+-	// pas d'auteurs poubellises
+-	$boucle-&gt;where[] = &quot;NOT($id_table.statut='5poubelle')&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-//
+-// &lt;BOUCLE(BREVES)&gt;
+-//
+-function boucle_BREVES_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_breves AS $id_table&quot;;
+-	if (!$GLOBALS['var_preview'])
+-		$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+-	else
+-		$boucle-&gt;where[] = &quot;$id_table.statut IN ('publie','prop')&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(FORUMS)&gt;
+-//
+-function boucle_FORUMS_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_forum AS $id_table&quot;;
+-	// Par defaut, selectionner uniquement les forums sans pere
+-	if (!$boucle-&gt;tout AND !$boucle-&gt;plat) 
+-		{
+-	$boucle-&gt;where[] = &quot;$id_table.id_parent=0&quot;;
+-		}
+-	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(SIGNATURES)&gt;
+-//
+-function boucle_SIGNATURES_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_signatures AS $id_table&quot;;
+-	$boucle-&gt;from[] =  &quot;spip_petitions AS petitions&quot;;
+-	$boucle-&gt;from[] =  &quot;spip_articles articles&quot;;
+-	$boucle-&gt;where[] = &quot;petitions.id_article=articles.id_article&quot;;
+-	$boucle-&gt;where[] = &quot;petitions.id_article=$id_table.id_article&quot;;
+-	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+-	$boucle-&gt;group =  $boucle-&gt;id_table . '.' . $boucle-&gt;primary;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(DOCUMENTS)&gt;
+-//
+-function boucle_DOCUMENTS_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_documents AS $id_table&quot;;
+-	$boucle-&gt;from[] =  &quot;spip_types_documents AS types_documents&quot;;
+-	$boucle-&gt;where[] = &quot;$id_table.id_type=types_documents.id_type&quot;;
+-	$boucle-&gt;where[] = &quot;$id_table.taille &gt; 0&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(TYPES_DOCUMENTS)&gt;
+-//
+-function boucle_TYPES_DOCUMENTS_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_types_documents AS $id_table&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(GROUPES_MOTS)&gt;
+-//
+-function boucle_GROUPES_MOTS_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_groupes_mots AS $id_table&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(MOTS)&gt;
+-//
+-function boucle_MOTS_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_mots AS $id_table&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(RUBRIQUES)&gt;
+-//
+-function boucle_RUBRIQUES_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_rubriques AS $id_table&quot;;
+-	if (!$GLOBALS['var_preview'])
+-		if (!$boucle-&gt;tout) $boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(HIERARCHIE)&gt;
+-//
+-function boucle_HIERARCHIE_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_rubriques AS $id_table&quot;;
+-
+-	// Si la boucle mere est une boucle RUBRIQUES il faut ignorer la feuille
+-	// sauf si le critere {tout} est present (cf. inc-html-squel)
+-	$exclure_feuille = ($boucle-&gt;tout ? 'false' : 'true');
+-
+-	// $hierarchie sera calculee par une fonction de inc-calcul-outils
+-	$boucle-&gt;where[] = 'id_rubrique IN ($hierarchie)';
+-	$boucle-&gt;select[] = 'FIND_IN_SET(id_rubrique, \'$hierarchie\')-1 AS rang';
+-	$boucle-&gt;default_order = 'rang';
+-	$boucle-&gt;hierarchie = '$hierarchie = calculer_hierarchie('
+-	. calculer_argument_precedent($boucle-&gt;id_boucle, 'id_rubrique', $boucles)
+-	. ', '
+-	. $exclure_feuille
+-	. ');';
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(SYNDICATION)&gt;
+-//
+-function boucle_SYNDICATION_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_syndic AS $id_table&quot;;
+-	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-//
+-// &lt;BOUCLE(SYNDIC_ARTICLES)&gt;
+-//
+-function boucle_SYNDIC_ARTICLES_dist($id_boucle, &amp;$boucles) {
+-	$boucle = &amp;$boucles[$id_boucle];
+-	$id_table = $boucle-&gt;id_table;
+-	$boucle-&gt;from[] =  &quot;spip_syndic_articles  AS $id_table&quot;;
+-	$boucle-&gt;from[] =  &quot;spip_syndic AS syndic&quot;;
+-	$boucle-&gt;where[] = &quot;$id_table.id_syndic=syndic.id_syndic&quot;;
+-	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
+-	$boucle-&gt;where[] = &quot;syndic.statut='publie'&quot;;
+-	$boucle-&gt;select[]='syndic.nom_site AS nom_site'; # derogation zarbi
+-	$boucle-&gt;select[]='syndic.url_site AS url_site'; # idem
+-	return calculer_boucle($id_boucle, $boucles); 
+-}
+-
+-
+-?&gt;
++&lt;?php
++
++/***************************************************************************\
++ *  SPIP, Systeme de publication pour l'internet                           *
++ *                                                                         *
++ *  Copyright (c) 2001-2005                                                *
++ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
++ *                                                                         *
++ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
++ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
++\***************************************************************************/
++
++
++//
++// Ce fichier definit les boucles standard de SPIP
++//
++
++// Ce fichier ne sera execute qu'une fois
++if (defined(&quot;_INC_BOUCLES&quot;)) return;
++define(&quot;_INC_BOUCLES&quot;, &quot;1&quot;);
++
++
++//
++// Boucle sur une table hors SPIP
++//
++function boucle_DEFAUT($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$boucle-&gt;from[] =  $boucle-&gt;type_requete . &quot; AS &quot; . $boucle-&gt;type_requete;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(BOUCLE)&gt; boucle dite recursive
++//
++function boucle_BOUCLE_dist($id_boucle, &amp;$boucles) {
++
++	    return &quot;\n	\$t0 = &quot; . $boucles[$id_boucle]-&gt;return . &quot;;&quot;;
++}
++
++//
++// &lt;BOUCLE(ARTICLES)&gt;
++//
++function boucle_ARTICLES_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_articles AS $id_table&quot;;
++	if (!$GLOBALS['var_preview']) {
++		$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
++		if (lire_meta(&quot;post_dates&quot;) == 'non')
++			$boucle-&gt;where[] = &quot;$id_table.date &lt; NOW()&quot;;
++	} else
++		$boucle-&gt;where[] = &quot;$id_table.statut IN ('publie','prop')&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++//
++// &lt;BOUCLE(AUTEURS)&gt;
++//
++function boucle_AUTEURS_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_auteurs AS $id_table&quot;;
++	// Si pas de lien avec un article, selectionner
++	// uniquement les auteurs d'un article publie
++	if (!$GLOBALS['var_preview'])
++	if (!$boucle-&gt;lien AND !$boucle-&gt;tout) {
++		$boucle-&gt;from[] =  &quot;spip_auteurs_articles AS lien&quot;;
++		$boucle-&gt;from[] =  &quot;spip_articles AS articles&quot;;
++		$boucle-&gt;where[] = &quot;lien.id_auteur=$id_table.id_auteur&quot;;
++		$boucle-&gt;where[] = 'lien.id_article=articles.id_article';
++		$boucle-&gt;where[] = &quot;articles.statut='publie'&quot;;
++		$boucle-&gt;group =  $boucle-&gt;id_table . '.' . $boucle-&gt;primary;
++	}
++	// pas d'auteurs poubellises
++	$boucle-&gt;where[] = &quot;NOT($id_table.statut='5poubelle')&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++//
++// &lt;BOUCLE(BREVES)&gt;
++//
++function boucle_BREVES_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_breves AS $id_table&quot;;
++	if (!$GLOBALS['var_preview'])
++		$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
++	else
++		$boucle-&gt;where[] = &quot;$id_table.statut IN ('publie','prop')&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(FORUMS)&gt;
++//
++function boucle_FORUMS_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_forum AS $id_table&quot;;
++	// Par defaut, selectionner uniquement les forums sans pere
++	if (!$boucle-&gt;tout AND !$boucle-&gt;plat) 
++		{
++	$boucle-&gt;where[] = &quot;$id_table.id_parent=0&quot;;
++		}
++	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(SIGNATURES)&gt;
++//
++function boucle_SIGNATURES_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_signatures AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_petitions AS petitions&quot;;
++	$boucle-&gt;from[] =  &quot;spip_articles articles&quot;;
++	$boucle-&gt;where[] = &quot;petitions.id_article=articles.id_article&quot;;
++	$boucle-&gt;where[] = &quot;petitions.id_article=$id_table.id_article&quot;;
++	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
++	$boucle-&gt;group =  $boucle-&gt;id_table . '.' . $boucle-&gt;primary;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(DOCUMENTS)&gt;
++//
++function boucle_DOCUMENTS_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_documents AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_types_documents AS types_documents&quot;;
++	$boucle-&gt;where[] = &quot;$id_table.id_type=types_documents.id_type&quot;;
++	$boucle-&gt;where[] = &quot;$id_table.taille &gt; 0&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(TYPES_DOCUMENTS)&gt;
++//
++function boucle_TYPES_DOCUMENTS_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_types_documents AS $id_table&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(GROUPES_MOTS)&gt;
++//
++function boucle_GROUPES_MOTS_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_groupes_mots AS $id_table&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(MOTS)&gt;
++//
++function boucle_MOTS_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_mots AS $id_table&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(RUBRIQUES)&gt;
++//
++function boucle_RUBRIQUES_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_rubriques AS $id_table&quot;;
++	if (!$GLOBALS['var_preview'])
++		if (!$boucle-&gt;tout) $boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(HIERARCHIE)&gt;
++//
++function boucle_HIERARCHIE_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_rubriques AS $id_table&quot;;
++
++	// Si la boucle mere est une boucle RUBRIQUES il faut ignorer la feuille
++	// sauf si le critere {tout} est present (cf. inc-html-squel)
++	$exclure_feuille = ($boucle-&gt;tout ? 'false' : 'true');
++
++	// $hierarchie sera calculee par une fonction de inc-calcul-outils
++	$boucle-&gt;where[] = 'id_rubrique IN ($hierarchie)';
++	$boucle-&gt;select[] = 'FIND_IN_SET(id_rubrique, \'$hierarchie\')-1 AS rang';
++	$boucle-&gt;default_order = 'rang';
++	$boucle-&gt;hierarchie = '$hierarchie = calculer_hierarchie('
++	. calculer_argument_precedent($boucle-&gt;id_boucle, 'id_rubrique', $boucles)
++	. ', '
++	. $exclure_feuille
++	. ');';
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(SYNDICATION)&gt;
++//
++function boucle_SYNDICATION_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_syndic AS $id_table&quot;;
++	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++//
++// &lt;BOUCLE(SYNDIC_ARTICLES)&gt;
++//
++function boucle_SYNDIC_ARTICLES_dist($id_boucle, &amp;$boucles) {
++	$boucle = &amp;$boucles[$id_boucle];
++	$id_table = $boucle-&gt;id_table;
++	$boucle-&gt;from[] =  &quot;spip_syndic_articles  AS $id_table&quot;;
++	$boucle-&gt;from[] =  &quot;spip_syndic AS syndic&quot;;
++	$boucle-&gt;where[] = &quot;$id_table.id_syndic=syndic.id_syndic&quot;;
++	$boucle-&gt;where[] = &quot;$id_table.statut='publie'&quot;;
++	$boucle-&gt;where[] = &quot;syndic.statut='publie'&quot;;
++	$boucle-&gt;select[]='syndic.nom_site AS nom_site'; # derogation zarbi
++	$boucle-&gt;select[]='syndic.url_site AS url_site'; # idem
++	return calculer_boucle($id_boucle, $boucles); 
++}
++
++
++?&gt;
+
+Index: backend-breves.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/backend-breves.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- backend-breves.php3	8 Feb 2005 15:10:10 -0000	1.2
++++ backend-breves.php3	20 Feb 2005 22:15:59 -0000	1.3
+@@ -1,12 +1,12 @@
+-&lt;?php
+-$fond = &quot;backend-breves&quot;;
+-$delais = 3600;
+-
+-// cette ligne empeche l'affichage des boutons d'administration
+-$flag_preserver = true;
+-
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">- at header</A>(&quot;Content-type: text/xml&quot;);
+-
+-include (&quot;inc-public.php3&quot;);
+-
+-?&gt;
++&lt;?php
++$fond = &quot;backend-breves&quot;;
++$delais = 3600;
++
++// cette ligne empeche l'affichage des boutons d'administration
++$flag_preserver = true;
++
+<A HREF="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">+ at header</A>(&quot;Content-type: text/xml&quot;);
++
++include (&quot;inc-public.php3&quot;);
++
++?&gt;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000086.html">[Spip-carto-cvs] spipcarto article.php3,1.2,1.3
+</A></li>
+	<LI>Next message: <A HREF="000088.html">[Spip-carto-cvs] spipcarto COPYING.txt,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#89">[ date ]</a>
+              <a href="thread.html#89">[ thread ]</a>
+              <a href="subject.html#89">[ subject ]</a>
+              <a href="author.html#89">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

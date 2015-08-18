@@ -1,0 +1,335 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.9,1.10 carte_edit.php3,1.8,1.9
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.9%2C1.10%20carte_edit.php3%2C1.8%2C1.9&In-Reply-To=%3C200503311557.j2VFvM9Y026826%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000152.html">
+   <LINK REL="Next"  HREF="000154.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.9,1.10 carte_edit.php3,1.8,1.9</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto.php3%2C1.9%2C1.10%20carte_edit.php3%2C1.8%2C1.9&In-Reply-To=%3C200503311557.j2VFvM9Y026826%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.9,1.10 carte_edit.php3,1.8,1.9">stef at berlios.de
+       </A><BR>
+    <I>Thu Mar 31 17:57:22 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000152.html">[Spip-carto-cvs] spipcarto/squelettes carto_svgfile.html,1.3,1.4
+</A></li>
+        <LI>Next message: <A HREF="000154.html">[Spip-carto-cvs] spipcarto/ecrire/js navTools.js,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv26775/spipcarto/ecrire
+
+Modified Files:
+	inc_carto.php3 carte_edit.php3 
+Log Message:
+dessin des objets sur l'interface DHTML
+
+Index: inc_carto.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_carto.php3,v
+retrieving revision 1.9
+retrieving revision 1.10
+diff -u -d -r1.9 -r1.10
+--- inc_carto.php3	29 Mar 2005 15:27:12 -0000	1.9
++++ inc_carto.php3	31 Mar 2005 15:57:20 -0000	1.10
+@@ -146,6 +146,7 @@
+     }
+     dhtmlDivs += \'&lt;div id=&quot;myCanvasDiv&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+     dhtmlDivs += \'&lt;div id=&quot;myCanvas2Div&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
++    dhtmlDivs += \'&lt;div id=&quot;myCanvas3Div&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+     dhtmlDivs += \'&lt;div id=&quot;mainDHTMLDiv&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+     dhtmlDivs += \'&lt;div id=&quot;diplayContainerDiv&quot; class=&quot;dhtmldiv&quot;&gt;\';
+     dhtmlDivs += \'&lt;table border=&quot;0&quot; width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;\';
+@@ -154,6 +155,16 @@
+     dhtmlDivs += \'&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;\';
+     document.write(dhtmlDivs);
+                   
++    var polys= new Array();
++    var polycount= 0;
++    var rects= new Array();
++    var rectcount= 0;
++    var lines= new Array();
++    var linecount= 0;
++    var circles= new Array();
++    var circlecount= 0;
++    var points= new Array();
++    var pointcount= 0;
+     function dboxInit()
+     {
+       myform = document.forms[\'carto_form\'];
+@@ -182,127 +193,13 @@
+   
+           
+       dhtmlBox.initialize();
++	  for (var i=0; i&lt;polys.length; i++) dhtmlBox.drawPoly(polys[i],1);
++	  for (var i=0; i&lt;rects.length; i++) dhtmlBox.drawRect(rects[i],1);
++	  for (var i=0; i&lt;lines.length; i++) dhtmlBox.drawLine(lines[i],1);
++	  for (var i=0; i&lt;circles.length; i++) dhtmlBox.drawCircle(circles[i],1);
++	  for (var i=0; i&lt;points.length; i++) dhtmlBox.drawPoint(points[i],1);
+     }
+-      
+-    window.onload = function() {
+-      dboxInit();
+-      xHide(xGetElementById(\'mapAnchorDiv\')); 
+-    }
+-	/*]]&gt;*/
+-  &lt;/script&gt;
+-    &lt;input type=&quot;hidden&quot; name=&quot;id_carte&quot; value=&quot;'.$id_carte.'&quot;/&gt;
+-	&lt;input type=&quot;hidden&quot; name=&quot;retour&quot; value=&quot;'.$retour.'&quot;/&gt;
+-	&lt;input type=&quot;hidden&quot; name=&quot;selection_type&quot; /&gt;
+-	&lt;input type=&quot;hidden&quot; name=&quot;selection_coords&quot; /&gt;
+-	&lt;div id=&quot;mapAnchorDiv&quot; style=&quot;position:relative; width:'.$width.'px; height:'.$height.'px;&quot;&gt; 
+-     &lt;table&gt;
+-      &lt;tr&gt; 
+-       &lt;td align=&quot;center&quot; valign=&quot;middle&quot; width=&quot;'.$width.'px&quot; height=&quot;'.$height.'px&quot;&gt;
+-		&lt;div id=&quot;loadbar&quot;&gt;Loading message&lt;/div&gt;
+-	   &lt;/td&gt;
+-      &lt;/tr&gt;
+-     &lt;/table&gt;
+-    &lt;/div&gt;
+-   &lt;/td&gt;
+-  &lt;/tr&gt;
+-  &lt;tr&gt;
+-   &lt;td&gt; 
+-    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;rectangle,submit,crossHair,zoom_in&quot;  id=&quot;zoom_in&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          zoom_in&lt;br /&gt;
+-   &lt;/td&gt;
+-   &lt;td&gt;
+-    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;point,submit,crossHair,zoom_out&quot;  id=&quot;zoom_out&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          zoom out&lt;br /&gt;
+-   &lt;/td&gt;
+-   &lt;td&gt;
+-    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;pan,submit,move,pan&quot;  id=&quot;pan&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          pan&lt;br /&gt;
+-   &lt;/td&gt;
+-   &lt;td&gt;
+-    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;rectangle,submit,help,query&quot;  id=&quot;query&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          query&lt;br /&gt;
+-   &lt;/td&gt;
+-   &lt;td&gt;
+-    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;point,submit,crossHair,point&quot;   id=&quot;point&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          point submit&lt;br /&gt;
+-   &lt;/td&gt;
+-   &lt;td&gt;
+-    &lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;line,submit,crossHair,line&quot;   id=&quot;line&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          line submit&lt;br /&gt;
+-          &lt;/td&gt;&lt;td&gt;&lt;input type=&quot;radio&quot; name=&quot;tool&quot; value=&quot;polygon,submit,crossHair,polygon&quot;   checked=&quot;checked&quot;  id=&quot;polygon&quot; onclick=&quot;dhtmlBox.changeTool()&quot; /&gt;
+-          polygon submit&lt;br /&gt;
+-   &lt;/td&gt;
+-  &lt;/tr&gt;
+- &lt;/table&gt;
+-&lt;/form&gt;';
+-	return $returned;
+-}
+-function afficher_interface($id_carte,$retour,$callage) {
+-	
+-	$widthgeo=$callage['bottom_right']['x']-$callage['top_left']['x'];
+-	$heightgeo=$callage['bottom_right']['y']-$callage['top_left']['y'];
+-	
+-	$width=$widthgeo;
+-	$height=$heightgeo;
+-	$returned='&lt;script type=&quot;text/javascript&quot; src=&quot;js/x_core_nn4.js&quot;&gt;&lt;/script&gt;
+-&lt;script type=&quot;text/javascript&quot; src=&quot;js/x_dom_nn4.js&quot;&gt;&lt;/script&gt;
+-&lt;script type=&quot;text/javascript&quot; src=&quot;js/x_event_nn4.js&quot;&gt;&lt;/script&gt;
+-&lt;script type=&quot;text/javascript&quot; src=&quot;js/navTools.js&quot;&gt;&lt;/script&gt;
+-&lt;script type=&quot;text/javascript&quot; src=&quot;js/graphTools.js&quot;&gt;&lt;/script&gt;
+-&lt;form method=&quot;get&quot; action=&quot;#nouveau_objet&quot; name=&quot;carto_form&quot;&gt;
+- &lt;table border=&quot;1&quot;&gt;
+-  &lt;tr&gt; 
+-   &lt;td colspan=&quot;7&quot;&gt;
+-&lt;script type=&quot;text/javascript&quot;&gt;
+-/*&lt;![CDATA[*/ 
+-    var dhtmlDivs = new String();
+-    document.image = new Image;
+-    document.image.src = \''.$fichier.'\';
+-       dhtmlDivs += \'&lt;div id=&quot;mapImageDiv&quot; class=&quot;dhtmldiv&quot; style=&quot;position: absolute;visibility:hidden;z-index: 1;&quot;&gt;\';      
+-      dhtmlDivs +=\'&lt;embed src=&quot;../carto_svgfile'.$id_carte.'.svg&quot; width=&quot;'.$width.'px&quot; height='.$height.'px&quot; type=&quot;image/svg+xml&quot; name=&quot;emap&quot;/&gt;\';
+-	  dhtmlDivs +=\'&lt;/div&gt;\';
+-  
+-    
+-    dhtmlDivs += \'&lt;div id=&quot;myCanvasDiv&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+-    dhtmlDivs += \'&lt;div id=&quot;myCanvas2Div&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+-    dhtmlDivs += \'&lt;div id=&quot;mainDHTMLDiv&quot; class=&quot;dhtmldiv&quot;&gt;&lt;/div&gt;\';
+-    dhtmlDivs += \'&lt;div id=&quot;diplayContainerDiv&quot; class=&quot;dhtmldiv&quot;&gt;\';
+-    dhtmlDivs += \'&lt;table border=&quot;0&quot; width=&quot;100%&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;\';
+-    dhtmlDivs += \'&lt;td width=&quot;50%&quot;&gt;&lt;div id=&quot;displayCoordsDiv&quot; class=&quot;dhtmlDisplay&quot;&gt;&lt;/div&gt;&lt;/td&gt;\';
+-    dhtmlDivs += \'&lt;td align=&quot;right&quot; width=&quot;50%&quot;&gt;&lt;div id=&quot;displayMeasureDiv&quot; class=&quot;dhtmlDisplay&quot;&gt;&lt;/div&gt;&lt;/td&gt;\';
+-    dhtmlDivs += \'&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;\';
+-     document.write(dhtmlDivs);
+-                  
+-    function dboxInit()
+-    {
+-      myform = document.forms[\'carto_form\'];
+-      // DHTML drawing and navigating tools
+-      dhtmlBox = new dhtmlBox();
+-          
+-      //DHTML parameters
+-      dhtmlBox.dispPos = \'bottom\';
+-      dhtmlBox.thickness = 2;
+-      dhtmlBox.cursorsize = 4;
+-      dhtmlBox.jitter = 10; // minimum size of a box dimension
+-      dhtmlBox.d2pts = 3;   // the distance between two points (measure tools);
+-      dhtmlBox.nbPts = 5;   // number of points for the last vertex
+-      
+-      // map units values
+-	  // dynamically given by the server
+-      dhtmlBox.mapHeight = '.$height.';
+-      dhtmlBox.boxx = 470000;
+-      dhtmlBox.boxy = 46300;
+-      dhtmlBox.pixel_size = 924.83333333334;
+-      dhtmlBox.dist_msg = \'Approx. distance: \';
+-      dhtmlBox.dist_unit = \' m.\';
+-      dhtmlBox.surf_msg = \'Approx. surface: \';
+-      dhtmlBox.surf_unit = \' m&#194;&#178;.\';
+-      dhtmlBox.coord_msg = \'Coords (m): \';
+-  
+-          
+-      dhtmlBox.initialize();
+-    }
+-      
++
+     window.onload = function() {
+       dboxInit();
+       xHide(xGetElementById(\'mapAnchorDiv\')); 
+@@ -356,6 +253,7 @@
+ &lt;/form&gt;';
+ 	return $returned;
+ }
++
+ function carte_editable() {
+ 	return true;
+ }
+
+Index: carte_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/carte_edit.php3,v
+retrieving revision 1.8
+retrieving revision 1.9
+diff -u -d -r1.8 -r1.9
+--- carte_edit.php3	29 Mar 2005 15:27:12 -0000	1.8
++++ carte_edit.php3	31 Mar 2005 15:57:20 -0000	1.9
+@@ -152,8 +152,7 @@
+ if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _T('previsualiser'), &quot;../carto.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+ if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec logos'), &quot;../carto_logo.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+ if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec liens'), &quot;../carto_lien.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+-if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec svg'), &quot;../carto_svg.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+-//if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec svg'), &quot;../carto_svg2.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
++if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec svg'), &quot;../carto_svg2.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+ if ($url_carte &amp;&amp; ($new!=&quot;oui&quot;)) icone_horizontale( _L('pr&#233;visualiser avec geosvg'), &quot;../carto_geosvg.php3?id_carto_carte=&quot;.$id_carte.&quot;&amp;var_mode=recalcul&quot;, &quot;racine-24.gif&quot;, &quot;rien.gif&quot;);
+ 
+ echo &quot;&lt;/div&gt;\n&quot;;
+@@ -208,6 +207,7 @@
+ 		
+ 		echo debut_block_visible(&quot;dhtml_carte&quot;);
+ 				
++		
+ 		//echo &quot;&lt;div style='margin: 10px; padding: 10px; border: 1px dashed $couleur_foncee;'&gt;&quot;;
+ 		
+ 		//remplacer id par appel &#224; spip_carte
+@@ -218,11 +218,7 @@
+ 		$tabcallage=worldfile2array($callage);
+    	
+    		echo afficher_carte_interface($id_carte,$retour,$lurl_carte,$tabcallage);
+-		
+-		//$lurl_carte=&quot;../carto_svgfile&quot;.$id_carte.&quot;.svg&quot;;
+-		//echo afficher_carte_interface($id_carte,$retour,$lurl_carte,$tabcallage);
+-		//echo afficher_interface($id_carte,$retour,$tabcallage);
+-		
++				
+ 		echo fin_block();
+ 		echo &quot;&lt;/div&gt;\n&quot;;
+ 		
+@@ -405,6 +401,49 @@
+ 				echo &quot;&lt;input type='submit' name='Valider' value='&quot;._T('bouton_valider').&quot;' class='fondo verdana2'&gt;&lt;/div&gt;\n&quot;;
+ 				echo &quot;&lt;/div&gt;\n&quot;;
+ 				echo &quot;&lt;/form&gt;&quot;;
++				
++				$geoArray= explode(',',substr($geometrie,strpos($geometrie,&quot;(&quot;)+1,-1));
++				echo &quot;&lt;script type=\&quot;text/javascript\&quot;&gt;/*&lt;![CDATA[*/&quot;;
++		  		echo &quot;geoArray_&quot;.$id_objet.&quot;=new Array();\n&quot;;
++		  		for ($i=0; $i&lt;count($geoArray) ; $i++) {
++					$pointArray=explode(' ',$geoArray[$i]);
++					echo &quot;var geoPoint_&quot;.$id_objet.&quot;_&quot;.$i.&quot;=new Array(&quot;.$pointArray[0].&quot;,&quot;.$pointArray[1].&quot;);\n&quot;;
++					echo &quot;geoArray_&quot;.$id_objet.&quot;[&quot;.$i.&quot;]=geoPoint_&quot;.$id_objet.&quot;_&quot;.$i.&quot;;\n&quot;;
++		  		}
++		  		$geoTypex= explode('(',$geometrie);
++		  		$geoType= $geoTypex[0];
++//		  		echo &quot;alert('&quot;.$geometrie.&quot;=&gt;&quot;.$geoType.&quot;');\n&quot;;
++		  		switch ($geoType){
++		  			case 'circle':
++		  			case 'CIRCLE':
++		  						$geoType='circle';
++		  						break;
++		  			case 'rect':
++		  			case 'RECT':
++		  			case 'rectangle':
++		  			case 'RECTANGLE':
++		  						$geoType='rect';
++		  						break;
++		  			case 'line':
++		  			case 'LINE':
++		  						$geoType='line';
++		  						break;
++		  			case 'point':
++		  			case 'POINT':
++		  						$geoType='point';
++		  						break;
++					case 'poly':
++		  			case 'POLY':
++		  			case 'polygon':
++		  			case 'POLYGON':
++		  			default:
++		  						$geoType='poly';
++		  						break;
++		  		}
++				
++				echo $geoType.&quot;s[&quot;.$geoType.&quot;count++]=geoArray_&quot;.$id_objet.&quot;;&quot;;
++      			echo &quot;&lt;/script&gt;&quot;;
++				
+ 				
+ 				if ($flag_mots!='non' AND $options == 'avancees') {
+ 					$tab_id['id_carte']=$id_carte;
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000152.html">[Spip-carto-cvs] spipcarto/squelettes carto_svgfile.html,1.3,1.4
+</A></li>
+	<LI>Next message: <A HREF="000154.html">[Spip-carto-cvs] spipcarto/ecrire/js navTools.js,1.1,1.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

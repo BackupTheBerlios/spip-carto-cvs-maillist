@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto carto_symbol.xml,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-September/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20carto_symbol.xml%2CNONE%2C1.1&In-Reply-To=%3C200509051447.j85ElwAD005963%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000236.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto carto_symbol.xml,NONE,1.1</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto%20carto_symbol.xml%2CNONE%2C1.1&In-Reply-To=%3C200509051447.j85ElwAD005963%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto carto_symbol.xml,NONE,1.1">fxp at berlios.de
+       </A><BR>
+    <I>Mon Sep  5 16:47:58 CEST 2005</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000236.html">[Spip-carto-cvs] spipcarto carto_style.css,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#235">[ date ]</a>
+              <a href="thread.html#235">[ thread ]</a>
+              <a href="subject.html#235">[ subject ]</a>
+              <a href="author.html#235">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto
+In directory sheep:/tmp/cvs-serv5938
+
+Added Files:
+	carto_symbol.xml 
+Log Message:
+SVG / Ajout du support des symboles
+
+--- NEW FILE: carto_symbol.xml ---
+		&lt;linearGradient id=&quot;GradientLinear&quot; gradientTransform=&quot;rotate(45)&quot;&gt; 
+			&lt;stop offset=&quot;0%&quot; style=&quot;stop-color:white&quot;/&gt; 
+			&lt;stop offset=&quot;30%&quot; style=&quot;stop-color:red&quot;/&gt; 
+			&lt;stop offset=&quot;100%&quot; style=&quot;stop-color:black&quot;/&gt; 
+		&lt;/linearGradient&gt; 
+		&lt;radialGradient id=&quot;GradientCircular&quot;&gt;
+			&lt;stop id=&quot;0&quot; offset=&quot;0%&quot; style=&quot;stop-color:yellow&quot;/&gt;
+			&lt;stop id=&quot;1&quot; offset=&quot;50%&quot; style=&quot;stop-color:blue&quot;/&gt;
+			&lt;stop id=&quot;2&quot; offset=&quot;100%&quot; style=&quot;stop-color:white&quot;/&gt;         
+		&lt;/radialGradient&gt;
+		&lt;symbol id=&quot;coniferous&quot; overflow=&quot;visible&quot; style=&quot;fill:none;stroke:green;stroke-width:2&quot;&gt;
+			&lt;path d=&quot;M0 -15 l0 30&quot;/&gt;
+			&lt;path d=&quot;M0 -15 q0 3.5 5 3.5&quot;/&gt;
+			&lt;path d=&quot;M0 -15 q0 3.5 -5 3.5&quot;/&gt;
+			&lt;path d=&quot;M0 -9 q0 6 8 6&quot;/&gt;
+			&lt;path d=&quot;M0 -9 q0 6 -8 6&quot;/&gt;
+			&lt;path d=&quot;M0 0 q0 7 10 7&quot;/&gt;
+			&lt;path d=&quot;M0 0 q0 7 -10 7&quot;/&gt;		
+		&lt;/symbol&gt;
+		&lt;symbol id=&quot;broadLeave&quot; overflow=&quot;visible&quot; style=&quot;fill:none;stroke:green;stroke-width:2;&quot;&gt;
+			&lt;path d=&quot;M0 15 l0 -10&quot;/&gt;
+			&lt;path d=&quot;M0 5 a6 6 0 1 1 -3.5 -10 a6 6 0 1 1 7 0 a6 6 0 1 1 -3.5 10z&quot;/&gt;
+		&lt;/symbol&gt;
+		&lt;pattern id=&quot;pat00&quot; patternUnits=&quot;userSpaceOnUse&quot; width=&quot;30&quot; height=&quot;45&quot;&gt;
+			&lt;use xlink:href=&quot;#coniferous&quot; transform=&quot;translate(10,15) scale(0.75)&quot;/&gt;
+		&lt;/pattern&gt;
+		&lt;pattern id=&quot;pat01&quot; patternUnits=&quot;userSpaceOnUse&quot; width=&quot;30&quot; height=&quot;45&quot;&gt;
+			&lt;use xlink:href=&quot;#broadLeave&quot; transform=&quot;translate(15,20) scale(0.5)&quot;/&gt;
+		&lt;/pattern&gt;
+		&lt;path id=&quot;geometry&quot; style=&quot;fill-rule:nonzero;stroke:#B42D25;stroke-width:2;&quot; d=&quot;M0 50 l100 -50 100 20 -50 50 -100 20z&quot;/&gt;
+
+ 
+&lt;!-- Point Symbol --&gt;
+		&lt;symbol id=&quot;use&quot; overflow=&quot;visible&quot; class=&quot;use&quot;&gt;
+		  &lt;circle cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;100%&quot;/&gt;
+		&lt;/symbol&gt;
+	
+&lt;!-- Point Symbol From carto.net / Fin --&gt;
+		&lt;!-- HOSPITAL --&gt;
+		&lt;symbol id=&quot;usehospital&quot; overflow=&quot;visible&quot; style=&quot;fill:red;stroke:white;stroke-width:2&quot; transform=&quot;translate(-15,-15) scale(50%)&quot;&gt;
+		  &lt;path d=&quot;M0 10 l0 10 l10 0 l0 10 l10 0 l0 -10 l10 0 l0 -10 l-10 0 l0 -10 l-10 0 l0 10z&quot;/&gt;
+		&lt;/symbol&gt;
+	
+		&lt;!-- AEROPORT --&gt;
+		&lt;symbol id=&quot;useairport&quot; overflow=&quot;visible&quot; transform=&quot;scale(50%)&quot;&gt;
+                     &lt;g transform=&quot;translate(0,-21.21) scale(0.666)&quot;&gt;
+			 &lt;rect x=&quot;0&quot; y=&quot;0&quot; rx=&quot;1&quot; ry=&quot;1&quot; width=&quot;30&quot; height=&quot;30&quot; transform=&quot;rotate(45)&quot;  style=&quot;fill:rgb(250,250,0); stroke:rgb(100,100,100);stroke-width:0.1&quot;/&gt;
+  		  	 &lt;path d=&quot;M-2 21.21 c0,-21.5 4,-21.5 4,0 c1 20 -5,20 -4,0&quot; style=&quot;fill:rgb(100,100,100);stroke-width:0.1&quot;/&gt;
+		 	 &lt;path d=&quot;M1 14 l11 12.5 l-12 -7.5 l-12 7.5 l11 -12.5z&quot; style=&quot;fill:rgb(100,100,100);stroke:rgb(100,100,100);stroke-width:0.1; stroke-linejoin:miter&quot;/&gt;
+			&lt;/g&gt;
+		&lt;/symbol&gt;
+		&lt;!-- PISCINE EXT --&gt;
+		&lt;symbol id=&quot;usepool_indoor&quot; overflow=&quot;visible&quot; transform=&quot;scale(50%)&quot;&gt;
+			&lt;g transform=&quot;translate(-16,-17.5)&quot;&gt;
+			&lt;rect x=&quot;0&quot; y=&quot;-2.5&quot; rx=&quot;2&quot; ry=&quot;2&quot; width=&quot;32&quot; height=&quot;35&quot; style=&quot;fill:white&quot;/&gt;
+			&lt;path d=&quot;M6 7.5 l0 20 l20 0 l0 -20&quot; style=&quot;fill:none;stroke:rgb(50,150,255);stroke-width:3&quot;/&gt;
+			&lt;path d=&quot;M1 10 l15 -10 l15 10&quot; style=&quot;fill:none;stroke:rgb(50,150,255);stroke-width:3&quot;/&gt;
+			&lt;path d=&quot;M6 15 q5,-5 10,0 t10 0 l0 12.5 l-20 0z&quot; style=&quot;fill:rgb(50,150,255);&quot;/&gt;
+			&lt;/g&gt;
+		&lt;/symbol&gt;
+		&lt;!-- PISCINE INT --&gt;
+		&lt;symbol id=&quot;usepool_outdoor&quot; overflow=&quot;visible&quot; transform=&quot;scale(50%)&quot;&gt;
+			&lt;g transform=&quot;translate(-15,-17.5)&quot;&gt;
+			  &lt;rect x=&quot;0&quot; y=&quot;0&quot; rx=&quot;2&quot; ry=&quot;2&quot; width=&quot;30&quot; height=&quot;32.5&quot; style=&quot;fill:white&quot;/&gt;
+			  &lt;rect x=&quot;5&quot; y=&quot;5&quot; width=&quot;20&quot; height=&quot;22.5&quot; style=&quot;fill:none;stroke:rgb(50,150,255);stroke-width:3&quot;/&gt;
+			  &lt;path d=&quot;M5 15 q5,-5 10,0 t10 0 l0 12.5 l-20 0z&quot; style=&quot;fill:rgb(50,150,255);&quot;/&gt;
+			&lt;/g&gt;
+		&lt;/symbol&gt;
+		&lt;!-- RESTAURANT --&gt;
+		&lt;symbol id=&quot;userestaurant&quot; overflow=&quot;visible&quot; transform=&quot;scale(50%)&quot;&gt;
+			&lt;g transform=&quot;translate(-16,-17.5)&quot;&gt;
+			&lt;rect height=&quot;30&quot; width=&quot;30&quot; rx=&quot;1&quot; ry=&quot;1&quot; style=&quot;fill:rgb(0,0,0);stroke:white;stroke-width:2&quot;/&gt;
+			&lt;g style=&quot;fill:none;stroke:white;stroke-linecap:round&quot;&gt;	
+				&lt;path d=&quot;M5 25 l15 -15&quot; style=&quot;stroke-width:2.5;&quot;/&gt;		
+				&lt;path d=&quot;M20 10 l5 -5&quot; style=&quot;stroke-width:1.5;&quot;/&gt;
+				&lt;path d=&quot;M20 10 s-3,-4 2,-7&quot; style=&quot;stroke-width:1.5;&quot;/&gt;
+				&lt;path d=&quot;M20 10 s4,4 7,-2&quot; style=&quot;stroke-width:1.5;&quot;/&gt;
+				&lt;path d=&quot;M4 4 l21 21&quot; style=&quot;stroke-width:2.5;&quot;/&gt;
+			&lt;/g&gt;
+			&lt;path d=&quot;M12.5 12.5 c-5,5 -12,-11 -9,-9&quot; style=&quot;fill:rgb(255,255,255)&quot;/&gt;
+			&lt;/g&gt;
+		&lt;/symbol&gt;
+		&lt;!-- PARKING --&gt;
+		&lt;symbol id=&quot;usecarpark&quot; overflow=&quot;visible&quot; transform=&quot;scale(50%)&quot;&gt;
+			&lt;g transform=&quot;translate(-15,-15)&quot;&gt;		
+			  &lt;rect x=&quot;0&quot; y=&quot;0&quot; rx=&quot;1&quot; ry=&quot;1&quot; width=&quot;30&quot; height=&quot;30&quot; style=&quot;fill:rgb(0,0,255);stroke:white;stroke-width:2&quot;/&gt;
+			  &lt;text x=&quot;15&quot; y=&quot;15&quot; style=&quot;font-size:28;font-weight:bolder;fill:white;text-anchor:middle;baseline-shift:-35%&quot;&gt;P&lt;/text&gt;
+			&lt;/g&gt;
+		&lt;/symbol&gt;
+&lt;!-- Point Symbol From carto.net / Fin --&gt;
+&lt;!-- Point Symbol --&gt;
+
+
+&lt;!-- Weather Symbol From carto.net --&gt;
+	&lt;symbol id=&quot;sun&quot; overflow=&quot;visible&quot;&gt;
+  	&lt;g&gt;
+  		&lt;g&gt;
+  			&lt;circle cx=&quot;0&quot; cy=&quot;0&quot; r=&quot;0.3&quot; style=&quot;fill:yellow;stroke:black;stroke-width:0.05&quot; /&gt;
+  			&lt;g id=&quot;animray&quot;&gt;
+  				&lt;line x1=&quot;0.5&quot; y1=&quot;0&quot; x2=&quot;1.5&quot; y2=&quot;0&quot; style=&quot;fill:none;stroke:black;stroke-width:0.3&quot;&gt;
+  					&lt;animate attributeName=&quot;x2&quot; values=&quot;1;1.5;1&quot; dur=&quot;10s&quot; repeatCount=&quot;indefinite&quot; /&gt;
+  				&lt;/line&gt;
+  				&lt;line x1=&quot;0.5&quot; y1=&quot;0&quot; x2=&quot;1.4&quot; y2=&quot;0&quot; style=&quot;fill:none;stroke:yellow;stroke-width:0.15&quot;&gt;
+  					&lt;animate attributeName=&quot;x2&quot; values=&quot;0.9;1.4;0.9&quot; dur=&quot;10s&quot; repeatCount=&quot;indefinite&quot; /&gt;
+  				&lt;/line&gt;
+  			&lt;/g&gt;
+  			&lt;use xlink:href=&quot;#animray&quot; transform=&quot;rotate(60)&quot; /&gt;
+  			&lt;use xlink:href=&quot;#animray&quot; transform=&quot;rotate(120)&quot; /&gt;
+  			&lt;use xlink:href=&quot;#animray&quot; transform=&quot;rotate(180)&quot; /&gt;
+  			&lt;use xlink:href=&quot;#animray&quot; transform=&quot;rotate(240)&quot; /&gt;
+  			&lt;use xlink:href=&quot;#animray&quot; transform=&quot;rotate(300)&quot; /&gt;
+  		&lt;/g&gt;
+  	&lt;/g&gt;
+	&lt;/symbol&gt;
+	&lt;symbol id=&quot;usesun&quot; overflow=&quot;visible&quot; transform=&quot;scale(25%)&quot;&gt;
+  		&lt;use xlink:href=&quot;#sun&quot;/&gt;
+	&lt;/symbol&gt;
+  	&lt;symbol id=&quot;userain&quot; overflow=&quot;visible&quot; transform=&quot;scale(25%)&quot;&gt;
+  		&lt;path style=&quot;fill:black;stroke:none;&quot; d=&quot;M-1.3 0 Q -0.9 -0.7 -0.7 -0.3 Q 0.2 -1.2 0.7 -0.3 Q 1 -0.7 1.3 0 z&quot;/&gt;
+  		&lt;g style=&quot;fill:none;stroke:mediumblue;stroke-width:0.15;stroke-dasharray:0.4,0.2&quot;&gt;
+  		&lt;line id=&quot;rain&quot; x1=&quot;0.2&quot; y1=&quot;0.2&quot; x2=&quot;-0.3&quot; y2=&quot;1.5&quot;&gt;
+  			&lt;animate attributeName=&quot;stroke-dashoffset&quot; from=&quot;1&quot; to=&quot;0&quot; dur=&quot;1s&quot; repeatCount=&quot;indefinite&quot; /&gt;
+  		&lt;/line&gt;
+  		&lt;use x=&quot;-0.5&quot; xlink:href=&quot;#rain&quot; transform=&quot;scale(0.8)&quot; /&gt;
+  		&lt;use x=&quot;0.5&quot; xlink:href=&quot;#rain&quot; transform=&quot;scale(0.8)&quot; /&gt;
+  		&lt;/g&gt;
+  	&lt;/symbol&gt;
+  	&lt;symbol id=&quot;useclouds&quot; overflow=&quot;visible&quot; transform=&quot;scale(25%)&quot;&gt;
+  		&lt;g fill=&quot;lightgray&quot;&gt;
+  			&lt;path id=&quot;cloud&quot; style=&quot;stroke:black;stroke-width:0.05&quot; d=&quot;M-1.6 0 Q -1.2 -0.7 -0.9 -0.3 Q -0.1 -1.5 0.4 -0.3 Q 0.7 -0.7 1 0 z&quot;&gt;
+  			&lt;animateTransform attributeName=&quot;transform&quot; type=&quot;translate&quot; from=&quot;-0.3,0&quot; to=&quot;0.3,0&quot; dur=&quot;5s&quot; repeatCount=&quot;indefinite&quot; /&gt;
+  			&lt;/path&gt;
+  		&lt;/g&gt;
+  		&lt;use style=&quot;fill:darkgray&quot; x=&quot;0.5&quot; y=&quot;0.5&quot; xlink:href=&quot;#cloud&quot; /&gt;
+  	&lt;/symbol&gt;
+  	&lt;symbol id=&quot;usesunandclouds&quot; overflow=&quot;visible&quot; transform=&quot;scale(50%)&quot;&gt;
+  		&lt;use x=&quot;-0.5&quot; y=&quot;-0.3&quot; transform=&quot;scale(0.7)&quot; style=&quot;fill:darkgray;&quot; xlink:href=&quot;#cloud&quot; /&gt;
+  		&lt;use xlink:href=&quot;#usesun&quot; /&gt;
+  		&lt;use x=&quot;0.8&quot; y=&quot;0.6&quot; style=&quot;fill:white;opacity:0.9&quot; xlink:href=&quot;#cloud&quot; /&gt;
+  	&lt;/symbol&gt;
+	&lt;symbol id=&quot;usesunandcloud&quot; overflow=&quot;visible&quot; transform=&quot;scale(25%)&quot;&gt;
+  		&lt;use xlink:href=&quot;#usesun&quot; /&gt;
+	   	&lt;use x=&quot;0.3&quot; y=&quot;-0.3&quot; style=&quot;fill:white;opacity:0.9&quot; xlink:href=&quot;#cloud&quot; /&gt;
+	&lt;/symbol&gt;
+  	&lt;path id=&quot;snowPath&quot; d=&quot;M0.3 -0.2 L-0.3 1.5&quot;/&gt;
+
+  	&lt;symbol id=&quot;usesnow&quot; overflow=&quot;visible&quot; transform=&quot;scale(25%)&quot;&gt;
+ 		&lt;g id=&quot;snowAnim&quot;&gt;
+			&lt;text style=&quot;fill:white;stroke:black;stroke-width:0.05;font-size:2&quot;&gt;
+			&lt;textPath method=&quot;align&quot; startOffset=&quot;0%&quot; xlink:href=&quot;#snowPath&quot;&gt;
+				&lt;tspan dy=&quot;0.6&quot;&gt;**&lt;/tspan&gt;
+				&lt;animate attributeName=&quot;startOffset&quot; values=&quot;0%;20%&quot; accumulate=&quot;none&quot; additive=&quot;replace&quot; calcMode=&quot;linear&quot; fill=&quot;remove&quot; dur=&quot;5s&quot; repeatCount=&quot;indefinite&quot; /&gt;
+			&lt;/textPath&gt;
+			&lt;/text&gt;
+   		&lt;/g&gt;
+   		&lt;use x=&quot;-1&quot; y=&quot;-0.2&quot; xlink:href=&quot;#snowAnim&quot; /&gt;
+  		&lt;path style=&quot;fill:lightgray;stroke:black;stroke-width:0.05&quot; d=&quot;M-1.3 0 Q -0.9 -0.7 -0.7 -0.3 Q 0.2 -1.2 0.7 -0.3 Q 1 -0.7 1.3 0 z&quot;/&gt;
+ 	&lt;/symbol&gt;
+
+	&lt;!-- Fog / Filter pour fond--&gt; 
+  	&lt;filter id=&quot;myTurbulence&quot; filterUnits=&quot;objectBoundingBox&quot; x=&quot;0%&quot; y=&quot;100%&quot; width=&quot;100%&quot; height=&quot;100%&quot; filterRes=&quot;50&quot;&gt;
+		&lt;feTurbulence in=&quot;SourceGraphic&quot; seed=&quot;2&quot; result=&quot;myTurb&quot; baseFrequency=&quot;0.2,1&quot; numOctaves=&quot;6&quot; type=&quot;fractalNoise&quot;&gt;
+			&lt;animate attributeName=&quot;baseFrequency&quot; values=&quot;0.2,1;0.3,1;0.2,1&quot; dur=&quot;50s&quot; repeatCount=&quot;indefinite&quot; stitchTiles=&quot;stitch&quot; /&gt;
+		&lt;/feTurbulence&gt;
+ 		&lt;feDiffuseLighting in=&quot;myTurb&quot; result=&quot;myTurbLight&quot; lighting-color=&quot;white&quot; surfaceScale=&quot;3&quot;&gt;
+ 			&lt;feDistantLight azimuth=&quot;45&quot; elevation=&quot;85&quot; /&gt;
+ 		&lt;/feDiffuseLighting&gt;
+ 		&lt;feColorMatrix in=&quot;myTurbLight&quot; type=&quot;matrix&quot; values=&quot;1 1 1 0 0 1 1 1 0 0 1 1 1 0 0 0 1 0 0 0&quot;&gt;
+ 			&lt;animate attributeName=&quot;values&quot; values=&quot;1 1 1 0 0 1 1 1 0 0 1 1 1 0 0 1 1 1 0 0;1 1 1 0 0 1 1 1 0 0 1 1 1 0 0 0 1 0 0 0;1 1 1 0 0 1 1 1 0 0 1 1 1 0 0 1 1 1 0 0&quot; dur=&quot;10s&quot; repeatCount=&quot;indefinite&quot; /&gt;
+  		&lt;/feColorMatrix&gt;
+  	&lt;/filter&gt;
+  	&lt;pattern id=&quot;turbuPattern&quot; patternContentUnits=&quot;objectBoundingBox&quot;&gt;
+		&lt;rect x=&quot;0&quot; y=&quot;-1&quot; width=&quot;1&quot; height=&quot;1&quot; filter=&quot;url(#myTurbulence)&quot;/&gt;
+  	&lt;/pattern&gt; 
+	&lt;linearGradient id=&quot;fogGradient&quot; gradientUnits=&quot;objectBoundingBox&quot; gradientTransform=&quot;rotate(90)&quot;&gt;
+ 		&lt;stop offset=&quot;0&quot; stop-color=&quot;white&quot; stop-opacity=&quot;0.5&quot;&gt;
+ 			&lt;animate attributeName=&quot;stop-opacity&quot; values=&quot;0.8;0.3;0.8&quot; dur=&quot;10s&quot; repeatCount=&quot;indefinite&quot; /&gt;
+ 		&lt;/stop&gt;
+ 		&lt;stop offset=&quot;1&quot; stop-color=&quot;white&quot; stop-opacity=&quot;1&quot; /&gt;
+ 	&lt;/linearGradient&gt;
+
+ 	&lt;symbol id=&quot;usefog&quot; overflow=&quot;visible&quot; transform=&quot;scale(25%)&quot;&gt;
+ 		&lt;use xlink:href=&quot;#sun&quot; /&gt;
+ 		&lt;!--&lt;path style=&quot;fill:url(#turbuPattern);stroke:none;&quot; d=&quot;M-1.5 1.5 Q-1.5 0 -0.5 -1 L2.5 -1 Q1 0 1 1.5z&quot;/&gt;--&gt;
+ 		&lt;path style=&quot;fill:url(#turbuPattern);stroke:none;&quot; d=&quot;M-1.2 0.6 Q -2.3 0 -1.2 -0.6 C-2 -1.6 2 -1.6 1.2 -0.6 Q2.3 0 1.2 0.6C2 1.6 -2 1.6 -1.2 0.6z&quot; /&gt;
+ 	&lt;/symbol&gt;
+
+
+&lt;!-- Weather Symbol From carto.net / Fin --&gt;
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000236.html">[Spip-carto-cvs] spipcarto carto_style.css,NONE,1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#235">[ date ]</a>
+              <a href="thread.html#235">[ thread ]</a>
+              <a href="subject.html#235">[ subject ]</a>
+              <a href="author.html#235">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

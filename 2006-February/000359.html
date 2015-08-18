@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/formulaires inc-formulaire_signature.php3,1.4,1.4.2.1 inc-login_public.php3,1.5,1.5.2.1 inc-formulaire_inscription.php3,1.6,1.6.2.1 inc-formulaire_forum.php3,1.6.2.1,1.6.2.2 inc-formulaire_site.php3,1.4,1.4.2.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/formulaires%20inc-formulaire_signature.php3%2C1.4%2C1.4.2.1%20inc-login_public.php3%2C1.5%2C1.5.2.1%20inc-formulaire_inscription.php3%2C1.6%2C1.6.2.1%20inc-formulaire_forum.php3%2C1.6.2.1%2C1.6.2.2%20inc-formulaire_site.php3%2C1.4%2C1.4.2.1&In-Reply-To=%3C200602030023.k130Njbx027882%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000360.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/formulaires inc-formulaire_signature.php3,1.4,1.4.2.1 inc-login_public.php3,1.5,1.5.2.1 inc-formulaire_inscription.php3,1.6,1.6.2.1 inc-formulaire_forum.php3,1.6.2.1,1.6.2.2 inc-formulaire_site.php3,1.4,1.4.2.1</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/formulaires%20inc-formulaire_signature.php3%2C1.4%2C1.4.2.1%20inc-login_public.php3%2C1.5%2C1.5.2.1%20inc-formulaire_inscription.php3%2C1.6%2C1.6.2.1%20inc-formulaire_forum.php3%2C1.6.2.1%2C1.6.2.2%20inc-formulaire_site.php3%2C1.4%2C1.4.2.1&In-Reply-To=%3C200602030023.k130Njbx027882%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/formulaires inc-formulaire_signature.php3,1.4,1.4.2.1 inc-login_public.php3,1.5,1.5.2.1 inc-formulaire_inscription.php3,1.6,1.6.2.1 inc-formulaire_forum.php3,1.6.2.1,1.6.2.2 inc-formulaire_site.php3,1.4,1.4.2.1">stef at berlios.de
+       </A><BR>
+    <I>Fri Feb  3 01:23:45 CET 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000360.html">[Spip-carto-cvs] spipcarto/ecrire inc_version.php3,1.12.2.1,1.12.2.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#359">[ date ]</a>
+              <a href="thread.html#359">[ thread ]</a>
+              <a href="subject.html#359">[ subject ]</a>
+              <a href="author.html#359">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/formulaires
+In directory sheep:/tmp/cvs-serv27680/formulaires
+
+Modified Files:
+      Tag: BRANCH-V1
+	inc-formulaire_signature.php3 inc-login_public.php3 
+	inc-formulaire_inscription.php3 inc-formulaire_forum.php3 
+	inc-formulaire_site.php3 
+Log Message:
+Mise &#224; jour de securit&#233; =&gt; Spip 1.8.2f
+
+Index: inc-formulaire_signature.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_signature.php3,v
+retrieving revision 1.4
+retrieving revision 1.4.2.1
+diff -u -d -r1.4 -r1.4.2.1
+--- inc-formulaire_signature.php3	21 Jul 2005 21:47:12 -0000	1.4
++++ inc-formulaire_signature.php3	3 Feb 2006 00:23:39 -0000	1.4.2.1
+@@ -81,6 +81,7 @@
+ function reponse_confirmation($id_article, $var_confirm = '') {
+ 	static $confirm = '';
+ 
++	$id_article = intval($id_article);
+ 	if (!$var_confirm) return $confirm;
+ 	include_local(_FILE_CONNECT);
+ 	if ($GLOBALS['db_ok']) {
+
+Index: inc-login_public.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-login_public.php3,v
+retrieving revision 1.5
+retrieving revision 1.5.2.1
+diff -u -d -r1.5 -r1.5.2.1
+--- inc-login_public.php3	21 Jul 2005 21:47:12 -0000	1.5
++++ inc-login_public.php3	3 Feb 2006 00:23:39 -0000	1.5.2.1
+@@ -2,7 +2,7 @@
+ 
+ if (!defined(&quot;_ECRIRE_INC_VERSION&quot;)) return;	#securite
+ 
+-include(_FILE_CONNECT);
++include_local(_FILE_CONNECT);
+ include_ecrire(&quot;inc_meta.php3&quot;);
+ include_ecrire(&quot;inc_session.php3&quot;);
+ include_ecrire(&quot;inc_filtres.php3&quot;);
+
+Index: inc-formulaire_inscription.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_inscription.php3,v
+retrieving revision 1.6
+retrieving revision 1.6.2.1
+diff -u -d -r1.6 -r1.6.2.1
+--- inc-formulaire_inscription.php3	19 Aug 2005 00:25:30 -0000	1.6
++++ inc-formulaire_inscription.php3	3 Feb 2006 00:23:39 -0000	1.6.2.1
+@@ -157,7 +157,7 @@
+ 	$htpass = generer_htpass($pass);
+ 	spip_query(&quot;UPDATE spip_auteurs
+ 		SET pass='$mdpass', htpass='$htpass'
+-		WHERE id_auteur = &quot;.$id_auteur);
++		WHERE id_auteur = &quot;.intval($id_auteur));
+ 	ecrire_acces();
+ 	
+ 	return $pass;
+
+Index: inc-formulaire_forum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_forum.php3,v
+retrieving revision 1.6.2.1
+retrieving revision 1.6.2.2
+diff -u -d -r1.6.2.1 -r1.6.2.2
+--- inc-formulaire_forum.php3	1 Nov 2005 21:51:55 -0000	1.6.2.1
++++ inc-formulaire_forum.php3	3 Feb 2006 00:23:39 -0000	1.6.2.2
+@@ -40,6 +40,11 @@
+ 
+ 	// recuperer les donnees du forum auquel on repond, false = forum interdit
+ 	list ($idr, $idf, $ida, $idb, $ids) = $args;
++	$idr = intval($idr);
++	$idf = intval($idf);
++	$ida = intval($ida);
++	$idb = intval($idb);
++	$ids = intval($ids);
+ 	if (!$r = sql_recherche_donnees_forum ($idr, $idf, $ida, $idb, $ids))
+ 		return '';
+ 
+@@ -291,9 +296,10 @@
+ function table_des_mots($table, $les_mots) {
+ 	global $afficher_groupe;
+ 
+-	if (!is_array($afficher_groupe)) return;
+-
+-	$in_group = &quot; AND id_groupe IN (&quot; . join($afficher_groupe, &quot;, &quot;) .&quot;)&quot;;
++	if (is_array($afficher_groupe))
++		$in_group = &quot; AND id_groupe IN (&quot; . join($afficher_groupe, &quot;, &quot;) .&quot;)&quot;;
++	else
++		$in_group = '';
+ 
+ 	$result_groupe = spip_query(&quot;SELECT * FROM spip_groupes_mots
+ 	WHERE forum = 'oui' AND $table = 'oui'&quot;. $in_group);
+
+Index: inc-formulaire_site.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/formulaires/inc-formulaire_site.php3,v
+retrieving revision 1.4
+retrieving revision 1.4.2.1
+diff -u -d -r1.4 -r1.4.2.1
+--- inc-formulaire_site.php3	21 Jul 2005 21:47:12 -0000	1.4
++++ inc-formulaire_site.php3	3 Feb 2006 00:23:39 -0000	1.4.2.1
+@@ -37,6 +37,7 @@
+ 		return _T('form_pet_url_invalide');
+ 
+ 	// Integrer a la base de donnees
++	$id_rubrique = intval($id_rubrique);
+ 	$nom_site = addslashes(_request('nom_site'));
+ 	$url_site = addslashes(_request('url_site'));
+ 	$description_site = addslashes(_request('description_site'));
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000360.html">[Spip-carto-cvs] spipcarto/ecrire inc_version.php3,1.12.2.1,1.12.2.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#359">[ date ]</a>
+              <a href="thread.html#359">[ thread ]</a>
+              <a href="subject.html#359">[ subject ]</a>
+              <a href="author.html#359">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

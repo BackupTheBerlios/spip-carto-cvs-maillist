@@ -1,0 +1,544 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.6.2.3,1.6.2.4 carte_edit.php3,1.18.2.6,1.18.2.7 inc_tag-machine.php,1.1.2.2,NONE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-October/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20mots_partout.php%2C1.6.2.3%2C1.6.2.4%20carte_edit.php3%2C1.18.2.6%2C1.18.2.7%20inc_tag-machine.php%2C1.1.2.2%2CNONE&In-Reply-To=%3C200510122122.j9CLMuB5009700%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000329.html">
+   <LINK REL="Next"  HREF="000331.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.6.2.3,1.6.2.4 carte_edit.php3,1.18.2.6,1.18.2.7 inc_tag-machine.php,1.1.2.2,NONE</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20mots_partout.php%2C1.6.2.3%2C1.6.2.4%20carte_edit.php3%2C1.18.2.6%2C1.18.2.7%20inc_tag-machine.php%2C1.1.2.2%2CNONE&In-Reply-To=%3C200510122122.j9CLMuB5009700%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire mots_partout.php,1.6.2.3,1.6.2.4 carte_edit.php3,1.18.2.6,1.18.2.7 inc_tag-machine.php,1.1.2.2,NONE">stef at berlios.de
+       </A><BR>
+    <I>Wed Oct 12 23:22:56 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000329.html">[Spip-carto-cvs] spipcarto/ecrire inc_documents.php3,1.7.2.1,1.7.2.2
+</A></li>
+        <LI>Next message: <A HREF="000331.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_svgfilex.html,1.6.2.1,1.6.2.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#330">[ date ]</a>
+              <a href="thread.html#330">[ thread ]</a>
+              <a href="subject.html#330">[ subject ]</a>
+              <a href="author.html#330">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv9674/ecrire
+
+Modified Files:
+      Tag: BRANCH-V1
+	mots_partout.php carte_edit.php3 
+Removed Files:
+      Tag: BRANCH-V1
+	inc_tag-machine.php 
+Log Message:
+version stable mots_partout (sans ajax)
+correction raccourci
+ajout ancre par objet pour retour
+
+
+Index: mots_partout.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/mots_partout.php,v
+retrieving revision 1.6.2.3
+retrieving revision 1.6.2.4
+diff -u -d -r1.6.2.3 -r1.6.2.4
+--- mots_partout.php	4 Oct 2005 14:28:48 -0000	1.6.2.3
++++ mots_partout.php	12 Oct 2005 21:22:54 -0000	1.6.2.4
+@@ -25,18 +25,116 @@
+ } else if(@file_exists('inc.php3')){
+   include('inc.php3');
+ }
++if(@file_exists('inc_version.php')){
++  include('inc_version.php');
++} else if(@file_exists('inc_version.php3')){
++  include('inc_version.php3');
++}
+ include_ecrire (&quot;inc_documents&quot;._EXTENSION_PHP);
+ include_ecrire (&quot;inc_abstract_sql&quot;._EXTENSION_PHP);
+ include_ecrire (&quot;inc_objet&quot;._EXTENSION_PHP);
+-include_ecrire('inc_tag-machine.php');
++//include_ecrire('_libs_/tag-machine/inc_tag-machine.php');
+ 
+ /***********************************************************************
+ * D&#233;finition des choses sur lesquels on peut vouloir mettre des mots clefs
+ ***********************************************************************/
++
++$choses_possibles['articles'] = array(
++									  'titre_chose' =&gt; 'public:articles',
++										  'id_chose' =&gt; 'id_article',
++									  'table_principale' =&gt; 'spip_articles',
++									  'table_auth' =&gt; 'spip_auteurs_articles',
++									  'tables_limite' =&gt; array(
++															   'articles' =&gt; array(
++																				   'table' =&gt; 'spip_articles',
++																				   'nom_id' =&gt; 'id_article'),
++															   'rubriques' =&gt; array(
++																					'table' =&gt; 'spip_articles',
++																					'nom_id' =&gt;  'id_rubrique'),
++															   'documents' =&gt; array(
++																					'table' =&gt; 'spip_documents_articles',
++																					'nom_id' =&gt;  'id_document'),
++															   'auteurs' =&gt; array(
++																				  'table' =&gt; 'spip_auteurs_articles',
++																				  'nom_id' =&gt; 'id_auteur')
++															   )
++									  );
++
++
++$choses_possibles['rubriques'] = array(
++									  'titre_chose' =&gt; 'public:rubriques',
++										  'id_chose' =&gt; 'id_rubrique',
++									  'table_principale' =&gt; 'spip_rubriques',
++									  'table_auth' =&gt; 'spip_auteurs_rubriques',
++									  'tables_limite' =&gt; array(
++															   'rubriques' =&gt; array(
++																					'table' =&gt; 'spip_rubriques',
++																					'nom_id' =&gt;  'id_rubrique'),
++																'secteurs' =&gt; array(
++																					 'table' =&gt; 'spip_rubriques',
++																					 'nom_id' =&gt;  'id_secteur'),
++																'parents' =&gt; array(
++																					 'table' =&gt; 'spip_rubriques',
++																					 'nom_id' =&gt;  'id_parent'),
++															   'documents' =&gt; array(
++																					'table' =&gt; 'spip_documents_rubriques',
++																					'nom_id' =&gt;  'id_document'),
++															   'auteurs' =&gt; array(
++																				  'table' =&gt; 'spip_auteurs_articles',
++																				  'nom_id' =&gt; 'id_auteur')
++															   )
++									  );
++
++$choses_possibles['documents'] = array(
++									   'titre_chose' =&gt; 'info_documents',
++												  'id_chose' =&gt; 'id_document',
++									   'table_principale' =&gt; 'spip_documents',
++									   'tables_limite' =&gt; array(
++																'articles' =&gt; array(
++																					'table' =&gt; 'spip_documents_articles',
++																					'nom_id' =&gt; 'id_article'),
++																'rubriques' =&gt; array(
++																					 'table' =&gt; 'spip_documents_rubriques',
++																					 'nom_id' =&gt;  'id_rubrique'),
++																'documents' =&gt; array(
++																					 'table' =&gt; 'spip_documents',
++																					 'nom_id' =&gt;  'id_document')
++																)
++									   );
++
++$choses_possibles['auteurs'] = array(
++									  'titre_chose' =&gt; 'auteurs',
++									  'id_chose' =&gt; 'id_auteur',
++									  'table_principale' =&gt; 'spip_auteurs',
++									  'tables_limite' =&gt; array(
++															   'auteurs' =&gt; array(
++																				   'table' =&gt; 'spip_auteurs',
++																				   'nom_id' =&gt; 'id_auteur'),
++															   'articles' =&gt; array(
++																				  'table' =&gt; 'spip_auteurs_articles',
++																				  'nom_id' =&gt; 'id_auteur')
++															   )
++									  );
++
++$choses_possibles['messages'] = array(
++									  'titre_chose' =&gt; 'Messages',
++									  'id_chose' =&gt; 'id_message',
++									  'table_principale' =&gt; 'spip_messages',
++									  
++									  'table_auth' =&gt; 'spip_auteurs_messages',
++									  'tables_limite' =&gt; array(
++															   'messages' =&gt; array(
++																				   'table' =&gt; 'spip_messages',
++																				   'nom_id' =&gt; 'id_message'),
++															   'auteurs' =&gt; array(
++																				  'table' =&gt; 'spip_auteurs_messages',
++																				  'nom_id' =&gt; 'id_auteur')
++															   )
++									  );
++
+ ////////////////////////////////////////////////////////////////////////
+ //MODIFICATION (spip-carto)
+ ////////////////////////////////////////////////////////////////////////
+-
+ $choses_possibles['carto_objets'] = array(
+ 									  'titre_chose' =&gt; 'Objets',
+ 									  'id_chose' =&gt; 'id_carto_objet',
+@@ -85,7 +183,7 @@
+ 	// Le titre (et la langue)
+ 	$s = &quot;&lt;div&gt;&quot;;
+ 	
+-	$s .= &quot;&lt;a href=\&quot;carto_cartes.php3?id_carto_carte=$id_carto_carte#objet$id_carto_objet\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
++	$s .= &quot;&lt;a href=\&quot;carte_edit.php3?id_carte=$id_carto_carte#objet$id_carto_objet\&quot; style=\&quot;display:block;\&quot;&gt;&quot;;
+ 	
+ 	$s .= typo($titre);
+ 	$s .= &quot;&lt;/a&gt;&quot;;
+@@ -129,102 +227,8 @@
+   echo afficher_liste_fin_tableau();
+ }
+ ////////////////////////////////////////////////////////////////////////
+-//(spip-carto)
++//MODIFICATION (spip-carto)
+ ////////////////////////////////////////////////////////////////////////
+-
+-$choses_possibles['articles'] = array(
+-									  'titre_chose' =&gt; 'public:articles',
+-										  'id_chose' =&gt; 'id_article',
+-									  'table_principale' =&gt; 'spip_articles',
+-									  'table_auth' =&gt; 'spip_auteurs_articles',
+-									  'tables_limite' =&gt; array(
+-															   'articles' =&gt; array(
+-																				   'table' =&gt; 'spip_articles',
+-																				   'nom_id' =&gt; 'id_article'),
+-															   'rubriques' =&gt; array(
+-																					'table' =&gt; 'spip_articles',
+-																					'nom_id' =&gt;  'id_rubrique'),
+-															   'documents' =&gt; array(
+-																					'table' =&gt; 'spip_documents_articles',
+-																					'nom_id' =&gt;  'id_document'),
+-															   'auteurs' =&gt; array(
+-																				  'table' =&gt; 'spip_auteurs_articles',
+-																				  'nom_id' =&gt; 'id_auteur')
+-															   )
+-									  );
+-
+-
+-$choses_possibles['rubriques'] = array(
+-									  'titre_chose' =&gt; 'public:rubriques',
+-										  'id_chose' =&gt; 'id_rubrique',
+-									  'table_principale' =&gt; 'spip_rubriques',
+-									  'table_auth' =&gt; 'spip_auteurs_rubriques',
+-									  'tables_limite' =&gt; array(
+-															   'rubriques' =&gt; array(
+-																					'table' =&gt; 'spip_rubriques',
+-																					'nom_id' =&gt;  'id_rubrique'),
+-																'secteurs' =&gt; array(
+-																					 'table' =&gt; 'spip_rubriques',
+-																					 'nom_id' =&gt;  'id_secteur'),
+-																'parents' =&gt; array(
+-																					 'table' =&gt; 'spip_rubriques',
+-																					 'nom_id' =&gt;  'id_parent'),
+-															   'documents' =&gt; array(
+-																					'table' =&gt; 'spip_documents_rubriques',
+-																					'nom_id' =&gt;  'id_document'),
+-															   'auteurs' =&gt; array(
+-																				  'table' =&gt; 'spip_auteurs_articles',
+-																				  'nom_id' =&gt; 'id_auteur')
+-															   )
+-									  );
+-
+-$choses_possibles['documents'] = array(
+-									   'titre_chose' =&gt; 'info_documents',
+-												  'id_chose' =&gt; 'id_document',
+-									   'table_principale' =&gt; 'spip_documents',
+-									   'tables_limite' =&gt; array(
+-																'articles' =&gt; array(
+-																					'table' =&gt; 'spip_documents_articles',
+-																					'nom_id' =&gt; 'id_article'),
+-																'rubriques' =&gt; array(
+-																					 'table' =&gt; 'spip_documents_rubriques',
+-																					 'nom_id' =&gt;  'id_rubrique'),
+-																'documents' =&gt; array(
+-																					 'table' =&gt; 'spip_documents',
+-																					 'nom_id' =&gt;  'id_document')
+-																)
+-									   );
+-
+-$choses_possibles['auteurs'] = array(
+-									  'titre_chose' =&gt; 'auteurs',
+-									  'id_chose' =&gt; 'id_auteur',
+-									  'table_principale' =&gt; 'spip_auteurs',
+-									  'tables_limite' =&gt; array(
+-															   'auteurs' =&gt; array(
+-																				   'table' =&gt; 'spip_auteurs',
+-																				   'nom_id' =&gt; 'id_auteur'),
+-															   'articles' =&gt; array(
+-																				  'table' =&gt; 'spip_auteurs_articles',
+-																				  'nom_id' =&gt; 'id_auteur')
+-															   )
+-									  );
+-
+-$choses_possibles['messages'] = array(
+-									  'titre_chose' =&gt; 'Messages',
+-									  'id_chose' =&gt; 'id_message',
+-									  'table_principale' =&gt; 'spip_messages',
+-									  
+-									  'table_auth' =&gt; 'spip_auteurs_messages',
+-									  'tables_limite' =&gt; array(
+-															   'messages' =&gt; array(
+-																				   'table' =&gt; 'spip_messages',
+-																				   'nom_id' =&gt; 'id_message'),
+-															   'auteurs' =&gt; array(
+-																				  'table' =&gt; 'spip_auteurs_messages',
+-																				  'nom_id' =&gt; 'id_auteur')
+-															   )
+-									  );
+-
+ /***********************************************************************
+ * PREFIXE
+ ***********************************************************************/
+@@ -892,7 +896,6 @@
+ $mots = $_REQUEST['id_mots'];
+ $sans_mots = $_REQUEST['sans_mots'];
+ $choses = $_REQUEST['id_choses'];
+-$nom_tags = $_REQUEST['nom_tags'];
+ $limit =  $_REQUEST['limit'];
+ $id_limit =  $_REQUEST['id_limit'];
+ //echo &quot;!!!&quot;.$nom_chose.&quot;!!!&quot;;
+@@ -900,8 +903,8 @@
+ //echo &quot;choses :&quot;.serialize($choses).&quot;&lt;br&gt;&quot;;
+ //echo &quot;mots :&quot;.serialize($mots).&quot;&lt;br&gt;&quot;;
+ //echo &quot;sans_mots :&quot;.serialize($sans_mots).&quot;&lt;br&gt;&quot;;
+-//echo &quot;nom_tags :&quot;.serialize($nom_tags).&quot;&lt;br&gt;&quot;;
+ //echo &quot;limit :&quot;.serialize($limit).&quot;&lt;br&gt;&quot;;
++//echo &quot;id_limit :&quot;.serialize($id_limit).&quot;&lt;br&gt;&quot;;
+ 
+ if($_REQUEST['switch'] == 'action' &amp;&amp; count($choses)) {
+ 	if(count($mots)) {
+@@ -955,22 +958,12 @@
+ 		  }
+ 		}
+ 	}
+-	if ($nom_tags){
+-		$tags = new ListeTags($nom_tags,'Tag');
+-//		echo &quot;!!!!!!!tag:&quot;.$nom_tags.&quot;/&quot;.serialize($tags).&quot;!!!!!!!!!&quot;;
+-		foreach($choses as $d) {
+-			if($_REQUEST['bouton'] == 'ajouter')
+-			  $tags-&gt;ajouter($d,$nom_chose,$id_chose);
+-			if($_REQUEST['bouton'] == 'retirer')
+-			  $tags-&gt;retirer($d,$nom_chose,$id_chose);
+-		}
+-	}
+ }
+ /**********************************************************************
+ * recherche des choses.
+ ***********************************************************************/
+ 
+-if(count($choses) &gt;= 0) {
++if(count($choses) == 0) {
+   $select = array();
+   $select[] = &quot;DISTINCT main.$id_chose&quot;;
+   
+@@ -1088,6 +1081,9 @@
+  ***********************************************************************/
+ 
+ debut_page('&laquo; '._T('motspartout:titre_page').' &raquo;', 'documents', 'mots');
++?&gt;
++&lt;/script&gt;
++&lt;?php
+ 
+ echo '&lt;br&gt;&lt;br&gt;&lt;center&gt;';
+ gros_titre(_T('motspartout:titre_page'));
+@@ -1109,25 +1105,7 @@
+ foreach($choses_possibles as $cho =&gt; $m) {
+   echo &quot;&lt;option value=\&quot;$cho\&quot;&quot;.(($cho == $nom_chose)?'selected':'').'&gt;'._T($m['titre_chose']).'&lt;/option&gt;';
+ }
+-echo '&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;';
+-
+-echo '&lt;tr class=\'tr_liste\'&gt;';
+-?&gt;
+-&lt;td colspan=3&gt;&lt;button type='submit' name='switch' value='chose'&gt;
+-&lt;?php echo _T('motspartout:valider'); ?&gt;
+-&lt;/button&gt;
+-&lt;/td&gt;
+-&lt;?php
+-echo '&lt;/table&gt;&lt;/div&gt;';
+-
+-fin_cadre_enfonce();
+-echo '&lt;/form&gt;&lt;form method=&quot;post&quot; action=&quot;mots_partout.php&quot;&gt;';
+-
+-// choix de la chose sur laquelle on veut ajouter des mots
+-debut_cadre_enfonce('',false,'',_T('motspartout:voir'));
+-
+-echo '&lt;div class=\'liste\'&gt;
+-&lt;table border=0 cellspacing=0 cellpadding=3 width=\&quot;100%\&quot;&gt;
++echo '&lt;/select&gt;&lt;/td&gt;&lt;/tr&gt;
+ &lt;tr class=\'tr_liste\'&gt;&lt;td colspan=2&gt;'.
+ _T('motspartout:limite').
+ ':&lt;/td&gt;&lt;/tr&gt;';
+@@ -1144,22 +1122,46 @@
+ echo &quot;&lt;td&gt;&lt;input type='text' size='3' name='id_limit' value='$id_limit'&gt;&lt;/td&gt;&lt;/tr&gt;&quot;;
+ echo '&lt;tr class=\'tr_liste\'&gt;';
+ ?&gt;
++&lt;td colspan=3&gt;&lt;button type='submit' name='switch' value='chose'&gt;
++&lt;?php echo _T('motspartout:voir'); ?&gt;
++&lt;/button&gt;
++&lt;/td&gt;
++&lt;/table&gt;&lt;/div&gt;
++&lt;?php
++fin_cadre_enfonce();
++echo &quot;&lt;/form&gt;&lt;form method='post' action='mots_partout.php'&gt;
++&lt;input type='hidden' name='limit' value='$limit'&gt;
++&lt;input type='hidden' name='id_limit' value='$id_limit'&gt;
++&quot;;
++
++if(count($choses)) {
++debut_cadre_enfonce('',false,'',_T('motspartout:voir'));
++?&gt;
++&lt;div class='liste'&gt;
++&lt;table border=0 cellspacing=0 cellpadding=3 width=&quot;100%&quot;&gt;
++&lt;tr class='tr_liste'&gt;
++&lt;td colspan=2&gt;
++&lt;!-- TODO traduire --&gt;
++Voir les mots ou les photos selectionn&#233;s.
++&lt;/td&gt;
++&lt;/tr&gt;
++&lt;tr class='tr_liste'&gt;
+ &lt;td&gt;&lt;button type='submit' name='switch' value='voir'&gt;
+-&lt;?php echo _T('motspartout:valider'); ?&gt;
++&lt;?php echo _T('motspartout:voir'); ?&gt;
+ &lt;/button&gt;
+ &lt;/td&gt;
+ &lt;td colspan=2&gt;
+ &lt;input type='checkbox' id='strict' name='strict'/&gt;&lt;label for='strict'&gt;
+ &lt;?php echo _T('motspartout:stricte'); ?&gt;
+ &lt;/label&gt;&lt;/td&gt;
++&lt;/tr&gt;
++&lt;/table&gt;&lt;/div&gt;
+ &lt;?php
+-echo '&lt;/table&gt;&lt;/div&gt;';
+ fin_cadre_enfonce();
+ 
+ 
+  // echo '&lt;/form&gt;';
+ 
+-if(count($choses)) {
+ // 	echo '&lt;a name=&quot;action&quot;&gt;&lt;/a&gt;&lt;form action=&quot;mots_partout.php#voir&quot;&gt;';
+ 
+   echo '&lt;input type=&quot;hidden&quot; name=&quot;nom_chose&quot; value=&quot;'.$_REQUEST['nom_chose'].'&quot;&gt;';  
+@@ -1172,48 +1174,34 @@
+   // les actions et limitations possibles.
+   debut_cadre_enfonce('',false,'',_T('motspartout:action'));
+   
++  
+   echo '&lt;div class=\'liste\'&gt;
+ &lt;table border=0 cellspacing=0 cellpadding=3 width=\&quot;100%\&quot;&gt;';
+-  echo '&lt;tr class=\'tr_liste\'&gt;
++//ca ne sert &#224; rien, on n'utilise jamais ces choix, on utilise directement avec/sans mais &#231;a pourrait &#234;tre utile pour g&#233;rer tag-machine 
++/* echo '&lt;tr class=\'tr_liste\'&gt;
+ &lt;td&gt;&lt;input type=\'radio\' value=\'ajouter\' name=&quot;bouton&quot; id=\'ajouter\'&gt;&lt;br&gt;&lt;label for=\'ajouter\'&gt;'.
+ 	_T('motspartout:ajouter').
+ 	'&lt;/label&gt;&lt;/td&gt;
+ &lt;td &gt;&lt;input type=\'radio\' value=\'enlever\' name=&quot;bouton&quot; id=\'enlever\'&gt;&lt;br&gt;&lt;label for=\'enlever\'&gt;'.
+ 	_T('motspartout:enlever').
+ 	'&lt;/label&gt;&lt;/td&gt;
+-&lt;/tr&gt;';
++&lt;/tr&gt;';*/
+   ?&gt;
+-	&lt;tr class='tr_liste'&gt;
+-	  &lt;td colspan=2&gt;&lt;label for=&quot;nom_tags&quot;&gt;liste des mots &#224; ajouter&lt;/label&gt;
++	   &lt;tr class='tr_liste'&gt;
++	   &lt;td colspan=2&gt;
++&lt;!--TODO traduire--&gt;
++		 Ajouter les mots coch&#233;s &lt;em&gt;avec&lt;/em&gt; et retirer les mots coch&#233;s &lt;em&gt;sans&lt;/em&gt;
+ &lt;/td&gt;
+-&lt;/tr&gt;
+-	&lt;tr class='tr_liste'&gt;
+-	  &lt;td colspan=2&gt;
+-		&lt;textarea name=&quot;nom_tags&quot; rows='10' class='forml' cols='40'&gt;&lt;/textarea&gt;
+-&lt;?php 
+-	/*&lt;div style=&quot;position:relative;overflow:visible; width: 10em;&quot;&gt;
+-        &lt;input autocomplete=&quot;off&quot; type=&quot;texte&quot; id=&quot;tags&quot; name=&quot;nom_tags&quot; class='forml' cols='40' style=&quot;width: 100%;&quot;&gt;
+-        &lt;div id=&quot;suggest&quot; class=&quot;suggest_list&quot; style=&quot;width: 100%;&quot;&gt;&lt;/div&gt;
+-      &lt;/div&gt;*/ 
+-?&gt;
+-	  &lt;/td&gt;
+-	 &lt;/tr&gt;
+-	 &lt;tr class='tr_liste'&gt;
++		   &lt;/tr&gt;
++	   &lt;tr class='tr_liste'&gt;
+ 	   &lt;td colspan=2&gt;&lt;button type='submit' name='switch' value='action'&gt;
+-	   &lt;?php echo _T('bouton_valider'); ?&gt;
++		   &lt;?php  echo _T('bouton_valider'); ?&gt;
+ 	   &lt;/button&gt;&lt;/td&gt;
+ 		   &lt;/tr&gt;
+ 		   &lt;/table&gt;
+ 		   &lt;/div&gt;
+-&lt;?php 
+-/*&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;./ajaxTagMachine.css&quot;&gt;
+-&lt;script  type='text/javascript' src=&quot;./ajaxTagMachine.js&quot;&gt;
+-&lt;/script&gt;
+-  &lt;script  type='text/javascript'&gt; &lt;!--
+-	groupe = new AjaxSuggestMenu('ajax_mortimer.php', 'titre', 'tags','suggest');
+-	groupe.addVar('nom_chose','&lt;?php echo $nom_chose; ?&gt;');
+-	groupe.setNbrLineVisible(5);
+-  	--&gt;&lt;/script&gt;*/ 
++		   
++&lt;?php
+ 		   
+   fin_cadre_enfonce();
+  creer_colonne_droite();
+@@ -1354,4 +1342,4 @@
+ &lt;?php
+ 
+ fin_page();
+-?&gt;
+\ No newline at end of file
++?&gt;
+
+Index: carte_edit.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/carte_edit.php3,v
+retrieving revision 1.18.2.6
+retrieving revision 1.18.2.7
+diff -u -d -r1.18.2.6 -r1.18.2.7
+--- carte_edit.php3	4 Oct 2005 00:36:29 -0000	1.18.2.6
++++ carte_edit.php3	12 Oct 2005 21:22:54 -0000	1.18.2.7
+@@ -236,7 +236,7 @@
+ 
+ 	debut_cadre_relief(&quot;mot-cle-24.gif&quot;);
+ 	if ($connect_statut == &quot;0minirezo&quot;) {
+-			icone_horizontale(_T('motspartout:titre_page'),&quot;mots_partout.php?chose=carto_cartes&amp;limit=carto_cartes&amp;id_limit=&quot;.$id_carte, &quot;mot-cle-24.gif&quot;);
++			icone_horizontale(_T('motspartout:titre_page'),&quot;mots_partout.php?nom_chose=carto_objets&amp;limit=carto_cartes&amp;id_limit=&quot;.$id_carte, &quot;mot-cle-24.gif&quot;);
+ 	}
+ 	fin_cadre_relief();
+ }
+@@ -439,7 +439,7 @@
+ 			$visible = ($id_objet == $objet_visible);
+ 			if ($nouveau&amp;&amp;$visible) echo &quot;&lt;a name='nouveau_objet'&gt;&lt;/a&gt;&quot;;
+ 			else if ($visible) echo &quot;&lt;a name='objet_visible'&gt;&lt;/a&gt;&quot;;
+-			echo &quot;&lt;p&gt;\n&quot;;
++			echo &quot;&lt;a name='objet$id_objet'&gt;&lt;/a&gt;&lt;p&gt;\n&quot;;
+ 			debut_cadre_relief();
+ 				
+ 				// Modifier un objet
+
+--- inc_tag-machine.php DELETED ---
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000329.html">[Spip-carto-cvs] spipcarto/ecrire inc_documents.php3,1.7.2.1,1.7.2.2
+</A></li>
+	<LI>Next message: <A HREF="000331.html">[Spip-carto-cvs] spipcarto/squelettes/template carto_svgfilex.html,1.6.2.1,1.6.2.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#330">[ date ]</a>
+              <a href="thread.html#330">[ thread ]</a>
+              <a href="subject.html#330">[ subject ]</a>
+              <a href="author.html#330">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

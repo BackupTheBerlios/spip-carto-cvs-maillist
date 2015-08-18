@@ -1,0 +1,689 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire md5.js,1.2,1.3 inc_import.php3,1.3,1.4 inc_version.php3,1.5,1.6 inc_lab.php,1.2,1.3 inc_lang.php3,1.4,1.5 index.php3,1.4,1.5 inc_texte.php3,1.4,1.5 inc_meta.php3,1.2,1.3 articles_versions.php3,1.3,1.4 statistiques_visites.php3,1.2,1.3 inc_forum.php3,1.3,1.4 presentation.js,1.1,1.2 pclzip.lib.php,1.2,1.3 inc_math.php3,1.2,1.3 calendrier.css,1.1,1.2 inc_calendrier.php,1.5,1.6
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-March/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20md5.js%2C1.2%2C1.3%20inc_import.php3%2C1.3%2C1.4%20inc_version.php3%2C1.5%2C1.6%20inc_lab.php%2C1.2%2C1.3%20inc_lang.php3%2C1.4%2C1.5%20index.php3%2C1.4%2C1.5%20inc_texte.php3%2C1.4%2C1.5%20inc_meta.php3%2C1.2%2C1.3%20articles_versions.php3%2C1.3%2C1.4%20statistiques_visites.php3%2C1.2%2C1.3%20inc_forum.php3%2C1.3%2C1.4%20presentation.js%2C1.1%2C1.2%20pclzip.lib.php%2C1.2%2C1.3%20inc_math.php3%2C1.2%2C1.3%20calendrier.css%2C1.1%2C1.2%20inc_calendrier.php%2C1.5%2C1.6&In-Reply-To=%3C200503312118.j2VLI99Y010158%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000154.html">
+   <LINK REL="Next"  HREF="000156.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire md5.js,1.2,1.3 inc_import.php3,1.3,1.4 inc_version.php3,1.5,1.6 inc_lab.php,1.2,1.3 inc_lang.php3,1.4,1.5 index.php3,1.4,1.5 inc_texte.php3,1.4,1.5 inc_meta.php3,1.2,1.3 articles_versions.php3,1.3,1.4 statistiques_visites.php3,1.2,1.3 inc_forum.php3,1.3,1.4 presentation.js,1.1,1.2 pclzip.lib.php,1.2,1.3 inc_math.php3,1.2,1.3 calendrier.css,1.1,1.2 inc_calendrier.php,1.5,1.6</H1>
+    <B>stef at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20md5.js%2C1.2%2C1.3%20inc_import.php3%2C1.3%2C1.4%20inc_version.php3%2C1.5%2C1.6%20inc_lab.php%2C1.2%2C1.3%20inc_lang.php3%2C1.4%2C1.5%20index.php3%2C1.4%2C1.5%20inc_texte.php3%2C1.4%2C1.5%20inc_meta.php3%2C1.2%2C1.3%20articles_versions.php3%2C1.3%2C1.4%20statistiques_visites.php3%2C1.2%2C1.3%20inc_forum.php3%2C1.3%2C1.4%20presentation.js%2C1.1%2C1.2%20pclzip.lib.php%2C1.2%2C1.3%20inc_math.php3%2C1.2%2C1.3%20calendrier.css%2C1.1%2C1.2%20inc_calendrier.php%2C1.5%2C1.6&In-Reply-To=%3C200503312118.j2VLI99Y010158%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire md5.js,1.2,1.3 inc_import.php3,1.3,1.4 inc_version.php3,1.5,1.6 inc_lab.php,1.2,1.3 inc_lang.php3,1.4,1.5 index.php3,1.4,1.5 inc_texte.php3,1.4,1.5 inc_meta.php3,1.2,1.3 articles_versions.php3,1.3,1.4 statistiques_visites.php3,1.2,1.3 inc_forum.php3,1.3,1.4 presentation.js,1.1,1.2 pclzip.lib.php,1.2,1.3 inc_math.php3,1.2,1.3 calendrier.css,1.1,1.2 inc_calendrier.php,1.5,1.6">stef at berlios.de
+       </A><BR>
+    <I>Thu Mar 31 23:18:09 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000154.html">[Spip-carto-cvs] spipcarto/ecrire/js navTools.js,1.1,1.2
+</A></li>
+        <LI>Next message: <A HREF="000156.html">[Spip-carto-cvs] spipcarto inc-messforum.php3,1.5,1.6 inc-cache.php3,1.7,1.8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv10067/spipcarto/ecrire
+
+Modified Files:
+	md5.js inc_import.php3 inc_version.php3 inc_lab.php 
+	inc_lang.php3 index.php3 inc_texte.php3 inc_meta.php3 
+	articles_versions.php3 statistiques_visites.php3 
+	inc_forum.php3 presentation.js pclzip.lib.php inc_math.php3 
+	calendrier.css inc_calendrier.php 
+Log Message:
+1.8PR3 CVS 20050331
+
+Index: md5.js
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/md5.js,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- md5.js	20 Feb 2005 22:19:26 -0000	1.2
++++ md5.js	31 Mar 2005 21:18:06 -0000	1.3
+@@ -19,7 +19,6 @@
+  * - 2003/06/09 by Antoine Pitrou (unicode compatibility)
+  *
+  *
+- * $Id$
+  *
+  */
+ 
+
+Index: inc_import.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_import.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_import.php3	29 Mar 2005 15:27:12 -0000	1.3
++++ inc_import.php3	31 Mar 2005 21:18:06 -0000	1.4
+@@ -405,29 +405,29 @@
+ 
+ 	// Destruction des entrees non restaurees
+ 
+-	$query = &quot;DELETE FROM spip_rubriques WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_rubriques WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_breves WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_breves WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_auteurs WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_auteurs WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_articles WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_articles WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_documents WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_documents WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_types_documents WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_types_documents WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_forum WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_forum WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_mots WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_mots WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_groupes_mots WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_groupes_mots WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_petitions WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_petitions WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_signatures WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_signatures WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+-	$query = &quot;DELETE FROM spip_visites WHERE maj &lt; $my_date&quot;;
++	$query = &quot;DELETE FROM spip_visites WHERE UNIX_TIMESTAMP(maj) &lt; $my_date&quot;;
+ 	spip_query($query);
+ 
+ 	import_fin();
+
+Index: inc_version.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_version.php3,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc_version.php3	29 Mar 2005 15:28:11 -0000	1.5
++++ inc_version.php3	31 Mar 2005 21:18:06 -0000	1.6
+@@ -395,7 +395,7 @@
+ $spip_version = 1.813;
+ 
+ // version de spip
+-$spip_version_affichee = &quot;1.8 PR2 CVS&quot;;
++$spip_version_affichee = &quot;1.8 PR3 CVS&quot;;
+ 
+ // version de spip / tag cvs
+ if (ereg('Name: v(.*) ','$Name$', $regs)) $spip_version_affichee = $regs[1];
+@@ -594,7 +594,9 @@
+ }
+ function http_last_modified($lastmodified, $expire = 0) {
+ 	$gmoddate = http_gmoddate($lastmodified);
+-	if ($GLOBALS['HTTP_IF_MODIFIED_SINCE']) {
++	if ($GLOBALS['HTTP_IF_MODIFIED_SINCE']
++	AND !preg_match(',IIS/,', $_SERVER['SERVER_SOFTWARE'])) # MSoft IIS is dumb
++	{
+ 		$if_modified_since = ereg_replace(';.*$', '', $GLOBALS['HTTP_IF_MODIFIED_SINCE']);
+ 		$if_modified_since = trim(str_replace('GMT', '', $if_modified_since));
+ 		if ($if_modified_since == $gmoddate) {
+
+Index: inc_lab.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_lab.php,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_lab.php	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_lab.php	31 Mar 2005 21:18:06 -0000	1.3
+@@ -38,6 +38,10 @@
+ 					else
+ 						if (@file_exists(_DIR_RESTREINT.'inc_'.$fichier.'3'))
+ 							include_ecrire('inc_'.$fichier.'3');
++					// mais peut-etre avons nous une version '.php' de la version stable
++					else
++						if (@file_exists(_DIR_RESTREINT.'inc_'.$fichier))
++							include_ecrire('inc_'.$fichier);
+ 					else
+ 						die (&quot;Fichier SPIP-Lab \&quot;$fichier\&quot; manquant.&quot;);
+ 					break;
+
+Index: inc_lang.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_lang.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- inc_lang.php3	29 Mar 2005 15:27:12 -0000	1.4
++++ inc_lang.php3	31 Mar 2005 21:18:06 -0000	1.5
+@@ -419,7 +419,11 @@
+ 		$post = $lien-&gt;getUrl();
+ 		$cible = '';
+ 	} else {
+-		$site = lire_meta(&quot;adresse_site&quot;);
++		// eviter un bug a l'installation ; mais, dans le cas general,
++		// pourquoi aurait-on besoin ici d'une URL absolue ?
++		if (!defined('_ECRIRE_INSTALL')
++		AND !defined('_TEST_DIRS'))
++			$site = lire_meta(&quot;adresse_site&quot;);
+ 		if (!$site)
+ 			if (_DIR_RESTREINT)
+ 				$site = '.';
+
+Index: index.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/index.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- index.php3	29 Mar 2005 15:28:11 -0000	1.4
++++ index.php3	31 Mar 2005 21:18:06 -0000	1.5
+@@ -167,16 +167,17 @@
+ 		$jour = jour($date);
+ 	
+ 		// rendez-vous personnels dans le mois
+-		if (spip_num_rows(spip_query(&quot;SELECT messages.id_message FROM spip_messages AS messages, spip_auteurs_messages AS lien WHERE ((lien.id_auteur='$connect_id_auteur' AND lien.id_message=messages.id_message) OR messages.type='affich') AND messages.rv='oui' AND messages.date_heure &gt;='$annee-$mois-1' AND date_heure &lt; DATE_ADD('$annee-$mois-1', INTERVAL 1 MONTH) AND messages.statut='publie' LIMIT 0,1&quot;))) {
++		$evt = sql_calendrier_agenda($mois, $annee);
++		if ($evt) {
+ 			echo &quot;&lt;p /&gt;&quot;;
+-			echo http_calendrier_agenda ($mois_today, $annee_today, $jour_today, $mois_today, $annee_today, false, 'calendrier.php3');
++			echo http_calendrier_agenda ($mois_today, $annee_today, $jour_today, $mois_today, $annee_today, false, 'calendrier.php3', $evt);
+ 		}
+-		// rendez-vous personnels dans le mois
++		// et ceux du jour
+ 		if (spip_num_rows(spip_query(&quot;SELECT messages.id_message FROM spip_messages AS messages, spip_auteurs_messages AS lien &quot;.
+ 				&quot;WHERE ((lien.id_auteur='$connect_id_auteur' AND lien.id_message=messages.id_message) OR messages.type='affich') &quot;.
+ 					     &quot;AND messages.rv='oui' AND messages.date_heure &gt;='$annee_today-$mois_today-$jour_today' AND messages.date_heure &lt; DATE_ADD('$annee_today-$mois_today-$jour_today', INTERVAL 1 DAY) AND messages.statut='publie' LIMIT 0,1&quot;))) {
+ 			echo &quot;&lt;p /&gt;&quot;;
+-			echo http_calendrier_jour($jour_today,$mois_today,$annee_today, 90, $partie_cal, $echelle);
++			echo http_calendrier_jour($jour_today,$mois_today,$annee_today, &quot;col&quot;, $partie_cal, $echelle);
+ 		}
+ }
+ 
+
+Index: inc_texte.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_texte.php3,v
+retrieving revision 1.4
+retrieving revision 1.5
+diff -u -d -r1.4 -r1.5
+--- inc_texte.php3	29 Mar 2005 15:27:12 -0000	1.4
++++ inc_texte.php3	31 Mar 2005 21:18:06 -0000	1.5
+@@ -219,27 +219,24 @@
+ 
+ // Traitement final des echappements
+ function echappe_retour($letexte, $les_echap, $source='') {
+-  $cherche = &quot;@@SPIP_$source&quot;;
+-  $n = strlen($cherche);
+-  $debut = '';
+-  while(($pos = strpos($letexte, $cherche)) !== false) {
+-    ereg(&quot;^([0-9]+)@@(.*)$&quot;,substr($letexte,$pos+$n),$regs);
+-    $rempl = $les_echap[$regs[1]];
+-# si $rempl est un tableau, c'est le r&#233;sultat (cf echappe_html) de eregi sur :
++	$expr = &quot;,@@SPIP_$source([0-9]+)@@,&quot;;
++	if (preg_match_all($expr, $letexte, $regs, PREG_SET_ORDER)) {
++		foreach ($regs as $reg) {
++			$rempl = $les_echap[$reg[1]];
++# si $rempl est un tableau, c'est le resultat (cf echappe_html) de eregi sur :
+ # &lt;(IMG|DOC|EMB)([0-9]+)(\|([^\&gt;]*))?
+-    if (is_array($rempl))
+-	  {
+-		    include_ecrire(&quot;inc_documents.php3&quot;);
+-		    $type = strtoupper($rempl[1]);
+-		    if ($type == 'EMB')
+-		      $rempl = embed_document($rempl[2], $rempl[4]);
+-		    else
+-		      $rempl = integre_image($rempl[2], $rempl[4], $type);
+-	  }
+-    $debut .= substr($letexte,0,$pos) . $rempl;
+-    $letexte = $regs[2];
+-  }
+-  return $debut . $letexte;
++			if (is_array($rempl)) {
++				include_ecrire(&quot;inc_documents.php3&quot;);
++				$type = strtoupper($rempl[1]);
++				if ($type == 'EMB')
++					$rempl = embed_document($rempl[2], $rempl[4]);
++				else
++					$rempl = integre_image($rempl[2], $rempl[4], $type);
++			}
++			$letexte = str_replace($reg[0], $rempl, $letexte);
++		}
++	}
++	return $letexte;
+ }
+ 
+ 
+
+Index: inc_meta.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_meta.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_meta.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_meta.php3	31 Mar 2005 21:18:06 -0000	1.3
+@@ -21,12 +21,12 @@
+ 
+ 	$meta = '';
+ 	$meta_maj = '';
+-	$query = 'SELECT * FROM spip_meta';
++	$query = 'SELECT nom,valeur,UNIX_TIMESTAMP(maj) AS d FROM spip_meta';
+ 	$result = spip_query($query);
+ 	while ($row = spip_fetch_array($result)) {
+ 		$nom = $row['nom'];
+ 		$meta[$nom] = $row['valeur'];
+-		$meta_maj[$nom] = $row['maj'];
++		$meta_maj[$nom] = $row['d'];
+ 	}
+ }
+ 
+
+Index: articles_versions.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/articles_versions.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- articles_versions.php3	29 Mar 2005 15:25:58 -0000	1.3
++++ articles_versions.php3	31 Mar 2005 21:18:06 -0000	1.4
+@@ -51,7 +51,7 @@
+ 	$query = &quot;SELECT id_version FROM spip_versions WHERE id_article=$id_article &quot;.
+ 		&quot;AND id_version&lt;$id_version ORDER BY id_version DESC LIMIT 0,1&quot;;
+ 	if ($result = spip_query($query)) {
+-		$row = mysql_fetch_array($result);
++		$row = spip_fetch_array($result);
+ 		$id_diff = $row['id_version'];
+ 	}
+ }
+
+Index: statistiques_visites.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/statistiques_visites.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- statistiques_visites.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ statistiques_visites.php3	31 Mar 2005 21:18:06 -0000	1.3
+@@ -464,7 +464,7 @@
+ 				$prevision = (1 - (date(&quot;H&quot;)*60 - date(&quot;i&quot;))/(24*60)) * $val_popularite;
+ 				$hauteurprevision = ceil($prevision * $rapport);
+ 				$prevision = round($prevision,0)+$visites_today; // Pour affichage harmonieux
+-#				$tagtitle= attribut_html(supprimer_tags(_T('info_aujourdhui').&quot; $visites_today &rarr; $prevision&quot;));
++				$tagtitle= attribut_html(supprimer_tags(_T('info_aujourdhui').&quot; $visites_today &rarr; $prevision&quot;));
+ 				echo http_img_rien($largeur, $hauteurprevision,'background-color:#eeeeee;', $tagtitle);
+ 	
+ 				echo http_img_rien($largeur, $hauteur, 'background-color:#cccccc;', $tagtitle);
+
+Index: inc_forum.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_forum.php3,v
+retrieving revision 1.3
+retrieving revision 1.4
+diff -u -d -r1.3 -r1.4
+--- inc_forum.php3	29 Mar 2005 15:27:12 -0000	1.3
++++ inc_forum.php3	31 Mar 2005 21:18:06 -0000	1.4
+@@ -133,7 +133,7 @@
+ 			$logo = &quot;forum-public-24.gif&quot;;
+ 			$valider = 'valid_forum';
+ 			$valider_repondre = true;
+-			$supprimer = true;
++			$supprimer = 'supp_forum';
+ 			break;
+ 		default:
+ 			return;
+
+Index: presentation.js
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/presentation.js,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- presentation.js	20 Feb 2005 22:19:26 -0000	1.1
++++ presentation.js	31 Mar 2005 21:18:06 -0000	1.2
+@@ -42,10 +42,12 @@
+ function decalerCouche(id_couche) {
+ 	if (!(layer = findObj(id_couche))) return;
+ 	if (bug_offsetwidth &amp;&amp; ( parseInt(layer.style.left) &gt; 0)) {
+-
++		demilargeur = Math.floor( layer.offsetWidth / 2 );
++		if (demilargeur == 0) demilargeur = 100; // bug offsetwidth MSIE, on fixe une valeur arbitraire
+ 		gauche = parseInt(layer.style.left)
+-		  - Math.floor( layer.offsetWidth / 2 )
++		  - demilargeur
+ 		  + Math.floor(largeur_icone / 2);
++		  		  
+ 		if (gauche &lt; 0) gauche = 0;
+ 
+ 		layer.style.left = gauche+&quot;px&quot;;
+
+Index: pclzip.lib.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/pclzip.lib.php,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- pclzip.lib.php	20 Feb 2005 22:19:26 -0000	1.2
++++ pclzip.lib.php	31 Mar 2005 21:18:06 -0000	1.3
+@@ -22,7 +22,6 @@
+ //   The use of this software is at the risk of the user.
+ //
+ // --------------------------------------------------------------------------------
+-// $Id$
+ // --------------------------------------------------------------------------------
+ 
+   // ----- Constants
+
+Index: inc_math.php3
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_math.php3,v
+retrieving revision 1.2
+retrieving revision 1.3
+diff -u -d -r1.2 -r1.3
+--- inc_math.php3	20 Feb 2005 22:19:26 -0000	1.2
++++ inc_math.php3	31 Mar 2005 21:18:06 -0000	1.3
+@@ -69,7 +69,7 @@
+ 		else {
+ 			list(,,,$size) = @getimagesize($fichier);
+ 			$alt = &quot;alt=\&quot;$tex\&quot; title=\&quot;$tex\&quot;&quot;; 
+-			return &quot;&lt;img src=\&quot;$fichier\&quot; align=\&quot;middle\&quot; $size $alt /&gt;&quot;;
++			return &quot;&lt;img src=\&quot;$fichier\&quot; style=\&quot;vertical-align:middle;\&quot; $size $alt /&gt;&quot;;
+ 		}
+ 
+ 	}
+
+Index: calendrier.css
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/calendrier.css,v
+retrieving revision 1.1
+retrieving revision 1.2
+diff -u -d -r1.1 -r1.2
+--- calendrier.css	29 Mar 2005 15:26:13 -0000	1.1
++++ calendrier.css	31 Mar 2005 21:18:06 -0000	1.2
+@@ -29,7 +29,6 @@
+ 	font-family: verdana, arial, sans,sans-serif;
+ 	font-weight: bold;
+ 	font-size: 14px;
+-	padding: 2px;
+ }
+ 
+ div.navigation-calendrier img {
+@@ -56,7 +55,7 @@
+ 
+ .calendrier-table-large { 
+ 	border: 0px;
+-	width: 950px;
++	width: 900px;
+  }
+ 
+ .calendrier-table-etroit { 
+@@ -65,9 +64,9 @@
+  }
+ 
+ .calendrier-td-centre { 
+-	width: 570px;
+-	padding-left: 2%;
+-	padding-right: 2%;
++	width: 550px;
++	padding-left: 25px;
++	padding-right: 25px;
+   	vertical-align: top;
+  }
+ 
+@@ -77,17 +76,17 @@
+  }
+ 
+ .calendrier-table-large  .calendrier-td-gauche {
+-	width: 180px;
++	width: 150px;
+   	vertical-align: top;
+  }
+ 
+ .calendrier-table-etroit  .calendrier-td-droit {
+-	width: 180px;
++	width: 150px;
+   	vertical-align: top;
+  }
+ 
+ .calendrier-table-large  .calendrier-td-droit {
+-	width: 180px;
++	width: 150px;
+   	vertical-align: top;
+  }
+ 
+@@ -116,6 +115,22 @@
+ 	text-align: center; 
+ 	background-color: white;
+ 	-moz-border-radius: 5px;
++ }
++
++
++.calendrier-tripleagenda { 
++	vertical-align: top;
++	width: 33%;  
++ }
++
++.calendrier-cadreagenda { 
++	visibility: hidden;
++	width: 100%;
++	padding-top: 5px;
++	padding-bottom: 5px;
++	border: 0px;
++	-moz-border-radius-bottomleft: 8px;
++	-moz-border-radius-bottomright: 8px;
+  }
+ 
+ .calendrier-titre { 
+
+Index: inc_calendrier.php
+===================================================================
+RCS file: /cvsroot/spip-carto/spipcarto/ecrire/inc_calendrier.php,v
+retrieving revision 1.5
+retrieving revision 1.6
+diff -u -d -r1.5 -r1.6
+--- inc_calendrier.php	29 Mar 2005 15:27:12 -0000	1.5
++++ inc_calendrier.php	31 Mar 2005 21:18:06 -0000	1.6
+@@ -47,19 +47,17 @@
+ {
+ 	global $mois, $annee, $jour, $type, $echelle, $partie_cal;
+ 
+-	if (!$type
+-	AND !($type = $ltype))
+-		$type = 'mois';
+-	if (!isset($echelle)) $echelle = $lechelle;
+-	if (!isset($lpartie_cal)) $partie_cal = $lpartie_cal;
+ 	if (!$mois){
+ 		$today=getdate($date ? strtotime($date) : time());
+ 		$jour = $today[&quot;mday&quot;];
+ 		$mois = $today[&quot;mon&quot;];
+ 		$annee = $today[&quot;year&quot;];
+ 	    } else {if (!isset($jour)) {$jour = 1; $type= 'mois';}}
+-	    $date = date(&quot;Y-m-d&quot;, mktime(0,0,0,$mois, $jour, $annee));
++	if (!$date) $date = date(&quot;Y-m-d&quot;, mktime(0,0,0,$mois, $jour, $annee));
+ 	if (!$script) $script = $GLOBALS['REQUEST_URI']; 
++	if (!$type AND !($type = $ltype)) $type = 'mois';
++	if (!isset($echelle)) $echelle = $lechelle;
++	if (!isset($lpartie_cal)) $partie_cal = $lpartie_cal;
+ 	$script = http_calendrier_retire_args($script);
+ 	if (!_DIR_RESTREINT) http_calendrier_titre($date, $type);
+ 	$f = 'http_calendrier_init_' . $type;
+@@ -245,21 +243,23 @@
+ 					$opacity = &quot;&quot;;
+ 				}
+ 
+-				$c = calendrier_div_style($evenement);
+-				if (!$c) 
+-				  {
+-					$c = &quot;color: black&quot;;
+-					$radius_top = &quot;&quot;;
+-					$radius_bottom = &quot;&quot;;
+-				  } else {
+-					list($b,$c) = $c;
+-					$c = &quot;padding: 2px; margin-top: 2px;
+-$opacity background-color: $b; color: $c; border: 1px solid $c&quot;;
+-				}
+ 				$e = $date_affichee .
+ 				  (!$url ? &quot;$sum $desc&quot; : http_href($url, $sum, $desc));
+ 				if (trim($e))
++				  {
++					$c = calendrier_div_style($evenement);
++					if (!$c) 
++					  {
++					    $c = &quot;color: black&quot;;
++					    $radius_top = &quot;&quot;;
++					    $radius_bottom = &quot;&quot;;
++					  } else {
++					  list($b,$c) = $c;
++					  $c = &quot;padding: 2px; margin-top: 2px;
++$opacity background-color: $b; color: $c; border: 1px solid $c&quot;;
++					}
+ 				  $res .= &quot;\n&lt;div class='calendrier-arial10$radius_top$radius_bottom' style='$c'&gt;$e\n&lt;/div&gt;\n&quot;; 
++				  }
+ 			}
+ 		}
+ 	}
+@@ -334,7 +334,7 @@
+ 		$script .= (strpos($script,'?') ? '&amp;' : '?');
+ 	$args = &quot;jour=$jour&amp;mois=$mois&amp;annee=$annee$ancre&quot;;
+ 	  
+-  	$retour = &quot;&lt;div class='navigation-calendrier calendrier-moztop8'\nstyle='background-color: $couleur_foncee;'&gt;&quot;;
++  	$retour = &quot;&quot;;
+ 
+ 
+    	if ($type != &quot;mois&quot;) {
+@@ -404,11 +404,14 @@
+ 
+ 	$id = 'nav-agenda' .ereg_replace('[^A-Za-z0-9]', '', $ancre);
+ 	$arguments = &quot;jour=$jour_today&amp;mois=$mois_today&amp;annee=$annee_today$ancre&quot; ;
+-	return $retour .
++	return 
++	  &quot;&lt;div class='navigation-calendrier calendrier-moztop8'\nstyle='background-color: $couleur_foncee;'&gt;&quot; .
++	  $retour .
+ 	  &quot;&nbsp;&nbsp;&quot; .
+ 	  http_href_img($script . &quot;type=$type&amp;echelle=$echelle&amp;$arguments&quot;,
+ 			&quot;cal-today.gif&quot;,
+ 			(&quot; onmouseover=\&quot;montrer('$id');\&quot;&quot; .
++			 &quot; onmouseout=\&quot;cacher('$id');\&quot;&quot; .
+ 			 ($condition ? &quot; class='calendrier-opacity'&quot; : &quot;&quot;)),
+ 			_T(&quot;info_aujourdhui&quot;)) .
+ 	  &quot;&nbsp;&quot; .
+@@ -428,12 +431,9 @@
+ {
+ 	global $spip_lang_right, $spip_lang_left, $couleur_claire;
+ 	if (!isset($couleur_claire)) $couleur_claire = 'white';
+-	$gadget = &quot;&lt;div
+-id='$id' style='position: relative; visibility: hidden;z-index: 1000; '
+-onmouseover=\&quot;montrer('$id');\&quot; onmouseout=\&quot;cacher('$id');\&quot;&gt;&lt;div 
+-style='position: absolute; padding: 5px; background-color: $couleur_claire; margin-bottom: 5px; -moz-border-radius-bottomleft: 8px; -moz-border-radius-bottomright: 8px;'&gt;&quot;;
++	$gadget = &quot;&lt;div style='position: relative;z-index: 1000;'&gt;&quot;;
+ 
+-	$gadget .= &quot;&lt;table cellpadding='0' cellspacing='5' border='0' width='100%'&gt;&quot;;
++	$gadget .= &quot;&lt;table id='$id' class='calendrier-cadreagenda' style='position: absolute; background-color: $couleur_claire'&gt;&quot;;
+ 	$gadget .= &quot;\n&lt;tr&gt;&lt;td colspan='3' style='text-align:$spip_lang_left;'&gt;&quot;;
+ 
+ 	$annee_avant = $annee - 1;
+@@ -448,11 +448,11 @@
+ 					nom_mois(&quot;$annee-$i-1&quot;),'','', 'calendrier-annee');
+ 			}
+ 	$gadget .= &quot;&lt;/td&gt;&lt;/tr&gt;&quot;
+-		. &quot;\n&lt;tr&gt;&lt;td valign='top' style='width: 33%'&gt;&quot;
++		. &quot;\n&lt;tr&gt;&lt;td class='calendrier-tripleagenda'&gt;&quot;
+ 		. http_calendrier_agenda($mois-1, $annee, $jour, $mois, $annee, $GLOBALS['afficher_bandeau_calendrier_semaine'], $script,$ancre) 
+-		. &quot;&lt;/td&gt;\n&lt;td valign='top' style='width: 33%'&gt;&quot;
++		. &quot;&lt;/td&gt;\n&lt;td class='calendrier-tripleagenda'&gt;&quot;
+ 		. http_calendrier_agenda($mois, $annee, $jour, $mois, $annee, $GLOBALS['afficher_bandeau_calendrier_semaine'], $script,$ancre) 
+-		. &quot;&lt;/td&gt;\n&lt;td valign='top' style='width: 33%'&gt;&quot;
++		. &quot;&lt;/td&gt;\n&lt;td class='calendrier-tripleagenda'&gt;&quot;
+ 		. http_calendrier_agenda($mois+1, $annee, $jour, $mois, $annee, $GLOBALS['afficher_bandeau_calendrier_semaine'], $script,$ancre) 
+ 		. &quot;&lt;/td&gt;&quot;
+ 		. &quot;&lt;/tr&gt;&quot;
+@@ -465,7 +465,7 @@
+ 		$gadget .= http_href($script . &quot;mois=$i&amp;annee=$annee_apres$ancre&quot;,
+ 					nom_mois(&quot;$annee_apres-$i-1&quot;),'','', 'calendrier-annee');
+ 			}
+-	return $gadget . &quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/div&gt;&quot;;
++	return $gadget . &quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&quot;;
+ }
+ 
+ 
+@@ -776,12 +776,13 @@
+ 
+ // agenda mensuel 
+ 
+-function http_calendrier_agenda ($mois, $annee, $jour_ved, $mois_ved, $annee_ved, $semaine = false,  $script='', $ancre='') {
++function http_calendrier_agenda ($mois, $annee, $jour_ved, $mois_ved, $annee_ved, $semaine = false,  $script='', $ancre='', $evt='') {
+ 
+   if (!$script) $script =  $GLOBALS['PHP_SELF'] ;
+   if (!strpos($script, '?')) $script .= '?';
+   if (!$mois) {$mois = 12; $annee--;}
+   elseif ($mois==13) {$mois = 1; $annee++;}
++  if (!$evt) $evt = sql_calendrier_agenda($mois, $annee);
+   return 
+     &quot;&lt;div class='calendrier-titre calendrier-arial10'&gt;&quot; .
+     http_href($script . &quot;mois=$mois&amp;annee=$annee$ancre&quot;,
+@@ -789,8 +790,7 @@
+ 	      '',
+ 	      'color: black;') .
+     &quot;&lt;table width='100%' cellspacing='0' cellpadding='0'&gt;&quot; .
+-    http_calendrier_agenda_rv ($annee, $mois, 
+-				sql_calendrier_agenda($mois, $annee),
++    http_calendrier_agenda_rv ($annee, $mois, $evt,				
+ 			        'http_jour_clic', array($script, $ancre),
+ 			        $jour_ved, $mois_ved, $annee_ved, 
+ 				$semaine) .
+@@ -1123,12 +1123,12 @@
+ 	$gauche = (_DIR_RESTREINT  || ($spip_ecran != &quot;large&quot;));
+ 	return 	
+ 	  &quot;&lt;div&gt;&nbsp;&lt;/div&gt;&quot; .
+-	  &quot;\n&lt;table cols='7' class='calendrier-table-$spip_ecran'&gt;&quot; .
++	  &quot;\n&lt;table class='calendrier-table-$spip_ecran'&gt;&quot; .
+ 	  &quot;\n&lt;tr&gt;&lt;td class='calendrier-td-gauche'&gt; &quot; .
+ 	  &quot;&lt;/td&gt;&lt;td colspan='5' class='calendrier-td-centre'&gt;&quot; .
+ 	   http_calendrier_navigation_jour($jour,$mois,$annee, $partie_cal, $echelle, $script, $ancre) .
+ 	  &quot;&lt;/td&gt;&lt;td class='calendrier-td-droit calendrier-arial10'&gt; &quot; .
+-	  &quot;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&quot; .
++	  &quot;&lt;/td&gt;&lt;/tr&gt;&quot; .
+ 	  &quot;\n&lt;tr&gt;&lt;td class='calendrier-td-gauche'&gt;&quot; .
+ 	  ($gauche ? '' :
+ 	   http_calendrier_entetecol($script, $jour-1,$mois,$annee)) .
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000154.html">[Spip-carto-cvs] spipcarto/ecrire/js navTools.js,1.1,1.2
+</A></li>
+	<LI>Next message: <A HREF="000156.html">[Spip-carto-cvs] spipcarto inc-messforum.php3,1.5,1.6 inc-cache.php3,1.7,1.8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#155">[ date ]</a>
+              <a href="thread.html#155">[ thread ]</a>
+              <a href="subject.html#155">[ subject ]</a>
+              <a href="author.html#155">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>

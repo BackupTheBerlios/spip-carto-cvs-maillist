@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,NONE,1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/spip-carto-cvs/2005-May/index.html" >
+   <LINK REL="made" HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_import.php3%2CNONE%2C1.1&In-Reply-To=%3C200505111008.j4BA8fDo020175%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000157.html">
+   <LINK REL="Next"  HREF="000159.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,NONE,1.1</H1>
+    <B>fxp at berlios.de</B> 
+    <A HREF="mailto:spip-carto-cvs%40lists.berlios.de?Subject=Re%3A%20%5BSpip-carto-cvs%5D%20spipcarto/ecrire%20inc_carto_import.php3%2CNONE%2C1.1&In-Reply-To=%3C200505111008.j4BA8fDo020175%40sheep.berlios.de%3E"
+       TITLE="[Spip-carto-cvs] spipcarto/ecrire inc_carto_import.php3,NONE,1.1">fxp at berlios.de
+       </A><BR>
+    <I>Wed May 11 12:08:41 CEST 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000157.html">[Spip-carto-cvs] spipcarto/ecrire carte_import.php3,NONE,1.1
+</A></li>
+        <LI>Next message: <A HREF="000159.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.11,1.12
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Update of /cvsroot/spip-carto/spipcarto/ecrire
+In directory sheep:/tmp/cvs-serv20169/ecrire
+
+Added Files:
+	inc_carto_import.php3 
+Log Message:
+Import de donn&#233;es / Format TXT
+
+--- NEW FILE: inc_carto_import.php3 ---
+&lt;?php
+	
+//
+// Ce fichier ne sera execute qu'une fois
+if (defined(&quot;_ECRIRE_INC_CARTE_IMPORT&quot;)) return;
+define(&quot;_ECRIRE_INC_CARTE_IMPORT&quot;, &quot;1&quot;);
+	
+function avertissement_carto_import() {
+	global $spip_lang_right, $spip_lang_left;
+	debut_boite_info();
+
+	echo &quot;&lt;div class='verdana2' align='justify'&gt;&quot;.
+			&quot;&lt;img src='&quot; . _DIR_IMG_PACK . &quot;warning.gif' alt='' width='48' height='48' /&gt;&quot;.
+			&quot;&lt;p align='center'&gt;&lt;B&gt;&quot;._L('Attention, les objets que vous allez associer &#224; la carte doivent &#234;tre dans la m&#234;me projection !').&quot;&lt;/B&gt;&lt;/p&gt;&quot;;
+	echo &quot;&lt;/div&gt;&quot;;
+
+	fin_boite_info();
+	echo &quot;&lt;p&gt;&nbsp;&lt;p&gt;&quot;;
+}
+	
+	
+	
+//
+// Retourner le code HTML d'utilisation de fichiers uploades a la main
+//	Repris de inc_document avec ajout d'un filtre sur les extensions 
+
+function texte_upload_file($dir, $inclus = '', $extw = '') {
+	$fichiers = fichiers_upload($dir);
+	$exts = array();
+
+	while (list(, $f) = each($fichiers)) {
+		$f = ereg_replace(&quot;^$dir/&quot;,&quot;&quot;,$f);
+		if (ereg(&quot;\.([^.]+)$&quot;, $f, $match)) {
+			$ext = strtolower($match[1]);
+			
+			if (!$exts[$ext]) {
+				if ($ext == $extw || $extw == '') {
+					if ($ext == 'jpeg') $ext = 'jpg';
+					$req = &quot;SELECT extension FROM spip_types_documents WHERE extension='$ext'&quot;;
+					if ($inclus) $req .= &quot; AND inclus='$inclus'&quot;;
+					if (@spip_fetch_array(spip_query($req))) $exts[$ext] = 'oui';
+					else $exts[$ext] = 'non';
+				}
+			}
+			
+			$ledossier = substr($f, 0, strrpos($f,&quot;/&quot;));
+			if (strlen($ledossier) &gt; 0) $ledossier = &quot;$ledossier&quot;;
+			$lefichier = substr($f, strrpos($f, &quot;/&quot;), strlen($f));
+			
+			if ($ledossier != $ledossier_prec) {
+				$texte_upload .= &quot;\n&lt;option value=\&quot;$ledossier\&quot; style='font-weight: bold;'&gt;Tout le dossier $ledossier&lt;/option&gt;&quot;;
+			}
+			
+			$ledossier_prec = $ledossier;
+			
+			if ($exts[$ext] == 'oui') $texte_upload .= &quot;\n&lt;option value=\&quot;$f\&quot;&gt;&nbsp; &nbsp; &nbsp; &nbsp; $lefichier&lt;/option&gt;&quot;;
+		}
+	}
+
+	return $texte_upload;
+}	
+	
+	
+	
+	
+class csvUtil {
+    /*
+     * Constructor
+     */
+     function csvUtil($file, $separator) {
+            $this-&gt;file = $file;
+            $this-&gt;separator = $separator;
+            $this-&gt;readArray();
+    }
+
+	/*
+	 * readArray(): reads $this-&gt;file with $this-&gt;separator
+	 *           and stores its content in an array
+	 */
+    function readArray() {
+            $handle = fopen ($this-&gt;file, &quot;r&quot;);
+            $i = 0;
+            do {
+                    $this-&gt;buffer[$i] = fgets($handle);
+                    $this-&gt;buffer[$i] = explode($this-&gt;separator, $this-&gt;buffer[$i]);
+                    $i++;
+            } while (!feof ($handle));
+            fclose ($handle);
+    }
+	/*
+	 *getField($row, $col): find and return content of a give position
+	 */
+    function getField($row, $col) {
+            $retval = $this-&gt;buffer[$row][$col];
+            return $retval;
+    }
+
+    /*
+     *search($col, $expression): search for a value in given column
+     *returns an array with found rows
+     */
+    function search($col, $expression) {
+            $i = 0;
+            $j = 0;
+            do {
+                    if (@eregi($expression,$this-&gt;buffer[$i][$col])) {
+                            $retval[$j] = $i;
+                            $j++;
+                    }
+                    $i++;
+            } while ($this-&gt;buffer[$i][0]);
+
+            return $retval;
+    }
+
+	/*
+	 * numRows(): returns number of rows
+	 */
+    function numRows() {
+            $retval = count($this-&gt;buffer);
+            return $retval;
+    }
+	/*
+	 *  numCols():  returns number of cols
+	 */
+    function numCols() {
+            $retval = count($this-&gt;buffer[0]);
+            return $retval;
+    }
+}
+
+
+
+
+
+?&gt;
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000157.html">[Spip-carto-cvs] spipcarto/ecrire carte_import.php3,NONE,1.1
+</A></li>
+	<LI>Next message: <A HREF="000159.html">[Spip-carto-cvs] spipcarto/ecrire inc_carto.php3,1.11,1.12
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/spip-carto-cvs">More information about the Spip-carto-cvs
+mailing list</a><br>
+</body></html>
